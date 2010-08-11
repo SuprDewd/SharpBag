@@ -2388,6 +2388,9 @@ namespace SharpBag
                 string ToString(bool unit, Func<double, string> result);
             }
 
+            /// <summary>
+            /// A class representing a bit.
+            /// </summary>
             public class Bit : BitSize
             {
                 public const string Unit = "b";
