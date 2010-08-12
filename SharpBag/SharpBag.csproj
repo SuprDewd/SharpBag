@@ -47,12 +47,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Main.cs" />
+    <Compile Include="ActionDisposable.cs" />
+    <Compile Include="BagDatabase\BagDB.cs" />
+    <Compile Include="BagExtensions.cs" />
+    <Compile Include="BagFK\DrawObjects.cs" />
+    <Compile Include="BagFK\Kennitala.cs" />
+    <Compile Include="BagFK\Minesweeper.cs" />
+    <Compile Include="BagFK\Stae.cs" />
+    <Compile Include="BagFK\StaerstaRunuSumma.cs" />
+    <Compile Include="BagFK\Tools.cs" />
+    <Compile Include="BagLogging\BagConsole.cs" />
+    <Compile Include="BagLogging\BagLogger.cs" />
+    <Compile Include="BagMath\BagConverters\BaseConverter.cs" />
+    <Compile Include="BagMath\BagConverters\BitsBytes.cs" />
+    <Compile Include="BagMath\BagConverters\Length.cs" />
+    <Compile Include="BagMath\BagConverters\Temperature.cs" />
+    <Compile Include="BagMath\BagConverters\Weight.cs" />
+    <Compile Include="BagMath\BagMath.cs" />
+    <Compile Include="BagMath\Fibonacci.cs" />
+    <Compile Include="BagNet\BagNet.cs" />
+    <Compile Include="BagS.cs" />
+    <Compile Include="BagTorrent\Bencoding.cs" />
+    <Compile Include="BagTorrent\BencodingDecoder.cs" />
+    <Compile Include="BagUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Diagram.cd" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

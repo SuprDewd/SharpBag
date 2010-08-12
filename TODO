@@ -1,12 +1,14 @@
-TODO:
 
- Update README.
- Put namespaces into seperate folders and classes into seperate files.
+ TODO:
 
-BUGS:
+  Update README.
+  Make abstract classes for Weight, Length and Temperature.
+
+ BUGS:
  
 
-DONE:
+ DONE:
 
- First commit.
+  First commit.
+  Put namespaces into seperate folders and classes into seperate files.
 

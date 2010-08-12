@@ -17,3 +17,9 @@ C:\Users\Bjarki\Desktop\Projects\Forritun\SharpBag\SharpBag\SharpBag\bin\Release
 C:\Users\Bjarki\Desktop\Projects\Forritun\SharpBag\SharpBag\SharpBag\obj\Release\ResolveAssemblyReference.cache
 C:\Users\Bjarki\Desktop\Projects\Forritun\SharpBag\SharpBag\SharpBag\obj\Release\SharpBag.dll
 C:\Users\Bjarki\Desktop\Projects\Forritun\SharpBag\SharpBag\SharpBag\obj\Release\SharpBag.pdb
+C:\Users\Bjarki\Desktop\Projects\Forritun\SharpBag\SharpBag\bin\Release\SharpBag.dll
+C:\Users\Bjarki\Desktop\Projects\Forritun\SharpBag\SharpBag\bin\Release\SharpBag.pdb
+C:\Users\Bjarki\Desktop\Projects\Forritun\SharpBag\SharpBag\bin\Release\SharpBagDocs.xml
+C:\Users\Bjarki\Desktop\Projects\Forritun\SharpBag\SharpBag\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Bjarki\Desktop\Projects\Forritun\SharpBag\SharpBag\obj\Release\SharpBag.dll
+C:\Users\Bjarki\Desktop\Projects\Forritun\SharpBag\SharpBag\obj\Release\SharpBag.pdb
