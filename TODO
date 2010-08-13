@@ -1,7 +1,6 @@
 
  TODO:
 
-  Update README.
   Make abstract class for Temperature.
 
  BUGS:
@@ -12,4 +11,5 @@
   First commit.
   Put namespaces into seperate folders and classes into seperate files.
   Make abstract classes for Weight and Length.
+  Update README.
 
