@@ -1,0 +1,2504 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SharpBag</name>
+    </assembly>
+    <members>
+        <member name="T:SharpBag.BagExtensions">
+            <summary>
+            A static class containing static extension methods for various types.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagExtensions.WriteLinesTo``1(System.Collections.Generic.IEnumerable{``0},System.IO.TextWriter)">
+            <summary>
+            Writes lines from the current instance to the specified TextWriter.
+            </summary>
+            <typeparam name="T">The type of the lines that will be written.</typeparam>
+            <param name="lines">The current instance.</param>
+            <param name="writer">The TextWriter to write to.</param>
+        </member>
+        <member name="M:SharpBag.BagExtensions.WriteLinesToConsole``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Writes lines from the current instance to the console.
+            </summary>
+            <typeparam name="T">The type of the lines that will be written.</typeparam>
+            <param name="lines">The current instance.</param>
+        </member>
+        <member name="M:SharpBag.BagExtensions.WriteLinesToFile``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <summary>
+            Writes lines from the current instance to the specified file.
+            </summary>
+            <typeparam name="T">The type of the lines that will be written.</typeparam>
+            <param name="lines">The current instance.</param>
+            <param name="path">The location of the file to write to.</param>
+        </member>
+        <member name="M:SharpBag.BagExtensions.Do``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            Performs an action on each element of the enumerable.
+            </summary>
+            <typeparam name="T">The type of the elements.</typeparam>
+            <param name="source">The current instance.</param>
+            <param name="action">The action to perform on each element.</param>
+            <returns>The current instance.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            Performs an action on each element of the enumerable.
+            </summary>
+            <typeparam name="T">The type of the elements.</typeparam>
+            <param name="source">The current instance.</param>
+            <param name="action">The action to perform on each element.</param>
+        </member>
+        <member name="M:SharpBag.BagExtensions.ToStringPretty``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Outputs the enumerable as a pretty string.
+            </summary>
+            <typeparam name="T">The type of elements.</typeparam>
+            <param name="source">The current instance.</param>
+            <returns>The current instance as a pretty string.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.ToStringPretty``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <summary>
+            Outputs the enumerable as a pretty string.
+            </summary>
+            <typeparam name="T">The type of elements.</typeparam>
+            <param name="source">The current instance.</param>
+            <param name="delimiter">A string to insert in between the elements.</param>
+            <returns>The current instance as a pretty string.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.ToStringPretty``1(System.Collections.Generic.IEnumerable{``0},System.String,System.String,System.String)">
+            <summary>
+            Outputs the enumerable as a pretty string.
+            </summary>
+            <typeparam name="T">The type of elements.</typeparam>
+            <param name="source">The current instance.</param>
+            <param name="before">A string to prepend to the output.</param>
+            <param name="delimiter">A string to insert in between the elements.</param>
+            <param name="after">A string to append to the output.</param>
+            <returns>The current instance as a pretty string.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.Combine``3(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``1,``2})">
+            <summary>
+            Combines the current instance with another enumerable using the specified function.
+            </summary>
+            <typeparam name="TIn1">The type of elements in the current instance.</typeparam>
+            <typeparam name="TIn2">The type of elements in the enumerable to combine with the current instance.</typeparam>
+            <typeparam name="TOut">The type of elements to return.</typeparam>
+            <param name="in1">The current instance.</param>
+            <param name="in2">The enumerable to combine with the current instance.</param>
+            <param name="func">The function used to combine the two enumerables.</param>
+            <returns>The current instance combined with the specified enumerable using the specified function.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.Shuffle``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Shuffle the current instance.
+            </summary>
+            <typeparam name="T">The type of elements in the current instance.</typeparam>
+            <param name="source">The current instance.</param>
+            <returns>The current instance shuffled.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.Shuffle``1(System.Collections.Generic.IEnumerable{``0},System.Random)">
+            <summary>
+            Shuffle the current instance.
+            </summary>
+            <typeparam name="T">The type of elements in the current instance.</typeparam>
+            <param name="source">The current instance.</param>
+            <param name="random">The randomness generator.</param>
+            <returns>The current instance shuffled.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.ToInt(System.String)">
+            <summary>
+            Converts the current instance to an Int32.
+            </summary>
+            <param name="s">The current instance.</param>
+            <returns>The current instance as an Int32.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.ToLong(System.String)">
+            <summary>
+            Converts the current instance to an Int64.
+            </summary>
+            <param name="s">The current instance.</param>
+            <returns>The current instance as an Int64.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.ToDouble(System.String)">
+            <summary>
+            Converts the current instance to a double.
+            </summary>
+            <param name="s">The current instance.</param>
+            <returns>The current instance as a double.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.ToBool(System.String)">
+            <summary>
+            Converts the current instance to a bool.
+            </summary>
+            <param name="s">The current instance.</param>
+            <returns>The current instance as a bool.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.To(System.Int32,System.Int32)">
+            <summary>
+            Generates numbers that range from the value of the current instance to the value of end.
+            </summary>
+            <param name="start">The current instance.</param>
+            <param name="end">The number to end at.</param>
+            <returns>An enumerable containing the numbers.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.To(System.Char,System.Char)">
+            <summary>
+            Generates chars that range from the current instance to end.
+            </summary>
+            <param name="start">The current instance.</param>
+            <param name="end">The char to end at.</param>
+            <returns>An enumerable containing the numbers.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.Times``1(System.Int32,System.Func{``0})">
+            <summary>
+            Executes the specified function N times where N is the value of the current instance.
+            </summary>
+            <typeparam name="T">The type of the value returned from the function.</typeparam>
+            <param name="i">The current instance.</param>
+            <param name="f">The function to execute.</param>
+            <returns>An enumerable with the returned values of the function.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.Execute``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Immediately executes the current instance.
+            </summary>
+            <typeparam name="T">The type of the elements in the enumerable.</typeparam>
+            <param name="sequence">The current instance.</param>
+        </member>
+        <member name="M:SharpBag.BagExtensions.GetPixels(System.Drawing.Bitmap,System.Drawing.Rectangle)">
+            <summary>
+            Gets an enumerable containing all pixels that are in the specified rectangle on the current instance.
+            </summary>
+            <param name="image">The current instance.</param>
+            <param name="rect">The rectangle in the current instance.</param>
+            <returns>An enumerable containing all pixels that are in the specified rectangle on the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.GetLuminosity(System.Drawing.Bitmap,System.Drawing.Rectangle)">
+            <summary>
+            Gets the luminosity of the specified rectangle in the current instance.
+            </summary>
+            <param name="image">The current instance.</param>
+            <param name="rect">The rectangle in the current instance.</param>
+            <returns>The luminosity of the specified rectangle in the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.GetRectangle(System.Drawing.Image)">
+            <summary>
+            Gets a new rectangle that has the same with and height as the current instance.
+            </summary>
+            <param name="image">The current instance.</param>
+            <returns>A new rectangle that has the same with and height as the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.Contrast(System.Double,System.Double)">
+            <summary>
+            Gets the contrast of the current instance.
+            </summary>
+            <param name="d">The current instance.</param>
+            <param name="contrast">The contrast.</param>
+            <returns>The contrast.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.Round(System.Double)">
+            <summary>
+            Rounds the current instance.
+            </summary>
+            <param name="d">The current instance.</param>
+            <returns>The current instance rounded.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.Round(System.Double,System.Int32)">
+            <summary>
+            Rounds the current instance.
+            </summary>
+            <param name="d">The current instance.</param>
+            <param name="digits">Number of digits to keep after the comma.</param>
+            <returns>The current instance rounded.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.Bound(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Gets the current instance inside the specified boundaries.
+            </summary>
+            <param name="d">The current instance.</param>
+            <param name="lower">The lower boundary.</param>
+            <param name="upper">The upper boundary.</param>
+            <returns>The current instance inside the spcified boundaries.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.Bound(System.Double,System.Double,System.Double)">
+            <summary>
+            Gets the current instance inside the specified boundaries.
+            </summary>
+            <param name="d">The current instance.</param>
+            <param name="lower">The lower boundary.</param>
+            <param name="upper">The upper boundary.</param>
+            <returns>The current instance inside the spcified boundaries.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.GetSubRectangles(System.Drawing.Rectangle,System.Int32,System.Int32)">
+            <summary>
+            Gets a subset of rectangles all with the specified width and height from the current instance.
+            </summary>
+            <param name="rect">The current instance.</param>
+            <param name="width">The width of all sub-rectangles.</param>
+            <param name="height">The height of all sub-rectangles.</param>
+            <returns>An enumerable with the sub-rectangles.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.CreateRectangle(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates a rectangle.
+            </summary>
+            <param name="x">The upper left x coordinate.</param>
+            <param name="y">The upper left y coordinate.</param>
+            <param name="nextX">The lower right x coordinate.</param>
+            <param name="nextY">The lower right y coordinate.</param>
+            <returns>A rectangle.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.GetByPercent``1(``0[],System.Double)">
+            <summary>
+            Gets the element in the array located at the specified percent.
+            </summary>
+            <typeparam name="T">The type of the elements in the array.</typeparam>
+            <param name="array">The current instance.</param>
+            <param name="percent">The percent.</param>
+            <returns>The element in the array located at the specified percent.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.AsEnumerable``1(System.Collections.Generic.IEnumerator{``0})">
+            <summary>
+            Converts the current instance into an enumerable.
+            </summary>
+            <typeparam name="T">The type of elements in the current instance.</typeparam>
+            <param name="e">The current instance.</param>
+            <returns>An enumerable.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.AsEnumerable(System.Collections.IEnumerator)">
+            <summary>
+            Converts the current instance into an enumerable.
+            </summary>
+            <typeparam name="T">The type of elements in the current instance.</typeparam>
+            <param name="e">The current instance.</param>
+            <returns>An enumerable.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.DistanceTo(System.String,System.String,System.Boolean)">
+            <summary>
+            Calculates the edit distance between the current instance and the specified string.
+            </summary>
+            <param name="s">The current instance.</param>
+            <param name="t">The string to compare to.</param>
+            <param name="caseSensitive">Whether or not to perform a case sensitive comparison.</param>
+            <returns>The edit distance between the current instance and the specified string.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.DistanceTo(System.String,System.String)">
+            <summary>
+            Calculates the edit distance between the current instance and the specified string.
+            </summary>
+            <param name="s">The current instance.</param>
+            <param name="t">The string to compare to.</param>
+            <returns>The edit distance between the current instance and the specified string.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.ConvertElements``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+            <summary>
+            Converts all elements in the current instance using the specified action.
+            </summary>
+            <typeparam name="TInput">The type of the input elements.</typeparam>
+            <typeparam name="TOutput">The type of the output elements.</typeparam>
+            <param name="source">The current instance.</param>
+            <param name="action">The action to perform on each element.</param>
+            <returns>A new enumerable with the output elements.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.Modify``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``0})">
+            <summary>
+            Modifies all elements in the current instance using the specified function.
+            </summary>
+            <typeparam name="T">The type of the elements.</typeparam>
+            <param name="source">The current instance.</param>
+            <param name="func">The function to perform on each element.</param>
+            <returns>A new enumerable containing the ouput elements.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.CompareTo(System.String,System.String,System.Char[])">
+            <summary>
+            Compares the current instance to another string using the specified char array to determine the results.
+            </summary>
+            <param name="a">The current instance.</param>
+            <param name="b">The string to compare to.</param>
+            <param name="c">The char array.</param>
+            <returns>Whether the current instance is less than, equal to or greater than the specified string.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.CompareTo(System.String,System.String,System.Char[],System.Boolean)">
+            <summary>
+            Compares the current instance to another string using the specified char array to determine the results.
+            </summary>
+            <param name="s">The current instance.</param>
+            <param name="b">The string to compare to.</param>
+            <param name="c">The char array.</param>
+            <param name="caseSensitive">Whether or not the comparison is case-sensitive.</param>
+            <returns>Whether the current instance is less than, equal to or greater than the specified string.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.CompareTo(System.Char,System.Char,System.Char[])">
+            <summary>
+            Compares the current instance to another char using the specified char array to determine the results.
+            </summary>
+            <param name="a">The current instance.</param>
+            <param name="b">The char to compare to.</param>
+            <param name="c">The char array.</param>
+            <returns>Whether the current instance is less than, equal to or greater than the specified char.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.HtmlSafe(System.String)">
+            <summary>
+            Makes the current instance HTML safe.
+            </summary>
+            <param name="s">The current instance.</param>
+            <returns>An HTML safe string.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.HtmlSafe(System.String,System.Boolean)">
+            <summary>
+            Makes the current instance HTML safe.
+            </summary>
+            <param name="s">The current instance.</param>
+            <param name="all">Whether to make all characters entities or just those needed.</param>
+            <returns>An HTML safe string.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.HtmlSafe(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Makes the current instance HTML safe.
+            </summary>
+            <param name="s">The current instance.</param>
+            <param name="all">Whether to make all characters entities or just those needed.</param>
+            <param name="replace">Whether or not to encode spaces and line breaks.</param>
+            <returns>An HTML safe string.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.Add``2(System.Collections.Generic.Dictionary{``0,``1},``0,``1,System.Boolean)">
+            <summary>
+            Adds the specified key and value to the dictionary.
+            If overwrite is true and the dictionary contains the specified key, the key's value will be overwritten.
+            If overwrite is false and the dictionary contains the specified key, an exception won't be thrown.
+            </summary>
+            <typeparam name="TKey">The type of the keys in the dictionary.</typeparam>
+            <typeparam name="TValue">The type of the values in the dictionary.</typeparam>
+            <param name="D">The dictionary.</param>
+            <param name="key">The key of the element to add.</param>
+            <param name="value">The value of the element to add. The value can be null for reference types.</param>
+            <param name="overwrite">true if key's value should be overwritten; otherwise false.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:SharpBag.BagExtensions.Fill``1(``0[],``0)">
+            <summary>
+            Fills the current array with the specified value.
+            </summary>
+            <typeparam name="T">The type of the array.</typeparam>
+            <param name="array">The current instance.</param>
+            <param name="value">The value to fill the array with.</param>
+        </member>
+        <member name="M:SharpBag.BagExtensions.Fill``1(System.Collections.Generic.List{``0},``0)">
+            <summary>
+            Fills the current array with the specified value.
+            </summary>
+            <typeparam name="T">The type of the array.</typeparam>
+            <param name="array">The current instance.</param>
+            <param name="value">The value to fill the array with.</param>
+        </member>
+        <member name="M:SharpBag.BagExtensions.ReplaceAll(System.String,System.String,System.String)">
+            <summary>
+            Returns a new string in which all occurrences of a specified string in the current instance are replaced with another specified string repeatedly until the new string no longer contains the specified string.
+            </summary>
+            <param name="s">The current instance.</param>
+            <param name="oldValue">The string to be replaced.</param>
+            <param name="newValue">The string to replace all occurrences of oldValue.</param>
+            <returns>A string that is equivalent to the current string except that all instances of oldValue are repeatedly replaced with newValue until the new string no longer contains oldValue.</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:SharpBag.BagExtensions.Words(System.String)">
+            <summary>
+            Returns all the words in the string.
+            </summary>
+            <param name="s">The current instance.</param>
+            <returns>All the words in the string.</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:SharpBag.BagExtensions.Lines(System.String)">
+            <summary>
+            Returns all the lines in the string.
+            </summary>
+            <param name="s">The current instance.</param>
+            <returns>All the lines in the string.</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:SharpBag.BagExtensions.NoCarriageReturns(System.String)">
+            <summary>
+            Takes the string and removes all carriage returns ('\r').
+            </summary>
+            <param name="s">The current instance.</param>
+            <returns>The string without carriage returns ('\r').</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:SharpBag.BagExtensions.OneLineNoDoubleSpaceTrimmed(System.String)">
+            <summary>
+            Takes the string, replaces all line breaks with a space, then replaces all double spaces with a space and finally trims the string.
+            </summary>
+            <param name="s">The current instance.</param>
+            <returns>The string in one line, with no double spaces, trimmed.</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:SharpBag.BagExtensions.ToUpper(System.Char)">
+            <summary>
+            Returns a copy of this System.Char converted to uppercase, using the casing rules of the current culture.
+            </summary>
+            <param name="c">The current instance.</param>
+            <returns>A copy of this System.Char converted to uppercase.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.Split(System.String,System.String)">
+            <summary>
+            Returns a string array that contains the substrings in this string that are delimited by the specified string. A parameter specifies whether to return empty array elements.
+            </summary>
+            <param name="s">The current instance.</param>
+            <param name="separator">A string that delimits the substrings in this string.</param>
+            <returns>An array whose elements contain the substrings in this string that are delimited by the separator.</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:SharpBag.BagExtensions.Download(System.Uri)">
+            <summary>
+            Downloads the source of the Uri and returns it as a string.
+            </summary>
+            <param name="page">The source of the Uri.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.Split(System.String,System.String,System.StringSplitOptions)">
+            <summary>
+            Returns a string array that contains the substrings in this string that are delimited by the specified string. A parameter specifies whether to return empty array elements.
+            </summary>
+            <param name="s">The current instance.</param>
+            <param name="separator">A string that delimits the substrings in this string.</param>
+            <param name="options">RemoveEmptyEntries to omit empty array elements from the array returned; or None to include empty array elements in the array returned.</param>
+            <returns>An array whose elements contain the substrings in this string that are delimited by the separator.</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:SharpBag.BagExtensions.Split(System.String,System.Char)">
+            <summary>
+            Returns a string array that contains the substrings in this string that are delimited by the specified char. A parameter specifies whether to return empty array elements.
+            </summary>
+            <param name="s">The current instance.</param>
+            <param name="separator">A char that delimits the substrings in this string.</param>
+            <returns>An array whose elements contain the substrings in this string that are delimited by the separator.</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:SharpBag.BagExtensions.Split(System.String,System.Char,System.StringSplitOptions)">
+            <summary>
+            Returns a string array that contains the substrings in this string that are delimited by the specified char. A parameter specifies whether to return empty array elements.
+            </summary>
+            <param name="s">The current instance.</param>
+            <param name="separator">A char that delimits the substrings in this string.</param>
+            <param name="options">RemoveEmptyEntries to omit empty array elements from the array returned; or None to include empty array elements in the array returned.</param>
+            <returns>An array whose elements contain the substrings in this string that are delimited by the separator.</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:SharpBag.BagExtensions.SplitIntoInts(System.String,System.String)">
+            <summary>
+            Splits the current string into substrings using the separator and then converts each substring into an int.
+            </summary>
+            <param name="s">The current instance.</param>
+            <param name="separator">The separator used to split the string into ints.</param>
+            <returns>An array of the ints.</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:SharpBag.BagExtensions.SplitIntoInts(System.String,System.Char)">
+            <summary>
+            Splits the current string into substrings using the separator and then converts each substring into an int.
+            </summary>
+            <param name="s">The current instance.</param>
+            <param name="separator">The separator used to split the string into ints.</param>
+            <returns>An array of the ints.</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:SharpBag.BagExtensions.IsBetween(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Checks if the current instance is between, but not equal to, two integers.
+            </summary>
+            <param name="n">The current integers.</param>
+            <param name="min">The lower boundary.</param>
+            <param name="max">The upper boundary.</param>
+            <returns>True if the current instance is between, but not equal to, the two integers; otherwise false.</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:SharpBag.BagExtensions.IsBetweenOrEqualTo(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Checks if the current instance is between or equal to two integers.
+            </summary>
+            <param name="n">The current integers.</param>
+            <param name="min">The minimum integer.</param>
+            <param name="max">The maximum integer.</param>
+            <returns>True if the current instance is between or equal to the two integers; otherwise false.</returns>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:SharpBag.BagExtensions.ToSQLDateTime(System.DateTime)">
+            <summary>
+            Converts a DateTime object into a SQL compatible string.
+            </summary>
+            <param name="dt">The current instance.</param>
+            <returns>An SQL formatted string.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.ToSQL(System.Data.DataTable,System.String)">
+            <summary>
+            Generates a SQL insert query for the current DataTable instance.
+            </summary>
+            <param name="dt">The current instance.</param>
+            <param name="schema">The schema to insert into.</param>
+            <returns>An SQL string.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.InsertInto(System.Data.DataTable,SharpBag.BagDatabase.BagDB)">
+            <summary>
+            Inserts the current DataTable instance into the specified MySQL database.
+            </summary>
+            <param name="dt">The current instance.</param>
+            <param name="db">The MySQL database to insert into.</param>
+            <returns>How many rows were affected.</returns>
+        </member>
+        <member name="M:SharpBag.BagExtensions.SQLEscape(System.String)">
+            <summary>
+            Escapes the string for SQL insertion.
+            </summary>
+            <param name="s">The current instance.</param>
+            <returns>The escaped string.</returns>
+        </member>
+        <member name="T:SharpBag.BagS">
+            <summary>
+            A static class containing settings and other related data.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagS.NL">
+            <summary>
+            Gets the newline string defined for this environment.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagS.BitTorrentTrackerErrorCodes">
+            <summary>
+            BitTorrent tacker error codes and what they mean.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagS.HttpStatusCodes">
+            <summary>
+            Http status codes and what they mean.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagUtils">
+            <summary>
+            A static class with utility methods.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagUtils.ExecutionTime(System.Action)">
+            <summary>
+            Calculates the execution time of the specified action.
+            </summary>
+            <param name="a">The action.</param>
+            <returns>The execution time in milliseconds.</returns>
+        </member>
+        <member name="M:SharpBag.BagUtils.ExecutionTime``1(System.Action,System.Func{System.Diagnostics.Stopwatch,``0})">
+            <summary>
+            Calculates the execution time of the specified action.
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <param name="a">The action.</param>
+            <param name="result">What to return.</param>
+            <returns>The execution time in milliseconds.</returns>
+        </member>
+        <member name="M:SharpBag.BagUtils.Generate``1(System.Func{``0})">
+            <summary>
+            Returns values that are generated from the generator.
+            </summary>
+            <typeparam name="T">The type of what is being generated.</typeparam>
+            <param name="generator">The main generator.</param>
+            <returns>Values that are generated from the generator.</returns>
+        </member>
+        <member name="M:SharpBag.BagUtils.Generate``1(System.Func{System.Nullable{``0}})">
+            <summary>
+            Returns values that are generated from the generator.
+            </summary>
+            <typeparam name="T">The type of what is being generated.</typeparam>
+            <param name="generator">The main generator.</param>
+            <returns>Values that are generated from the generator.</returns>
+        </member>
+        <member name="M:SharpBag.BagUtils.FromEnumerator``1(System.Collections.Generic.IEnumerator{``0})">
+            <summary>
+            Converts an enumerator to an enumerable.
+            </summary>
+            <typeparam name="T">The type of what is being enumered.</typeparam>
+            <param name="enumerator">The enumerator to convert.</param>
+            <returns>The enumerator as an enumerable.</returns>
+        </member>
+        <member name="M:SharpBag.BagUtils.Single``1(``0)">
+            <summary>
+            Converts a single value to an enumerable.
+            </summary>
+            <typeparam name="T">The type of the value.</typeparam>
+            <param name="value">The value.</param>
+            <returns>The value as an enumerable.</returns>
+        </member>
+        <member name="M:SharpBag.BagUtils.ReadLinesFromFile(System.String)">
+            <summary>
+            Reads a file and converts all the lines read to an enumerable.
+            </summary>
+            <param name="path">The location of the file.</param>
+            <returns>An enumerable that contains all the lines read.</returns>
+        </member>
+        <member name="M:SharpBag.BagUtils.ReadLinesFromConsole">
+            <summary>
+            Reads a line from the console and returns it as an enumerable.
+            </summary>
+            <returns>The line read as an enumerable.</returns>
+        </member>
+        <member name="M:SharpBag.BagUtils.ReadLinesFrom(System.IO.TextReader)">
+            <summary>
+            Creates an enumerable that reads lines from the specified TextReader.
+            </summary>
+            <param name="reader">The TextReader to read from.</param>
+            <returns>An enumerable that reads lines from the specified TextReader.</returns>
+        </member>
+        <member name="T:SharpBag.ActionDisposable">
+            <summary>
+            Makes an action disposable.
+            </summary>
+        </member>
+        <member name="M:SharpBag.ActionDisposable.#ctor(System.Action)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="action">The action to execute when the current instance is disposed.</param>
+        </member>
+        <member name="M:SharpBag.ActionDisposable.System#IDisposable#Dispose">
+            <summary>
+            The disposer which executes the dispose action.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagMath.BagMath">
+            <summary>
+            A static class containing methods for doing calculations. 
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagMath.PointsInCircleF(System.Int32)">
+            <summary>
+            Find points in a circle with a specified radius.
+            </summary>
+            <param name="Radius">The radius of the circle.</param>
+            <returns>An array containing points.</returns>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:SharpBag.BagMath.BagMath.PointsInCircleF(System.Int32,System.Drawing.PointF)">
+            <summary>
+            Find points in a circle with a specified radius.
+            </summary>
+            <param name="Radius">The radius of the circle.</param>
+            <param name="Center">The center-point of the circle.</param>
+            <returns>An array containing points.</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:SharpBag.BagMath.BagMath.PointsInCircleF(System.Int32,System.Int32)">
+            <summary>
+            Find points in a circle with a specified radius.
+            </summary>
+            <param name="Radius">The radius of the circle.</param>
+            <param name="Points">Number of points to return.</param>
+            <returns>An array containing points.</returns>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:SharpBag.BagMath.BagMath.PointsInCircleF(System.Int32,System.Drawing.PointF,System.Int32)">
+            <summary>
+            Find points in a circle with a specified radius.
+            </summary>
+            <param name="Radius">The radius of the circle.</param>
+            <param name="Center">The center-point of the circle.</param>
+            <param name="Points">Number of points to return.</param>
+            <returns>An array containing points.</returns>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:SharpBag.BagMath.BagMath.PointsInCircle(System.Int32)">
+            <summary>
+            Find points in a circle with a specified radius.
+            </summary>
+            <param name="Radius">The radius of the circle.</param>
+            <returns>An array containing points.</returns>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:SharpBag.BagMath.BagMath.PointsInCircle(System.Int32,System.Drawing.Point)">
+            <summary>
+            Find points in a circle with a specified radius.
+            </summary>
+            <param name="Radius">The radius of the circle.</param>
+            <param name="Center">The center-point of the circle.</param>
+            <returns>An array containing points.</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:SharpBag.BagMath.BagMath.PointsInCircle(System.Int32,System.Int32)">
+            <summary>
+            Find points in a circle with a specified radius.
+            </summary>
+            <param name="Radius">The radius of the circle.</param>
+            <param name="Points">Number of points to return.</param>
+            <returns>An array containing points.</returns>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:SharpBag.BagMath.BagMath.PointsInCircle(System.Int32,System.Drawing.Point,System.Int32)">
+            <summary>
+            Find points in a circle with a specified radius.
+            </summary>
+            <param name="Radius">The radius of the circle.</param>
+            <param name="Center">The center-point of the circle.</param>
+            <param name="Points">Number of points to return.</param>
+            <returns>An array containing points.</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:SharpBag.BagMath.BagMath.WaveLength(System.Double)">
+            <summary>
+            Calculates wave length from the average fluctuation time.
+            </summary>
+            <param name="Tz">The average fluctuation time (Tz).</param>
+            <returns>The length of the wave.</returns>
+        </member>
+        <member name="M:SharpBag.BagMath.BagMath.Gcd(System.Int32,System.Int32)">
+            <summary>
+            Finds the greatest common divisor (gcd) of two integers.
+            </summary>
+            <param name="a">An integer.</param>
+            <param name="b">An integer.</param>
+            <returns>The greatest commond divisor (gcd) of the two integers.</returns>
+        </member>
+        <member name="M:SharpBag.BagMath.BagMath.GreatestCommonDivisor(System.Int32,System.Int32)">
+            <summary>
+            Finds the greatest common divisor (gcd) of two integers.
+            </summary>
+            <param name="a">An integer.</param>
+            <param name="b">An integer.</param>
+            <returns>The greatest commond divisor (gcd) of the two integers.</returns>
+        </member>
+        <member name="M:SharpBag.BagMath.BagMath.IsPrime(System.Int32)">
+            <summary>
+            Checks whether a number is a prime number or not.
+            </summary>
+            <param name="candidate">The number to test.</param>
+            <returns>Whether the number is a prime number or not.</returns>
+        </member>
+        <member name="T:SharpBag.BagMath.Fibonacci">
+            <summary>
+            A class for computing fibonacci numbers.
+            </summary>
+        </member>
+        <member name="P:SharpBag.BagMath.Fibonacci.Numbers">
+            <summary>
+            An endless source that will return fibonacci numbers.
+            </summary>
+        </member>
+        <member name="P:SharpBag.BagMath.Fibonacci.LongNumbers">
+            <summary>
+            An endless source that will return fibonacci numbers.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagMath.BagConverters.BaseConverter">
+            <summary>
+            Converts numbers between bases.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.BaseConverter.ToBase(System.String,System.Int32,System.Int32)">
+            <summary>
+            Converts the specified number from the specified start base to the specified target base.
+            </summary>
+            <param name="number">The number as a string.</param>
+            <param name="start_base">The base of the number.</param>
+            <param name="target_base">The base to convert to.</param>
+            <returns>The specified number in the specified target base.</returns>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.BaseConverter.ToBase10(System.String,System.Int32)">
+            <summary>
+            Converts the specified number from the specified start base to base 10.
+            </summary>
+            <param name="number">The number as a string.</param>
+            <param name="start_base">The base of the number.</param>
+            <returns>The number in base 10.</returns>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.BaseConverter.FromBase10(System.Int32,System.Int32)">
+            <summary>
+            Converts the specified base 10 number to the specified target base.
+            </summary>
+            <param name="number">The base 10 number.</param>
+            <param name="target_base">The target base.</param>
+            <returns>The target in the target base.</returns>
+        </member>
+        <member name="T:SharpBag.BagMath.BagConverters.Temperature">
+            <summary>
+            An interface for temperatures.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Temperature.ToString(System.Boolean)">
+            <see cref="M:System.Object.ToString"/>
+            <param name="unit">Whether or not to append the measurement unit.</param>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Temperature.ToString(System.Boolean,System.Func{System.Double,System.String})">
+            <see cref="M:System.Object.ToString"/>
+            <param name="unit">Whether or not to append the measurement unit.</param>
+            <param name="result">The result.</param>
+        </member>
+        <member name="T:SharpBag.BagMath.BagConverters.Celsius">
+            <summary>
+            The Celsius temperature unit.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagMath.BagConverters.Celsius.Unit">
+            <summary>
+            The Celsius unit.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Celsius.#ctor(System.Double)">
+            <summary>
+            The Celsius temperature unit.
+            </summary>
+            <param name="v">The value.</param>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Celsius.op_Implicit(System.Double)~SharpBag.BagMath.BagConverters.Celsius">
+            <summary>
+            An implicit conversion from double to Celsius.
+            </summary>
+            <param name="v">The double value.</param>
+            <returns>The double value as Celsius.</returns>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Celsius.op_Implicit(SharpBag.BagMath.BagConverters.Celsius)~System.Double">
+            <summary>
+            An implicit conversion from Celsius to double.
+            </summary>
+            <param name="v">The Celsius value.</param>
+            <returns>The Celsius value as a double.</returns>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Celsius.op_Explicit(SharpBag.BagMath.BagConverters.Kelvin)~SharpBag.BagMath.BagConverters.Celsius">
+            <summary>
+            An explicit conversion from Kelvin to Celsius.
+            </summary>
+            <param name="v">The Kelvin value.</param>
+            <returns>The Kelvin value as Celsius.</returns>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Celsius.op_Explicit(SharpBag.BagMath.BagConverters.Fahrenheit)~SharpBag.BagMath.BagConverters.Celsius">
+            <summary>
+            An explicit conversion from Fahrenheit to Celsius.
+            </summary>
+            <param name="v">The Fahrenheit value.</param>
+            <returns>The Fahrenheit value as Celsius.</returns>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Celsius.ToString">
+            <see cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Celsius.ToString(System.Boolean)">
+            <see cref="M:System.Object.ToString"/>
+            <param name="unit">Whether or not to append the measurement unit.</param>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Celsius.ToString(System.Boolean,System.Func{System.Double,System.String})">
+            <see cref="M:System.Object.ToString"/>
+            <param name="unit">Whether or not to append the measurement unit.</param>
+            <param name="result">The result.</param>
+        </member>
+        <member name="T:SharpBag.BagMath.BagConverters.Fahrenheit">
+            <summary>
+            The Fahrenheit temperature unit.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagMath.BagConverters.Fahrenheit.Unit">
+            <summary>
+            The Fahrenheit unit.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Fahrenheit.#ctor(System.Double)">
+            <summary>
+            The Fahrenheit temperature unit.
+            </summary>
+            <param name="v">The value.</param>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Fahrenheit.op_Implicit(System.Double)~SharpBag.BagMath.BagConverters.Fahrenheit">
+            <summary>
+            An implicit conversion from double to Fahrenheit.
+            </summary>
+            <param name="v">The double value.</param>
+            <returns>The double value as Fahrenheit.</returns>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Fahrenheit.op_Implicit(SharpBag.BagMath.BagConverters.Fahrenheit)~System.Double">
+            <summary>
+            An implicit conversion from Fahrenheit to double.
+            </summary>
+            <param name="v">The Fahrenheit value.</param>
+            <returns>The Fahrenheit value as a double.</returns>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Fahrenheit.op_Explicit(SharpBag.BagMath.BagConverters.Kelvin)~SharpBag.BagMath.BagConverters.Fahrenheit">
+            <summary>
+            An explicit conversion from Kelvin to Fahrenheit.
+            </summary>
+            <param name="v">The Kelvin value.</param>
+            <returns>The Kelvin value as Fahrenheit.</returns>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Fahrenheit.op_Explicit(SharpBag.BagMath.BagConverters.Celsius)~SharpBag.BagMath.BagConverters.Fahrenheit">
+            <summary>
+            An explicit conversion from Celsius to Fahrenheit.
+            </summary>
+            <param name="v">The Celsius value.</param>
+            <returns>The Celsius value as Fahrenheit.</returns>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Fahrenheit.ToString">
+            <see cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Fahrenheit.ToString(System.Boolean)">
+            <see cref="M:System.Object.ToString"/>
+            <param name="unit">Whether or not to append the measurement unit.</param>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Fahrenheit.ToString(System.Boolean,System.Func{System.Double,System.String})">
+            <see cref="M:System.Object.ToString"/>
+            <param name="unit">Whether or not to append the measurement unit.</param>
+            <param name="result">The result.</param>
+        </member>
+        <member name="T:SharpBag.BagMath.BagConverters.Kelvin">
+            <summary>
+            The Kelvin temperature unit.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagMath.BagConverters.Kelvin.Unit">
+            <summary>
+            The Kelvin unit.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kelvin.#ctor(System.Double)">
+            <summary>
+            The Kelvin temperature unit.
+            </summary>
+            <param name="v">The value.</param>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kelvin.op_Implicit(System.Double)~SharpBag.BagMath.BagConverters.Kelvin">
+            <summary>
+            An implicit conversion from double to Kelvin.
+            </summary>
+            <param name="v">The double value.</param>
+            <returns>The double value as Kelvin.</returns>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kelvin.op_Implicit(SharpBag.BagMath.BagConverters.Kelvin)~System.Double">
+            <summary>
+            An implicit conversion from Kelvin to double.
+            </summary>
+            <param name="v">The Kelvin value.</param>
+            <returns>The Kelvin value as a double.</returns>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kelvin.op_Explicit(SharpBag.BagMath.BagConverters.Fahrenheit)~SharpBag.BagMath.BagConverters.Kelvin">
+            <summary>
+            An explicit conversion from Fahrenheit to Kelvin.
+            </summary>
+            <param name="v">The Fahrenheit value.</param>
+            <returns>The Fahrenheit value as Kelvin.</returns>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kelvin.op_Explicit(SharpBag.BagMath.BagConverters.Celsius)~SharpBag.BagMath.BagConverters.Kelvin">
+            <summary>
+            An explicit conversion from Celsius to Kelvin.
+            </summary>
+            <param name="v">The Celsius value.</param>
+            <returns>The Celsius value as Kelvin.</returns>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kelvin.ToString">
+            <see cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kelvin.ToString(System.Boolean)">
+            <see cref="M:System.Object.ToString"/>
+            <param name="unit">Whether or not to append the measurement unit.</param>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kelvin.ToString(System.Boolean,System.Func{System.Double,System.String})">
+            <see cref="M:System.Object.ToString"/>
+            <param name="unit">Whether or not to append the measurement unit.</param>
+            <param name="result">The result.</param>
+        </member>
+        <member name="T:SharpBag.BagMath.BagConverters.Length">
+            <summary>
+            An interface for length.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Length.ToString(System.Boolean)">
+            <see cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Length.ToString(System.Boolean,System.Func{System.Double,System.String})">
+            <see cref="M:System.Object.ToString"/>
+        </member>
+        <member name="T:SharpBag.BagMath.BagConverters.Millimeter">
+            <summary>
+            A class representing a millimeter.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagMath.BagConverters.Millimeter.Unit">
+            <summary>
+            The unit.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagMath.BagConverters.Millimeter.BaseValue">
+            <summary>
+            The base value.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Millimeter.#ctor(System.Double)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="v">The value.</param>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Millimeter.op_Implicit(System.Double)~SharpBag.BagMath.BagConverters.Millimeter">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Millimeter.op_Implicit(SharpBag.BagMath.BagConverters.Millimeter)~System.Double">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Millimeter.op_Explicit(SharpBag.BagMath.BagConverters.Centimeter)~SharpBag.BagMath.BagConverters.Millimeter">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Millimeter.op_Explicit(SharpBag.BagMath.BagConverters.Meter)~SharpBag.BagMath.BagConverters.Millimeter">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Millimeter.op_Explicit(SharpBag.BagMath.BagConverters.Kilometer)~SharpBag.BagMath.BagConverters.Millimeter">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Millimeter.ToString">
+            <see cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Millimeter.ToString(System.Boolean)">
+            <see cref="M:System.Object.ToString"/>
+            <param name="unit">Whether or not to append the measurement unit.</param>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Millimeter.ToString(System.Boolean,System.Func{System.Double,System.String})">
+            <see cref="M:System.Object.ToString"/>
+            <param name="unit">Whether or not to append the measurement unit.</param>
+            <param name="result">The result.</param>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Millimeter.Value">
+            <summary>
+            The value.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagMath.BagConverters.Centimeter">
+            <summary>
+            A class representing a centimeter.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagMath.BagConverters.Centimeter.Unit">
+            <summary>
+            The unit.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagMath.BagConverters.Centimeter.BaseValue">
+            <summary>
+            The base value.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Centimeter.#ctor(System.Double)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="v">The value.</param>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Centimeter.op_Implicit(System.Double)~SharpBag.BagMath.BagConverters.Centimeter">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Centimeter.op_Implicit(SharpBag.BagMath.BagConverters.Centimeter)~System.Double">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Centimeter.op_Explicit(SharpBag.BagMath.BagConverters.Millimeter)~SharpBag.BagMath.BagConverters.Centimeter">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Centimeter.op_Explicit(SharpBag.BagMath.BagConverters.Meter)~SharpBag.BagMath.BagConverters.Centimeter">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Centimeter.op_Explicit(SharpBag.BagMath.BagConverters.Kilometer)~SharpBag.BagMath.BagConverters.Centimeter">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Centimeter.ToString">
+            <see cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Centimeter.ToString(System.Boolean)">
+            <see cref="M:System.Object.ToString"/>
+            <param name="unit">Whether or not to append the measurement unit.</param>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Centimeter.ToString(System.Boolean,System.Func{System.Double,System.String})">
+            <see cref="M:System.Object.ToString"/>
+            <param name="unit">Whether or not to append the measurement unit.</param>
+            <param name="result">The result.</param>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Centimeter.Value">
+            <summary>
+            The value.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagMath.BagConverters.Meter">
+            <summary>
+            A class representing a meter.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagMath.BagConverters.Meter.Unit">
+            <summary>
+            The unit.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagMath.BagConverters.Meter.BaseValue">
+            <summary>
+            The base value.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Meter.#ctor(System.Double)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="v">The value.</param>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Meter.op_Implicit(System.Double)~SharpBag.BagMath.BagConverters.Meter">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Meter.op_Implicit(SharpBag.BagMath.BagConverters.Meter)~System.Double">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Meter.op_Explicit(SharpBag.BagMath.BagConverters.Millimeter)~SharpBag.BagMath.BagConverters.Meter">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Meter.op_Explicit(SharpBag.BagMath.BagConverters.Centimeter)~SharpBag.BagMath.BagConverters.Meter">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Meter.op_Explicit(SharpBag.BagMath.BagConverters.Kilometer)~SharpBag.BagMath.BagConverters.Meter">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Meter.ToString">
+            <see cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Meter.ToString(System.Boolean)">
+            <see cref="M:System.Object.ToString"/>
+            <param name="unit">Whether or not to append the measurement unit.</param>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Meter.ToString(System.Boolean,System.Func{System.Double,System.String})">
+            <see cref="M:System.Object.ToString"/>
+            <param name="unit">Whether or not to append the measurement unit.</param>
+            <param name="result">The result.</param>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Meter.Value">
+            <summary>
+            The value.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagMath.BagConverters.Kilometer">
+            <summary>
+            A class representing a kilometer.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagMath.BagConverters.Kilometer.Unit">
+            <summary>
+            The unit.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagMath.BagConverters.Kilometer.BaseValue">
+            <summary>
+            The base value.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kilometer.#ctor(System.Double)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="v">The value.</param>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kilometer.op_Implicit(System.Double)~SharpBag.BagMath.BagConverters.Kilometer">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kilometer.op_Implicit(SharpBag.BagMath.BagConverters.Kilometer)~System.Double">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kilometer.op_Explicit(SharpBag.BagMath.BagConverters.Millimeter)~SharpBag.BagMath.BagConverters.Kilometer">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kilometer.op_Explicit(SharpBag.BagMath.BagConverters.Centimeter)~SharpBag.BagMath.BagConverters.Kilometer">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kilometer.op_Explicit(SharpBag.BagMath.BagConverters.Meter)~SharpBag.BagMath.BagConverters.Kilometer">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kilometer.ToString">
+            <see cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kilometer.ToString(System.Boolean)">
+            <see cref="M:System.Object.ToString"/>
+            <param name="unit">Whether or not to append the measurement unit.</param>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kilometer.ToString(System.Boolean,System.Func{System.Double,System.String})">
+            <see cref="M:System.Object.ToString"/>
+            <param name="unit">Whether or not to append the measurement unit.</param>
+            <param name="result">The result.</param>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Kilometer.Value">
+            <summary>
+            The value.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagMath.BagConverters.Weight">
+            <summary>
+            An interface for weight.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Weight.ToString(System.Boolean)">
+            <see cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Weight.ToString(System.Boolean,System.Func{System.Double,System.String})">
+            <see cref="M:System.Object.ToString"/>
+        </member>
+        <member name="T:SharpBag.BagMath.BagConverters.Milligram">
+            <summary>
+            A class representing a milligram.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagMath.BagConverters.Milligram.Unit">
+            <summary>
+            The unit.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagMath.BagConverters.Milligram.BaseValue">
+            <summary>
+            The base value.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Milligram.#ctor(System.Double)">
+            <summary>
+            The main constructor.
+            </summary>
+            <param name="v">The value.</param>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Milligram.op_Implicit(System.Double)~SharpBag.BagMath.BagConverters.Milligram">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Milligram.op_Implicit(SharpBag.BagMath.BagConverters.Milligram)~System.Double">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Milligram.op_Explicit(SharpBag.BagMath.BagConverters.Gram)~SharpBag.BagMath.BagConverters.Milligram">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Milligram.op_Explicit(SharpBag.BagMath.BagConverters.Kilogram)~SharpBag.BagMath.BagConverters.Milligram">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Milligram.ToString">
+            <see cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Milligram.ToString(System.Boolean)">
+            <see cref="M:System.Object.ToString"/>
+            <param name="unit">Whether or not to append the measurement unit.</param>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Milligram.ToString(System.Boolean,System.Func{System.Double,System.String})">
+            <see cref="M:System.Object.ToString"/>
+            <param name="unit">Whether or not to append the measurement unit.</param>
+            <param name="result">The result.</param>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Milligram.Value">
+            <summary>
+            The value.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagMath.BagConverters.Gram">
+            <summary>
+            A class representing a gram.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagMath.BagConverters.Gram.Unit">
+            <summary>
+            The unit,
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagMath.BagConverters.Gram.BaseValue">
+            <summary>
+            The base value.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Gram.#ctor(System.Double)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="v">The value.</param>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Gram.op_Implicit(System.Double)~SharpBag.BagMath.BagConverters.Gram">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Gram.op_Implicit(SharpBag.BagMath.BagConverters.Gram)~System.Double">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Gram.op_Explicit(SharpBag.BagMath.BagConverters.Milligram)~SharpBag.BagMath.BagConverters.Gram">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Gram.op_Explicit(SharpBag.BagMath.BagConverters.Kilogram)~SharpBag.BagMath.BagConverters.Gram">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Gram.ToString">
+            <see cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Gram.ToString(System.Boolean)">
+            <see cref="M:System.Object.ToString"/>
+            <param name="unit">Whether or not to append the measurement unit.</param>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Gram.ToString(System.Boolean,System.Func{System.Double,System.String})">
+            <see cref="M:System.Object.ToString"/>
+            <param name="unit">Whether or not to append the measurement unit.</param>
+            <param name="result">The result.</param>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Gram.Value">
+            <summary>
+            The value.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagMath.BagConverters.Kilogram">
+            <summary>
+            A class representing a kilogram.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagMath.BagConverters.Kilogram.Unit">
+            <summary>
+            The unit.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagMath.BagConverters.Kilogram.BaseValue">
+            <summary>
+            The base value.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kilogram.#ctor(System.Double)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="v">The value.</param>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kilogram.op_Implicit(System.Double)~SharpBag.BagMath.BagConverters.Kilogram">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kilogram.op_Implicit(SharpBag.BagMath.BagConverters.Kilogram)~System.Double">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kilogram.op_Explicit(SharpBag.BagMath.BagConverters.Milligram)~SharpBag.BagMath.BagConverters.Kilogram">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kilogram.op_Explicit(SharpBag.BagMath.BagConverters.Gram)~SharpBag.BagMath.BagConverters.Kilogram">
+            <summary>
+            A conversion.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kilogram.ToString">
+            <see cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kilogram.ToString(System.Boolean)">
+            <see cref="M:System.Object.ToString"/>
+            <param name="unit">Whether or not to append the measurement unit.</param>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kilogram.ToString(System.Boolean,System.Func{System.Double,System.String})">
+            <see cref="M:System.Object.ToString"/>
+            <param name="unit">Whether or not to append the measurement unit.</param>
+            <param name="result">The result.</param>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Kilogram.Value">
+            <summary>
+            The value.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagMath.BagConverters.BitSize">
+            <summary>
+            An abstract class defining a bit size.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.BitSize.#ctor(System.Double)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="v"></param>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.BitSize.As``2">
+            <summary>
+            Converts a bit size to another bit size.
+            </summary>
+            <typeparam name="TValue">The type of the value.</typeparam>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <returns>The bit size converted to another bit size.</returns>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.BitSize.op_Implicit(SharpBag.BagMath.BagConverters.BitSize)~System.Double">
+            <summary>
+            An implicit convert from a bit size to a double.
+            </summary>
+            <param name="v">The bit size.</param>
+            <returns>The bit size as a double.</returns>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.BitSize.ToString">
+            <see cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.BitSize.ToString(System.Boolean)">
+            <see cref="M:System.Object.ToString"/>
+            <param name="unit">Whether or not to append the measurement unit.</param>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.BitSize.ToString(System.Boolean,System.Func{System.Double,System.String})">
+            <see cref="M:System.Object.ToString"/>
+            <param name="unit">Whether or not to append the measurement unit.</param>
+            <param name="result">The result.</param>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.BitSize.Unit">
+            <summary>
+            The unit.
+            </summary>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.BitSize.BaseValue">
+            <summary>
+            The base value.
+            </summary>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.BitSize.Value">
+            <summary>
+            THe value.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagMath.BagConverters.Bit">
+            <summary>
+            A class representing a bit.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Bit.#ctor(System.Double)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="v">The value.</param>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Bit.Unit">
+            <summary>
+            The unit.
+            </summary>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Bit.BaseValue">
+            <summary>
+            The base value.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagMath.BagConverters.Kilobit">
+            <summary>
+            A class reperesenting a kilobit.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kilobit.#ctor(System.Double)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="v">The value.</param>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Kilobit.Unit">
+            <summary>
+            The unit.
+            </summary>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Kilobit.BaseValue">
+            <summary>
+            The base value.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagMath.BagConverters.Megabit">
+            <summary>
+            A class reperesenting a megabit.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Megabit.#ctor(System.Double)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="v">The value.</param>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Megabit.Unit">
+            <summary>
+            The unit.
+            </summary>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Megabit.BaseValue">
+            <summary>
+            The base value.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagMath.BagConverters.Gigabit">
+            <summary>
+            A class reperesenting a gigabit.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Gigabit.#ctor(System.Double)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="v">The value.</param>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Gigabit.Unit">
+            <summary>
+            The unit.
+            </summary>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Gigabit.BaseValue">
+            <summary>
+            The base value.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagMath.BagConverters.Terabit">
+            <summary>
+            A class reperesenting a terabit.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Terabit.#ctor(System.Double)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="v">The value.</param>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Terabit.Unit">
+            <summary>
+            The unit.
+            </summary>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Terabit.BaseValue">
+            <summary>
+            The base value.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagMath.BagConverters.Byte">
+            <summary>
+            A class reperesenting a byte.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Byte.#ctor(System.Double)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="v">The value.</param>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Byte.Unit">
+            <summary>
+            The unit.
+            </summary>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Byte.BaseValue">
+            <summary>
+            The base value.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagMath.BagConverters.Kilobyte">
+            <summary>
+            A class reperesenting a kilobyte.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Kilobyte.#ctor(System.Double)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="v">The value.</param>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Kilobyte.Unit">
+            <summary>
+            The unit.
+            </summary>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Kilobyte.BaseValue">
+            <summary>
+            The base value.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagMath.BagConverters.Megabyte">
+            <summary>
+            A class reperesenting a megabyte.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Megabyte.#ctor(System.Double)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="v">The value.</param>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Megabyte.Unit">
+            <summary>
+            The unit.
+            </summary>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Megabyte.BaseValue">
+            <summary>
+            The base value.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagMath.BagConverters.Gigabyte">
+            <summary>
+            A class reperesenting a gigabyte.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Gigabyte.#ctor(System.Double)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="v">The value.</param>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Gigabyte.Unit">
+            <summary>
+            The unit.
+            </summary>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Gigabyte.BaseValue">
+            <summary>
+            The base value.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagMath.BagConverters.Terabyte">
+            <summary>
+            A class reperesenting a terabyte.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagConverters.Terabyte.#ctor(System.Double)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="v">The value.</param>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Terabyte.Unit">
+            <summary>
+            The unit.
+            </summary>
+        </member>
+        <member name="P:SharpBag.BagMath.BagConverters.Terabyte.BaseValue">
+            <summary>
+            The base value.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagLogging.BagLogger">
+            <summary>
+            A class used for application logging.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagLogging.BagLogger.#ctor(SharpBag.BagLogging.BagLogger.LogFunction,System.Boolean)">
+            <summary>
+            A class used for application logging.
+            </summary>
+            <param name="logger"></param>
+            <param name="timestamp"></param>
+        </member>
+        <member name="M:SharpBag.BagLogging.BagLogger.Log(System.String)">
+            <summary>
+            Log the specified string.
+            </summary>
+            <param name="s">The string to be logged.</param>
+        </member>
+        <member name="M:SharpBag.BagLogging.BagLogger.LogIf(System.Boolean,System.String)">
+            <summary>
+            Log the specified string if expression is true.
+            </summary>
+            <param name="expression">An expression.</param>
+            <param name="s">The string to be logged.</param>
+        </member>
+        <member name="M:SharpBag.BagLogging.BagLogger.LogIfNot(System.Boolean,System.String)">
+            <summary>
+            Log the specified string if expression is false.
+            </summary>
+            <param name="expression">An expression.</param>
+            <param name="s">The string to be logged.</param>
+        </member>
+        <member name="P:SharpBag.BagLogging.BagLogger.Logger">
+            <summary>
+            The logger.
+            </summary>
+        </member>
+        <member name="P:SharpBag.BagLogging.BagLogger.Timestamp">
+            <summary>
+            Whether to prepend a timestamp on the output string or not.
+            </summary>
+        </member>
+        <member name="P:SharpBag.BagLogging.BagLogger.Timeformat">
+            <summary>
+            The format of the timestamp. See DateTime.ToString().
+            </summary>
+        </member>
+        <member name="P:SharpBag.BagLogging.BagLogger.Enabled">
+            <summary>
+            Whether the logger is enabled or not.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagLogging.BagLogger.LogFunction">
+            <summary>
+            A function used for logging.
+            </summary>
+            <param name="s">The output string that needs to be handled.</param>
+        </member>
+        <member name="T:SharpBag.BagLogging.BagConsole">
+            <summary>
+            A class used for managing the console window, so that the program can both read from the console and write into the console at the samt time.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagLogging.BagConsole.Exit">
+            <summary>
+            Can be set to true to shut down the main reading thread and all readers.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagLogging.BagConsole.Reading">
+            <summary>
+            Whether or not there is a reading going on.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagLogging.BagConsole.Command">
+            <summary>
+            The command that is currently being written into the console.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagLogging.BagConsole.ReaderThread">
+            <summary>
+            The main reader thread.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagLogging.BagConsole.NotInput">
+            <summary>
+            An array of keys that will not be treated as input.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagLogging.BagConsole.#ctor">
+            <summary>
+            The main constructor.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagLogging.BagConsole.#ctor(System.String)">
+            <summary>
+            The main constructor.
+            </summary>
+            <param name="commandStart">The start of the command line.</param>
+        </member>
+        <member name="M:SharpBag.BagLogging.BagConsole.Finalize">
+            <summary>
+            The main deconstructor.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagLogging.BagConsole.Stop">
+            <summary>
+            Stop all readers and reader threads.
+            Note: This should always be called before application shutdown to make sure all threads are terminated.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagLogging.BagConsole.ReadCommandAsync">
+            <summary>
+            Reads commands asynchronously and fires the OnCommandEntered event when a command has been entered.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagLogging.BagConsole._ReadCommandAsync">
+            <summary>
+            Reads commands asynchronously and fires the OnCommandEntered event when a command has been entered.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagLogging.BagConsole.ReadCommand">
+            <summary>
+            Reads a command and returns it as a string.
+            Note: This method will not return anything until the command is entered. Use ReadCommandAsync to read commands asynchronously.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SharpBag.BagLogging.BagConsole.WriteLine(System.Object)">
+            <summary>
+            Writes a string to the console.
+            Note: This should be used instead of Console.WriteLine and Console.Write.
+            </summary>
+            <param name="o"></param>
+        </member>
+        <member name="E:SharpBag.BagLogging.BagConsole.OnCommandEntered">
+            <summary>
+            An event that will be fired when a user enters a command into the console window.
+            </summary>
+        </member>
+        <member name="P:SharpBag.BagLogging.BagConsole.CommandStart">
+            <summary>
+            The start of the command line.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagLogging.BagConsole.CommandEnteredEvent">
+            <summary>
+            A delegate that can be called when a command is entered.
+            </summary>
+            <param name="command">The command that was entered.</param>
+        </member>
+        <member name="T:SharpBag.BagDatabase.BagDB">
+            <summary>
+            A class for working with MySQL databases.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagDatabase.BagDB.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            The main BagDB constructor.
+            </summary>
+            <param name="server">The server to connect to.</param>
+            <param name="schema">The default schema.</param>
+            <param name="username">The username used to connect.</param>
+            <param name="password">The password used to connect.</param>
+        </member>
+        <member name="M:SharpBag.BagDatabase.BagDB.Connect">
+            <summary>
+            Connects, or reconnects, to the MySQL database.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagDatabase.BagDB.Query(System.String)">
+            <summary>
+            Send a query to the MySQL database.
+            </summary>
+            <param name="q">The query string.</param>
+            <returns>A DataTable object with the results from the query.</returns>
+        </member>
+        <member name="M:SharpBag.BagDatabase.BagDB.QuerySingle(System.String)">
+            <summary>
+            Send a query to the MySQL database and only return the first column of the first row.
+            </summary>
+            <param name="q">The query string.</param>
+            <returns>The first column of the first row.</returns>
+        </member>
+        <member name="M:SharpBag.BagDatabase.BagDB.QuerySingle``1(System.String)">
+            <summary>
+            Send a query to the MySQL database and only return the first column of the first row casted to T.
+            </summary>
+            <typeparam name="T">The type of the first column.</typeparam>
+            <param name="q">The query string.</param>
+            <returns>The first column of the first row casted to T.</returns>
+        </member>
+        <member name="M:SharpBag.BagDatabase.BagDB.Execute(System.String)">
+            <summary>
+            Executes a query on the MySQL database and returns how many rows were affected.
+            </summary>
+            <param name="q">The query to execute.</param>
+            <returns>How many rows were affected.</returns>
+        </member>
+        <member name="M:SharpBag.BagDatabase.BagDB.Close">
+            <summary>
+            Kills the current thread and then closes the MySQL connection.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagDatabase.BagDB.DateTimeToSQL(System.DateTime)">
+            <summary>
+            Converts a DateTime object into an SQL compatible string.
+            </summary>
+            <param name="dt">The DateTime object.</param>
+            <returns>An SQL formatted string.</returns>
+        </member>
+        <member name="P:SharpBag.BagDatabase.BagDB.Server">
+            <summary>
+            The server to connect to.
+            </summary>
+        </member>
+        <member name="P:SharpBag.BagDatabase.BagDB.Schema">
+            <summary>
+            The default schema.
+            </summary>
+        </member>
+        <member name="P:SharpBag.BagDatabase.BagDB.Username">
+            <summary>
+            The username used to connect.
+            </summary>
+        </member>
+        <member name="P:SharpBag.BagDatabase.BagDB.Password">
+            <summary>
+            The password used to connect.
+            </summary>
+        </member>
+        <member name="P:SharpBag.BagDatabase.BagDB.CommandTimeout">
+            <summary>
+            The time before the MySQL connection times out.
+            </summary>
+        </member>
+        <member name="P:SharpBag.BagDatabase.BagDB.State">
+            <summary>
+            The state of the MySQL connection.
+            </summary>
+        </member>
+        <member name="P:SharpBag.BagDatabase.BagDB.Connection">
+            <summary>
+            The MySQL connection.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagTorrent.BElement">
+            <summary>
+            An interface for bencoded elements.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BElement.ToBencodedString">
+            <summary>
+            Generates the bencoded equivalent of the element.
+            </summary>
+            <returns>The bencoded equivalent of the element.</returns>
+        </member>
+        <member name="T:SharpBag.BagTorrent.BInteger">
+            <summary>
+            A bencode integer.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BInteger.op_Implicit(System.Int32)~SharpBag.BagTorrent.BInteger">
+            <summary>
+            Allows you to set an integer to a BInteger.
+            </summary>
+            <param name="i">The integer.</param>
+            <returns>The BInteger.</returns>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BInteger.#ctor(System.Int64)">
+            <summary>
+            The main constructor.
+            </summary>
+            <param name="value">The value of the bencoded integer.</param>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BInteger.ToBencodedString">
+            <summary>
+            Generates the bencoded equivalent of the integer.
+            </summary>
+            <returns>The bencoded equivalent of the integer.</returns>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BInteger.GetHashCode">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+            <see cref="M:System.Object.GetHashCode"/>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BInteger.Equals(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+            <see cref="M:System.Int32.Equals(System.Object)"/>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BInteger.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+            <see cref="M:System.Object.ToString"/>
+        </member>
+        <member name="P:SharpBag.BagTorrent.BInteger.Value">
+            <summary>
+            The value of the bencoded integer.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagTorrent.BString">
+            <summary>
+            A bencode string.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BString.op_Implicit(System.String)~SharpBag.BagTorrent.BString">
+            <summary>
+            Allows you to set a string to a BString.
+            </summary>
+            <param name="s">The string.</param>
+            <returns>The BString.</returns>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BString.#ctor(System.String)">
+            <summary>
+            The main constructor.
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BString.ToBencodedString">
+            <summary>
+            Generates the bencoded equivalent of the string.
+            </summary>
+            <returns>The bencoded equivalent of the string.</returns>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BString.GetHashCode">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+            <see cref="M:System.Object.GetHashCode"/>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BString.Equals(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+            <see cref="M:System.String.Equals(System.Object)"/>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BString.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+            <see cref="M:System.Object.ToString"/>
+        </member>
+        <member name="P:SharpBag.BagTorrent.BString.Value">
+            <summary>
+            The value of the bencoded integer.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagTorrent.BList">
+            <summary>
+            A bencode list.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BList.ToBencodedString">
+            <summary>
+            Generates the bencoded equivalent of the list.
+            </summary>
+            <returns>The bencoded equivalent of the list.</returns>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BList.Add(System.String)">
+            <summary>
+            Adds the specified value to the list.
+            </summary>
+            <param name="value">The specified value.</param>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BList.Add(System.Int32)">
+            <summary>
+            Adds the specified value to the list.
+            </summary>
+            <param name="value">The specified value.</param>
+        </member>
+        <member name="T:SharpBag.BagTorrent.BDictionary">
+            <summary>
+            A bencode dictionary.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BDictionary.ToBencodedString">
+            <summary>
+            Generates the bencoded equivalent of the dictionary.
+            </summary>
+            <returns>The bencoded equivalent of the dictionary.</returns>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BDictionary.Add(System.String,SharpBag.BagTorrent.BElement)">
+            <summary>
+            Adds the specified key-value pair to the dictionary.
+            </summary>
+            <param name="key">The specified key.</param>
+            <param name="value">The specified value.</param>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BDictionary.Add(System.String,System.String)">
+            <summary>
+            Adds the specified key-value pair to the dictionary.
+            </summary>
+            <param name="key">The specified key.</param>
+            <param name="value">The specified value.</param>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BDictionary.Add(System.String,System.Int32)">
+            <summary>
+            Adds the specified key-value pair to the dictionary.
+            </summary>
+            <param name="key">The specified key.</param>
+            <param name="value">The specified value.</param>
+        </member>
+        <member name="P:SharpBag.BagTorrent.BDictionary.Item(System.String)">
+            <summary>
+            Gets or sets the value assosiated with the specified key.
+            </summary>
+            <param name="key">The key of the value to get or set.</param>
+            <returns>The value assosiated with the specified key.</returns>
+        </member>
+        <member name="T:SharpBag.BagNet.BagNet">
+            <summary>
+            A static class for working with internet communications and such.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagNet.BagNet.DownloadPage(System.Uri)">
+            <summary>
+            Gets a response object from the specified page. The object can the be used to read data from the page.
+            </summary>
+            <param name="page">The page to get response from.</param>
+            <returns>The response object of from the page.</returns>
+        </member>
+        <member name="T:SharpBag.BagFK.Kennitala">
+            <summary>
+            Klasi fyrir kennitölur.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagFK.Kennitala.Dagur">
+            <summary>
+            Fyrir hvaða dag er kennitalan.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagFK.Kennitala.Manudur">
+            <summary>
+            Fyrir hvaða mánuð er kennitalan.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagFK.Kennitala.Ar">
+            <summary>
+            Fyrir hvaða ár er kennitalan.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagFK.Kennitala.Lokatala">
+            <summary>
+            4 stafa lokatala kennitölunar.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagFK.Kennitala.ErILagi">
+            <summary>
+            Hvort kennitalan sé gild.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagFK.Kennitala.Stjornumerki">
+            <summary>
+            Stjörnumerki kennitölunar.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagFK.Kennitala.#ctor(System.String)">
+            <summary>
+            Smiður kennitölu-klasans.
+            </summary>
+            <param name="kt">Kennitalan sem strengur (ddmmyy-nnnn).</param>
+        </member>
+        <member name="M:SharpBag.BagFK.Kennitala.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Smiður kennitölu-klasans.
+            </summary>
+            <param name="ar">Ár kennitölunnar.</param>
+            <param name="manudur">Mánuður kennitölunnar.</param>
+            <param name="dagur">Dagur kennitölunnar.</param>
+            <param name="lokatala">4 stafa lokatala kennitölunnar.</param>
+        </member>
+        <member name="M:SharpBag.BagFK.Kennitala.ErRett(System.String)">
+            <summary>
+            Tekur inn streng sem inniheldur hugsanlega kennitölu og skilar true ef það er kennitala; annars false.
+            </summary>
+            <param name="kt">Strengur sem inniheldur hugsanlega kennitölu.</param>
+            <returns>True ef strengurinn er kennitala; annars false.</returns>
+        </member>
+        <member name="M:SharpBag.BagFK.Kennitala.ToString(System.Boolean)">
+            <summary>
+            Skilar kennitölunni með eða án - sem streng.
+            </summary>
+            <param name="skiptir">Hvort nota eigi - eða ekki.</param>
+            <returns>Kennitalan sem strengur.</returns>
+        </member>
+        <member name="M:SharpBag.BagFK.Kennitala.ToString">
+            <summary>
+            Skilar kennitölunni með - sem streng.
+            </summary>
+            <returns>Kennitalan sem strengur.</returns>
+        </member>
+        <member name="T:SharpBag.BagFK.StærstaRunuSumma">
+            <summary>
+            Klasi sem finnur stærstu runu-summu.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagFK.StærstaRunuSumma.Runa">
+            <summary>
+            Runan.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagFK.StærstaRunuSumma.StærstaSumma">
+            <summary>
+            Stærsta runu-summan.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagFK.StærstaRunuSumma.StærstuRunur">
+            <summary>
+            Allar stærstu runurnar.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagFK.StærstaRunuSumma.#ctor(System.Int32[])">
+            <summary>
+            Smiður fyrir StærstaRunuSumma-klasann.
+            </summary>
+            <param name="runa">Array af tölum.</param>
+        </member>
+        <member name="M:SharpBag.BagFK.StærstaRunuSumma.#ctor(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Smiður fyrir StærstaRunuSumma-klasann.
+            </summary>
+            <param name="runa">Listi af tölum.</param>
+        </member>
+        <member name="M:SharpBag.BagFK.StærstaRunuSumma.FinnaStærstuSummu">
+            <summary>
+            Finnur stærstu summuna.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagFK.StærstaRunuSumma.Moguleikar">
+            <summary>
+            Finnur allar mögulegar runur.
+            </summary>
+            <returns>Allar mögulegar runur.</returns>
+        </member>
+        <member name="T:SharpBag.BagFK.Minesweeper">
+            <summary>
+            Method sem gætu verið notuð fyrir Minesweeper leikinn
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagFK.Minesweeper.ManyBombsAround(System.String[0:,0:],System.String,System.Int32,System.Int32)">
+            <summary>
+            Gáir hvað margar sprengjur eru í kringum reit
+            </summary>
+            <param name="field">Spilaborðið</param>
+            <param name="bomb">Hvernig sprengjan er</param>
+            <param name="x">X-hnitin á reitnum</param>
+            <param name="y">Y-hnitin á reitnum</param>
+            <returns>Hversu margar sprengjur eru í kringum reitinn</returns>
+        </member>
+        <member name="M:SharpBag.BagFK.Minesweeper.OnField(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Athugar hvort hnit séu inná borðinu
+            </summary>
+            <param name="w">Breydd borðsins</param>
+            <param name="h">Hæð borðsins</param>
+            <param name="x">X-hnitið</param>
+            <param name="y">Y-hnitið</param>
+            <returns>Hvort hnitin séu inná borðinu</returns>
+        </member>
+        <member name="T:SharpBag.BagFK.DrawObjects">
+            <summary>
+            Allskonar method til að teikna hluti
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagFK.DrawObjects.Triangle(System.Int32,System.String,System.String,SharpBag.BagFK.DrawObjects.TriangleType)">
+            <summary>
+            Teiknar þríhyrninga
+            </summary>
+            <param name="height">Hæð þríhyrningsins</param>
+            <param name="s">Strengurinn sem er notaður inní þríhyrningnum</param>
+            <param name="p">Strengurinn sem er notaður fyrir utan þríhyrninginn</param>
+            <param name="TT">Týpan af þríhyrningi</param>
+            <returns>Þríhyrningurinn</returns>
+            <example>Triangle(5, "*", " ", TriangleType.Top)</example>
+        </member>
+        <member name="M:SharpBag.BagFK.DrawObjects.Square(System.Int32,System.Int32,System.String,System.String,System.Boolean)">
+            <summary>
+            Teiknar kassa
+            </summary>
+            <param name="height">Hæðin á kassanum</param>
+            <param name="width">Breyddin á kassanum</param>
+            <param name="s">Strengurinn sem er inní kassanum</param>
+            <param name="p">Strengurinn sem er innæi kassanum ef hann er ekki fylltur</param>
+            <param name="filled">Bool um hvort hann sé fylltur eða ekki</param>
+            <returns>Kassinn</returns>
+            <example>Square(5, 4, "*", " ", false)</example>
+        </member>
+        <member name="T:SharpBag.BagFK.DrawObjects.TriangleType">
+            <summary>
+            Gerðir af þríhyrningum. Heitir eftir því í hvaða horni eða brún á kassa þríhyrningurinn væri.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagFK.DrawObjects.TriangleType.Top">
+            <summary>
+            Þríhyrningur sem er með langhliðina á toppnum.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagFK.DrawObjects.TriangleType.Left">
+            <summary>
+            Þríhyrningur sem er með langhliðina til vinstri.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagFK.DrawObjects.TriangleType.Right">
+            <summary>
+            Þríhyrningur sem er með langhliðina til hægri.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagFK.DrawObjects.TriangleType.Bottom">
+            <summary>
+            Þríhyrningur sem er með langhliðina á botninum.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagFK.DrawObjects.TriangleType.TopLeft">
+            <summary>
+            Þríhyrningur sem er með bendir upp í efra vinstra hornið.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagFK.DrawObjects.TriangleType.TopRight">
+            <summary>
+            Þríhyrningur sem er með bendir upp í efra hægra hornið.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagFK.DrawObjects.TriangleType.BottomLeft">
+            <summary>
+            Þríhyrningur sem er með bendir upp í neðra vinstra hornið.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagFK.DrawObjects.TriangleType.BottomRight">
+            <summary>
+            Þríhyrningur sem er með bendir upp í neðra hægra hornið.
+            </summary>
+        </member>
+        <member name="T:SharpBag.BagFK.Tools">
+            <summary>
+            Allskonar verkfæri
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagFK.Tools.MergeStrings(System.String,System.String)">
+            <summary>
+            Mergar tvo strengi saman (mega vera margra lína)
+            </summary>
+            <param name="a">Fyrri strengurinn</param>
+            <param name="b">Seinni strengurinn</param>
+            <returns>Strengirnir saman</returns>
+        </member>
+        <member name="M:SharpBag.BagFK.Tools.MakeLength(System.String,System.Int32,System.Char)">
+            <summary>
+            Lætur strenginn verða ákveðið langann hvort sem hann er lengri eða styttri fyrir
+            </summary>
+            <param name="s"></param>
+            <param name="length">Lengdin sem strengurinn verður</param>
+            <param name="fill">Stafur sem notaður er til að fylla upp í ef að strengurinn er of stuttur</param>
+            <returns>Strengurinn með rétta lengd</returns>
+        </member>
+        <member name="M:SharpBag.BagFK.Tools.TwoDArrayOutput(System.String[0:,0:])">
+            <summary>
+            Tekur inn 2D array og skilar því sem streng
+            </summary>
+            <param name="a">2D array</param>
+            <returns>Arrayið sem strengur</returns>
+            <example>{
+            {"a","b","c"},
+            {"a","b","c"},
+            {"a","b","c"}
+            }
+            verður:
+            abc
+            abc
+            abc</example>
+        </member>
+        <member name="T:SharpBag.BagFK.Stæ">
+            <summary>
+            Stærðfræði-tengd method
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagFK.Stæ.HefjaIVeldi(System.Double,System.Int32)">
+            <summary>
+            Hefur N í veldið veldi
+            </summary>
+            <param name="N">Talan</param>
+            <param name="veldi">Veldið sem talan á að fara í</param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpBag.BagFK.Stæ.PI">
+            <summary>
+            PI
+            </summary>
+            <returns>PI</returns>
+        </member>
+        <member name="T:SharpBag.BagTorrent.BencodeDecoder">
+            <summary>
+            A class used for decoding Bencoding.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BencodeDecoder.#ctor(System.String)">
+            <summary>
+            The main constructor.
+            </summary>
+            <param name="s">The bencoded string to decode.</param>
+        </member>
+        <member name="F:SharpBag.BagTorrent.BencodeDecoder.Index">
+            <summary>
+            Where the reader will start reading next.
+            </summary>
+        </member>
+        <member name="F:SharpBag.BagTorrent.BencodeDecoder.BencodedString">
+            <summary>
+            The bencoded string.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BencodeDecoder.Decode">
+            <summary>
+            Decodes the string.
+            </summary>
+            <returns>An array of root elements.</returns>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BencodeDecoder.ReadElement">
+            <summary>
+            Reads and element.
+            </summary>
+            <returns>The element that was read.</returns>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BencodeDecoder.ReadDictionary">
+            <summary>
+            Reads a dictionary.
+            </summary>
+            <returns>The dictionary that was read.</returns>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BencodeDecoder.ReadList">
+            <summary>
+            Reads a list.
+            </summary>
+            <returns>The list that was read.</returns>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BencodeDecoder.ReadInteger">
+            <summary>
+            Reads an integer.
+            </summary>
+            <returns>The integer that was read.</returns>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BencodeDecoder.ReadString">
+            <summary>
+            Reads a string.
+            </summary>
+            <returns>The string that was read.</returns>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BencodeDecoder.Error(System.Exception)">
+            <summary>
+            Generates an error.
+            </summary>
+            <param name="e">The inner exception.</param>
+            <returns>An exception that can then be thrown.</returns>
+        </member>
+        <member name="T:SharpBag.BagTorrent.BencodeDecoder.BencodingException">
+            <summary>
+            A bencoding exception.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BencodeDecoder.BencodingException.#ctor">
+            <summary>
+            Creates a new BencodingException.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BencodeDecoder.BencodingException.#ctor(System.String)">
+            <summary>
+            Creates a new BencodingException.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:SharpBag.BagTorrent.BencodeDecoder.BencodingException.#ctor(System.String,System.Exception)">
+            <summary>
+            Creates a new BencodingException.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="inner">The inner exception.</param>
+        </member>
+    </members>
+</doc>
