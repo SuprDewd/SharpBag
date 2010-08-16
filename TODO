@@ -2,6 +2,8 @@
  TODO:
 
   Make abstract class for Temperature.
+  Sort extension methods into static extension classes in correct namespaces.
+  Add methods to BagNet namespace.
 
  BUGS:
  
@@ -12,4 +14,3 @@
   Put namespaces into seperate folders and classes into seperate files.
   Make abstract classes for Weight and Length.
   Update README.
-
