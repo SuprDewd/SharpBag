@@ -459,7 +459,6 @@ namespace SharpBag
         /// <summary>
         /// Converts the current instance into an enumerable.
         /// </summary>
-        /// <typeparam name="T">The type of elements in the current instance.</typeparam>
         /// <param name="e">The current instance.</param>
         /// <returns>An enumerable.</returns>
         public static IEnumerable<object> AsEnumerable(this IEnumerator e)

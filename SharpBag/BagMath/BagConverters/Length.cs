@@ -3,14 +3,85 @@
 namespace SharpBag.BagMath.BagConverters
 {
     /// <summary>
-    /// An interface for length.
+    /// An abstract class representing a length.
     /// </summary>
-    public interface Length
+    public abstract class Length
     {
+        /// <summary>
+        /// The unit.
+        /// </summary>
+        public abstract string Unit { get; }
+        /// <summary>
+        /// The base value.
+        /// </summary>
+        public abstract double BaseValue { get; }
+        /// <summary>
+        /// The value.
+        /// </summary>
+        public double Value { get; set; }
+
+        /// <summary>
+        /// The constructor.
+        /// </summary>
+        /// <param name="v"></param>
+        public Length(double v)
+        {
+            this.Value = v;
+        }
+
+        /// <summary>
+        /// Convert on length to another length.
+        /// </summary>
+        /// <typeparam name="TValue">The type of input length.</typeparam>
+        /// <typeparam name="TResult">The type of output length.</typeparam>
+        /// <returns>The input length as an output length.</returns>
+        public TResult As<TValue, TResult>()
+            where TResult : Length, new()
+            where TValue : Length, new()
+        {
+            return new TResult() { Value = (new TValue().Value * (new TValue().BaseValue / this.BaseValue)) };
+        }
+
+        /*
+         * TODO: Find a way for this to work.
+         * 
+         * public static implicit operator Length(double v)
+         * {
+         *     return new Length(v);
+         * }
+         *
+         * */
+
+        /// <summary>
+        /// Implicitly converts a length to a double.
+        /// </summary>
+        /// <param name="v">The length.</param>
+        /// <returns>The length as a double.</returns>
+        public static implicit operator double(Length v)
+        {
+            return v.Value;
+        }
+
         /// <see cref="Object.ToString()"/>
-        string ToString(bool unit);
+        public override string ToString()
+        {
+            return this.Value.ToString();
+        }
+
         /// <see cref="Object.ToString()"/>
-        string ToString(bool unit, Func<double, string> result);
+        /// <param name="unit">Whether or not to append the measurement unit.</param>
+        public string ToString(bool unit)
+        {
+            return this.Value.ToString() + (unit ? " " + this.Unit : "");
+        }
+
+        /// <see cref="Object.ToString()"/>
+        /// <param name="unit">Whether or not to append the measurement unit.</param>
+        /// <param name="result">The result.</param>
+        public string ToString(bool unit, Func<double, string> result)
+        {
+            return result(this.Value) + (unit ? " " + this.Unit : "");
+        }
     }
 
     /// <summary>
@@ -21,85 +92,17 @@ namespace SharpBag.BagMath.BagConverters
         /// <summary>
         /// The unit.
         /// </summary>
-        public const string Unit = "mm";
+        public override string Unit { get { return "mm"; } }
         /// <summary>
         /// The base value.
         /// </summary>
-        public const double BaseValue = 1D;
-        /// <summary>
-        /// The value.
-        /// </summary>
-        private double Value { get; set; }
+        public override double BaseValue { get { return 1D; } }
 
         /// <summary>
         /// The constructor.
         /// </summary>
         /// <param name="v">The value.</param>
-        public Millimeter(double v)
-        {
-            this.Value = v;
-        }
-
-        /// <summary>
-        /// A conversion.
-        /// </summary>
-        public static implicit operator Millimeter(double v)
-        {
-            return new Millimeter(v);
-        }
-
-        /// <summary>
-        /// A conversion.
-        /// </summary>
-        public static implicit operator double(Millimeter v)
-        {
-            return v.Value;
-        }
-
-        /// <summary>
-        /// A conversion.
-        /// </summary>
-        public static explicit operator Millimeter(Centimeter v)
-        {
-            return new Millimeter(v * (Centimeter.BaseValue / Millimeter.BaseValue));
-        }
-
-        /// <summary>
-        /// A conversion.
-        /// </summary>
-        public static explicit operator Millimeter(Meter v)
-        {
-            return new Millimeter(v * (Meter.BaseValue / Millimeter.BaseValue));
-        }
-
-        /// <summary>
-        /// A conversion.
-        /// </summary>
-        public static explicit operator Millimeter(Kilometer v)
-        {
-            return new Millimeter(v * (Kilometer.BaseValue / Millimeter.BaseValue));
-        }
-
-        /// <see cref="Object.ToString()"/>
-        public override string ToString()
-        {
-            return this.Value.ToString() + " " + Millimeter.Unit;
-        }
-
-        /// <see cref="Object.ToString()"/>
-        /// <param name="unit">Whether or not to append the measurement unit.</param>
-        public string ToString(bool unit)
-        {
-            return this.Value.ToString() + (unit ? " " + Millimeter.Unit : "");
-        }
-
-        /// <see cref="Object.ToString()"/>
-        /// <param name="unit">Whether or not to append the measurement unit.</param>
-        /// <param name="result">The result.</param>
-        public string ToString(bool unit, Func<double, string> result)
-        {
-            return result(this.Value) + (unit ? " " + Millimeter.Unit : "");
-        }
+        public Millimeter(double v) : base(v) { }
     }
 
     /// <summary>
@@ -110,85 +113,17 @@ namespace SharpBag.BagMath.BagConverters
         /// <summary>
         /// The unit.
         /// </summary>
-        public const string Unit = "cm";
+        public override string Unit { get { return "cm"; } }
         /// <summary>
         /// The base value.
         /// </summary>
-        public const double BaseValue = 10D;
-        /// <summary>
-        /// The value.
-        /// </summary>
-        private double Value { get; set; }
+        public override double BaseValue { get { return 10D; } }
 
         /// <summary>
         /// The constructor.
         /// </summary>
         /// <param name="v">The value.</param>
-        public Centimeter(double v)
-        {
-            this.Value = v;
-        }
-
-        /// <summary>
-        /// A conversion.
-        /// </summary>
-        public static implicit operator Centimeter(double v)
-        {
-            return new Centimeter(v);
-        }
-
-        /// <summary>
-        /// A conversion.
-        /// </summary>
-        public static implicit operator double(Centimeter v)
-        {
-            return v.Value;
-        }
-
-        /// <summary>
-        /// A conversion.
-        /// </summary>
-        public static explicit operator Centimeter(Millimeter v)
-        {
-            return new Centimeter(v * (Millimeter.BaseValue / Centimeter.BaseValue));
-        }
-
-        /// <summary>
-        /// A conversion.
-        /// </summary>
-        public static explicit operator Centimeter(Meter v)
-        {
-            return new Centimeter(v * (Meter.BaseValue / Centimeter.BaseValue));
-        }
-
-        /// <summary>
-        /// A conversion.
-        /// </summary>
-        public static explicit operator Centimeter(Kilometer v)
-        {
-            return new Centimeter(v * (Kilometer.BaseValue / Centimeter.BaseValue));
-        }
-
-        /// <see cref="Object.ToString()"/>
-        public override string ToString()
-        {
-            return this.Value.ToString() + " " + Centimeter.Unit;
-        }
-
-        /// <see cref="Object.ToString()"/>
-        /// <param name="unit">Whether or not to append the measurement unit.</param>
-        public string ToString(bool unit)
-        {
-            return this.Value.ToString() + (unit ? " " + Centimeter.Unit : "");
-        }
-
-        /// <see cref="Object.ToString()"/>
-        /// <param name="unit">Whether or not to append the measurement unit.</param>
-        /// <param name="result">The result.</param>
-        public string ToString(bool unit, Func<double, string> result)
-        {
-            return result(this.Value) + (unit ? " " + Centimeter.Unit : "");
-        }
+        public Centimeter(double v) : base(v) { }
     }
 
     /// <summary>
@@ -199,85 +134,17 @@ namespace SharpBag.BagMath.BagConverters
         /// <summary>
         /// The unit.
         /// </summary>
-        public const string Unit = "m";
+        public override string Unit { get { return "m"; } }
         /// <summary>
         /// The base value.
         /// </summary>
-        public const double BaseValue = 1000D;
-        /// <summary>
-        /// The value.
-        /// </summary>
-        private double Value { get; set; }
+        public override double BaseValue { get { return 1000D; } }
 
         /// <summary>
         /// The constructor.
         /// </summary>
         /// <param name="v">The value.</param>
-        public Meter(double v)
-        {
-            this.Value = v;
-        }
-
-        /// <summary>
-        /// A conversion.
-        /// </summary>
-        public static implicit operator Meter(double v)
-        {
-            return new Meter(v);
-        }
-
-        /// <summary>
-        /// A conversion.
-        /// </summary>
-        public static implicit operator double(Meter v)
-        {
-            return v.Value;
-        }
-
-        /// <summary>
-        /// A conversion.
-        /// </summary>
-        public static explicit operator Meter(Millimeter v)
-        {
-            return new Meter(v * (Millimeter.BaseValue / Meter.BaseValue));
-        }
-
-        /// <summary>
-        /// A conversion.
-        /// </summary>
-        public static explicit operator Meter(Centimeter v)
-        {
-            return new Meter(v * (Centimeter.BaseValue / Meter.BaseValue));
-        }
-
-        /// <summary>
-        /// A conversion.
-        /// </summary>
-        public static explicit operator Meter(Kilometer v)
-        {
-            return new Meter(v * (Kilometer.BaseValue / Meter.BaseValue));
-        }
-
-        /// <see cref="Object.ToString()"/>
-        public override string ToString()
-        {
-            return this.Value.ToString() + " " + Meter.Unit;
-        }
-
-        /// <see cref="Object.ToString()"/>
-        /// <param name="unit">Whether or not to append the measurement unit.</param>
-        public string ToString(bool unit)
-        {
-            return this.Value.ToString() + (unit ? " " + Meter.Unit : "");
-        }
-
-        /// <see cref="Object.ToString()"/>
-        /// <param name="unit">Whether or not to append the measurement unit.</param>
-        /// <param name="result">The result.</param>
-        public string ToString(bool unit, Func<double, string> result)
-        {
-            return result(this.Value) + (unit ? " " + Meter.Unit : "");
-        }
+        public Meter(double v) : base(v) { }
     }
 
     /// <summary>
@@ -288,84 +155,16 @@ namespace SharpBag.BagMath.BagConverters
         /// <summary>
         /// The unit.
         /// </summary>
-        public const string Unit = "km";
+        public override string Unit { get { return "km"; } }
         /// <summary>
         /// The base value.
         /// </summary>
-        public const double BaseValue = 1000000D;
-        /// <summary>
-        /// The value.
-        /// </summary>
-        private double Value { get; set; }
+        public override double BaseValue { get { return 1000000D; } }
 
         /// <summary>
         /// The constructor.
         /// </summary>
         /// <param name="v">The value.</param>
-        public Kilometer(double v)
-        {
-            this.Value = v;
-        }
-
-        /// <summary>
-        /// A conversion.
-        /// </summary>
-        public static implicit operator Kilometer(double v)
-        {
-            return new Kilometer(v);
-        }
-
-        /// <summary>
-        /// A conversion.
-        /// </summary>
-        public static implicit operator double(Kilometer v)
-        {
-            return v.Value;
-        }
-
-        /// <summary>
-        /// A conversion.
-        /// </summary>
-        public static explicit operator Kilometer(Millimeter v)
-        {
-            return new Kilometer(v * (Millimeter.BaseValue / Kilometer.BaseValue));
-        }
-
-        /// <summary>
-        /// A conversion.
-        /// </summary>
-        public static explicit operator Kilometer(Centimeter v)
-        {
-            return new Kilometer(v * (Centimeter.BaseValue / Kilometer.BaseValue));
-        }
-
-        /// <summary>
-        /// A conversion.
-        /// </summary>
-        public static explicit operator Kilometer(Meter v)
-        {
-            return new Kilometer(v * (Meter.BaseValue / Kilometer.BaseValue));
-        }
-
-        /// <see cref="Object.ToString()"/>
-        public override string ToString()
-        {
-            return this.Value.ToString() + " " + Kilometer.Unit;
-        }
-
-        /// <see cref="Object.ToString()"/>
-        /// <param name="unit">Whether or not to append the measurement unit.</param>
-        public string ToString(bool unit)
-        {
-            return this.Value.ToString() + (unit ? " " + Kilometer.Unit : "");
-        }
-
-        /// <see cref="Object.ToString()"/>
-        /// <param name="unit">Whether or not to append the measurement unit.</param>
-        /// <param name="result">The result.</param>
-        public string ToString(bool unit, Func<double, string> result)
-        {
-            return result(this.Value) + (unit ? " " + Kilometer.Unit : "");
-        }
+        public Kilometer(double v) : base(v) { }
     }
 }

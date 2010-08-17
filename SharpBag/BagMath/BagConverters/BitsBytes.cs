@@ -80,7 +80,7 @@ namespace SharpBag.BagMath.BagConverters
         /// <param name="result">The result.</param>
         public string ToString(bool unit, Func<double, string> result)
         {
-            return this.Value.ToString() + (unit ? " " + this.Unit : "");
+            return result(this.Value) + (unit ? " " + this.Unit : "");
         }
     }
 
