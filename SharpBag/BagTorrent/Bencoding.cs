@@ -19,7 +19,7 @@ namespace SharpBag.BagTorrent
     /// <summary>
     /// A bencode integer.
     /// </summary>
-    public class BInteger : BElement, IComparable
+    public class BInteger : BElement, IComparable<BInteger>
     {
         /// <summary>
         /// Allows you to set an integer to a BInteger.
@@ -77,17 +77,17 @@ namespace SharpBag.BagTorrent
             return this.Value.ToString();
         }
 
-        /// <see cref="IComparable.CompareTo(object)"/>
-        public int CompareTo(object other)
+        /// <see cref="IComparable<BInteger>.CompareTo(object)"/>
+        public int CompareTo(BInteger other)
         {
-            return this.Value.CompareTo(other);
+            return this.Value.CompareTo(other.Value);
         }
     }
 
     /// <summary>
     /// A bencode string.
     /// </summary>
-    public class BString : BElement, IComparable
+    public class BString : BElement, IComparable<BString>
     {
         /// <summary>
         /// Allows you to set a string to a BString.
@@ -144,10 +144,10 @@ namespace SharpBag.BagTorrent
             return this.Value.ToString();
         }
 
-        /// <see cref="IComparable.CompareTo(object)"/>
-        public int CompareTo(object other)
+        /// <see cref="IComparable<BString>.CompareTo(object)"/>
+        public int CompareTo(BString other)
         {
-            return this.Value.CompareTo(other);
+            return this.Value.CompareTo(other.Value);
         }
     }
 
