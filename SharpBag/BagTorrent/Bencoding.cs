@@ -19,7 +19,7 @@ namespace SharpBag.BagTorrent
     /// <summary>
     /// A bencode integer.
     /// </summary>
-    public class BInteger : BElement
+    public class BInteger : BElement, IComparable
     {
         /// <summary>
         /// Allows you to set an integer to a BInteger.
@@ -55,21 +55,12 @@ namespace SharpBag.BagTorrent
             return "i" + Value.ToString() + "e";
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
         /// <see cref="Object.GetHashCode()"/>
         public override int GetHashCode()
         {
             return this.Value.GetHashCode();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
         /// <see cref="int.Equals(object)"/>
         public override bool Equals(object obj)
         {
@@ -80,21 +71,23 @@ namespace SharpBag.BagTorrent
             catch { return false; }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
         /// <see cref="Object.ToString()"/>
         public override string ToString()
         {
             return this.Value.ToString();
+        }
+
+        /// <see cref="IComparable.CompareTo(object)"/>
+        public int CompareTo(object other)
+        {
+            return this.Value.CompareTo(other);
         }
     }
 
     /// <summary>
     /// A bencode string.
     /// </summary>
-    public class BString : BElement
+    public class BString : BElement, IComparable
     {
         /// <summary>
         /// Allows you to set a string to a BString.
@@ -129,21 +122,12 @@ namespace SharpBag.BagTorrent
             return this.Value.Length + ":" + this.Value;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
         /// <see cref="Object.GetHashCode()"/>
         public override int GetHashCode()
         {
             return this.Value.GetHashCode();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
         /// <see cref="string.Equals(object)"/>
         public override bool Equals(object obj)
         {
@@ -154,14 +138,16 @@ namespace SharpBag.BagTorrent
             catch { return false; }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
         /// <see cref="Object.ToString()"/>
         public override string ToString()
         {
             return this.Value.ToString();
+        }
+
+        /// <see cref="IComparable.CompareTo(object)"/>
+        public int CompareTo(object other)
+        {
+            return this.Value.CompareTo(other);
         }
     }
 
