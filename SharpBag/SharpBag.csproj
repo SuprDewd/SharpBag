@@ -67,8 +67,12 @@
     <Compile Include="BagMath\Fibonacci.cs" />
     <Compile Include="BagNet\BagNet.cs" />
     <Compile Include="BagS.cs" />
-    <Compile Include="BagTorrent\Bencoding.cs" />
+    <Compile Include="BagTorrent\BDictionary.cs" />
+    <Compile Include="BagTorrent\BElement.cs" />
     <Compile Include="BagTorrent\BencodingDecoder.cs" />
+    <Compile Include="BagTorrent\BInteger.cs" />
+    <Compile Include="BagTorrent\BList.cs" />
+    <Compile Include="BagTorrent\BString.cs" />
     <Compile Include="BagUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
