@@ -19,7 +19,11 @@ namespace SharpBag.BagTorrent
     /// <summary>
     /// A bencode integer.
     /// </summary>
+<<<<<<< HEAD
     public class BInteger : BElement, IComparable<BInteger>
+=======
+    public class BInteger : BElement
+>>>>>>> 13a21809d5a44dcc213a5581d447444024c52e99
     {
         /// <summary>
         /// Allows you to set an integer to a BInteger.
@@ -55,12 +59,27 @@ namespace SharpBag.BagTorrent
             return "i" + Value.ToString() + "e";
         }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+>>>>>>> 13a21809d5a44dcc213a5581d447444024c52e99
         /// <see cref="Object.GetHashCode()"/>
         public override int GetHashCode()
         {
             return this.Value.GetHashCode();
         }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+>>>>>>> 13a21809d5a44dcc213a5581d447444024c52e99
         /// <see cref="int.Equals(object)"/>
         public override bool Equals(object obj)
         {
@@ -71,23 +90,37 @@ namespace SharpBag.BagTorrent
             catch { return false; }
         }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+>>>>>>> 13a21809d5a44dcc213a5581d447444024c52e99
         /// <see cref="Object.ToString()"/>
         public override string ToString()
         {
             return this.Value.ToString();
         }
+<<<<<<< HEAD
 
         /// <see cref="IComparable<BInteger>.CompareTo(object)"/>
         public int CompareTo(BInteger other)
         {
             return this.Value.CompareTo(other.Value);
         }
+=======
+>>>>>>> 13a21809d5a44dcc213a5581d447444024c52e99
     }
 
     /// <summary>
     /// A bencode string.
     /// </summary>
+<<<<<<< HEAD
     public class BString : BElement, IComparable<BString>
+=======
+    public class BString : BElement
+>>>>>>> 13a21809d5a44dcc213a5581d447444024c52e99
     {
         /// <summary>
         /// Allows you to set a string to a BString.
@@ -122,12 +155,27 @@ namespace SharpBag.BagTorrent
             return this.Value.Length + ":" + this.Value;
         }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+>>>>>>> 13a21809d5a44dcc213a5581d447444024c52e99
         /// <see cref="Object.GetHashCode()"/>
         public override int GetHashCode()
         {
             return this.Value.GetHashCode();
         }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+>>>>>>> 13a21809d5a44dcc213a5581d447444024c52e99
         /// <see cref="string.Equals(object)"/>
         public override bool Equals(object obj)
         {
@@ -138,17 +186,27 @@ namespace SharpBag.BagTorrent
             catch { return false; }
         }
 
+<<<<<<< HEAD
+=======
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+>>>>>>> 13a21809d5a44dcc213a5581d447444024c52e99
         /// <see cref="Object.ToString()"/>
         public override string ToString()
         {
             return this.Value.ToString();
         }
+<<<<<<< HEAD
 
         /// <see cref="IComparable<BString>.CompareTo(object)"/>
         public int CompareTo(BString other)
         {
             return this.Value.CompareTo(other.Value);
         }
+=======
+>>>>>>> 13a21809d5a44dcc213a5581d447444024c52e99
     }
 
     /// <summary>
@@ -256,4 +314,8 @@ namespace SharpBag.BagTorrent
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 13a21809d5a44dcc213a5581d447444024c52e99
