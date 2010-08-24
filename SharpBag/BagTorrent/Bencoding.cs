@@ -54,13 +54,13 @@ namespace SharpBag.BagTorrent
         {
             return "i" + Value.ToString() + "e";
         }
-		
+        
         /// <see cref="Object.GetHashCode()"/>
         public override int GetHashCode()
         {
             return this.Value.GetHashCode();
         }
-		
+        
         /// <see cref="int.Equals(object)"/>
         public override bool Equals(object obj)
         {
@@ -70,7 +70,7 @@ namespace SharpBag.BagTorrent
             }
             catch { return false; }
         }
-		
+        
         /// <see cref="Object.ToString()"/>
         public override string ToString()
         {
@@ -121,13 +121,13 @@ namespace SharpBag.BagTorrent
         {
             return this.Value.Length + ":" + this.Value;
         }
-		
+        
         /// <see cref="Object.GetHashCode()"/>
         public override int GetHashCode()
         {
             return this.Value.GetHashCode();
         }
-		
+        
         /// <see cref="string.Equals(object)"/>
         public override bool Equals(object obj)
         {
@@ -137,7 +137,7 @@ namespace SharpBag.BagTorrent
             }
             catch { return false; }
         }
-		
+        
         /// <see cref="Object.ToString()"/>
         public override string ToString()
         {
