@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="ActionDisposable.cs" />
     <Compile Include="BagDatabase\BagDB.cs" />
+    <Compile Include="BagDatabase\BagDBExt.cs" />
     <Compile Include="BagExtensions.cs" />
     <Compile Include="BagFK\DrawObjects.cs" />
     <Compile Include="BagFK\Kennitala.cs" />
@@ -64,8 +65,10 @@
     <Compile Include="BagMath\BagConverters\Temperature.cs" />
     <Compile Include="BagMath\BagConverters\Weight.cs" />
     <Compile Include="BagMath\BagMath.cs" />
+    <Compile Include="BagMath\BagMathExt.cs" />
     <Compile Include="BagMath\Fibonacci.cs" />
     <Compile Include="BagNet\BagNet.cs" />
+    <Compile Include="BagNet\BagNetExt.cs" />
     <Compile Include="BagS.cs" />
     <Compile Include="BagTorrent\BDictionary.cs" />
     <Compile Include="BagTorrent\BElement.cs" />

@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Text;
-using MySql.Data.MySqlClient;
 
 namespace SharpBag
 {
@@ -345,56 +342,7 @@ namespace SharpBag
         /// <returns>The contrast.</returns>
         public static double Contrast(this double d, double contrast)
         {
-            return (((d - .5) * contrast) + .5).Bound(0, 1);
-        }
-
-        /// <summary>
-        /// Rounds the current instance.
-        /// </summary>
-        /// <param name="d">The current instance.</param>
-        /// <returns>The current instance rounded.</returns>
-        public static int Round(this double d)
-        {
-            return (int)Math.Round(d);
-        }
-
-        /// <summary>
-        /// Rounds the current instance.
-        /// </summary>
-        /// <param name="d">The current instance.</param>
-        /// <param name="digits">Number of digits to keep after the comma.</param>
-        /// <returns>The current instance rounded.</returns>
-        public static double Round(this double d, int digits)
-        {
-            return Math.Round(d, digits);
-        }
-
-        /// <summary>
-        /// Gets the current instance inside the specified boundaries.
-        /// </summary>
-        /// <param name="d">The current instance.</param>
-        /// <param name="lower">The lower boundary.</param>
-        /// <param name="upper">The upper boundary.</param>
-        /// <returns>The current instance inside the spcified boundaries.</returns>
-        public static int Bound(this int d, int lower, int upper)
-        {
-            if (d < lower) return lower;
-            if (d > upper) return upper;
-            return d;
-        }
-
-        /// <summary>
-        /// Gets the current instance inside the specified boundaries.
-        /// </summary>
-        /// <param name="d">The current instance.</param>
-        /// <param name="lower">The lower boundary.</param>
-        /// <param name="upper">The upper boundary.</param>
-        /// <returns>The current instance inside the spcified boundaries.</returns>
-        public static double Bound(this double d, double lower, double upper)
-        {
-            if (d < lower) return lower;
-            if (d > upper) return upper;
-            return d;
+            return BagMath.BagMathExt.Bound((((d - .5) * contrast) + .5), 0, 1);
         }
 
         /// <summary>
@@ -437,7 +385,7 @@ namespace SharpBag
         /// <returns>The element in the array located at the specified percent.</returns>
         public static T GetByPercent<T>(this T[] array, double percent)
         {
-            return array[((array.Length - 1) * percent).Round()];
+            return array[BagMath.BagMathExt.Round((array.Length - 1) * percent)];
         }
 
         #endregion
@@ -629,53 +577,6 @@ namespace SharpBag
         }
 
         /// <summary>
-        /// Makes the current instance HTML safe.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <returns>An HTML safe string.</returns>
-        public static string HtmlSafe(this string s)
-        {
-            return s.HtmlSafe(false, false);
-        }
-
-        /// <summary>
-        /// Makes the current instance HTML safe.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <param name="all">Whether to make all characters entities or just those needed.</param>
-        /// <returns>An HTML safe string.</returns>
-        public static string HtmlSafe(this string s, bool all)
-        {
-            return s.HtmlSafe(all, false);
-        }
-
-        /// <summary>
-        /// Makes the current instance HTML safe.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <param name="all">Whether to make all characters entities or just those needed.</param>
-        /// <param name="replace">Whether or not to encode spaces and line breaks.</param>
-        /// <returns>An HTML safe string.</returns>
-        public static string HtmlSafe(this string s, bool all, bool replace)
-        {
-            int[] entities = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 28, 29, 30, 31, 34, 39, 38, 60, 62, 123, 124, 125, 126, 127, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 215, 247, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 8704, 8706, 8707, 8709, 8711, 8712, 8713, 8715, 8719, 8721, 8722, 8727, 8730, 8733, 8734, 8736, 8743, 8744, 8745, 8746, 8747, 8756, 8764, 8773, 8776, 8800, 8801, 8804, 8805, 8834, 8835, 8836, 8838, 8839, 8853, 8855, 8869, 8901, 913, 914, 915, 916, 917, 918, 919, 920, 921, 922, 923, 924, 925, 926, 927, 928, 929, 931, 932, 933, 934, 935, 936, 937, 945, 946, 947, 948, 949, 950, 951, 952, 953, 954, 955, 956, 957, 958, 959, 960, 961, 962, 963, 964, 965, 966, 967, 968, 969, 977, 978, 982, 338, 339, 352, 353, 376, 402, 710, 732, 8194, 8195, 8201, 8204, 8205, 8206, 8207, 8211, 8212, 8216, 8217, 8218, 8220, 8221, 8222, 8224, 8225, 8226, 8230, 8240, 8242, 8243, 8249, 8250, 8254, 8364, 8482, 8592, 8593, 8594, 8595, 8596, 8629, 8968, 8969, 8970, 8971, 9674, 9824, 9827, 9829, 9830 };
-            string ut = "";
-            for (int i = 0; i < s.Length; i++)
-            {
-                char c = s[i];
-                if (all || entities.Contains(c))
-                {
-                    ut += "&#" + ((int)c).ToString() + ";";
-                }
-                else
-                {
-                    ut += c.ToString();
-                }
-            }
-            return (replace ? ut.Replace("\r\n", "<br />").Replace("\n", "<br />").Replace(" ", "&nbsp;") : ut);
-        }
-
-        /// <summary>
         /// Adds the specified key and value to the dictionary.
         /// If overwrite is true and the dictionary contains the specified key, the key's value will be overwritten.
         /// If overwrite is false and the dictionary contains the specified key, an exception won't be thrown.
@@ -815,6 +716,18 @@ namespace SharpBag
         }
 
         /// <summary>
+        /// Returns a copy of this System.Char converted to lowercase, using the casing rules of the current culture.
+        /// </summary>
+        /// <param name="c">The current instance.</param>
+        /// <returns>A copy of this System.Char converted to lowercase.</returns>
+        public static char ToLower(this char c)
+        {
+            return Convert.ToChar(c.ToLower().ToUpper());
+        }
+
+        #region Split overloads.
+
+        /// <summary>
         /// Returns a string array that contains the substrings in this string that are delimited by the specified string. A parameter specifies whether to return empty array elements.
         /// </summary>
         /// <param name="s">The current instance.</param>
@@ -826,27 +739,6 @@ namespace SharpBag
             if (s == null) throw new ArgumentNullException("s", "The current instance must not be null.");
             if (separator == null) throw new ArgumentNullException("separator", "separator must not be null.");
             return s.Split(separator, StringSplitOptions.None);
-        }
-
-        /// <summary>
-        /// Downloads the source of the Uri and returns it as a string.
-        /// </summary>
-        /// <param name="page">The source of the Uri.</param>
-        /// <returns></returns>
-        public static string Download(this Uri page)
-        {
-            WebRequest request = HttpWebRequest.Create(page);
-            string results = null;
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            {
-                using (StreamReader sr = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
-                {
-                    results = sr.ReadToEnd();
-                    sr.Close();
-                }
-                response.Close();
-            }
-            return results;
         }
 
         /// <summary>
@@ -891,6 +783,8 @@ namespace SharpBag
             return s.Split(new char[] { separator }, options);
         }
 
+        #endregion
+
         /// <summary>
         /// Splits the current string into substrings using the separator and then converts each substring into an int.
         /// </summary>
@@ -930,156 +824,6 @@ namespace SharpBag
             }
 
             return ints.ToArray();
-        }
-
-        /// <summary>
-        /// Checks if the current instance is between, but not equal to, two integers.
-        /// </summary>
-        /// <param name="n">The current integers.</param>
-        /// <param name="min">The lower boundary.</param>
-        /// <param name="max">The upper boundary.</param>
-        /// <returns>True if the current instance is between, but not equal to, the two integers; otherwise false.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static bool IsBetween(this int n, int min, int max)
-        {
-            if (min > max) throw new ArgumentException("min must not be greater than max.");
-            return (n > min && n < max);
-        }
-
-        /// <summary>
-        /// Checks if the current instance is between or equal to two integers.
-        /// </summary>
-        /// <param name="n">The current integers.</param>
-        /// <param name="min">The minimum integer.</param>
-        /// <param name="max">The maximum integer.</param>
-        /// <returns>True if the current instance is between or equal to the two integers; otherwise false.</returns>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static bool IsBetweenOrEqualTo(this int n, int min, int max)
-        {
-            if (min > max) throw new ArgumentException("min must not be greater than max");
-            return (n >= min && n <= max);
-        }
-
-        /*
-        /// <summary>
-        /// Writes the string into the specified file.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <param name="filename">The location of the file to be written to.</param>
-        public static void WriteIntoFile(this string s, string filename)
-        {
-            s.WriteIntoFile(filename, false);
-        }
-
-        /// <summary>
-        /// Writes the string into the specified file.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <param name="filename">The location of the file to be written to.</param>
-        /// <param name="append">Wheter or not the string will be appended to the file.</param>
-        public static void WriteIntoFile(this string s, string filename, bool append)
-        {
-            if (append)
-            {
-                File.AppendAllText(filename, s, Encoding.UTF8);
-            }
-            else
-            {
-                File.WriteAllText(filename, s, Encoding.UTF8);
-            }
-        }
-         * */
-
-        /// <summary>
-        /// Converts a DateTime object into a SQL compatible string.
-        /// </summary>
-        /// <param name="dt">The current instance.</param>
-        /// <returns>An SQL formatted string.</returns>
-        public static string ToSQLDateTime(this DateTime dt)
-        {
-            return dt.ToString("yyyy-MM-dd HH:mm:ss");
-        }
-
-        /// <summary>
-        /// Generates a SQL insert query for the current DataTable instance.
-        /// </summary>
-        /// <param name="dt">The current instance.</param>
-        /// <param name="schema">The schema to insert into.</param>
-        /// <returns>An SQL string.</returns>
-        public static string ToSQL(this DataTable dt, string schema)
-        {
-            if (dt.Rows.Count == 0) return null;
-            string into = schema != null ? schema + "." + dt.TableName : dt.TableName;
-
-            StringBuilder columns = new StringBuilder();
-            List<string> nonPrimaryCols = new List<string>();
-            foreach (DataColumn col in dt.Columns)
-            {
-                if (columns.ToString() != "") columns.Append(",");
-                if (!dt.PrimaryKey.Contains(col)) nonPrimaryCols.Add(col.ColumnName);
-
-                columns.Append(col.ColumnName);
-            }
-
-            StringBuilder values = new StringBuilder();
-            foreach (DataRow row in dt.Rows)
-            {
-                values.Append(values.ToString() == "" ? "(" : ",(");
-                foreach (DataColumn col in dt.Columns)
-                {
-                    if (dt.Columns.IndexOf(col) != 0) values.Append(",");
-                    object o = row[col.ColumnName];
-                    if (col.DataType == typeof(DBNull))
-                    {
-                        values.Append("NULL");
-                    }
-                    else if (col.DataType == typeof(DateTime))
-                    {
-                        values.Append("'" + ((DateTime)o).ToSQLDateTime() + "'");
-                    }
-                    else if (new Type[] { typeof(int), typeof(double), typeof(float), typeof(decimal), typeof(Single) }.Contains(col.DataType))
-                    {
-                        values.Append(o.ToString());
-                    }
-                    else
-                    {
-                        values.Append("'" + o.ToString().SQLEscape() + "'");
-                    }
-                }
-                values.Append(")");
-            }
-
-            StringBuilder updCols = new StringBuilder();
-            foreach (string nCol in nonPrimaryCols)
-            {
-                if (updCols.ToString() != "") updCols.Append(",");
-                updCols.Append(nCol + "=VALUES(" + nCol + ")");
-            }
-
-            return "INSERT INTO " + into + " (" + columns.ToString() + ") VALUES " + values.ToString() + (dt.PrimaryKey.Length == 0 && dt.Columns.Count - dt.PrimaryKey.Length > 0 ? "" : " ON DUPLICATE KEY UPDATE " + updCols.ToString()) + ";";
-        }
-
-        /// <summary>
-        /// Inserts the current DataTable instance into the specified MySQL database.
-        /// </summary>
-        /// <param name="dt">The current instance.</param>
-        /// <param name="db">The MySQL database to insert into.</param>
-        /// <returns>How many rows were affected.</returns>
-        public static int InsertInto(this DataTable dt, BagDatabase.BagDB db)
-        {
-            return db.Execute(dt.ToSQL(db.Schema));
-        }
-
-        /// <summary>
-        /// Escapes the string for SQL insertion.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <returns>The escaped string.</returns>
-        public static string SQLEscape(this string s)
-        {
-            return MySqlHelper.EscapeString(s);
-            //return s.Replace(@"\", @"\\").Replace(@"\'", "'").Replace(@"'", @"\'");
         }
     }
 }
