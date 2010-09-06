@@ -2,13 +2,11 @@
  TODO:
 
   Make abstract class for Temperature.
-  Sort extension methods into static extension classes in correct namespaces.
   Add methods to BagNet namespace.
-  Put Bencoding classes back into one file for easier snipplr.com upload.
 
  BUGS:
  
-  Test.
+  No bugs known.
 
  DONE:
 
@@ -16,4 +14,6 @@
   Put namespaces into seperate folders and classes into seperate files.
   Make abstract classes for Weight and Length.
   Update README.
+  Sort extension methods into static extension classes in correct namespaces.
+  Put Bencoding classes back into one file for easier snipplr.com upload.
 
