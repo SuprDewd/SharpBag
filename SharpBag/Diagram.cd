@@ -1,28 +1,97 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="SharpBag.BagExtensions">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+  <Class Name="SharpBag.BagDatabase.BagDB">
+    <Position X="11" Y="16" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAIhKAABogAAAASAgAAAUBAAHEAIDgIyIBkFQgogFgA=</HashCode>
-      <FileName>BagExtensions.cs</FileName>
+      <HashCode>AAAAIAAAAAAAAAUAAQAAAIAEAAEAAAgCAAAABgCACAA=</HashCode>
+      <FileName>BagDatabase\BagDB.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SharpBag.BagMath.BagMath">
-    <Position X="5.75" Y="0.5" Width="1.5" />
+  <Class Name="SharpBag.BagDatabase.BagDBExt">
+    <Position X="41.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAAAAAAAAAEAAAAAAAAAIAAAAAAAEAAAAEAAAAAA=</HashCode>
-      <FileName>BagMath\BagMath.cs</FileName>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAIAAAQAAAAAA=</HashCode>
+      <FileName>BagDatabase\BagDBExt.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SharpBag.BagLogging.BagLogger">
-    <Position X="4" Y="0.5" Width="1.5" />
+  <Class Name="SharpBag.BagFK.DrawObjects">
+    <Position X="25.5" Y="16" Width="1.5" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <NestedTypes>
-      <Delegate Name="SharpBag.BagLogging.BagLogger.LogFunction">
+      <Enum Name="SharpBag.BagFK.DrawObjects.TriangleType" Collapsed="true">
         <TypeIdentifier>
-          <NewMemberFileName>Main.cs</NewMemberFileName>
+          <NewMemberFileName>BagFK\DrawObjects.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>BagFK\DrawObjects.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagFK.Kennitala">
+    <Position X="5.5" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAEAAAQgAAAAAAQAIgABAAAAACCAAA=</HashCode>
+      <FileName>BagFK\Kennitala.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagFK.Minesweeper">
+    <Position X="0.5" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>BagFK\Minesweeper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagFK.Stæ">
+    <Position X="28.25" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>BagFK\Stae.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagFK.StærstaRunuSumma">
+    <Position X="30.75" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAQAAAAAAAEQAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BagFK\StaerstaRunuSumma.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagFK.Tools">
+    <Position X="3" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAIAAAAAABAAAA=</HashCode>
+      <FileName>BagFK\Tools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagLogging.BagConsole">
+    <Position X="36" Y="16" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="SharpBag.BagLogging.BagConsole.CommandEnteredEvent" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>BagLogging\BagConsole.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAUAAAAAAAAACIAAAABAAAAAABAAAAIAAAhAQAAAI=</HashCode>
+      <FileName>BagLogging\BagConsole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagLogging.BagLogger">
+    <Position X="38" Y="16" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="SharpBag.BagLogging.BagLogger.LogFunction" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>BagLogging\BagLogger.cs</NewMemberFileName>
         </TypeIdentifier>
       </Delegate>
     </NestedTypes>
@@ -31,29 +100,226 @@
       <FileName>BagLogging\BagLogger.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SharpBag.BagS">
-    <Position X="7.5" Y="1.75" Width="1.5" />
+  <Class Name="SharpBag.BagMath.BagConverters.BaseConverter">
+    <Position X="20" Y="16" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAABAAAAAAAAAAAAAQAAAAgAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BagS.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAIAABAAAA=</HashCode>
+      <FileName>BagMath\BagConverters\BaseConverter.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SharpBag.BagDatabase.BagDB">
-    <Position X="2.25" Y="0.5" Width="1.5" />
+  <Class Name="SharpBag.BagMath.BagConverters.BitSize">
+    <Position X="11.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAAUAAQAAAIAEAAEAAAgCAAAABgCACAA=</HashCode>
-      <FileName>BagDatabase\BagDB.cs</FileName>
+      <HashCode>AIAAAAAAAAAAAAAEIAAABAAAAAAAQAAAAAAgAAAAAAA=</HashCode>
+      <FileName>BagMath\BagConverters\BitsBytes.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagMath.BagConverters.Bit">
+    <Position X="10.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BagMath\BagConverters\BitsBytes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagMath.BagConverters.Kilobit">
+    <Position X="14.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BagMath\BagConverters\BitsBytes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagMath.BagConverters.Megabit">
+    <Position X="19.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BagMath\BagConverters\BitsBytes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagMath.BagConverters.Gigabit">
+    <Position X="21.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BagMath\BagConverters\BitsBytes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagMath.BagConverters.Terabit">
+    <Position X="1.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BagMath\BagConverters\BitsBytes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagMath.BagConverters.Byte">
+    <Position X="3.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BagMath\BagConverters\BitsBytes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagMath.BagConverters.Kilobyte">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BagMath\BagConverters\BitsBytes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagMath.BagConverters.Megabyte">
+    <Position X="8" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BagMath\BagConverters\BitsBytes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagMath.BagConverters.Gigabyte">
+    <Position X="12.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BagMath\BagConverters\BitsBytes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagMath.BagConverters.Terabyte">
+    <Position X="17" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BagMath\BagConverters\BitsBytes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagMath.BagConverters.Length">
+    <Position X="4.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAEIAAABAAAAAAAQAAAAAAgAAAAAAA=</HashCode>
+      <FileName>BagMath\BagConverters\Length.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagMath.BagConverters.Millimeter">
+    <Position X="7.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BagMath\BagConverters\Length.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagMath.BagConverters.Centimeter">
+    <Position X="1" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BagMath\BagConverters\Length.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagMath.BagConverters.Meter">
+    <Position X="3.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BagMath\BagConverters\Length.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagMath.BagConverters.Kilometer">
+    <Position X="5.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BagMath\BagConverters\Length.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagMath.BagConverters.Celsius" BaseTypeListCollapsed="true">
+    <Position X="17" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEIAAAhAAAAAAAAAAAAAAgAAAAAAQ=</HashCode>
+      <FileName>BagMath\BagConverters\Temperature.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SharpBag.BagMath.BagConverters.Fahrenheit" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAEIAAABAAAAAAAAAAAAAAgAAAAAAQ=</HashCode>
+      <FileName>BagMath\BagConverters\Temperature.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SharpBag.BagMath.BagConverters.Kelvin" BaseTypeListCollapsed="true">
+    <Position X="21.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEIAAABAAAAAAAAAAAAAAgAAABIAA=</HashCode>
+      <FileName>BagMath\BagConverters\Temperature.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SharpBag.BagMath.BagConverters.Weight">
+    <Position X="12.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAEIAAABAAAAAAAQAAAAAAgAAAAAAA=</HashCode>
+      <FileName>BagMath\BagConverters\Weight.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagMath.BagConverters.Milligram">
+    <Position X="10.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BagMath\BagConverters\Weight.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagMath.BagConverters.Gram">
+    <Position X="12.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BagMath\BagConverters\Weight.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagMath.BagConverters.Kilogram">
+    <Position X="15" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BagMath\BagConverters\Weight.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagMath.BagMath">
+    <Position X="14.25" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAEAAAAAAAAAIAAAAAAAEAAAAEAAAAAA=</HashCode>
+      <FileName>BagMath\BagMath.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagMath.BagMathExt">
+    <Position X="39.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAIAAgA=</HashCode>
+      <FileName>BagMath\BagMathExt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagMath.Fibonacci">
+    <Position X="33.25" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BagMath\Fibonacci.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagNet.BagNet">
+    <Position X="17.25" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BagNet\BagNet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagNet.BagNetExt">
+    <Position X="43.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAEAAAAAAAA=</HashCode>
+      <FileName>BagNet\BagNetExt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagTorrent.BDictionary" BaseTypeListCollapsed="true">
+    <Position X="27.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAACAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>BagTorrent\BDictionary.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="SharpBag.BagTorrent.BencodeDecoder">
-    <Position X="14.5" Y="0.75" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Nested Types" Collapsed="false" />
-    </Compartments>
+    <Position X="25.5" Y="2.5" Width="1.5" />
     <NestedTypes>
-      <Class Name="SharpBag.BagTorrent.BencodeDecoder.BencodingException">
+      <Class Name="SharpBag.BagTorrent.BencodeDecoder.BencodingException" Collapsed="true">
         <TypeIdentifier>
-          <NewMemberFileName>Main.cs</NewMemberFileName>
+          <NewMemberFileName>BagTorrent\BencodingDecoder.cs</NewMemberFileName>
         </TypeIdentifier>
       </Class>
     </NestedTypes>
@@ -63,303 +329,70 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SharpBag.BagTorrent.BInteger" BaseTypeListCollapsed="true">
-    <Position X="21.5" Y="2.25" Width="1.5" />
+    <Position X="32.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAAAAAAJAAAAAgAAAAAQA=</HashCode>
-      <FileName>BagTorrent\Bencoding.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="SharpBag.BagTorrent.BString" BaseTypeListCollapsed="true">
-    <Position X="19.75" Y="2.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAAAAAAJAAAAAgAAABAAA=</HashCode>
-      <FileName>BagTorrent\Bencoding.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAQEgAAAAAAAAAAAAJAAAAAgAAAAAQA=</HashCode>
+      <FileName>BagTorrent\BInteger.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="SharpBag.BagTorrent.BList" BaseTypeListCollapsed="true">
-    <Position X="16.25" Y="2.25" Width="1.5" />
+    <Position X="30" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
-      <FileName>BagTorrent\Bencoding.cs</FileName>
+      <FileName>BagTorrent\BList.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="SharpBag.BagTorrent.BDictionary" BaseTypeListCollapsed="true">
-    <Position X="18" Y="2.25" Width="1.5" />
+  <Class Name="SharpBag.BagTorrent.BString" BaseTypeListCollapsed="true">
+    <Position X="34.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAAAAAACAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
-      <FileName>BagTorrent\Bencoding.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAQEgAAAAAAAAAAAAJAAAAAgAAABAAA=</HashCode>
+      <FileName>BagTorrent\BString.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="SharpBag.BagNet.BagNet">
-    <Position X="7.5" Y="0.5" Width="1.5" />
+  <Class Name="SharpBag.ActionDisposable" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="16" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BagNet\BagNet.cs</FileName>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>ActionDisposable.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SharpBag.BagExtensions">
+    <Position X="37.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAIhKAABIgAAAASAgAAAUBAAHCAICgIyABgFAgggFAA=</HashCode>
+      <FileName>BagExtensions.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SharpBag.BagFK.Kennitala">
-    <Position X="4" Y="4.75" Width="1.5" />
+  <Class Name="SharpBag.BagS">
+    <Position X="41" Y="16" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAgAAAAAAAAAAEAAAQgAAAAAAQAIgABAAAAACCAAA=</HashCode>
-      <FileName>BagFK\Kennitala.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagFK.StærstaRunuSumma">
-    <Position X="7.5" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>gAAAAAAAAAQAAAAAAAEQAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BagFK\StaerstaRunuSumma.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagFK.Minesweeper">
-    <Position X="2.25" Y="4.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAEAAAA=</HashCode>
-      <FileName>BagFK\Minesweeper.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagFK.DrawObjects">
-    <Position X="5.75" Y="2.75" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Nested Types" Collapsed="false" />
-    </Compartments>
-    <NestedTypes>
-      <Enum Name="SharpBag.BagFK.DrawObjects.TriangleType">
-        <TypeIdentifier>
-          <NewMemberFileName>Main.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-    </NestedTypes>
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
-      <FileName>BagFK\DrawObjects.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagFK.Tools">
-    <Position X="2.25" Y="6" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAIAAAAAABAAAA=</HashCode>
-      <FileName>BagFK\Tools.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagFK.Stæ">
-    <Position X="5.75" Y="6.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
-      <FileName>BagFK\Stae.cs</FileName>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAQAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BagS.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SharpBag.BagUtils">
-    <Position X="11.25" Y="0.5" Width="1.5" />
+    <Position X="8.25" Y="16" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAgAAAQAAAAABAAAAACAAIAAAAAAAEAAAEAAAAA=</HashCode>
       <FileName>BagUtils.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SharpBag.BagLogging.BagConsole">
-    <Position X="9.5" Y="0.5" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Nested Types" Collapsed="false" />
-    </Compartments>
-    <NestedTypes>
-      <Delegate Name="SharpBag.BagLogging.BagConsole.CommandEnteredEvent">
-        <TypeIdentifier>
-          <NewMemberFileName>Main.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Delegate>
-    </NestedTypes>
-    <TypeIdentifier>
-      <HashCode>AAAAUAAAAAAAAACIAAAABAAAAAABAAAAIAAAhAQAAAI=</HashCode>
-      <FileName>BagLogging\BagConsole.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagMath.BagConverters.BaseConverter">
-    <Position X="11.25" Y="3" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAIAABAAAA=</HashCode>
-      <FileName>BagMath\BagConverters\BaseConverter.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagMath.BagConverters.Celsius">
-    <Position X="11.75" Y="12.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEIAAAhAAAAAAAAAAAAAAgAAAAAAQ=</HashCode>
-      <FileName>BagMath\BagConverters\Temperature.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="SharpBag.BagMath.BagConverters.Fahrenheit">
-    <Position X="10" Y="12.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAgAEIAAABAAAAAAAAAAAAAAgAAAAAAQ=</HashCode>
-      <FileName>BagMath\BagConverters\Temperature.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="SharpBag.BagMath.BagConverters.Kelvin">
-    <Position X="13.5" Y="12.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEIAAABAAAAAAAAAAAAAAgAAABIAA=</HashCode>
-      <FileName>BagMath\BagConverters\Temperature.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="SharpBag.BagMath.BagConverters.Millimeter" BaseTypeListCollapsed="true">
-    <Position X="15.75" Y="13.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BagMath\BagConverters\Length.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagMath.BagConverters.Centimeter" BaseTypeListCollapsed="true">
-    <Position X="17.5" Y="13.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BagMath\BagConverters\Length.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagMath.BagConverters.Meter" BaseTypeListCollapsed="true">
-    <Position X="19.25" Y="13.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BagMath\BagConverters\Length.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagMath.BagConverters.Kilometer" BaseTypeListCollapsed="true">
-    <Position X="21" Y="13.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BagMath\BagConverters\Length.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagMath.BagConverters.Milligram" BaseTypeListCollapsed="true">
-    <Position X="10" Y="19" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BagMath\BagConverters\Weight.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagMath.BagConverters.Gram" BaseTypeListCollapsed="true">
-    <Position X="11.75" Y="19" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BagMath\BagConverters\Weight.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagMath.BagConverters.Kilogram" BaseTypeListCollapsed="true">
-    <Position X="13.5" Y="19" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BagMath\BagConverters\Weight.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagMath.BagConverters.Bit" BaseTypeListCollapsed="true">
-    <Position X="0.75" Y="14.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BagMath\BagConverters\BitsBytes.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagMath.BagConverters.Kilobit" BaseTypeListCollapsed="true">
-    <Position X="2.5" Y="14.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BagMath\BagConverters\BitsBytes.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagMath.BagConverters.Megabit" BaseTypeListCollapsed="true">
-    <Position X="4.25" Y="14.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BagMath\BagConverters\BitsBytes.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagMath.BagConverters.Gigabit" BaseTypeListCollapsed="true">
-    <Position X="6" Y="14.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BagMath\BagConverters\BitsBytes.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagMath.BagConverters.Terabit" BaseTypeListCollapsed="true">
-    <Position X="7.75" Y="14.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BagMath\BagConverters\BitsBytes.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagMath.BagConverters.Byte" BaseTypeListCollapsed="true">
-    <Position X="0.75" Y="17.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BagMath\BagConverters\BitsBytes.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagMath.BagConverters.Kilobyte" BaseTypeListCollapsed="true">
-    <Position X="2.5" Y="17.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BagMath\BagConverters\BitsBytes.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagMath.BagConverters.Megabyte" BaseTypeListCollapsed="true">
-    <Position X="4.25" Y="17.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BagMath\BagConverters\BitsBytes.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagMath.BagConverters.Gigabyte" BaseTypeListCollapsed="true">
-    <Position X="6" Y="17.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BagMath\BagConverters\BitsBytes.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagMath.BagConverters.Terabyte" BaseTypeListCollapsed="true">
-    <Position X="7.75" Y="17.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BagMath\BagConverters\BitsBytes.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagMath.BagConverters.BitSize">
-    <Position X="3.25" Y="11.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAEIAAABAAAAAAAQAAAAAAgAAAAAAA=</HashCode>
-      <FileName>BagMath\BagConverters\BitsBytes.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagMath.BagConverters.Weight">
-    <Position X="11.75" Y="16" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAEIAAABAAAAAAAQAAAAAAgAAAAAAA=</HashCode>
-      <FileName>BagMath\BagConverters\Weight.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="SharpBag.BagMath.BagConverters.Length">
-    <Position X="17.75" Y="10" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAEIAAABAAAAAAAQAAAAAAgAAAAAAA=</HashCode>
-      <FileName>BagMath\BagConverters\Length.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Interface Name="SharpBag.BagTorrent.BElement">
-    <Position X="18.75" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
-      <FileName>BagTorrent\Bencoding.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
   <Interface Name="SharpBag.BagMath.BagConverters.Temperature">
-    <Position X="11.75" Y="11.25" Width="1.5" />
+    <Position X="19.25" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>BagMath\BagConverters\Temperature.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SharpBag.BagTorrent.BElement">
+    <Position X="30" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>BagTorrent\BElement.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />

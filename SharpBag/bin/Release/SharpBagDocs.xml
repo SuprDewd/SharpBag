@@ -77,6 +77,65 @@
             <param name="reader">The TextReader to read from.</param>
             <returns>An enumerable that reads lines from the specified TextReader.</returns>
         </member>
+        <member name="T:SharpBag.BagMath.BagMathExt">
+            <summary>
+            Extensions methods for the BagMath class.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagMath.BagMathExt.IsBetween(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Checks if the current instance is between, but not equal to, two integers.
+            </summary>
+            <param name="n">The current integers.</param>
+            <param name="min">The lower boundary.</param>
+            <param name="max">The upper boundary.</param>
+            <returns>True if the current instance is between, but not equal to, the two integers; otherwise false.</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:SharpBag.BagMath.BagMathExt.IsBetweenOrEqualTo(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Checks if the current instance is between or equal to two integers.
+            </summary>
+            <param name="n">The current integers.</param>
+            <param name="min">The minimum integer.</param>
+            <param name="max">The maximum integer.</param>
+            <returns>True if the current instance is between or equal to the two integers; otherwise false.</returns>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:SharpBag.BagMath.BagMathExt.Round(System.Double)">
+            <summary>
+            Rounds the current instance.
+            </summary>
+            <param name="d">The current instance.</param>
+            <returns>The current instance rounded.</returns>
+        </member>
+        <member name="M:SharpBag.BagMath.BagMathExt.Round(System.Double,System.Int32)">
+            <summary>
+            Rounds the current instance.
+            </summary>
+            <param name="d">The current instance.</param>
+            <param name="digits">Number of digits to keep after the comma.</param>
+            <returns>The current instance rounded.</returns>
+        </member>
+        <member name="M:SharpBag.BagMath.BagMathExt.Bound(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Gets the current instance inside the specified boundaries.
+            </summary>
+            <param name="d">The current instance.</param>
+            <param name="lower">The lower boundary.</param>
+            <param name="upper">The upper boundary.</param>
+            <returns>The current instance inside the spcified boundaries.</returns>
+        </member>
+        <member name="M:SharpBag.BagMath.BagMathExt.Bound(System.Double,System.Double,System.Double)">
+            <summary>
+            Gets the current instance inside the specified boundaries.
+            </summary>
+            <param name="d">The current instance.</param>
+            <param name="lower">The lower boundary.</param>
+            <param name="upper">The upper boundary.</param>
+            <returns>The current instance inside the spcified boundaries.</returns>
+        </member>
         <member name="T:SharpBag.BagTorrent.BInteger">
             <summary>
             A bencode integer.
@@ -144,6 +203,13 @@
             <summary>
             A static class for working with internet communications and such.
             </summary>
+        </member>
+        <member name="M:SharpBag.BagNet.BagNet.IsPortFree(System.Int32)">
+            <summary>
+            Checks whether the specified port number is valid and not in use.
+            </summary>
+            <param name="port">The port.</param>
+            <returns>Whether the specified port number is valid and not in use.</returns>
         </member>
         <member name="T:SharpBag.BagFK.Kennitala">
             <summary>
@@ -474,6 +540,42 @@
             <summary>
             The base value.
             </summary>
+        </member>
+        <member name="T:SharpBag.BagNet.BagNetExt">
+            <summary>
+            Extensions methods for the BagNet class.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagNet.BagNetExt.Download(System.Uri)">
+            <summary>
+            Downloads the source of the Uri and returns it as a string.
+            </summary>
+            <param name="page">The source of the Uri.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpBag.BagNet.BagNetExt.HtmlSafe(System.String)">
+            <summary>
+            Makes the current instance HTML safe.
+            </summary>
+            <param name="s">The current instance.</param>
+            <returns>An HTML safe string.</returns>
+        </member>
+        <member name="M:SharpBag.BagNet.BagNetExt.HtmlSafe(System.String,System.Boolean)">
+            <summary>
+            Makes the current instance HTML safe.
+            </summary>
+            <param name="s">The current instance.</param>
+            <param name="all">Whether to make all characters entities or just those needed.</param>
+            <returns>An HTML safe string.</returns>
+        </member>
+        <member name="M:SharpBag.BagNet.BagNetExt.HtmlSafe(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Makes the current instance HTML safe.
+            </summary>
+            <param name="s">The current instance.</param>
+            <param name="all">Whether to make all characters entities or just those needed.</param>
+            <param name="replace">Whether or not to encode spaces and line breaks.</param>
+            <returns>An HTML safe string.</returns>
         </member>
         <member name="T:SharpBag.BagMath.BagMath">
             <summary>
@@ -1988,6 +2090,41 @@
             <param name="y">Y-hnitið</param>
             <returns>Hvort hnitin séu inná borðinu</returns>
         </member>
+        <member name="T:SharpBag.BagDatabase.BagDBExt">
+            <summary>
+            Extension methods for the BagDB class.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagDatabase.BagDBExt.ToSQLDateTime(System.DateTime)">
+            <summary>
+            Converts a DateTime object into a SQL compatible string.
+            </summary>
+            <param name="dt">The current instance.</param>
+            <returns>An SQL formatted string.</returns>
+        </member>
+        <member name="M:SharpBag.BagDatabase.BagDBExt.ToSQL(System.Data.DataTable,System.String)">
+            <summary>
+            Generates a SQL insert query for the current DataTable instance.
+            </summary>
+            <param name="dt">The current instance.</param>
+            <param name="schema">The schema to insert into.</param>
+            <returns>An SQL string.</returns>
+        </member>
+        <member name="M:SharpBag.BagDatabase.BagDBExt.InsertInto(System.Data.DataTable,SharpBag.BagDatabase.BagDB)">
+            <summary>
+            Inserts the current DataTable instance into the specified MySQL database.
+            </summary>
+            <param name="dt">The current instance.</param>
+            <param name="db">The MySQL database to insert into.</param>
+            <returns>How many rows were affected.</returns>
+        </member>
+        <member name="M:SharpBag.BagDatabase.BagDBExt.SQLEscape(System.String)">
+            <summary>
+            Escapes the string for SQL insertion.
+            </summary>
+            <param name="s">The current instance.</param>
+            <returns>The escaped string.</returns>
+        </member>
         <member name="T:SharpBag.BagTorrent.BString">
             <summary>
             A bencode string.
@@ -2198,136 +2335,6 @@
             <summary>
             The disposer which executes the dispose action.
             </summary>
-        </member>
-        <member name="T:SharpBag.BagMath.BagMathExt">
-            <summary>
-            Extensions methods for the BagMath class.
-            </summary>
-        </member>
-        <member name="M:SharpBag.BagMath.BagMathExt.IsBetween(System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Checks if the current instance is between, but not equal to, two integers.
-            </summary>
-            <param name="n">The current integers.</param>
-            <param name="min">The lower boundary.</param>
-            <param name="max">The upper boundary.</param>
-            <returns>True if the current instance is between, but not equal to, the two integers; otherwise false.</returns>
-            <exception cref="T:System.ArgumentNullException"></exception>
-            <exception cref="T:System.ArgumentException"></exception>
-        </member>
-        <member name="M:SharpBag.BagMath.BagMathExt.IsBetweenOrEqualTo(System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Checks if the current instance is between or equal to two integers.
-            </summary>
-            <param name="n">The current integers.</param>
-            <param name="min">The minimum integer.</param>
-            <param name="max">The maximum integer.</param>
-            <returns>True if the current instance is between or equal to the two integers; otherwise false.</returns>
-            <exception cref="T:System.ArgumentException"></exception>
-        </member>
-        <member name="M:SharpBag.BagMath.BagMathExt.Round(System.Double)">
-            <summary>
-            Rounds the current instance.
-            </summary>
-            <param name="d">The current instance.</param>
-            <returns>The current instance rounded.</returns>
-        </member>
-        <member name="M:SharpBag.BagMath.BagMathExt.Round(System.Double,System.Int32)">
-            <summary>
-            Rounds the current instance.
-            </summary>
-            <param name="d">The current instance.</param>
-            <param name="digits">Number of digits to keep after the comma.</param>
-            <returns>The current instance rounded.</returns>
-        </member>
-        <member name="M:SharpBag.BagMath.BagMathExt.Bound(System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Gets the current instance inside the specified boundaries.
-            </summary>
-            <param name="d">The current instance.</param>
-            <param name="lower">The lower boundary.</param>
-            <param name="upper">The upper boundary.</param>
-            <returns>The current instance inside the spcified boundaries.</returns>
-        </member>
-        <member name="M:SharpBag.BagMath.BagMathExt.Bound(System.Double,System.Double,System.Double)">
-            <summary>
-            Gets the current instance inside the specified boundaries.
-            </summary>
-            <param name="d">The current instance.</param>
-            <param name="lower">The lower boundary.</param>
-            <param name="upper">The upper boundary.</param>
-            <returns>The current instance inside the spcified boundaries.</returns>
-        </member>
-        <member name="T:SharpBag.BagDatabase.BagDBExt">
-            <summary>
-            Extension methods for the BagDB class.
-            </summary>
-        </member>
-        <member name="M:SharpBag.BagDatabase.BagDBExt.ToSQLDateTime(System.DateTime)">
-            <summary>
-            Converts a DateTime object into a SQL compatible string.
-            </summary>
-            <param name="dt">The current instance.</param>
-            <returns>An SQL formatted string.</returns>
-        </member>
-        <member name="M:SharpBag.BagDatabase.BagDBExt.ToSQL(System.Data.DataTable,System.String)">
-            <summary>
-            Generates a SQL insert query for the current DataTable instance.
-            </summary>
-            <param name="dt">The current instance.</param>
-            <param name="schema">The schema to insert into.</param>
-            <returns>An SQL string.</returns>
-        </member>
-        <member name="M:SharpBag.BagDatabase.BagDBExt.InsertInto(System.Data.DataTable,SharpBag.BagDatabase.BagDB)">
-            <summary>
-            Inserts the current DataTable instance into the specified MySQL database.
-            </summary>
-            <param name="dt">The current instance.</param>
-            <param name="db">The MySQL database to insert into.</param>
-            <returns>How many rows were affected.</returns>
-        </member>
-        <member name="M:SharpBag.BagDatabase.BagDBExt.SQLEscape(System.String)">
-            <summary>
-            Escapes the string for SQL insertion.
-            </summary>
-            <param name="s">The current instance.</param>
-            <returns>The escaped string.</returns>
-        </member>
-        <member name="T:SharpBag.BagNet.BagNetExt">
-            <summary>
-            Extensions methods for the BagNet class.
-            </summary>
-        </member>
-        <member name="M:SharpBag.BagNet.BagNetExt.Download(System.Uri)">
-            <summary>
-            Downloads the source of the Uri and returns it as a string.
-            </summary>
-            <param name="page">The source of the Uri.</param>
-            <returns></returns>
-        </member>
-        <member name="M:SharpBag.BagNet.BagNetExt.HtmlSafe(System.String)">
-            <summary>
-            Makes the current instance HTML safe.
-            </summary>
-            <param name="s">The current instance.</param>
-            <returns>An HTML safe string.</returns>
-        </member>
-        <member name="M:SharpBag.BagNet.BagNetExt.HtmlSafe(System.String,System.Boolean)">
-            <summary>
-            Makes the current instance HTML safe.
-            </summary>
-            <param name="s">The current instance.</param>
-            <param name="all">Whether to make all characters entities or just those needed.</param>
-            <returns>An HTML safe string.</returns>
-        </member>
-        <member name="M:SharpBag.BagNet.BagNetExt.HtmlSafe(System.String,System.Boolean,System.Boolean)">
-            <summary>
-            Makes the current instance HTML safe.
-            </summary>
-            <param name="s">The current instance.</param>
-            <param name="all">Whether to make all characters entities or just those needed.</param>
-            <param name="replace">Whether or not to encode spaces and line breaks.</param>
-            <returns>An HTML safe string.</returns>
         </member>
     </members>
 </doc>
