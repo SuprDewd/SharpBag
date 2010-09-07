@@ -148,6 +148,12 @@
             <param name="port">The port.</param>
             <returns>Whether the specified port number is valid and not in use.</returns>
         </member>
+        <member name="M:SharpBag.BagNet.BagNet.LocalIPAddresses">
+            <summary>
+            Returns the local machines IP addresses.
+            </summary>
+            <returns>The local machines IP addresses.</returns>
+        </member>
         <member name="T:SharpBag.BagFK.Kennitala">
             <summary>
             Klasi fyrir kennitölur.

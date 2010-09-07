@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.NetworkInformation;
 using System.Linq;
+using System.Net;
 
 namespace SharpBag.BagNet
 {
@@ -19,6 +20,15 @@ namespace SharpBag.BagNet
             if (port < 0 || port > 0xFFFF) return false;
 
             return (from i in IPGlobalProperties.GetIPGlobalProperties().GetActiveTcpConnections() where i.LocalEndPoint.Port == port select true).Count() == 0;
+        }
+
+        /// <summary>
+        /// Returns the local machines IP addresses.
+        /// </summary>
+        /// <returns>The local machines IP addresses.</returns>
+        public static IPAddress[] LocalIPAddresses()
+        {
+            return Dns.GetHostAddresses(Dns.GetHostName());
         }
     }
 }
