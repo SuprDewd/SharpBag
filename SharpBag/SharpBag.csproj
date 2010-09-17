@@ -57,6 +57,7 @@
     <Compile Include="BagFK\Stae.cs" />
     <Compile Include="BagFK\StaerstaRunuSumma.cs" />
     <Compile Include="BagFK\Tools.cs" />
+    <Compile Include="BagIO\Serialization.cs" />
     <Compile Include="BagLogging\BagConsole.cs" />
     <Compile Include="BagLogging\BagLogger.cs" />
     <Compile Include="BagMath\BagConverters\BaseConverter.cs" />
