@@ -260,6 +260,21 @@ namespace SharpBag
             var diff = end - start > 0 ? 1 : -1;
             for (var current = start; current != end; current += diff)
                 yield return current;
+            yield return end;
+        }
+
+        /// <summary>
+        /// Generates numbers that range from the value of the current instance to the value of end.
+        /// </summary>
+        /// <param name="start">The current instance.</param>
+        /// <param name="end">The number to end at.</param>
+        /// <returns>An enumerable containing the numbers.</returns>
+        public static IEnumerable<long> To(this long start, long end)
+        {
+            var diff = end - start > 0 ? 1 : -1;
+            for (var current = start; current != end; current += diff)
+                yield return current;
+            yield return end;
         }
 
         /// <summary>
@@ -824,6 +839,22 @@ namespace SharpBag
             }
 
             return ints.ToArray();
+        }
+
+        /// <summary>
+        /// Gets a subarray of an array.
+        /// </summary>
+        /// <typeparam name="T">The type of the enumerable.</typeparam>
+        /// <param name="array">The array.</param>
+        /// <param name="start">The first index.</param>
+        /// <param name="end">The last index.</param>
+        /// <returns>A subarray of the array.</returns>
+        public static IEnumerable<T> Range<T>(this IEnumerable<T> array, int start, int end)
+        {
+            for (int i = start; i <= end; i++)
+            {
+                yield return array.ElementAt(i);
+            }
         }
     }
 }

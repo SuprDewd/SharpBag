@@ -758,6 +758,14 @@
             <param name="end">The number to end at.</param>
             <returns>An enumerable containing the numbers.</returns>
         </member>
+        <member name="M:SharpBag.BagExtensions.To(System.Int64,System.Int64)">
+            <summary>
+            Generates numbers that range from the value of the current instance to the value of end.
+            </summary>
+            <param name="start">The current instance.</param>
+            <param name="end">The number to end at.</param>
+            <returns>An enumerable containing the numbers.</returns>
+        </member>
         <member name="M:SharpBag.BagExtensions.To(System.Char,System.Char)">
             <summary>
             Generates chars that range from the current instance to end.
@@ -1063,6 +1071,16 @@
             <returns>An array of the ints.</returns>
             <exception cref="T:System.ArgumentNullException"></exception>
         </member>
+        <member name="M:SharpBag.BagExtensions.Range``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32)">
+            <summary>
+            Gets a subarray of an array.
+            </summary>
+            <typeparam name="T">The type of the enumerable.</typeparam>
+            <param name="array">The array.</param>
+            <param name="start">The first index.</param>
+            <param name="end">The last index.</param>
+            <returns>A subarray of the array.</returns>
+        </member>
         <member name="T:SharpBag.BagFK.Stæ">
             <summary>
             Stærðfræði-tengd method
@@ -1352,6 +1370,20 @@
             Extensions methods for the BagMath class.
             </summary>
         </member>
+        <member name="M:SharpBag.BagMath.BagMathExt.ToInfinity(System.Int64)">
+            <summary>
+            Generates numbers that range from the value of the current instance to positive infinity.
+            </summary>
+            <param name="start">The current instance.</param>
+            <returns>An enumerable containing the numbers.</returns>
+        </member>
+        <member name="M:SharpBag.BagMath.BagMathExt.ToInfinity(System.Int32)">
+            <summary>
+            Generates numbers that range from the value of the current instance to positive infinity.
+            </summary>
+            <param name="start">The current instance.</param>
+            <returns>An enumerable containing the numbers.</returns>
+        </member>
         <member name="M:SharpBag.BagMath.BagMathExt.IsBetween(System.Int32,System.Int32,System.Int32)">
             <summary>
             Checks if the current instance is between, but not equal to, two integers.
@@ -1405,21 +1437,6 @@
             <param name="lower">The lower boundary.</param>
             <param name="upper">The upper boundary.</param>
             <returns>The current instance inside the spcified boundaries.</returns>
-        </member>
-        <member name="T:SharpBag.BagMath.Fibonacci">
-            <summary>
-            A class for computing fibonacci numbers.
-            </summary>
-        </member>
-        <member name="P:SharpBag.BagMath.Fibonacci.Numbers">
-            <summary>
-            An endless source that will return fibonacci numbers.
-            </summary>
-        </member>
-        <member name="P:SharpBag.BagMath.Fibonacci.LongNumbers">
-            <summary>
-            An endless source that will return fibonacci numbers.
-            </summary>
         </member>
         <member name="T:SharpBag.BagMath.BagConverters.BitSize">
             <summary>
@@ -1683,6 +1700,42 @@
             <summary>
             The base value.
             </summary>
+        </member>
+        <member name="T:SharpBag.BagIO.Serialization">
+            <summary>
+            A static class used for object serialization.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagIO.Serialization.Serialize(System.String,System.Object)">
+            <summary>
+            Serializes an object using a binary serializer.
+            </summary>
+            <param name="fileName">The file to serialize to.</param>
+            <param name="obj">The object to serialize.</param>
+        </member>
+        <member name="M:SharpBag.BagIO.Serialization.Deserialize``1(System.String)">
+            <summary>
+            Deserializes an object using a binary deserializer.
+            </summary>
+            <typeparam name="T">The type of the object.</typeparam>
+            <param name="fileName">The file to deserialize from.</param>
+            <returns>The object.</returns>
+        </member>
+        <member name="M:SharpBag.BagIO.Serialization.XmlSerialize``1(System.String,``0)">
+            <summary>
+            Serializes an object using an xml serializer.
+            </summary>
+            <typeparam name="T">The type of the object.</typeparam>
+            <param name="fileName">The file to serialize to.</param>
+            <param name="obj">The object to serialize.</param>
+        </member>
+        <member name="M:SharpBag.BagIO.Serialization.XmlDeserialize``1(System.String)">
+            <summary>
+            Deserializes an object using an xml deserializer.
+            </summary>
+            <typeparam name="T">The type of the object.</typeparam>
+            <param name="fileName">The file to deserialize from.</param>
+            <returns>The object.</returns>
         </member>
         <member name="T:SharpBag.BagFK.Tools">
             <summary>
@@ -2070,41 +2123,56 @@
             <param name="candidate">The number to test.</param>
             <returns>Whether the number is a prime number or not.</returns>
         </member>
-        <member name="T:SharpBag.BagIO.Serialization">
+        <member name="M:SharpBag.BagMath.BagMath.IsPrime(System.Int64)">
             <summary>
-            A static class used for object serialization.
+            Checks whether a number is a prime number or not.
+            </summary>
+            <param name="candidate">The number to test.</param>
+            <returns>Whether the number is a prime number or not.</returns>
+        </member>
+        <member name="T:SharpBag.BagMath.Sources">
+            <summary>
+            A class for computing fibonacci numbers.
             </summary>
         </member>
-        <member name="M:SharpBag.BagIO.Serialization.Serialize(System.String,System.Object)">
+        <member name="P:SharpBag.BagMath.Sources.Fibonacci">
             <summary>
-            Serializes an object using a binary serializer.
+            An endless source that will return fibonacci numbers.
             </summary>
-            <param name="fileName">The file to serialize to.</param>
-            <param name="obj">The object to serialize.</param>
         </member>
-        <member name="M:SharpBag.BagIO.Serialization.Deserialize``1(System.String)">
+        <member name="P:SharpBag.BagMath.Sources.FibonacciLong">
             <summary>
-            Deserializes an object using a binary deserializer.
+            An endless source that will return fibonacci numbers.
             </summary>
-            <typeparam name="T">The type of the object.</typeparam>
-            <param name="fileName">The file to deserialize from.</param>
-            <returns>The object.</returns>
         </member>
-        <member name="M:SharpBag.BagIO.Serialization.XmlSerialize``1(System.String,``0)">
+        <member name="P:SharpBag.BagMath.Sources.Primes">
             <summary>
-            Serializes an object using an xml serializer.
+            An endless source that will return prime numbers.
             </summary>
-            <typeparam name="T">The type of the object.</typeparam>
-            <param name="fileName">The file to serialize to.</param>
-            <param name="obj">The object to serialize.</param>
         </member>
-        <member name="M:SharpBag.BagIO.Serialization.XmlDeserialize``1(System.String)">
+        <member name="P:SharpBag.BagMath.Sources.PrimesLong">
             <summary>
-            Deserializes an object using an xml deserializer.
+            An endless source that will return prime numbers.
             </summary>
-            <typeparam name="T">The type of the object.</typeparam>
-            <param name="fileName">The file to deserialize from.</param>
-            <returns>The object.</returns>
+        </member>
+        <member name="T:SharpBag.BagStrings.BagStringsExt">
+            <summary>
+            Extension methods for the BagStrings namespace.
+            </summary>
+        </member>
+        <member name="M:SharpBag.BagStrings.BagStringsExt.Reverse(System.String)">
+            <summary>
+            Reverses the current string instance.
+            </summary>
+            <param name="s">The current instance.</param>
+            <returns>The current string instance reversed.</returns>
+        </member>
+        <member name="M:SharpBag.BagStrings.BagStringsExt.ReverseXor(System.String)">
+            <summary>
+            Reverses the current string instance using XORing.
+            </summary>
+            <param name="s">The current instance.</param>
+            <returns>The current string instance reversed.</returns>
         </member>
     </members>
 </doc>

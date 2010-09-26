@@ -11,6 +11,28 @@ namespace SharpBag.BagMath
     public static class BagMathExt
     {
         /// <summary>
+        /// Generates numbers that range from the value of the current instance to positive infinity.
+        /// </summary>
+        /// <param name="start">The current instance.</param>
+        /// <returns>An enumerable containing the numbers.</returns>
+        public static IEnumerable<long> ToInfinity(this long start)
+        {
+            for (var current = start; ; current += 1)
+                yield return current;
+        }
+
+        /// <summary>
+        /// Generates numbers that range from the value of the current instance to positive infinity.
+        /// </summary>
+        /// <param name="start">The current instance.</param>
+        /// <returns>An enumerable containing the numbers.</returns>
+        public static IEnumerable<int> ToInfinity(this int start)
+        {
+            for (var current = start; ; current += 1)
+                yield return current;
+        }
+
+        /// <summary>
         /// Checks if the current instance is between, but not equal to, two integers.
         /// </summary>
         /// <param name="n">The current integers.</param>

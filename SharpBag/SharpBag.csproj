@@ -67,10 +67,11 @@
     <Compile Include="BagMath\BagConverters\Weight.cs" />
     <Compile Include="BagMath\BagMath.cs" />
     <Compile Include="BagMath\BagMathExt.cs" />
-    <Compile Include="BagMath\Fibonacci.cs" />
+    <Compile Include="BagMath\Sources.cs" />
     <Compile Include="BagNet\BagNet.cs" />
     <Compile Include="BagNet\BagNetExt.cs" />
     <Compile Include="BagS.cs" />
+    <Compile Include="BagStrings\BagStringsExt.cs" />
     <Compile Include="BagUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
