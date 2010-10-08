@@ -10,9 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SharpBag</RootNamespace>
     <AssemblyName>SharpBag</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,10 +41,12 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionDisposable.cs" />
@@ -57,6 +59,8 @@
     <Compile Include="BagFK\Stae.cs" />
     <Compile Include="BagFK\StaerstaRunuSumma.cs" />
     <Compile Include="BagFK\Tools.cs" />
+    <Compile Include="BagGames\Card.cs" />
+    <Compile Include="BagGames\CardStack.cs" />
     <Compile Include="BagIO\Serialization.cs" />
     <Compile Include="BagLogging\BagConsole.cs" />
     <Compile Include="BagLogging\BagLogger.cs" />
@@ -72,14 +76,18 @@
     <Compile Include="BagNet\BagNetExt.cs" />
     <Compile Include="BagS.cs" />
     <Compile Include="BagStrings\BagStringsExt.cs" />
+    <Compile Include="BagTorrent\Bencoding.cs" />
     <Compile Include="BagUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Diagram.cd" />
+    <None Include="README" />
+    <None Include="TODO" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="BagTorrent\" />
+    <Content Include=".gitignore" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

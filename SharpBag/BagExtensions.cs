@@ -5,6 +5,8 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows.Threading;
+using System.Threading;
 
 namespace SharpBag
 {
@@ -854,6 +856,34 @@ namespace SharpBag
             for (int i = start; i <= end; i++)
             {
                 yield return array.ElementAt(i);
+            }
+        }
+
+        /// <summary>
+        /// Simple helper extension method to marshall to correct thread if its required.
+        /// </summary>
+        /// <param name="control">The source control.</param>
+        /// <param name="methodcall">The method to call.</param>
+        public static void InvokeIfRequired(this DispatcherObject control, Action methodcall)
+        {
+            control.InvokeIfRequired(methodcall, DispatcherPriority.Normal);
+        }
+
+        /// <summary>
+        /// Simple helper extension method to marshall to correct thread if its required.
+        /// </summary>
+        /// <param name="control">The source control.</param>
+        /// <param name="methodcall">The method to call.</param>
+        /// <param name="priorityForCall">The thread priority.</param>
+        public static void InvokeIfRequired(this DispatcherObject control, Action methodcall, DispatcherPriority priorityForCall)
+        {
+            if (control.Dispatcher.Thread != Thread.CurrentThread)
+            {
+                control.Dispatcher.Invoke(priorityForCall, methodcall);
+            }
+            else
+            {
+                methodcall();
             }
         }
     }

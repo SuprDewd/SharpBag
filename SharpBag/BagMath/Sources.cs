@@ -33,7 +33,7 @@ namespace SharpBag.BagMath
         /// <summary>
         /// An endless source that will return fibonacci numbers.
         /// </summary>
-        public static IEnumerable<long> FibonacciLong
+        public static IEnumerable<long> Fibonacci64
         {
             get
             {
@@ -70,7 +70,7 @@ namespace SharpBag.BagMath
         /// <summary>
         /// An endless source that will return prime numbers.
         /// </summary>
-        public static IEnumerable<long> PrimesLong
+        public static IEnumerable<long> Primes64
         {
             get
             {
