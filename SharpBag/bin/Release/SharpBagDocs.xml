@@ -2405,6 +2405,12 @@
             The main constructor.
             </summary>
         </member>
+        <member name="M:SharpBag.BagGames.CardStack.#ctor(System.Boolean)">
+            <summary>
+            The main constructor.
+            </summary>
+            <param name="shuffle">Whether or not to shuffle the stack.</param>
+        </member>
         <member name="M:SharpBag.BagGames.CardStack.Reset">
             <summary>
             Resets the card stack.
@@ -2415,6 +2421,11 @@
             Draws the top card from the stack.
             </summary>
             <returns>The next card in the stack.</returns>
+        </member>
+        <member name="M:SharpBag.BagGames.CardStack.Shuffle">
+            <summary>
+            Shuffles the stack.
+            </summary>
         </member>
         <member name="M:SharpBag.BagGames.CardStack.Draw(System.Boolean)">
             <summary>

@@ -13,9 +13,16 @@ namespace SharpBag.BagGames
         /// <summary>
         /// The main constructor.
         /// </summary>
-        public CardStack()
+        public CardStack() : this(true) { }
+        /// <summary>
+        /// The main constructor.
+        /// </summary>
+        /// <param name="shuffle">Whether or not to shuffle the stack.</param>
+        public CardStack(bool shuffle)
         {
             this.Reset();
+
+            if (shuffle) this.Shuffle();
         }
 
         /// <summary>
@@ -41,6 +48,20 @@ namespace SharpBag.BagGames
         public Card Draw()
         {
             return this.Draw(false);
+        }
+
+        /// <summary>
+        /// Shuffles the stack.
+        /// </summary>
+        public void Shuffle()
+        {
+            IEnumerable<Card> cards = this.Shuffle(new Random());
+            base.Clear();
+
+            foreach (Card c in cards)
+            {
+                base.Push(c);
+            }
         }
 
         /// <summary>
