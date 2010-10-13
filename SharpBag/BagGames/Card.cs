@@ -110,15 +110,32 @@ namespace SharpBag.BagGames
             private set;
         }
 
+        private bool _IsDown;
+        /// <summary>
+        /// Whether the card is face down or face up.
+        /// </summary>
+        public bool IsDown { get { return this._IsDown; } set { this._IsDown = value; this.CardTurned.IfNotNull(() => this.CardTurned(this)); } }
+
+        public event Action<Card> CardTurned;
+
         /// <summary>
         /// The main constructor.
         /// </summary>
         /// <param name="type">The type of the card.</param>
         /// <param name="value">The value of the card.</param>
-        public Card(CardType type, CardValue value)
+        public Card(CardType type, CardValue value) : this(type, value, true) { }
+
+        /// <summary>
+        /// The main constructor.
+        /// </summary>
+        /// <param name="type">The type of the card.</param>
+        /// <param name="value">The value of the card.</param>
+        /// <param name="isDown">Whether the card is face down or face up.</param>
+        public Card(CardType type, CardValue value, bool isDown)
         {
             this.Type = type;
             this.Value = value;
+            this.IsDown = isDown;
         }
 
         /// <summary>

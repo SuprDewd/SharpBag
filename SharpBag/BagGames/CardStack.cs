@@ -37,10 +37,23 @@ namespace SharpBag.BagGames
         /// <summary>
         /// Draws the top card from the stack.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The next card in the stack.</returns>
         public Card Draw()
         {
-            return base.Pop();
+            return this.Draw(false);
+        }
+
+        /// <summary>
+        /// Draws the top card from the stack.
+        /// </summary>
+        /// <param name="isDown">Whether or not the card drawn should be face down or face up.</param>
+        /// <returns>The next card in the stack.</returns>
+        public Card Draw(bool isDown)
+        {
+            Card c = base.Pop();
+            c.IsDown = isDown;
+
+            return c;
         }
     }
 }

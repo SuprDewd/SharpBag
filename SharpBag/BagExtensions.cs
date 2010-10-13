@@ -408,6 +408,34 @@ namespace SharpBag
         #endregion
 
         /// <summary>
+        /// Invokes the specified action if the current object is not null.
+        /// </summary>
+        /// <typeparam name="T">The type of the object.</typeparam>
+        /// <param name="obj">The object.</param>
+        /// <param name="action">The action.</param>
+        public static void IfNotNull<T>(this T obj, Action<T> action) where T : class
+        {
+            if (obj != null)
+            {
+                action(obj);
+            }
+        }
+
+        /// <summary>
+        /// Invokes the specified action if the current object is not null.
+        /// </summary>
+        /// <typeparam name="T">The type of the object.</typeparam>
+        /// <param name="obj">The object.</param>
+        /// <param name="action">The action.</param>
+        public static void IfNotNull<T>(this T obj, Action action) where T : class
+        {
+            if (obj != null)
+            {
+                action();
+            }
+        }
+
+        /// <summary>
         /// Converts the current instance into an enumerable.
         /// </summary>
         /// <typeparam name="T">The type of elements in the current instance.</typeparam>
