@@ -96,7 +96,7 @@ namespace SharpBag.BagTorrent
                 case 'i': return ReadInteger();
                 case 'l': return ReadList();
                 case 'd': return ReadDictionary();
-                default: throw Error(new Exception());
+                default: throw Error();
             }
         }
 
@@ -164,7 +164,7 @@ namespace SharpBag.BagTorrent
         {
             Index++;
             int end = BencodedString.IndexOf('e', Index);
-            if (end == -1) throw Error(new Exception());
+            if (end == -1) throw Error();
             long Integer = 0;
             try
             {
@@ -189,7 +189,7 @@ namespace SharpBag.BagTorrent
             try
             {
                 semicolon = BencodedString.IndexOf(':', Index);
-                if (semicolon == -1) throw Error(new Exception());
+                if (semicolon == -1) throw Error();
                 length = Convert.ToInt32(BencodedString.Substring(Index, semicolon - Index));
             }
             catch (Exception e)
@@ -217,7 +217,16 @@ namespace SharpBag.BagTorrent
         /// <returns>An exception that can then be thrown.</returns>
         private Exception Error(Exception e)
         {
-            return new BencodingException("Bencoded string invalid", e);
+            return new BencodingException("Bencoded string invalid.", e);
+        }
+
+        /// <summary>
+        /// Generates an error.
+        /// </summary>
+        /// <returns>An exception that can then be thrown.</returns>
+        private Exception Error()
+        {
+            return new BencodingException("Bencoded string invalid.");
         }
     }
 
@@ -285,7 +294,7 @@ namespace SharpBag.BagTorrent
         /// <returns>The bencoded equivalent of the integer.</returns>
         public StringBuilder ToBencodedString(StringBuilder u)
         {
-            return u.Append("i").Append(Value.ToString()).Append("e");
+            return u.Append('i').Append(Value.ToString()).Append('e');
         }
 
         /// <see cref="Object.GetHashCode()"/>
@@ -362,7 +371,7 @@ namespace SharpBag.BagTorrent
         /// <returns>The bencoded equivalent of the string.</returns>
         public StringBuilder ToBencodedString(StringBuilder u)
         {
-            return u.Append(this.Value.Length).Append(":").Append(this.Value);
+            return u.Append(this.Value.Length).Append(':').Append(this.Value);
         }
 
         /// <see cref="Object.GetHashCode()"/>
@@ -415,12 +424,12 @@ namespace SharpBag.BagTorrent
         /// <returns>The bencoded equivalent of the list.</returns>
         public StringBuilder ToBencodedString(StringBuilder u)
         {
-            u.Append("l");
+            u.Append('l');
             foreach (BElement element in base.ToArray())
             {
                 element.ToBencodedString(u);
             }
-            return u.Append("e");
+            return u.Append('e');
         }
 
         /// <summary>
@@ -463,13 +472,13 @@ namespace SharpBag.BagTorrent
         /// <returns>The bencoded equivalent of the dictionary.</returns>
         public StringBuilder ToBencodedString(StringBuilder u)
         {
-            u.Append("d");
+            u.Append('d');
             for (int i = 0; i < base.Count; i++)
             {
                 base.Keys.ElementAt(i).ToBencodedString(u);
                 base.Values.ElementAt(i).ToBencodedString(u);
             }
-            return u.Append("e");
+            return u.Append('e');
         }
 
         /// <summary>
