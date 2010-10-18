@@ -914,5 +914,25 @@ namespace SharpBag
                 methodcall();
             }
         }
+
+        /// <summary>
+        /// Applies the specified function on each element of the current instance and returns a new collection containing the results.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the current instance.</typeparam>
+        /// <typeparam name="TResult">The type of the result collection.</typeparam>
+        /// <param name="c">The current instance.</param>
+        /// <param name="func">The function to apply on each element.</param>
+        /// <returns>A new collection containing the results.</returns>
+        public static IEnumerable<TResult> Map<TSource, TResult>(this IEnumerable<TSource> c, Func<TSource, TResult> func)
+        {
+            List<TResult> res = new List<TResult>();
+
+            foreach (TSource item in c)
+            {
+                res.Add(func(item));
+            }
+
+            return res;
+        }
     }
 }

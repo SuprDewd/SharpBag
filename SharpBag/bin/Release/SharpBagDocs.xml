@@ -1533,6 +1533,16 @@
             <param name="methodcall">The method to call.</param>
             <param name="priorityForCall">The thread priority.</param>
         </member>
+        <member name="M:SharpBag.BagExtensions.Map``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+            <summary>
+            Applies the specified function on each element of the current instance and returns a new collection containing the results.
+            </summary>
+            <typeparam name="TSource">The type of the current instance.</typeparam>
+            <typeparam name="TResult">The type of the result collection.</typeparam>
+            <param name="c">The current instance.</param>
+            <param name="func">The function to apply on each element.</param>
+            <returns>A new collection containing the results.</returns>
+        </member>
         <member name="T:SharpBag.BagStrings.BagStringsExt">
             <summary>
             Extension methods for the BagStrings namespace.
