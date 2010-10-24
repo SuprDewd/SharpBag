@@ -934,5 +934,25 @@ namespace SharpBag
 
             return res;
         }
+
+        /// <summary>
+        /// Unions all elements in the current instance and the specified collection.
+        /// </summary>
+        /// <typeparam name="T">The type of the collections.</typeparam>
+        /// <param name="source">The current instance.</param>
+        /// <param name="other">The collection to union.</param>
+        /// <returns>The current instance and the specified collection unioned.</returns>
+        public static IEnumerable<T> UnionAll<T>(this IEnumerable<T> source, IEnumerable<T> other)
+        {
+            foreach (T item in source)
+            {
+                yield return item;
+            }
+
+            foreach (T item in other)
+            {
+                yield return item;
+            }
+        }
     }
 }
