@@ -1,69 +1,69 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="SharpBag.BagDatabase.BagDB">
+  <Class Name="SharpBag.Database.BagDB">
     <Position X="11" Y="16" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAIAAAAAAAAAUAAQAAAIAEAAEAAAgCAAAABgCACAA=</HashCode>
-      <FileName>BagDatabase\BagDB.cs</FileName>
+      <FileName>Database\BagDB.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SharpBag.BagDatabase.BagDBExt">
+  <Class Name="SharpBag.Database.BagDBExt">
     <Position X="41.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAIAAAQAAAAAA=</HashCode>
-      <FileName>BagDatabase\BagDBExt.cs</FileName>
+      <FileName>Database\BagDBExt.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SharpBag.BagFK.DrawObjects">
+  <Class Name="SharpBag.FK.DrawObjects">
     <Position X="25.5" Y="16" Width="1.5" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <NestedTypes>
-      <Enum Name="SharpBag.BagFK.DrawObjects.TriangleType" Collapsed="true">
+      <Enum Name="SharpBag.FK.DrawObjects.TriangleType" Collapsed="true">
         <TypeIdentifier>
-          <NewMemberFileName>BagFK\DrawObjects.cs</NewMemberFileName>
+          <NewMemberFileName>FK\DrawObjects.cs</NewMemberFileName>
         </TypeIdentifier>
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
-      <FileName>BagFK\DrawObjects.cs</FileName>
+      <FileName>FK\DrawObjects.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SharpBag.BagFK.Kennitala">
+  <Class Name="SharpBag.FK.Kennitala">
     <Position X="5.5" Y="16" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAAAAAAAEAAAQgAAAAAAQAIgABAAAAACCAAA=</HashCode>
-      <FileName>BagFK\Kennitala.cs</FileName>
+      <FileName>FK\Kennitala.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SharpBag.BagFK.Minesweeper">
+  <Class Name="SharpBag.FK.Minesweeper">
     <Position X="0.5" Y="16" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAEAAAA=</HashCode>
-      <FileName>BagFK\Minesweeper.cs</FileName>
+      <FileName>FK\Minesweeper.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SharpBag.BagFK.Stæ">
+  <Class Name="SharpBag.FK.Stæ">
     <Position X="28.25" Y="16" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
-      <FileName>BagFK\Stae.cs</FileName>
+      <FileName>FK\Stae.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SharpBag.BagFK.StærstaRunuSumma">
+  <Class Name="SharpBag.FK.StærstaRunuSumma">
     <Position X="30.75" Y="16" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAAAAAAAAQAAAAAAAEQAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BagFK\StaerstaRunuSumma.cs</FileName>
+      <FileName>FK\StaerstaRunuSumma.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SharpBag.BagFK.Tools">
+  <Class Name="SharpBag.FK.Tools">
     <Position X="3" Y="16" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAIAAAAAABAAAA=</HashCode>
-      <FileName>BagFK\Tools.cs</FileName>
+      <FileName>FK\Tools.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SharpBag.BagLogging.BagConsole">
@@ -356,7 +356,7 @@
   <Class Name="SharpBag.BagExtensions">
     <Position X="37.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAIhKAABIgAACASAgAAAUBAAHCAICgIyABgFAgggFAA=</HashCode>
+      <HashCode>GAIhKAABIhAACASAgAAAUBAAHCAICgIyABgFAgkgFAA=</HashCode>
       <FileName>BagExtensions.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -374,6 +374,73 @@
       <FileName>BagUtils.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="SharpBag.BagGames.Card">
+    <Position X="32.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAYAAAAAAAAAAAgAAAAAAAAAAAAQEgAAAAAAA=</HashCode>
+      <FileName>BagGames\Card.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Type" />
+      <Property Name="Value" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SharpBag.BagGames.CardStack">
+    <Position X="34.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>BagGames\CardStack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagIO.Serialization">
+    <Position X="29.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAACBAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>BagIO\Serialization.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagMath.Sources">
+    <Position X="29.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQABAEAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>BagMath\Sources.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.BagStrings.BagStringsExt">
+    <Position X="37.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>BagStrings\BagStringsExt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.Patterns.EagerSingleton&lt;T&gt;">
+    <Position X="26.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Patterns\EagerSingleton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.Patterns.LazySingleton&lt;T&gt;">
+    <Position X="24.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Patterns\LazySingleton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.Patterns.LockedLazySingleton&lt;T&gt;">
+    <Position X="24.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Patterns\LockedLazySingleton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpBag.Patterns.Singleton&lt;T&gt;">
+    <Position X="25.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAABAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Patterns\Singleton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="SharpBag.BagMath.BagConverters.Temperature">
     <Position X="19.25" Y="6" Width="1.5" />
     <TypeIdentifier>
@@ -388,5 +455,19 @@
       <FileName>BagTorrent\Bencoding.cs</FileName>
     </TypeIdentifier>
   </Interface>
+  <Enum Name="SharpBag.BagGames.CardType">
+    <Position X="32.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAgAAAAACAAAAACA=</HashCode>
+      <FileName>BagGames\Card.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SharpBag.BagGames.CardValue">
+    <Position X="34.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAggAAAEAAEAIAAAAAFBAAAAAgAAAgAAEE=</HashCode>
+      <FileName>BagGames\Card.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
