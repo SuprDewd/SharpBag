@@ -118,5 +118,21 @@ namespace SharpBag.Math
                 }
             }
         }
+        /// <summary>
+        /// An endless source for triangle numbers.
+        /// </summary>
+        public static IEnumerable<int> TriangleNumbers
+        {
+            get
+            {
+                int triangle = 0;
+                for (int i = 1; ; i++)
+                {
+                    triangle += i;
+                    yield return triangle;
+                }
+            }
+        }
+
     }
 }
