@@ -319,7 +319,7 @@ namespace SharpBag.Torrent
             return this.Value.ToString();
         }
 
-        /// <see cref="IComparable<BInteger>.CompareTo(object)"/>
+        /// <see cref="IComparable.CompareTo(object)"/>
         public int CompareTo(BInteger other)
         {
             return this.Value.CompareTo(other.Value);
@@ -396,7 +396,7 @@ namespace SharpBag.Torrent
             return this.Value.ToString();
         }
 
-        /// <see cref="IComparable<BString>.CompareTo(object)"/>
+        /// <see cref="IComparable.CompareTo(object)"/>
         public int CompareTo(BString other)
         {
             return this.Value.CompareTo(other.Value);

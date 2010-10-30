@@ -4,8 +4,6 @@
   Make abstract class for Temperature.
   Add methods and classes from Euler Problems.
   Put Bencoding classes into seperate files, again, and upload to gist.github.com and change Torrent Protocol link.
-  Update BagDB to support MySQL and MSSQL. Is there an interface between the two?
-  Update API.
 
  BUGS:
  
@@ -20,3 +18,5 @@
   Update README.
   Sort extension methods into static extension classes in correct namespaces.
   Put Bencoding classes back into one file for easier snipplr.com upload.
+  Update BagDB to support MySQL and MSSQL. Is there an interface between the two?
+  Update API.

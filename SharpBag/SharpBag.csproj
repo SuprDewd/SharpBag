@@ -50,8 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionDisposable.cs" />
-    <Compile Include="Database\BagDB.cs" />
-    <Compile Include="Database\BagDBExt.cs" />
+    <Compile Include="Database\MSSqlDB.cs" />
+    <Compile Include="Database\GenericDB.cs" />
+    <Compile Include="Database\DatabaseExtensions.cs" />
+    <Compile Include="Database\MySqlDB.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FK\DrawObjects.cs" />
     <Compile Include="FK\Kennitala.cs" />

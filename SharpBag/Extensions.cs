@@ -438,6 +438,22 @@ namespace SharpBag
         #endregion
 
         /// <summary>
+        /// Checks whether the array contains the specified object.
+        /// </summary>
+        /// <param name="a">The array.</param>
+        /// <param name="o">The object.</param>
+        /// <returns>Whether the array contains the specified object.</returns>
+        public static bool Contains(this Array a, object o)
+        {
+            foreach (var item in a)
+            {
+                if (item == o) return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// Invokes the specified action if the current object is not null.
         /// </summary>
         /// <typeparam name="T">The type of the object.</typeparam>
