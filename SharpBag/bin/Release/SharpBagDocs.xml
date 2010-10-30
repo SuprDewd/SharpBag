@@ -475,22 +475,6 @@
             <param name="s">The current instance.</param>
             <returns>The current instance as a bool.</returns>
         </member>
-        <member name="M:SharpBag.Extensions.To(System.Int32,System.Int32)">
-            <summary>
-            Generates numbers that range from the value of the current instance to the value of end.
-            </summary>
-            <param name="start">The current instance.</param>
-            <param name="end">The number to end at.</param>
-            <returns>An enumerable containing the numbers.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.To(System.Int64,System.Int64)">
-            <summary>
-            Generates numbers that range from the value of the current instance to the value of end.
-            </summary>
-            <param name="start">The current instance.</param>
-            <param name="end">The number to end at.</param>
-            <returns>An enumerable containing the numbers.</returns>
-        </member>
         <member name="M:SharpBag.Extensions.To(System.Int32,System.Int32,System.Int32)">
             <summary>
             Generates numbers that range from the value of the current instance to the value of end.
@@ -500,7 +484,24 @@
             <param name="step">The step to take on each iteration.</param>
             <returns>An enumerable containing the numbers.</returns>
         </member>
-        <member name="M:SharpBag.Extensions.To(System.Int64,System.Int64,System.Int32)">
+        <member name="M:SharpBag.Extensions.To(System.Int64,System.Int64,System.Int64)">
+            <summary>
+            Generates numbers that range from the value of the current instance to the value of end.
+            </summary>
+            <param name="start">The current instance.</param>
+            <param name="end">The number to end at.</param>
+            <param name="step">The step to take on each iteration.</param>
+            <returns>An enumerable containing the numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Extensions.To(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+            <summary>
+            Generates numbers that range from the value of the current instance to the value of end.
+            </summary>
+            <param name="start">The current instance.</param>
+            <param name="end">The number to end at.</param>
+            <returns>An enumerable containing the numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Extensions.To(System.Numerics.BigInteger,System.Numerics.BigInteger,System.Numerics.BigInteger)">
             <summary>
             Generates numbers that range from the value of the current instance to the value of end.
             </summary>

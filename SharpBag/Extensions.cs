@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Threading;
 using System.Threading;
+using System.Numerics;
 
 namespace SharpBag
 {
@@ -256,37 +257,9 @@ namespace SharpBag
         /// </summary>
         /// <param name="start">The current instance.</param>
         /// <param name="end">The number to end at.</param>
-        /// <returns>An enumerable containing the numbers.</returns>
-        public static IEnumerable<int> To(this int start, int end)
-        {
-            var diff = end - start > 0 ? 1 : -1;
-            for (var current = start; current != end; current += diff)
-                yield return current;
-            yield return end;
-        }
-
-        /// <summary>
-        /// Generates numbers that range from the value of the current instance to the value of end.
-        /// </summary>
-        /// <param name="start">The current instance.</param>
-        /// <param name="end">The number to end at.</param>
-        /// <returns>An enumerable containing the numbers.</returns>
-        public static IEnumerable<long> To(this long start, long end)
-        {
-            var diff = end - start > 0 ? 1 : -1;
-            for (var current = start; current != end; current += diff)
-                yield return current;
-            yield return end;
-        }
-
-        /// <summary>
-        /// Generates numbers that range from the value of the current instance to the value of end.
-        /// </summary>
-        /// <param name="start">The current instance.</param>
-        /// <param name="end">The number to end at.</param>
         /// <param name="step">The step to take on each iteration.</param>
         /// <returns>An enumerable containing the numbers.</returns>
-        public static IEnumerable<int> To(this int start, int end, int step)
+        public static IEnumerable<int> To(this int start, int end, int step = 1)
         {
             var diff = end - start > 0 ? System.Math.Abs(step) : -System.Math.Abs(step);
             for (var current = start; current != end; current += diff)
@@ -301,9 +274,35 @@ namespace SharpBag
         /// <param name="end">The number to end at.</param>
         /// <param name="step">The step to take on each iteration.</param>
         /// <returns>An enumerable containing the numbers.</returns>
-        public static IEnumerable<long> To(this long start, long end, int step)
+        public static IEnumerable<long> To(this long start, long end, long step = 1)
         {
             var diff = end - start > 0 ? System.Math.Abs(step) : -System.Math.Abs(step);
+            for (var current = start; current != end; current += diff)
+                yield return current;
+            yield return end;
+        }
+
+        /// <summary>
+        /// Generates numbers that range from the value of the current instance to the value of end.
+        /// </summary>
+        /// <param name="start">The current instance.</param>
+        /// <param name="end">The number to end at.</param>
+        /// <returns>An enumerable containing the numbers.</returns>
+        public static IEnumerable<BigInteger> To(this BigInteger start, BigInteger end)
+        {
+            return start.To(end, BigInteger.One);
+        }
+
+        /// <summary>
+        /// Generates numbers that range from the value of the current instance to the value of end.
+        /// </summary>
+        /// <param name="start">The current instance.</param>
+        /// <param name="end">The number to end at.</param>
+        /// <param name="step">The step to take on each iteration.</param>
+        /// <returns>An enumerable containing the numbers.</returns>
+        public static IEnumerable<BigInteger> To(this BigInteger start, BigInteger end, BigInteger step)
+        {
+            var diff = end - start > 0 ? BigInteger.Abs(step) : -BigInteger.Abs(step);
             for (var current = start; current != end; current += diff)
                 yield return current;
             yield return end;
