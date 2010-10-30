@@ -39,6 +39,18 @@ namespace SharpBag
             return result(s);
         }
 
+        /// <summary>
+        /// Creates an IEnumerable from the specified objects.
+        /// </summary>
+        /// <typeparam name="T">The type of the IEnumerable to create.</typeparam>
+        /// <param name="objects">The objects.</param>
+        /// <returns>The IEnumerable.</returns>
+        public static IEnumerable<T> CreateIEnumerable<T>(params T[] objects)
+        {
+            return objects;
+        }
+
+
         #region Igor Ostrovsky
 
         /// <summary>

@@ -280,6 +280,36 @@ namespace SharpBag
         }
 
         /// <summary>
+        /// Generates numbers that range from the value of the current instance to the value of end.
+        /// </summary>
+        /// <param name="start">The current instance.</param>
+        /// <param name="end">The number to end at.</param>
+        /// <param name="step">The step to take on each iteration.</param>
+        /// <returns>An enumerable containing the numbers.</returns>
+        public static IEnumerable<int> To(this int start, int end, int step)
+        {
+            var diff = end - start > 0 ? System.Math.Abs(step) : -System.Math.Abs(step);
+            for (var current = start; current != end; current += diff)
+                yield return current;
+            yield return end;
+        }
+
+        /// <summary>
+        /// Generates numbers that range from the value of the current instance to the value of end.
+        /// </summary>
+        /// <param name="start">The current instance.</param>
+        /// <param name="end">The number to end at.</param>
+        /// <param name="step">The step to take on each iteration.</param>
+        /// <returns>An enumerable containing the numbers.</returns>
+        public static IEnumerable<long> To(this long start, long end, int step)
+        {
+            var diff = end - start > 0 ? System.Math.Abs(step) : -System.Math.Abs(step);
+            for (var current = start; current != end; current += diff)
+                yield return current;
+            yield return end;
+        }
+
+        /// <summary>
         /// Generates chars that range from the current instance to end.
         /// </summary>
         /// <param name="start">The current instance.</param>
