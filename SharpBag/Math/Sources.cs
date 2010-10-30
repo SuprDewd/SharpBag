@@ -118,6 +118,7 @@ namespace SharpBag.Math
                 }
             }
         }
+
         /// <summary>
         /// An endless source for triangle numbers.
         /// </summary>
@@ -134,5 +135,36 @@ namespace SharpBag.Math
             }
         }
 
+        /// <summary>
+        /// An endless source for triangle numbers.
+        /// </summary>
+        public static IEnumerable<long> TriangleNumbers64
+        {
+            get
+            {
+                long triangle = 0;
+                for (long i = 1; ; i++)
+                {
+                    triangle += i;
+                    yield return triangle;
+                }
+            }
+        }
+
+        /// <summary>
+        /// An endless source for triangle numbers.
+        /// </summary>
+        public static IEnumerable<BigInteger> TriangleNumbersBig
+        {
+            get
+            {
+                BigInteger triangle = 0;
+                for (BigInteger i = 1; ; i++)
+                {
+                    triangle += i;
+                    yield return triangle;
+                }
+            }
+        }
     }
 }
