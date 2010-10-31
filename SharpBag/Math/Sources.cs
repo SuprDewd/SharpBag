@@ -1,13 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Numerics;
+using SharpBag.Math;
+using System.Linq;
 
 namespace SharpBag.Math
 {
     /// <summary>
-    /// A class for computing fibonacci numbers.
+    /// A class for number sources.
     /// </summary>
     public static class Sources
     {
+        #region Fibonacci numbers
+
         /// <summary>
         /// An endless source that will return fibonacci numbers.
         /// </summary>
@@ -77,8 +81,12 @@ namespace SharpBag.Math
             }
         }
 
+        #endregion
+
+        #region Prime numbers
+
         /// <summary>
-        /// An endless source that will return prime numbers.
+        /// A possibly endless source that will return prime numbers.
         /// </summary>
         public static IEnumerable<int> Primes
         {
@@ -92,7 +100,7 @@ namespace SharpBag.Math
         }
 
         /// <summary>
-        /// An endless source that will return prime numbers.
+        /// A possibly endless source that will return prime numbers.
         /// </summary>
         public static IEnumerable<long> Primes64
         {
@@ -106,7 +114,7 @@ namespace SharpBag.Math
         }
 
         /// <summary>
-        /// An endless source that will return prime numbers.
+        /// A possibly endless source that will return prime numbers.
         /// </summary>
         public static IEnumerable<BigInteger> PrimesBig
         {
@@ -118,6 +126,10 @@ namespace SharpBag.Math
                 }
             }
         }
+
+        #endregion
+
+        #region Triangle numbers
 
         /// <summary>
         /// An endless source for triangle numbers.
@@ -166,5 +178,136 @@ namespace SharpBag.Math
                 }
             }
         }
+
+        #endregion
+
+        #region Perfect numbers
+
+        /// <summary>
+        /// An endless source for perfect numbers.
+        /// </summary>
+        public static IEnumerable<int> PerfectNumbers
+        {
+            get
+            {
+                return from i in 1.ToInfinity()
+                       where i.FactorsButSelf().Sum() == i
+                       select i;
+            }
+        }
+
+        /// <summary>
+        /// An endless source for perfect numbers.
+        /// </summary>
+        public static IEnumerable<long> PerfectNumbers64
+        {
+            get
+            {
+                return from i in 1L.ToInfinity()
+                       where i.FactorsButSelf().Sum() == i
+                       select i;
+            }
+        }
+
+        /// <summary>
+        /// An endless source for perfect numbers.
+        /// </summary>
+        public static IEnumerable<BigInteger> PerfectNumbersBig
+        {
+            get
+            {
+                return from i in BigInteger.One.ToInfinity()
+                       where i.FactorsButSelf().Aggregate(BigInteger.Zero, (a, b) => a + b) == i
+                       select i;
+            }
+        }
+
+        #endregion
+
+        #region Deficient numbers
+
+        /// <summary>
+        /// An endless source for deficient numbers.
+        /// </summary>
+        public static IEnumerable<int> DeficientNumbers
+        {
+            get
+            {
+                return from i in 1.ToInfinity()
+                       where i.FactorsButSelf().Sum() < i
+                       select i;
+            }
+        }
+
+        /// <summary>
+        /// An endless source for deficient numbers.
+        /// </summary>
+        public static IEnumerable<long> DeficientNumbers64
+        {
+            get
+            {
+                return from i in 1L.ToInfinity()
+                       where i.FactorsButSelf().Sum() < i
+                       select i;
+            }
+        }
+
+        /// <summary>
+        /// An endless source for deficient numbers.
+        /// </summary>
+        public static IEnumerable<BigInteger> DeficientNumbersBig
+        {
+            get
+            {
+                return from i in BigInteger.One.ToInfinity()
+                       where i.FactorsButSelf().Aggregate(BigInteger.Zero, (a, n) => a + n) < i
+                       select i;
+            }
+        }
+
+        #endregion
+
+        #region Abundant number
+
+        /// <summary>
+        /// An endless source for abundant number
+        /// </summary>
+        public static IEnumerable<int> AbundantNumbers
+        {
+            get
+            {
+                return from i in 1.ToInfinity()
+                       where i.FactorsButSelf().Sum() > i
+                       select i;
+            }
+        }
+
+        /// <summary>
+        /// An endless source for abundant number
+        /// </summary>
+        public static IEnumerable<long> AbundantNumbers64
+        {
+            get
+            {
+                return from i in 1L.ToInfinity()
+                       where i.FactorsButSelf().Sum() > i
+                       select i;
+            }
+        }
+
+        /// <summary>
+        /// An endless source for abundant number
+        /// </summary>
+        public static IEnumerable<BigInteger> AbundantNumbersBig
+        {
+            get
+            {
+                return from i in BigInteger.One.ToInfinity()
+                       where i.FactorsButSelf().Aggregate(BigInteger.Zero, (a, n) => a + n) > i
+                       select i;
+            }
+        }
+
+        #endregion
     }
 }

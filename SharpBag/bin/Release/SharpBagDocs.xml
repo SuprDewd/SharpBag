@@ -882,6 +882,17 @@
             <param name="function">The function to perform on each element.</param>
             <returns>The current instance.</returns>
         </member>
+        <member name="M:SharpBag.Extensions.Subarray(System.Int32[0:,0:],System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Gets a subarray from the current instance.
+            </summary>
+            <param name="a">The current instance.</param>
+            <param name="x1">X-coordinate 1.</param>
+            <param name="y1">Y-coordinate 1.</param>
+            <param name="x2">X-coordinate 2.</param>
+            <param name="y2">Y-coordinate 2.</param>
+            <returns>The subarray.</returns>
+        </member>
         <member name="T:SharpBag.Math.MathExtensions">
             <summary>
             Extensions methods for the BagMath class.
@@ -901,7 +912,14 @@
             <param name="start">The current instance.</param>
             <returns>An enumerable containing the numbers.</returns>
         </member>
-        <member name="M:SharpBag.Math.MathExtensions.ToInfinity(System.Int64,System.Int32)">
+        <member name="M:SharpBag.Math.MathExtensions.ToInfinity(System.Numerics.BigInteger)">
+            <summary>
+            Generates numbers that range from the value of the current instance to positive infinity.
+            </summary>
+            <param name="start">The current instance.</param>
+            <returns>An enumerable containing the numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.ToInfinity(System.Int64,System.Int64)">
             <summary>
             Generates numbers that range from the value of the current instance to positive infinity.
             </summary>
@@ -910,6 +928,14 @@
             <returns>An enumerable containing the numbers.</returns>
         </member>
         <member name="M:SharpBag.Math.MathExtensions.ToInfinity(System.Int32,System.Int32)">
+            <summary>
+            Generates numbers that range from the value of the current instance to positive infinity.
+            </summary>
+            <param name="start">The current instance.</param>
+            <param name="step">The step to take on each iteration.</param>
+            <returns>An enumerable containing the numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.ToInfinity(System.Numerics.BigInteger,System.Numerics.BigInteger)">
             <summary>
             Generates numbers that range from the value of the current instance to positive infinity.
             </summary>
@@ -937,6 +963,27 @@
             <param name="max">The maximum integer.</param>
             <returns>True if the current instance is between or equal to the two integers; otherwise false.</returns>
             <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.CollatzCount(System.Int32)">
+            <summary>
+            Returns the Collatz count.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>The Collatz count.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.CollatzCount(System.Int64)">
+            <summary>
+            Returns the Collatz count.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>The Collatz count.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.CollatzCount(System.Numerics.BigInteger)">
+            <summary>
+            Returns the Collatz count.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>The Collatz count.</returns>
         </member>
         <member name="M:SharpBag.Math.MathExtensions.Round(System.Double)">
             <summary>
@@ -970,6 +1017,165 @@
             <param name="lower">The lower boundary.</param>
             <param name="upper">The upper boundary.</param>
             <returns>The current instance inside the spcified boundaries.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.DivisableBy(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Whether the current instance is divisable by all the specified numbers.
+            </summary>
+            <param name="i">The current instance.</param>
+            <param name="from">The smallest number.</param>
+            <param name="to">The largest number.</param>
+            <returns>Whether the current instance is divisable by all the specified numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.DivisableBy(System.Int32,System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Whether the current instance is divisable by all the specified numbers.
+            </summary>
+            <param name="i">The current instance.</param>
+            <param name="nums">The numbers.</param>
+            <returns>Whether the current instance is divisable by all the specified numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.DivisableBy(System.Int32,System.Int32[])">
+            <summary>
+            Whether the current instance is divisable by all the specified numbers.
+            </summary>
+            <param name="i">The current instance.</param>
+            <param name="nums">The numbers.</param>
+            <returns>Whether the current instance is divisable by all the specified numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.DivisableBy(System.Int64,System.Int64,System.Int64)">
+            <summary>
+            Whether the current instance is divisable by all the specified numbers.
+            </summary>
+            <param name="i">The current instance.</param>
+            <param name="from">The smallest number.</param>
+            <param name="to">The largest number.</param>
+            <returns>Whether the current instance is divisable by all the specified numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.DivisableBy(System.Int64,System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            Whether the current instance is divisable by all the specified numbers.
+            </summary>
+            <param name="i">The current instance.</param>
+            <param name="nums">The numbers.</param>
+            <returns>Whether the current instance is divisable by all the specified numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.DivisableBy(System.Int64,System.Int64[])">
+            <summary>
+            Whether the current instance is divisable by all the specified numbers.
+            </summary>
+            <param name="i">The current instance.</param>
+            <param name="nums">The numbers.</param>
+            <returns>Whether the current instance is divisable by all the specified numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.DivisableBy(System.Numerics.BigInteger,System.Numerics.BigInteger,System.Numerics.BigInteger)">
+            <summary>
+            Whether the current instance is divisable by all the specified numbers.
+            </summary>
+            <param name="i">The current instance.</param>
+            <param name="from">The smallest number.</param>
+            <param name="to">The largest number.</param>
+            <returns>Whether the current instance is divisable by all the specified numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.DivisableBy(System.Numerics.BigInteger,System.Collections.Generic.IEnumerable{System.Numerics.BigInteger})">
+            <summary>
+            Whether the current instance is divisable by all the specified numbers.
+            </summary>
+            <param name="i">The current instance.</param>
+            <param name="nums">The numbers.</param>
+            <returns>Whether the current instance is divisable by all the specified numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.DivisableBy(System.Numerics.BigInteger,System.Numerics.BigInteger[])">
+            <summary>
+            Whether the current instance is divisable by all the specified numbers.
+            </summary>
+            <param name="i">The current instance.</param>
+            <param name="nums">The numbers.</param>
+            <returns>Whether the current instance is divisable by all the specified numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.Factors(System.Int32)">
+            <summary>
+            The factors of the current instance.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>The factors.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.FactorsButSelf(System.Int32)">
+            <summary>
+            The factors of the current instance, except it self.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>The factors.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.Factors(System.Int64)">
+            <summary>
+            The factors of the current instance.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>The factors.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.FactorsButSelf(System.Int64)">
+            <summary>
+            The factors of the current instance, except it self.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>The factors.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.Factors(System.Numerics.BigInteger)">
+            <summary>
+            The factors of the current instance.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>The factors.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.FactorsButSelf(System.Numerics.BigInteger)">
+            <summary>
+            The factors of the current instance, except it self.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>The factors.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.Digits(System.Int32)">
+            <summary>
+            Returns the digits of the current instance.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>The digits.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.Digits(System.Int64)">
+            <summary>
+            Returns the digits of the current instance.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>The digits.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.Digits(System.Numerics.BigInteger)">
+            <summary>
+            Returns the digits of the current instance.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>The digits.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.Reverse(System.Int32)">
+            <summary>
+            Reverses the number.
+            </summary>
+            <param name="i">The current instance.</param>
+            <returns>The reversed number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.Reverse(System.Int64)">
+            <summary>
+            Reverses the number.
+            </summary>
+            <param name="i">The current instance.</param>
+            <returns>The reversed number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.Reverse(System.Numerics.BigInteger)">
+            <summary>
+            Reverses the number.
+            </summary>
+            <param name="i">The current instance.</param>
+            <returns>The reversed number.</returns>
         </member>
         <member name="T:SharpBag.Database.MySqlDB">
             <summary>
@@ -1476,7 +1682,7 @@
         </member>
         <member name="T:SharpBag.Math.Sources">
             <summary>
-            A class for computing fibonacci numbers.
+            A class for number sources.
             </summary>
         </member>
         <member name="P:SharpBag.Math.Sources.Fibonacci">
@@ -1496,17 +1702,17 @@
         </member>
         <member name="P:SharpBag.Math.Sources.Primes">
             <summary>
-            An endless source that will return prime numbers.
+            A possibly endless source that will return prime numbers.
             </summary>
         </member>
         <member name="P:SharpBag.Math.Sources.Primes64">
             <summary>
-            An endless source that will return prime numbers.
+            A possibly endless source that will return prime numbers.
             </summary>
         </member>
         <member name="P:SharpBag.Math.Sources.PrimesBig">
             <summary>
-            An endless source that will return prime numbers.
+            A possibly endless source that will return prime numbers.
             </summary>
         </member>
         <member name="P:SharpBag.Math.Sources.TriangleNumbers">
@@ -1522,6 +1728,51 @@
         <member name="P:SharpBag.Math.Sources.TriangleNumbersBig">
             <summary>
             An endless source for triangle numbers.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Sources.PerfectNumbers">
+            <summary>
+            An endless source for perfect numbers.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Sources.PerfectNumbers64">
+            <summary>
+            An endless source for perfect numbers.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Sources.PerfectNumbersBig">
+            <summary>
+            An endless source for perfect numbers.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Sources.DeficientNumbers">
+            <summary>
+            An endless source for deficient numbers.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Sources.DeficientNumbers64">
+            <summary>
+            An endless source for deficient numbers.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Sources.DeficientNumbersBig">
+            <summary>
+            An endless source for deficient numbers.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Sources.AbundantNumbers">
+            <summary>
+            An endless source for abundant number
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Sources.AbundantNumbers64">
+            <summary>
+            An endless source for abundant number
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Sources.AbundantNumbersBig">
+            <summary>
+            An endless source for abundant number
             </summary>
         </member>
         <member name="T:SharpBag.Math.Converters.Temperature">
@@ -2222,15 +2473,15 @@
             <param name="Tz">The average fluctuation time (Tz).</param>
             <returns>The length of the wave.</returns>
         </member>
-        <member name="M:SharpBag.Math.BagMath.Gcd(System.Int32,System.Int32)">
+        <member name="M:SharpBag.Math.BagMath.PascalTriangleEntry(System.Int32,System.Int32)">
             <summary>
-            Finds the greatest common divisor (gcd) of two integers.
+            Gets the Pascal triangle entry at the specified row and column.
             </summary>
-            <param name="a">An integer.</param>
-            <param name="b">An integer.</param>
-            <returns>The greatest commond divisor (gcd) of the two integers.</returns>
+            <param name="row">The row.</param>
+            <param name="column">The column.</param>
+            <returns>The entry.</returns>
         </member>
-        <member name="M:SharpBag.Math.BagMath.GreatestCommonDivisor(System.Int32,System.Int32)">
+        <member name="M:SharpBag.Math.BagMath.Gcd(System.Int32,System.Int32)">
             <summary>
             Finds the greatest common divisor (gcd) of two integers.
             </summary>
@@ -2258,6 +2509,13 @@
             </summary>
             <param name="candidate">The number to test.</param>
             <returns>Whether the number is a prime number or not.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BagMath.IsLeapYear(System.Int32)">
+            <summary>
+            Whether the specified year is leap year.
+            </summary>
+            <param name="y">The specified year.</param>
+            <returns>Whether the specified year is leap year.</returns>
         </member>
         <member name="T:SharpBag.Math.Converters.Length">
             <summary>

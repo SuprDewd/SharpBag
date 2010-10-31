@@ -997,5 +997,29 @@ namespace SharpBag
                 yield return function(elem);
             }
         }
+        
+        /// <summary>
+        /// Gets a subarray from the current instance.
+        /// </summary>
+        /// <param name="a">The current instance.</param>
+        /// <param name="x1">X-coordinate 1.</param>
+        /// <param name="y1">Y-coordinate 1.</param>
+        /// <param name="x2">X-coordinate 2.</param>
+        /// <param name="y2">Y-coordinate 2.</param>
+        /// <returns>The subarray.</returns>
+        public static int[,] Subarray(this int[,] a, int x1, int y1, int x2, int y2)
+        {
+            int[,] sub = new int[(x2 - x1) + 1, (y2 - y1) + 1];
+
+            for (int x = 0; x < sub.GetLength(0); x++)
+            {
+                for (int y = 0; y < sub.GetLength(1); y++)
+                {
+                    sub[x, y] = a[x1 + x, y1 + y];
+                }
+            }
+
+            return sub;
+        }
     }
 }

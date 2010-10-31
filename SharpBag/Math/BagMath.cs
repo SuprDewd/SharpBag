@@ -147,14 +147,21 @@ namespace SharpBag.Math
         }
 
         /// <summary>
-        /// Finds the greatest common divisor (gcd) of two integers.
+        /// Gets the Pascal triangle entry at the specified row and column.
         /// </summary>
-        /// <param name="a">An integer.</param>
-        /// <param name="b">An integer.</param>
-        /// <returns>The greatest commond divisor (gcd) of the two integers.</returns>
-        public static int Gcd(int a, int b)
+        /// <param name="row">The row.</param>
+        /// <param name="column">The column.</param>
+        /// <returns>The entry.</returns>
+        public static long PascalTriangleEntry(int row, int column)
         {
-            return GreatestCommonDivisor(a, b);
+            long current = 1;
+
+            for (int i = 1; i <= column; i++)
+            {
+                current = (current * (row + 1 - i)) / i;
+            }
+
+            return current;
         }
 
         /// <summary>
@@ -163,7 +170,7 @@ namespace SharpBag.Math
         /// <param name="a">An integer.</param>
         /// <param name="b">An integer.</param>
         /// <returns>The greatest commond divisor (gcd) of the two integers.</returns>
-        private static int GreatestCommonDivisor(int a, int b)
+        public static int Gcd(int a, int b)
         {
             while (true)
             {
@@ -174,6 +181,8 @@ namespace SharpBag.Math
                 b = c;
             }
         }
+
+        #region IsPrime overloads
 
         /// <summary>
         /// Checks whether a number is a prime number or not.
@@ -260,6 +269,18 @@ namespace SharpBag.Math
                 }
             }
             return candidate != 1;
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Whether the specified year is leap year.
+        /// </summary>
+        /// <param name="y">The specified year.</param>
+        /// <returns>Whether the specified year is leap year.</returns>
+        public static bool IsLeapYear(int y)
+        {
+            return (y % 4 == 0) && (y % 100 != 0) || (y % 400 == 0);
         }
     }
 }
