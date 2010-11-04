@@ -134,23 +134,19 @@ namespace SharpBag.Logging
                         this.WriteLine(null);
                         break;
                     }
+                    else if (c.Key == ConsoleKey.Backspace)
+                    {
+                        try
+                        {
+                            this.Command = this.Command.Substring(0, this.Command.Length - 1);
+                        }
+                        catch { }
+
+                        this.WriteLine(null);
+                    }
                     else if (ValidInput.Contains<char>(c.KeyChar.ToLower()))
                     {
-                        if (c.Key == ConsoleKey.Backspace)
-                        {
-                            try
-                            {
-                                this.Command = this.Command.Substring(0, this.Command.Length - 1);
-                            }
-                            catch
-                            {
-                            }
-                        }
-                        else
-                        {
-                            this.Command += c.KeyChar;
-                        }
-
+                        this.Command += c.KeyChar;
                         this.WriteLine(null);
                     }
                 }
