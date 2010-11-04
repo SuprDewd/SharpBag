@@ -802,7 +802,7 @@ namespace SharpBag
         /// <returns>A copy of this System.Char converted to uppercase.</returns>
         public static char ToUpper(this char c)
         {
-            return Convert.ToChar(c.ToString().ToUpper());
+            return c.ToString().ToUpper()[0];
         }
 
         /// <summary>
@@ -812,7 +812,7 @@ namespace SharpBag
         /// <returns>A copy of this System.Char converted to lowercase.</returns>
         public static char ToLower(this char c)
         {
-            return Convert.ToChar(c.ToLower().ToUpper());
+            return c.ToString().ToLower()[0];
         }
 
         #region Split overloads.
