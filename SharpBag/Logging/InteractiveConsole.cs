@@ -41,7 +41,7 @@ namespace SharpBag.Logging
         /// <summary>
         /// Valid input characters.
         /// </summary>
-        public static Char[] ValidInput = "áéúýíóqwertyuiopð'asdfghjklæ´+<zxcvbnm,.þ-_>\"\\/!#$%&()=ö{}[]° *~?".Split("").Select(s => s.ToLower()[0]).Distinct().ToArray();
+        public static Char[] ValidInput = new char[] { 'á', 'é', 'ú', 'ý', 'í', 'ó', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'ð', '\'', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'æ', '´', '+', '<', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', 'þ', '-', '_', '>', '"', '\\', '/', '!', '#', '$', '%', '&', '(', ')', '=', 'ö', '{', '}', '[', ']', '°', ' ', '*', '~', '?' };
 
         /// <summary>
         /// The main constructor.
