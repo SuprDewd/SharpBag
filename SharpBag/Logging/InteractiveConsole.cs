@@ -134,7 +134,7 @@ namespace SharpBag.Logging
                         this.WriteLine(null);
                         break;
                     }
-                    else if (ValidInput.Contains(c.KeyChar.ToLower()))
+                    else if (ValidInput.Contains<char>(c.KeyChar.ToLower()))
                     {
                         if (c.Key == ConsoleKey.Backspace)
                         {
