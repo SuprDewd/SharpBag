@@ -292,12 +292,13 @@
             A class used for application logging.
             </summary>
         </member>
-        <member name="M:SharpBag.Logging.Logger.#ctor(SharpBag.Logging.Logger.LogFunction,System.Boolean)">
+        <member name="M:SharpBag.Logging.Logger.#ctor(SharpBag.Logging.Logger.LogFunction,System.Boolean,System.String)">
             <summary>
             A class used for application logging.
             </summary>
-            <param name="logger"></param>
-            <param name="timestamp"></param>
+            <param name="logger">The log function.</param>
+            <param name="timestamp">Whether to put a timestamp on all logs.</param>
+            <param name="timeformat">The format of the timestamp.</param>
         </member>
         <member name="M:SharpBag.Logging.Logger.Log(System.String)">
             <summary>
@@ -2052,14 +2053,9 @@
             The main reader thread.
             </summary>
         </member>
-        <member name="F:SharpBag.Logging.InteractiveConsole.NotInput">
+        <member name="F:SharpBag.Logging.InteractiveConsole.ValidInput">
             <summary>
-            An array of keys that will not be treated as input.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Logging.InteractiveConsole.#ctor">
-            <summary>
-            The main constructor.
+            Valid input characters.
             </summary>
         </member>
         <member name="M:SharpBag.Logging.InteractiveConsole.#ctor(System.String)">

@@ -39,25 +39,23 @@ namespace SharpBag.Logging
         /// </summary>
         private Thread ReaderThread = null;
         /// <summary>
-        /// An array of keys that will not be treated as input.
+        /// Valid input characters.
         /// </summary>
-        public ConsoleKey[] NotInput = new ConsoleKey[] { ConsoleKey.LeftArrow, ConsoleKey.UpArrow, ConsoleKey.RightArrow, ConsoleKey.DownArrow, ConsoleKey.Tab, ConsoleKey.Insert, ConsoleKey.Home, ConsoleKey.PageUp, ConsoleKey.PageDown, ConsoleKey.End, ConsoleKey.Delete, ConsoleKey.F1, ConsoleKey.F2, ConsoleKey.F3, ConsoleKey.F4, ConsoleKey.F5, ConsoleKey.F6, ConsoleKey.F7, ConsoleKey.F8, ConsoleKey.F9, ConsoleKey.F10, ConsoleKey.F11, ConsoleKey.F12 };
+        public static Char[] ValidInput = "áéúýíóqwertyuiopð'asdfghjklæ´+<zxcvbnm,.þ-_>\"\\/!#$%&()=ö{}[]° *~?".Split("").Select(s => s.ToLower()[0]).Distinct().ToArray();
 
         /// <summary>
         /// The main constructor.
         /// </summary>
-        public InteractiveConsole() : this("> ") { }
-        /// <summary>
-        /// The main constructor.
-        /// </summary>
         /// <param name="commandStart">The start of the command line.</param>
-        public InteractiveConsole(string commandStart)
+        public InteractiveConsole(string commandStart = "> ")
         {
             this.CommandStart = commandStart;
             for (int i = 0; i < Console.BufferHeight; i++)
             {
                 Console.WriteLine();
             }
+
+            Console.Write(commandStart);
         }
 
         /// <summary>
@@ -136,11 +134,7 @@ namespace SharpBag.Logging
                         this.WriteLine(null);
                         break;
                     }
-                    else if (NotInput.Contains(c.Key))
-                    {
-
-                    }
-                    else
+                    else if (ValidInput.Contains(c.KeyChar.ToLower()))
                     {
                         if (c.Key == ConsoleKey.Backspace)
                         {

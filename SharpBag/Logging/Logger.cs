@@ -33,13 +33,14 @@ namespace SharpBag.Logging
         /// <summary>
         /// A class used for application logging.
         /// </summary>
-        /// <param name="logger"></param>
-        /// <param name="timestamp"></param>
-        public Logger(LogFunction logger, bool timestamp)
+        /// <param name="logger">The log function.</param>
+        /// <param name="timestamp">Whether to put a timestamp on all logs.</param>
+        /// <param name="timeformat">The format of the timestamp.</param>
+        public Logger(LogFunction logger, bool timestamp = true, string timeformat = "HH:mm:ss: ")
         {
             this.LoggerFunction = logger;
             this.Timestamp = timestamp;
-            this.Timeformat = "dd.MM.yyyy HH:mm:ss: ";
+            this.Timeformat = timeformat;
             this.Enabled = true;
         }
 
