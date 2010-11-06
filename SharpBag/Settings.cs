@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 
 namespace SharpBag
 {
@@ -8,15 +10,23 @@ namespace SharpBag
     /// </summary>
     public static class Settings
     {
+        private static DirectoryInfo _ExecutableDirectory = new DirectoryInfo(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));
+        /// <summary>
+        /// Gets the directory where the executable is located.
+        /// </summary>
+        public static DirectoryInfo ExecutableDirectory { get { return _ExecutableDirectory; } }
+
+        private static string _NL;
         /// <summary>
         /// Gets the newline string defined for this environment.
         /// </summary>
-        public static string NL = Environment.NewLine;
+        public static string NL
+        {
+            get { return _NL; }
+            set { _NL = value; }
+        }
 
-        /// <summary>
-        /// BitTorrent tacker error codes and what they mean.
-        /// </summary>
-        public static Dictionary<int, string> BitTorrentTrackerErrorCodes = new Dictionary<int, string>()
+        private static Dictionary<int, string> _BitTorrentTrackerErrorCodes = new Dictionary<int, string>()
         {
             {100, "Invalid request type: client request was not a HTTP GET."},
             {101, "Missing info_hash."},
@@ -31,9 +41,14 @@ namespace SharpBag
         };
 
         /// <summary>
-        /// Http status codes and what they mean.
+        /// BitTorrent tacker error codes and what they mean.
         /// </summary>
-        public static Dictionary<int, string> HttpStatusCodes = new Dictionary<int, string>()
+        public static Dictionary<int, string> BitTorrentTrackerErrorCodes
+        {
+            get { return _BitTorrentTrackerErrorCodes; }
+        }
+
+        private static Dictionary<int, string> _HttpStatusCodes = new Dictionary<int, string>()
         {
             {100, "Continue"},
             {101, "Switching Protocols"},
@@ -95,5 +110,13 @@ namespace SharpBag
             {509, "Bandwidth Limit Exceeded"},
             {510, "Not Extended"}
         };
+
+        /// <summary>
+        /// Http status codes and what they mean.
+        /// </summary>
+        public static Dictionary<int, string> HttpStatusCodes
+        {
+            get { return _HttpStatusCodes; }
+        }
     }
 }

@@ -9,17 +9,22 @@
             A static class containing settings and other related data.
             </summary>
         </member>
-        <member name="F:SharpBag.Settings.NL">
+        <member name="P:SharpBag.Settings.ExecutableDirectory">
+            <summary>
+            Gets the directory where the executable is located.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Settings.NL">
             <summary>
             Gets the newline string defined for this environment.
             </summary>
         </member>
-        <member name="F:SharpBag.Settings.BitTorrentTrackerErrorCodes">
+        <member name="P:SharpBag.Settings.BitTorrentTrackerErrorCodes">
             <summary>
             BitTorrent tacker error codes and what they mean.
             </summary>
         </member>
-        <member name="F:SharpBag.Settings.HttpStatusCodes">
+        <member name="P:SharpBag.Settings.HttpStatusCodes">
             <summary>
             Http status codes and what they mean.
             </summary>
