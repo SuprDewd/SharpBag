@@ -3221,5 +3221,128 @@
             An event that is fired when a card is turned.
             </summary>
         </member>
+        <member name="T:SharpBag.Net.TcpClientHandler">
+            <summary>
+            A class that handles TcpClients.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Net.TcpClientHandler.#ctor(System.Net.Sockets.TcpClient,System.Int32,System.Text.Encoding,System.Int32)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="client">The TcpClient.</param>
+            <param name="bufferSize">The size of the buffer.</param>
+            <param name="encoding">The encoding to use.</param>
+            <param name="checkInterval">The interval to check for messages.</param>
+        </member>
+        <member name="M:SharpBag.Net.TcpClientHandler.SendMessage(System.String)">
+            <summary>
+            Sends a message.
+            </summary>
+            <param name="s">The message to send.</param>
+        </member>
+        <member name="M:SharpBag.Net.TcpClientHandler.Stop">
+            <summary>
+            Stops listening for messages, stops the listening thread and closes the TcpClient.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Net.TcpClientHandler.Listen">
+            <summary>
+            Listen to messages.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Net.TcpClientHandler.Thread">
+            <summary>
+            The listening thread.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Net.TcpClientHandler.Stream">
+            <summary>
+            The stream.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Net.TcpClientHandler.Client">
+            <summary>
+            The client.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Net.TcpClientHandler.Listening">
+            <summary>
+            Whether the handler is listening for messages.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Net.TcpClientHandler.CheckInterval">
+            <summary>
+            The interval, in milliseconds, to check for messages.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Net.TcpClientHandler.BufferSize">
+            <summary>
+            The buffer size.
+            </summary>
+            <remarks>Used when receiving messages.</remarks>
+        </member>
+        <member name="P:SharpBag.Net.TcpClientHandler.Encoding">
+            <summary>
+            The encoding to use when receiving messages.
+            </summary>
+        </member>
+        <member name="E:SharpBag.Net.TcpClientHandler.MessageReceived">
+            <summary>
+            An event that is fired when a message is received.
+            </summary>
+        </member>
+        <member name="E:SharpBag.Net.TcpClientHandler.Disconnected">
+            <summary>
+            An event that is fired when the TcpClient disconnects.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Net.TcpServer">
+            <summary>
+            A class that manages a multithreaded Tcp server.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Net.TcpServer.#ctor(System.Net.Sockets.TcpListener,System.Int32)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="listener">The TcpListener.</param>
+            <param name="checkInterval">The interval to check for incoming clients.</param>
+        </member>
+        <member name="M:SharpBag.Net.TcpServer.Stop">
+            <summary>
+            Stops listening for incoming clients, stops the listening thread and closes the TcpListener.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Net.TcpServer.Listen">
+            <summary>
+            Listen for incoming clients.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Net.TcpServer.Thread">
+            <summary>
+            The thread to listen for incoming clients.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Net.TcpServer.Listener">
+            <summary>
+            The TcpListener.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Net.TcpServer.Listening">
+            <summary>
+            Whether the server is listening for incoming clients.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Net.TcpServer.CheckInterval">
+            <summary>
+            The interval, in milliseconds, to check for incoming clients.
+            </summary>
+        </member>
+        <member name="E:SharpBag.Net.TcpServer.ClientReceived">
+            <summary>
+            An event that is fired when a client is received.
+            </summary>
+        </member>
     </members>
 </doc>
