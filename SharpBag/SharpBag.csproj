@@ -58,6 +58,7 @@
     <Compile Include="FK\DrawObjects.cs" />
     <Compile Include="FK\Kennitala.cs" />
     <Compile Include="FK\Minesweeper.cs" />
+    <Compile Include="FK\Num2Words.cs" />
     <Compile Include="FK\Stae.cs" />
     <Compile Include="FK\StaerstaRunuSumma.cs" />
     <Compile Include="FK\Tools.cs" />
