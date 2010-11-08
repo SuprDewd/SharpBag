@@ -2159,11 +2159,18 @@
             A class reperesenting a terabit.
             </summary>
         </member>
+<<<<<<< HEAD
         <member name="M:SharpBag.Math.Converters.Terabit.#ctor(System.Double)">
+=======
+        <member name="P:SharpBag.Net.Internet.LocalIPAddresses">
+>>>>>>> cf5d3f74452cda4525073e77e4f42439db70b38b
             <summary>
             The constructor.
             </summary>
+<<<<<<< HEAD
             <param name="v">The value.</param>
+=======
+>>>>>>> cf5d3f74452cda4525073e77e4f42439db70b38b
         </member>
         <member name="P:SharpBag.Math.Converters.Terabit.Unit">
             <summary>
@@ -3195,7 +3202,69 @@
             <param name="to">The largest number.</param>
             <returns>Whether the current instance is divisable by all the specified numbers.</returns>
         </member>
+<<<<<<< HEAD
         <member name="M:SharpBag.Math.MathExtensions.DivisableBy(System.Numerics.BigInteger,System.Collections.Generic.IEnumerable{System.Numerics.BigInteger})">
+=======
+        <member name="T:SharpBag.Net.TcpServer">
+            <summary>
+            A class that manages a multithreaded Tcp server.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Net.TcpServer.Create(System.Collections.Generic.IEnumerable{System.Int32},System.Int32)">
+            <summary>
+            Creates a TcpServer.
+            </summary>
+            <param name="ports">A collection of ports. The first free port in the collection will be used.</param>
+            <param name="checkInterval">The interval to check for new connections.</param>
+            <returns>A new TcpServer instance.</returns>
+        </member>
+        <member name="M:SharpBag.Net.TcpServer.#ctor(System.Net.Sockets.TcpListener,System.Int32)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="listener">The TcpListener.</param>
+            <param name="checkInterval">The interval to check for incoming clients.</param>
+        </member>
+        <member name="M:SharpBag.Net.TcpServer.Stop">
+            <summary>
+            Stops listening for incoming clients, stops the listening thread and closes the TcpListener.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Net.TcpServer.Listen">
+            <summary>
+            Listen for incoming clients.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Net.TcpServer.Dispose">
+            <see cref="M:System.IDisposable.Dispose"/>
+        </member>
+        <member name="P:SharpBag.Net.TcpServer.Thread">
+            <summary>
+            The thread to listen for incoming clients.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Net.TcpServer.Listener">
+            <summary>
+            The TcpListener.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Net.TcpServer.Listening">
+            <summary>
+            Whether the server is listening for incoming clients.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Net.TcpServer.CheckInterval">
+            <summary>
+            The interval, in milliseconds, to check for incoming clients.
+            </summary>
+        </member>
+        <member name="E:SharpBag.Net.TcpServer.ClientReceived">
+            <summary>
+            An event that is fired when a client is received.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Net.TcpClientHandler">
+>>>>>>> cf5d3f74452cda4525073e77e4f42439db70b38b
             <summary>
             Whether the current instance is divisable by all the specified numbers.
             </summary>
@@ -3232,7 +3301,36 @@
             <param name="n">The current instance.</param>
             <returns>The factors.</returns>
         </member>
+<<<<<<< HEAD
         <member name="M:SharpBag.Math.MathExtensions.FactorsButSelf(System.Int64)">
+=======
+        <member name="M:SharpBag.Net.TcpClientHandler.op_Equality(SharpBag.Net.TcpClientHandler,SharpBag.Net.TcpClientHandler)">
+            <summary>
+            Checks whether a is equal to b.
+            </summary>
+            <param name="a">A.</param>
+            <param name="b">B.</param>
+            <returns>Whether a is equal to b.</returns>
+        </member>
+        <member name="M:SharpBag.Net.TcpClientHandler.op_Inequality(SharpBag.Net.TcpClientHandler,SharpBag.Net.TcpClientHandler)">
+            <summary>
+            Checks whether a is not equal to b.
+            </summary>
+            <param name="a">A.</param>
+            <param name="b">B.</param>
+            <returns>Whether a is not equal to b.</returns>
+        </member>
+        <member name="M:SharpBag.Net.TcpClientHandler.Equals(System.Object)">
+            <see cref="M:System.Object.Equals(System.Object)"/>
+        </member>
+        <member name="M:SharpBag.Net.TcpClientHandler.GetHashCode">
+            <see cref="M:System.Object.GetHashCode"/>
+        </member>
+        <member name="M:SharpBag.Net.TcpClientHandler.Dispose">
+            <see cref="M:System.IDisposable.Dispose"/>
+        </member>
+        <member name="P:SharpBag.Net.TcpClientHandler.Thread">
+>>>>>>> cf5d3f74452cda4525073e77e4f42439db70b38b
             <summary>
             The factors of the current instance, except it self.
             </summary>
@@ -3295,6 +3393,7 @@
             <param name="i">The current instance.</param>
             <returns>The reversed number.</returns>
         </member>
+<<<<<<< HEAD
         <member name="T:SharpBag.FK.Tools">
             <summary>
             Allskonar verkfæri
@@ -3361,5 +3460,7 @@
             <param name="i">The specified number.</param>
             <returns>The words.</returns>
         </member>
+=======
+>>>>>>> cf5d3f74452cda4525073e77e4f42439db70b38b
     </members>
 </doc>
