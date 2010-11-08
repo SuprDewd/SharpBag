@@ -5,6 +5,7 @@ using System.Text;
 using System.Net.Sockets;
 using System.Threading;
 using System.Net;
+using System.IO;
 
 namespace SharpBag.Net
 {
@@ -20,7 +21,15 @@ namespace SharpBag.Net
         /// <summary>
         /// The stream.
         /// </summary>
-        public NetworkStream Stream { get; private set; }
+        public NetworkStream BaseStream { get; private set; }
+        /// <summary>
+        /// The stream reader.
+        /// </summary>
+        public BinaryReader Reader { get; private set; }
+        /// <summary>
+        /// The stream writer.
+        /// </summary>
+        public BinaryWriter Writer { get; private set; }
         /// <summary>
         /// The client.
         /// </summary>
@@ -33,15 +42,6 @@ namespace SharpBag.Net
         /// The interval, in milliseconds, to check for messages.
         /// </summary>
         public int CheckInterval { get; set; }
-        /// <summary>
-        /// The buffer size.
-        /// </summary>
-        /// <remarks>Used when receiving messages.</remarks>
-        public int BufferSize { get; set; }
-        /// <summary>
-        /// The encoding to use when receiving messages.
-        /// </summary>
-        public Encoding Encoding { get; set; }
 
         /// <summary>
         /// An event that is fired when a message is received.
@@ -59,13 +59,13 @@ namespace SharpBag.Net
         /// <param name="bufferSize">The size of the buffer.</param>
         /// <param name="encoding">The encoding to use.</param>
         /// <param name="checkInterval">The interval to check for messages.</param>
-        public TcpClientHandler(TcpClient client, int bufferSize = 2048, Encoding encoding = null, int checkInterval = 50)
+        public TcpClientHandler(TcpClient client, Encoding encoding = null, int checkInterval = 50)
         {
-            this.BufferSize = bufferSize;
-            this.Encoding = encoding == null ? Encoding.Default : encoding;
             this.CheckInterval = checkInterval;
             this.Client = client;
-            this.Stream = this.Client.GetStream();
+            this.BaseStream = this.Client.GetStream();
+            this.Reader = new BinaryReader(this.BaseStream, (encoding == null ? Encoding.Default : encoding));
+            this.Writer = new BinaryWriter(this.BaseStream, (encoding == null ? Encoding.Default : encoding));
             this.Thread = new Thread(new ThreadStart(Listen));
             this.Thread.Start();
         }
@@ -74,13 +74,26 @@ namespace SharpBag.Net
         /// Sends a message.
         /// </summary>
         /// <param name="s">The message to send.</param>
-        public void SendMessage(string s)
+        /// <returns>Whether the message was sent.</returns>
+        public bool SendMessage(string s)
         {
-            lock (this.Stream)
+            lock (this.BaseStream)
             {
-                byte[] bs = this.Encoding.GetBytes(s);
-                this.Stream.Write(bs, 0, bs.Length);
-                this.Stream.Flush();
+                try
+                {
+                    this.Writer.Write(s);
+                    this.Writer.Flush();
+                    return true;
+                }
+                catch (IOException)
+                {
+                    this.Disconnected.IfNotNull(a => a(this));
+                    return false;
+                }
+                catch
+                {
+                    return false;
+                }
             }
         }
 
@@ -89,9 +102,9 @@ namespace SharpBag.Net
         /// </summary>
         public void Stop()
         {
+            this.BaseStream.Close();
             this.Listening = false;
             this.Thread.Abort();
-            this.Stream.Close();
         }
 
         /// <summary>
@@ -105,28 +118,18 @@ namespace SharpBag.Net
             {
                 while (true)
                 {
-                    if (this.Listening && Thread.CurrentThread.ThreadState == ThreadState.Running && this.Client.Connected && this.Client.Client.Connected && !this.Stream.DataAvailable) { Thread.Sleep(this.CheckInterval); continue; }
+                    if (this.Listening && Thread.CurrentThread.ThreadState == ThreadState.Running && this.Client.Connected && this.Client.Client.Connected && !this.BaseStream.DataAvailable) { Thread.Sleep(this.CheckInterval); continue; }
                     if (!this.Listening || Thread.CurrentThread.ThreadState != ThreadState.Running) break;
                     if (!this.Client.Connected || !this.Client.Client.Connected) { this.Disconnected.IfNotNull(a => a(this)); break; }
 
-                    int bSize = this.BufferSize;
-                    Encoding enc = this.Encoding;
-                    StringBuilder sb = new StringBuilder();
+                    string msg;
 
-                    byte[] bs = new byte[bSize];
-                    int read;
-
-                    lock (this.Stream)
+                    lock (this.BaseStream)
                     {
-                        while((read = this.Stream.Read(bs, 0, bSize)) > 0)
-                        {
-                            sb.Append(enc.GetString(bs, 0, read));
-
-                            if (!this.Stream.DataAvailable) break;
-                        }
+                        msg = this.Reader.ReadString();
                     }
 
-                    this.MessageReceived.IfNotNull(a => a(this, sb.ToString()));
+                    this.MessageReceived.IfNotNull(a => a(this, msg));
                 }
             }
             catch { this.Listening = false; }
@@ -140,7 +143,14 @@ namespace SharpBag.Net
         /// <returns>Whether a is equal to b.</returns>
         public static bool operator ==(TcpClientHandler a, TcpClientHandler b)
         {
-            return a.Client == b.Client;
+            try
+            {
+                return a.Client == b.Client;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -157,9 +167,16 @@ namespace SharpBag.Net
         /// <see cref="Object.Equals(object)"/>
         public override bool Equals(object obj)
         {
-            if (!(obj is TcpClientHandler)) return false;
+            try
+            {
+                if (!(obj is TcpClientHandler)) return false;
 
-            return this.Client.Equals((obj as TcpClientHandler).Client);
+                return this.Client.Equals((obj as TcpClientHandler).Client);
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <see cref="Object.GetHashCode()"/>
