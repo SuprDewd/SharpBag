@@ -5,14 +5,29 @@ using System.Text;
 using System.Net;
 using System.Threading;
 using System.Net.Sockets;
+using SharpBag.Net;
 
 namespace SharpBag.Net
 {
     /// <summary>
     /// A class that manages a multithreaded Tcp server.
     /// </summary>
-    public class TcpServer
+    public class TcpServer : IDisposable
     {
+        /// <summary>
+        /// Creates a TcpServer.
+        /// </summary>
+        /// <param name="ports">A collection of ports. The first free port in the collection will be used.</param>
+        /// <param name="checkInterval">The interval to check for new connections.</param>
+        /// <returns>A new TcpServer instance.</returns>
+        public static TcpServer Create(IEnumerable<int> ports, int checkInterval = 50)
+        {
+            int port = ports.First(p => Internet.IsPortFree(p));
+            IPAddress ip = Internet.LocalIPAddresses.First(i => i.AddressFamily == AddressFamily.InterNetwork);
+
+            return new TcpServer(new TcpListener(ip, port), checkInterval);
+        }
+
         /// <summary>
         /// The thread to listen for incoming clients.
         /// </summary>
@@ -78,6 +93,12 @@ namespace SharpBag.Net
                 }
             }
             catch { this.Listening = false; }
+        }
+
+        /// <see cref="IDisposable.Dispose()"/>
+        public void Dispose()
+        {
+            this.Stop();
         }
     }
 }

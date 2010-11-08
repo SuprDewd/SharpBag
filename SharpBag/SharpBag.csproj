@@ -76,7 +76,7 @@
     <Compile Include="Math\Sources.cs" />
     <Compile Include="Net\Internet.cs" />
     <Compile Include="Net\InternetExtensions.cs" />
-    <Compile Include="Net\StreamHandler.cs" />
+    <Compile Include="Net\TcpClientHandler.cs" />
     <Compile Include="Net\TcpServer.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Strings\StringExtensions.cs" />

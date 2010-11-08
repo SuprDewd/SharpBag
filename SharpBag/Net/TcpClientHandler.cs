@@ -11,7 +11,7 @@ namespace SharpBag.Net
     /// <summary>
     /// A class that handles TcpClients.
     /// </summary>
-    public class TcpClientHandler
+    public class TcpClientHandler : IDisposable
     {
         /// <summary>
         /// The listening thread.
@@ -130,6 +130,48 @@ namespace SharpBag.Net
                 }
             }
             catch { this.Listening = false; }
+        }
+
+        /// <summary>
+        /// Checks whether a is equal to b.
+        /// </summary>
+        /// <param name="a">A.</param>
+        /// <param name="b">B.</param>
+        /// <returns>Whether a is equal to b.</returns>
+        public static bool operator ==(TcpClientHandler a, TcpClientHandler b)
+        {
+            return a.Client == b.Client;
+        }
+
+        /// <summary>
+        /// Checks whether a is not equal to b.
+        /// </summary>
+        /// <param name="a">A.</param>
+        /// <param name="b">B.</param>
+        /// <returns>Whether a is not equal to b.</returns>
+        public static bool operator !=(TcpClientHandler a, TcpClientHandler b)
+        {
+            return !(a.Client == b.Client);
+        }
+
+        /// <see cref="Object.Equals(object)"/>
+        public override bool Equals(object obj)
+        {
+            if (!(obj is TcpClientHandler)) return false;
+
+            return this.Client.Equals((obj as TcpClientHandler).Client);
+        }
+
+        /// <see cref="Object.GetHashCode()"/>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        /// <see cref="IDisposable.Dispose()"/>
+        public void Dispose()
+        {
+            this.Stop();
         }
     }
 }

@@ -25,10 +25,12 @@ namespace SharpBag.Net
         /// <summary>
         /// Returns the local machines IP addresses.
         /// </summary>
-        /// <returns>The local machines IP addresses.</returns>
-        public static IPAddress[] LocalIPAddresses()
+        public static IPAddress[] LocalIPAddresses
         {
-            return Dns.GetHostAddresses(Dns.GetHostName());
+            get
+            {
+                return Dns.GetHostAddresses(Dns.GetHostName());
+            }
         }
     }
 }
