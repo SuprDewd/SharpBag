@@ -89,7 +89,11 @@ namespace SharpBag.Net
                     if (this.Listening && Thread.CurrentThread.ThreadState == ThreadState.Running && !this.Listener.Pending()) { Thread.Sleep(this.CheckInterval); continue; }
                     if (!this.Listening || Thread.CurrentThread.ThreadState != ThreadState.Running) break;
 
-                    this.ClientReceived.IfNotNull(a => a(this, new TcpClientHandler(this.Listener.AcceptTcpClient())));
+                    try
+                    {
+                        this.ClientReceived.IfNotNull(a => a(this, new TcpClientHandler(this.Listener.AcceptTcpClient())));
+                    }
+                    catch { }
                 }
             }
             catch { this.Listening = false; }

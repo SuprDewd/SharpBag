@@ -129,7 +129,11 @@ namespace SharpBag.Net
                         msg = this.Reader.ReadString();
                     }
 
-                    this.MessageReceived.IfNotNull(a => a(this, msg));
+                    try
+                    {
+                        this.MessageReceived.IfNotNull(a => a(this, msg));
+                    }
+                    catch {  }
                 }
             }
             catch { this.Listening = false; }
