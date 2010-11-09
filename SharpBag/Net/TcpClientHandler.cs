@@ -42,6 +42,46 @@ namespace SharpBag.Net
         /// The interval, in milliseconds, to check for messages.
         /// </summary>
         public int CheckInterval { get; set; }
+        /// <summary>
+        /// The ping thread.
+        /// </summary>
+        public Thread PingThread { get; set; }
+        private int _PingInterval = -1;
+        /// <summary>
+        /// The ping interval.
+        /// </summary>
+        public int PingInterval
+        {
+            get { return this._PingInterval; }
+            set
+            {
+                this._PingInterval = value;
+
+                if (this._PingInterval > 0 && this.PingThread == null)
+                {
+                    this.PingThread = new Thread(new ThreadStart(() =>
+                    {
+                        while (this.Listening && this._PingInterval > 0)
+                        {
+                            Thread.Sleep(this._PingInterval);
+
+                            this.SendMessage("P");
+                        }
+                    }));
+
+                    this.PingThread.Start();
+                }
+                else if (this.PingThread != null)
+                {
+                    try
+                    {
+                        this.PingThread.Abort();
+                        this.PingThread = null;
+                    }
+                    catch { }
+                }
+            }
+        }
 
         /// <summary>
         /// An event that is fired when a message is received.
@@ -56,18 +96,31 @@ namespace SharpBag.Net
         /// The constructor.
         /// </summary>
         /// <param name="client">The TcpClient.</param>
-        /// <param name="bufferSize">The size of the buffer.</param>
         /// <param name="encoding">The encoding to use.</param>
         /// <param name="checkInterval">The interval to check for messages.</param>
-        public TcpClientHandler(TcpClient client, Encoding encoding = null, int checkInterval = 50)
+        /// <param name="ping">The interval, in milliseconds, to ping the client. If it's a negative integer, no pings are sent.</param>
+        public TcpClientHandler(TcpClient client, Encoding encoding = null, int checkInterval = 50, int ping = -1)
         {
             this.CheckInterval = checkInterval;
             this.Client = client;
             this.BaseStream = this.Client.GetStream();
+            this.BaseStream.ReadTimeout = 1000;
             this.Reader = new BinaryReader(this.BaseStream, (encoding == null ? Encoding.Default : encoding));
             this.Writer = new BinaryWriter(this.BaseStream, (encoding == null ? Encoding.Default : encoding));
             this.Thread = new Thread(new ThreadStart(Listen));
             this.Thread.Start();
+
+            this.Disconnected += c =>
+            {
+                try
+                {
+                    this.PingThread.Abort();
+                    this.PingThread = null;
+                }
+                catch { }
+            };
+
+            this.PingInterval = ping;
         }
 
         /// <summary>
@@ -129,11 +182,13 @@ namespace SharpBag.Net
                         msg = this.Reader.ReadString();
                     }
 
+                    if (msg == "P") continue;
+
                     try
                     {
                         this.MessageReceived.IfNotNull(a => a(this, msg));
                     }
-                    catch {  }
+                    catch { }
                 }
             }
             catch { this.Listening = false; }
@@ -165,7 +220,14 @@ namespace SharpBag.Net
         /// <returns>Whether a is not equal to b.</returns>
         public static bool operator !=(TcpClientHandler a, TcpClientHandler b)
         {
-            return !(a.Client == b.Client);
+            try
+            {
+                return !(a.Client == b.Client);
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <see cref="Object.Equals(object)"/>
