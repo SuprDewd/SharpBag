@@ -169,6 +169,8 @@ namespace SharpBag.Net
 
             try
             {
+                bool first = true;
+
                 while (true)
                 {
                     if (this.Listening && Thread.CurrentThread.ThreadState == ThreadState.Running && this.Client.Connected && this.Client.Client.Connected && !this.BaseStream.DataAvailable) { Thread.Sleep(this.CheckInterval); continue; }
@@ -186,9 +188,19 @@ namespace SharpBag.Net
 
                     try
                     {
-                        this.MessageReceived.IfNotNull(a => a(this, msg));
+                        if (this.MessageReceived != null)
+                        {
+                            this.MessageReceived(this, msg);
+                        }
+                        else if (first)
+                        {
+                            Thread.Sleep(2000);
+                            this.MessageReceived.IfNotNull(a => a(this, msg));
+                        }
                     }
                     catch { }
+
+                    first = false;
                 }
             }
             catch { this.Listening = false; }

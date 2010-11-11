@@ -84,6 +84,8 @@ namespace SharpBag.Net
 
             try
             {
+                bool first = true;
+
                 while (true)
                 {
                     if (this.Listening && Thread.CurrentThread.ThreadState == ThreadState.Running && !this.Listener.Pending()) { Thread.Sleep(this.CheckInterval); continue; }
@@ -91,9 +93,18 @@ namespace SharpBag.Net
 
                     try
                     {
-                        this.ClientReceived.IfNotNull(a => a(this, new TcpClientHandler(this.Listener.AcceptTcpClient())));
+                        if (this.ClientReceived != null)
+                        {
+                            this.ClientReceived(this, new TcpClientHandler(this.Listener.AcceptTcpClient()));
+                        }
+                        else if (first)
+                        {
+                            this.ClientReceived.IfNotNull(a => a(this, new TcpClientHandler(this.Listener.AcceptTcpClient())));
+                        }
                     }
                     catch { }
+
+                    first = false;
                 }
             }
             catch { this.Listening = false; }

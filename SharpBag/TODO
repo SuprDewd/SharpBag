@@ -1,6 +1,7 @@
 
  TODO:
 
+  Move Media extensions in Extensions.cs into MedaExtensions.cs
   English NumToString.
   Dice class in Games. Supports checking for house etc.
   Normalize strings.
