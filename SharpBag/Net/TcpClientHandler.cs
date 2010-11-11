@@ -216,6 +216,12 @@ namespace SharpBag.Net
         {
             try
             {
+                bool aNull = ((object)a) == null;
+                bool bNull = ((object)b) == null;
+
+                if (aNull && bNull) return true;
+                if (aNull || bNull) return false;
+
                 return a.Client == b.Client;
             }
             catch
@@ -232,14 +238,7 @@ namespace SharpBag.Net
         /// <returns>Whether a is not equal to b.</returns>
         public static bool operator !=(TcpClientHandler a, TcpClientHandler b)
         {
-            try
-            {
-                return !(a.Client == b.Client);
-            }
-            catch
-            {
-                return false;
-            }
+            return !(a == b);
         }
 
         /// <see cref="Object.Equals(object)"/>
