@@ -155,9 +155,13 @@ namespace SharpBag.Net
         /// </summary>
         public void Stop()
         {
-            this.BaseStream.Close();
-            this.Listening = false;
-            this.Thread.Abort();
+            try
+            {
+                this.BaseStream.Close();
+                this.Listening = false;
+                this.Thread.Abort();
+            }
+            catch { }
         }
 
         /// <summary>
@@ -169,7 +173,7 @@ namespace SharpBag.Net
 
             try
             {
-                bool first = true;
+                int tries = 0;
 
                 while (true)
                 {
@@ -188,19 +192,21 @@ namespace SharpBag.Net
 
                     try
                     {
-                        if (this.MessageReceived != null)
+                        while (true)
                         {
-                            this.MessageReceived(this, msg);
-                        }
-                        else if (first)
-                        {
-                            Thread.Sleep(2000);
-                            this.MessageReceived.IfNotNull(a => a(this, msg));
+                            if (this.MessageReceived != null)
+                            {
+                                this.MessageReceived(this, msg);
+                                break;
+                            }
+                            else if (tries < 20)
+                            {
+                                tries++;
+                                Thread.Sleep(100);
+                            }
                         }
                     }
                     catch { }
-
-                    first = false;
                 }
             }
             catch { this.Listening = false; }
