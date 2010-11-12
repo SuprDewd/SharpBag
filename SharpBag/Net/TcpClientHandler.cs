@@ -99,10 +99,12 @@ namespace SharpBag.Net
         /// <param name="encoding">The encoding to use.</param>
         /// <param name="checkInterval">The interval to check for messages.</param>
         /// <param name="ping">The interval, in milliseconds, to ping the client. If it's a negative integer, no pings are sent.</param>
-        public TcpClientHandler(TcpClient client, Encoding encoding = null, int checkInterval = 50, int ping = -1)
+        /// <param name="receiveTimeout">The time, in milliseconds, before a timeout occurs when reading data from the server.</param>
+        public TcpClientHandler(TcpClient client, Encoding encoding = null, int checkInterval = 50, int ping = -1, int receiveTimeout = 5000)
         {
             this.CheckInterval = checkInterval;
             this.Client = client;
+            this.Client.ReceiveTimeout = receiveTimeout;
             this.BaseStream = this.Client.GetStream();
             this.BaseStream.ReadTimeout = 1000;
             this.Reader = new BinaryReader(this.BaseStream, (encoding == null ? Encoding.Default : encoding));

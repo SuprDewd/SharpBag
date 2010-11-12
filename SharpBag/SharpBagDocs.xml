@@ -2683,7 +2683,7 @@
             A class that handles TcpClients.
             </summary>
         </member>
-        <member name="M:SharpBag.Net.TcpClientHandler.#ctor(System.Net.Sockets.TcpClient,System.Text.Encoding,System.Int32,System.Int32)">
+        <member name="M:SharpBag.Net.TcpClientHandler.#ctor(System.Net.Sockets.TcpClient,System.Text.Encoding,System.Int32,System.Int32,System.Int32)">
             <summary>
             The constructor.
             </summary>
@@ -2691,6 +2691,7 @@
             <param name="encoding">The encoding to use.</param>
             <param name="checkInterval">The interval to check for messages.</param>
             <param name="ping">The interval, in milliseconds, to ping the client. If it's a negative integer, no pings are sent.</param>
+            <param name="receiveTimeout">The time, in milliseconds, before a timeout occurs when reading data from the server.</param>
         </member>
         <member name="M:SharpBag.Net.TcpClientHandler.SendMessage(System.String)">
             <summary>
@@ -3225,12 +3226,13 @@
             <param name="checkInterval">The interval to check for new connections.</param>
             <returns>A new TcpServer instance.</returns>
         </member>
-        <member name="M:SharpBag.Net.TcpServer.#ctor(System.Net.Sockets.TcpListener,System.Int32)">
+        <member name="M:SharpBag.Net.TcpServer.#ctor(System.Net.Sockets.TcpListener,System.Int32,System.Int32)">
             <summary>
             The constructor.
             </summary>
             <param name="listener">The TcpListener.</param>
             <param name="checkInterval">The interval to check for incoming clients.</param>
+            <param name="receiveTimeout">The time, in milliseconds, before a timeout occurs when reading data from a client.</param>
         </member>
         <member name="M:SharpBag.Net.TcpServer.Stop">
             <summary>
