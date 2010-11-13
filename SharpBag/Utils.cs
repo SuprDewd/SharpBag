@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading;
 
 namespace SharpBag
 {
@@ -37,6 +38,34 @@ namespace SharpBag
 
             s.Stop();
             return result(s);
+        }
+
+        /// <summary>
+        /// Calculates the execution of the specified action.
+        /// </summary>
+        /// <param name="a">The action.</param>
+        /// <returns>The execution time.</returns>
+        public static TimeSpan ExecutionTimeExact(Action a)
+        {
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+
+            TimeSpan start = new TimeSpan(0);
+            TimeSpan now = new TimeSpan(0);
+            Process p = Process.GetCurrentProcess();
+            for (int i = 0; i < p.Threads.Count; i++)
+            {
+                start += p.Threads[i].UserProcessorTime;
+            }
+
+            a();
+
+            for (int i = 0; i < p.Threads.Count; i++)
+            {
+                now += p.Threads[i].UserProcessorTime;
+            }
+
+            return now.Subtract(start);
         }
 
         /// <summary>
