@@ -16,10 +16,11 @@ namespace SharpBag
         /// Calculates the execution time of the specified action.
         /// </summary>
         /// <param name="a">The action.</param>
+        /// <param name="handleGC">Whether to handle the garbage collector. If true, the GC will be forced to clean up before taking the time.</param>
         /// <returns>The execution time in milliseconds.</returns>
-        public static long ExecutionTime(Action a)
+        public static long ExecutionTime(Action a, bool handleGC = true)
         {
-            return ExecutionTime(a, s => s.ElapsedMilliseconds);
+            return ExecutionTime(a, s => s.ElapsedMilliseconds, handleGC);
         }
 
         /// <summary>
@@ -28,9 +29,13 @@ namespace SharpBag
         /// <typeparam name="TResult">The type of the result.</typeparam>
         /// <param name="a">The action.</param>
         /// <param name="result">What to return.</param>
+        /// /// <param name="handleGC">Whether to handle the garbage collector. If true, the GC will be forced to clean up before taking the time.</param>
         /// <returns>The execution time in milliseconds.</returns>
-        public static TResult ExecutionTime<TResult>(Action a, Func<Stopwatch, TResult> result)
+        public static TResult ExecutionTime<TResult>(Action a, Func<Stopwatch, TResult> result, bool handleGC = true)
         {
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+
             Stopwatch s = new Stopwatch();
             s.Start();
 
@@ -38,34 +43,6 @@ namespace SharpBag
 
             s.Stop();
             return result(s);
-        }
-
-        /// <summary>
-        /// Calculates the execution of the specified action.
-        /// </summary>
-        /// <param name="a">The action.</param>
-        /// <returns>The execution time.</returns>
-        public static TimeSpan ExecutionTimeExact(Action a)
-        {
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-
-            TimeSpan start = new TimeSpan(0);
-            TimeSpan now = new TimeSpan(0);
-            Process p = Process.GetCurrentProcess();
-            for (int i = 0; i < p.Threads.Count; i++)
-            {
-                start += p.Threads[i].UserProcessorTime;
-            }
-
-            a();
-
-            for (int i = 0; i < p.Threads.Count; i++)
-            {
-                now += p.Threads[i].UserProcessorTime;
-            }
-
-            return now.Subtract(start);
         }
 
         /// <summary>

@@ -1457,28 +1457,23 @@
             A static class with utility methods.
             </summary>
         </member>
-        <member name="M:SharpBag.Utils.ExecutionTime(System.Action)">
+        <member name="M:SharpBag.Utils.ExecutionTime(System.Action,System.Boolean)">
             <summary>
             Calculates the execution time of the specified action.
             </summary>
             <param name="a">The action.</param>
+            <param name="handleGC">Whether to handle the garbage collector. If true, the GC will be forced to clean up before taking the time.</param>
             <returns>The execution time in milliseconds.</returns>
         </member>
-        <member name="M:SharpBag.Utils.ExecutionTime``1(System.Action,System.Func{System.Diagnostics.Stopwatch,``0})">
+        <member name="M:SharpBag.Utils.ExecutionTime``1(System.Action,System.Func{System.Diagnostics.Stopwatch,``0},System.Boolean)">
             <summary>
             Calculates the execution time of the specified action.
             </summary>
             <typeparam name="TResult">The type of the result.</typeparam>
             <param name="a">The action.</param>
             <param name="result">What to return.</param>
+            /// <param name="handleGC">Whether to handle the garbage collector. If true, the GC will be forced to clean up before taking the time.</param>
             <returns>The execution time in milliseconds.</returns>
-        </member>
-        <member name="M:SharpBag.Utils.ExecutionTimeExact(System.Action)">
-            <summary>
-            Calculates the execution of the specified action.
-            </summary>
-            <param name="a">The action.</param>
-            <returns>The execution time.</returns>
         </member>
         <member name="M:SharpBag.Utils.CreateIEnumerable``1(``0[])">
             <summary>
