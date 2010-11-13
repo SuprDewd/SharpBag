@@ -946,6 +946,23 @@ namespace SharpBag
         }
 
         /// <summary>
+        /// Adds the specified item to the current instance.
+        /// </summary>
+        /// <typeparam name="T">The type of the items.</typeparam>
+        /// <param name="source">The current instance.</param>
+        /// <param name="newItem">The new item.</param>
+        /// <returns>The current instance with the new item.</returns>
+        public static IEnumerable<T> Add<T>(this IEnumerable<T> source, T newItem)
+        {
+            foreach (T item in source)
+            {
+                yield return item;
+            }
+
+            yield return newItem;
+        }
+
+        /// <summary>
         /// Performs a function on each element of the enumerable.
         /// </summary>
         /// <typeparam name="T">The type of the elements.</typeparam>

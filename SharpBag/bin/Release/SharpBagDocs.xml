@@ -845,6 +845,15 @@
             <param name="other">The collection to union.</param>
             <returns>The current instance and the specified collection unioned.</returns>
         </member>
+        <member name="M:SharpBag.Extensions.Add``1(System.Collections.Generic.IEnumerable{``0},``0)">
+            <summary>
+            Adds the specified item to the current instance.
+            </summary>
+            <typeparam name="T">The type of the items.</typeparam>
+            <param name="source">The current instance.</param>
+            <param name="newItem">The new item.</param>
+            <returns>The current instance with the new item.</returns>
+        </member>
         <member name="M:SharpBag.Extensions.Map``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``0})">
             <summary>
             Performs a function on each element of the enumerable.
