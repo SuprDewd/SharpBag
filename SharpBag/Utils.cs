@@ -56,7 +56,6 @@ namespace SharpBag
             return objects;
         }
 
-
         #region Igor Ostrovsky
 
         /// <summary>

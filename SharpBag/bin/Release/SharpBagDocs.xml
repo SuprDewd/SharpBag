@@ -540,56 +540,6 @@
             <typeparam name="T">The type of the elements in the enumerable.</typeparam>
             <param name="sequence">The current instance.</param>
         </member>
-        <member name="M:SharpBag.Extensions.GetPixels(System.Drawing.Bitmap,System.Drawing.Rectangle)">
-            <summary>
-            Gets an enumerable containing all pixels that are in the specified rectangle on the current instance.
-            </summary>
-            <param name="image">The current instance.</param>
-            <param name="rect">The rectangle in the current instance.</param>
-            <returns>An enumerable containing all pixels that are in the specified rectangle on the current instance.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.GetLuminosity(System.Drawing.Bitmap,System.Drawing.Rectangle)">
-            <summary>
-            Gets the luminosity of the specified rectangle in the current instance.
-            </summary>
-            <param name="image">The current instance.</param>
-            <param name="rect">The rectangle in the current instance.</param>
-            <returns>The luminosity of the specified rectangle in the current instance.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.GetRectangle(System.Drawing.Image)">
-            <summary>
-            Gets a new rectangle that has the same with and height as the current instance.
-            </summary>
-            <param name="image">The current instance.</param>
-            <returns>A new rectangle that has the same with and height as the current instance.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.Contrast(System.Double,System.Double)">
-            <summary>
-            Gets the contrast of the current instance.
-            </summary>
-            <param name="d">The current instance.</param>
-            <param name="contrast">The contrast.</param>
-            <returns>The contrast.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.GetSubRectangles(System.Drawing.Rectangle,System.Int32,System.Int32)">
-            <summary>
-            Gets a subset of rectangles all with the specified width and height from the current instance.
-            </summary>
-            <param name="rect">The current instance.</param>
-            <param name="width">The width of all sub-rectangles.</param>
-            <param name="height">The height of all sub-rectangles.</param>
-            <returns>An enumerable with the sub-rectangles.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.CreateRectangle(System.Int32,System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Creates a rectangle.
-            </summary>
-            <param name="x">The upper left x coordinate.</param>
-            <param name="y">The upper left y coordinate.</param>
-            <param name="nextX">The lower right x coordinate.</param>
-            <param name="nextY">The lower right y coordinate.</param>
-            <returns>A rectangle.</returns>
-        </member>
         <member name="M:SharpBag.Extensions.GetByPercent``1(``0[],System.Double)">
             <summary>
             Gets the element in the array located at the specified percent.
@@ -598,6 +548,22 @@
             <param name="array">The current instance.</param>
             <param name="percent">The percent.</param>
             <returns>The element in the array located at the specified percent.</returns>
+        </member>
+        <member name="M:SharpBag.Extensions.AsEnumerable``1(``0[0:,0:])">
+            <summary>
+            Returns an enumerable of all the items in the current instance.
+            </summary>
+            <typeparam name="T">The type of the items.</typeparam>
+            <param name="multiDArray">The current instance.</param>
+            <returns>An enumerable of all the items in the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.Extensions.AsEnumerable``1(``0[0:,0:,0:])">
+            <summary>
+            Returns an enumerable of all the items in the current instance.
+            </summary>
+            <typeparam name="T">The type of the items.</typeparam>
+            <param name="multiDArray">The current instance.</param>
+            <returns>An enumerable of all the items in the current instance.</returns>
         </member>
         <member name="M:SharpBag.Extensions.Contains(System.Array,System.Object)">
             <summary>
@@ -2679,6 +2645,56 @@
             </summary>
             <param name="img">The current instance.</param>
             <returns>The BitmapSource.</returns>
+        </member>
+        <member name="M:SharpBag.Media.MediaExtensions.GetPixels(System.Drawing.Bitmap,System.Drawing.Rectangle)">
+            <summary>
+            Gets an enumerable containing all pixels that are in the specified rectangle on the current instance.
+            </summary>
+            <param name="image">The current instance.</param>
+            <param name="rect">The rectangle in the current instance.</param>
+            <returns>An enumerable containing all pixels that are in the specified rectangle on the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.Media.MediaExtensions.GetLuminosity(System.Drawing.Bitmap,System.Drawing.Rectangle)">
+            <summary>
+            Gets the luminosity of the specified rectangle in the current instance.
+            </summary>
+            <param name="image">The current instance.</param>
+            <param name="rect">The rectangle in the current instance.</param>
+            <returns>The luminosity of the specified rectangle in the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.Media.MediaExtensions.GetRectangle(System.Drawing.Image)">
+            <summary>
+            Gets a new rectangle that has the same with and height as the current instance.
+            </summary>
+            <param name="image">The current instance.</param>
+            <returns>A new rectangle that has the same with and height as the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.Media.MediaExtensions.Contrast(System.Double,System.Double)">
+            <summary>
+            Gets the contrast of the current instance.
+            </summary>
+            <param name="d">The current instance.</param>
+            <param name="contrast">The contrast.</param>
+            <returns>The contrast.</returns>
+        </member>
+        <member name="M:SharpBag.Media.MediaExtensions.GetSubRectangles(System.Drawing.Rectangle,System.Int32,System.Int32)">
+            <summary>
+            Gets a subset of rectangles all with the specified width and height from the current instance.
+            </summary>
+            <param name="rect">The current instance.</param>
+            <param name="width">The width of all sub-rectangles.</param>
+            <param name="height">The height of all sub-rectangles.</param>
+            <returns>An enumerable with the sub-rectangles.</returns>
+        </member>
+        <member name="M:SharpBag.Media.MediaExtensions.CreateRectangle(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates a rectangle.
+            </summary>
+            <param name="x">The upper left x coordinate.</param>
+            <param name="y">The upper left y coordinate.</param>
+            <param name="nextX">The lower right x coordinate.</param>
+            <param name="nextY">The lower right y coordinate.</param>
+            <returns>A rectangle.</returns>
         </member>
         <member name="T:SharpBag.Net.TcpClientHandler">
             <summary>

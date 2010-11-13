@@ -347,82 +347,6 @@ namespace SharpBag
         }
 
         /// <summary>
-        /// Gets an enumerable containing all pixels that are in the specified rectangle on the current instance.
-        /// </summary>
-        /// <param name="image">The current instance.</param>
-        /// <param name="rect">The rectangle in the current instance.</param>
-        /// <returns>An enumerable containing all pixels that are in the specified rectangle on the current instance.</returns>
-        public static IEnumerable<Color> GetPixels(this Bitmap image, Rectangle rect)
-        {
-            return from y in rect.Top.To(rect.Bottom)
-                   from x in rect.Left.To(rect.Right)
-                   select image.GetPixel(x, y);
-        }
-
-        /// <summary>
-        /// Gets the luminosity of the specified rectangle in the current instance.
-        /// </summary>
-        /// <param name="image">The current instance.</param>
-        /// <param name="rect">The rectangle in the current instance.</param>
-        /// <returns>The luminosity of the specified rectangle in the current instance.</returns>
-        public static double GetLuminosity(this Bitmap image, Rectangle rect)
-        {
-            return image.GetPixels(rect).Average(c => .3 * c.R + .59 * c.G + .11 * c.B) / 255;
-        }
-
-        /// <summary>
-        /// Gets a new rectangle that has the same with and height as the current instance.
-        /// </summary>
-        /// <param name="image">The current instance.</param>
-        /// <returns>A new rectangle that has the same with and height as the current instance.</returns>
-        public static Rectangle GetRectangle(this Image image)
-        {
-            return new Rectangle(0, 0, image.Width, image.Height);
-        }
-
-        /// <summary>
-        /// Gets the contrast of the current instance.
-        /// </summary>
-        /// <param name="d">The current instance.</param>
-        /// <param name="contrast">The contrast.</param>
-        /// <returns>The contrast.</returns>
-        public static double Contrast(this double d, double contrast)
-        {
-            return Math.MathExtensions.Bound((((d - .5) * contrast) + .5), 0, 1);
-        }
-
-        /// <summary>
-        /// Gets a subset of rectangles all with the specified width and height from the current instance.
-        /// </summary>
-        /// <param name="rect">The current instance.</param>
-        /// <param name="width">The width of all sub-rectangles.</param>
-        /// <param name="height">The height of all sub-rectangles.</param>
-        /// <returns>An enumerable with the sub-rectangles.</returns>
-        public static IEnumerable<Rectangle> GetSubRectangles(this Rectangle rect, int width, int height)
-        {
-            var xSize = rect.Width / (double)width;
-            var ySize = rect.Height / (double)height;
-            return from y in 0.To(height)
-                   from x in 0.To(width)
-                   let r = CreateRectangle((int)(x * xSize), (int)(y * ySize), (int)((x + 1) * xSize), (int)((y + 1) * ySize))
-                   where r.Height > 0 && r.Width > 0
-                   select r;
-        }
-
-        /// <summary>
-        /// Creates a rectangle.
-        /// </summary>
-        /// <param name="x">The upper left x coordinate.</param>
-        /// <param name="y">The upper left y coordinate.</param>
-        /// <param name="nextX">The lower right x coordinate.</param>
-        /// <param name="nextY">The lower right y coordinate.</param>
-        /// <returns>A rectangle.</returns>
-        public static Rectangle CreateRectangle(int x, int y, int nextX, int nextY)
-        {
-            return new Rectangle(x, y, nextX - x, nextY - y);
-        }
-
-        /// <summary>
         /// Gets the element in the array located at the specified percent.
         /// </summary>
         /// <typeparam name="T">The type of the elements in the array.</typeparam>
@@ -432,6 +356,47 @@ namespace SharpBag
         public static T GetByPercent<T>(this T[] array, double percent)
         {
             return array[Math.MathExtensions.Round((array.Length - 1) * percent)];
+        }
+
+        #endregion
+
+        #region Multidimensional Arrays
+
+        /// <summary>
+        /// Returns an enumerable of all the items in the current instance.
+        /// </summary>
+        /// <typeparam name="T">The type of the items.</typeparam>
+        /// <param name="multiDArray">The current instance.</param>
+        /// <returns>An enumerable of all the items in the current instance.</returns>
+        public static IEnumerable<T> AsEnumerable<T>(this T[,] multiDArray)
+        {
+            for (int i1 = 0; i1 < multiDArray.GetLength(0); i1++)
+            {
+                for (int i2 = 0; i2 < multiDArray.GetLength(1); i2++)
+                {
+                    yield return multiDArray[i1, i2];
+                }
+            }
+        }
+
+        /// <summary>
+        /// Returns an enumerable of all the items in the current instance.
+        /// </summary>
+        /// <typeparam name="T">The type of the items.</typeparam>
+        /// <param name="multiDArray">The current instance.</param>
+        /// <returns>An enumerable of all the items in the current instance.</returns>
+        public static IEnumerable<T> AsEnumerable<T>(this T[, ,] multiDArray)
+        {
+            for (int i1 = 0; i1 < multiDArray.GetLength(0); i1++)
+            {
+                for (int i2 = 0; i2 < multiDArray.GetLength(1); i2++)
+                {
+                    for (int i3 = 0; i3 < multiDArray.GetLength(2); i3++)
+                    {
+                        yield return multiDArray[i1, i2, i3];
+                    }
+                }
+            }
         }
 
         #endregion
