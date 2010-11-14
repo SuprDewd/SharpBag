@@ -44,5 +44,34 @@ namespace SharpBag.Strings
 
             return new string(charArray);
         }
+
+        /// <summary>
+        /// Outputs the enumerable as a pretty string.
+        /// </summary>
+        /// <typeparam name="T">The type of elements.</typeparam>
+        /// <param name="source">The current instance.</param>
+        /// <param name="before">A string to prepend to the output.</param>
+        /// <param name="delimiter">A string to insert in between the elements.</param>
+        /// <param name="after">A string to append to the output.</param>
+        /// <returns>The current instance as a pretty string.</returns>
+        public static string ToStringPretty<T>(this IEnumerable<T> source, string before = "", string delimiter = ", ", string after = "")
+        {
+            if (source == null) throw new ArgumentNullException("source");
+
+            StringBuilder result = new StringBuilder();
+            result.Append(before);
+
+            bool firstElement = true;
+            foreach (T elem in source)
+            {
+                if (firstElement) firstElement = false;
+                else result.Append(delimiter);
+
+                result.Append(elem.ToString());
+            }
+
+            result.Append(after);
+            return result.ToString();
+        }
     }
 }

@@ -34,5 +34,30 @@ namespace SharpBag.Algorithms.Sorting
 
             return array;
         }
+
+        public static IEnumerable<int> SelectionSort(this IEnumerable<int> collection, SortOrder order = SortOrder.Ascending)
+        {
+            int[] array = collection.ToArray();
+            int min, temp;
+
+            for (int outer = 0; outer < array.Length; outer++)
+            {
+                min = outer;
+
+                for (int inner = outer + 1; inner < array.Length; inner++)
+                {
+                    if ((order == SortOrder.Ascending && array[inner] < array[min]) || (order != SortOrder.Ascending && array[inner] > array[min]))
+                    {
+                        min = inner;
+                    }
+                }
+
+                temp = array[outer];
+                array[outer] = array[min];
+                array[min] = temp;
+            }
+
+            return array;
+        }
     }
 }

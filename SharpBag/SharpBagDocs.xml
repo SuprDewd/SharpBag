@@ -396,34 +396,6 @@
             <param name="source">The current instance.</param>
             <param name="action">The action to perform on each element.</param>
         </member>
-        <member name="M:SharpBag.Extensions.ToStringPretty``1(System.Collections.Generic.IEnumerable{``0})">
-            <summary>
-            Outputs the enumerable as a pretty string.
-            </summary>
-            <typeparam name="T">The type of elements.</typeparam>
-            <param name="source">The current instance.</param>
-            <returns>The current instance as a pretty string.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.ToStringPretty``1(System.Collections.Generic.IEnumerable{``0},System.String)">
-            <summary>
-            Outputs the enumerable as a pretty string.
-            </summary>
-            <typeparam name="T">The type of elements.</typeparam>
-            <param name="source">The current instance.</param>
-            <param name="delimiter">A string to insert in between the elements.</param>
-            <returns>The current instance as a pretty string.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.ToStringPretty``1(System.Collections.Generic.IEnumerable{``0},System.String,System.String,System.String)">
-            <summary>
-            Outputs the enumerable as a pretty string.
-            </summary>
-            <typeparam name="T">The type of elements.</typeparam>
-            <param name="source">The current instance.</param>
-            <param name="before">A string to prepend to the output.</param>
-            <param name="delimiter">A string to insert in between the elements.</param>
-            <param name="after">A string to append to the output.</param>
-            <returns>The current instance as a pretty string.</returns>
-        </member>
         <member name="M:SharpBag.Extensions.Combine``3(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Func{``0,``1,``2})">
             <summary>
             Combines the current instance with another enumerable using the specified function.
@@ -2374,6 +2346,17 @@
             </summary>
             <param name="s">The current instance.</param>
             <returns>The current string instance reversed.</returns>
+        </member>
+        <member name="M:SharpBag.Strings.StringExtensions.ToStringPretty``1(System.Collections.Generic.IEnumerable{``0},System.String,System.String,System.String)">
+            <summary>
+            Outputs the enumerable as a pretty string.
+            </summary>
+            <typeparam name="T">The type of elements.</typeparam>
+            <param name="source">The current instance.</param>
+            <param name="before">A string to prepend to the output.</param>
+            <param name="delimiter">A string to insert in between the elements.</param>
+            <param name="after">A string to append to the output.</param>
+            <returns>The current instance as a pretty string.</returns>
         </member>
         <member name="T:SharpBag.Math.BagMath">
             <summary>
