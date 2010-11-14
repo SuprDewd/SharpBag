@@ -52,6 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionDisposable.cs" />
+    <Compile Include="Algorithms\Sorting\SortDirection.cs" />
+    <Compile Include="Algorithms\Sorting\SortExtensions.cs" />
     <Compile Include="Database\MSSqlDB.cs" />
     <Compile Include="Database\GenericDB.cs" />
     <Compile Include="Database\DatabaseExtensions.cs" />

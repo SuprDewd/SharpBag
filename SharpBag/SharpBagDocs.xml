@@ -3447,5 +3447,29 @@
             An event that is fired when a card is turned.
             </summary>
         </member>
+        <member name="M:SharpBag.Algorithms.Sorting.SortExtensions.BubbleSort``1(System.Collections.Generic.IEnumerable{``0},SharpBag.Algorithms.Sorting.SortOrder)">
+            <summary>
+            BubbleSorts the specified instance.
+            </summary>
+            <typeparam name="T">The type of the items in the current instance.</typeparam>
+            <param name="collection">The current instance.</param>
+            <param name="order">The order to sort in.</param>
+            <returns>The sorted collection.</returns>
+        </member>
+        <member name="T:SharpBag.Algorithms.Sorting.SortOrder">
+            <summary>
+            The order to sort in.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Algorithms.Sorting.SortOrder.Ascending">
+            <summary>
+            Sort ascending.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Algorithms.Sorting.SortOrder.Descending">
+            <summary>
+            Sort descending.
+            </summary>
+        </member>
     </members>
 </doc>
