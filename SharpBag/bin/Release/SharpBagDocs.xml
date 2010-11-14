@@ -3439,10 +3439,20 @@
             <param name="order">The order to sort in.</param>
             <returns>The sorted collection.</returns>
         </member>
-        <member name="M:SharpBag.Algorithms.Sorting.SortExtensions.SelectionSort(System.Collections.Generic.IEnumerable{System.Int32},SharpBag.Algorithms.Sorting.SortOrder)">
+        <member name="M:SharpBag.Algorithms.Sorting.SortExtensions.SelectionSort``1(System.Collections.Generic.IEnumerable{``0},SharpBag.Algorithms.Sorting.SortOrder)">
             <summary>
             SelectionSorts the current instance.
             </summary>
+            /// <typeparam name="T">The type of the items in the current instance.</typeparam>
+            <param name="collection">The current instance.</param>
+            <param name="order">The order to sort in.</param>
+            <returns>The sorted collection.</returns>
+        </member>
+        <member name="M:SharpBag.Algorithms.Sorting.SortExtensions.InsertionSort``1(System.Collections.Generic.IEnumerable{``0},SharpBag.Algorithms.Sorting.SortOrder)">
+            <summary>
+            InsertionSorts the current instance.
+            </summary>
+            /// <typeparam name="T">The type of the items in the current instance.</typeparam>
             <param name="collection">The current instance.</param>
             <param name="order">The order to sort in.</param>
             <returns>The sorted collection.</returns>

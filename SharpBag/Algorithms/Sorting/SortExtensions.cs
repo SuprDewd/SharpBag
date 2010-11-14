@@ -38,13 +38,15 @@ namespace SharpBag.Algorithms.Sorting
         /// <summary>
         /// SelectionSorts the current instance.
         /// </summary>
+        /// /// <typeparam name="T">The type of the items in the current instance.</typeparam>
         /// <param name="collection">The current instance.</param>
         /// <param name="order">The order to sort in.</param>
         /// <returns>The sorted collection.</returns>
-        public static IEnumerable<int> SelectionSort(this IEnumerable<int> collection, SortOrder order = SortOrder.Ascending)
+        public static IEnumerable<T> SelectionSort<T>(this IEnumerable<T> collection, SortOrder order = SortOrder.Ascending) where T : IComparable<T>
         {
-            int[] array = collection.ToArray();
-            int min, temp;
+            T[] array = collection.ToArray();
+            int min;
+            T temp;
 
             for (int outer = 0; outer < array.Length; outer++)
             {
@@ -52,7 +54,7 @@ namespace SharpBag.Algorithms.Sorting
 
                 for (int inner = outer + 1; inner < array.Length; inner++)
                 {
-                    if ((order == SortOrder.Ascending && array[inner] < array[min]) || (order != SortOrder.Ascending && array[inner] > array[min]))
+                    if (array[inner].CompareTo(array[min]) == (order == SortOrder.Ascending ? -1 : 1))
                     {
                         min = inner;
                     }
@@ -61,6 +63,34 @@ namespace SharpBag.Algorithms.Sorting
                 temp = array[outer];
                 array[outer] = array[min];
                 array[min] = temp;
+            }
+
+            return array;
+        }
+
+        /// <summary>
+        /// InsertionSorts the current instance.
+        /// </summary>
+        /// /// <typeparam name="T">The type of the items in the current instance.</typeparam>
+        /// <param name="collection">The current instance.</param>
+        /// <param name="order">The order to sort in.</param>
+        /// <returns>The sorted collection.</returns>
+        public static IEnumerable<T> InsertionSort<T>(this IEnumerable<T> collection, SortOrder order = SortOrder.Ascending) where T : IComparable<T>
+        {
+            T[] array = collection.ToArray();
+            int inner;
+            T temp;
+
+            for (int outer = 1; outer < array.Length; outer++)
+            {
+                temp = array[outer];
+                inner = outer;
+                while (inner > 0 && array[inner - 1].CompareTo(temp) != (order == SortOrder.Ascending ? -1 : 1))
+                {
+                    array[inner] = array[inner - 1];
+                    inner -= 1;
+                }
+                array[inner] = temp;
             }
 
             return array;
