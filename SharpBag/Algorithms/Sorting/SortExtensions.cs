@@ -8,7 +8,7 @@ namespace SharpBag.Algorithms.Sorting
     public static class SortExtensions
     {
         /// <summary>
-        /// BubbleSorts the specified instance.
+        /// BubbleSorts the current instance.
         /// </summary>
         /// <typeparam name="T">The type of the items in the current instance.</typeparam>
         /// <param name="collection">The current instance.</param>
@@ -35,6 +35,12 @@ namespace SharpBag.Algorithms.Sorting
             return array;
         }
 
+        /// <summary>
+        /// SelectionSorts the current instance.
+        /// </summary>
+        /// <param name="collection">The current instance.</param>
+        /// <param name="order">The order to sort in.</param>
+        /// <returns>The sorted collection.</returns>
         public static IEnumerable<int> SelectionSort(this IEnumerable<int> collection, SortOrder order = SortOrder.Ascending)
         {
             int[] array = collection.ToArray();
