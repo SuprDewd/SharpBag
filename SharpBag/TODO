@@ -1,7 +1,7 @@
 
  TODO:
 
-  Move Media extensions in Extensions.cs into MedaExtensions.cs
+  Add bracket matching algorithm.
   English NumToString.
   Dice class in Games. Supports checking for house etc.
   Normalize strings.
