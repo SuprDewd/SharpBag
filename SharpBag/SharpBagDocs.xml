@@ -3430,6 +3430,11 @@
             An event that is fired when a card is turned.
             </summary>
         </member>
+        <member name="T:SharpBag.Algorithms.Sorting.SortExtensions">
+            <summary>
+            Sorting extensions.
+            </summary>
+        </member>
         <member name="M:SharpBag.Algorithms.Sorting.SortExtensions.BubbleSort``1(System.Collections.Generic.IEnumerable{``0},SharpBag.Algorithms.Sorting.SortOrder)">
             <summary>
             BubbleSorts the current instance.
@@ -3482,6 +3487,13 @@
             <summary>
             The constructor.
             </summary>
+        </member>
+        <member name="M:SharpBag.Algorithms.PriorityQueue`1.Add(`0,System.Int32)">
+            <summary>
+            Adds an item to the queue.
+            </summary>
+            <param name="item">An item.</param>
+            <param name="priority">The priority of the item. Defaults to 0.</param>
         </member>
         <member name="M:SharpBag.Algorithms.PriorityQueue`1.Enqueue(`0,System.Int32)">
             <summary>

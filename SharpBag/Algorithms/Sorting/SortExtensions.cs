@@ -5,6 +5,9 @@ using System.Text;
 
 namespace SharpBag.Algorithms.Sorting
 {
+    /// <summary>
+    /// Sorting extensions.
+    /// </summary>
     public static class SortExtensions
     {
         /// <summary>

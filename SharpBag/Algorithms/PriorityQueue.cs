@@ -25,6 +25,16 @@ namespace SharpBag.Algorithms
         }
 
         /// <summary>
+        /// Adds an item to the queue.
+        /// </summary>
+        /// <param name="item">An item.</param>
+        /// <param name="priority">The priority of the item. Defaults to 0.</param>
+        public void Add(T item, int priority = 0)
+        {
+            this.Enqueue(item, priority);
+        }
+
+        /// <summary>
         /// The number of items in the priority queue.
         /// </summary>
         public int Count
