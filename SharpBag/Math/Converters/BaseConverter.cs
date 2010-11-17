@@ -15,6 +15,7 @@ namespace SharpBag.Math.Converters
         /// <param name="start_base">The base of the number.</param>
         /// <param name="target_base">The base to convert to.</param>
         /// <returns>The specified number in the specified target base.</returns>
+        /// <remarks>Bases must be in the range 2 to 36.</remarks>
         public static string ToBase(string number, int start_base, int target_base)
         {
             return FromBase10(ToBase10(number, start_base), target_base);
@@ -26,6 +27,7 @@ namespace SharpBag.Math.Converters
         /// <param name="number">The number as a string.</param>
         /// <param name="start_base">The base of the number.</param>
         /// <returns>The number in base 10.</returns>
+        /// <remarks>Bases must be in the range 2 to 36.</remarks>
         public static int ToBase10(string number, int start_base)
         {
             if (start_base < 2 || start_base > 36) return 0;
@@ -60,6 +62,7 @@ namespace SharpBag.Math.Converters
         /// <param name="number">The base 10 number.</param>
         /// <param name="target_base">The target base.</param>
         /// <returns>The target in the target base.</returns>
+        /// <remarks>Bases must be in the range 2 to 36.</remarks>
         public static string FromBase10(int number, int target_base)
         {
 
