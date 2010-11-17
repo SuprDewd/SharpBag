@@ -1647,6 +1647,109 @@
             </summary>
             <returns>The connection string.</returns>
         </member>
+        <member name="T:SharpBag.Algorithms.PriorityQueueItem`1">
+            <summary>
+            An item in a priority queue.
+            </summary>
+            <typeparam name="T">The type of the item.</typeparam>
+        </member>
+        <member name="M:SharpBag.Algorithms.PriorityQueueItem`1.#ctor(`0,System.Int32)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="item">The item.</param>
+            <param name="priority">The priority. Defaults to 0.</param>
+        </member>
+        <member name="M:SharpBag.Algorithms.PriorityQueueItem`1.ToString">
+            <see cref="M:System.Object.ToString"/>
+        </member>
+        <member name="P:SharpBag.Algorithms.PriorityQueueItem`1.Priority">
+            <summary>
+            The priority of the item.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Algorithms.PriorityQueueItem`1.Item">
+            <summary>
+            The item.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Algorithms.PriorityQueue`1">
+            <summary>
+            A priority queue.
+            </summary>
+            <typeparam name="T">The type of items in the priority queue.</typeparam>
+        </member>
+        <member name="M:SharpBag.Algorithms.PriorityQueue`1.#ctor">
+            <summary>
+            The constructor.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Algorithms.PriorityQueue`1.Add(`0,System.Int32)">
+            <summary>
+            Adds an item to the queue.
+            </summary>
+            <param name="item">An item.</param>
+            <param name="priority">The priority of the item. Defaults to 0.</param>
+        </member>
+        <member name="M:SharpBag.Algorithms.PriorityQueue`1.Enqueue(`0,System.Int32)">
+            <summary>
+            Adds an item to the queue.
+            </summary>
+            <param name="item">An item.</param>
+            <param name="priority">The priority of the item. Defaults to 0.</param>
+        </member>
+        <member name="M:SharpBag.Algorithms.PriorityQueue`1.GetPriorityEnumerator">
+            <summary>
+            Gets an enumerator sorted by the priority.
+            </summary>
+            <returns>The enumerator.</returns>
+        </member>
+        <member name="M:SharpBag.Algorithms.PriorityQueue`1.Dequeue">
+            <summary>
+            Returns the next item in the queue, and then removes it from queue.
+            </summary>
+            <returns>The next item in the queue.</returns>
+        </member>
+        <member name="M:SharpBag.Algorithms.PriorityQueue`1.Dequeue(System.Boolean)">
+            <summary>
+            Returns the next item in the queue.
+            </summary>
+            <param name="remove">Whether to remove the item from the queue.</param>
+            <returns>The next item in the queue.</returns>
+        </member>
+        <member name="M:SharpBag.Algorithms.PriorityQueue`1.Peek">
+            <summary>
+            Returns the next item in the queue, without removing it.
+            </summary>
+            <returns>The next item in the queue.</returns>
+        </member>
+        <member name="M:SharpBag.Algorithms.PriorityQueue`1.GetEnumerator">
+            <see cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+        </member>
+        <member name="M:SharpBag.Algorithms.PriorityQueue`1.GetEnumerator(System.Boolean)">
+            <param name="remove">Whether to remove the items that have been returned from the enumerator.</param>
+            <see cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+        </member>
+        <member name="M:SharpBag.Algorithms.PriorityQueue`1.System#Collections#IEnumerable#GetEnumerator">
+            <see cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+        </member>
+        <member name="P:SharpBag.Algorithms.PriorityQueue`1.Items">
+            <summary>
+            The items.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Algorithms.PriorityQueue`1.Count">
+            <summary>
+            The number of items in the priority queue.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Algorithms.PriorityQueue`1.Item(System.Int32)">
+            <summary>
+            Gets or sets the item at the specified index.
+            </summary>
+            <param name="index">The specified index.</param>
+            <returns>The item.</returns>
+        </member>
         <member name="T:SharpBag.Math.Sources">
             <summary>
             A class for number sources.
@@ -2262,6 +2365,21 @@
             <param name="target_base">The target base.</param>
             <returns>The target in the target base.</returns>
         </member>
+        <member name="T:SharpBag.Algorithms.Sorting.SortOrder">
+            <summary>
+            The order to sort in.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Algorithms.Sorting.SortOrder.Ascending">
+            <summary>
+            Sort ascending.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Algorithms.Sorting.SortOrder.Descending">
+            <summary>
+            Sort descending.
+            </summary>
+        </member>
         <member name="T:SharpBag.Patterns.LockedLazySingleton`1">
             <summary>
             An eager singleton.
@@ -2625,6 +2743,38 @@
             <summary>
             The base value.
             </summary>
+        </member>
+        <member name="T:SharpBag.Algorithms.Sorting.SortExtensions">
+            <summary>
+            Sorting extensions.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Algorithms.Sorting.SortExtensions.BubbleSort``1(System.Collections.Generic.IEnumerable{``0},SharpBag.Algorithms.Sorting.SortOrder)">
+            <summary>
+            BubbleSorts the current instance.
+            </summary>
+            <typeparam name="T">The type of the items in the current instance.</typeparam>
+            <param name="collection">The current instance.</param>
+            <param name="order">The order to sort in.</param>
+            <returns>The sorted collection.</returns>
+        </member>
+        <member name="M:SharpBag.Algorithms.Sorting.SortExtensions.SelectionSort``1(System.Collections.Generic.IEnumerable{``0},SharpBag.Algorithms.Sorting.SortOrder)">
+            <summary>
+            SelectionSorts the current instance.
+            </summary>
+            /// <typeparam name="T">The type of the items in the current instance.</typeparam>
+            <param name="collection">The current instance.</param>
+            <param name="order">The order to sort in.</param>
+            <returns>The sorted collection.</returns>
+        </member>
+        <member name="M:SharpBag.Algorithms.Sorting.SortExtensions.InsertionSort``1(System.Collections.Generic.IEnumerable{``0},SharpBag.Algorithms.Sorting.SortOrder)">
+            <summary>
+            InsertionSorts the current instance.
+            </summary>
+            /// <typeparam name="T">The type of the items in the current instance.</typeparam>
+            <param name="collection">The current instance.</param>
+            <param name="order">The order to sort in.</param>
+            <returns>The sorted collection.</returns>
         </member>
         <member name="T:SharpBag.Media.MediaExtensions">
             <summary>
@@ -3428,156 +3578,6 @@
         <member name="E:SharpBag.Games.Card.CardTurned">
             <summary>
             An event that is fired when a card is turned.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Algorithms.Sorting.SortExtensions">
-            <summary>
-            Sorting extensions.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Algorithms.Sorting.SortExtensions.BubbleSort``1(System.Collections.Generic.IEnumerable{``0},SharpBag.Algorithms.Sorting.SortOrder)">
-            <summary>
-            BubbleSorts the current instance.
-            </summary>
-            <typeparam name="T">The type of the items in the current instance.</typeparam>
-            <param name="collection">The current instance.</param>
-            <param name="order">The order to sort in.</param>
-            <returns>The sorted collection.</returns>
-        </member>
-        <member name="M:SharpBag.Algorithms.Sorting.SortExtensions.SelectionSort``1(System.Collections.Generic.IEnumerable{``0},SharpBag.Algorithms.Sorting.SortOrder)">
-            <summary>
-            SelectionSorts the current instance.
-            </summary>
-            /// <typeparam name="T">The type of the items in the current instance.</typeparam>
-            <param name="collection">The current instance.</param>
-            <param name="order">The order to sort in.</param>
-            <returns>The sorted collection.</returns>
-        </member>
-        <member name="M:SharpBag.Algorithms.Sorting.SortExtensions.InsertionSort``1(System.Collections.Generic.IEnumerable{``0},SharpBag.Algorithms.Sorting.SortOrder)">
-            <summary>
-            InsertionSorts the current instance.
-            </summary>
-            /// <typeparam name="T">The type of the items in the current instance.</typeparam>
-            <param name="collection">The current instance.</param>
-            <param name="order">The order to sort in.</param>
-            <returns>The sorted collection.</returns>
-        </member>
-        <member name="T:SharpBag.Algorithms.Sorting.SortOrder">
-            <summary>
-            The order to sort in.
-            </summary>
-        </member>
-        <member name="F:SharpBag.Algorithms.Sorting.SortOrder.Ascending">
-            <summary>
-            Sort ascending.
-            </summary>
-        </member>
-        <member name="F:SharpBag.Algorithms.Sorting.SortOrder.Descending">
-            <summary>
-            Sort descending.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Algorithms.PriorityQueue`1">
-            <summary>
-            A priority queue.
-            </summary>
-            <typeparam name="T">The type of items in the priority queue.</typeparam>
-        </member>
-        <member name="M:SharpBag.Algorithms.PriorityQueue`1.#ctor">
-            <summary>
-            The constructor.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Algorithms.PriorityQueue`1.Add(`0,System.Int32)">
-            <summary>
-            Adds an item to the queue.
-            </summary>
-            <param name="item">An item.</param>
-            <param name="priority">The priority of the item. Defaults to 0.</param>
-        </member>
-        <member name="M:SharpBag.Algorithms.PriorityQueue`1.Enqueue(`0,System.Int32)">
-            <summary>
-            Adds an item to the queue.
-            </summary>
-            <param name="item">An item.</param>
-            <param name="priority">The priority of the item. Defaults to 0.</param>
-        </member>
-        <member name="M:SharpBag.Algorithms.PriorityQueue`1.GetPriorityEnumerator">
-            <summary>
-            Gets an enumerator sorted by the priority.
-            </summary>
-            <returns>The enumerator.</returns>
-        </member>
-        <member name="M:SharpBag.Algorithms.PriorityQueue`1.Dequeue">
-            <summary>
-            Returns the next item in the queue, and then removes it from queue.
-            </summary>
-            <returns>The next item in the queue.</returns>
-        </member>
-        <member name="M:SharpBag.Algorithms.PriorityQueue`1.Dequeue(System.Boolean)">
-            <summary>
-            Returns the next item in the queue.
-            </summary>
-            <param name="remove">Whether to remove the item from the queue.</param>
-            <returns>The next item in the queue.</returns>
-        </member>
-        <member name="M:SharpBag.Algorithms.PriorityQueue`1.Peek">
-            <summary>
-            Returns the next item in the queue, without removing it.
-            </summary>
-            <returns>The next item in the queue.</returns>
-        </member>
-        <member name="M:SharpBag.Algorithms.PriorityQueue`1.GetEnumerator">
-            <see cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
-        </member>
-        <member name="M:SharpBag.Algorithms.PriorityQueue`1.GetEnumerator(System.Boolean)">
-            <param name="remove">Whether to remove the items that have been returned from the enumerator.</param>
-            <see cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
-        </member>
-        <member name="M:SharpBag.Algorithms.PriorityQueue`1.System#Collections#IEnumerable#GetEnumerator">
-            <see cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
-        </member>
-        <member name="P:SharpBag.Algorithms.PriorityQueue`1.Items">
-            <summary>
-            The items.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Algorithms.PriorityQueue`1.Count">
-            <summary>
-            The number of items in the priority queue.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Algorithms.PriorityQueue`1.Item(System.Int32)">
-            <summary>
-            Gets or sets the item at the specified index.
-            </summary>
-            <param name="index">The specified index.</param>
-            <returns>The item.</returns>
-        </member>
-        <member name="T:SharpBag.Algorithms.PriorityQueueItem`1">
-            <summary>
-            An item in a priority queue.
-            </summary>
-            <typeparam name="T">The type of the item.</typeparam>
-        </member>
-        <member name="M:SharpBag.Algorithms.PriorityQueueItem`1.#ctor(`0,System.Int32)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="item">The item.</param>
-            <param name="priority">The priority. Defaults to 0.</param>
-        </member>
-        <member name="M:SharpBag.Algorithms.PriorityQueueItem`1.ToString">
-            <see cref="M:System.Object.ToString"/>
-        </member>
-        <member name="P:SharpBag.Algorithms.PriorityQueueItem`1.Priority">
-            <summary>
-            The priority of the item.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Algorithms.PriorityQueueItem`1.Item">
-            <summary>
-            The item.
             </summary>
         </member>
     </members>
