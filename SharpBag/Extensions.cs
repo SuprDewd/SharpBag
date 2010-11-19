@@ -8,6 +8,9 @@ using System.Text;
 using System.Windows.Threading;
 using System.Threading;
 using System.Numerics;
+using SharpBag.Math;
+using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace SharpBag
 {
@@ -17,46 +20,6 @@ namespace SharpBag
     public static class Extensions
     {
         #region Igor Ostrovsky
-
-        /// <summary>
-        /// Writes lines from the current instance to the specified TextWriter.
-        /// </summary>
-        /// <typeparam name="T">The type of the lines that will be written.</typeparam>
-        /// <param name="lines">The current instance.</param>
-        /// <param name="writer">The TextWriter to write to.</param>
-        public static void WriteLinesTo<T>(this IEnumerable<T> lines, TextWriter writer)
-        {
-            if (lines == null) throw new ArgumentNullException("lines");
-            if (writer == null) throw new ArgumentNullException("writer");
-
-            lines.ForEach((line) => writer.WriteLine(line.ToString()));
-        }
-
-        /// <summary>
-        /// Writes lines from the current instance to the console.
-        /// </summary>
-        /// <typeparam name="T">The type of the lines that will be written.</typeparam>
-        /// <param name="lines">The current instance.</param>
-        public static void WriteLinesToConsole<T>(this IEnumerable<T> lines)
-        {
-            lines.WriteLinesTo(Console.Out);
-        }
-
-        /// <summary>
-        /// Writes lines from the current instance to the specified file.
-        /// </summary>
-        /// <typeparam name="T">The type of the lines that will be written.</typeparam>
-        /// <param name="lines">The current instance.</param>
-        /// <param name="path">The location of the file to write to.</param>
-        public static void WriteLinesToFile<T>(this IEnumerable<T> lines, string path)
-        {
-            if (path == null) throw new ArgumentNullException("path");
-
-            using (TextWriter file = new StreamWriter(path))
-            {
-                lines.WriteLinesTo(file);
-            }
-        }
 
         /// <summary>
         /// Performs an action on each element of the enumerable.
@@ -94,111 +57,11 @@ namespace SharpBag
             }
         }
 
-        /// <summary>
-        /// Combines the current instance with another enumerable using the specified function.
-        /// </summary>
-        /// <typeparam name="TIn1">The type of elements in the current instance.</typeparam>
-        /// <typeparam name="TIn2">The type of elements in the enumerable to combine with the current instance.</typeparam>
-        /// <typeparam name="TOut">The type of elements to return.</typeparam>
-        /// <param name="in1">The current instance.</param>
-        /// <param name="in2">The enumerable to combine with the current instance.</param>
-        /// <param name="func">The function used to combine the two enumerables.</param>
-        /// <returns>The current instance combined with the specified enumerable using the specified function.</returns>
-        public static IEnumerable<TOut> Combine<TIn1, TIn2, TOut>(this IEnumerable<TIn1> in1, IEnumerable<TIn2> in2, Func<TIn1, TIn2, TOut> func)
-        {
-            if (in1 == null) throw new ArgumentNullException("in1");
-            if (in2 == null) throw new ArgumentNullException("in2");
-            if (func == null) throw new ArgumentNullException("func");
-
-            using (var e1 = in1.GetEnumerator())
-            using (var e2 = in2.GetEnumerator())
-            {
-                while (e1.MoveNext() && e2.MoveNext())
-                {
-                    yield return func(e1.Current, e2.Current);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Shuffle the current instance.
-        /// </summary>
-        /// <typeparam name="T">The type of elements in the current instance.</typeparam>
-        /// <param name="source">The current instance.</param>
-        /// <returns>The current instance shuffled.</returns>
-        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
-        {
-            return Shuffle(source, new Random());
-        }
-
-        /// <summary>
-        /// Shuffle the current instance.
-        /// </summary>
-        /// <typeparam name="T">The type of elements in the current instance.</typeparam>
-        /// <param name="source">The current instance.</param>
-        /// <param name="random">The randomness generator.</param>
-        /// <returns>The current instance shuffled.</returns>
-        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source, Random random)
-        {
-            if (source == null) throw new ArgumentNullException("source");
-            if (random == null) throw new ArgumentNullException("random");
-
-            T[] array = source.ToArray();
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                int r = random.Next(i + 1);
-                T tmp = array[r];
-                array[r] = array[i];
-                array[i] = tmp;
-            }
-
-            return array;
-        }
-
         #endregion
 
         #region Yet Another Language Geek
 
-        /// <summary>
-        /// Converts the current instance to an Int32.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <returns>The current instance as an Int32.</returns>
-        public static int ToInt(this string s)
-        {
-            return Convert.ToInt32(s);
-        }
-
-        /// <summary>
-        /// Converts the current instance to an Int64.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <returns>The current instance as an Int64.</returns>
-        public static long ToLong(this string s)
-        {
-            return Convert.ToInt64(s);
-        }
-
-        /// <summary>
-        /// Converts the current instance to a double.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <returns>The current instance as a double.</returns>
-        public static double ToDouble(this string s)
-        {
-            return Convert.ToDouble(s);
-        }
-
-        /// <summary>
-        /// Converts the current instance to a bool.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <returns>The current instance as a bool.</returns>
-        public static bool ToBool(this string s)
-        {
-            return Convert.ToBoolean(s);
-        }
+        #region To overloads
 
         /// <summary>
         /// Generates numbers that range from the value of the current instance to the value of end.
@@ -270,6 +133,8 @@ namespace SharpBag
             for (var current = iStart; current != iEnd; current += diff)
                 yield return (char)current;
         }
+
+        #endregion
 
         /// <summary>
         /// Executes the specified function N times where N is the value of the current instance.
@@ -421,55 +286,6 @@ namespace SharpBag
         }
 
         /// <summary>
-        /// Calculates the edit distance between the current instance and the specified string.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <param name="t">The string to compare to.</param>
-        /// <param name="caseSensitive">Whether or not to perform a case sensitive comparison.</param>
-        /// <returns>The edit distance between the current instance and the specified string.</returns>
-        public static int DistanceTo(this string s, string t, bool caseSensitive)
-        {
-            if (!caseSensitive)
-            {
-                s = s.ToLower();
-                t = t.ToLower();
-            }
-
-            int n = s.Length;
-            int m = t.Length;
-            int[,] d = new int[n + 1, m + 1];
-
-            if (n == 0) return m;
-            if (m == 0) return n;
-
-            for (int i = 0; i <= n; d[i, 0] = i++) ;
-            for (int j = 0; j <= m; d[0, j] = j++) ;
-
-            for (int i = 1; i <= n; i++)
-            {
-                for (int j = 1; j <= m; j++)
-                {
-                    int cost = (t[j - 1] == s[i - 1]) ? 0 : 1;
-
-                    d[i, j] = System.Math.Min(System.Math.Min(d[i - 1, j] + 1, d[i, j - 1] + 1), d[i - 1, j - 1] + cost);
-                }
-            }
-
-            return d[n, m];
-        }
-
-        /// <summary>
-        /// Calculates the edit distance between the current instance and the specified string.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <param name="t">The string to compare to.</param>
-        /// <returns>The edit distance between the current instance and the specified string.</returns>
-        public static int DistanceTo(this string s, string t)
-        {
-            return s.DistanceTo(t, true);
-        }
-
-        /// <summary>
         /// Converts all elements in the current instance using the specified action.
         /// </summary>
         /// <typeparam name="TInput">The type of the input elements.</typeparam>
@@ -485,97 +301,6 @@ namespace SharpBag
             foreach (TInput elem in source)
             {
                 yield return action(elem);
-            }
-        }
-
-        /// <summary>
-        /// Modifies all elements in the current instance using the specified function.
-        /// </summary>
-        /// <typeparam name="T">The type of the elements.</typeparam>
-        /// <param name="source">The current instance.</param>
-        /// <param name="func">The function to perform on each element.</param>
-        /// <returns>A new enumerable containing the ouput elements.</returns>
-        public static IEnumerable<T> Modify<T>(this IEnumerable<T> source, Func<T, T> func)
-        {
-            if (source == null) throw new ArgumentNullException("source");
-            if (func == null) throw new ArgumentNullException("func");
-
-            foreach (T elem in source)
-            {
-                yield return func(elem);
-            }
-        }
-
-        /// <summary>
-        /// Compares the current instance to another string using the specified char array to determine the results.
-        /// </summary>
-        /// <param name="a">The current instance.</param>
-        /// <param name="b">The string to compare to.</param>
-        /// <param name="c">The char array.</param>
-        /// <returns>Whether the current instance is less than, equal to or greater than the specified string.</returns>
-        public static int CompareTo(this string a, string b, char[] c)
-        {
-            return a.CompareTo(b, c, false);
-        }
-
-        /// <summary>
-        /// Compares the current instance to another string using the specified char array to determine the results.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <param name="b">The string to compare to.</param>
-        /// <param name="c">The char array.</param>
-        /// <param name="caseSensitive">Whether or not the comparison is case-sensitive.</param>
-        /// <returns>Whether the current instance is less than, equal to or greater than the specified string.</returns>
-        public static int CompareTo(this string s, string b, char[] c, bool caseSensitive)
-        {
-            string a = s;
-            if (!caseSensitive)
-            {
-                a = a.ToLower();
-                b = b.ToLower();
-
-                for (int i = 0; i < c.Length; i++)
-                {
-                    c[i] = Convert.ToChar(c[i].ToString().ToLower());
-                }
-            }
-
-            if (a == b) return 0;
-
-            for (int i = 0; i < (a.Length > b.Length ? a.Length : b.Length); i++)
-            {
-                int r = a[i].CompareTo(b[i]);
-                if (r == 0) continue;
-                return r;
-            }
-
-            return 0;
-        }
-
-        /// <summary>
-        /// Compares the current instance to another char using the specified char array to determine the results.
-        /// </summary>
-        /// <param name="a">The current instance.</param>
-        /// <param name="b">The char to compare to.</param>
-        /// <param name="c">The char array.</param>
-        /// <returns>Whether the current instance is less than, equal to or greater than the specified char.</returns>
-        public static int CompareTo(this char a, char b, char[] c)
-        {
-            if (a == b) return 0;
-
-            if (!c.Contains(a) || !c.Contains(b))
-            {
-                return ((int)a).CompareTo((int)b);
-            }
-            else
-            {
-                for (int i = 0; i < c.Length; i++)
-                {
-                    if (c[i] == a) return -1;
-                    if (c[i] == b) return 1;
-                }
-
-                return ((int)a).CompareTo((int)b);
             }
         }
 
@@ -608,6 +333,8 @@ namespace SharpBag
             }
         }
 
+        #region Fill overloads
+
         /// <summary>
         /// Fills the current array with the specified value.
         /// </summary>
@@ -636,198 +363,7 @@ namespace SharpBag
             }
         }
 
-        /// <summary>
-        /// Returns a new string in which all occurrences of a specified string in the current instance are replaced with another specified string repeatedly until the new string no longer contains the specified string.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <param name="oldValue">The string to be replaced.</param>
-        /// <param name="newValue">The string to replace all occurrences of oldValue.</param>
-        /// <returns>A string that is equivalent to the current string except that all instances of oldValue are repeatedly replaced with newValue until the new string no longer contains oldValue.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static string ReplaceAll(this string s, string oldValue, string newValue)
-        {
-            if (s == null) throw new ArgumentNullException("s", "The current instance must not be null.");
-            if (oldValue == null) throw new ArgumentNullException("oldValue", "oldValue must not be null.");
-            if (newValue == null) throw new ArgumentNullException("newValue", "newValue must not be null.");
-            if (newValue.Contains(oldValue)) throw new ArgumentException("newValue cannot contain oldValue. This will result in an endless loop.");
-
-            string tS = s;
-            while (tS.Contains(oldValue))
-            {
-                tS = tS.Replace(oldValue, newValue);
-            }
-            return tS;
-        }
-
-        /// <summary>
-        /// Returns all the words in the string.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <returns>All the words in the string.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        public static string[] Words(this string s)
-        {
-            if (s == null) throw new ArgumentNullException("s", "The current instance must not be null.");
-            return s.Split(new char[] { ' ', '.', ',', '?' }, StringSplitOptions.RemoveEmptyEntries);
-        }
-
-        /// <summary>
-        /// Returns all the lines in the string.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <returns>All the lines in the string.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        public static string[] Lines(this string s)
-        {
-            if (s == null) throw new ArgumentNullException("s", "The current instance must not be null.");
-            return s.NoCarriageReturns().Split('\n');
-        }
-
-        /// <summary>
-        /// Takes the string and removes all carriage returns ('\r').
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <returns>The string without carriage returns ('\r').</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        public static string NoCarriageReturns(this string s)
-        {
-            if (s == null) throw new ArgumentNullException("s", "The current instance must not be null.");
-            return s.Replace("\r", "");
-        }
-
-        /// <summary>
-        /// Takes the string, replaces all line breaks with a space, then replaces all double spaces with a space and finally trims the string.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <returns>The string in one line, with no double spaces, trimmed.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        public static string OneLineNoDoubleSpaceTrimmed(this string s)
-        {
-            if (s == null) throw new ArgumentNullException("s", "The current instance must not be null.");
-            return s.NoCarriageReturns().ReplaceAll("\n", " ").ReplaceAll("  ", " ").Trim();
-        }
-
-        /// <summary>
-        /// Returns a copy of this System.Char converted to uppercase, using the casing rules of the current culture.
-        /// </summary>
-        /// <param name="c">The current instance.</param>
-        /// <returns>A copy of this System.Char converted to uppercase.</returns>
-        public static char ToUpper(this char c)
-        {
-            return c.ToString().ToUpper()[0];
-        }
-
-        /// <summary>
-        /// Returns a copy of this System.Char converted to lowercase, using the casing rules of the current culture.
-        /// </summary>
-        /// <param name="c">The current instance.</param>
-        /// <returns>A copy of this System.Char converted to lowercase.</returns>
-        public static char ToLower(this char c)
-        {
-            return c.ToString().ToLower()[0];
-        }
-
-        #region Split overloads.
-
-        /// <summary>
-        /// Returns a string array that contains the substrings in this string that are delimited by the specified string. A parameter specifies whether to return empty array elements.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <param name="separator">A string that delimits the substrings in this string.</param>
-        /// <returns>An array whose elements contain the substrings in this string that are delimited by the separator.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        public static string[] Split(this string s, string separator)
-        {
-            if (s == null) throw new ArgumentNullException("s", "The current instance must not be null.");
-            if (separator == null) throw new ArgumentNullException("separator", "separator must not be null.");
-            return s.Split(separator, StringSplitOptions.None);
-        }
-
-        /// <summary>
-        /// Returns a string array that contains the substrings in this string that are delimited by the specified string. A parameter specifies whether to return empty array elements.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <param name="separator">A string that delimits the substrings in this string.</param>
-        /// <param name="options">RemoveEmptyEntries to omit empty array elements from the array returned; or None to include empty array elements in the array returned.</param>
-        /// <returns>An array whose elements contain the substrings in this string that are delimited by the separator.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        public static string[] Split(this string s, string separator, StringSplitOptions options)
-        {
-            if (s == null) throw new ArgumentNullException("s", "The current instance must not be null.");
-            if (separator == null) throw new ArgumentNullException("separator", "separator must not be null.");
-            return s.Split(new string[] { separator }, options);
-        }
-
-        /// <summary>
-        /// Returns a string array that contains the substrings in this string that are delimited by the specified char. A parameter specifies whether to return empty array elements.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <param name="separator">A char that delimits the substrings in this string.</param>
-        /// <returns>An array whose elements contain the substrings in this string that are delimited by the separator.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        public static string[] Split(this string s, char separator)
-        {
-            if (s == null) throw new ArgumentNullException("s", "The current instance must not be null.");
-            return s.Split(separator, StringSplitOptions.None);
-        }
-
-        /// <summary>
-        /// Returns a string array that contains the substrings in this string that are delimited by the specified char. A parameter specifies whether to return empty array elements.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <param name="separator">A char that delimits the substrings in this string.</param>
-        /// <param name="options">RemoveEmptyEntries to omit empty array elements from the array returned; or None to include empty array elements in the array returned.</param>
-        /// <returns>An array whose elements contain the substrings in this string that are delimited by the separator.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        public static string[] Split(this string s, char separator, StringSplitOptions options)
-        {
-            if (s == null) throw new ArgumentNullException("s", "The current instance must not be null.");
-            return s.Split(new char[] { separator }, options);
-        }
-
         #endregion
-
-        /// <summary>
-        /// Splits the current string into substrings using the separator and then converts each substring into an int.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <param name="separator">The separator used to split the string into ints.</param>
-        /// <returns>An array of the ints.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        public static int[] SplitIntoInts(this string s, string separator)
-        {
-            if (s == null) throw new ArgumentNullException("s", "The current instance must not be null.");
-            if (separator == null) throw new ArgumentNullException("separator", "separator must not be null.");
-            List<int> ints = new List<int>();
-
-            foreach (string i in s.Split(separator, StringSplitOptions.None))
-            {
-                ints.Add(Convert.ToInt32(i.Trim()));
-            }
-
-            return ints.ToArray();
-        }
-
-        /// <summary>
-        /// Splits the current string into substrings using the separator and then converts each substring into an int.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <param name="separator">The separator used to split the string into ints.</param>
-        /// <returns>An array of the ints.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        public static int[] SplitIntoInts(this string s, char separator)
-        {
-            if (s == null) throw new ArgumentNullException("s", "The current instance must not be null.");
-            List<int> ints = new List<int>();
-
-            foreach (string i in s.Split(separator, StringSplitOptions.None))
-            {
-                ints.Add(Convert.ToInt32(i.Trim()));
-            }
-
-            return ints.ToArray();
-        }
 
         /// <summary>
         /// Gets a subarray of an array.
@@ -844,6 +380,8 @@ namespace SharpBag
                 yield return array.ElementAt(i);
             }
         }
+
+        #region InvokeIfRequired overloads
 
         /// <summary>
         /// Simple helper extension method to marshall to correct thread if its required.
@@ -873,6 +411,8 @@ namespace SharpBag
             }
         }
 
+        #endregion
+
         /// <summary>
         /// Unions all elements in the current instance and the specified collection.
         /// </summary>
@@ -893,6 +433,8 @@ namespace SharpBag
             }
         }
 
+        #region Add overloads
+
         /// <summary>
         /// Adds the specified item to the current instance.
         /// </summary>
@@ -911,23 +453,27 @@ namespace SharpBag
         }
 
         /// <summary>
-        /// Performs a function on each element of the enumerable.
+        /// Adds the specified items to the current instance.
         /// </summary>
-        /// <typeparam name="T">The type of the elements.</typeparam>
+        /// <typeparam name="T">The type of items in the current instance.</typeparam>
         /// <param name="source">The current instance.</param>
-        /// <param name="function">The function to perform on each element.</param>
-        /// <returns>The current instance.</returns>
-        public static IEnumerable<T> Map<T>(this IEnumerable<T> source, Func<T, T> function)
+        /// <param name="newItems">The items to add.</param>
+        /// <returns>The current instance and the new items.</returns>
+        public static IEnumerable<T> Add<T>(this IEnumerable<T> source, params T[] newItems)
         {
-            if (source == null) throw new ArgumentNullException("source");
-            if (function == null) throw new ArgumentNullException("function");
-
-            foreach (T elem in source)
+            foreach (T item in source)
             {
-                yield return function(elem);
+                yield return item;
+            }
+
+            foreach (T item in newItems)
+            {
+                yield return item;
             }
         }
-        
+
+        #endregion
+
         /// <summary>
         /// Gets a subarray from the current instance.
         /// </summary>
@@ -950,6 +496,273 @@ namespace SharpBag
             }
 
             return sub;
+        }
+
+        #region IsIn overloads
+
+        /// <summary>
+        /// Whether the current instance is in the specified collection.
+        /// </summary>
+        /// <typeparam name="T">The type of the current instance.</typeparam>
+        /// <param name="item">The current instance.</param>
+        /// <param name="collection">The collection.</param>
+        /// <returns>Whether the current instance is in the specified collection.</returns>
+        public static bool IsIn<T>(T item, IEnumerable<T> collection)
+        {
+            return collection.Contains(item);
+        }
+
+        /// <summary>
+        /// Whether the current instance is in the specified collection.
+        /// </summary>
+        /// <typeparam name="T">The type of the current instance.</typeparam>
+        /// <param name="item">The current instance.</param>
+        /// <param name="collection">The collection.</param>
+        /// <returns>Whether the current instance is in the specified collection.</returns>
+        public static bool IsIn<T>(T item, params T[] collection)
+        {
+            return collection.Contains(item);
+        }
+
+        #endregion
+
+        #region Random overloads
+
+        /// <summary>
+        /// Returns a random item from the current instance.
+        /// </summary>
+        /// <typeparam name="T">The type of the items.</typeparam>
+        /// <param name="collection">The current instance.</param>
+        /// <param name="rand">A random number generator.</param>
+        /// <returns>A random item from  the current instance.</returns>
+        public static T Random<T>(this IEnumerable<T> collection)
+        {
+            return collection.Random(new Random());
+        }
+
+        /// <summary>
+        /// Returns a random item from the current instance.
+        /// </summary>
+        /// <typeparam name="T">The type of the items.</typeparam>
+        /// <param name="collection">The current instance.</param>
+        /// <param name="rand">A random number generator.</param>
+        /// <returns>A random item from  the current instance.</returns>
+        public static T Random<T>(this IEnumerable<T> collection, Random rand)
+        {
+            T[] array = collection.ToArray();
+
+            return array[rand.Next(0, array.Length)];
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Executes the specified action on the current instance.
+        /// </summary>
+        /// <typeparam name="T">The type of the current instance.</typeparam>
+        /// <param name="obj">The current instance.</param>
+        /// <param name="act">An action.</param>
+        public static void With<T>(this T obj, Action<T> act) { act(obj); }
+
+        /// <summary>
+        /// If the current instance is not null, returns the value returned from selector function, else returns the elseValue.
+        /// </summary>
+        /// <typeparam name="TIn">The type of the current instance.</typeparam>
+        /// <typeparam name="TReturn">The type of the return value.</typeparam>
+        /// <param name="obj">The current instance.</param>
+        /// <param name="selector">A selector function.</param>
+        /// <param name="elseValue">The default value to return.</param>
+        /// <returns>If the current instance is not null, returns the value returned from selector function, else returns the elseValue.</returns>
+        public static TReturn NullOr<TIn, TReturn>(this TIn obj, Func<TIn, TReturn> selector, TReturn elseValue = default(TReturn)) where TIn : class
+        {
+            return obj != null ? selector(obj) : elseValue;
+        }
+
+        /// <summary>
+        /// Whether the current instance is null or empty.
+        /// </summary>
+        /// <typeparam name="T">The type of items in the current instance.</typeparam>
+        /// <param name="collection">The current instance.</param>
+        /// <returns>Whether the current instance is null or empty.</returns>
+        public static bool IsNullOrEmpty<T>(this IEnumerable<T> collection)
+        {
+            return collection == null || !collection.Any();
+        }
+
+        /// <summary>
+        /// Whether the current instance is T.
+        /// </summary>
+        /// <typeparam name="T">The type to check against.</typeparam>
+        /// <param name="item">The current instance.</param>
+        /// <returns>Whether the current instance is T.</returns>
+        public static bool Is<T>(this object item) where T : class
+        {
+            return item is T;
+        }
+
+        /// <summary>
+        /// Whether the current instance is not T.
+        /// </summary>
+        /// <typeparam name="T">The type to check against.</typeparam>
+        /// <param name="item">The current instance.</param>
+        /// <returns>Whether the current instance is not T.</returns>
+        public static bool IsNot<T>(this object item) where T : class
+        {
+            return !(item.Is<T>());
+        }
+
+        /// <summary>
+        /// Returns the current instance as T.
+        /// </summary>
+        /// <typeparam name="T">The type to return the current instance as.</typeparam>
+        /// <param name="item">The current instance.</param>
+        /// <returns>The current instance as T.</returns>
+        public static T As<T>(this object item) where T : class
+        {
+            return item as T;
+        }
+
+        /// <summary>
+        /// Returns an empty enumerable if the current instance is null.
+        /// </summary>
+        /// <typeparam name="T">The type of items in the current instance.</typeparam>
+        /// <param name="pSeq">The current instance.</param>
+        /// <returns>An empty enumerable if the current instance is null.</returns>
+        public static IEnumerable<T> EmptyIfNull<T>(this IEnumerable<T> pSeq)
+        {
+            return pSeq ?? Enumerable.Empty<T>();
+        }
+
+        /// <summary>
+        /// Converts an the current instance to a dictionary, with it's properties as the keys.
+        /// </summary>
+        /// <param name="o">The current instance.</param>
+        /// <returns>The current instance as a dictionary.</returns>
+        public static Dictionary<string, object> ToDictionary(this object o)
+        {
+            var dictionary = new Dictionary<string, object>();
+
+            foreach (var propertyInfo in o.GetType().GetProperties())
+            {
+                if (propertyInfo.GetIndexParameters().Length == 0)
+                {
+                    dictionary.Add(propertyInfo.Name, propertyInfo.GetValue(o, null));
+                }
+            }
+
+            return dictionary;
+        }
+
+        /// <summary>
+        /// Converts the current instance to the specified type.
+        /// </summary>
+        /// <typeparam name="T">Type the current instance will be converted to.</typeparam>
+        /// <param name="original">The current instance.</param>
+        /// <param name="defaultValue">The default value to use in case the current instance can't be converted.</param>
+        /// <returns>The converted value.</returns>
+        public static TOut As<TIn, TOut>(this TIn original, TOut defaultValue = default(TOut))
+        {
+            return As(original, CultureInfo.CurrentCulture, defaultValue);
+        }
+
+        /// <summary>
+        /// Converts the current instance to the specified type.
+        /// </summary>
+        /// <typeparam name="T">Type the current instance will be converted to.</typeparam>
+        /// <param name="original">The current instance.</param>
+        /// <param name="provider">An IFormatProvider.</param>
+        /// <param name="defaultValue">The default value to use in case the current instance can't be converted.</param>
+        /// <returns>The converted value.</returns>
+        public static TOut As<TIn, TOut>(this TIn original, IFormatProvider provider, TOut defaultValue = default(TOut))
+        {
+            Type type = typeof(TOut);
+
+            if (type.IsNullableType())
+            {
+                type = Nullable.GetUnderlyingType(type);
+            }
+
+            try
+            {
+                return type.IsEnum && original.Is<string>() ? (TOut)Enum.Parse(type, original.As<string>(), true) : (TOut)Convert.ChangeType(original, type, provider);
+            }
+            catch
+            {
+                return defaultValue;
+            }
+        }
+
+        /// <summary>
+        /// Returns whether or not the specified type is <see cref="Nullable{T}"/>.
+        /// </summary>
+        /// <param name="type">A <see cref="Type"/>.</param>
+        /// <returns>True if the specified type is <see cref="Nullable{T}"/>; otherwise, false.</returns>
+        /// <remarks>Use <see cref="Nullable.GetUnderlyingType"/> to access the underlying type.</remarks>
+        public static bool IsNullableType(this Type type)
+        {
+            if (type == null) throw new ArgumentNullException("type");
+
+            return type.IsGenericType && type.GetGenericTypeDefinition().Equals(typeof(Nullable<>));
+        }
+
+        static public IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
+        {
+            if (source == null) throw new ArgumentNullException("source");
+
+            return ShuffleIterator(source);
+        }
+
+        static private IEnumerable<T> ShuffleIterator<T>(this IEnumerable<T> source)
+        {
+            T[] array = source.ToArray();
+            Random rnd = new Random();
+            for (int n = array.Length; n > 1; )
+            {
+                int k = rnd.Next(n--); // 0 <= k < n
+
+                //Swap items
+                if (n != k)
+                {
+                    T tmp = array[k];
+                    array[k] = array[n];
+                    array[n] = tmp;
+                }
+            }
+
+            foreach (var item in array) yield return item;
+        }
+
+        public static IEnumerable<T> TakeEvery<T>(this IEnumerable<T> enumeration, int step, int start = 0)
+        {
+            if (enumeration == null) throw new ArgumentNullException("enumeration");
+
+            int first = 0;
+            int count = 0;
+
+            foreach (T item in enumeration)
+            {
+                if (first < start)
+                {
+                    first++;
+                }
+                else if (first == start)
+                {
+                    yield return item;
+
+                    first++;
+                }
+                else
+                {
+                    count++;
+
+                    if (count == step)
+                    {
+                        yield return item;
+
+                        count = 0;
+                    }
+                }
+            }
         }
     }
 }

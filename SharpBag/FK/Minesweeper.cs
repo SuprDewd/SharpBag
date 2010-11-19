@@ -1,4 +1,5 @@
 ﻿using SharpBag.Math;
+using SharpBag.Strings;
 
 namespace SharpBag.FK
 {

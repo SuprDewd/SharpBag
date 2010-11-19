@@ -55,7 +55,7 @@ namespace SharpBag.Games
         /// </summary>
         public void Shuffle()
         {
-            IEnumerable<Card> cards = this.Shuffle(new Random());
+            IEnumerable<Card> cards = Extensions.Shuffle(this);
             base.Clear();
 
             foreach (Card c in cards)

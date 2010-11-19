@@ -282,5 +282,53 @@ namespace SharpBag.Math
         {
             return (y % 4 == 0) && (y % 100 != 0) || (y % 400 == 0);
         }
+
+        #region Sizes
+
+        /// <summary>
+        /// Returns the correct value of the current instance, as if the current instance were in K's.
+        /// </summary>
+        /// <param name="n">The current instance.</param>
+        /// <param name="thousand">The value of a one thousand.</param>
+        /// <returns>The correct value of the current instance.</returns>
+        public static int K(this int n, int thousand = 1000)
+        {
+            return n * thousand;
+        }
+
+        /// <summary>
+        /// Returns the correct value of the current instance, as if the current instance were in M's.
+        /// </summary>
+        /// <param name="n">The current instance.</param>
+        /// <param name="thousand">The value of a one thousand.</param>
+        /// <returns>The correct value of the current instance.</returns>
+        public static int M(this int n, int thousand = 1000)
+        {
+            return n * thousand * thousand;
+        }
+
+        /// <summary>
+        /// Returns the correct value of the current instance, as if the current instance were in G's.
+        /// </summary>
+        /// <param name="n">The current instance.</param>
+        /// <param name="thousand">The value of a one thousand.</param>
+        /// <returns>The correct value of the current instance.</returns>
+        public static int G(this int n, int thousand = 1000)
+        {
+            return n * thousand * thousand * thousand;
+        }
+
+        /// <summary>
+        /// Returns the correct value of the current instance, as if the current instance were in T's.
+        /// </summary>
+        /// <param name="n">The current instance.</param>
+        /// <param name="thousand">The value of a one thousand.</param>
+        /// <returns>The correct value of the current instance.</returns>
+        public static int T(this int n, int thousand = 1000)
+        {
+            return n * thousand * thousand * thousand * thousand;
+        }
+
+        #endregion
     }
 }

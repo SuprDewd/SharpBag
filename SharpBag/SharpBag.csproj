@@ -28,7 +28,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;DOTNET4</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>SharpBagDocs.xml</DocumentationFile>
@@ -60,6 +60,9 @@
     <Compile Include="Database\GenericDB.cs" />
     <Compile Include="Database\DatabaseExtensions.cs" />
     <Compile Include="Database\MySqlDB.cs" />
+    <Compile Include="Delegates.cs" />
+    <Compile Include="RandomExtensions.cs" />
+    <Compile Include="Time\TimeExtensions.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FK\DrawObjects.cs" />
     <Compile Include="FK\Kennitala.cs" />
@@ -70,6 +73,7 @@
     <Compile Include="FK\Tools.cs" />
     <Compile Include="Games\Card.cs" />
     <Compile Include="Games\CardStack.cs" />
+    <Compile Include="IO\IOExtensions.cs" />
     <Compile Include="IO\Serialization.cs" />
     <Compile Include="Logging\InteractiveConsole.cs" />
     <Compile Include="Logging\Logger.cs" />
@@ -106,6 +110,14 @@
     <Content Include=".gitignore" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

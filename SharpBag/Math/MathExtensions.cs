@@ -82,6 +82,8 @@ namespace SharpBag.Math
 
         #endregion
 
+        #region Between methods
+
         /// <summary>
         /// Checks if the current instance is between, but not equal to, two integers.
         /// </summary>
@@ -110,6 +112,37 @@ namespace SharpBag.Math
             if (min > max) throw new ArgumentException("min must not be greater than max");
             return (n >= min && n <= max);
         }
+
+        /// <summary>
+        /// Checks if the current instance is between, but not equal to, two integers.
+        /// </summary>
+        /// <param name="n">The current integers.</param>
+        /// <param name="min">The lower boundary.</param>
+        /// <param name="max">The upper boundary.</param>
+        /// <returns>True if the current instance is between, but not equal to, the two integers; otherwise false.</returns>
+        /// <exception cref="System.ArgumentNullException"></exception>
+        /// <exception cref="System.ArgumentException"></exception>
+        public static bool IsBetween(this double n, double min, double max)
+        {
+            if (min > max) throw new ArgumentException("min must not be greater than max.");
+            return (n > min && n < max);
+        }
+
+        /// <summary>
+        /// Checks if the current instance is between or equal to two integers.
+        /// </summary>
+        /// <param name="n">The current integers.</param>
+        /// <param name="min">The minimum integer.</param>
+        /// <param name="max">The maximum integer.</param>
+        /// <returns>True if the current instance is between or equal to the two integers; otherwise false.</returns>
+        /// <exception cref="System.ArgumentException"></exception>
+        public static bool IsBetweenOrEqualTo(this double n, double min, double max)
+        {
+            if (min > max) throw new ArgumentException("min must not be greater than max");
+            return (n >= min && n <= max);
+        }
+
+        #endregion
 
         #region CollatzCount overloads
 
