@@ -3872,6 +3872,13 @@
             <param name="i">The current instance.</param>
             <returns>The reversed number.</returns>
         </member>
+        <member name="M:SharpBag.Math.MathExtensions.Factorial(System.Int32)">
+            <summary>
+            Calculates the factorial of the current instance.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>The factorial.</returns>
+        </member>
         <member name="T:SharpBag.FK.Tools">
             <summary>
             Allskonar verkfæri

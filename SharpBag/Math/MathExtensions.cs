@@ -546,5 +546,29 @@ namespace SharpBag.Math
         }
 
         #endregion
+
+        #region Factorial overloads
+
+        /// <summary>
+        /// Calculates the factorial of the current instance.
+        /// </summary>
+        /// <param name="n">The current instance.</param>
+        /// <returns>The factorial.</returns>
+        public static long Factorial(this int n)
+        {
+            if (n < 0) return 0;
+            if (n == 0) return 1;
+
+            long sum = 1;
+
+            for (int i = n; i >= 2; i--)
+            {
+                sum *= i;
+            }
+
+            return sum;
+        }
+
+        #endregion
     }
 }
