@@ -143,5 +143,23 @@ namespace SharpBag.FK.MVC
 
         public virtual void PreActionExecute() { }
         public virtual void PostActionExecute() { }
+
+        public void SimpleView(params object[] objs)
+        {
+            foreach (object o in objs)
+            {
+                Console.WriteLine(o);
+            }
+        }
+
+        public void SimpleView(Dictionary<string, object> objs, string between = ": ")
+        {
+            foreach (var item in objs)
+            {
+                Console.Write(item.Key);
+                Console.Write(between);
+                Console.WriteLine(item.Value);
+            }
+        }
     }
 }
