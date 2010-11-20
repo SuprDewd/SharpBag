@@ -99,6 +99,7 @@
     <Compile Include="Net\TcpServer.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Strings\StringExtensions.cs" />
+    <Compile Include="Time\TimeUtils.cs" />
     <Compile Include="Torrent\Bencoding.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Patterns\EagerSingleton.cs" />

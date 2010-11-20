@@ -3926,5 +3926,17 @@
             The disposer which executes the dispose action.
             </summary>
         </member>
+        <member name="T:SharpBag.Time.TimeUtils">
+            <summary>
+            A static class with utilites regarding dates and time.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Time.TimeUtils.IsLeapYear(System.Int32)">
+            <summary>
+            Determines whether the specified year is leap year or not.
+            </summary>
+            <param name="year">A year.</param>
+            <returns>Whether the specified year is leap year or not.</returns>
+        </member>
     </members>
 </doc>
