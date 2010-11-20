@@ -63,6 +63,11 @@
     <Compile Include="Database\DatabaseExtensions.cs" />
     <Compile Include="Database\MySqlDB.cs" />
     <Compile Include="Delegates.cs" />
+    <Compile Include="FK\MVC\FKActionAttribute.cs" />
+    <Compile Include="FK\MVC\FKActionMetadata.cs" />
+    <Compile Include="FK\MVC\FKController.cs" />
+    <Compile Include="FK\MVC\FKModel.cs" />
+    <Compile Include="FK\MVC\FKViewAttribute.cs" />
     <Compile Include="RandomExtensions.cs" />
     <Compile Include="Time\TimeExtensions.cs" />
     <Compile Include="Extensions.cs" />

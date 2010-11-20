@@ -507,7 +507,7 @@ namespace SharpBag
         /// <param name="item">The current instance.</param>
         /// <param name="collection">The collection.</param>
         /// <returns>Whether the current instance is in the specified collection.</returns>
-        public static bool IsIn<T>(T item, IEnumerable<T> collection)
+        public static bool IsIn<T>(this T item, IEnumerable<T> collection)
         {
             return collection.Contains(item);
         }
@@ -519,7 +519,7 @@ namespace SharpBag
         /// <param name="item">The current instance.</param>
         /// <param name="collection">The collection.</param>
         /// <returns>Whether the current instance is in the specified collection.</returns>
-        public static bool IsIn<T>(T item, params T[] collection)
+        public static bool IsIn<T>(this T item, params T[] collection)
         {
             return collection.Contains(item);
         }
