@@ -237,7 +237,7 @@ namespace SharpBag.Math
             if (d < lower) return lower;
             if (d > upper) return upper;
             return d;
-        } 
+        }
 
         #endregion
 
@@ -499,7 +499,7 @@ namespace SharpBag.Math
 
         #endregion
 
-        #region Reverse overload
+        #region Reverse overloads
 
         /// <summary>
         /// Reverses the number.
@@ -529,6 +529,20 @@ namespace SharpBag.Math
         public static BigInteger Reverse(this BigInteger i)
         {
             return BigInteger.Parse(i.ToString().Reverse());
+        }
+
+        #endregion
+
+        #region Pow overloads
+
+        public static int Pow(this int i, int power)
+        {
+            return (int)System.Math.Pow(i, power);
+        }
+
+        public static double Pow(this double i, double power)
+        {
+            return System.Math.Pow(i, power);
         }
 
         #endregion

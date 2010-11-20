@@ -155,6 +155,14 @@ namespace SharpBag
             return Generate(() => reader.ReadLine());
         }
 
+        public static IEnumerable<T> GenerateEndless<T>(Func<T> generator)
+        {
+            while (true)
+            {
+                yield return generator();
+            }
+        }
+
         #endregion
     }
 }

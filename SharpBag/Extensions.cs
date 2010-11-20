@@ -617,7 +617,7 @@ namespace SharpBag
         /// <typeparam name="T">The type to return the current instance as.</typeparam>
         /// <param name="item">The current instance.</param>
         /// <returns>The current instance as T.</returns>
-        public static T As<T>(this object item) where T : class
+        public static T CastAs<T>(this object item) where T : class
         {
             return item as T;
         }
@@ -660,7 +660,7 @@ namespace SharpBag
         /// <param name="original">The current instance.</param>
         /// <param name="defaultValue">The default value to use in case the current instance can't be converted.</param>
         /// <returns>The converted value.</returns>
-        public static TOut As<TIn, TOut>(this TIn original, TOut defaultValue = default(TOut))
+        public static TOut As<TOut>(this object original, TOut defaultValue = default(TOut))
         {
             return As(original, CultureInfo.CurrentCulture, defaultValue);
         }
@@ -673,7 +673,7 @@ namespace SharpBag
         /// <param name="provider">An IFormatProvider.</param>
         /// <param name="defaultValue">The default value to use in case the current instance can't be converted.</param>
         /// <returns>The converted value.</returns>
-        public static TOut As<TIn, TOut>(this TIn original, IFormatProvider provider, TOut defaultValue = default(TOut))
+        public static TOut As<TOut>(this object original, IFormatProvider provider, TOut defaultValue = default(TOut))
         {
             Type type = typeof(TOut);
 
@@ -763,6 +763,11 @@ namespace SharpBag
                     }
                 }
             }
+        }
+
+        public static T If<T>(this T obj, bool expression, T def = default(T))
+        {
+            return expression ? obj : def;
         }
     }
 }
