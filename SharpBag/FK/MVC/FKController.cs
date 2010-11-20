@@ -144,16 +144,25 @@ namespace SharpBag.FK.MVC
         public virtual void PreActionExecute() { }
         public virtual void PostActionExecute() { }
 
-        public void SimpleView(params object[] objs)
+        public void SimpleView(IEnumerable<object> objs, bool space = true)
         {
+            this.SimpleView(space, objs.ToArray());
+        }
+
+        public void SimpleView(bool space = true, params object[] objs)
+        {
+            if (space) Console.WriteLine();
+
             foreach (object o in objs)
             {
                 Console.WriteLine(o);
             }
         }
 
-        public void SimpleView(Dictionary<string, object> objs, string between = ": ")
+        public void SimpleView(Dictionary<string, object> objs, string between = ": ", bool space = true)
         {
+            if (space) Console.WriteLine();
+
             foreach (var item in objs)
             {
                 Console.Write(item.Key);
