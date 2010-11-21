@@ -82,7 +82,7 @@ namespace SharpBag.Math
 
         #endregion
 
-        #region Between methods
+        #region IsBetween methods
 
         /// <summary>
         /// Checks if the current instance is between, but not equal to, two integers.
@@ -241,7 +241,7 @@ namespace SharpBag.Math
 
         #endregion
 
-        #region DivisableBy overloads
+        #region IsDivisableBy overloads
 
         /// <summary>
         /// Whether the current instance is divisable by all the specified numbers.
@@ -250,9 +250,9 @@ namespace SharpBag.Math
         /// <param name="from">The smallest number.</param>
         /// <param name="to">The largest number.</param>
         /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        public static bool DivisableBy(this int i, int from, int to)
+        public static bool IsDivisableBy(this int i, int from, int to)
         {
-            return i.DivisableBy(from.To(to));
+            return i.IsDivisableBy(from.To(to));
         }
 
         /// <summary>
@@ -261,7 +261,7 @@ namespace SharpBag.Math
         /// <param name="i">The current instance.</param>
         /// <param name="nums">The numbers.</param>
         /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        public static bool DivisableBy(this int i, IEnumerable<int> nums)
+        public static bool IsDivisableBy(this int i, IEnumerable<int> nums)
         {
             foreach (var num in nums)
             {
@@ -277,51 +277,7 @@ namespace SharpBag.Math
         /// <param name="i">The current instance.</param>
         /// <param name="nums">The numbers.</param>
         /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        public static bool DivisableBy(this int i, params int[] nums)
-        {
-            foreach (var num in nums)
-            {
-                if (i % num != 0) return false;
-            }
-
-            return true;
-        }
-
-        /// <summary>
-        /// Whether the current instance is divisable by all the specified numbers.
-        /// </summary>
-        /// <param name="i">The current instance.</param>
-        /// <param name="from">The smallest number.</param>
-        /// <param name="to">The largest number.</param>
-        /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        public static bool DivisableBy(this long i, long from, long to)
-        {
-            return i.DivisableBy(from.To(to));
-        }
-
-        /// <summary>
-        /// Whether the current instance is divisable by all the specified numbers.
-        /// </summary>
-        /// <param name="i">The current instance.</param>
-        /// <param name="nums">The numbers.</param>
-        /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        public static bool DivisableBy(this long i, IEnumerable<long> nums)
-        {
-            foreach (var num in nums)
-            {
-                if (i % num != 0) return false;
-            }
-
-            return true;
-        }
-
-        /// <summary>
-        /// Whether the current instance is divisable by all the specified numbers.
-        /// </summary>
-        /// <param name="i">The current instance.</param>
-        /// <param name="nums">The numbers.</param>
-        /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        public static bool DivisableBy(this long i, params long[] nums)
+        public static bool IsDivisableBy(this int i, params int[] nums)
         {
             foreach (var num in nums)
             {
@@ -338,9 +294,9 @@ namespace SharpBag.Math
         /// <param name="from">The smallest number.</param>
         /// <param name="to">The largest number.</param>
         /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        public static bool DivisableBy(this BigInteger i, BigInteger from, BigInteger to)
+        public static bool IsDivisableBy(this long i, long from, long to)
         {
-            return i.DivisableBy(from.To(to));
+            return i.IsDivisableBy(from.To(to));
         }
 
         /// <summary>
@@ -349,7 +305,7 @@ namespace SharpBag.Math
         /// <param name="i">The current instance.</param>
         /// <param name="nums">The numbers.</param>
         /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        public static bool DivisableBy(this BigInteger i, IEnumerable<BigInteger> nums)
+        public static bool IsDivisableBy(this long i, IEnumerable<long> nums)
         {
             foreach (var num in nums)
             {
@@ -365,7 +321,51 @@ namespace SharpBag.Math
         /// <param name="i">The current instance.</param>
         /// <param name="nums">The numbers.</param>
         /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        public static bool DivisableBy(this BigInteger i, params BigInteger[] nums)
+        public static bool IsDivisableBy(this long i, params long[] nums)
+        {
+            foreach (var num in nums)
+            {
+                if (i % num != 0) return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Whether the current instance is divisable by all the specified numbers.
+        /// </summary>
+        /// <param name="i">The current instance.</param>
+        /// <param name="from">The smallest number.</param>
+        /// <param name="to">The largest number.</param>
+        /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
+        public static bool IsDivisableBy(this BigInteger i, BigInteger from, BigInteger to)
+        {
+            return i.IsDivisableBy(from.To(to));
+        }
+
+        /// <summary>
+        /// Whether the current instance is divisable by all the specified numbers.
+        /// </summary>
+        /// <param name="i">The current instance.</param>
+        /// <param name="nums">The numbers.</param>
+        /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
+        public static bool IsDivisableBy(this BigInteger i, IEnumerable<BigInteger> nums)
+        {
+            foreach (var num in nums)
+            {
+                if (i % num != 0) return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Whether the current instance is divisable by all the specified numbers.
+        /// </summary>
+        /// <param name="i">The current instance.</param>
+        /// <param name="nums">The numbers.</param>
+        /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
+        public static bool IsDivisableBy(this BigInteger i, params BigInteger[] nums)
         {
             foreach (var num in nums)
             {
@@ -567,6 +567,108 @@ namespace SharpBag.Math
             }
 
             return sum;
+        }
+
+        #endregion
+
+        #region IsEven overloads
+
+        /// <summary>
+        /// Whether the current instance is even.
+        /// </summary>
+        /// <param name="n">The current instance.</param>
+        /// <returns>Whether the current instance is even.</returns>
+        public static bool IsEven(this int n)
+        {
+            return n % 2 == 0;
+        }
+
+        /// <summary>
+        /// Whether the current instance is even.
+        /// </summary>
+        /// <param name="n">The current instance.</param>
+        /// <returns>Whether the current instance is even.</returns>
+        public static bool IsEven(this long n)
+        {
+            return n % 2 == 0;
+        }
+
+        /// <summary>
+        /// Whether the current instance is even.
+        /// </summary>
+        /// <param name="n">The current instance.</param>
+        /// <returns>Whether the current instance is even.</returns>
+        public static bool IsEven(this BigInteger n)
+        {
+            return n % 2 == 0;
+        }
+
+        #endregion
+
+        #region IsOdd overloads
+
+        /// <summary>
+        /// Whether the current instance is odd.
+        /// </summary>
+        /// <param name="n">The current instance.</param>
+        /// <returns>Whether the current instance is odd.</returns>
+        public static bool IsOdd(this int n)
+        {
+            return n % 2 != 0;
+        }
+
+        /// <summary>
+        /// Whether the current instance is odd.
+        /// </summary>
+        /// <param name="n">The current instance.</param>
+        /// <returns>Whether the current instance is odd.</returns>
+        public static bool IsOdd(this long n)
+        {
+            return n % 2 != 0;
+        }
+
+        /// <summary>
+        /// Whether the current instance is even.
+        /// </summary>
+        /// <param name="n">The current instance.</param>
+        /// <returns>Whether the current instance is odd.</returns>
+        public static bool IsOdd(this BigInteger n)
+        {
+            return n % 2 != 0;
+        }
+
+        #endregion
+
+        #region IsPrime
+
+        /// <summary>
+        /// Whether the current instance is prime.
+        /// </summary>
+        /// <param name="n">The current instance.</param>
+        /// <returns>Whether the current instance is prime.</returns>
+        public static bool IsPrime(this int n)
+        {
+            return BagMath.IsPrime(n);
+        }
+
+        /// <summary>
+        /// Whether the current instance is prime.
+        /// </summary>
+        /// <param name="n">The current instance.</param>
+        /// <returns>Whether the current instance is prime.</returns>
+        public static bool IsPrime(this long n)
+        {
+            return BagMath.IsPrime(n);
+        }
+
+        /// <summary>
+        /// Whether the current instance is prime.
+        /// </summary>
+        /// <param name="n">The current instance.</param>
+        /// <returns>Whether the current instance is prime.</returns>
+        public static bool IsPrime(this BigInteger n)
+        {
+            return BagMath.IsPrime(n);
         }
 
         #endregion

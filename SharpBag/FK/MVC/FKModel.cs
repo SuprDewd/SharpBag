@@ -11,13 +11,35 @@ namespace SharpBag.FK.MVC
     {
         public T Read<T>(string q = null, string separator = ": ")
         {
+            this.WriteQuestion(q, separator);
+            return Console.ReadLine().As<T>();
+        }
+
+        public string Read(string q = null, string separator = ": ")
+        {
+            this.WriteQuestion(q, separator);
+            return Console.ReadLine();
+        }
+
+        public int ReadInt(string q = null, string separator = ": ")
+        {
+            this.WriteQuestion(q, separator);
+            return Convert.ToInt32(Console.ReadLine());
+        }
+
+        public double ReadDouble(string q = null, string separator = ": ")
+        {
+            this.WriteQuestion(q, separator);
+            return Convert.ToDouble(Console.ReadLine());
+        }
+
+        private void WriteQuestion(string q = null, string separator = ": ")
+        {
             if (q != null)
             {
                 Console.Write(q);
                 Console.Write(separator);
             }
-
-            return Console.ReadLine().As<T>();
         }
 
         public string ReadFile(string fileName, Encoding encoding = null)

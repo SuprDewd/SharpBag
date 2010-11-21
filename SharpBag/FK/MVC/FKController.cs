@@ -25,7 +25,7 @@ namespace SharpBag.FK.MVC
                 return (from a in this.GetType().GetMethods()
                         where a.IsPublic && Attribute.IsDefined(a, typeof(FKActionAttribute)) && !a.GetParameters().Any()
                         let attr = Attribute.GetCustomAttribute(a, typeof(FKActionAttribute)) as FKActionAttribute
-                        select new FKActionMetadata { Method = a, Name = attr.Name, Description = attr.Description + (!attr.Finished ? " (unfinished)" : "") }).OrderBy(a => a.Name, new AlphaNumberComparer(AlphaNumberSettings.Trailing));
+                        select new FKActionMetadata { Method = a, Name = attr.Name, Description = attr.Description + (!attr.Finished ? " (unfinished)" : "") }).OrderBy(a => a.Name, new AlphaNumberComparer(AlphaNumberSettings.Leading));
             }
         }
 
@@ -169,6 +169,34 @@ namespace SharpBag.FK.MVC
                 Console.Write(between);
                 Console.WriteLine(item.Value);
             }
+        }
+
+        public void SimpleView(string s, bool space = true)
+        {
+            if (space) Console.WriteLine();
+            Console.WriteLine(s);
+        }
+
+        public void BoolView(bool condition, string trueString, string falseString, bool space = true)
+        {
+            if (space) Console.WriteLine();
+            Console.WriteLine(condition ? trueString : falseString);
+        }
+
+        public void BoolView(bool condition, string start, string not, string end, bool space = true)
+        {
+            if (space) Console.WriteLine();
+
+            Console.Write(start);
+            Console.Write(" ");
+
+            if (!condition)
+            {
+                Console.Write(not);
+                Console.Write(" ");
+            }
+
+            Console.WriteLine(end);
         }
     }
 }

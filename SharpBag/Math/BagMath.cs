@@ -273,16 +273,6 @@ namespace SharpBag.Math
 
         #endregion
 
-        /// <summary>
-        /// Whether the specified year is leap year.
-        /// </summary>
-        /// <param name="y">The specified year.</param>
-        /// <returns>Whether the specified year is leap year.</returns>
-        public static bool IsLeapYear(int y)
-        {
-            return (y % 4 == 0) && (y % 100 != 0) || (y % 400 == 0);
-        }
-
         #region Sizes
 
         /// <summary>

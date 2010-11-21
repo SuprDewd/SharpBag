@@ -47,7 +47,8 @@ namespace SharpBag.FK
             {
                 Dagur = Int32.Parse(kt.Substring(0, 2));
                 Manudur = Int32.Parse(kt.Substring(2, 2));
-                Ar = Int32.Parse(kt.Substring(4, 2));
+                Ar = Int32.Parse(kt.Substring(4, 2)) + 1900;
+                if (Ar < 1920) Ar += 100;
                 Lokatala = Int32.Parse(kt.Substring(kt.Length - 4));
                 Stjornumerki = StjMrki();
             }

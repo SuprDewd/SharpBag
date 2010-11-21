@@ -2390,13 +2390,6 @@
             <param name="candidate">The number to test.</param>
             <returns>Whether the number is a prime number or not.</returns>
         </member>
-        <member name="M:SharpBag.Math.BagMath.IsLeapYear(System.Int32)">
-            <summary>
-            Whether the specified year is leap year.
-            </summary>
-            <param name="y">The specified year.</param>
-            <returns>Whether the specified year is leap year.</returns>
-        </member>
         <member name="M:SharpBag.Math.BagMath.K(System.Int32,System.Int32)">
             <summary>
             Returns the correct value of the current instance, as if the current instance were in K's.
@@ -3713,7 +3706,7 @@
             <param name="upper">The upper boundary.</param>
             <returns>The current instance inside the spcified boundaries.</returns>
         </member>
-        <member name="M:SharpBag.Math.MathExtensions.DivisableBy(System.Int32,System.Int32,System.Int32)">
+        <member name="M:SharpBag.Math.MathExtensions.IsDivisableBy(System.Int32,System.Int32,System.Int32)">
             <summary>
             Whether the current instance is divisable by all the specified numbers.
             </summary>
@@ -3722,7 +3715,7 @@
             <param name="to">The largest number.</param>
             <returns>Whether the current instance is divisable by all the specified numbers.</returns>
         </member>
-        <member name="M:SharpBag.Math.MathExtensions.DivisableBy(System.Int32,System.Collections.Generic.IEnumerable{System.Int32})">
+        <member name="M:SharpBag.Math.MathExtensions.IsDivisableBy(System.Int32,System.Collections.Generic.IEnumerable{System.Int32})">
             <summary>
             Whether the current instance is divisable by all the specified numbers.
             </summary>
@@ -3730,7 +3723,7 @@
             <param name="nums">The numbers.</param>
             <returns>Whether the current instance is divisable by all the specified numbers.</returns>
         </member>
-        <member name="M:SharpBag.Math.MathExtensions.DivisableBy(System.Int32,System.Int32[])">
+        <member name="M:SharpBag.Math.MathExtensions.IsDivisableBy(System.Int32,System.Int32[])">
             <summary>
             Whether the current instance is divisable by all the specified numbers.
             </summary>
@@ -3738,7 +3731,7 @@
             <param name="nums">The numbers.</param>
             <returns>Whether the current instance is divisable by all the specified numbers.</returns>
         </member>
-        <member name="M:SharpBag.Math.MathExtensions.DivisableBy(System.Int64,System.Int64,System.Int64)">
+        <member name="M:SharpBag.Math.MathExtensions.IsDivisableBy(System.Int64,System.Int64,System.Int64)">
             <summary>
             Whether the current instance is divisable by all the specified numbers.
             </summary>
@@ -3747,7 +3740,7 @@
             <param name="to">The largest number.</param>
             <returns>Whether the current instance is divisable by all the specified numbers.</returns>
         </member>
-        <member name="M:SharpBag.Math.MathExtensions.DivisableBy(System.Int64,System.Collections.Generic.IEnumerable{System.Int64})">
+        <member name="M:SharpBag.Math.MathExtensions.IsDivisableBy(System.Int64,System.Collections.Generic.IEnumerable{System.Int64})">
             <summary>
             Whether the current instance is divisable by all the specified numbers.
             </summary>
@@ -3755,7 +3748,7 @@
             <param name="nums">The numbers.</param>
             <returns>Whether the current instance is divisable by all the specified numbers.</returns>
         </member>
-        <member name="M:SharpBag.Math.MathExtensions.DivisableBy(System.Int64,System.Int64[])">
+        <member name="M:SharpBag.Math.MathExtensions.IsDivisableBy(System.Int64,System.Int64[])">
             <summary>
             Whether the current instance is divisable by all the specified numbers.
             </summary>
@@ -3763,7 +3756,7 @@
             <param name="nums">The numbers.</param>
             <returns>Whether the current instance is divisable by all the specified numbers.</returns>
         </member>
-        <member name="M:SharpBag.Math.MathExtensions.DivisableBy(System.Numerics.BigInteger,System.Numerics.BigInteger,System.Numerics.BigInteger)">
+        <member name="M:SharpBag.Math.MathExtensions.IsDivisableBy(System.Numerics.BigInteger,System.Numerics.BigInteger,System.Numerics.BigInteger)">
             <summary>
             Whether the current instance is divisable by all the specified numbers.
             </summary>
@@ -3772,7 +3765,7 @@
             <param name="to">The largest number.</param>
             <returns>Whether the current instance is divisable by all the specified numbers.</returns>
         </member>
-        <member name="M:SharpBag.Math.MathExtensions.DivisableBy(System.Numerics.BigInteger,System.Collections.Generic.IEnumerable{System.Numerics.BigInteger})">
+        <member name="M:SharpBag.Math.MathExtensions.IsDivisableBy(System.Numerics.BigInteger,System.Collections.Generic.IEnumerable{System.Numerics.BigInteger})">
             <summary>
             Whether the current instance is divisable by all the specified numbers.
             </summary>
@@ -3780,7 +3773,7 @@
             <param name="nums">The numbers.</param>
             <returns>Whether the current instance is divisable by all the specified numbers.</returns>
         </member>
-        <member name="M:SharpBag.Math.MathExtensions.DivisableBy(System.Numerics.BigInteger,System.Numerics.BigInteger[])">
+        <member name="M:SharpBag.Math.MathExtensions.IsDivisableBy(System.Numerics.BigInteger,System.Numerics.BigInteger[])">
             <summary>
             Whether the current instance is divisable by all the specified numbers.
             </summary>
@@ -3878,6 +3871,69 @@
             </summary>
             <param name="n">The current instance.</param>
             <returns>The factorial.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.IsEven(System.Int32)">
+            <summary>
+            Whether the current instance is even.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>Whether the current instance is even.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.IsEven(System.Int64)">
+            <summary>
+            Whether the current instance is even.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>Whether the current instance is even.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.IsEven(System.Numerics.BigInteger)">
+            <summary>
+            Whether the current instance is even.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>Whether the current instance is even.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.IsOdd(System.Int32)">
+            <summary>
+            Whether the current instance is odd.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>Whether the current instance is odd.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.IsOdd(System.Int64)">
+            <summary>
+            Whether the current instance is odd.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>Whether the current instance is odd.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.IsOdd(System.Numerics.BigInteger)">
+            <summary>
+            Whether the current instance is even.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>Whether the current instance is odd.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.IsPrime(System.Int32)">
+            <summary>
+            Whether the current instance is prime.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>Whether the current instance is prime.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.IsPrime(System.Int64)">
+            <summary>
+            Whether the current instance is prime.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>Whether the current instance is prime.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.IsPrime(System.Numerics.BigInteger)">
+            <summary>
+            Whether the current instance is prime.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>Whether the current instance is prime.</returns>
         </member>
         <member name="T:SharpBag.FK.Tools">
             <summary>

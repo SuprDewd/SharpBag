@@ -30,13 +30,13 @@ namespace SharpBag.Comparers
                     int stringPartCompareResult = sc.Compare(a.Remove(a.Length - numericX.Length), b.Remove(b.Length - numericY.Length));
                     if (stringPartCompareResult != 0) return stringPartCompareResult;
 
-                    double nX = double.Parse(numericX);
-                    double nY = double.Parse(numericY);
+                    Double nX = Double.Parse(numericX);
+                    Double nY = Double.Parse(numericY);
                     return nX.CompareTo(nY);
                 }
                 else
                 {
-                    int numberPartCompareResult = double.Parse(a.Remove(0, numericX.Length)).CompareTo(b.Remove(0, numericY.Length));
+                    int numberPartCompareResult = Double.Parse(numericX).CompareTo(Double.Parse(numericY));
                     if (numberPartCompareResult != 0) return numberPartCompareResult;
 
                     return sc.Compare(a, b);
@@ -62,7 +62,7 @@ namespace SharpBag.Comparers
         {
             string numeric = string.Empty;
 
-            for (int i = 0; i > s.Length; i++)
+            for (int i = 0; i < s.Length; i++)
             {
                 if (char.IsNumber(s[i])) numeric = numeric + s[i];
                 else break;
