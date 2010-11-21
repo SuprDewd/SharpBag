@@ -9,13 +9,28 @@ using SharpBag.Comparers;
 
 namespace SharpBag.FK.MVC
 {
+    /// <summary>
+    /// An MVC controller.
+    /// </summary>
     public abstract class FKController
     {
+        /// <summary>
+        /// The title of the controller.
+        /// </summary>
         public string Title { get; set; }
 
+        /// <summary>
+        /// The model for the controller.
+        /// </summary>
         public FKModel Model { get; set; }
 
+        /// <summary>
+        /// A char for the vertical wall of the title.
+        /// </summary>
         public char VerticalChar { get; set; }
+        /// <summary>
+        /// A char for the horizontal wall of the title.
+        /// </summary>
         public char HorizontalChar { get; set; }
 
         private IEnumerable<FKActionMetadata> Actions
@@ -29,6 +44,14 @@ namespace SharpBag.FK.MVC
             }
         }
 
+        /// <summary>
+        /// The constructor.
+        /// </summary>
+        /// <param name="model">The model for the controller.</param>
+        /// <param name="title">The title of the controller.</param>
+        /// <param name="verticalChar">A char for the vertical wall of the title.</param>
+        /// <param name="horizontalChar">A char for the horizontal wall of the title.</param>
+        /// <param name="args">Arguments, or settings, for the controller.</param>
         public FKController(FKModel model, string title = null, char verticalChar = '-', char horizontalChar = '|', string[] args = null)
         {
             this.Model = model;
@@ -55,6 +78,9 @@ namespace SharpBag.FK.MVC
             catch { }
         }
 
+        /// <summary>
+        /// List all the actions in the controller.
+        /// </summary>
         public void ListActions()
         {
             if (this.Title != null) this.WriteHeader(this.Title);
@@ -91,6 +117,12 @@ namespace SharpBag.FK.MVC
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Execute the specified action.
+        /// </summary>
+        /// <param name="actionName">The name of the action.</param>
+        /// <param name="pause">Whether to pause after the action is finished.</param>
+        /// <param name="header">Whether to display a header.</param>
         public void ExecuteAction(string actionName, bool pause = false, bool header = false)
         {
             var action = (from a in this.Actions
@@ -113,6 +145,9 @@ namespace SharpBag.FK.MVC
             if (pause) Console.ReadLine();
         }
 
+        /// <summary>
+        /// An action that executes all the other actions.
+        /// </summary>
         [FKAction("All", Description = "Run all the actions.")]
         public void All()
         {
@@ -123,6 +158,9 @@ namespace SharpBag.FK.MVC
             }
         }
 
+        /// <summary>
+        /// Run the controller in an interactive mode.
+        /// </summary>
         public void Run()
         {
             while (true)
@@ -135,20 +173,50 @@ namespace SharpBag.FK.MVC
             }
         }
 
+        /// <summary>
+        /// An action that exits the program.
+        /// </summary>
         [FKAction("Exit", Description = "Exit the program.")]
         public void Exit()
         {
             Environment.Exit(0);
         }
 
+        /// <summary>
+        /// A hook that is fired before an action is executed.
+        /// </summary>
         public virtual void PreActionExecute() { }
+        /// <summary>
+        /// A hook that is fired after an action is executed.
+        /// </summary>
         public virtual void PostActionExecute() { }
 
+        /// <summary>
+        /// A simple view.
+        /// </summary>
+        /// <param name="objs">A collection of objects.</param>
+        /// <param name="space">Whether to prepend a space before displaying the view.</param>
         public void SimpleView(IEnumerable<object> objs, bool space = true)
         {
             this.SimpleView(space, objs.ToArray());
         }
 
+        /// <summary>
+        /// A simple view.
+        /// </summary>
+        /// <typeparam name="T">The type of items in the collection.</typeparam>
+        /// <param name="objs">A collection of objects.</param>
+        /// <param name="space">Whether to prepend a space before displaying the view.</param>
+        public void SimpleView<T>(IEnumerable<T> objs, bool space = true)
+        {
+            this.SimpleView(space, objs.ToArray());
+        }
+
+        /// <summary>
+        /// A simple view.
+        /// </summary>
+        /// <param name="space">Whether to prepend a space before displaying the view.</param>
+        /// <param name="objs">A collection of objects.</param>
         public void SimpleView(bool space = true, params object[] objs)
         {
             if (space) Console.WriteLine();
@@ -159,6 +227,12 @@ namespace SharpBag.FK.MVC
             }
         }
 
+        /// <summary>
+        /// A simple view.
+        /// </summary>
+        /// <param name="objs">A dictionary with keys and values.</param>
+        /// <param name="between">A string to put in between the key and the value.</param>
+        /// <param name="space">Whether to prepend a space before displaying the view.</param>
         public void SimpleView(Dictionary<string, object> objs, string between = ": ", bool space = true)
         {
             if (space) Console.WriteLine();
@@ -171,18 +245,38 @@ namespace SharpBag.FK.MVC
             }
         }
 
+        /// <summary>
+        /// A simple view.
+        /// </summary>
+        /// <param name="s">A string to be printed.</param>
+        /// <param name="space">Whether to prepend a space before displaying the view.</param>
         public void SimpleView(string s, bool space = true)
         {
             if (space) Console.WriteLine();
             Console.WriteLine(s);
         }
 
+        /// <summary>
+        /// A boolean view.
+        /// </summary>
+        /// <param name="condition">An expression.</param>
+        /// <param name="trueString">A string that will be printed if the expression is true.</param>
+        /// <param name="falseString">A string that will be printed if the expression is false.</param>
+        /// <param name="space">Whether to prepend a space before displaying the view.</param>
         public void BoolView(bool condition, string trueString, string falseString, bool space = true)
         {
             if (space) Console.WriteLine();
             Console.WriteLine(condition ? trueString : falseString);
         }
 
+        /// <summary>
+        /// A boolean view.
+        /// </summary>
+        /// <param name="condition">An expression.</param>
+        /// <param name="start">The first part of the string.</param>
+        /// <param name="not">A string that will be printed between start and end if the expression is false.</param>
+        /// <param name="end">The last part of the string.</param>
+        /// <param name="space">Whether to prepend a space before displaying the view.</param>
         public void BoolView(bool condition, string start, string not, string end, bool space = true)
         {
             if (space) Console.WriteLine();

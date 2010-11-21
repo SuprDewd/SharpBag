@@ -5,15 +5,26 @@ using System.Text;
 
 namespace SharpBag.Comparers
 {
+    /// <summary>
+    /// A comparer that compares a string containing numbers.
+    /// </summary>
     public class AlphaNumberComparer : IComparer<string>
     {
+        /// <summary>
+        /// The location of the number.
+        /// </summary>
         public AlphaNumberSettings Location { get; set; }
 
+        /// <summary>
+        /// The constructor.
+        /// </summary>
+        /// <param name="location">The location of the number.</param>
         public AlphaNumberComparer(AlphaNumberSettings location = AlphaNumberSettings.Leading)
         {
             this.Location = location;
         }
 
+        /// <see cref="IComparer{T}.Compare(T, T)"/>
         public int Compare(string a, string b)
         {
             StringComparer sc = StringComparer.CurrentCultureIgnoreCase;
@@ -45,6 +56,11 @@ namespace SharpBag.Comparers
             else return sc.Compare(a, b);
         }
 
+        /// <summary>
+        /// Finds a trailing number.
+        /// </summary>
+        /// <param name="s">The string to search in.</param>
+        /// <returns>The number.</returns>
         private static string FindTrailingNumber(string s)
         {
             string numeric = string.Empty;
@@ -58,6 +74,11 @@ namespace SharpBag.Comparers
             return numeric;
         }
 
+        /// <summary>
+        /// Finds a leading number.
+        /// </summary>
+        /// <param name="s">The string to search in.</param>
+        /// <returns>The number.</returns>
         private static string FindLeadingNumber(string s)
         {
             string numeric = string.Empty;

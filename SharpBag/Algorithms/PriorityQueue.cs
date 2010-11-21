@@ -125,7 +125,7 @@ namespace SharpBag.Algorithms
             }
         }
 
-        /// <see cref="IEnumerable&lt;T&gt;.GetEnumerator()"/>
+        /// <see cref="IEnumerable{T}.GetEnumerator()"/>
         public IEnumerator<T> GetEnumerator()
         {
             foreach (T item in this.Items.OrderByDescending(i => i.Priority).Select(i => i.Item))
@@ -135,7 +135,7 @@ namespace SharpBag.Algorithms
         }
 
         /// <param name="remove">Whether to remove the items that have been returned from the enumerator.</param>
-        /// <see cref="IEnumerable&lt;T&gt;.GetEnumerator()"/>
+        /// <see cref="IEnumerable{T}.GetEnumerator()"/>
         public IEnumerator<T> GetEnumerator(bool remove)
         {
             PriorityQueueItem<T>[] array = this.Items.OrderByDescending(i => i.Priority).ToArray();
@@ -147,7 +147,7 @@ namespace SharpBag.Algorithms
             }
         }
 
-        /// <see cref="IEnumerable&lt;T&gt;.GetEnumerator()"/>
+        /// <see cref="IEnumerable{T}.GetEnumerator()"/>
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             foreach (T item in this.Items.OrderByDescending(i => i.Priority).Select(i => i.Item))

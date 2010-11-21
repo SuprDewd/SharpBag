@@ -1592,7 +1592,7 @@
             <summary>
             Converts the current instance to the specified type.
             </summary>
-            <typeparam name="T">Type the current instance will be converted to.</typeparam>
+            <typeparam name="TOut">Type the current instance will be converted to.</typeparam>
             <param name="original">The current instance.</param>
             <param name="defaultValue">The default value to use in case the current instance can't be converted.</param>
             <returns>The converted value.</returns>
@@ -1601,7 +1601,7 @@
             <summary>
             Converts the current instance to the specified type.
             </summary>
-            <typeparam name="T">Type the current instance will be converted to.</typeparam>
+            <typeparam name="TOut">Type the current instance will be converted to.</typeparam>
             <param name="original">The current instance.</param>
             <param name="provider">An IFormatProvider.</param>
             <param name="defaultValue">The default value to use in case the current instance can't be converted.</param>
@@ -1614,6 +1614,34 @@
             <param name="type">A <see cref="T:System.Type"/>.</param>
             <returns>True if the specified type is <see cref="T:System.Nullable`1"/>; otherwise, false.</returns>
             <remarks>Use <see cref="M:System.Nullable.GetUnderlyingType(System.Type)"/> to access the underlying type.</remarks>
+        </member>
+        <member name="M:SharpBag.Extensions.Shuffle``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Shuffle the collection.
+            </summary>
+            <typeparam name="T">The type of items in the current instance.</typeparam>
+            <param name="source">The current instance.</param>
+            <returns>The shuffled collection.</returns>
+        </member>
+        <member name="M:SharpBag.Extensions.TakeEvery``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32)">
+            <summary>
+            Takes every n-th item of the collection.
+            </summary>
+            <typeparam name="T">The type of the items.</typeparam>
+            <param name="enumeration">The current instance.</param>
+            <param name="step">The step to take.</param>
+            <param name="start">The location to start at.</param>
+            <returns>Every n-th item of the collection.</returns>
+        </member>
+        <member name="M:SharpBag.Extensions.If``1(``0,System.Boolean,``0)">
+            <summary>
+            Returns the current instance if the specified expression is true, else returns the specified default value.
+            </summary>
+            <typeparam name="T">The type of the current instance.</typeparam>
+            <param name="obj">The current instance.</param>
+            <param name="expression">An expression.</param>
+            <param name="def">The default value.</param>
+            <returns>The current instance if the specified expression is true, else returns the specified default value.</returns>
         </member>
         <member name="T:SharpBag.Patterns.LockedLazySingleton`1">
             <summary>
@@ -2857,6 +2885,63 @@
             A static class with extensions for the Random class.
             </summary>
         </member>
+        <member name="M:SharpBag.RandomExtensions.NextBool(System.Random,System.Double)">
+            <summary>
+            Returns a random boolean.
+            </summary>
+            <param name="random">The current instance.</param>
+            <param name="probability">The probability of returning true.</param>
+            <returns>A random boolean.</returns>
+        </member>
+        <member name="M:SharpBag.RandomExtensions.NextChar(System.Random,SharpBag.CharType)">
+            <summary>
+            Returns a random character.
+            </summary>
+            <param name="random">The current instance.</param>
+            <param name="mode">What kind of characters are allowed.</param>
+            <returns>A random character.</returns>
+        </member>
+        <member name="M:SharpBag.RandomExtensions.NextChar(System.Random)">
+            <summary>
+            Returns a random character.
+            </summary>
+            <param name="random">The current instance.</param>
+            <returns>A random character.</returns>
+        </member>
+        <member name="M:SharpBag.RandomExtensions.NextDouble(System.Random,System.Double,System.Double)">
+            <summary>
+            Returns a random double between minValue and maxValue.
+            </summary>
+            <param name="random">The current instance.</param>
+            <param name="minValue">The lowest value.</param>
+            <param name="maxValue">The highest value.</param>
+            <returns>A random double between minValue and maxValue.</returns>
+        </member>
+        <member name="M:SharpBag.RandomExtensions.NextString(System.Random,System.Int32,SharpBag.CharType)">
+            <summary>
+            Returns a random string with the specified length.
+            </summary>
+            <param name="random">The current instance.</param>
+            <param name="numChars">The length of the string.</param>
+            <param name="mode">The type of characters in the string.</param>
+            <returns>A random string with the specified length.</returns>
+        </member>
+        <member name="M:SharpBag.RandomExtensions.NextTimeSpan(System.Random,System.TimeSpan,System.TimeSpan)">
+            <summary>
+            Returns a random TimeSpan between minValue and maxValue.
+            </summary>
+            <param name="random">The current instance.</param>
+            <param name="minValue">The min value.</param>
+            <param name="maxValue">The max value.</param>
+            <returns>A random TimeSpan between minValue and maxValue.</returns>
+        </member>
+        <member name="M:SharpBag.RandomExtensions.NextTimeSpan(System.Random)">
+            <summary>
+            Returns a random TimeSpan.
+            </summary>
+            <param name="random">The current instance.</param>
+            <returns>A random TimeSpan.</returns>
+        </member>
         <member name="T:SharpBag.Net.TcpClientHandler">
             <summary>
             A class that handles TcpClients.
@@ -3987,6 +4072,209 @@
         <member name="M:SharpBag.ActionDisposable.System#IDisposable#Dispose">
             <summary>
             The disposer which executes the dispose action.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Comparers.AlphaNumberComparer">
+            <summary>
+            A comparer that compares a string containing numbers.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Comparers.AlphaNumberComparer.#ctor(SharpBag.Comparers.AlphaNumberSettings)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="location">The location of the number.</param>
+        </member>
+        <member name="M:SharpBag.Comparers.AlphaNumberComparer.Compare(System.String,System.String)">
+            <see cref="M:System.Collections.Generic.IComparer`1.Compare(`0,`0)"/>
+        </member>
+        <member name="M:SharpBag.Comparers.AlphaNumberComparer.FindTrailingNumber(System.String)">
+            <summary>
+            Finds a trailing number.
+            </summary>
+            <param name="s">The string to search in.</param>
+            <returns>The number.</returns>
+        </member>
+        <member name="M:SharpBag.Comparers.AlphaNumberComparer.FindLeadingNumber(System.String)">
+            <summary>
+            Finds a leading number.
+            </summary>
+            <param name="s">The string to search in.</param>
+            <returns>The number.</returns>
+        </member>
+        <member name="P:SharpBag.Comparers.AlphaNumberComparer.Location">
+            <summary>
+            The location of the number.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Comparers.AlphaNumberSettings">
+            <summary>
+            Settings for the AlphaNumberComparer.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Comparers.AlphaNumberSettings.Leading">
+            <summary>
+            Leading numbers.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Comparers.AlphaNumberSettings.Trailing">
+            <summary>
+            Trailing numbers.
+            </summary>
+        </member>
+        <member name="T:SharpBag.FK.MVC.FKActionAttribute">
+            <summary>
+            A controller action.
+            </summary>
+        </member>
+        <member name="M:SharpBag.FK.MVC.FKActionAttribute.#ctor(System.String)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="name">The name of the action.</param>
+        </member>
+        <member name="P:SharpBag.FK.MVC.FKActionAttribute.Name">
+            <summary>
+            The name of the action.
+            </summary>
+        </member>
+        <member name="P:SharpBag.FK.MVC.FKActionAttribute.Description">
+            <summary>
+            A description of the action.
+            </summary>
+        </member>
+        <member name="P:SharpBag.FK.MVC.FKActionAttribute.Finished">
+            <summary>
+            Whether the action is finished.
+            </summary>
+        </member>
+        <member name="T:SharpBag.FK.MVC.FKController">
+            <summary>
+            An MVC controller.
+            </summary>
+        </member>
+        <member name="M:SharpBag.FK.MVC.FKController.#ctor(SharpBag.FK.MVC.FKModel,System.String,System.Char,System.Char,System.String[])">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="model">The model for the controller.</param>
+            <param name="title">The title of the controller.</param>
+            <param name="verticalChar">A char for the vertical wall of the title.</param>
+            <param name="horizontalChar">A char for the horizontal wall of the title.</param>
+            <param name="args">Arguments, or settings, for the controller.</param>
+        </member>
+        <member name="M:SharpBag.FK.MVC.FKController.ListActions">
+            <summary>
+            List all the actions in the controller.
+            </summary>
+        </member>
+        <member name="M:SharpBag.FK.MVC.FKController.ExecuteAction(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Execute the specified action.
+            </summary>
+            <param name="actionName">The name of the action.</param>
+            <param name="pause">Whether to pause after the action is finished.</param>
+            <param name="header">Whether to display a header.</param>
+        </member>
+        <member name="M:SharpBag.FK.MVC.FKController.All">
+            <summary>
+            An action that executes all the other actions.
+            </summary>
+        </member>
+        <member name="M:SharpBag.FK.MVC.FKController.Run">
+            <summary>
+            Run the controller in an interactive mode.
+            </summary>
+        </member>
+        <member name="M:SharpBag.FK.MVC.FKController.Exit">
+            <summary>
+            An action that exits the program.
+            </summary>
+        </member>
+        <member name="M:SharpBag.FK.MVC.FKController.PreActionExecute">
+            <summary>
+            A hook that is fired before an action is executed.
+            </summary>
+        </member>
+        <member name="M:SharpBag.FK.MVC.FKController.PostActionExecute">
+            <summary>
+            A hook that is fired after an action is executed.
+            </summary>
+        </member>
+        <member name="M:SharpBag.FK.MVC.FKController.SimpleView(System.Collections.Generic.IEnumerable{System.Object},System.Boolean)">
+            <summary>
+            A simple view.
+            </summary>
+            <param name="objs">A collection of objects.</param>
+            <param name="space">Whether to prepend a space before displaying the view.</param>
+        </member>
+        <member name="M:SharpBag.FK.MVC.FKController.SimpleView``1(System.Collections.Generic.IEnumerable{``0},System.Boolean)">
+            <summary>
+            A simple view.
+            </summary>
+            <typeparam name="T">The type of items in the collection.</typeparam>
+            <param name="objs">A collection of objects.</param>
+            <param name="space">Whether to prepend a space before displaying the view.</param>
+        </member>
+        <member name="M:SharpBag.FK.MVC.FKController.SimpleView(System.Boolean,System.Object[])">
+            <summary>
+            A simple view.
+            </summary>
+            <param name="space">Whether to prepend a space before displaying the view.</param>
+            <param name="objs">A collection of objects.</param>
+        </member>
+        <member name="M:SharpBag.FK.MVC.FKController.SimpleView(System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.Boolean)">
+            <summary>
+            A simple view.
+            </summary>
+            <param name="objs">A dictionary with keys and values.</param>
+            <param name="between">A string to put in between the key and the value.</param>
+            <param name="space">Whether to prepend a space before displaying the view.</param>
+        </member>
+        <member name="M:SharpBag.FK.MVC.FKController.SimpleView(System.String,System.Boolean)">
+            <summary>
+            A simple view.
+            </summary>
+            <param name="s">A string to be printed.</param>
+            <param name="space">Whether to prepend a space before displaying the view.</param>
+        </member>
+        <member name="M:SharpBag.FK.MVC.FKController.BoolView(System.Boolean,System.String,System.String,System.Boolean)">
+            <summary>
+            A boolean view.
+            </summary>
+            <param name="condition">An expression.</param>
+            <param name="trueString">A string that will be printed if the expression is true.</param>
+            <param name="falseString">A string that will be printed if the expression is false.</param>
+            <param name="space">Whether to prepend a space before displaying the view.</param>
+        </member>
+        <member name="M:SharpBag.FK.MVC.FKController.BoolView(System.Boolean,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            A boolean view.
+            </summary>
+            <param name="condition">An expression.</param>
+            <param name="start">The first part of the string.</param>
+            <param name="not">A string that will be printed between start and end if the expression is false.</param>
+            <param name="end">The last part of the string.</param>
+            <param name="space">Whether to prepend a space before displaying the view.</param>
+        </member>
+        <member name="P:SharpBag.FK.MVC.FKController.Title">
+            <summary>
+            The title of the controller.
+            </summary>
+        </member>
+        <member name="P:SharpBag.FK.MVC.FKController.Model">
+            <summary>
+            The model for the controller.
+            </summary>
+        </member>
+        <member name="P:SharpBag.FK.MVC.FKController.VerticalChar">
+            <summary>
+            A char for the vertical wall of the title.
+            </summary>
+        </member>
+        <member name="P:SharpBag.FK.MVC.FKController.HorizontalChar">
+            <summary>
+            A char for the horizontal wall of the title.
             </summary>
         </member>
         <member name="T:SharpBag.Time.TimeUtils">

@@ -656,7 +656,7 @@ namespace SharpBag
         /// <summary>
         /// Converts the current instance to the specified type.
         /// </summary>
-        /// <typeparam name="T">Type the current instance will be converted to.</typeparam>
+        /// <typeparam name="TOut">Type the current instance will be converted to.</typeparam>
         /// <param name="original">The current instance.</param>
         /// <param name="defaultValue">The default value to use in case the current instance can't be converted.</param>
         /// <returns>The converted value.</returns>
@@ -668,7 +668,7 @@ namespace SharpBag
         /// <summary>
         /// Converts the current instance to the specified type.
         /// </summary>
-        /// <typeparam name="T">Type the current instance will be converted to.</typeparam>
+        /// <typeparam name="TOut">Type the current instance will be converted to.</typeparam>
         /// <param name="original">The current instance.</param>
         /// <param name="provider">An IFormatProvider.</param>
         /// <param name="defaultValue">The default value to use in case the current instance can't be converted.</param>
@@ -705,22 +705,27 @@ namespace SharpBag
             return type.IsGenericType && type.GetGenericTypeDefinition().Equals(typeof(Nullable<>));
         }
 
-        static public IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
+        /// <summary>
+        /// Shuffle the collection.
+        /// </summary>
+        /// <typeparam name="T">The type of items in the current instance.</typeparam>
+        /// <param name="source">The current instance.</param>
+        /// <returns>The shuffled collection.</returns>
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
         {
             if (source == null) throw new ArgumentNullException("source");
 
             return ShuffleIterator(source);
         }
 
-        static private IEnumerable<T> ShuffleIterator<T>(this IEnumerable<T> source)
+        private static IEnumerable<T> ShuffleIterator<T>(this IEnumerable<T> source)
         {
             T[] array = source.ToArray();
             Random rnd = new Random();
             for (int n = array.Length; n > 1; )
             {
-                int k = rnd.Next(n--); // 0 <= k < n
+                int k = rnd.Next(n--);
 
-                //Swap items
                 if (n != k)
                 {
                     T tmp = array[k];
@@ -732,6 +737,14 @@ namespace SharpBag
             foreach (var item in array) yield return item;
         }
 
+        /// <summary>
+        /// Takes every n-th item of the collection.
+        /// </summary>
+        /// <typeparam name="T">The type of the items.</typeparam>
+        /// <param name="enumeration">The current instance.</param>
+        /// <param name="step">The step to take.</param>
+        /// <param name="start">The location to start at.</param>
+        /// <returns>Every n-th item of the collection.</returns>
         public static IEnumerable<T> TakeEvery<T>(this IEnumerable<T> enumeration, int step, int start = 0)
         {
             if (enumeration == null) throw new ArgumentNullException("enumeration");
@@ -765,6 +778,14 @@ namespace SharpBag
             }
         }
 
+        /// <summary>
+        /// Returns the current instance if the specified expression is true, else returns the specified default value.
+        /// </summary>
+        /// <typeparam name="T">The type of the current instance.</typeparam>
+        /// <param name="obj">The current instance.</param>
+        /// <param name="expression">An expression.</param>
+        /// <param name="def">The default value.</param>
+        /// <returns>The current instance if the specified expression is true, else returns the specified default value.</returns>
         public static T If<T>(this T obj, bool expression, T def = default(T))
         {
             return expression ? obj : def;
