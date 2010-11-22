@@ -553,5 +553,16 @@ namespace SharpBag.Strings
             }
             finally { }
         }
+
+        /// <summary>
+        /// Prepends a zero to the current instance, if it's less than 10.
+        /// </summary>
+        /// <param name="i">The current instance.</param>
+        /// <returns>The current instance as a string.</returns>
+        public static string AddZeroIfLessThan10(this int i)
+        {
+            if (i > 9) return i.ToString();
+            else return "0" + i.ToString();
+        }
     }
 }

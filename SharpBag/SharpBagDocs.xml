@@ -2936,6 +2936,13 @@
             <returns>The decrypted string or null if decryption failed.</returns>
             <exception cref="T:System.ArgumentException">Occurs when stringToDecrypt or key is null or empty.</exception>
         </member>
+        <member name="M:SharpBag.Strings.StringExtensions.AddZeroIfLessThan10(System.Int32)">
+            <summary>
+            Prepends a zero to the current instance, if it's less than 10.
+            </summary>
+            <param name="i">The current instance.</param>
+            <returns>The current instance as a string.</returns>
+        </member>
         <member name="T:SharpBag.Math.BagMath">
             <summary>
             A static class containing methods for doing calculations. 
