@@ -535,11 +535,23 @@ namespace SharpBag.Math
 
         #region Pow overloads
 
+        /// <summary>
+        /// Puts the current instance to the specified power.
+        /// </summary>
+        /// <param name="i">The current instance.</param>
+        /// <param name="power">The specified power.</param>
+        /// <returns>The current instance in the specified power.</returns>
         public static int Pow(this int i, int power)
         {
             return (int)System.Math.Pow(i, power);
         }
 
+        /// <summary>
+        /// Puts the current instance to the specified power.
+        /// </summary>
+        /// <param name="i">The current instance.</param>
+        /// <param name="power">The specified power.</param>
+        /// <returns>The current instance in the specified power.</returns>
         public static double Pow(this double i, double power)
         {
             return System.Math.Pow(i, power);

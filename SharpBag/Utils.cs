@@ -155,6 +155,14 @@ namespace SharpBag
             return Generate(() => reader.ReadLine());
         }
 
+        #endregion
+
+        /// <summary>
+        /// Generates data with the specified data generator.
+        /// </summary>
+        /// <typeparam name="T">The type of items returned by the generator.</typeparam>
+        /// <param name="generator">A data generator.</param>
+        /// <returns>An endless source of data from the generator.</returns>
         public static IEnumerable<T> GenerateEndless<T>(Func<T> generator)
         {
             while (true)
@@ -162,7 +170,5 @@ namespace SharpBag
                 yield return generator();
             }
         }
-
-        #endregion
     }
 }

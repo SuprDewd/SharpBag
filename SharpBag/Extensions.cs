@@ -286,25 +286,6 @@ namespace SharpBag
         }
 
         /// <summary>
-        /// Converts all elements in the current instance using the specified action.
-        /// </summary>
-        /// <typeparam name="TInput">The type of the input elements.</typeparam>
-        /// <typeparam name="TOutput">The type of the output elements.</typeparam>
-        /// <param name="source">The current instance.</param>
-        /// <param name="action">The action to perform on each element.</param>
-        /// <returns>A new enumerable with the output elements.</returns>
-        public static IEnumerable<TOutput> ConvertElements<TInput, TOutput>(this IEnumerable<TInput> source, Func<TInput, TOutput> action)
-        {
-            if (source == null) throw new ArgumentNullException("source");
-            if (action == null) throw new ArgumentNullException("action");
-
-            foreach (TInput elem in source)
-            {
-                yield return action(elem);
-            }
-        }
-
-        /// <summary>
         /// Adds the specified key and value to the dictionary.
         /// If overwrite is true and the dictionary contains the specified key, the key's value will be overwritten.
         /// If overwrite is false and the dictionary contains the specified key, an exception won't be thrown.
@@ -533,7 +514,6 @@ namespace SharpBag
         /// </summary>
         /// <typeparam name="T">The type of the items.</typeparam>
         /// <param name="collection">The current instance.</param>
-        /// <param name="rand">A random number generator.</param>
         /// <returns>A random item from  the current instance.</returns>
         public static T Random<T>(this IEnumerable<T> collection)
         {

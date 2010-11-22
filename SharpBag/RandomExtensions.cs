@@ -124,11 +124,23 @@ namespace SharpBag
             return (char)random.Next(48, 58);
         }
 
+        /// <summary>
+        /// Returns a random DateTime between minValue and maxValue.
+        /// </summary>
+        /// <param name="random">The current instance.</param>
+        /// <param name="minValue">The lowest value.</param>
+        /// <param name="maxValue">The highest value.</param>
+        /// <returns>A random DateTime between minValue and maxValue.</returns>
         public static DateTime NextDateTime(this Random random, DateTime minValue, DateTime maxValue)
         {
             return DateTime.FromOADate(random.NextDouble(minValue.ToOADate(), maxValue.ToOADate()));
         }
 
+        /// <summary>
+        /// Returns a random DateTime.
+        /// </summary>
+        /// <param name="random">The current instance.</param>
+        /// <returns>A random DateTime.</returns>
         public static DateTime NextDateTime(this Random random)
         {
             return random.NextDateTime(DateTime.MinValue, DateTime.MaxValue);
