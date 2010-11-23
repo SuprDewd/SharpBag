@@ -210,7 +210,7 @@ namespace SharpBag.Database
             foreach (DataColumn col in dt.Columns)
             {
                 if (columns.ToString() != "") columns.Append(",");
-                if (!dt.PrimaryKey.Contains(col)) nonPrimaryCols.Add(col.ColumnName);
+                if (!dt.PrimaryKey.ContainsArray(col)) nonPrimaryCols.Add(col.ColumnName);
 
                 columns.Append(col.ColumnName);
             }
@@ -231,7 +231,7 @@ namespace SharpBag.Database
                     {
                         values.Append("'").Append(((DateTime)o).ToSQLDateTime()).Append("'");
                     }
-                    else if (new Type[] { typeof(int), typeof(double), typeof(float), typeof(decimal), typeof(Single) }.Contains(col.DataType))
+                    else if (new Type[] { typeof(int), typeof(double), typeof(float), typeof(decimal), typeof(Single) }.ContainsArray(col.DataType))
                     {
                         values.Append(o.ToString());
                     }

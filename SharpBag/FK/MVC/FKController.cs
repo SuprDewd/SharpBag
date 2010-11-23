@@ -40,7 +40,7 @@ namespace SharpBag.FK.MVC
                 return (from a in this.GetType().GetMethods()
                         where a.IsPublic && Attribute.IsDefined(a, typeof(FKActionAttribute)) && !a.GetParameters().Any()
                         let attr = Attribute.GetCustomAttribute(a, typeof(FKActionAttribute)) as FKActionAttribute
-                        select new FKActionMetadata { Method = a, Name = attr.Name, Description = attr.Description + (!attr.Finished ? " (unfinished)" : "") }).OrderBy(a => a.Name, new AlphaNumberComparer(AlphaNumberSettings.Leading));
+                        select new FKActionMetadata { Method = a, Name = attr.Name, Description = attr.Description + (!attr.Finished ? " (unfinished)" : ""), Timed = attr.Timed }).OrderBy(a => a.Name, new AlphaNumberComparer(AlphaNumberSettings.Leading));
             }
         }
 
@@ -138,7 +138,18 @@ namespace SharpBag.FK.MVC
 
             if (header) this.WriteHeader(action.Name + (action.Description != null ? "\n" + action.Description : ""));
 
-            action.Method.Invoke(this, new object[] { });
+            if (action.Timed)
+            {
+                long time = Utils.ExecutionTime(() => action.Method.Invoke(this, new object[] { }));
+                
+                Console.WriteLine();
+                Console.Write("Time: " );
+                Console.WriteLine(time);
+            }
+            else
+            {
+                action.Method.Invoke(this, new object[] { });
+            }
 
             this.PostActionExecute();
 
@@ -151,9 +162,9 @@ namespace SharpBag.FK.MVC
         [FKAction("All", Description = "Run all the actions.")]
         public void All()
         {
-            foreach (var item in this.Actions.Where(a => !a.Name.IsIn("All", "Exit")))
+            foreach (var item in this.Actions)
             {
-                //Console.Clear();
+                if (item.Name.IsIn("All", "Exit")) continue;
                 this.ExecuteAction(item.Name, true, true);
             }
         }

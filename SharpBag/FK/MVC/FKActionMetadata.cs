@@ -11,6 +11,7 @@ namespace SharpBag.FK.MVC
         public MethodInfo Method { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public bool Timed { get; set; }
 
         public override string ToString()
         {

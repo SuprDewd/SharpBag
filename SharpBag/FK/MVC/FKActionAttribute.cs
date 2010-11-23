@@ -23,6 +23,10 @@ namespace SharpBag.FK.MVC
         /// Whether the action is finished.
         /// </summary>
         public bool Finished { get; set; }
+        /// <summary>
+        /// Whether the action should be timed.
+        /// </summary>
+        public bool Timed { get; set; }
 
         /// <summary>
         /// The constructor.

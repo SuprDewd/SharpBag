@@ -72,8 +72,9 @@ namespace SharpBag
         /// <returns>An enumerable containing the numbers.</returns>
         public static IEnumerable<int> To(this int start, int end, int step = 1)
         {
-            var diff = end - start > 0 ? System.Math.Abs(step) : -System.Math.Abs(step);
-            for (var current = start; current != end; current += diff)
+            bool b = end - start > 0;
+            var diff = b ? System.Math.Abs(step) : -System.Math.Abs(step);
+            for (var current = start; b ? current < end : current > end; current += diff)
                 yield return current;
             yield return end;
         }
@@ -87,8 +88,9 @@ namespace SharpBag
         /// <returns>An enumerable containing the numbers.</returns>
         public static IEnumerable<long> To(this long start, long end, long step = 1)
         {
-            var diff = end - start > 0 ? System.Math.Abs(step) : -System.Math.Abs(step);
-            for (var current = start; current != end; current += diff)
+            bool b = end - start > 0;
+            var diff = b ? System.Math.Abs(step) : -System.Math.Abs(step);
+            for (var current = start; b ? current < end : current > end; current += diff)
                 yield return current;
             yield return end;
         }
@@ -113,8 +115,9 @@ namespace SharpBag
         /// <returns>An enumerable containing the numbers.</returns>
         public static IEnumerable<BigInteger> To(this BigInteger start, BigInteger end, BigInteger step)
         {
-            var diff = end - start > 0 ? BigInteger.Abs(step) : -BigInteger.Abs(step);
-            for (var current = start; current != end; current += diff)
+            bool b = end - start > 0;
+            var diff = b ? BigInteger.Abs(step) : -BigInteger.Abs(step);
+            for (var current = start; b ? current < end : current > end; current += diff)
                 yield return current;
             yield return end;
         }
@@ -220,7 +223,7 @@ namespace SharpBag
         /// <param name="a">The array.</param>
         /// <param name="o">The object.</param>
         /// <returns>Whether the array contains the specified object.</returns>
-        public static bool Contains(this Array a, object o)
+        public static bool ContainsArray(this Array a, object o)
         {
             foreach (var item in a)
             {

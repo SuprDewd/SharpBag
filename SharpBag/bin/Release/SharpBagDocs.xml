@@ -457,7 +457,7 @@
             <param name="multiDArray">The current instance.</param>
             <returns>An enumerable of all the items in the current instance.</returns>
         </member>
-        <member name="M:SharpBag.Extensions.Contains(System.Array,System.Object)">
+        <member name="M:SharpBag.Extensions.ContainsArray(System.Array,System.Object)">
             <summary>
             Checks whether the array contains the specified object.
             </summary>
@@ -3982,6 +3982,11 @@
         <member name="P:SharpBag.FK.MVC.FKActionAttribute.Finished">
             <summary>
             Whether the action is finished.
+            </summary>
+        </member>
+        <member name="P:SharpBag.FK.MVC.FKActionAttribute.Timed">
+            <summary>
+            Whether the action should be timed.
             </summary>
         </member>
         <member name="T:SharpBag.Torrent.BencodeDecoder">
