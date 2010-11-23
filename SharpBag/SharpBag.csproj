@@ -68,6 +68,7 @@
     <Compile Include="FK\MVC\FKController.cs" />
     <Compile Include="FK\MVC\FKModel.cs" />
     <Compile Include="FK\MVC\FKViewAttribute.cs" />
+    <Compile Include="Math\PascalTriangle.cs" />
     <Compile Include="RandomExtensions.cs" />
     <Compile Include="Time\TimeExtensions.cs" />
     <Compile Include="Extensions.cs" />
