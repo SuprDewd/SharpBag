@@ -148,7 +148,7 @@ namespace SharpBag.FK.MVC
 
             if (header) this.WriteHeader(action.Name + (action.Description != null ? "\n" + action.Description : ""));
 
-            if (action.Timed)
+            if (action.Timed || this.TimeAll)
             {
                 long time = Utils.ExecutionTime(() => action.Method.Invoke(this, new object[] { }));
 
