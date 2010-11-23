@@ -408,12 +408,13 @@
             <param name="step">The step to take on each iteration.</param>
             <returns>An enumerable containing the numbers.</returns>
         </member>
-        <member name="M:SharpBag.Extensions.To(System.Char,System.Char)">
+        <member name="M:SharpBag.Extensions.To(System.Char,System.Char,System.Int32)">
             <summary>
             Generates chars that range from the current instance to end.
             </summary>
             <param name="start">The current instance.</param>
             <param name="end">The char to end at.</param>
+            <param name="step">The step to take on each iteration.</param>
             <returns>An enumerable containing the numbers.</returns>
         </member>
         <member name="M:SharpBag.Extensions.Times``1(System.Int32,System.Func{``0})">

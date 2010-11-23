@@ -72,11 +72,21 @@ namespace SharpBag
         /// <returns>An enumerable containing the numbers.</returns>
         public static IEnumerable<int> To(this int start, int end, int step = 1)
         {
-            bool b = end - start > 0;
-            var diff = b ? System.Math.Abs(step) : -System.Math.Abs(step);
-            for (var current = start; b ? current < end : current > end; current += diff)
-                yield return current;
-            yield return end;
+            if (start < end)
+            {
+                for (int i = start; i <= end; i += step)
+                {
+                    yield return i;
+                }
+            }
+            else if (start > end)
+            {
+                for (int i = start; i >= end; i -= step)
+                {
+                    yield return i;
+                }
+            }
+            else yield return end;
         }
 
         /// <summary>
@@ -88,11 +98,21 @@ namespace SharpBag
         /// <returns>An enumerable containing the numbers.</returns>
         public static IEnumerable<long> To(this long start, long end, long step = 1)
         {
-            bool b = end - start > 0;
-            var diff = b ? System.Math.Abs(step) : -System.Math.Abs(step);
-            for (var current = start; b ? current < end : current > end; current += diff)
-                yield return current;
-            yield return end;
+            if (start < end)
+            {
+                for (long i = start; i <= end; i += step)
+                {
+                    yield return i;
+                }
+            }
+            else if (start > end)
+            {
+                for (long i = start; i >= end; i -= step)
+                {
+                    yield return i;
+                }
+            }
+            else yield return end;
         }
 
         /// <summary>
@@ -115,11 +135,21 @@ namespace SharpBag
         /// <returns>An enumerable containing the numbers.</returns>
         public static IEnumerable<BigInteger> To(this BigInteger start, BigInteger end, BigInteger step)
         {
-            bool b = end - start > 0;
-            var diff = b ? BigInteger.Abs(step) : -BigInteger.Abs(step);
-            for (var current = start; b ? current < end : current > end; current += diff)
-                yield return current;
-            yield return end;
+            if (start < end)
+            {
+                for (BigInteger i = start; i <= end; i += step)
+                {
+                    yield return i;
+                }
+            }
+            else if (start > end)
+            {
+                for (BigInteger i = start; i >= end; i -= step)
+                {
+                    yield return i;
+                }
+            }
+            else yield return end;
         }
 
         /// <summary>
@@ -127,14 +157,25 @@ namespace SharpBag
         /// </summary>
         /// <param name="start">The current instance.</param>
         /// <param name="end">The char to end at.</param>
+        /// <param name="step">The step to take on each iteration.</param>
         /// <returns>An enumerable containing the numbers.</returns>
-        public static IEnumerable<char> To(this char start, char end)
+        public static IEnumerable<char> To(this char start, char end, int step = 1)
         {
-            var iStart = (int)start;
-            var iEnd = (int)end;
-            var diff = iEnd - iStart > 0 ? 1 : -1;
-            for (var current = iStart; current != iEnd; current += diff)
-                yield return (char)current;
+            if (start < end)
+            {
+                for (int i = start; i <= end; i += step)
+                {
+                    yield return (char)i;
+                }
+            }
+            else if (start > end)
+            {
+                for (int i = start; i >= end; i -= step)
+                {
+                    yield return (char)i;
+                }
+            }
+            else yield return end;
         }
 
         #endregion
