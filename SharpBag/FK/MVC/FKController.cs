@@ -33,6 +33,11 @@ namespace SharpBag.FK.MVC
         /// </summary>
         public char HorizontalChar { get; set; }
 
+        /// <summary>
+        /// Whether to time all actions.
+        /// </summary>
+        public bool TimeAll { get; set; }
+
         private IEnumerable<FKActionMetadata> Actions
         {
             get
@@ -49,15 +54,17 @@ namespace SharpBag.FK.MVC
         /// </summary>
         /// <param name="model">The model for the controller.</param>
         /// <param name="title">The title of the controller.</param>
+        /// <param name="timeAll">Whether to time all actions.</param>
         /// <param name="verticalChar">A char for the vertical wall of the title.</param>
         /// <param name="horizontalChar">A char for the horizontal wall of the title.</param>
         /// <param name="args">Arguments, or settings, for the controller.</param>
-        public FKController(FKModel model, string title = null, char verticalChar = '-', char horizontalChar = '|', string[] args = null)
+        public FKController(FKModel model, string title = null, bool timeAll = false, char verticalChar = '-', char horizontalChar = '|', string[] args = null)
         {
             this.Model = model;
             this.Title = title;
             this.VerticalChar = verticalChar;
             this.HorizontalChar = horizontalChar;
+            this.TimeAll = timeAll;
 
             try
             {
@@ -85,9 +92,12 @@ namespace SharpBag.FK.MVC
         {
             if (this.Title != null) this.WriteHeader(this.Title);
 
-            foreach (var a in this.Actions)
+            FKActionMetadata[] actions = this.Actions.ToArray();
+            int longestName = actions.Max(a => a.Name.Length);
+
+            foreach (var a in actions)
             {
-                Console.WriteLine(a.ToString());
+                Console.WriteLine(a.ToString(longestName));
             }
 
             Console.WriteLine();
@@ -138,12 +148,12 @@ namespace SharpBag.FK.MVC
 
             if (header) this.WriteHeader(action.Name + (action.Description != null ? "\n" + action.Description : ""));
 
-            if (action.Timed)
+            if (action.Timed || this.TimeAll)
             {
                 long time = Utils.ExecutionTime(() => action.Method.Invoke(this, new object[] { }));
-                
+
                 Console.WriteLine();
-                Console.Write("Time: " );
+                Console.Write("Time: ");
                 Console.WriteLine(time);
             }
             else
