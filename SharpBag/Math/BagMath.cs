@@ -147,24 +147,6 @@ namespace SharpBag.Math
         }
 
         /// <summary>
-        /// Gets the Pascal triangle entry at the specified row and column.
-        /// </summary>
-        /// <param name="row">The row.</param>
-        /// <param name="column">The column.</param>
-        /// <returns>The entry.</returns>
-        public static long PascalTriangleEntry(int row, int column)
-        {
-            long current = 1;
-
-            for (int i = 1; i <= column; i++)
-            {
-                current = (current * (row + 1 - i)) / i;
-            }
-
-            return current;
-        }
-
-        /// <summary>
         /// Finds the greatest common divisor (gcd) of two integers.
         /// </summary>
         /// <param name="a">An integer.</param>
@@ -172,14 +154,14 @@ namespace SharpBag.Math
         /// <returns>The greatest commond divisor (gcd) of the two integers.</returns>
         public static int Gcd(int a, int b)
         {
-            while (true)
+            while (a != 0 && b != 0)
             {
-                if (a % b == 0) return b;
-
-                int c = a % b;
-                a = b;
-                b = c;
+                if (a > b) a %= b;
+                else b %= a;
             }
+
+            if (a == 0) return b;
+            else return a;
         }
 
         #region IsPrime overloads
