@@ -163,7 +163,7 @@ namespace SharpBag.FK.MVC
 
             this.PostActionExecute();
 
-            if (pause) Console.ReadLine();
+            if (pause && action.Name != "All") Console.ReadLine();
         }
 
         /// <summary>
