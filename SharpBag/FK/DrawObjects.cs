@@ -1,5 +1,6 @@
 ﻿using System;
 using SharpBag.Strings;
+using System.Text;
 
 namespace SharpBag.FK
 {
@@ -51,19 +52,17 @@ namespace SharpBag.FK
         /// Teiknar þríhyrninga
         /// </summary>
         /// <param name="height">Hæð þríhyrningsins</param>
+        /// <param name="TT">Týpan af þríhyrningi</param>
         /// <param name="s">Strengurinn sem er notaður inní þríhyrningnum</param>
         /// <param name="p">Strengurinn sem er notaður fyrir utan þríhyrninginn</param>
-        /// <param name="TT">Týpan af þríhyrningi</param>
         /// <returns>Þríhyrningurinn</returns>
-        /// <example>Triangle(5, "*", " ", TriangleType.Top)</example>
-        public static string Triangle(int height, string s, string p, TriangleType TT)
+        /// <example>Triangle(5, TriangleType.Top, "*", " ")</example>
+        public static string Triangle(int height, TriangleType TT, string s = "#", string p = " ")
         {
             if (height == 0) return "";
-
             if (height == 1) return s;
 
-            string t = "";
-            string br = "\n";
+            StringBuilder t = new StringBuilder();
 
             switch (TT)
             {
@@ -73,26 +72,28 @@ namespace SharpBag.FK
                         {
                             for (int a = 0; a < i; a++)
                             {
-                                t += s;
+                                t.Append(s);
                             }
-                            t += br;
+
+                            t.AppendLine();
                         }
-                        t = t.Trim();
+
+                        return t.ToString().TrimEnd();
                     }
-                    break;
                 case TriangleType.BottomLeft:
                     {
                         for (int i = 1; i <= height; i++)
                         {
                             for (int a = 0; a < i; a++)
                             {
-                                t += s;
+                                t.Append(s);
                             }
-                            t += br;
+
+                            t.AppendLine();
                         }
-                        t = t.Trim();
+
+                        return t.ToString().TrimEnd();
                     }
-                    break;
                 case TriangleType.TopRight:
                     {
                         for (int i = height - 1; i >= 0; i--)
@@ -101,18 +102,19 @@ namespace SharpBag.FK
                             {
                                 if (a <= i)
                                 {
-                                    t += s;
+                                    t.Append(s);
                                 }
                                 else
                                 {
-                                    t += p;
+                                    t.Append(p);
                                 }
                             }
-                            t += br;
+
+                            t.AppendLine();
                         }
-                        t = t.Trim();
+
+                        return t.ToString().TrimEnd();
                     }
-                    break;
                 case TriangleType.BottomRight:
                     {
                         for (int i = 0; i < height; i++)
@@ -121,59 +123,59 @@ namespace SharpBag.FK
                             {
                                 if (a > i)
                                 {
-                                    t += p;
+                                    t.Append(p);
                                 }
                                 else
                                 {
-                                    t += s;
+                                    t.Append(s);
                                 }
                             }
-                            t += br;
+
+                            t.AppendLine();
                         }
-                        t = t.TrimEnd();
+
+                        return t.ToString().TrimEnd();
                     }
-                    break;
                 case TriangleType.Left:
                     {
-                        t += Triangle(height - 1, s, p, TriangleType.BottomLeft) + br;
+                        t.AppendLine(Triangle(height - 1, TriangleType.BottomLeft, s, p));
+
                         for (int i = 0; i < height; i++)
                         {
-                            t += s;
+                            t.Append(s);
                         }
-                        t += br + Triangle(height - 1, s, p, TriangleType.TopLeft);
-                        t = t.Trim();
+
+                        t.AppendLine().Append(Triangle(height - 1, TriangleType.TopLeft, s, p));
+                        return t.ToString().TrimEnd();
                     }
-                    break;
                 case TriangleType.Top:
                     {
-                        t += Triangle(height - 1, s, p, TriangleType.TopRight);
-                        string l = "";
+                        t.Append(Triangle(height - 1, TriangleType.TopRight, s, p));
+                        StringBuilder l = new StringBuilder();
+
                         for (int i = 0; i < height; i++)
                         {
-                            l += s + br;
+                            l.AppendLine(s);
                         }
-                        t = Tools.MergeStrings(t, l.Trim());
-                        t = Tools.MergeStrings(t, Triangle(height - 1, s, p, TriangleType.TopLeft));
-                        t = t.Trim();
+
+                        return Tools.MergeStrings(Tools.MergeStrings(t.ToString(), l.ToString().TrimEnd()), Triangle(height - 1, TriangleType.TopLeft, s, p)).TrimEnd();
                     }
-                    break;
                 case TriangleType.Bottom:
                     {
-                        t += Triangle(height - 1, s, p, TriangleType.BottomRight);
-                        string l = "";
+                        t.Append(Triangle(height - 1, TriangleType.BottomRight, s, p));
+                        StringBuilder l = new StringBuilder();
+
                         for (int i = 0; i < height; i++)
                         {
-                            l += s + br;
+                            l.AppendLine(s);
                         }
-                        t = Tools.MergeStrings(br + t, l.Trim());
-                        t = Tools.MergeStrings(t, br + Triangle(height - 1, s, p, TriangleType.BottomLeft));
-                        t = t.TrimEnd();
+
+                        return Tools.MergeStrings(Tools.MergeStrings(t.Insert(0, "\n").ToString(), l.ToString().TrimEnd()), "\n" + Triangle(height - 1, TriangleType.BottomLeft, s, p)).TrimEnd();
                     }
-                    break;
                 case TriangleType.Right:
                     {
-                        string[] BR = Triangle(height - 1, s, p, TriangleType.BottomRight).Lines();
-                        string[] TR = Triangle(height - 1, s, p, TriangleType.TopRight).Lines();
+                        string[] BR = Triangle(height - 1, TriangleType.BottomRight, s, p).Lines();
+                        string[] TR = Triangle(height - 1, TriangleType.TopRight, s, p).Lines();
 
                         for (int i = 0; i < BR.Length; i++)
                         {
@@ -181,17 +183,18 @@ namespace SharpBag.FK
                             TR[i] = " " + TR[i];
                         }
 
-                        t += String.Join("\n", BR) + br;
+                        t.AppendLine(String.Join("\n", BR));
+
                         for (int i = 0; i < height; i++)
                         {
-                            t += s;
+                            t.Append(s);
                         }
-                        t += br + String.Join("\n", TR);
+
+                        return t.Append("\n" + String.Join("\n", TR)).ToString().TrimEnd();
                     }
-                    break;
             }
 
-            return t;
+            return "";
         }
 
         /// <summary>
@@ -204,29 +207,30 @@ namespace SharpBag.FK
         /// <param name="filled">Bool um hvort hann sé fylltur eða ekki</param>
         /// <returns>Kassinn</returns>
         /// <example>Square(5, 4, "*", " ", false)</example>
-        public static string Square(int height, int width, string s, string p, bool filled)
+        public static string Square(int height, int width, string s = "#", string p = " ", bool filled = true)
         {
             if (height == 0 || width == 0) return "";
             if (height == width && width == 1) return s;
 
-            string u = "";
+            StringBuilder u = new StringBuilder();
             for (int i = 0; i < height; i++)
             {
                 for (int a = 0; a < width; a++)
                 {
-                    if (i == 0 || a == 0 || i == height - 1 || a == width - 1 || filled)
+                    if (filled || i == 0 || a == 0 || i == height - 1 || a == width - 1)
                     {
-                        u += s;
+                        u.Append(s);
                     }
                     else
                     {
-                        u += p;
+                        u.Append(p);
                     }
                 }
-                u += "\n";
+
+                u.AppendLine();
             }
 
-            return u.Trim();
+            return u.ToString().TrimEnd();
         }
     }
 }

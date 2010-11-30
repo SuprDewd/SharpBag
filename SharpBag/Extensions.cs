@@ -438,6 +438,8 @@ namespace SharpBag
 
         #endregion
 
+        #region UnionAll overloads
+
         /// <summary>
         /// Unions all elements in the current instance and the specified collection.
         /// </summary>
@@ -458,8 +460,6 @@ namespace SharpBag
             }
         }
 
-        #region Add overloads
-
         /// <summary>
         /// Adds the specified item to the current instance.
         /// </summary>
@@ -467,7 +467,7 @@ namespace SharpBag
         /// <param name="source">The current instance.</param>
         /// <param name="newItem">The new item.</param>
         /// <returns>The current instance with the new item.</returns>
-        public static IEnumerable<T> Add<T>(this IEnumerable<T> source, T newItem)
+        public static IEnumerable<T> UnionAll<T>(this IEnumerable<T> source, T newItem)
         {
             foreach (T item in source)
             {
@@ -484,7 +484,7 @@ namespace SharpBag
         /// <param name="source">The current instance.</param>
         /// <param name="newItems">The items to add.</param>
         /// <returns>The current instance and the new items.</returns>
-        public static IEnumerable<T> Add<T>(this IEnumerable<T> source, params T[] newItems)
+        public static IEnumerable<T> UnionAll<T>(this IEnumerable<T> source, params T[] newItems)
         {
             foreach (T item in source)
             {

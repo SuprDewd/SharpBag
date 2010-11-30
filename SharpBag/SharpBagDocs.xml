@@ -561,7 +561,7 @@
             <param name="other">The collection to union.</param>
             <returns>The current instance and the specified collection unioned.</returns>
         </member>
-        <member name="M:SharpBag.Extensions.Add``1(System.Collections.Generic.IEnumerable{``0},``0)">
+        <member name="M:SharpBag.Extensions.UnionAll``1(System.Collections.Generic.IEnumerable{``0},``0)">
             <summary>
             Adds the specified item to the current instance.
             </summary>
@@ -570,7 +570,7 @@
             <param name="newItem">The new item.</param>
             <returns>The current instance with the new item.</returns>
         </member>
-        <member name="M:SharpBag.Extensions.Add``1(System.Collections.Generic.IEnumerable{``0},``0[])">
+        <member name="M:SharpBag.Extensions.UnionAll``1(System.Collections.Generic.IEnumerable{``0},``0[])">
             <summary>
             Adds the specified items to the current instance.
             </summary>
@@ -1744,16 +1744,16 @@
             Allskonar method til að teikna hluti
             </summary>
         </member>
-        <member name="M:SharpBag.FK.DrawObjects.Triangle(System.Int32,System.String,System.String,SharpBag.FK.DrawObjects.TriangleType)">
+        <member name="M:SharpBag.FK.DrawObjects.Triangle(System.Int32,SharpBag.FK.DrawObjects.TriangleType,System.String,System.String)">
             <summary>
             Teiknar þríhyrninga
             </summary>
             <param name="height">Hæð þríhyrningsins</param>
+            <param name="TT">Týpan af þríhyrningi</param>
             <param name="s">Strengurinn sem er notaður inní þríhyrningnum</param>
             <param name="p">Strengurinn sem er notaður fyrir utan þríhyrninginn</param>
-            <param name="TT">Týpan af þríhyrningi</param>
             <returns>Þríhyrningurinn</returns>
-            <example>Triangle(5, "*", " ", TriangleType.Top)</example>
+            <example>Triangle(5, TriangleType.Top, "*", " ")</example>
         </member>
         <member name="M:SharpBag.FK.DrawObjects.Square(System.Int32,System.Int32,System.String,System.String,System.Boolean)">
             <summary>
@@ -3815,25 +3815,41 @@
             Method sem gætu verið notuð fyrir Minesweeper leikinn
             </summary>
         </member>
-        <member name="M:SharpBag.FK.Minesweeper.ManyBombsAround(System.String[0:,0:],System.String,System.Int32,System.Int32)">
+        <member name="M:SharpBag.FK.Minesweeper.#ctor(System.Boolean[0:,0:])">
             <summary>
-            Gáir hvað margar sprengjur eru í kringum reit
+            The constructor.
             </summary>
-            <param name="field">Spilaborðið</param>
-            <param name="bomb">Hvernig sprengjan er</param>
-            <param name="x">X-hnitin á reitnum</param>
-            <param name="y">Y-hnitin á reitnum</param>
-            <returns>Hversu margar sprengjur eru í kringum reitinn</returns>
+            <param name="board">The board.</param>
         </member>
-        <member name="M:SharpBag.FK.Minesweeper.OnField(System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:SharpBag.FK.Minesweeper.Parse(System.String,System.Char)">
             <summary>
-            Athugar hvort hnit séu inná borðinu
+            Parses the specified string into a minesweeper board.
             </summary>
-            <param name="w">Breydd borðsins</param>
-            <param name="h">Hæð borðsins</param>
-            <param name="x">X-hnitið</param>
-            <param name="y">Y-hnitið</param>
-            <returns>Hvort hnitin séu inná borðinu</returns>
+            <param name="board">The string.</param>
+            <param name="bomb">What bombs look like.</param>
+            <returns>The board.</returns>
+        </member>
+        <member name="M:SharpBag.FK.Minesweeper.GetBoard(System.Boolean,System.Char,System.Char)">
+            <summary>
+            Returns the board.
+            </summary>
+            <param name="showCount">Whether to show the counts.</param>
+            <param name="bomb">What bombs look like.</param>
+            <param name="empty">What an empty space looks like.</param>
+            <returns>The board.</returns>
+        </member>
+        <member name="M:SharpBag.FK.Minesweeper.BombsOn(System.Int32,System.Int32)">
+            <summary>
+            Returns how many bombs are around the specified coordinates.
+            </summary>
+            <param name="x">The x-coordinate.</param>
+            <param name="y">The y-coordinate.</param>
+            <returns>How many bombs are around the specified coordinates.</returns>
+        </member>
+        <member name="P:SharpBag.FK.Minesweeper.Board">
+            <summary>
+            The board.
+            </summary>
         </member>
         <member name="T:SharpBag.FK.MVC.FKController">
             <summary>
