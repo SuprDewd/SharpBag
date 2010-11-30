@@ -246,13 +246,17 @@ namespace SharpBag.Database
             }
 
             StringBuilder updCols = new StringBuilder();
-            foreach (string nCol in nonPrimaryCols)
+
+            if (dt.PrimaryKey.Length > 0)
             {
-                if (updCols.ToString() != "") updCols.Append(",");
-                updCols.Append(nCol);
-                updCols.Append("=VALUES(");
-                updCols.Append(nCol);
-                updCols.Append(")");
+                foreach (string nCol in nonPrimaryCols)
+                {
+                    if (updCols.ToString() != "") updCols.Append(",");
+                    updCols.Append(nCol);
+                    updCols.Append("=VALUES(");
+                    updCols.Append(nCol);
+                    updCols.Append(")");
+                }
             }
 
             return new StringBuilder("INSERT INTO ").Append(into).Append(" (").Append(columns.ToString()).Append(") VALUES ").Append(values.ToString()).Append(dt.PrimaryKey.Length == 0 && dt.Columns.Count - dt.PrimaryKey.Length > 0 ? "" : " ON DUPLICATE KEY UPDATE ").Append(updCols.ToString()).Append(";").ToString();
