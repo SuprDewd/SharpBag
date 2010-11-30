@@ -3872,12 +3872,11 @@
             List all the actions in the controller.
             </summary>
         </member>
-        <member name="M:SharpBag.FK.MVC.FKController.ExecuteAction(System.String,System.Boolean,System.Boolean)">
+        <member name="M:SharpBag.FK.MVC.FKController.ExecuteAction(System.String,System.Boolean)">
             <summary>
             Execute the specified action.
             </summary>
             <param name="actionName">The name of the action.</param>
-            <param name="pause">Whether to pause after the action is finished.</param>
             <param name="header">Whether to display a header.</param>
         </member>
         <member name="M:SharpBag.FK.MVC.FKController.All">
@@ -4015,6 +4014,11 @@
         <member name="P:SharpBag.FK.MVC.FKActionAttribute.Timed">
             <summary>
             Whether the action should be timed.
+            </summary>
+        </member>
+        <member name="P:SharpBag.FK.MVC.FKActionAttribute.Pause">
+            <summary>
+            Whether the program should be paused when the action finishes.
             </summary>
         </member>
         <member name="T:SharpBag.Torrent.BencodeDecoder">
