@@ -212,32 +212,32 @@ namespace SharpBag.FK.MVC
         public virtual void PostActionExecute() { }
 
         /// <summary>
-        /// A simple view.
+        /// A collection view.
         /// </summary>
         /// <param name="objs">A collection of objects.</param>
         /// <param name="space">Whether to prepend a space before displaying the view.</param>
-        public void SimpleView(IEnumerable<object> objs, bool space = true)
+        public void CollectionView(IEnumerable<object> objs, bool space = true)
         {
-            this.SimpleView(space, objs.ToArray());
+            this.CollectionView(space, objs.ToArray());
         }
 
         /// <summary>
-        /// A simple view.
+        /// A collection view.
         /// </summary>
         /// <typeparam name="T">The type of items in the collection.</typeparam>
         /// <param name="objs">A collection of objects.</param>
         /// <param name="space">Whether to prepend a space before displaying the view.</param>
-        public void SimpleView<T>(IEnumerable<T> objs, bool space = true)
+        public void CollectionView<T>(IEnumerable<T> objs, bool space = true)
         {
-            this.SimpleView(space, objs.ToArray());
+            this.CollectionView(space, objs.ToArray());
         }
 
         /// <summary>
-        /// A simple view.
+        /// A collection view.
         /// </summary>
         /// <param name="space">Whether to prepend a space before displaying the view.</param>
         /// <param name="objs">A collection of objects.</param>
-        public void SimpleView(bool space = true, params object[] objs)
+        public void CollectionView(bool space = true, params object[] objs)
         {
             if (space) Console.WriteLine();
 
@@ -253,7 +253,7 @@ namespace SharpBag.FK.MVC
         /// <param name="objs">A dictionary with keys and values.</param>
         /// <param name="between">A string to put in between the key and the value.</param>
         /// <param name="space">Whether to prepend a space before displaying the view.</param>
-        public void SimpleView(Dictionary<string, object> objs, string between = ": ", bool space = true)
+        public void CollectionView(Dictionary<string, object> objs, string between = ": ", bool space = true)
         {
             if (space) Console.WriteLine();
 

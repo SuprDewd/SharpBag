@@ -3904,29 +3904,29 @@
             A hook that is fired after an action is executed.
             </summary>
         </member>
-        <member name="M:SharpBag.FK.MVC.FKController.SimpleView(System.Collections.Generic.IEnumerable{System.Object},System.Boolean)">
+        <member name="M:SharpBag.FK.MVC.FKController.CollectionView(System.Collections.Generic.IEnumerable{System.Object},System.Boolean)">
             <summary>
-            A simple view.
+            A collection view.
             </summary>
             <param name="objs">A collection of objects.</param>
             <param name="space">Whether to prepend a space before displaying the view.</param>
         </member>
-        <member name="M:SharpBag.FK.MVC.FKController.SimpleView``1(System.Collections.Generic.IEnumerable{``0},System.Boolean)">
+        <member name="M:SharpBag.FK.MVC.FKController.CollectionView``1(System.Collections.Generic.IEnumerable{``0},System.Boolean)">
             <summary>
-            A simple view.
+            A collection view.
             </summary>
             <typeparam name="T">The type of items in the collection.</typeparam>
             <param name="objs">A collection of objects.</param>
             <param name="space">Whether to prepend a space before displaying the view.</param>
         </member>
-        <member name="M:SharpBag.FK.MVC.FKController.SimpleView(System.Boolean,System.Object[])">
+        <member name="M:SharpBag.FK.MVC.FKController.CollectionView(System.Boolean,System.Object[])">
             <summary>
-            A simple view.
+            A collection view.
             </summary>
             <param name="space">Whether to prepend a space before displaying the view.</param>
             <param name="objs">A collection of objects.</param>
         </member>
-        <member name="M:SharpBag.FK.MVC.FKController.SimpleView(System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.Boolean)">
+        <member name="M:SharpBag.FK.MVC.FKController.CollectionView(System.Collections.Generic.Dictionary{System.String,System.Object},System.String,System.Boolean)">
             <summary>
             A simple view.
             </summary>
