@@ -70,6 +70,7 @@
     <Compile Include="FK\MVC\FKViewAttribute.cs" />
     <Compile Include="Math\PascalTriangle.cs" />
     <Compile Include="RandomExtensions.cs" />
+    <Compile Include="Strings\StringUtils.cs" />
     <Compile Include="Time\TimeExtensions.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FK\DrawObjects.cs" />

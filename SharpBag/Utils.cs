@@ -33,8 +33,11 @@ namespace SharpBag
         /// <returns>The execution time in milliseconds.</returns>
         public static TResult ExecutionTime<TResult>(Action a, Func<Stopwatch, TResult> result, bool handleGC = true)
         {
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
+            if (handleGC)
+            {
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            }
 
             Stopwatch s = new Stopwatch();
             s.Start();

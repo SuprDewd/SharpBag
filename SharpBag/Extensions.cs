@@ -500,7 +500,7 @@ namespace SharpBag
         #endregion
 
         /// <summary>
-        /// Gets a subarray from the current instance.
+        /// Gets a subarray of the current instance.
         /// </summary>
         /// <param name="a">The current instance.</param>
         /// <param name="x1">X-coordinate 1.</param>

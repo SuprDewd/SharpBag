@@ -1545,7 +1545,7 @@
         </member>
         <member name="M:SharpBag.Extensions.Subarray(System.Int32[0:,0:],System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
-            Gets a subarray from the current instance.
+            Gets a subarray of the current instance.
             </summary>
             <param name="a">The current instance.</param>
             <param name="x1">X-coordinate 1.</param>
@@ -4545,6 +4545,19 @@
             <summary>
             The disposer which executes the dispose action.
             </summary>
+        </member>
+        <member name="T:SharpBag.Strings.StringUtils">
+            <summary>
+            A static class with string utilities.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Strings.StringUtils.Concat(System.String,System.String[])">
+            <summary>
+            Concatenate the specified strings.
+            </summary>
+            <param name="separator">A separator between the strings.</param>
+            <param name="strings">The strings to concatenate.</param>
+            <returns>The new string.</returns>
         </member>
     </members>
 </doc>
