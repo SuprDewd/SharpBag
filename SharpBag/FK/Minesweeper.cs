@@ -1,51 +1,103 @@
 ﻿using SharpBag.Math;
 using SharpBag.Strings;
+using System;
+using System.Linq;
 
 namespace SharpBag.FK
 {
     /// <summary>
     /// Method sem gætu verið notuð fyrir Minesweeper leikinn
     /// </summary>
-    public static class Minesweeper
+    public class Minesweeper
     {
         /// <summary>
-        /// Gáir hvað margar sprengjur eru í kringum reit
+        /// The board.
         /// </summary>
-        /// <param name="field">Spilaborðið</param>
-        /// <param name="bomb">Hvernig sprengjan er</param>
-        /// <param name="x">X-hnitin á reitnum</param>
-        /// <param name="y">Y-hnitin á reitnum</param>
-        /// <returns>Hversu margar sprengjur eru í kringum reitinn</returns>
-        public static int ManyBombsAround(string[,] field, string bomb, int x, int y)
+        public bool[,] Board { get; set; }
+
+        /// <summary>
+        /// The constructor.
+        /// </summary>
+        /// <param name="board">The board.</param>
+        public Minesweeper(bool[,] board)
         {
-            int bombsAround = 0;
-            string[] ps = new string[] { "-1,-1", "-1,0", "-1,1", "0,-1", "0,1", "1,-1", "1,0", "1,1" };
-
-            foreach (string p in ps)
-            {
-                int[] t = p.SplitIntoInts(',');
-                int cX = x + t[0];
-                int cY = y + t[1];
-                if (OnField(field.GetLength(0), field.GetLength(1), cX, cY) && field[cX, cY] == bomb)
-                {
-                    bombsAround++;
-                }
-            }
-
-            return bombsAround;
+            this.Board = board;
         }
 
         /// <summary>
-        /// Athugar hvort hnit séu inná borðinu
+        /// Parses the specified string into a minesweeper board.
         /// </summary>
-        /// <param name="w">Breydd borðsins</param>
-        /// <param name="h">Hæð borðsins</param>
-        /// <param name="x">X-hnitið</param>
-        /// <param name="y">Y-hnitið</param>
-        /// <returns>Hvort hnitin séu inná borðinu</returns>
-        public static bool OnField(int w, int h, int x, int y)
+        /// <param name="board">The string.</param>
+        /// <param name="bomb">What bombs look like.</param>
+        /// <returns>The board.</returns>
+        public static Minesweeper Parse(string board, char bomb = '*')
         {
-            return (x.IsBetweenOrEqualTo(0, w - 1) && y.IsBetweenOrEqualTo(0, h - 1));
+            string[] lines = board.Lines();
+            bool[,] nBoard = new bool[lines.Length, lines.Max(s => s.Length)];
+
+            for (int x = 0; x < lines.Length; x++)
+            {
+                for (int y = 0; y < lines[x].Length; y++)
+                {
+                    nBoard[x, y] = lines[x][y] == bomb;
+                }
+            }
+
+            return new Minesweeper(nBoard);
+        }
+
+        /// <summary>
+        /// Returns the board.
+        /// </summary>
+        /// <param name="showCount">Whether to show the counts.</param>
+        /// <param name="bomb">What bombs look like.</param>
+        /// <param name="empty">What an empty space looks like.</param>
+        /// <returns>The board.</returns>
+        public char[,] GetBoard(bool showCount = false, char bomb = '*', char empty = '.')
+        {
+            char[,] board = new char[this.Board.GetLength(0), this.Board.GetLength(1)];
+
+            for (int x = 0; x < this.Board.GetLength(0); x++)
+            {
+                for (int y = 0; y < this.Board.GetLength(1); y++)
+                {
+                    board[x, y] = this.Board[x, y] ? bomb : showCount ? this.BombsOn(x, y).ToString()[0] : empty;
+                }
+            }
+
+            return board;
+        }
+
+        /// <summary>
+        /// Returns how many bombs are around the specified coordinates.
+        /// </summary>
+        /// <param name="x">The x-coordinate.</param>
+        /// <param name="y">The y-coordinate.</param>
+        /// <returns>How many bombs are around the specified coordinates.</returns>
+        public int BombsOn(int x, int y)
+        {
+            int n = 0;
+
+            for (int xM = -1; xM <= 1; xM++)
+            {
+                for (int yM = -1; yM <= 1; yM++)
+                {
+                    int nX = x + xM,
+                        nY = y + yM;
+
+                    if (xM == 0 && yM == 0) continue;
+                    if (!this.OnBoard(nX, nY)) continue;
+
+                    if (this.Board[x + xM, y + yM]) n++;
+                }
+            }
+
+            return n;
+        }
+
+        private bool OnBoard(int x, int y)
+        {
+            return x.IsBetweenOrEqualTo(0, this.Board.GetLength(0) - 1) && y.IsBetweenOrEqualTo(0, this.Board.GetLength(1) - 1);
         }
     }
 }

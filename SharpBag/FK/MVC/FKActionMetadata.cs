@@ -13,6 +13,7 @@ namespace SharpBag.FK.MVC
         public string Name { get; set; }
         public string Description { get; set; }
         public bool Timed { get; set; }
+        public bool Pause { get; set; }
 
         public override string ToString()
         {

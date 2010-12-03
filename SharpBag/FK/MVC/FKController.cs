@@ -45,7 +45,7 @@ namespace SharpBag.FK.MVC
                 return (from a in this.GetType().GetMethods()
                         where a.IsPublic && Attribute.IsDefined(a, typeof(FKActionAttribute)) && !a.GetParameters().Any()
                         let attr = Attribute.GetCustomAttribute(a, typeof(FKActionAttribute)) as FKActionAttribute
-                        select new FKActionMetadata { Method = a, Name = attr.Name, Description = attr.Description + (!attr.Finished ? " (unfinished)" : ""), Timed = attr.Timed }).OrderBy(a => a.Name, new AlphaNumberComparer(AlphaNumberSettings.Leading));
+                        select new FKActionMetadata { Method = a, Name = attr.Name, Description = attr.Description + (!attr.Finished ? " (unfinished)" : ""), Timed = attr.Timed, Pause = attr.Pause }).OrderBy(a => a.Name, new AlphaNumberComparer(AlphaNumberSettings.Leading));
             }
         }
 
@@ -74,7 +74,7 @@ namespace SharpBag.FK.MVC
 
                     while (true)
                     {
-                        this.ExecuteAction(args.First(), true, true);
+                        this.ExecuteAction(args.First(), true);
 
                         if (endless) continue;
 
@@ -131,9 +131,8 @@ namespace SharpBag.FK.MVC
         /// Execute the specified action.
         /// </summary>
         /// <param name="actionName">The name of the action.</param>
-        /// <param name="pause">Whether to pause after the action is finished.</param>
         /// <param name="header">Whether to display a header.</param>
-        public void ExecuteAction(string actionName, bool pause = false, bool header = false)
+        public void ExecuteAction(string actionName, bool header = false)
         {
             var action = (from a in this.Actions
                           let distance = a.Name.DistanceTo(actionName, false)
@@ -163,19 +162,19 @@ namespace SharpBag.FK.MVC
 
             this.PostActionExecute();
 
-            if (pause && action.Name != "All") Console.ReadLine();
+            if (action.Pause) Console.ReadLine();
         }
 
         /// <summary>
         /// An action that executes all the other actions.
         /// </summary>
-        [FKAction("All", Description = "Run all the actions.")]
+        [FKAction("All", Description = "Run all the actions.", Pause = false)]
         public void All()
         {
             foreach (var item in this.Actions)
             {
                 if (item.Name.IsIn("All", "Exit")) continue;
-                this.ExecuteAction(item.Name, true, true);
+                this.ExecuteAction(item.Name, true);
             }
         }
 
@@ -190,14 +189,14 @@ namespace SharpBag.FK.MVC
 
                 this.ListActions();
                 Console.Write("Run: ");
-                this.ExecuteAction(Console.ReadLine(), true, true);
+                this.ExecuteAction(Console.ReadLine(), true);
             }
         }
 
         /// <summary>
         /// An action that exits the program.
         /// </summary>
-        [FKAction("Exit", Description = "Exit the program.")]
+        [FKAction("Exit", Description = "Exit the program.", Pause = false)]
         public void Exit()
         {
             Environment.Exit(0);
@@ -213,32 +212,32 @@ namespace SharpBag.FK.MVC
         public virtual void PostActionExecute() { }
 
         /// <summary>
-        /// A simple view.
+        /// A collection view.
         /// </summary>
         /// <param name="objs">A collection of objects.</param>
         /// <param name="space">Whether to prepend a space before displaying the view.</param>
-        public void SimpleView(IEnumerable<object> objs, bool space = true)
+        public void CollectionView(IEnumerable<object> objs, bool space = true)
         {
-            this.SimpleView(space, objs.ToArray());
+            this.CollectionView(space, objs.ToArray());
         }
 
         /// <summary>
-        /// A simple view.
+        /// A collection view.
         /// </summary>
         /// <typeparam name="T">The type of items in the collection.</typeparam>
         /// <param name="objs">A collection of objects.</param>
         /// <param name="space">Whether to prepend a space before displaying the view.</param>
-        public void SimpleView<T>(IEnumerable<T> objs, bool space = true)
+        public void CollectionView<T>(IEnumerable<T> objs, bool space = true)
         {
-            this.SimpleView(space, objs.ToArray());
+            this.CollectionView(space, objs.ToArray());
         }
 
         /// <summary>
-        /// A simple view.
+        /// A collection view.
         /// </summary>
         /// <param name="space">Whether to prepend a space before displaying the view.</param>
         /// <param name="objs">A collection of objects.</param>
-        public void SimpleView(bool space = true, params object[] objs)
+        public void CollectionView(bool space = true, params object[] objs)
         {
             if (space) Console.WriteLine();
 
@@ -254,7 +253,7 @@ namespace SharpBag.FK.MVC
         /// <param name="objs">A dictionary with keys and values.</param>
         /// <param name="between">A string to put in between the key and the value.</param>
         /// <param name="space">Whether to prepend a space before displaying the view.</param>
-        public void SimpleView(Dictionary<string, object> objs, string between = ": ", bool space = true)
+        public void CollectionView(Dictionary<string, object> objs, string between = ": ", bool space = true)
         {
             if (space) Console.WriteLine();
 

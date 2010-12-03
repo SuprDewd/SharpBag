@@ -153,9 +153,17 @@ namespace SharpBag.Math
         /// <returns>The Collatz count.</returns>
         public static int CollatzCount(this int n)
         {
-            if (n == 1) return 1;
+            int i = 0, c = n;
 
-            return CollatzCount(n % 2 == 0 ? n / 2 : 3 * n + 1) + 1;
+            while (c != 1)
+            {
+                i++;
+
+                if (c % 2 == 0) c = c / 2;
+                else c = c * 3 + 1;
+            }
+
+            return i;
         }
 
         /// <summary>
@@ -165,9 +173,17 @@ namespace SharpBag.Math
         /// <returns>The Collatz count.</returns>
         public static long CollatzCount(this long n)
         {
-            if (n == 1) return 1;
+            long i = 0, c = n;
 
-            return CollatzCount(n % 2 == 0 ? n / 2 : 3 * n + 1) + 1;
+            while (c != 1)
+            {
+                i++;
+
+                if (c % 2 == 0) c = c / 2;
+                else c = c * 3 + 1;
+            }
+
+            return i;
         }
 
         /// <summary>
@@ -177,9 +193,17 @@ namespace SharpBag.Math
         /// <returns>The Collatz count.</returns>
         public static BigInteger CollatzCount(this BigInteger n)
         {
-            if (n == 1) return 1;
+            BigInteger i = 0, c = n;
 
-            return CollatzCount(n % 2 == 0 ? n / 2 : 3 * n + 1) + 1;
+            while (c != 1)
+            {
+                i++;
+
+                if (c % 2 == 0) c = c / 2;
+                else c = c * 3 + 1;
+            }
+
+            return i;
         }
 
         #endregion

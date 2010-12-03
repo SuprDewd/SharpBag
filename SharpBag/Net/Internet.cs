@@ -19,7 +19,7 @@ namespace SharpBag.Net
         {
             if (port < 0 || port > 0xFFFF) return false;
 
-            return (from i in IPGlobalProperties.GetIPGlobalProperties().GetActiveTcpConnections() where i.LocalEndPoint.Port == port select true).Count() == 0;
+            return !IPGlobalProperties.GetIPGlobalProperties().GetActiveTcpConnections().Where(i => i.LocalEndPoint.Port == port).Any();
         }
 
         /// <summary>

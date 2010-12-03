@@ -27,11 +27,15 @@ namespace SharpBag.FK.MVC
         /// Whether the action should be timed.
         /// </summary>
         public bool Timed { get; set; }
+        /// <summary>
+        /// Whether the program should be paused when the action finishes.
+        /// </summary>
+        public bool Pause { get; set; }
 
         /// <summary>
         /// The constructor.
         /// </summary>
         /// <param name="name">The name of the action.</param>
-        public FKActionAttribute(string name) { this.Name = name; this.Finished = true; }
+        public FKActionAttribute(string name) { this.Name = name; this.Finished = true; this.Pause = true; }
     }
 }
