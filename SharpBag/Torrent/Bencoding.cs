@@ -6,49 +6,65 @@ using System.Text;
 namespace SharpBag.Torrent
 {
     /// <summary>
+    /// A bencoding exception.
+    /// </summary>
+    public class BencodingException : FormatException
+    {
+        /// <summary>
+        /// Creates a new BencodingException.
+        /// </summary>
+        public BencodingException() { }
+        /// <summary>
+        /// Creates a new BencodingException.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        public BencodingException(string message) : base(message) { }
+        /// <summary>
+        /// Creates a new BencodingException.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        /// <param name="inner">The inner exception.</param>
+        public BencodingException(string message, Exception inner) : base(message, inner) { }
+    }
+
+    /// <summary>
+    /// A class with extension methods for use with Bencoding.
+    /// </summary>
+    public static class BencodingExtensions
+    {
+        /// <summary>
+        /// Decode the current instance.
+        /// </summary>
+        /// <param name="s">The current instance.</param>
+        /// <returns>The root elements of the decoded string.</returns>
+        public static BElement[] BDecode(this string s)
+        {
+            return new BencodeDecoder(s).Decode();
+        }
+    }
+
+    /// <summary>
     /// A class used for decoding Bencoding.
     /// </summary>
     public class BencodeDecoder
     {
-        /// <summary>
-        /// A bencoding exception.
-        /// </summary>
-        public class BencodingException : FormatException
-        {
-            /// <summary>
-            /// Creates a new BencodingException.
-            /// </summary>
-            public BencodingException() { }
-            /// <summary>
-            /// Creates a new BencodingException.
-            /// </summary>
-            /// <param name="message">The message.</param>
-            public BencodingException(string message) : base(message) { }
-            /// <summary>
-            /// Creates a new BencodingException.
-            /// </summary>
-            /// <param name="message">The message.</param>
-            /// <param name="inner">The inner exception.</param>
-            public BencodingException(string message, Exception inner) : base(message, inner) { }
-        }
-
         /// <summary>
         /// The main constructor.
         /// </summary>
         /// <param name="s">The bencoded string to decode.</param>
         public BencodeDecoder(string s)
         {
-            BencodedString = s;
+            this.BencodedString = s;
         }
 
         /// <summary>
         /// Where the reader will start reading next.
         /// </summary>
-        private int Index = 0;
+        private int Index { get; set; }
         /// <summary>
         /// The bencoded string.
         /// </summary>
-        public string BencodedString = null;
+        private string BencodedString { get; set; }
 
         /// <summary>
         /// Decodes the string.
@@ -56,23 +72,22 @@ namespace SharpBag.Torrent
         /// <returns>An array of root elements.</returns>
         public BElement[] Decode()
         {
+            this.Index = 0;
+
             try
             {
+                if (this.BencodedString == null) return null;
+
                 List<BElement> rootElements = new List<BElement>();
-                while (BencodedString.Length > Index)
+                while (this.BencodedString.Length > this.Index)
                 {
-                    rootElements.Add(ReadElement());
+                    rootElements.Add(this.ReadElement());
                 }
+
                 return rootElements.ToArray();
             }
-            catch (BencodingException)
-            {
-                throw;
-            }
-            catch (Exception e)
-            {
-                throw Error(e);
-            }
+            catch (BencodingException) { throw; }
+            catch (Exception e) { throw this.Error(e); }
         }
 
         /// <summary>
@@ -81,7 +96,7 @@ namespace SharpBag.Torrent
         /// <returns>The element that was read.</returns>
         private BElement ReadElement()
         {
-            switch (BencodedString[Index])
+            switch (this.BencodedString[this.Index])
             {
                 case '0':
                 case '1':
@@ -92,11 +107,11 @@ namespace SharpBag.Torrent
                 case '6':
                 case '7':
                 case '8':
-                case '9': return ReadString();
-                case 'i': return ReadInteger();
-                case 'l': return ReadList();
-                case 'd': return ReadDictionary();
-                default: throw Error();
+                case '9': return this.ReadString();
+                case 'i': return this.ReadInteger();
+                case 'l': return this.ReadList();
+                case 'd': return this.ReadDictionary();
+                default: throw this.Error();
             }
         }
 
@@ -106,26 +121,22 @@ namespace SharpBag.Torrent
         /// <returns>The dictionary that was read.</returns>
         private BDictionary ReadDictionary()
         {
-            Index++;
+            this.Index++;
             BDictionary dict = new BDictionary();
+
             try
             {
-                while (BencodedString[Index] != 'e')
+                while (this.BencodedString[this.Index] != 'e')
                 {
-                    BString K = ReadString();
-                    BElement V = ReadElement();
+                    BString K = this.ReadString();
+                    BElement V = this.ReadElement();
                     dict.Add(K, V);
                 }
             }
-            catch (BencodingException)
-            {
-                throw;
-            }
-            catch (Exception e)
-            {
-                throw Error(e);
-            }
-            Index++;
+            catch (BencodingException) { throw; }
+            catch (Exception e) { throw this.Error(e); }
+
+            this.Index++;
             return dict;
         }
 
@@ -135,24 +146,20 @@ namespace SharpBag.Torrent
         /// <returns>The list that was read.</returns>
         private BList ReadList()
         {
-            Index++;
+            this.Index++;
             BList lst = new BList();
+
             try
             {
-                while (BencodedString[Index] != 'e')
+                while (this.BencodedString[this.Index] != 'e')
                 {
-                    lst.Add(ReadElement());
+                    lst.Add(this.ReadElement());
                 }
             }
-            catch (BencodingException)
-            {
-                throw;
-            }
-            catch (Exception e)
-            {
-                throw Error(e);
-            }
-            Index++;
+            catch (BencodingException) { throw; }
+            catch (Exception e) { throw this.Error(e); }
+
+            this.Index++;
             return lst;
         }
 
@@ -162,20 +169,21 @@ namespace SharpBag.Torrent
         /// <returns>The integer that was read.</returns>
         private BInteger ReadInteger()
         {
-            Index++;
-            int end = BencodedString.IndexOf('e', Index);
-            if (end == -1) throw Error();
-            long Integer = 0;
+            this.Index++;
+
+            int end = this.BencodedString.IndexOf('e', this.Index);
+            if (end == -1) throw this.Error();
+
+            long integer = 0;
+
             try
             {
-                Integer = Convert.ToInt64(BencodedString.Substring(Index, end - Index));
-                Index = end + 1;
+                integer = Convert.ToInt64(this.BencodedString.Substring(this.Index, end - this.Index));
+                this.Index = end + 1;
             }
-            catch (Exception e)
-            {
-                throw Error(e);
-            }
-            return new BInteger(Integer);
+            catch (Exception e) { throw Error(e); }
+
+            return new BInteger(integer);
         }
 
         /// <summary>
@@ -186,28 +194,24 @@ namespace SharpBag.Torrent
         {
             int length = 0;
             int semicolon = 0;
-            try
-            {
-                semicolon = BencodedString.IndexOf(':', Index);
-                if (semicolon == -1) throw Error();
-                length = Convert.ToInt32(BencodedString.Substring(Index, semicolon - Index));
-            }
-            catch (Exception e)
-            {
-                throw Error(e);
-            }
 
-            Index = semicolon + 1;
-            int tmpIndex = Index;
-            Index += length;
             try
             {
-                return new BString(BencodedString.Substring(tmpIndex, length));
+                semicolon = this.BencodedString.IndexOf(':', this.Index);
+                if (semicolon == -1) throw this.Error();
+                length = Convert.ToInt32(this.BencodedString.Substring(this.Index, semicolon - Index));
             }
-            catch (Exception e)
+            catch (Exception e) { throw this.Error(e); }
+
+            this.Index = semicolon + 1;
+            int tmpIndex = this.Index;
+            this.Index += length;
+
+            try
             {
-                throw Error(e);
+                return new BString(this.BencodedString.Substring(tmpIndex, length));
             }
+            catch (Exception e) { throw this.Error(e); }
         }
 
         /// <summary>
@@ -264,7 +268,6 @@ namespace SharpBag.Torrent
             return new BInteger(i);
         }
 
-        //public int Value { get; set; }
         /// <summary>
         /// The value of the bencoded integer.
         /// </summary>
@@ -274,7 +277,7 @@ namespace SharpBag.Torrent
         /// The main constructor.
         /// </summary>
         /// <param name="value">The value of the bencoded integer.</param>
-        public BInteger(long value /*int value*/)
+        public BInteger(long value)
         {
             this.Value = value;
         }
@@ -294,6 +297,8 @@ namespace SharpBag.Torrent
         /// <returns>The bencoded equivalent of the integer.</returns>
         public StringBuilder ToBencodedString(StringBuilder u)
         {
+            u = u ?? new StringBuilder();
+
             return u.Append('i').Append(Value.ToString()).Append('e');
         }
 
@@ -371,6 +376,8 @@ namespace SharpBag.Torrent
         /// <returns>The bencoded equivalent of the string.</returns>
         public StringBuilder ToBencodedString(StringBuilder u)
         {
+            u = u ?? new StringBuilder();
+
             return u.Append(this.Value.Length).Append(':').Append(this.Value);
         }
 
@@ -424,11 +431,15 @@ namespace SharpBag.Torrent
         /// <returns>The bencoded equivalent of the list.</returns>
         public StringBuilder ToBencodedString(StringBuilder u)
         {
+            u = u ?? new StringBuilder();
+
             u.Append('l');
+
             foreach (BElement element in base.ToArray())
             {
                 element.ToBencodedString(u);
             }
+
             return u.Append('e');
         }
 
@@ -472,12 +483,16 @@ namespace SharpBag.Torrent
         /// <returns>The bencoded equivalent of the dictionary.</returns>
         public StringBuilder ToBencodedString(StringBuilder u)
         {
+            u = u ?? new StringBuilder();
+
             u.Append('d');
+
             for (int i = 0; i < base.Count; i++)
             {
                 base.Keys.ElementAt(i).ToBencodedString(u);
                 base.Values.ElementAt(i).ToBencodedString(u);
             }
+
             return u.Append('e');
         }
 
