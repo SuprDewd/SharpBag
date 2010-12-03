@@ -39,7 +39,7 @@ namespace SharpBag.Torrent
         /// <returns>The root elements of the decoded string.</returns>
         public static BElement[] BDecode(this string s)
         {
-            return new BencodeDecoder(s).Decode();
+            return BencodeDecoder.Decode(s);
         }
     }
 
@@ -52,7 +52,7 @@ namespace SharpBag.Torrent
         /// The main constructor.
         /// </summary>
         /// <param name="s">The bencoded string to decode.</param>
-        public BencodeDecoder(string s)
+        private BencodeDecoder(string s)
         {
             this.BencodedString = s;
         }
@@ -65,6 +65,16 @@ namespace SharpBag.Torrent
         /// The bencoded string.
         /// </summary>
         private string BencodedString { get; set; }
+
+        /// <summary>
+        /// Decodes the specified string.
+        /// </summary>
+        /// <param name="s">The specified string.</param>
+        /// <returns>An array of the root elements.</returns>
+        public static BElement[] Decode(string s)
+        {
+            return new BencodeDecoder(s).Decode();
+        }
 
         /// <summary>
         /// Decodes the string.

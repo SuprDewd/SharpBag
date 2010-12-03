@@ -581,7 +581,7 @@
         </member>
         <member name="M:SharpBag.Extensions.Subarray(System.Int32[0:,0:],System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
-            Gets a subarray from the current instance.
+            Gets a subarray of the current instance.
             </summary>
             <param name="a">The current instance.</param>
             <param name="x1">X-coordinate 1.</param>
@@ -1191,6 +1191,19 @@
             <param name="n">The current instance.</param>
             <returns>Whether the current instance is prime.</returns>
         </member>
+        <member name="T:SharpBag.Strings.StringUtils">
+            <summary>
+            A static class with string utilities.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Strings.StringUtils.Concat(System.String,System.String[])">
+            <summary>
+            Concatenate the specified strings.
+            </summary>
+            <param name="separator">A separator between the strings.</param>
+            <param name="strings">The strings to concatenate.</param>
+            <returns>The new string.</returns>
+        </member>
         <member name="T:SharpBag.CharType">
             <summary>
             Char types.
@@ -1727,11 +1740,7 @@
         </member>
         <member name="M:SharpBag.FK.Stæ.HefjaIVeldi(System.Double,System.Int32)">
             <summary>
-<<<<<<< HEAD
-            Gets a subarray of the current instance.
-=======
             Hefur N í veldið veldi
->>>>>>> c20896dbbca75e00c2c9d34d2dbea59cda099cdb
             </summary>
             <param name="N">Talan</param>
             <param name="veldi">Veldið sem talan á að fara í</param>
@@ -4025,6 +4034,41 @@
             Whether the program should be paused when the action finishes.
             </summary>
         </member>
+        <member name="T:SharpBag.Torrent.BencodingException">
+            <summary>
+            A bencoding exception.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Torrent.BencodingException.#ctor">
+            <summary>
+            Creates a new BencodingException.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Torrent.BencodingException.#ctor(System.String)">
+            <summary>
+            Creates a new BencodingException.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:SharpBag.Torrent.BencodingException.#ctor(System.String,System.Exception)">
+            <summary>
+            Creates a new BencodingException.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="inner">The inner exception.</param>
+        </member>
+        <member name="T:SharpBag.Torrent.BencodingExtensions">
+            <summary>
+            A class with extension methods for use with Bencoding.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Torrent.BencodingExtensions.BDecode(System.String)">
+            <summary>
+            Decode the current instance.
+            </summary>
+            <param name="s">The current instance.</param>
+            <returns>The root elements of the decoded string.</returns>
+        </member>
         <member name="T:SharpBag.Torrent.BencodeDecoder">
             <summary>
             A class used for decoding Bencoding.
@@ -4036,15 +4080,12 @@
             </summary>
             <param name="s">The bencoded string to decode.</param>
         </member>
-        <member name="F:SharpBag.Torrent.BencodeDecoder.Index">
+        <member name="M:SharpBag.Torrent.BencodeDecoder.Decode(System.String)">
             <summary>
-            Where the reader will start reading next.
+            Decodes the specified string.
             </summary>
-        </member>
-        <member name="F:SharpBag.Torrent.BencodeDecoder.BencodedString">
-            <summary>
-            The bencoded string.
-            </summary>
+            <param name="s">The specified string.</param>
+            <returns>An array of the root elements.</returns>
         </member>
         <member name="M:SharpBag.Torrent.BencodeDecoder.Decode">
             <summary>
@@ -4095,28 +4136,15 @@
             </summary>
             <returns>An exception that can then be thrown.</returns>
         </member>
-        <member name="T:SharpBag.Torrent.BencodeDecoder.BencodingException">
+        <member name="P:SharpBag.Torrent.BencodeDecoder.Index">
             <summary>
-            A bencoding exception.
+            Where the reader will start reading next.
             </summary>
         </member>
-        <member name="M:SharpBag.Torrent.BencodeDecoder.BencodingException.#ctor">
+        <member name="P:SharpBag.Torrent.BencodeDecoder.BencodedString">
             <summary>
-            Creates a new BencodingException.
+            The bencoded string.
             </summary>
-        </member>
-        <member name="M:SharpBag.Torrent.BencodeDecoder.BencodingException.#ctor(System.String)">
-            <summary>
-            Creates a new BencodingException.
-            </summary>
-            <param name="message">The message.</param>
-        </member>
-        <member name="M:SharpBag.Torrent.BencodeDecoder.BencodingException.#ctor(System.String,System.Exception)">
-            <summary>
-            Creates a new BencodingException.
-            </summary>
-            <param name="message">The message.</param>
-            <param name="inner">The inner exception.</param>
         </member>
         <member name="T:SharpBag.Torrent.BElement">
             <summary>
@@ -4569,19 +4597,6 @@
             <summary>
             Trailing numbers.
             </summary>
-        </member>
-        <member name="T:SharpBag.Strings.StringUtils">
-            <summary>
-            A static class with string utilities.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Strings.StringUtils.Concat(System.String,System.String[])">
-            <summary>
-            Concatenate the specified strings.
-            </summary>
-            <param name="separator">A separator between the strings.</param>
-            <param name="strings">The strings to concatenate.</param>
-            <returns>The new string.</returns>
         </member>
     </members>
 </doc>
