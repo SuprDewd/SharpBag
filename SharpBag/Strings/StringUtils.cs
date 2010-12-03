@@ -18,7 +18,10 @@ namespace SharpBag.Strings
         /// <returns>The new string.</returns>
         public static string Concat(string separator, params string[] strings)
         {
-            StringBuilder sb = new StringBuilder(strings.Sum(s => s.Length) + ((strings.Length - 1) * separator.Length));
+            if (separator == null) return "";
+            if (strings == null) return "";
+
+            StringBuilder sb = new StringBuilder(strings.Sum(s => (s ?? "").Length) + ((strings.Length - 1) * separator.Length));
             bool first = true;
 
             foreach (string s in strings)
