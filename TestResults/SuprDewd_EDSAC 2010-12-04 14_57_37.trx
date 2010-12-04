@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="df81022e-6b08-429d-8a82-25f4abc01afa" name="SuprDewd@EDSAC 2010-12-04 14:57:37" runUser="EDSAC\SuprDewd" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="4c59a5fa-d837-49f8-8b62-15cf0be0742f">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment userDeploymentRoot="C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\TestResults" useDefaultDeploymentRoot="false" enabled="false" runDeploymentRoot="SuprDewd_EDSAC 2010-12-04 14_57_37">
+      <DeploymentItem filename="C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests01\MolesAssemblies\SharpBag.Moles.dll" />
+      <DeploymentItem filename="C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag\bin\Release\SharpBag.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2010-12-04T14:57:37.7822380+00:00" queuing="2010-12-04T14:57:40.7384071+00:00" start="2010-12-04T14:57:40.9634200+00:00" finish="2010-12-04T14:57:54.1501742+00:00" />
+  <ResultSummary outcome="Error">
+    <Counters total="2" executed="1" error="0" failed="0" timeout="0" aborted="1" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="1" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="EDSAC" outcome="Error" timestamp="2010-12-04T14:57:54.1261728+00:00">
+        <Text>Test host process exited unexpectedly.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="ItemSetThrowsArgumentOutOfRangeException209" storage="c:\users\suprdewd\desktop\projects\forritun\sharpbag\sharpbag.tests01\bin\release\sharpbag.tests.dll" id="61204312-b642-b8f4-e07a-61631489b8b3">
+      <Execution id="5cdb27d5-4f20-48dd-a667-b7d69952e221" />
+      <TestMethod codeBase="C:/Users/SuprDewd/Desktop/Projects/Forritun/SharpBag/SharpBag.Tests01/bin/Release/SharpBag.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SharpBag.Algorithms.PriorityQueueTTest, SharpBag.Tests, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" name="ItemSetThrowsArgumentOutOfRangeException209" />
+    </UnitTest>
+    <UnitTest name="ItemGetThrowsArgumentOutOfRangeException363" storage="c:\users\suprdewd\desktop\projects\forritun\sharpbag\sharpbag.tests01\bin\release\sharpbag.tests.dll" id="28df7c9b-89b0-61d3-f840-04af08900cfa">
+      <Execution id="f02bf85a-d788-4597-9c98-01d1aa75a712" />
+      <TestMethod codeBase="C:/Users/SuprDewd/Desktop/Projects/Forritun/SharpBag/SharpBag.Tests01/bin/Release/SharpBag.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SharpBag.Algorithms.PriorityQueueTTest, SharpBag.Tests, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" name="ItemGetThrowsArgumentOutOfRangeException363" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="61204312-b642-b8f4-e07a-61631489b8b3" executionId="5cdb27d5-4f20-48dd-a667-b7d69952e221" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="28df7c9b-89b0-61d3-f840-04af08900cfa" executionId="f02bf85a-d788-4597-9c98-01d1aa75a712" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="5cdb27d5-4f20-48dd-a667-b7d69952e221" testId="61204312-b642-b8f4-e07a-61631489b8b3" testName="ItemSetThrowsArgumentOutOfRangeException209" computerName="EDSAC" duration="00:00:13.0917488" startTime="2010-12-04T14:57:41.0544252+00:00" endTime="2010-12-04T14:57:54.1461740+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Aborted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5cdb27d5-4f20-48dd-a667-b7d69952e221">
+    </UnitTestResult>
+    <UnitTestResult executionId="f02bf85a-d788-4597-9c98-01d1aa75a712" testId="28df7c9b-89b0-61d3-f840-04af08900cfa" testName="ItemGetThrowsArgumentOutOfRangeException363" computerName="EDSAC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f02bf85a-d788-4597-9c98-01d1aa75a712">
+    </UnitTestResult>
+  </Results>
+</TestRun>

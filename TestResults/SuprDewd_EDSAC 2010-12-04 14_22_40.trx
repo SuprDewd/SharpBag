@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="3cda46e8-f2dc-465e-9f5b-7e2bc5e6d1dd" name="SuprDewd@EDSAC 2010-12-04 14:22:40" runUser="EDSAC\SuprDewd" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="4c59a5fa-d837-49f8-8b62-15cf0be0742f">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="SuprDewd_EDSAC 2010-12-04 14_22_40">
+      <DeploymentItem filename="C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests01\MolesAssemblies\SharpBag.Moles.dll" />
+      <DeploymentItem filename="C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag\bin\Release\SharpBag.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2010-12-04T14:22:40.1442600+00:00" queuing="2010-12-04T14:22:40.1892626+00:00" start="2010-12-04T14:22:40.2902683+00:00" finish="2010-12-04T14:22:41.1023148+00:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="GetByPercentThrowsIndexOutOfRangeException858" storage="c:\users\suprdewd\desktop\projects\forritun\sharpbag\sharpbag.tests01\bin\release\sharpbag.tests.dll" id="16bc510b-963f-30e5-6517-13389edd4fdc">
+      <Execution id="b60bf4be-8c0a-48b5-a14d-36ea97475699" />
+      <TestMethod codeBase="C:/Users/SuprDewd/Desktop/Projects/Forritun/SharpBag/SharpBag.Tests01/bin/Release/SharpBag.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SharpBag.ExtensionsTest, SharpBag.Tests, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetByPercentThrowsIndexOutOfRangeException858" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="16bc510b-963f-30e5-6517-13389edd4fdc" executionId="b60bf4be-8c0a-48b5-a14d-36ea97475699" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="b60bf4be-8c0a-48b5-a14d-36ea97475699" testId="16bc510b-963f-30e5-6517-13389edd4fdc" testName="GetByPercentThrowsIndexOutOfRangeException858" computerName="EDSAC" duration="00:00:00.0626779" startTime="2010-12-04T14:22:40.3982745+00:00" endTime="2010-12-04T14:22:41.0583123+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b60bf4be-8c0a-48b5-a14d-36ea97475699">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method SharpBag.ExtensionsTest.GetByPercentThrowsIndexOutOfRangeException858 threw exception: 
+System.Diagnostics.Contracts.__ContractsRuntime+ContractException: Precondition failed: array.Length &gt; 0</Message>
+          <StackTrace>    at SharpBag.Extensions.GetByPercent[T](T[] array, Double percent) in C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag\Extensions.cs:line 241
+   at SharpBag.ExtensionsTest.GetByPercentThrowsIndexOutOfRangeException858() in C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests01\ExtensionsTest.GetByPercent.g.cs:line 47
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

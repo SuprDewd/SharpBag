@@ -1,0 +1,7 @@
+C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\UnitTests\bin\Release\UnitTests.dll
+C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\UnitTests\bin\Release\UnitTests.pdb
+C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\UnitTests\obj\Release\ResolveAssemblyReference.cache
+C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\UnitTests\obj\Release\UnitTests.dll
+C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\UnitTests\obj\Release\UnitTests.pdb
+C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\UnitTests\obj\Release\Decl\UnitTests.dll
+C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\UnitTests\obj\Release\Decl\UnitTests.pdb

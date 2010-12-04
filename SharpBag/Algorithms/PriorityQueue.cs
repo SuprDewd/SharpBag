@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Diagnostics.Contracts;
 
 namespace SharpBag.Algorithms
 {
@@ -11,18 +12,12 @@ namespace SharpBag.Algorithms
     /// <typeparam name="T">The type of items in the priority queue.</typeparam>
     public class PriorityQueue<T> : IEnumerable<T>
     {
-        /// <summary>
-        /// The items.
-        /// </summary>
-        private List<PriorityQueueItem<T>> Items { get; set; }
+        private List<PriorityQueueItem<T>> Items = new List<PriorityQueueItem<T>>();
 
         /// <summary>
         /// The constructor.
         /// </summary>
-        public PriorityQueue()
-        {
-            this.Items = new List<PriorityQueueItem<T>>();
-        }
+        public PriorityQueue() { }
 
         /// <summary>
         /// Adds an item to the queue.
@@ -70,6 +65,7 @@ namespace SharpBag.Algorithms
         /// <returns>The next item in the queue.</returns>
         public T Dequeue()
         {
+            Contract.Requires(this.Count > 0);
             return this.Dequeue(true);
         }
 
@@ -80,6 +76,7 @@ namespace SharpBag.Algorithms
         /// <returns>The next item in the queue.</returns>
         private T Dequeue(bool remove)
         {
+            Contract.Requires(this.Count > 0);
             PriorityQueueItem<T>[] array = this.Items.ToArray();
             if (array.Length == 0) return default(T);
 
@@ -105,6 +102,7 @@ namespace SharpBag.Algorithms
         /// <returns>The next item in the queue.</returns>
         public T Peek()
         {
+            Contract.Requires(this.Count > 0);
             return this.Dequeue(false);
         }
 
@@ -117,10 +115,14 @@ namespace SharpBag.Algorithms
         {
             get
             {
+                Contract.Requires(index >= 0);
+                Contract.Requires(this.Count > index);
                 return this.Items[index].Item;
             }
             set
             {
+                Contract.Requires(index >= 0);
+                Contract.Requires(this.Count > index);
                 this.Items[index] = new PriorityQueueItem<T>(value);
             }
         }

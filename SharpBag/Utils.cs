@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using System.Diagnostics.Contracts;
 
 namespace SharpBag
 {
@@ -20,6 +21,7 @@ namespace SharpBag
         /// <returns>The execution time in milliseconds.</returns>
         public static long ExecutionTime(Action a, bool handleGC = true)
         {
+            Contract.Requires(a != null);
             return ExecutionTime(a, s => s.ElapsedMilliseconds, handleGC);
         }
 
@@ -33,6 +35,9 @@ namespace SharpBag
         /// <returns>The execution time in milliseconds.</returns>
         public static TResult ExecutionTime<TResult>(Action a, Func<Stopwatch, TResult> result, bool handleGC = true)
         {
+            Contract.Requires(a != null);
+            Contract.Requires(result != null);
+
             if (handleGC)
             {
                 GC.Collect();
@@ -56,6 +61,7 @@ namespace SharpBag
         /// <returns>The IEnumerable.</returns>
         public static IEnumerable<T> CreateIEnumerable<T>(params T[] objects)
         {
+            Contract.Requires(objects != null);
             return objects;
         }
 
@@ -69,7 +75,7 @@ namespace SharpBag
         /// <returns>Values that are generated from the generator.</returns>
         public static IEnumerable<T> Generate<T>(Func<T> generator) where T : class
         {
-            if (generator == null) throw new ArgumentNullException("generator");
+            Contract.Requires(generator != null);
 
             T t;
             while ((t = generator()) != null)
@@ -86,7 +92,7 @@ namespace SharpBag
         /// <returns>Values that are generated from the generator.</returns>
         public static IEnumerable<T> Generate<T>(Func<Nullable<T>> generator) where T : struct
         {
-            if (generator == null) throw new ArgumentNullException("generator");
+            Contract.Requires(generator != null);
 
             Nullable<T> t;
             while ((t = generator()).HasValue)
@@ -103,7 +109,7 @@ namespace SharpBag
         /// <returns>The enumerator as an enumerable.</returns>
         public static IEnumerable<T> FromEnumerator<T>(IEnumerator<T> enumerator)
         {
-            if (enumerator == null) throw new ArgumentNullException("enumerator");
+            Contract.Requires(enumerator != null);
 
             while (enumerator.MoveNext())
             {
@@ -129,7 +135,9 @@ namespace SharpBag
         /// <returns>An enumerable that contains all the lines read.</returns>
         public static IEnumerable<string> ReadLinesFromFile(string path)
         {
-            if (path == null) throw new ArgumentNullException("path");
+            Contract.Requires(path != null);
+            Contract.Requires(File.Exists(path));
+
             using (StreamReader file = new StreamReader(path))
             {
                 string line;
@@ -153,7 +161,7 @@ namespace SharpBag
         /// <returns>An enumerable that reads lines from the specified TextReader.</returns>
         public static IEnumerable<string> ReadLinesFrom(TextReader reader)
         {
-            if (reader == null) throw new ArgumentNullException("reader");
+            Contract.Requires(reader != null);
 
             return Generate(() => reader.ReadLine());
         }
@@ -168,6 +176,8 @@ namespace SharpBag
         /// <returns>An endless source of data from the generator.</returns>
         public static IEnumerable<T> GenerateEndless<T>(Func<T> generator)
         {
+            Contract.Requires(generator != null);
+
             while (true)
             {
                 yield return generator();

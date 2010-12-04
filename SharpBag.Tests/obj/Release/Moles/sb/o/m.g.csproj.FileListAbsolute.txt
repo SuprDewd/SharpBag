@@ -1,0 +1,12 @@
+C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests01\obj\Release\Moles\sb\b\SharpBag.Moles.xml
+C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests01\obj\Release\Moles\sb\b\SharpBag.Moles.dll
+C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests01\obj\Release\Moles\sb\b\SharpBag.Moles.pdb
+C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests01\obj\Release\Moles\sb\b\MySql.Data.dll
+C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests01\obj\Release\Moles\sb\b\SharpBag.dll
+C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests01\obj\Release\Moles\sb\b\SharpBag.pdb
+C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests01\obj\Release\Moles\sb\o\ResolveAssemblyReference.cache
+C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests01\obj\Release\Moles\sb\o\SharpBag.Moles.rewritten
+C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests01\obj\Release\Moles\sb\o\SharpBag.Moles.dll
+C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests01\obj\Release\Moles\sb\o\SharpBag.Moles.pdb
+C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests01\obj\Release\Moles\sb\o\Decl\SharpBag.Moles.dll
+C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests01\obj\Release\Moles\sb\o\Decl\SharpBag.Moles.pdb

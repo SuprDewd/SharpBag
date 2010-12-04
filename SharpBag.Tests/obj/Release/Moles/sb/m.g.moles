@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Moles xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" CachePath="C:\Program Files (x86)\Microsoft Moles\bin\..\MolesAssemblies" xmlns="http://schemas.microsoft.com/moles/2010/">
+  <Assembly Name="SharpBag" Location="C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag\bin\Release\SharpBag.dll" />
+  <CodeStyle MaxIdentifierLength="256" />
+  <StubGeneration>
+    <Types />
+  </StubGeneration>
+  <MoleGeneration>
+    <Types />
+  </MoleGeneration>
+  <Compilation>
+    <Reference FullName="Microsoft.ExtendedReflection, Version=0.94.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Path="C:\Program Files (x86)\Common Files\Microsoft Shared\ExtendedReflection\0.94.51006.1\bin\Microsoft.ExtendedReflection.dll" />
+    <Reference FullName="Microsoft.Moles.Framework, Version=0.94.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Path="C:\Windows\assembly\GAC_MSIL\Microsoft.Moles.Framework\0.94.0.0__31bf3856ad364e35\Microsoft.Moles.Framework.dll" />
+    <Reference FullName="Microsoft.Pex.Framework, Version=0.94.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Path="C:\Windows\assembly\GAC_MSIL\Microsoft.Pex.Framework\0.94.0.0__31bf3856ad364e35\Microsoft.Pex.Framework.dll" />
+    <Reference FullName="Microsoft.Pex.Linq, Version=0.94.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Path="C:\Program Files (x86)\Microsoft Pex\PublicAssemblies\Microsoft.Pex.Linq.dll" />
+    <Reference FullName="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Path="C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\PublicAssemblies\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll" />
+    <Reference FullName="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Path="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" />
+    <Reference FullName="SharpBag, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Path="C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag\bin\Release\SharpBag.dll" />
+    <Reference FullName="System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Path="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" />
+    <Reference FullName="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Path="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" />
+    <Reference FullName="System.Numerics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Path="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Numerics.dll" />
+    <Reference FullName="WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Path="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\WindowsBase.dll" />
+  </Compilation>
+</Moles>

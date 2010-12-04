@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="cd0bbf0c-da34-4b61-8bea-2c7c00cc601d" name="SuprDewd@EDSAC 2010-12-04 01:58:30" runUser="EDSAC\SuprDewd" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="4c59a5fa-d837-49f8-8b62-15cf0be0742f">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment userDeploymentRoot="C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\TestResults" useDefaultDeploymentRoot="false" enabled="false" runDeploymentRoot="SuprDewd_EDSAC 2010-12-04 01_58_30">
+      <DeploymentItem filename="C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests01\MolesAssemblies\SharpBag.Moles.dll" />
+      <DeploymentItem filename="C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag\bin\Release\SharpBag.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2010-12-04T01:58:30.6718052+00:00" queuing="2010-12-04T01:58:35.2660680+00:00" start="2010-12-04T01:58:35.5050817+00:00" finish="2010-12-04T01:59:40.5868041+00:00" />
+  <ResultSummary outcome="Error">
+    <Counters total="4" executed="4" error="0" failed="3" timeout="0" aborted="1" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="EDSAC" outcome="Error" timestamp="2010-12-04T01:59:40.5838040+00:00">
+        <Text>Test host process exited unexpectedly.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="To02ThrowsEntryPointNotFoundException897" storage="c:\users\suprdewd\desktop\projects\forritun\sharpbag\sharpbag.tests01\bin\release\sharpbag.tests.dll" id="6b7dcc70-66b6-d437-fa4f-aad0a0e1d53f">
+      <Execution id="ddbaa6d0-a799-4b3c-84d9-923cba930c68" />
+      <TestMethod codeBase="C:/Users/SuprDewd/Desktop/Projects/Forritun/SharpBag/SharpBag.Tests01/bin/Release/SharpBag.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SharpBag.ExtensionsTest, SharpBag.Tests, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" name="To02ThrowsEntryPointNotFoundException897" />
+    </UnitTest>
+    <UnitTest name="GetByPercentThrowsIndexOutOfRangeException858" storage="c:\users\suprdewd\desktop\projects\forritun\sharpbag\sharpbag.tests01\bin\release\sharpbag.tests.dll" id="16bc510b-963f-30e5-6517-13389edd4fdc">
+      <Execution id="74bef20e-29c0-4b71-b5a7-c3bef11113fd" />
+      <TestMethod codeBase="C:/Users/SuprDewd/Desktop/Projects/Forritun/SharpBag/SharpBag.Tests01/bin/Release/SharpBag.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SharpBag.ExtensionsTest, SharpBag.Tests, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetByPercentThrowsIndexOutOfRangeException858" />
+    </UnitTest>
+    <UnitTest name="RandomThrowsContractException503" storage="c:\users\suprdewd\desktop\projects\forritun\sharpbag\sharpbag.tests01\bin\release\sharpbag.tests.dll" id="cda388d5-457a-465e-ba14-ce9de40a3bb3">
+      <Execution id="a1edaeca-6447-44ff-b03d-2382b37ec75f" />
+      <TestMethod codeBase="C:/Users/SuprDewd/Desktop/Projects/Forritun/SharpBag/SharpBag.Tests01/bin/Release/SharpBag.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SharpBag.ExtensionsTest, SharpBag.Tests, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" name="RandomThrowsContractException503" />
+    </UnitTest>
+    <UnitTest name="SubarrayThrowsIndexOutOfRangeException237" storage="c:\users\suprdewd\desktop\projects\forritun\sharpbag\sharpbag.tests01\bin\release\sharpbag.tests.dll" id="594704dd-0a86-b16d-988c-f53dd3e4a947">
+      <Execution id="7a403745-8318-41ba-8a80-82e73bc2c606" />
+      <TestMethod codeBase="C:/Users/SuprDewd/Desktop/Projects/Forritun/SharpBag/SharpBag.Tests01/bin/Release/SharpBag.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SharpBag.ExtensionsTest, SharpBag.Tests, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" name="SubarrayThrowsIndexOutOfRangeException237" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="16bc510b-963f-30e5-6517-13389edd4fdc" executionId="74bef20e-29c0-4b71-b5a7-c3bef11113fd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cda388d5-457a-465e-ba14-ce9de40a3bb3" executionId="a1edaeca-6447-44ff-b03d-2382b37ec75f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="594704dd-0a86-b16d-988c-f53dd3e4a947" executionId="7a403745-8318-41ba-8a80-82e73bc2c606" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6b7dcc70-66b6-d437-fa4f-aad0a0e1d53f" executionId="ddbaa6d0-a799-4b3c-84d9-923cba930c68" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="74bef20e-29c0-4b71-b5a7-c3bef11113fd" testId="16bc510b-963f-30e5-6517-13389edd4fdc" testName="GetByPercentThrowsIndexOutOfRangeException858" computerName="EDSAC" duration="00:00:12.0416118" startTime="2010-12-04T01:58:35.6120878+00:00" endTime="2010-12-04T01:58:50.3969334+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="74bef20e-29c0-4b71-b5a7-c3bef11113fd">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method SharpBag.ExtensionsTest.GetByPercentThrowsIndexOutOfRangeException858 threw exception: 
+System.Diagnostics.Contracts.__ContractsRuntime+ContractException: Precondition failed: array.Length &gt; 0</Message>
+          <StackTrace>    at System.Diagnostics.Contracts.__ContractsRuntime.TriggerFailure(ContractFailureKind kind, String message, String userMessage, String conditionText, Exception inner) in :line 0
+   at System.Diagnostics.Contracts.__ContractsRuntime.ReportFailure(ContractFailureKind kind, String message, String conditionText, Exception inner) in :line 0
+   at System.Diagnostics.Contracts.__ContractsRuntime.Requires(Boolean condition, String message, String conditionText) in :line 0
+   at SharpBag.Extensions.GetByPercent[T](T[] array, Double percent) in C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag\Extensions.cs:line 241
+   at SharpBag.ExtensionsTest.GetByPercent[T](T[] array, Double percent) in C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests01\ExtensionsTest.cs:line 309
+   at SharpBag.ExtensionsTest.GetByPercentThrowsIndexOutOfRangeException858() in C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests01\ExtensionsTest.GetByPercent.g.cs:line 56
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="a1edaeca-6447-44ff-b03d-2382b37ec75f" testId="cda388d5-457a-465e-ba14-ce9de40a3bb3" testName="RandomThrowsContractException503" computerName="EDSAC" duration="00:00:13.4581630" startTime="2010-12-04T01:58:50.4409360+00:00" endTime="2010-12-04T01:59:04.3187297+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a1edaeca-6447-44ff-b03d-2382b37ec75f">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method SharpBag.ExtensionsTest.RandomThrowsContractException503 threw exception: 
+System.Diagnostics.Contracts.__ContractsRuntime+ContractException: Precondition failed: collection.Count() &gt; 0</Message>
+          <StackTrace>    at System.Diagnostics.Contracts.__ContractsRuntime.TriggerFailure(ContractFailureKind kind, String message, String userMessage, String conditionText, Exception inner) in :line 0
+   at System.Diagnostics.Contracts.__ContractsRuntime.ReportFailure(ContractFailureKind kind, String message, String conditionText, Exception inner) in :line 0
+   at System.Diagnostics.Contracts.__ContractsRuntime.Requires(Boolean condition, String message, String conditionText) in :line 0
+   at SharpBag.Extensions.Random[T](IEnumerable`1 collection, Random rand) in C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag\Extensions.cs:line 650
+   at SharpBag.Extensions.Random[T](IEnumerable`1 collection) in C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag\Extensions.cs:line 636
+   at SharpBag.ExtensionsTest.Random[T](IEnumerable`1 collection) in C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests01\ExtensionsTest.cs:line 187
+   at SharpBag.ExtensionsTest.RandomThrowsContractException503() in C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests01\ExtensionsTest.Random01.g.cs:line 75
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="7a403745-8318-41ba-8a80-82e73bc2c606" testId="594704dd-0a86-b16d-988c-f53dd3e4a947" testName="SubarrayThrowsIndexOutOfRangeException237" computerName="EDSAC" duration="00:00:23.3265242" startTime="2010-12-04T01:59:04.3427311+00:00" endTime="2010-12-04T01:59:28.0710883+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7a403745-8318-41ba-8a80-82e73bc2c606">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method SharpBag.ExtensionsTest.SubarrayThrowsIndexOutOfRangeException237 threw exception: 
+System.IndexOutOfRangeException: Index was outside the bounds of the array.</Message>
+          <StackTrace>    at SharpBag.Extensions.Subarray(Int32[,] a, Int32 x1, Int32 y1, Int32 x2, Int32 y2) in C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag\Extensions.cs:line 588
+   at SharpBag.ExtensionsTest.Subarray(Int32[,] a, Int32 x1, Int32 y1, Int32 x2, Int32 y2) in C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests01\ExtensionsTest.cs:line 151
+   at SharpBag.ExtensionsTest.SubarrayThrowsIndexOutOfRangeException237() in C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests01\ExtensionsTest.Subarray.g.cs:line 66
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="ddbaa6d0-a799-4b3c-84d9-923cba930c68" testId="6b7dcc70-66b6-d437-fa4f-aad0a0e1d53f" testName="To02ThrowsEntryPointNotFoundException897" computerName="EDSAC" duration="00:00:12.4897143" startTime="2010-12-04T01:59:28.0970898+00:00" endTime="2010-12-04T01:59:40.5868041+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Aborted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ddbaa6d0-a799-4b3c-84d9-923cba930c68">
+    </UnitTestResult>
+  </Results>
+</TestRun>

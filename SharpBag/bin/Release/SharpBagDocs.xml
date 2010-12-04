@@ -508,8 +508,7 @@
             <param name="D">The dictionary.</param>
             <param name="key">The key of the element to add.</param>
             <param name="value">The value of the element to add. The value can be null for reference types.</param>
-            <param name="overwrite">true if key's value should be overwritten; otherwise false.</param>
-            <exception cref="T:System.ArgumentNullException"></exception>
+            <param name="overwrite">True if the key's value should be overwritten; otherwise false.</param>
         </member>
         <member name="M:SharpBag.Extensions.Fill``1(``0[],``0)">
             <summary>
@@ -718,12 +717,13 @@
             <returns>True if the specified type is <see cref="T:System.Nullable`1"/>; otherwise, false.</returns>
             <remarks>Use <see cref="M:System.Nullable.GetUnderlyingType(System.Type)"/> to access the underlying type.</remarks>
         </member>
-        <member name="M:SharpBag.Extensions.Shuffle``1(System.Collections.Generic.IEnumerable{``0})">
+        <member name="M:SharpBag.Extensions.Shuffle``1(System.Collections.Generic.IEnumerable{``0},System.Random)">
             <summary>
             Shuffle the collection.
             </summary>
             <typeparam name="T">The type of items in the current instance.</typeparam>
             <param name="source">The current instance.</param>
+            <param name="rand">A random number generator.</param>
             <returns>The shuffled collection.</returns>
         </member>
         <member name="M:SharpBag.Extensions.TakeEvery``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32)">
@@ -1945,11 +1945,6 @@
         </member>
         <member name="M:SharpBag.Algorithms.PriorityQueue`1.System#Collections#IEnumerable#GetEnumerator">
             <see cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
-        </member>
-        <member name="P:SharpBag.Algorithms.PriorityQueue`1.Items">
-            <summary>
-            The items.
-            </summary>
         </member>
         <member name="P:SharpBag.Algorithms.PriorityQueue`1.Count">
             <summary>
