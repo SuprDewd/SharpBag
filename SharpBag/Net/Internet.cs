@@ -1,7 +1,6 @@
-﻿using System;
-using System.Net.NetworkInformation;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 
 namespace SharpBag.Net
 {

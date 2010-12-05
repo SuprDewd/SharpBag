@@ -1,6 +1,6 @@
 ﻿using System;
-using SharpBag.Strings;
 using System.Text;
+using SharpBag.Strings;
 
 namespace SharpBag.FK
 {

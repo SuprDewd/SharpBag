@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace SharpBag.Games
 {
@@ -14,6 +12,7 @@ namespace SharpBag.Games
         /// The main constructor.
         /// </summary>
         public CardStack() : this(true) { }
+
         /// <summary>
         /// The main constructor.
         /// </summary>

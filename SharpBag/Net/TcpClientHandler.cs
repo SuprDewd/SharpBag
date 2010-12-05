@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Net.Sockets;
-using System.Threading;
-using System.Net;
 using System.IO;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading;
 
 namespace SharpBag.Net
 {
@@ -18,35 +15,44 @@ namespace SharpBag.Net
         /// The listening thread.
         /// </summary>
         public Thread Thread { get; private set; }
+
         /// <summary>
         /// The stream.
         /// </summary>
         public NetworkStream BaseStream { get; private set; }
+
         /// <summary>
         /// The stream reader.
         /// </summary>
         public BinaryReader Reader { get; private set; }
+
         /// <summary>
         /// The stream writer.
         /// </summary>
         public BinaryWriter Writer { get; private set; }
+
         /// <summary>
         /// The client.
         /// </summary>
         public TcpClient Client { get; private set; }
+
         /// <summary>
         /// Whether the handler is listening for messages.
         /// </summary>
         public bool Listening { get; private set; }
+
         /// <summary>
         /// The interval, in milliseconds, to check for messages.
         /// </summary>
         public int CheckInterval { get; set; }
+
         /// <summary>
         /// The ping thread.
         /// </summary>
         public Thread PingThread { get; set; }
+
         private int _PingInterval = -1;
+
         /// <summary>
         /// The ping interval.
         /// </summary>

@@ -54,7 +54,7 @@ namespace SharpBag
             }
         }
 
-        #endregion
+        #endregion Igor Ostrovsky
 
         #region Yet Another Language Geek
 
@@ -72,7 +72,7 @@ namespace SharpBag
             Contract.Requires(step > 0);
             Contract.Ensures(Contract.Result<IEnumerable<int>>() != null);
             Contract.Ensures(Contract.Result<IEnumerable<int>>().Any());
-            
+
             if (start < end)
             {
                 for (int i = start; i <= end; i += step)
@@ -199,7 +199,7 @@ namespace SharpBag
             else yield return end;
         }
 
-        #endregion
+        #endregion To overloads
 
         /// <summary>
         /// Executes the specified function N times where N is the value of the current instance.
@@ -244,7 +244,7 @@ namespace SharpBag
             return array[Math.MathExtensions.Round((array.Length - 1) * percent)];
         }
 
-        #endregion
+        #endregion Yet Another Language Geek
 
         #region Multidimensional Arrays
 
@@ -291,7 +291,7 @@ namespace SharpBag
             }
         }
 
-        #endregion
+        #endregion Multidimensional Arrays
 
         /// <summary>
         /// Checks whether the array contains the specified object.
@@ -427,7 +427,7 @@ namespace SharpBag
             }
         }
 
-        #endregion
+        #endregion Fill overloads
 
         /// <summary>
         /// Gets a subarray of an array.
@@ -481,7 +481,7 @@ namespace SharpBag
             else methodcall();
         }
 
-        #endregion
+        #endregion InvokeIfRequired overloads
 
         #region UnionAll overloads
 
@@ -553,7 +553,7 @@ namespace SharpBag
             }
         }
 
-        #endregion
+        #endregion UnionAll overloads
 
         /// <summary>
         /// Gets a subarray of the current instance.
@@ -620,7 +620,7 @@ namespace SharpBag
             return collection.Contains(item);
         }
 
-        #endregion
+        #endregion IsIn overloads
 
         #region Random overloads
 
@@ -649,12 +649,12 @@ namespace SharpBag
             Contract.Requires(rand != null);
 
             T[] array = collection.ToArray();
-            if (array.Length ==  0) return default(T);
+            if (array.Length == 0) return default(T);
 
             return array[rand.Next(0, array.Length)];
         }
 
-        #endregion
+        #endregion Random overloads
 
         /// <summary>
         /// Executes the specified action on the current instance.

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace SharpBag.Comparers
 {
@@ -31,7 +29,6 @@ namespace SharpBag.Comparers
 
             if (string.IsNullOrEmpty(a) || string.IsNullOrEmpty(b)) return sc.Compare(a, b);
 
-            
             string numericX = this.Location == AlphaNumberSettings.Leading ? FindLeadingNumber(a) : FindTrailingNumber(a);
             string numericY = this.Location == AlphaNumberSettings.Leading ? FindLeadingNumber(b) : FindTrailingNumber(b);
 

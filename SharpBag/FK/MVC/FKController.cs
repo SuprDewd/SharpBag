@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Reflection;
-using SharpBag.Strings;
-using SharpBag;
 using SharpBag.Comparers;
+using SharpBag.Strings;
 
 namespace SharpBag.FK.MVC
 {
@@ -28,6 +25,7 @@ namespace SharpBag.FK.MVC
         /// A char for the vertical wall of the title.
         /// </summary>
         public char VerticalChar { get; set; }
+
         /// <summary>
         /// A char for the horizontal wall of the title.
         /// </summary>
@@ -206,6 +204,7 @@ namespace SharpBag.FK.MVC
         /// A hook that is fired before an action is executed.
         /// </summary>
         public virtual void PreActionExecute() { }
+
         /// <summary>
         /// A hook that is fired after an action is executed.
         /// </summary>

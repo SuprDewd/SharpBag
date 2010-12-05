@@ -1278,6 +1278,76 @@
             <summary>Sets the mole of <see cref="M:SharpBag.Database.DatabaseExtensions.ToSQLDateTime(System.DateTime)"/>
             </summary>
         </member>
+        <member name="T:SharpBag.Games.Moles.MDice">
+            <summary>Mole type of <see cref="T:SharpBag.Games.Dice"/>
+            .</summary>
+        </member>
+        <member name="M:SharpBag.Games.Moles.MDice.#ctor">
+            <summary>Initializes a new mole</summary>
+        </member>
+        <member name="M:SharpBag.Games.Moles.MDice.#ctor(SharpBag.Games.Dice)">
+            <summary>Initializes a new mole for the given instance</summary>
+        </member>
+        <member name="M:SharpBag.Games.Moles.MDice.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SharpBag.Games.Moles.MDice.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SharpBag.Games.Moles.MDice.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
+        <member name="P:SharpBag.Games.Moles.MDice.ConstructorInt32">
+            <summary>Sets the mole of <see cref="M:SharpBag.Games.Dice.#ctor(System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SharpBag.Games.Moles.MDice.ConstructorRandomInt32">
+            <summary>Sets the mole of <see cref="M:SharpBag.Games.Dice.#ctor(System.Random,System.Int32)"/>
+            </summary>
+        </member>
+        <member name="P:SharpBag.Games.Moles.MDice.RandGet">
+            <summary>Sets the mole of <see cref="P:SharpBag.Games.Dice.Rand"/>
+            </summary>
+        </member>
+        <member name="P:SharpBag.Games.Moles.MDice.RandSetRandom">
+            <summary>Sets the mole of <see cref="P:SharpBag.Games.Dice.Rand"/>
+            </summary>
+        </member>
+        <member name="P:SharpBag.Games.Moles.MDice.SidesGet">
+            <summary>Sets the mole of <see cref="P:SharpBag.Games.Dice.Sides"/>
+            </summary>
+        </member>
+        <member name="P:SharpBag.Games.Moles.MDice.SidesSetInt32">
+            <summary>Sets the mole of <see cref="P:SharpBag.Games.Dice.Sides"/>
+            </summary>
+        </member>
+        <member name="P:SharpBag.Games.Moles.MDice.Throw">
+            <summary>Sets the mole of <see cref="M:SharpBag.Games.Dice.Throw"/>
+            </summary>
+        </member>
+        <member name="T:SharpBag.Games.Moles.MDice.AllInstances">
+            <summary>Define moles for all instances members</summary>
+        </member>
+        <member name="P:SharpBag.Games.Moles.MDice.AllInstances.RandGet">
+            <summary>Sets the mole of <see cref="P:SharpBag.Games.Dice.Rand"/>
+            </summary>
+        </member>
+        <member name="P:SharpBag.Games.Moles.MDice.AllInstances.RandSetRandom">
+            <summary>Sets the mole of <see cref="P:SharpBag.Games.Dice.Rand"/>
+            </summary>
+        </member>
+        <member name="P:SharpBag.Games.Moles.MDice.AllInstances.SidesGet">
+            <summary>Sets the mole of <see cref="P:SharpBag.Games.Dice.Sides"/>
+            </summary>
+        </member>
+        <member name="P:SharpBag.Games.Moles.MDice.AllInstances.SidesSetInt32">
+            <summary>Sets the mole of <see cref="P:SharpBag.Games.Dice.Sides"/>
+            </summary>
+        </member>
+        <member name="P:SharpBag.Games.Moles.MDice.AllInstances.Throw">
+            <summary>Sets the mole of <see cref="M:SharpBag.Games.Dice.Throw"/>
+            </summary>
+        </member>
         <member name="T:SharpBag.FK.Moles.MDrawObjects">
             <summary>Mole type of <see cref="T:SharpBag.FK.DrawObjects"/>
             .</summary>
@@ -2110,7 +2180,7 @@
             <summary>Sets the mole of <see cref="P:SharpBag.Database.GenericDB`1.Connection"/>
             </summary>
         </member>
-        <member name="P:SharpBag.Database.Moles.MGenericDB`1.ConnectionSetConnT">
+        <member name="P:SharpBag.Database.Moles.MGenericDB`1.ConnectionSetTConn">
             <summary>Sets the mole of <see cref="P:SharpBag.Database.GenericDB`1.Connection"/>
             </summary>
         </member>
@@ -2201,7 +2271,7 @@
             <summary>Sets the mole of <see cref="P:SharpBag.Database.GenericDB`1.Connection"/>
             </summary>
         </member>
-        <member name="P:SharpBag.Database.Moles.MGenericDB`1.AllInstances.ConnectionSetConnT">
+        <member name="P:SharpBag.Database.Moles.MGenericDB`1.AllInstances.ConnectionSetTConn">
             <summary>Sets the mole of <see cref="P:SharpBag.Database.GenericDB`1.Connection"/>
             </summary>
         </member>
@@ -3976,8 +4046,8 @@
             <summary>Sets the mole of <see cref="M:SharpBag.Algorithms.PriorityQueue`1.&lt;GetEnumerator&gt;b__5(SharpBag.Algorithms.PriorityQueueItem`1{`1})"/>
             </summary>
         </member>
-        <member name="P:SharpBag.Algorithms.Moles.MPriorityQueue`1._GetEnumeratorb__dPriorityQueueItemOfT">
-            <summary>Sets the mole of <see cref="M:SharpBag.Algorithms.PriorityQueue`1.&lt;GetEnumerator&gt;b__d(SharpBag.Algorithms.PriorityQueueItem`1{`1})"/>
+        <member name="P:SharpBag.Algorithms.Moles.MPriorityQueue`1._GetEnumeratorb__8PriorityQueueItemOfT">
+            <summary>Sets the mole of <see cref="M:SharpBag.Algorithms.PriorityQueue`1.&lt;GetEnumerator&gt;b__8(SharpBag.Algorithms.PriorityQueueItem`1{`1})"/>
             </summary>
         </member>
         <member name="P:SharpBag.Algorithms.Moles.MPriorityQueue`1._GetPriorityEnumeratorb__0PriorityQueueItemOfT">
@@ -3988,12 +4058,12 @@
             <summary>Sets the mole of <see cref="M:SharpBag.Algorithms.PriorityQueue`1.&lt;GetPriorityEnumerator&gt;b__1(SharpBag.Algorithms.PriorityQueueItem`1{`1})"/>
             </summary>
         </member>
-        <member name="P:SharpBag.Algorithms.Moles.MPriorityQueue`1._SystemCollectionsIEnumerableGetEnumeratorb__13PriorityQueueItemOfT">
-            <summary>Sets the mole of <see cref="M:SharpBag.Algorithms.PriorityQueue`1.&lt;System.Collections.IEnumerable.GetEnumerator&gt;b__13(SharpBag.Algorithms.PriorityQueueItem`1{`1})"/>
+        <member name="P:SharpBag.Algorithms.Moles.MPriorityQueue`1._SystemCollectionsIEnumerableGetEnumeratorb__ePriorityQueueItemOfT">
+            <summary>Sets the mole of <see cref="M:SharpBag.Algorithms.PriorityQueue`1.&lt;System.Collections.IEnumerable.GetEnumerator&gt;b__e(SharpBag.Algorithms.PriorityQueueItem`1{`1})"/>
             </summary>
         </member>
-        <member name="P:SharpBag.Algorithms.Moles.MPriorityQueue`1._SystemCollectionsIEnumerableGetEnumeratorb__14PriorityQueueItemOfT">
-            <summary>Sets the mole of <see cref="M:SharpBag.Algorithms.PriorityQueue`1.&lt;System.Collections.IEnumerable.GetEnumerator&gt;b__14(SharpBag.Algorithms.PriorityQueueItem`1{`1})"/>
+        <member name="P:SharpBag.Algorithms.Moles.MPriorityQueue`1._SystemCollectionsIEnumerableGetEnumeratorb__fPriorityQueueItemOfT">
+            <summary>Sets the mole of <see cref="M:SharpBag.Algorithms.PriorityQueue`1.&lt;System.Collections.IEnumerable.GetEnumerator&gt;b__f(SharpBag.Algorithms.PriorityQueueItem`1{`1})"/>
             </summary>
         </member>
         <member name="T:SharpBag.Algorithms.Moles.MPriorityQueue`1.AllInstances">
@@ -4496,8 +4566,8 @@
             <summary>Sets the mole of <see cref="M:SharpBag.FK.Stæ.HefjaIVeldi(System.Double,System.Int32)"/>
             </summary>
         </member>
-        <member name="P:SharpBag.FK.Moles.MSt.PI">
-            <summary>Sets the mole of <see cref="M:SharpBag.FK.Stæ.PI"/>
+        <member name="P:SharpBag.FK.Moles.MSt.PIInt32">
+            <summary>Sets the mole of <see cref="M:SharpBag.FK.Stæ.PI(System.Int32)"/>
             </summary>
         </member>
         <member name="T:SharpBag.Strings.Moles.MStringExtensions">
@@ -6006,6 +6076,33 @@
             <summary>Sets the stub of <see cref="P:SharpBag.Math.Converters.Centimeter.Unit"/>
             </summary>
         </member>
+        <member name="T:SharpBag.Games.Moles.SDice">
+            <summary>Stub type of <see cref="T:SharpBag.Games.Dice"/>
+            .</summary>
+        </member>
+        <member name="M:SharpBag.Games.Moles.SDice.#ctor(System.Int32)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SharpBag.Games.Moles.SDice.#ctor(System.Random,System.Int32)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SharpBag.Games.Moles.SDice.InitializeStub">
+            <summary>Initializes a new instance of type SDice</summary>
+        </member>
+        <member name="M:SharpBag.Games.Moles.SDice.Throw">
+            <summary>Sets the stub of <see cref="M:SharpBag.Games.Dice.Throw"/>
+            </summary>
+        </member>
+        <member name="F:SharpBag.Games.Moles.SDice.Throw01">
+            <summary>Sets the stub of <see cref="M:SharpBag.Games.Dice.Throw"/>
+            </summary>
+        </member>
+        <member name="P:SharpBag.Games.Moles.SDice.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:SharpBag.Games.Moles.SDice.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
         <member name="T:SharpBag.Patterns.Moles.SEagerSingleton`1">
             <summary>Stub type of <see cref="T:SharpBag.Patterns.EagerSingleton`1"/>
             .</summary>
@@ -6236,7 +6333,7 @@
             <summary>Sets the stub of <see cref="M:SharpBag.Database.GenericDB`1.CreateCommand(System.String,`1)"/>
             </summary>
         </member>
-        <member name="F:SharpBag.Database.Moles.SGenericDB`1.CreateCommandStringConnT">
+        <member name="F:SharpBag.Database.Moles.SGenericDB`1.CreateCommandStringTConn">
             <summary>Sets the stub of <see cref="M:SharpBag.Database.GenericDB`1.CreateCommand(System.String,`1)"/>
             </summary>
         </member>

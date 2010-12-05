@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data;
-using System.Threading;
-using MySql.Data.MySqlClient;
-using System.Data.SqlClient;
 using System.Data.Common;
+using System.Data.SqlClient;
+using System.Diagnostics.Contracts;
+using System.Text;
 
 namespace SharpBag.Database
 {
@@ -22,7 +18,14 @@ namespace SharpBag.Database
         /// <param name="schema">The default schema.</param>
         /// <param name="username">The username used to connect.</param>
         /// <param name="password">The password used to connect.</param>
-        public MSSqlDB(string server, string schema, string username, string password) : base(server, schema, username, password) { }
+        public MSSqlDB(string server, string schema, string username, string password)
+            : base(server, schema, username, password)
+        {
+            Contract.Requires(server != null);
+            Contract.Requires(schema != null);
+            Contract.Requires(username != null);
+            Contract.Requires(password != null);
+        }
 
         /// <summary>
         /// Escapes a string for use in an SQL query.
@@ -31,6 +34,7 @@ namespace SharpBag.Database
         /// <returns>The escaped string.</returns>
         public override string SQLEscape(string s)
         {
+            Contract.Requires(s != null);
             return s.Replace(@"\", @"\\").Replace(@"\'", "'").Replace(@"'", @"\'");
         }
 
@@ -42,6 +46,9 @@ namespace SharpBag.Database
         /// <returns>The query command.</returns>
         protected override DbCommand CreateCommand(string q, SqlConnection c)
         {
+            Contract.Requires(!String.IsNullOrEmpty(q));
+            Contract.Requires(c != null);
+
             return new SqlCommand(q, c);
         }
 
@@ -51,7 +58,7 @@ namespace SharpBag.Database
         /// <returns>The connection string.</returns>
         protected override string CreateConnectionString()
         {
-            return "SERVER=" + this.Server + ";DATABASE=" + this.Schema + ";UID=" + this.Username + ";PWD=" + this.Password + ";";
+            return new StringBuilder("SERVER=").Append(this.Server).Append(";DATABASE=").Append(this.Schema).Append(";UID=").Append(this.Username).Append(";PWD=").Append(this.Password).Append(";").ToString();
         }
     }
 }

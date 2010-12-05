@@ -10,6 +10,7 @@ namespace SharpBag.Math.Converters
         /// <see cref="Object.ToString()"/>
         /// <param name="unit">Whether or not to append the measurement unit.</param>
         string ToString(bool unit);
+
         /// <see cref="Object.ToString()"/>
         /// <param name="unit">Whether or not to append the measurement unit.</param>
         /// <param name="result">The result.</param>
@@ -25,6 +26,7 @@ namespace SharpBag.Math.Converters
         /// The Celsius unit.
         /// </summary>
         public const string Unit = "°C";
+
         private double Value { get; set; }
 
         /// <summary>
@@ -107,6 +109,7 @@ namespace SharpBag.Math.Converters
         /// The Fahrenheit unit.
         /// </summary>
         public const string Unit = "°F";
+
         private double Value { get; set; }
 
         /// <summary>
@@ -189,6 +192,7 @@ namespace SharpBag.Math.Converters
         /// The Kelvin unit.
         /// </summary>
         public const string Unit = "K";
+
         private double Value { get; set; }
 
         /// <summary>

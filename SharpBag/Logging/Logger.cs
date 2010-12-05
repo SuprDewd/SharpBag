@@ -17,14 +17,17 @@ namespace SharpBag.Logging
         /// The logger.
         /// </summary>
         public LogFunction LoggerFunction { get; set; }
+
         /// <summary>
         /// Whether to prepend a timestamp on the output string or not.
         /// </summary>
         public bool Timestamp { get; set; }
+
         /// <summary>
         /// The format of the timestamp. See DateTime.ToString().
         /// </summary>
         public string Timeformat { get; set; }
+
         /// <summary>
         /// Whether the logger is enabled or not.
         /// </summary>

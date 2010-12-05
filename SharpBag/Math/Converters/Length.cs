@@ -11,10 +11,12 @@ namespace SharpBag.Math.Converters
         /// The unit.
         /// </summary>
         public abstract string Unit { get; }
+
         /// <summary>
         /// The base value.
         /// </summary>
         public abstract double BaseValue { get; }
+
         /// <summary>
         /// The value.
         /// </summary>
@@ -44,7 +46,7 @@ namespace SharpBag.Math.Converters
 
         /*
          * TODO: Find a way for this to work.
-         * 
+         *
          * public static implicit operator Length(double v)
          * {
          *     return new Length(v);
@@ -93,6 +95,7 @@ namespace SharpBag.Math.Converters
         /// The unit.
         /// </summary>
         public override string Unit { get { return "mm"; } }
+
         /// <summary>
         /// The base value.
         /// </summary>
@@ -114,6 +117,7 @@ namespace SharpBag.Math.Converters
         /// The unit.
         /// </summary>
         public override string Unit { get { return "cm"; } }
+
         /// <summary>
         /// The base value.
         /// </summary>
@@ -135,6 +139,7 @@ namespace SharpBag.Math.Converters
         /// The unit.
         /// </summary>
         public override string Unit { get { return "m"; } }
+
         /// <summary>
         /// The base value.
         /// </summary>
@@ -156,6 +161,7 @@ namespace SharpBag.Math.Converters
         /// The unit.
         /// </summary>
         public override string Unit { get { return "km"; } }
+
         /// <summary>
         /// The base value.
         /// </summary>

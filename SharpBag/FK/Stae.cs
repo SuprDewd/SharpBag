@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Diagnostics.Contracts;
 
 namespace SharpBag.FK
 {
@@ -31,9 +31,22 @@ namespace SharpBag.FK
         /// PI
         /// </summary>
         /// <returns>PI</returns>
-        private static decimal PI()
+        public static decimal PI(int rounds = 1000000)
         {
-            throw new NotImplementedException();
+            Contract.Requires(rounds > 0);
+
+            decimal pi = 1;
+            bool minus = true;
+
+            for (decimal i = 3; i < rounds * 2 + 3; i += 2)
+            {
+                if (minus) pi -= 1M / i;
+                else pi += 1M / i;
+
+                minus = !minus;
+            }
+
+            return pi * 4;
         }
     }
 }

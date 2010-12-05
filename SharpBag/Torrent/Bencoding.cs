@@ -14,11 +14,13 @@ namespace SharpBag.Torrent
         /// Creates a new BencodingException.
         /// </summary>
         public BencodingException() { }
+
         /// <summary>
         /// Creates a new BencodingException.
         /// </summary>
         /// <param name="message">The message.</param>
         public BencodingException(string message) : base(message) { }
+
         /// <summary>
         /// Creates a new BencodingException.
         /// </summary>
@@ -61,6 +63,7 @@ namespace SharpBag.Torrent
         /// Where the reader will start reading next.
         /// </summary>
         private int Index { get; set; }
+
         /// <summary>
         /// The bencoded string.
         /// </summary>

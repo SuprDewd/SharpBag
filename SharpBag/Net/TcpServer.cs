@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Net;
-using System.Threading;
 using System.Net.Sockets;
-using SharpBag.Net;
+using System.Threading;
 
 namespace SharpBag.Net
 {
@@ -32,14 +30,17 @@ namespace SharpBag.Net
         /// The thread to listen for incoming clients.
         /// </summary>
         public Thread Thread { get; private set; }
+
         /// <summary>
         /// The TcpListener.
         /// </summary>
         public TcpListener Listener { get; private set; }
+
         /// <summary>
         /// Whether the server is listening for incoming clients.
         /// </summary>
         public bool Listening { get; private set; }
+
         /// <summary>
         /// The interval, in milliseconds, to check for incoming clients.
         /// </summary>

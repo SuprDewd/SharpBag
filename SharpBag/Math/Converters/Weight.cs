@@ -11,10 +11,12 @@ namespace SharpBag.Math.Converters
         /// The unit.
         /// </summary>
         public abstract string Unit { get; }
+
         /// <summary>
         /// The base value.
         /// </summary>
         public abstract double BaseValue { get; }
+
         /// <summary>
         /// THe value.
         /// </summary>
@@ -44,7 +46,7 @@ namespace SharpBag.Math.Converters
 
         /*
          * TODO: Find a way for this to work.
-         * 
+         *
          * public static implicit operator Weight(double v)
          * {
          *     return new Weight(v);
@@ -93,6 +95,7 @@ namespace SharpBag.Math.Converters
         /// The unit.
         /// </summary>
         public override string Unit { get { return "mg"; } }
+
         /// <summary>
         /// The base value.
         /// </summary>
@@ -114,6 +117,7 @@ namespace SharpBag.Math.Converters
         /// The unit.
         /// </summary>
         public override string Unit { get { return "g"; } }
+
         /// <summary>
         /// The base value.
         /// </summary>
@@ -135,6 +139,7 @@ namespace SharpBag.Math.Converters
         /// The unit.
         /// </summary>
         public override string Unit { get { return "kg"; } }
+
         /// <summary>
         /// The base value.
         /// </summary>

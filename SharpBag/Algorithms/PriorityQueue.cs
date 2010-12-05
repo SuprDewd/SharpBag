@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using System.Linq;
 
 namespace SharpBag.Algorithms
 {
@@ -12,7 +10,7 @@ namespace SharpBag.Algorithms
     /// <typeparam name="T">The type of items in the priority queue.</typeparam>
     public class PriorityQueue<T> : IEnumerable<T>
     {
-        private List<PriorityQueueItem<T>> Items = new List<PriorityQueueItem<T>>();
+        private readonly List<PriorityQueueItem<T>> Items = new List<PriorityQueueItem<T>>();
 
         /// <summary>
         /// The constructor.
@@ -130,10 +128,7 @@ namespace SharpBag.Algorithms
         /// <see cref="IEnumerable{T}.GetEnumerator()"/>
         public IEnumerator<T> GetEnumerator()
         {
-            foreach (T item in this.Items.OrderByDescending(i => i.Priority).Select(i => i.Item))
-            {
-                yield return item;
-            }
+            return this.Items.OrderByDescending(i => i.Priority).Select(i => i.Item).GetEnumerator();
         }
 
         /// <param name="remove">Whether to remove the items that have been returned from the enumerator.</param>

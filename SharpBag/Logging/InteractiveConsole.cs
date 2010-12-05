@@ -19,10 +19,12 @@ namespace SharpBag.Logging
         /// An event that will be fired when a user enters a command into the console window.
         /// </summary>
         public event CommandEnteredEvent OnCommandEntered;
+
         /// <summary>
         /// The start of the command line.
         /// </summary>
         public string CommandStart { get; set; }
+
         /// <summary>
         /// Can be set to true to shut down the main reading thread and all readers.
         /// </summary>

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.Contracts;
 using System.IO;
 using System.Linq;
-using System.Threading;
-using System.Diagnostics.Contracts;
 
 namespace SharpBag
 {
@@ -17,12 +16,12 @@ namespace SharpBag
         /// Calculates the execution time of the specified action.
         /// </summary>
         /// <param name="a">The action.</param>
-        /// <param name="handleGC">Whether to handle the garbage collector. If true, the GC will be forced to clean up before taking the time.</param>
+        /// <param name="handleGc">Whether to handle the garbage collector. If true, the GC will be forced to clean up before taking the time.</param>
         /// <returns>The execution time in milliseconds.</returns>
-        public static long ExecutionTime(Action a, bool handleGC = true)
+        public static long ExecutionTime(Action a, bool handleGc = true)
         {
             Contract.Requires(a != null);
-            return ExecutionTime(a, s => s.ElapsedMilliseconds, handleGC);
+            return ExecutionTime(a, s => s.ElapsedMilliseconds, handleGc);
         }
 
         /// <summary>
@@ -31,14 +30,14 @@ namespace SharpBag
         /// <typeparam name="TResult">The type of the result.</typeparam>
         /// <param name="a">The action.</param>
         /// <param name="result">What to return.</param>
-        /// /// <param name="handleGC">Whether to handle the garbage collector. If true, the GC will be forced to clean up before taking the time.</param>
+        /// <param name="handleGc">Whether to handle the garbage collector. If true, the GC will be forced to clean up before taking the time.</param>
         /// <returns>The execution time in milliseconds.</returns>
-        public static TResult ExecutionTime<TResult>(Action a, Func<Stopwatch, TResult> result, bool handleGC = true)
+        public static TResult ExecutionTime<TResult>(Action a, Func<Stopwatch, TResult> result, bool handleGc = true)
         {
             Contract.Requires(a != null);
             Contract.Requires(result != null);
 
-            if (handleGC)
+            if (handleGc)
             {
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
@@ -78,10 +77,7 @@ namespace SharpBag
             Contract.Requires(generator != null);
 
             T t;
-            while ((t = generator()) != null)
-            {
-                yield return t;
-            }
+            while ((t = generator()) != null) yield return t;
         }
 
         /// <summary>
@@ -95,10 +91,7 @@ namespace SharpBag
             Contract.Requires(generator != null);
 
             Nullable<T> t;
-            while ((t = generator()).HasValue)
-            {
-                yield return t.Value;
-            }
+            while ((t = generator()).HasValue) yield return t.Value;
         }
 
         /// <summary>
@@ -111,10 +104,7 @@ namespace SharpBag
         {
             Contract.Requires(enumerator != null);
 
-            while (enumerator.MoveNext())
-            {
-                yield return enumerator.Current;
-            }
+            while (enumerator.MoveNext()) yield return enumerator.Current;
         }
 
         /// <summary>
@@ -163,10 +153,10 @@ namespace SharpBag
         {
             Contract.Requires(reader != null);
 
-            return Generate(() => reader.ReadLine());
+            return Generate(reader.ReadLine);
         }
 
-        #endregion
+        #endregion Igor Ostrovsky
 
         /// <summary>
         /// Generates data with the specified data generator.
@@ -178,10 +168,7 @@ namespace SharpBag
         {
             Contract.Requires(generator != null);
 
-            while (true)
-            {
-                yield return generator();
-            }
+            while (true) yield return generator();
         }
     }
 }

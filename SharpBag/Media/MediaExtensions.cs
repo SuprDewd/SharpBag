@@ -1,8 +1,8 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Media.Imaging;
-using System.Drawing;
-using System.Collections.Generic;
 using SharpBag.Math;
 
 namespace SharpBag.Media

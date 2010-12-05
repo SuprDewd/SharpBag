@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SharpBag.Time
+﻿namespace SharpBag.Time
 {
     /// <summary>
     /// A static class with utilites regarding dates and time.

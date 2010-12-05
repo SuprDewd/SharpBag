@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Numerics;
-using SharpBag.Math;
 using System.Linq;
+using System.Numerics;
 
 namespace SharpBag.Math
 {
@@ -81,7 +80,7 @@ namespace SharpBag.Math
             }
         }
 
-        #endregion
+        #endregion Fibonacci numbers
 
         #region Prime numbers
 
@@ -127,7 +126,7 @@ namespace SharpBag.Math
             }
         }
 
-        #endregion
+        #endregion Prime numbers
 
         #region Triangle numbers
 
@@ -179,7 +178,7 @@ namespace SharpBag.Math
             }
         }
 
-        #endregion
+        #endregion Triangle numbers
 
         #region Perfect numbers
 
@@ -222,7 +221,7 @@ namespace SharpBag.Math
             }
         }
 
-        #endregion
+        #endregion Perfect numbers
 
         #region Deficient numbers
 
@@ -265,7 +264,7 @@ namespace SharpBag.Math
             }
         }
 
-        #endregion
+        #endregion Deficient numbers
 
         #region Abundant number
 
@@ -308,6 +307,6 @@ namespace SharpBag.Math
             }
         }
 
-        #endregion
+        #endregion Abundant number
     }
 }

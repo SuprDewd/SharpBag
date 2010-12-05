@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Globalization;
-using System.Text.RegularExpressions;
+using System.Linq;
 using System.Security.Cryptography;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 
 namespace SharpBag.Strings
@@ -114,7 +114,6 @@ namespace SharpBag.Strings
         {
             return word[0].ToString().ToUpper() + word.Substring(1);
         }
-
 
         /// <see cref="String.Format(string, object[])"/>
         public static string Format(this string s, params object[] args)
@@ -272,7 +271,7 @@ namespace SharpBag.Strings
             return s.Split(new char[] { separator }, options);
         }
 
-        #endregion
+        #endregion Split overloads.
 
         /// <summary>
         /// Splits the current string into substrings using the separator and then converts each substring into an int.

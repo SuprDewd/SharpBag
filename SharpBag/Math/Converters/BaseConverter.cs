@@ -41,7 +41,6 @@ namespace SharpBag.Math.Converters
 
             foreach (char c in chrs)
             {
-
                 if (char.IsNumber(c))
                     x = int.Parse(c.ToString());
                 else
@@ -50,7 +49,6 @@ namespace SharpBag.Math.Converters
                 rtn += x * (Convert.ToInt32(System.Math.Pow(n, m)));
 
                 m--;
-
             }
 
             return rtn;
@@ -65,7 +63,6 @@ namespace SharpBag.Math.Converters
         /// <remarks>Bases must be in the range 2 to 36.</remarks>
         public static string FromBase10(int number, int target_base)
         {
-
             if (target_base < 2 || target_base > 36) return "";
             if (target_base == 10) return number.ToString();
 

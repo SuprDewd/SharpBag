@@ -11,10 +11,12 @@ namespace SharpBag.Math.Converters
         /// The unit.
         /// </summary>
         public abstract string Unit { get; }
+
         /// <summary>
         /// The base value.
         /// </summary>
         public abstract double BaseValue { get; }
+
         /// <summary>
         /// THe value.
         /// </summary>
@@ -44,7 +46,7 @@ namespace SharpBag.Math.Converters
 
         /*
          * TODO: Find a way for this to work.
-         * 
+         *
          * public static implicit operator BitSize(double v)
          * {
          *     return new BitSize(v);
@@ -93,6 +95,7 @@ namespace SharpBag.Math.Converters
         /// The unit.
         /// </summary>
         public override string Unit { get { return "b"; } }
+
         /// <summary>
         /// The base value.
         /// </summary>
@@ -114,6 +117,7 @@ namespace SharpBag.Math.Converters
         /// The unit.
         /// </summary>
         public override string Unit { get { return "Kb"; } }
+
         /// <summary>
         /// The base value.
         /// </summary>
@@ -135,6 +139,7 @@ namespace SharpBag.Math.Converters
         /// The unit.
         /// </summary>
         public override string Unit { get { return "Mb"; } }
+
         /// <summary>
         /// The base value.
         /// </summary>
@@ -156,6 +161,7 @@ namespace SharpBag.Math.Converters
         /// The unit.
         /// </summary>
         public override string Unit { get { return "Gb"; } }
+
         /// <summary>
         /// The base value.
         /// </summary>
@@ -177,6 +183,7 @@ namespace SharpBag.Math.Converters
         /// The unit.
         /// </summary>
         public override string Unit { get { return "Tb"; } }
+
         /// <summary>
         /// The base value.
         /// </summary>
@@ -198,6 +205,7 @@ namespace SharpBag.Math.Converters
         /// The unit.
         /// </summary>
         public override string Unit { get { return "B"; } }
+
         /// <summary>
         /// The base value.
         /// </summary>
@@ -219,6 +227,7 @@ namespace SharpBag.Math.Converters
         /// The unit.
         /// </summary>
         public override string Unit { get { return "KB"; } }
+
         /// <summary>
         /// The base value.
         /// </summary>
@@ -240,6 +249,7 @@ namespace SharpBag.Math.Converters
         /// The unit.
         /// </summary>
         public override string Unit { get { return "MB"; } }
+
         /// <summary>
         /// The base value.
         /// </summary>
@@ -261,6 +271,7 @@ namespace SharpBag.Math.Converters
         /// The unit.
         /// </summary>
         public override string Unit { get { return "GB"; } }
+
         /// <summary>
         /// The base value.
         /// </summary>
@@ -282,6 +293,7 @@ namespace SharpBag.Math.Converters
         /// The unit.
         /// </summary>
         public override string Unit { get { return "TB"; } }
+
         /// <summary>
         /// The base value.
         /// </summary>

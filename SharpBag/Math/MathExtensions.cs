@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Numerics;
 using SharpBag.Strings;
 
@@ -80,7 +79,7 @@ namespace SharpBag.Math
                 yield return current;
         }
 
-        #endregion
+        #endregion ToInfinity overloads
 
         #region IsBetween methods
 
@@ -142,7 +141,7 @@ namespace SharpBag.Math
             return (n >= min && n <= max);
         }
 
-        #endregion
+        #endregion IsBetween methods
 
         #region CollatzCount overloads
 
@@ -206,7 +205,7 @@ namespace SharpBag.Math
             return i;
         }
 
-        #endregion
+        #endregion CollatzCount overloads
 
         #region Round overloads
 
@@ -231,7 +230,7 @@ namespace SharpBag.Math
             return System.Math.Round(d, digits);
         }
 
-        #endregion
+        #endregion Round overloads
 
         #region Bound overloads
 
@@ -263,7 +262,7 @@ namespace SharpBag.Math
             return d;
         }
 
-        #endregion
+        #endregion Bound overloads
 
         #region IsDivisableBy overloads
 
@@ -399,7 +398,7 @@ namespace SharpBag.Math
             return true;
         }
 
-        #endregion
+        #endregion IsDivisableBy overloads
 
         #region Factor overloads
 
@@ -487,7 +486,7 @@ namespace SharpBag.Math
             }
         }
 
-        #endregion
+        #endregion Factor overloads
 
         #region Digit overloads
 
@@ -521,7 +520,7 @@ namespace SharpBag.Math
             return n.ToString().ToCharArray().Select(i => Convert.ToInt16(i.ToString()));
         }
 
-        #endregion
+        #endregion Digit overloads
 
         #region Reverse overloads
 
@@ -555,7 +554,7 @@ namespace SharpBag.Math
             return BigInteger.Parse(i.ToString().Reverse());
         }
 
-        #endregion
+        #endregion Reverse overloads
 
         #region Pow overloads
 
@@ -581,7 +580,7 @@ namespace SharpBag.Math
             return System.Math.Pow(i, power);
         }
 
-        #endregion
+        #endregion Pow overloads
 
         #region Factorial overloads
 
@@ -605,7 +604,7 @@ namespace SharpBag.Math
             return sum;
         }
 
-        #endregion
+        #endregion Factorial overloads
 
         #region IsEven overloads
 
@@ -639,7 +638,7 @@ namespace SharpBag.Math
             return n % 2 == 0;
         }
 
-        #endregion
+        #endregion IsEven overloads
 
         #region IsOdd overloads
 
@@ -673,7 +672,7 @@ namespace SharpBag.Math
             return n % 2 != 0;
         }
 
-        #endregion
+        #endregion IsOdd overloads
 
         #region IsPrime
 
@@ -707,6 +706,6 @@ namespace SharpBag.Math
             return BagMath.IsPrime(n);
         }
 
-        #endregion
+        #endregion IsPrime
     }
 }

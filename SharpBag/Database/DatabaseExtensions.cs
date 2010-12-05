@@ -1,20 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using MySql.Data.MySqlClient;
 using System.Data.Common;
 
 namespace SharpBag.Database
 {
     /// <summary>
-    /// Extension methods for the BagDB class.
+    /// Extension methods for the database classes.
     /// </summary>
     public static class DatabaseExtensions
     {
         /// <summary>
-        /// Converts a DateTime object into a SQL compatible string.
+        /// Converts a DateTime object into an SQL compatible string.
         /// </summary>
         /// <param name="dt">The current instance.</param>
         /// <returns>An SQL formatted string.</returns>

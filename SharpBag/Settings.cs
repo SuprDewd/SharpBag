@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
@@ -11,12 +10,14 @@ namespace SharpBag
     public static class Settings
     {
         private static DirectoryInfo _ExecutableDirectory = new DirectoryInfo(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));
+
         /// <summary>
         /// Gets the directory where the executable is located.
         /// </summary>
         public static DirectoryInfo ExecutableDirectory { get { return _ExecutableDirectory; } }
 
         private static string _NL;
+
         /// <summary>
         /// Gets the newline string defined for this environment.
         /// </summary>

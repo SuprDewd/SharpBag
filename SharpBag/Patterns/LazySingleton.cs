@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace SharpBag.Patterns
 {
@@ -15,6 +12,7 @@ namespace SharpBag.Patterns
         /// The constructor.
         /// </summary>
         public LazySingleton() { }
+
         /// <summary>
         /// The constructor.
         /// </summary>

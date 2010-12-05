@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SharpBag.Algorithms.Sorting
+﻿namespace SharpBag.Algorithms.Sorting
 {
     /// <summary>
     /// The order to sort in.

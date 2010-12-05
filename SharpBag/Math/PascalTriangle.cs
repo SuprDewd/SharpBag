@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SharpBag.Math
+﻿namespace SharpBag.Math
 {
     /// <summary>
     /// A static class with methods concerning the Pascal triangle.

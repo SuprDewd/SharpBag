@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace SharpBag.Algorithms
 {
@@ -15,6 +12,7 @@ namespace SharpBag.Algorithms
         /// The priority of the item.
         /// </summary>
         public int Priority { get; set; }
+
         /// <summary>
         /// The item.
         /// </summary>

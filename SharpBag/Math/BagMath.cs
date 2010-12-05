@@ -1,16 +1,18 @@
-﻿using S = System;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Numerics;
+
+using S = System;
 
 namespace SharpBag.Math
 {
     /// <summary>
-    /// A static class containing methods for doing calculations. 
+    /// A static class containing methods for doing calculations.
     /// </summary>
     public static class BagMath
     {
         #region PointsInCircleF & PointsInCircle & all overloads
+
         /// <summary>
         /// Find points in a circle with a specified radius.
         /// </summary>
@@ -134,7 +136,8 @@ namespace SharpBag.Math
             }
             return PointArray;
         }
-        #endregion
+
+        #endregion PointsInCircleF & PointsInCircle & all overloads
 
         /// <summary>
         /// Calculates wave length from the average fluctuation time.
@@ -253,7 +256,7 @@ namespace SharpBag.Math
             return candidate != 1;
         }
 
-        #endregion
+        #endregion IsPrime overloads
 
         #region Sizes
 
@@ -301,6 +304,6 @@ namespace SharpBag.Math
             return n * thousand * thousand * thousand * thousand;
         }
 
-        #endregion
+        #endregion Sizes
     }
 }

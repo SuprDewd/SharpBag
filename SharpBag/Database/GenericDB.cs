@@ -1,40 +1,44 @@
 ﻿using System;
-using System.Data;
-using System.Threading;
-using MySql.Data.MySqlClient;
-using System.Data.SqlClient;
-using System.Data.Common;
-using System.Text;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
+using System.Diagnostics.Contracts;
+using System.Text;
+using System.Threading;
 
 namespace SharpBag.Database
 {
     /// <summary>
     /// A class for working with databases.
     /// </summary>
-    /// <typeparam name="ConnT">The type of the connection.</typeparam>
-    public abstract class GenericDB<ConnT> where ConnT : DbConnection, new()
+    /// <typeparam name="TConn">The type of the connection.</typeparam>
+    public abstract class GenericDB<TConn> where TConn : DbConnection, new()
     {
         /// <summary>
         /// The server to connect to.
         /// </summary>
         public string Server { get; protected set; }
+
         /// <summary>
         /// The default schema.
         /// </summary>
         public string Schema { get; protected set; }
+
         /// <summary>
         /// The username used to connect.
         /// </summary>
         public string Username { get; protected set; }
+
         /// <summary>
         /// The password used to connect.
         /// </summary>
         public string Password { get; protected set; }
+
         /// <summary>
         /// The time before the connection times out.
         /// </summary>
         public int CommandTimeout { get; protected set; }
+
         /// <summary>
         /// The state of the connection.
         /// </summary>
@@ -43,7 +47,7 @@ namespace SharpBag.Database
         /// <summary>
         /// The connection.
         /// </summary>
-        public ConnT Connection { get; protected set; }
+        public TConn Connection { get; protected set; }
 
         /// <summary>
         /// The constructor.
@@ -52,8 +56,13 @@ namespace SharpBag.Database
         /// <param name="schema">The default schema.</param>
         /// <param name="username">The username used to connect.</param>
         /// <param name="password">The password used to connect.</param>
-        public GenericDB(string server, string schema, string username, string password)
+        protected GenericDB(string server, string schema, string username, string password)
         {
+            Contract.Requires(server != null);
+            Contract.Requires(schema != null);
+            Contract.Requires(username != null);
+            Contract.Requires(password != null);
+
             this.CommandTimeout = 120;
             this.Server = server;
             this.Schema = schema;
@@ -67,7 +76,8 @@ namespace SharpBag.Database
         /// </summary>
         public void Connect()
         {
-            if (this.Connection == null) this.Connection = new ConnT();
+            if (this.Connection == null) this.Connection = new TConn();
+
             if (this.Connection.State != ConnectionState.Open)
             {
                 this.Connection.ConnectionString = this.CreateConnectionString();
@@ -82,9 +92,12 @@ namespace SharpBag.Database
         /// <returns>A DataTable object with the results from the query.</returns>
         public virtual DataTable Query(string q)
         {
+            Contract.Requires(q != null);
+
             Monitor.Enter(this.Connection);
             this.Connect();
-            DataTable dt = null;
+            DataTable dt = new DataTable();
+
             try
             {
                 using (DbCommand cmd = this.CreateCommand(q, this.Connection))
@@ -92,18 +105,15 @@ namespace SharpBag.Database
                     cmd.CommandTimeout = this.CommandTimeout;
                     using (DbDataReader reader = cmd.ExecuteReader())
                     {
-                        dt = new DataTable();
                         dt.Load(reader);
-                        reader.Close();
-                        reader.Dispose();
                     }
-                    cmd.Dispose();
                 }
             }
             finally
             {
                 Monitor.Exit(this.Connection);
             }
+
             return dt;
         }
 
@@ -114,8 +124,11 @@ namespace SharpBag.Database
         /// <returns>The scalar value.</returns>
         public virtual object QuerySingle(string q)
         {
+            Contract.Requires(q != null);
+
             this.Connect();
             Monitor.Enter(this.Connection);
+
             try
             {
                 using (DbCommand cmd = this.CreateCommand(q, this.Connection))
@@ -138,16 +151,8 @@ namespace SharpBag.Database
         /// <returns>The scalar value, as the type of T.</returns>
         public virtual T QuerySingle<T>(string q)
         {
-            try
-            {
-                object o = this.QuerySingle(q);
-                if (o.GetType() == typeof(DBNull)) return default(T);
-                else return (T)o;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            object o = this.QuerySingle(q);
+            return o.GetType() == typeof(DBNull) ? default(T) : (T)o;
         }
 
         /// <summary>
@@ -157,8 +162,11 @@ namespace SharpBag.Database
         /// <returns>How many rows were affected.</returns>
         public virtual int Execute(string q)
         {
+            Contract.Requires(q != null);
+
             this.Connect();
             Monitor.Enter(this.Connection);
+
             try
             {
                 using (DbCommand cmd = this.CreateCommand(q, this.Connection))
@@ -178,10 +186,8 @@ namespace SharpBag.Database
         /// </summary>
         public virtual void Close()
         {
-            if (this.Connection.State != ConnectionState.Closed)
-            {
-                this.Connection.Close();
-            }
+            if (this.Connection.State == ConnectionState.Closed) return;
+            this.Connection.Close();
         }
 
         /// <summary>
@@ -200,29 +206,41 @@ namespace SharpBag.Database
         /// <param name="dt">The DataTable.</param>
         /// <param name="schema">The schema to insert into.</param>
         /// <returns>An SQL string.</returns>
-        public virtual string DataTableToSQL(DataTable dt, string schema)
+        public virtual string DataTableToSQL(DataTable dt, string schema = null)
         {
-            if (dt.Rows.Count == 0) return null;
-            string into = schema != null ? schema + "." + dt.TableName : dt.TableName;
+            Contract.Requires(dt.Rows.Count > 0);
 
+            string into = schema != null ? schema + "." + dt.TableName : dt.TableName;
             StringBuilder columns = new StringBuilder();
             List<string> nonPrimaryCols = new List<string>();
+            bool first = true;
+
             foreach (DataColumn col in dt.Columns)
             {
-                if (columns.ToString() != "") columns.Append(",");
+                if (!first) columns.Append(",");
+                else first = false;
+
                 if (!dt.PrimaryKey.ContainsArray(col)) nonPrimaryCols.Add(col.ColumnName);
 
                 columns.Append(col.ColumnName);
             }
 
             StringBuilder values = new StringBuilder();
+            first = true;
+
             foreach (DataRow row in dt.Rows)
             {
-                values.Append(values.ToString() == "" ? "(" : ",(");
+                values.Append(first ? "(" : ",(");
+                first = false;
+
+                bool firstCol = true;
                 foreach (DataColumn col in dt.Columns)
                 {
-                    if (dt.Columns.IndexOf(col) != 0) values.Append(",");
+                    if (!firstCol) values.Append(",");
+                    firstCol = false;
+
                     object o = row[col.ColumnName];
+
                     if (col.DataType == typeof(DBNull))
                     {
                         values.Append("NULL");
@@ -231,7 +249,7 @@ namespace SharpBag.Database
                     {
                         values.Append("'").Append(((DateTime)o).ToSQLDateTime()).Append("'");
                     }
-                    else if (new Type[] { typeof(int), typeof(double), typeof(float), typeof(decimal), typeof(Single) }.ContainsArray(col.DataType))
+                    else if (new Type[] { typeof(int), typeof(long), typeof(double), typeof(float), typeof(decimal), typeof(Single) }.ContainsArray(col.DataType))
                     {
                         values.Append(o.ToString());
                     }
@@ -242,6 +260,7 @@ namespace SharpBag.Database
                         values.Append("'");
                     }
                 }
+
                 values.Append(")");
             }
 
@@ -267,13 +286,15 @@ namespace SharpBag.Database
         /// </summary>
         /// <returns>The connection string.</returns>
         protected abstract string CreateConnectionString();
+
         /// <summary>
         /// Creates a query command.
         /// </summary>
         /// <param name="q">The query.</param>
         /// <param name="c">The connection.</param>
         /// <returns>The query command.</returns>
-        protected abstract DbCommand CreateCommand(string q, ConnT c);
+        protected abstract DbCommand CreateCommand(string q, TConn c);
+
         /// <summary>
         /// Escapes a string for use in an SQL query.
         /// </summary>

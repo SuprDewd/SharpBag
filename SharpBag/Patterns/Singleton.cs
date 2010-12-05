@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace SharpBag.Patterns
 {
@@ -15,6 +12,7 @@ namespace SharpBag.Patterns
         /// The unique instance of the object.
         /// </summary>
         protected T UniqueInstance { get; set; }
+
         /// <summary>
         /// An action to initialize the object.
         /// </summary>
@@ -24,6 +22,7 @@ namespace SharpBag.Patterns
         /// The constructor.
         /// </summary>
         public Singleton() { }
+
         /// <summary>
         /// The constructor.
         /// </summary>

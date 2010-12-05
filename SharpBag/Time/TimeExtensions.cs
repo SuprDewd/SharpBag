@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Globalization;
 
 namespace SharpBag.Time
@@ -142,7 +140,7 @@ namespace SharpBag.Time
         {
             return new DateTime(year, 12, day);
         }
-        
+
         /// <summary>
         /// Sets the current instance to the specified hour, minute, second and millisecond.
         /// </summary>
@@ -337,7 +335,7 @@ namespace SharpBag.Time
             }
         }
 
-        #endregion
+        #endregion To overloads
 
         /// <summary>
         /// Returns the time that has elapsed since the time of the current instance.

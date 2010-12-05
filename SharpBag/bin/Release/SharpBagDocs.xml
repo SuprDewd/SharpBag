@@ -1331,7 +1331,7 @@
             <summary>
             A class for working with databases.
             </summary>
-            <typeparam name="ConnT">The type of the connection.</typeparam>
+            <typeparam name="TConn">The type of the connection.</typeparam>
         </member>
         <member name="M:SharpBag.Database.GenericDB`1.#ctor(System.String,System.String,System.String,System.String)">
             <summary>
@@ -1501,12 +1501,12 @@
         </member>
         <member name="T:SharpBag.Database.DatabaseExtensions">
             <summary>
-            Extension methods for the BagDB class.
+            Extension methods for the database classes.
             </summary>
         </member>
         <member name="M:SharpBag.Database.DatabaseExtensions.ToSQLDateTime(System.DateTime)">
             <summary>
-            Converts a DateTime object into a SQL compatible string.
+            Converts a DateTime object into an SQL compatible string.
             </summary>
             <param name="dt">The current instance.</param>
             <returns>An SQL formatted string.</returns>
@@ -1601,7 +1601,7 @@
             Calculates the execution time of the specified action.
             </summary>
             <param name="a">The action.</param>
-            <param name="handleGC">Whether to handle the garbage collector. If true, the GC will be forced to clean up before taking the time.</param>
+            <param name="handleGc">Whether to handle the garbage collector. If true, the GC will be forced to clean up before taking the time.</param>
             <returns>The execution time in milliseconds.</returns>
         </member>
         <member name="M:SharpBag.Utils.ExecutionTime``1(System.Action,System.Func{System.Diagnostics.Stopwatch,``0},System.Boolean)">
@@ -1611,7 +1611,7 @@
             <typeparam name="TResult">The type of the result.</typeparam>
             <param name="a">The action.</param>
             <param name="result">What to return.</param>
-            /// <param name="handleGC">Whether to handle the garbage collector. If true, the GC will be forced to clean up before taking the time.</param>
+            <param name="handleGc">Whether to handle the garbage collector. If true, the GC will be forced to clean up before taking the time.</param>
             <returns>The execution time in milliseconds.</returns>
         </member>
         <member name="M:SharpBag.Utils.CreateIEnumerable``1(``0[])">
@@ -1746,7 +1746,7 @@
             <param name="veldi">Veldið sem talan á að fara í</param>
             <returns></returns>
         </member>
-        <member name="M:SharpBag.FK.Stæ.PI">
+        <member name="M:SharpBag.FK.Stæ.PI(System.Int32)">
             <summary>
             PI
             </summary>
@@ -2967,7 +2967,7 @@
         </member>
         <member name="T:SharpBag.Math.BagMath">
             <summary>
-            A static class containing methods for doing calculations. 
+            A static class containing methods for doing calculations.
             </summary>
         </member>
         <member name="M:SharpBag.Math.BagMath.PointsInCircleF(System.Int32)">
@@ -4425,29 +4425,77 @@
             <returns>The bytes as a string.</returns>
             <remarks>http://www.west-wind.com/WebLog/posts/197245.aspx</remarks>
         </member>
-        <member name="T:SharpBag.Games.CardType">
+        <member name="T:SharpBag.Games.Card">
             <summary>
-            An enumeration containing types of cards.
+            A class representing a Card in a Card Game.
             </summary>
         </member>
-        <member name="F:SharpBag.Games.CardType.Heart">
+        <member name="M:SharpBag.Games.Card.#ctor(SharpBag.Games.CardType,SharpBag.Games.CardValue)">
             <summary>
-            A heart.
+            The main constructor.
+            </summary>
+            <param name="type">The type of the card.</param>
+            <param name="value">The value of the card.</param>
+        </member>
+        <member name="M:SharpBag.Games.Card.#ctor(SharpBag.Games.CardType,SharpBag.Games.CardValue,System.Boolean)">
+            <summary>
+            The main constructor.
+            </summary>
+            <param name="type">The type of the card.</param>
+            <param name="value">The value of the card.</param>
+            <param name="isDown">Whether the card is face down or face up.</param>
+        </member>
+        <member name="M:SharpBag.Games.Card.GetValue">
+            <summary>
+            Gets the value of the card.
+            </summary>
+            <returns>The value of the card.</returns>
+        </member>
+        <member name="M:SharpBag.Games.Card.GetValue(System.Collections.Generic.Dictionary{SharpBag.Games.CardValue,System.Int32})">
+            <summary>
+            Gets the value of the card, using the specified rules.
+            </summary>
+            <param name="values">The values.</param>
+            <returns>The value of the card.</returns>
+        </member>
+        <member name="P:SharpBag.Games.Card.Type">
+            <summary>
+            The type of the card.
             </summary>
         </member>
-        <member name="F:SharpBag.Games.CardType.Spade">
+        <member name="P:SharpBag.Games.Card.Value">
             <summary>
-            A spade.
+            The value of the card.
             </summary>
         </member>
-        <member name="F:SharpBag.Games.CardType.Diamond">
+        <member name="P:SharpBag.Games.Card.IsDown">
             <summary>
-            A diamond.
+            Whether the card is face down or face up.
             </summary>
         </member>
-        <member name="F:SharpBag.Games.CardType.Leaf">
+        <member name="E:SharpBag.Games.Card.CardTurned">
             <summary>
-            A leaf.
+            An event that is fired when a card is turned.
+            </summary>
+        </member>
+        <member name="T:SharpBag.FK.MVC.FKViewAttribute">
+            <summary>
+            An MVC view.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Comparers.AlphaNumberSettings">
+            <summary>
+            Settings for the AlphaNumberComparer.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Comparers.AlphaNumberSettings.Leading">
+            <summary>
+            Leading numbers.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Comparers.AlphaNumberSettings.Trailing">
+            <summary>
+            Trailing numbers.
             </summary>
         </member>
         <member name="T:SharpBag.Games.CardValue">
@@ -4520,77 +4568,63 @@
             A king.
             </summary>
         </member>
-        <member name="T:SharpBag.Games.Card">
+        <member name="T:SharpBag.Games.CardType">
             <summary>
-            A class representing a Card in a Card Game.
+            An enumeration containing types of cards.
             </summary>
         </member>
-        <member name="M:SharpBag.Games.Card.#ctor(SharpBag.Games.CardType,SharpBag.Games.CardValue)">
+        <member name="F:SharpBag.Games.CardType.Heart">
             <summary>
-            The main constructor.
-            </summary>
-            <param name="type">The type of the card.</param>
-            <param name="value">The value of the card.</param>
-        </member>
-        <member name="M:SharpBag.Games.Card.#ctor(SharpBag.Games.CardType,SharpBag.Games.CardValue,System.Boolean)">
-            <summary>
-            The main constructor.
-            </summary>
-            <param name="type">The type of the card.</param>
-            <param name="value">The value of the card.</param>
-            <param name="isDown">Whether the card is face down or face up.</param>
-        </member>
-        <member name="M:SharpBag.Games.Card.GetValue">
-            <summary>
-            Gets the value of the card.
-            </summary>
-            <returns>The value of the card.</returns>
-        </member>
-        <member name="M:SharpBag.Games.Card.GetValue(System.Collections.Generic.Dictionary{SharpBag.Games.CardValue,System.Int32})">
-            <summary>
-            Gets the value of the card, using the specified rules.
-            </summary>
-            <param name="values">The values.</param>
-            <returns>The value of the card.</returns>
-        </member>
-        <member name="P:SharpBag.Games.Card.Type">
-            <summary>
-            The type of the card.
+            A heart.
             </summary>
         </member>
-        <member name="P:SharpBag.Games.Card.Value">
+        <member name="F:SharpBag.Games.CardType.Spade">
             <summary>
-            The value of the card.
+            A spade.
             </summary>
         </member>
-        <member name="P:SharpBag.Games.Card.IsDown">
+        <member name="F:SharpBag.Games.CardType.Diamond">
             <summary>
-            Whether the card is face down or face up.
+            A diamond.
             </summary>
         </member>
-        <member name="E:SharpBag.Games.Card.CardTurned">
+        <member name="F:SharpBag.Games.CardType.Leaf">
             <summary>
-            An event that is fired when a card is turned.
+            A leaf.
             </summary>
         </member>
-        <member name="T:SharpBag.FK.MVC.FKViewAttribute">
+        <member name="T:SharpBag.Games.Dice">
             <summary>
-            An MVC view.
+            A dice.
             </summary>
         </member>
-        <member name="T:SharpBag.Comparers.AlphaNumberSettings">
+        <member name="M:SharpBag.Games.Dice.#ctor(System.Int32)">
             <summary>
-            Settings for the AlphaNumberComparer.
+            Creates a new dice.
+            </summary>
+            <param name="sides">The number of sides on the dice.</param>
+        </member>
+        <member name="M:SharpBag.Games.Dice.#ctor(System.Random,System.Int32)">
+            <summary>
+            Creates a new dice.
+            </summary>
+            <param name="rand">The random number generator.</param>
+            <param name="sides">The number of sides on the dice.</param>
+        </member>
+        <member name="M:SharpBag.Games.Dice.Throw">
+            <summary>
+            Throw the dice.
+            </summary>
+            <returns>The number on the top of the dice.</returns>
+        </member>
+        <member name="P:SharpBag.Games.Dice.Sides">
+            <summary>
+            The numer of sides on the dice.
             </summary>
         </member>
-        <member name="F:SharpBag.Comparers.AlphaNumberSettings.Leading">
+        <member name="P:SharpBag.Games.Dice.Rand">
             <summary>
-            Leading numbers.
-            </summary>
-        </member>
-        <member name="F:SharpBag.Comparers.AlphaNumberSettings.Trailing">
-            <summary>
-            Trailing numbers.
+            The random number generator.
             </summary>
         </member>
     </members>

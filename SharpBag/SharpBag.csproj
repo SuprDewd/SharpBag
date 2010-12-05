@@ -92,6 +92,9 @@
     <Compile Include="FK\MVC\FKController.cs" />
     <Compile Include="FK\MVC\FKModel.cs" />
     <Compile Include="FK\MVC\FKViewAttribute.cs" />
+    <Compile Include="Games\CardType.cs" />
+    <Compile Include="Games\CardValue.cs" />
+    <Compile Include="Games\Dice.cs" />
     <Compile Include="Math\PascalTriangle.cs" />
     <Compile Include="RandomExtensions.cs" />
     <Compile Include="Strings\StringUtils.cs" />

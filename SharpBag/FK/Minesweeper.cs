@@ -1,7 +1,6 @@
-﻿using SharpBag.Math;
+﻿using System.Linq;
+using SharpBag.Math;
 using SharpBag.Strings;
-using System;
-using System.Linq;
 
 namespace SharpBag.FK
 {
