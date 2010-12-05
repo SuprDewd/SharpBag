@@ -8,14 +8,6 @@
   </SettingsComponent>
   <RecentFiles>
     <RecentFiles>
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/d:Converters/f:BitsBytes.cs" caret="0" fromTop="0" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/d:Converters/f:Length.cs" caret="0" fromTop="0" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/d:Converters/f:Temperature.cs" caret="0" fromTop="0" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/d:Converters/f:Weight.cs" caret="0" fromTop="0" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:MathExtensions.cs" caret="0" fromTop="0" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:PascalTriangle.cs" caret="0" fromTop="0" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:Sources.cs" caret="77" fromTop="2" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Media/f:MediaExtensions.cs" caret="153" fromTop="5" />
       <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Net/f:Internet.cs" caret="75" fromTop="2" />
       <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Net/f:InternetExtensions.cs" caret="90" fromTop="4" />
       <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Net/f:TcpClientHandler.cs" caret="103" fromTop="4" />
@@ -32,32 +24,22 @@
       <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Time/f:TimeExtensions.cs" caret="0" fromTop="0" />
       <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Time/f:TimeUtils.cs" caret="0" fromTop="0" />
       <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Torrent/f:Bencoding.cs" caret="0" fromTop="0" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/f:Utils.cs" caret="958" fromTop="25" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:DatabaseExtensions.cs" caret="260" fromTop="11" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:MySqlDB.cs" caret="2577" fromTop="28" />
       <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:FK/f:Stae.cs" caret="1155" fromTop="25" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="8339" fromTop="15" />
       <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:MSSqlDB.cs" caret="13" fromTop="0" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="7939" fromTop="4" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:MySqlDB.cs" caret="2577" fromTop="28" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:DatabaseExtensions.cs" caret="260" fromTop="11" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/f:Utils.cs" caret="958" fromTop="25" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Algorithms/f:PriorityQueue.cs" caret="333" fromTop="11" />
+      <File id="186C1E72-526C-4894-8350-9823347FB3AD/f:UtilsTest.ExecutionTime01.g.cs" caret="780" fromTop="3" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Games/f:CardType.cs" caret="501" fromTop="24" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Games/f:Card.cs" caret="79" fromTop="4" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Games/f:CardValue.cs" caret="43" fromTop="2" />
+      <File id="186C1E72-526C-4894-8350-9823347FB3AD/f:DiceTest.cs" caret="433" fromTop="17" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Games/f:Dice.cs" caret="1270" fromTop="29" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Games/f:CardStack.cs" caret="1411" fromTop="12" />
     </RecentFiles>
     <RecentEdits>
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="8656" fromTop="19" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="1482" fromTop="3" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="2141" fromTop="17" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="2279" fromTop="12" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="2616" fromTop="22" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="3577" fromTop="17" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="3286" fromTop="9" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="3619" fromTop="18" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="3777" fromTop="26" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="4221" fromTop="22" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="5566" fromTop="18" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="6515" fromTop="10" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="6936" fromTop="10" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="7242" fromTop="17" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="7398" fromTop="22" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="7793" fromTop="20" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="8932" fromTop="28" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="9252" fromTop="18" />
       <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="9077" fromTop="14" />
       <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="10003" fromTop="17" />
       <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:MySqlDB.cs" caret="2246" fromTop="16" />
@@ -69,7 +51,25 @@
       <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:FK/f:Stae.cs" caret="1153" fromTop="25" />
       <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:FK/f:Stae.cs" caret="842" fromTop="23" />
       <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:MSSqlDB.cs" caret="1347" fromTop="6" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="8032" fromTop="6" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="8002" fromTop="5" />
+      <File id="186C1E72-526C-4894-8350-9823347FB3AD/f:UtilsTest.ExecutionTime01.g.cs" caret="2770" fromTop="6" />
+      <File id="186C1E72-526C-4894-8350-9823347FB3AD/f:UtilsTest.ExecutionTime01.g.cs" caret="780" fromTop="3" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Games/f:Card.cs" caret="379" fromTop="23" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Games/f:Card.cs" caret="223" fromTop="8" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Games/f:CardValue.cs" caret="0" fromTop="2" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Games/f:Dice.cs" caret="302" fromTop="6" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Games/f:Dice.cs" caret="1225" fromTop="29" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Games/f:Dice.cs" caret="1032" fromTop="31" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Games/f:Dice.cs" caret="695" fromTop="22" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Games/f:Dice.cs" caret="1233" fromTop="28" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Games/f:Dice.cs" caret="3552" fromTop="29" />
+      <File id="186C1E72-526C-4894-8350-9823347FB3AD/f:DiceTest.cs" caret="111" fromTop="3" />
+      <File id="186C1E72-526C-4894-8350-9823347FB3AD/f:DiceTest.cs" caret="667" fromTop="24" />
+      <File id="186C1E72-526C-4894-8350-9823347FB3AD/f:DiceTest.cs" caret="679" fromTop="20" />
+      <File id="186C1E72-526C-4894-8350-9823347FB3AD/f:DiceTest.cs" caret="336" fromTop="14" />
+      <File id="186C1E72-526C-4894-8350-9823347FB3AD/f:DiceTest.cs" caret="714" fromTop="26" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Games/f:CardStack.cs" caret="1982" fromTop="32" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Games/f:CardStack.cs" caret="1535" fromTop="16" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>

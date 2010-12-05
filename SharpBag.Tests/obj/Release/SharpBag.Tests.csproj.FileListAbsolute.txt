@@ -35,7 +35,6 @@ C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests\bin\Release\
 C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests\bin\Release\SharpBag.Tests.pdb
 C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests\bin\Release\SharpBag.dll
 C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests\bin\Release\SharpBag.Moles.dll
-C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests\bin\Release\MySql.Data.dll
 C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests\bin\Release\SharpBag.pdb
 C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests\bin\Release\SharpBag.Moles.xml
 C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests\obj\Release\ResolveAssemblyReference.cache

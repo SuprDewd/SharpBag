@@ -1092,10 +1092,6 @@
             <summary>Sets the mole of <see cref="M:SharpBag.Games.CardStack.#ctor(System.Boolean)"/>
             </summary>
         </member>
-        <member name="P:SharpBag.Games.Moles.MCardStack.Draw">
-            <summary>Sets the mole of <see cref="M:SharpBag.Games.CardStack.Draw"/>
-            </summary>
-        </member>
         <member name="P:SharpBag.Games.Moles.MCardStack.DrawBoolean">
             <summary>Sets the mole of <see cref="M:SharpBag.Games.CardStack.Draw(System.Boolean)"/>
             </summary>
@@ -1110,10 +1106,6 @@
         </member>
         <member name="T:SharpBag.Games.Moles.MCardStack.AllInstances">
             <summary>Define moles for all instances members</summary>
-        </member>
-        <member name="P:SharpBag.Games.Moles.MCardStack.AllInstances.Draw">
-            <summary>Sets the mole of <see cref="M:SharpBag.Games.CardStack.Draw"/>
-            </summary>
         </member>
         <member name="P:SharpBag.Games.Moles.MCardStack.AllInstances.DrawBoolean">
             <summary>Sets the mole of <see cref="M:SharpBag.Games.CardStack.Draw(System.Boolean)"/>

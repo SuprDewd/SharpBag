@@ -21,7 +21,8 @@ namespace SharpBag.Games
         {
             this.Reset();
 
-            if (shuffle) this.Shuffle();
+            if (shuffle)
+                this.Shuffle();
         }
 
         /// <summary>
@@ -32,21 +33,8 @@ namespace SharpBag.Games
             base.Clear();
 
             foreach (CardType t in Enum.GetValues(typeof(CardType)))
-            {
                 foreach (CardValue v in Enum.GetValues(typeof(CardValue)))
-                {
                     base.Push(new Card(t, v));
-                }
-            }
-        }
-
-        /// <summary>
-        /// Draws the top card from the stack.
-        /// </summary>
-        /// <returns>The next card in the stack.</returns>
-        public Card Draw()
-        {
-            return this.Draw(false);
         }
 
         /// <summary>
@@ -58,9 +46,7 @@ namespace SharpBag.Games
             base.Clear();
 
             foreach (Card c in cards)
-            {
                 base.Push(c);
-            }
         }
 
         /// <summary>
@@ -68,7 +54,7 @@ namespace SharpBag.Games
         /// </summary>
         /// <param name="isDown">Whether or not the card drawn should be face down or face up.</param>
         /// <returns>The next card in the stack.</returns>
-        public Card Draw(bool isDown)
+        public Card Draw(bool isDown = false)
         {
             Card c = base.Pop();
             c.IsDown = isDown;

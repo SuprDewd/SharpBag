@@ -2446,12 +2446,6 @@
             Resets the card stack.
             </summary>
         </member>
-        <member name="M:SharpBag.Games.CardStack.Draw">
-            <summary>
-            Draws the top card from the stack.
-            </summary>
-            <returns>The next card in the stack.</returns>
-        </member>
         <member name="M:SharpBag.Games.CardStack.Shuffle">
             <summary>
             Shuffles the stack.

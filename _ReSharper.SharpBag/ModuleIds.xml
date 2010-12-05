@@ -25,4 +25,11 @@
   <Module PersistentId="JetBrains.Annotations, Version=5.1.1753.4, Culture=neutral, PublicKeyToken=1010a0d8d6380325" ModuleId="JetBrains.Annotations" />
   <Module PersistentId="186C1E72-526C-4894-8350-9823347FB3AD" ModuleId="SharpBag.Tests" />
   <Module PersistentId="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" ModuleId="mscorlib" />
+  <Module PersistentId="PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" ModuleId="PresentationCore_1" />
+  <Module PersistentId="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" ModuleId="System.Drawing_1" />
+  <Module PersistentId="System.Xaml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" ModuleId="System.Xaml_1" />
+  <Module PersistentId="System.Xml.Linq, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" ModuleId="System.Xml.Linq_1" />
+  <Module PersistentId="System.Data.DataSetExtensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" ModuleId="System.Data.DataSetExtensions_1" />
+  <Module PersistentId="System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" ModuleId="System.Data_1" />
+  <Module PersistentId="System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" ModuleId="System.Xml_1" />
 </Modules>

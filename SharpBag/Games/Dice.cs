@@ -22,7 +22,7 @@ namespace SharpBag.Games
         /// Creates a new dice.
         /// </summary>
         /// <param name="sides">The number of sides on the dice.</param>
-        public Dice(int sides = 6) : this(new Random(), sides) { }
+        public Dice(int sides = 6) : this(new Random(), sides) { Contract.Requires(sides > 0); }
 
         /// <summary>
         /// Creates a new dice.
