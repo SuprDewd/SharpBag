@@ -8,7 +8,6 @@ namespace SharpBag.FK
     /// </summary>
     public class Kennitala
     {
-        private string Upprunalegt;
         /// <summary>
         /// Fyrir hvaða dag er kennitalan.
         /// </summary>
@@ -28,11 +27,15 @@ namespace SharpBag.FK
         /// <summary>
         /// Hvort kennitalan sé gild.
         /// </summary>
-        public bool ErILagi = false;
+        public bool ErILagi;
         /// <summary>
-        /// Stjörnumerki kennitölunar.
+        /// Upprunalega kennitalan.
         /// </summary>
-        public string Stjornumerki = "";
+        public string Upprunalegt;
+        /// <summary>
+        /// Stjörnumerkið.
+        /// </summary>
+        public string Stjornumerki;
 
         /// <summary>
         /// Smiður kennitölu-klasans.

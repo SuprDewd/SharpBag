@@ -1,14 +1,13 @@
 // <copyright file="ExtensionsTest.cs" company="SuprDewd">Copyright © SuprDewd 2010</copyright>
 
 using System;
-using Microsoft.Pex.Framework;
-using Microsoft.Pex.Framework.Validation;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SharpBag;
+using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Windows.Threading;
-using System.Collections;
+using Microsoft.Pex.Framework;
+using Microsoft.Pex.Framework.Validation;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace SharpBag
 {
@@ -30,6 +29,7 @@ namespace SharpBag
             Extensions.Add<TKey, TValue>(D, key, value, overwrite);
             // TODO: add assertions to method ExtensionsTest.Add(Dictionary`2<!!0,!!1>, !!0, !!1, Boolean)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public void With<T>(T obj, Action<T> act)
@@ -37,6 +37,7 @@ namespace SharpBag
             Extensions.With<T>(obj, act);
             // TODO: add assertions to method ExtensionsTest.With(!!0, Action`1<!!0>)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public IEnumerable<T> UnionAll02<T>(IEnumerable<T> source, T[] newItems)
@@ -45,6 +46,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.UnionAll02(IEnumerable`1<!!0>, !!0[])
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public IEnumerable<T> UnionAll01<T>(IEnumerable<T> source, T newItem)
@@ -53,6 +55,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.UnionAll01(IEnumerable`1<!!0>, !!0)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public IEnumerable<T> UnionAll<T>(IEnumerable<T> source, IEnumerable<T> other)
@@ -61,6 +64,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.UnionAll(IEnumerable`1<!!0>, IEnumerable`1<!!0>)
         }
+
         [PexMethod]
         public Dictionary<string, object> ToDictionary(object o)
         {
@@ -68,6 +72,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.ToDictionary(Object)
         }
+
         [PexMethod]
         public IEnumerable<char> To04(
             char start,
@@ -79,6 +84,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.To04(Char, Char, Int32)
         }
+
         [PexMethod]
         public IEnumerable<BigInteger> To03(
             BigInteger start,
@@ -90,6 +96,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.To03(BigInteger, BigInteger, BigInteger)
         }
+
         [PexMethod]
         public IEnumerable<BigInteger> To02(BigInteger start, BigInteger end)
         {
@@ -97,6 +104,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.To02(BigInteger, BigInteger)
         }
+
         [PexMethod]
         public IEnumerable<long> To01(
             long start,
@@ -108,6 +116,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.To01(Int64, Int64, Int64)
         }
+
         [PexMethod]
         public IEnumerable<int> To(
             int start,
@@ -119,6 +128,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.To(Int32, Int32, Int32)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public IEnumerable<T> Times<T>(int i, Func<T> f)
@@ -127,6 +137,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.Times(Int32, Func`1<!!0>)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public IEnumerable<T> TakeEvery<T>(
@@ -139,6 +150,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.TakeEvery(IEnumerable`1<!!0>, Int32, Int32)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public IEnumerable<T> Shuffle<T>(IEnumerable<T> source, Random rand)
@@ -147,6 +159,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.Shuffle(IEnumerable`1<!!0>, Random)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public IEnumerable<T> Range<T>(
@@ -159,6 +172,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.Range(IEnumerable`1<!!0>, Int32, Int32)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public T Random01<T>(IEnumerable<T> collection, Random rand)
@@ -167,6 +181,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.Random01(IEnumerable`1<!!0>, Random)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod, PexAllowedException("SharpBag", "System.Diagnostics.Contracts.__ContractsRuntime+ContractException")]
         public T Random<T>(IEnumerable<T> collection)
@@ -175,6 +190,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.Random(IEnumerable`1<!!0>)
         }
+
         [PexGenericArguments(typeof(object), typeof(int))]
         [PexMethod]
         public TReturn NullOr<TIn, TReturn>(
@@ -188,6 +204,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.NullOr(!!0, Func`2<!!0,!!1>, !!1)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public IEnumerable<T> Iter<T>(IEnumerable<T> source, Action<T> action)
@@ -196,6 +213,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.Iter(IEnumerable`1<!!0>, Action`1<!!0>)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public bool IsNullOrEmpty<T>(IEnumerable<T> collection)
@@ -204,6 +222,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.IsNullOrEmpty(IEnumerable`1<!!0>)
         }
+
         [PexMethod]
         public bool IsNullableType(Type type)
         {
@@ -211,6 +230,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.IsNullableType(Type)
         }
+
         [PexGenericArguments(typeof(object))]
         [PexMethod]
         public bool IsNot<T>(object item)
@@ -220,6 +240,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.IsNot(Object)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public bool IsIn01<T>(T item, T[] collection)
@@ -228,6 +249,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.IsIn01(!!0, !!0[])
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public bool IsIn<T>(T item, IEnumerable<T> collection)
@@ -236,6 +258,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.IsIn(!!0, IEnumerable`1<!!0>)
         }
+
         [PexGenericArguments(typeof(object))]
         [PexMethod]
         public bool Is<T>(object item)
@@ -245,6 +268,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.Is(Object)
         }
+
         [PexMethod]
         public void InvokeIfRequired01(
             DispatcherObject control,
@@ -255,12 +279,14 @@ namespace SharpBag
             Extensions.InvokeIfRequired(control, methodcall, priorityForCall);
             // TODO: add assertions to method ExtensionsTest.InvokeIfRequired01(DispatcherObject, Action, DispatcherPriority)
         }
+
         [PexMethod]
         public void InvokeIfRequired(DispatcherObject control, Action methodcall)
         {
             Extensions.InvokeIfRequired(control, methodcall);
             // TODO: add assertions to method ExtensionsTest.InvokeIfRequired(DispatcherObject, Action)
         }
+
         [PexGenericArguments(typeof(object))]
         [PexMethod]
         public void IfNotNull01<T>(T obj, Action action)
@@ -269,6 +295,7 @@ namespace SharpBag
             Extensions.IfNotNull<T>(obj, action);
             // TODO: add assertions to method ExtensionsTest.IfNotNull01(!!0, Action)
         }
+
         [PexGenericArguments(typeof(object))]
         [PexMethod]
         public void IfNotNull<T>(T obj, Action<T> action)
@@ -277,6 +304,7 @@ namespace SharpBag
             Extensions.IfNotNull<T>(obj, action);
             // TODO: add assertions to method ExtensionsTest.IfNotNull(!!0, Action`1<!!0>)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public T If<T>(
@@ -289,6 +317,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.If(!!0, Boolean, !!0)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public T GetByPercent<T>(T[] array, double percent)
@@ -297,6 +326,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.GetByPercent(!!0[], Double)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public void ForEach<T>(IEnumerable<T> source, Action<T> action)
@@ -304,6 +334,7 @@ namespace SharpBag
             Extensions.ForEach<T>(source, action);
             // TODO: add assertions to method ExtensionsTest.ForEach(IEnumerable`1<!!0>, Action`1<!!0>)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public void Fill01<T>(List<T> array, T value)
@@ -311,6 +342,7 @@ namespace SharpBag
             Extensions.Fill<T>(array, value);
             // TODO: add assertions to method ExtensionsTest.Fill01(List`1<!!0>, !!0)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public void Fill<T>(T[] array, T value)
@@ -318,6 +350,7 @@ namespace SharpBag
             Extensions.Fill<T>(array, value);
             // TODO: add assertions to method ExtensionsTest.Fill(!!0[], !!0)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public void Execute<T>(IEnumerable<T> sequence)
@@ -325,6 +358,7 @@ namespace SharpBag
             Extensions.Execute<T>(sequence);
             // TODO: add assertions to method ExtensionsTest.Execute(IEnumerable`1<!!0>)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public IEnumerable<T> EmptyIfNull<T>(IEnumerable<T> pSeq)
@@ -333,6 +367,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.EmptyIfNull(IEnumerable`1<!!0>)
         }
+
         [PexMethod]
         public bool ContainsArray(Array a, object o)
         {
@@ -340,6 +375,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.ContainsArray(Array, Object)
         }
+
         [PexGenericArguments(typeof(object))]
         [PexMethod]
         public T CastAs<T>(object item)
@@ -349,6 +385,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.CastAs(Object)
         }
+
         [PexMethod]
         public IEnumerable<object> AsEnumerable03(IEnumerator e)
         {
@@ -356,6 +393,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.AsEnumerable03(IEnumerator)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public IEnumerable<T> AsEnumerable02<T>(IEnumerator<T> e)
@@ -364,6 +402,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.AsEnumerable02(IEnumerator`1<!!0>)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public IEnumerable<T> AsEnumerable01<T>(T[, ,] multiDArray)
@@ -372,6 +411,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.AsEnumerable01(!!0[,,])
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public IEnumerable<T> AsEnumerable<T>(T[,] multiDArray)
@@ -380,6 +420,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.AsEnumerable(!!0[,])
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public TOut As01<TOut>(
@@ -392,6 +433,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.As01(Object, IFormatProvider, !!0)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public TOut As<TOut>(object original, TOut defaultValue)
@@ -400,6 +442,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.As(Object, !!0)
         }
+
         [PexMethod]
         public int[,] Subarray(
             int[,] a,

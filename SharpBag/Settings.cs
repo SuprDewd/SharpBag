@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
@@ -16,7 +17,7 @@ namespace SharpBag
         /// </summary>
         public static DirectoryInfo ExecutableDirectory { get { return _ExecutableDirectory; } }
 
-        private static string _NL;
+        private static string _NL = Environment.NewLine;
 
         /// <summary>
         /// Gets the newline string defined for this environment.
@@ -27,8 +28,8 @@ namespace SharpBag
             set { _NL = value; }
         }
 
-        private static Dictionary<int, string> _BitTorrentTrackerErrorCodes = new Dictionary<int, string>()
-        {
+        private static Dictionary<int, string> _BitTorrentTrackerErrorCodes = new Dictionary<int, string>
+                                                                                  {
             {100, "Invalid request type: client request was not a HTTP GET."},
             {101, "Missing info_hash."},
             {102, "Missing peer_id."},
@@ -49,8 +50,8 @@ namespace SharpBag
             get { return _BitTorrentTrackerErrorCodes; }
         }
 
-        private static Dictionary<int, string> _HttpStatusCodes = new Dictionary<int, string>()
-        {
+        private static Dictionary<int, string> _HttpStatusCodes = new Dictionary<int, string>
+                                                                      {
             {100, "Continue"},
             {101, "Switching Protocols"},
             {102, "Processing"},

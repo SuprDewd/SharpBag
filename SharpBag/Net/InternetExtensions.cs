@@ -24,7 +24,7 @@ namespace SharpBag.Net
             {
                 using (StreamReader sr = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
                 {
-                    string line = null;
+                    string line;
 
                     while ((line = sr.ReadLine()) != null)
                     {

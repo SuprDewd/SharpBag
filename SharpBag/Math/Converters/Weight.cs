@@ -26,7 +26,7 @@ namespace SharpBag.Math.Converters
         /// The constructor.
         /// </summary>
         /// <param name="v"></param>
-        public Weight(double v)
+        protected Weight(double v)
         {
             this.Value = v;
         }
@@ -41,7 +41,7 @@ namespace SharpBag.Math.Converters
             where TResult : Weight, new()
             where TValue : Weight, new()
         {
-            return new TResult() { Value = (new TValue().Value * (new TValue().BaseValue / this.BaseValue)) };
+            return new TResult { Value = (new TValue().Value * (new TValue().BaseValue / this.BaseValue)) };
         }
 
         /*

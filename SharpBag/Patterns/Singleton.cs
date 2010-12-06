@@ -21,13 +21,13 @@ namespace SharpBag.Patterns
         /// <summary>
         /// The constructor.
         /// </summary>
-        public Singleton() { }
+        protected Singleton() { }
 
         /// <summary>
         /// The constructor.
         /// </summary>
         /// <param name="initializeAction">An action to initialize the object.</param>
-        public Singleton(Action<T> initializeAction)
+        protected Singleton(Action<T> initializeAction)
         {
             this.InitializeAction = initializeAction;
         }

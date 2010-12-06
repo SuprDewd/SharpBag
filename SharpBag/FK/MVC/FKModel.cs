@@ -76,7 +76,7 @@ namespace SharpBag.FK.MVC
         /// <returns>The content of the file.</returns>
         public string ReadFile(string fileName, Encoding encoding = null)
         {
-            using (StreamReader sr = new StreamReader(fileName, encoding: encoding ?? Encoding.Default))
+            using (StreamReader sr = new StreamReader(fileName, encoding ?? Encoding.Default))
             {
                 return sr.ReadToEnd();
             }
@@ -90,7 +90,7 @@ namespace SharpBag.FK.MVC
         /// <returns>The lines of the file.</returns>
         public IEnumerable<string> ReadFileLines(string fileName, Encoding encoding = null)
         {
-            using (StreamReader sr = new StreamReader(fileName, encoding: encoding ?? Encoding.Default))
+            using (StreamReader sr = new StreamReader(fileName, encoding ?? Encoding.Default))
             {
                 string line;
 

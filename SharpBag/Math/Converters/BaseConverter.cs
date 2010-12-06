@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 using System.Text;
 
 namespace SharpBag.Math.Converters
@@ -12,39 +13,39 @@ namespace SharpBag.Math.Converters
         /// Converts the specified number from the specified start base to the specified target base.
         /// </summary>
         /// <param name="number">The number as a string.</param>
-        /// <param name="start_base">The base of the number.</param>
-        /// <param name="target_base">The base to convert to.</param>
+        /// <param name="startBase">The base of the number.</param>
+        /// <param name="targetBase">The base to convert to.</param>
         /// <returns>The specified number in the specified target base.</returns>
         /// <remarks>Bases must be in the range 2 to 36.</remarks>
-        public static string ToBase(string number, int start_base, int target_base)
+        public static string ToBase(string number, int startBase, int targetBase)
         {
-            return FromBase10(ToBase10(number, start_base), target_base);
+            Contract.Requires(!String.IsNullOrEmpty(number));
+            return FromBase10(ToBase10(number, startBase), targetBase);
         }
 
         /// <summary>
         /// Converts the specified number from the specified start base to base 10.
         /// </summary>
         /// <param name="number">The number as a string.</param>
-        /// <param name="start_base">The base of the number.</param>
+        /// <param name="startBase">The base of the number.</param>
         /// <returns>The number in base 10.</returns>
         /// <remarks>Bases must be in the range 2 to 36.</remarks>
-        public static int ToBase10(string number, int start_base)
+        public static int ToBase10(string number, int startBase)
         {
-            if (start_base < 2 || start_base > 36) return 0;
-            if (start_base == 10) return Convert.ToInt32(number);
+            Contract.Requires(!String.IsNullOrEmpty(number));
+            Contract.Requires(startBase.IsBetweenOrEqualTo(2, 36));
+            if (startBase == 10) return Convert.ToInt32(number);
 
             char[] chrs = number.ToCharArray();
             int m = chrs.Length - 1;
-            int n = start_base;
+            int n = startBase;
             int x;
             int rtn = 0;
 
             foreach (char c in chrs)
             {
-                if (char.IsNumber(c))
-                    x = int.Parse(c.ToString());
-                else
-                    x = Convert.ToInt32(c) - 55;
+                if (char.IsNumber(c)) x = int.Parse(c.ToString());
+                else x = Convert.ToInt32(c) - 55;
 
                 rtn += x * (Convert.ToInt32(System.Math.Pow(n, m)));
 
@@ -58,15 +59,15 @@ namespace SharpBag.Math.Converters
         /// Converts the specified base 10 number to the specified target base.
         /// </summary>
         /// <param name="number">The base 10 number.</param>
-        /// <param name="target_base">The target base.</param>
+        /// <param name="targetBase">The target base.</param>
         /// <returns>The target in the target base.</returns>
         /// <remarks>Bases must be in the range 2 to 36.</remarks>
-        public static string FromBase10(int number, int target_base)
+        public static string FromBase10(int number, int targetBase)
         {
-            if (target_base < 2 || target_base > 36) return "";
-            if (target_base == 10) return number.ToString();
+            if (targetBase < 2 || targetBase > 36) return "";
+            if (targetBase == 10) return number.ToString();
 
-            int n = target_base;
+            int n = targetBase;
             int q = number;
             int r;
             StringBuilder rtn = new StringBuilder();
@@ -76,12 +77,10 @@ namespace SharpBag.Math.Converters
                 r = q % n;
                 q = q / n;
 
-                if (r < 10) rtn.Insert(0, r.ToString());
-                else rtn.Insert(0, Convert.ToChar(r + 55).ToString());
+                rtn.Insert(0, r < 10 ? r.ToString() : Convert.ToChar(r + 55).ToString());
             }
 
-            if (q < 10) rtn.Insert(0, q.ToString());
-            else rtn.Insert(0, Convert.ToChar(q + 55).ToString());
+            rtn.Insert(0, q < 10 ? q.ToString() : Convert.ToChar(q + 55).ToString());
 
             return rtn.ToString();
         }

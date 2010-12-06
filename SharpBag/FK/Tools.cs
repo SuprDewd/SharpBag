@@ -17,10 +17,10 @@ namespace SharpBag.FK
         /// <returns>Strengirnir saman</returns>
         public static string MergeStrings(string a, string b)
         {
-            List<string> aS = a.Split(new char[] { '\n' }).ToList();
-            List<string> bS = b.Split(new char[] { '\n' }).ToList();
-            int aLen = aS.OrderByDescending(n => n.Length).ToArray()[0].Length;
-            int bLen = bS.OrderByDescending(n => n.Length).ToArray()[0].Length;
+            List<string> bS = b.Split('\n').ToList();
+            List<string> aS = a.Split('\n').ToList();
+
+            int aLen = aS.Max(l => l.Length);
 
             if (aS.Count > bS.Count)
             {

@@ -43,15 +43,8 @@ namespace SharpBag.Games
         /// </summary>
         /// <param name="type">The type of the card.</param>
         /// <param name="value">The value of the card.</param>
-        public Card(CardType type, CardValue value) : this(type, value, true) { }
-
-        /// <summary>
-        /// The main constructor.
-        /// </summary>
-        /// <param name="type">The type of the card.</param>
-        /// <param name="value">The value of the card.</param>
         /// <param name="isDown">Whether the card is face down or face up.</param>
-        public Card(CardType type, CardValue value, bool isDown)
+        public Card(CardType type, CardValue value, bool isDown = true)
         {
             this.Type = type;
             this.Value = value;

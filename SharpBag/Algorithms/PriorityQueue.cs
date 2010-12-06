@@ -13,11 +13,6 @@ namespace SharpBag.Algorithms
         private readonly List<PriorityQueueItem<T>> Items = new List<PriorityQueueItem<T>>();
 
         /// <summary>
-        /// The constructor.
-        /// </summary>
-        public PriorityQueue() { }
-
-        /// <summary>
         /// Adds an item to the queue.
         /// </summary>
         /// <param name="item">An item.</param>
@@ -147,10 +142,7 @@ namespace SharpBag.Algorithms
         /// <see cref="IEnumerable{T}.GetEnumerator()"/>
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
-            foreach (T item in this.Items.OrderByDescending(i => i.Priority).Select(i => i.Item))
-            {
-                yield return item;
-            }
+            return this.Items.OrderByDescending(i => i.Priority).Select(i => i.Item).GetEnumerator();
         }
     }
 }

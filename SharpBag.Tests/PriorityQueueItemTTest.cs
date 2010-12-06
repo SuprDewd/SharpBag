@@ -4,7 +4,6 @@ using System;
 using Microsoft.Pex.Framework;
 using Microsoft.Pex.Framework.Validation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SharpBag.Algorithms;
 
 namespace SharpBag.Algorithms
 {
@@ -22,6 +21,7 @@ namespace SharpBag.Algorithms
             return result;
             // TODO: add assertions to method PriorityQueueItemTTest.ToString01(PriorityQueueItem`1<!!0>)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public PriorityQueueItem<T> Constructor<T>(T item, int priority)

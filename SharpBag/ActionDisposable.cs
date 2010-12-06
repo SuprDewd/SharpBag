@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 
 namespace SharpBag
 {
@@ -7,7 +8,7 @@ namespace SharpBag
     /// </summary>
     public class ActionDisposable : IDisposable
     {
-        Action action;
+        private readonly Action DisposeAction;
 
         /// <summary>
         /// The constructor.
@@ -15,15 +16,16 @@ namespace SharpBag
         /// <param name="action">The action to execute when the current instance is disposed.</param>
         public ActionDisposable(Action action)
         {
-            this.action = action;
+            Contract.Requires(action != null);
+            this.DisposeAction = action;
         }
 
         /// <summary>
         /// The disposer which executes the dispose action.
         /// </summary>
-        void IDisposable.Dispose()
+        public void Dispose()
         {
-            action();
+            this.DisposeAction();
         }
     }
 }

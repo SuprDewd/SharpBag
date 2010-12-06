@@ -30,15 +30,15 @@
             <summary>Sets the mole of <see cref="M:SharpBag.ActionDisposable.#ctor(System.Action)"/>
             </summary>
         </member>
-        <member name="P:SharpBag.Moles.MActionDisposable.SystemIDisposableDispose">
-            <summary>Sets the mole of <see cref="M:SharpBag.ActionDisposable.System.IDisposable.Dispose"/>
+        <member name="P:SharpBag.Moles.MActionDisposable.Dispose">
+            <summary>Sets the mole of <see cref="M:SharpBag.ActionDisposable.Dispose"/>
             </summary>
         </member>
         <member name="T:SharpBag.Moles.MActionDisposable.AllInstances">
             <summary>Define moles for all instances members</summary>
         </member>
-        <member name="P:SharpBag.Moles.MActionDisposable.AllInstances.SystemIDisposableDispose">
-            <summary>Sets the mole of <see cref="M:SharpBag.ActionDisposable.System.IDisposable.Dispose"/>
+        <member name="P:SharpBag.Moles.MActionDisposable.AllInstances.Dispose">
+            <summary>Sets the mole of <see cref="M:SharpBag.ActionDisposable.Dispose"/>
             </summary>
         </member>
         <member name="T:SharpBag.Comparers.Moles.MAlphaNumberComparer">
@@ -965,10 +965,6 @@
             <summary>Sets the mole of <see cref="M:SharpBag.Games.Card.remove_CardTurned(System.Action`1{SharpBag.Games.Card})"/>
             </summary>
         </member>
-        <member name="P:SharpBag.Games.Moles.MCard.ConstructorCardTypeCardValue">
-            <summary>Sets the mole of <see cref="M:SharpBag.Games.Card.#ctor(SharpBag.Games.CardType,SharpBag.Games.CardValue)"/>
-            </summary>
-        </member>
         <member name="P:SharpBag.Games.Moles.MCard.ConstructorCardTypeCardValueBoolean">
             <summary>Sets the mole of <see cref="M:SharpBag.Games.Card.#ctor(SharpBag.Games.CardType,SharpBag.Games.CardValue,System.Boolean)"/>
             </summary>
@@ -1600,6 +1596,14 @@
         </member>
         <member name="P:SharpBag.Moles.MExtensions.ToInt64Int64Int64">
             <summary>Sets the mole of <see cref="M:SharpBag.Extensions.To(System.Int64,System.Int64,System.Int64)"/>
+            </summary>
+        </member>
+        <member name="P:SharpBag.Moles.MExtensions._ToDictionaryb__4fPropertyInfo">
+            <summary>Sets the mole of <see cref="M:SharpBag.Extensions.&lt;ToDictionary&gt;b__4f(System.Reflection.PropertyInfo)"/>
+            </summary>
+        </member>
+        <member name="P:SharpBag.Moles.MExtensions._ToDictionaryb__50PropertyInfo">
+            <summary>Sets the mole of <see cref="M:SharpBag.Extensions.&lt;ToDictionary&gt;b__50(System.Reflection.PropertyInfo)"/>
             </summary>
         </member>
         <member name="T:SharpBag.FK.MVC.Moles.MFKActionAttribute">
@@ -2524,16 +2528,16 @@
             <summary>Sets the mole of <see cref="M:SharpBag.Logging.InteractiveConsole.ReadCommandAsync"/>
             </summary>
         </member>
+        <member name="P:SharpBag.Logging.Moles.MInteractiveConsole.ReadCommandListener">
+            <summary>Sets the mole of <see cref="M:SharpBag.Logging.InteractiveConsole.ReadCommandListener"/>
+            </summary>
+        </member>
         <member name="P:SharpBag.Logging.Moles.MInteractiveConsole.Stop">
             <summary>Sets the mole of <see cref="M:SharpBag.Logging.InteractiveConsole.Stop"/>
             </summary>
         </member>
         <member name="P:SharpBag.Logging.Moles.MInteractiveConsole.WriteLineObject">
             <summary>Sets the mole of <see cref="M:SharpBag.Logging.InteractiveConsole.WriteLine(System.Object)"/>
-            </summary>
-        </member>
-        <member name="P:SharpBag.Logging.Moles.MInteractiveConsole._ReadCommandAsync">
-            <summary>Sets the mole of <see cref="M:SharpBag.Logging.InteractiveConsole._ReadCommandAsync"/>
             </summary>
         </member>
         <member name="T:SharpBag.Logging.Moles.MInteractiveConsole.AllInstances">
@@ -2563,16 +2567,16 @@
             <summary>Sets the mole of <see cref="M:SharpBag.Logging.InteractiveConsole.ReadCommandAsync"/>
             </summary>
         </member>
+        <member name="P:SharpBag.Logging.Moles.MInteractiveConsole.AllInstances.ReadCommandListener">
+            <summary>Sets the mole of <see cref="M:SharpBag.Logging.InteractiveConsole.ReadCommandListener"/>
+            </summary>
+        </member>
         <member name="P:SharpBag.Logging.Moles.MInteractiveConsole.AllInstances.Stop">
             <summary>Sets the mole of <see cref="M:SharpBag.Logging.InteractiveConsole.Stop"/>
             </summary>
         </member>
         <member name="P:SharpBag.Logging.Moles.MInteractiveConsole.AllInstances.WriteLineObject">
             <summary>Sets the mole of <see cref="M:SharpBag.Logging.InteractiveConsole.WriteLine(System.Object)"/>
-            </summary>
-        </member>
-        <member name="P:SharpBag.Logging.Moles.MInteractiveConsole.AllInstances._ReadCommandAsync">
-            <summary>Sets the mole of <see cref="M:SharpBag.Logging.InteractiveConsole._ReadCommandAsync"/>
             </summary>
         </member>
         <member name="T:SharpBag.Net.Moles.MInternet">
@@ -3473,16 +3477,16 @@
             <summary>Sets the mole of <see cref="M:SharpBag.Math.MathExtensions.ToInfinity(System.Int64,System.Int64)"/>
             </summary>
         </member>
-        <member name="P:SharpBag.Math.Moles.MMathExtensions._Digitsb__24Char">
-            <summary>Sets the mole of <see cref="M:SharpBag.Math.MathExtensions.&lt;Digits&gt;b__24(System.Char)"/>
+        <member name="P:SharpBag.Math.Moles.MMathExtensions._Digitsb__36Char">
+            <summary>Sets the mole of <see cref="M:SharpBag.Math.MathExtensions.&lt;Digits&gt;b__36(System.Char)"/>
             </summary>
         </member>
-        <member name="P:SharpBag.Math.Moles.MMathExtensions._Digitsb__26Char">
-            <summary>Sets the mole of <see cref="M:SharpBag.Math.MathExtensions.&lt;Digits&gt;b__26(System.Char)"/>
+        <member name="P:SharpBag.Math.Moles.MMathExtensions._Digitsb__38Char">
+            <summary>Sets the mole of <see cref="M:SharpBag.Math.MathExtensions.&lt;Digits&gt;b__38(System.Char)"/>
             </summary>
         </member>
-        <member name="P:SharpBag.Math.Moles.MMathExtensions._Digitsb__28Char">
-            <summary>Sets the mole of <see cref="M:SharpBag.Math.MathExtensions.&lt;Digits&gt;b__28(System.Char)"/>
+        <member name="P:SharpBag.Math.Moles.MMathExtensions._Digitsb__3aChar">
+            <summary>Sets the mole of <see cref="M:SharpBag.Math.MathExtensions.&lt;Digits&gt;b__3a(System.Char)"/>
             </summary>
         </member>
         <member name="T:SharpBag.Media.Moles.MMediaExtensions">
@@ -4658,14 +4662,6 @@
             <summary>Sets the mole of <see cref="M:SharpBag.Strings.StringExtensions.ReverseXor(System.String)"/>
             </summary>
         </member>
-        <member name="P:SharpBag.Strings.Moles.MStringExtensions.SplitIntoIntsStringChar">
-            <summary>Sets the mole of <see cref="M:SharpBag.Strings.StringExtensions.SplitIntoInts(System.String,System.Char)"/>
-            </summary>
-        </member>
-        <member name="P:SharpBag.Strings.Moles.MStringExtensions.SplitIntoIntsStringString">
-            <summary>Sets the mole of <see cref="M:SharpBag.Strings.StringExtensions.SplitIntoInts(System.String,System.String)"/>
-            </summary>
-        </member>
         <member name="P:SharpBag.Strings.Moles.MStringExtensions.SplitStringChar">
             <summary>Sets the mole of <see cref="M:SharpBag.Strings.StringExtensions.Split(System.String,System.Char)"/>
             </summary>
@@ -4757,8 +4753,8 @@
         <member name="P:SharpBag.FK.Moles.MStrstaRunuSumma.Behavior">
             <summary>Assigns the behavior for all methods of the moled type</summary>
         </member>
-        <member name="P:SharpBag.FK.Moles.MStrstaRunuSumma.ConstructorInt32Array">
-            <summary>Sets the mole of <see cref="M:SharpBag.FK.StærstaRunuSumma.#ctor(System.Int32[])"/>
+        <member name="P:SharpBag.FK.Moles.MStrstaRunuSumma.ConstructorIEnumerableOfInt32">
+            <summary>Sets the mole of <see cref="M:SharpBag.FK.StærstaRunuSumma.#ctor(System.Collections.Generic.IEnumerable`1{System.Int32})"/>
             </summary>
         </member>
         <member name="P:SharpBag.FK.Moles.MStrstaRunuSumma.ConstructorListOfInt32">
@@ -5175,16 +5171,12 @@
             <summary>Sets the mole of <see cref="P:SharpBag.Net.TcpServer.Thread"/>
             </summary>
         </member>
-        <member name="P:SharpBag.Net.Moles.MTcpServer._Createb__0Int32">
-            <summary>Sets the mole of <see cref="M:SharpBag.Net.TcpServer.&lt;Create&gt;b__0(System.Int32)"/>
+        <member name="P:SharpBag.Net.Moles.MTcpServer._Createb__0IPAddress">
+            <summary>Sets the mole of <see cref="M:SharpBag.Net.TcpServer.&lt;Create&gt;b__0(System.Net.IPAddress)"/>
             </summary>
         </member>
-        <member name="P:SharpBag.Net.Moles.MTcpServer._Createb__1IPAddress">
-            <summary>Sets the mole of <see cref="M:SharpBag.Net.TcpServer.&lt;Create&gt;b__1(System.Net.IPAddress)"/>
-            </summary>
-        </member>
-        <member name="P:SharpBag.Net.Moles.MTcpServer._Listenb__4ActionOfTcpServerTcpClientHandler">
-            <summary>Sets the mole of <see cref="M:SharpBag.Net.TcpServer.&lt;Listen&gt;b__4(System.Action`2{SharpBag.Net.TcpServer,SharpBag.Net.TcpClientHandler})"/>
+        <member name="P:SharpBag.Net.Moles.MTcpServer._Listenb__2ActionOfTcpServerTcpClientHandler">
+            <summary>Sets the mole of <see cref="M:SharpBag.Net.TcpServer.&lt;Listen&gt;b__2(System.Action`2{SharpBag.Net.TcpServer,SharpBag.Net.TcpClientHandler})"/>
             </summary>
         </member>
         <member name="T:SharpBag.Net.Moles.MTcpServer.AllInstances">
@@ -5242,8 +5234,8 @@
             <summary>Sets the mole of <see cref="P:SharpBag.Net.TcpServer.Thread"/>
             </summary>
         </member>
-        <member name="P:SharpBag.Net.Moles.MTcpServer.AllInstances._Listenb__4ActionOfTcpServerTcpClientHandler">
-            <summary>Sets the mole of <see cref="M:SharpBag.Net.TcpServer.&lt;Listen&gt;b__4(System.Action`2{SharpBag.Net.TcpServer,SharpBag.Net.TcpClientHandler})"/>
+        <member name="P:SharpBag.Net.Moles.MTcpServer.AllInstances._Listenb__2ActionOfTcpServerTcpClientHandler">
+            <summary>Sets the mole of <see cref="M:SharpBag.Net.TcpServer.&lt;Listen&gt;b__2(System.Action`2{SharpBag.Net.TcpServer,SharpBag.Net.TcpClientHandler})"/>
             </summary>
         </member>
         <member name="T:SharpBag.Math.Converters.Moles.MTerabit">
@@ -5516,10 +5508,6 @@
         </member>
         <member name="P:SharpBag.FK.Moles.MTools._MergeStringsb__0String">
             <summary>Sets the mole of <see cref="M:SharpBag.FK.Tools.&lt;MergeStrings&gt;b__0(System.String)"/>
-            </summary>
-        </member>
-        <member name="P:SharpBag.FK.Moles.MTools._MergeStringsb__1String">
-            <summary>Sets the mole of <see cref="M:SharpBag.FK.Tools.&lt;MergeStrings&gt;b__1(System.String)"/>
             </summary>
         </member>
         <member name="T:SharpBag.Moles.MUtils">
@@ -5969,9 +5957,6 @@
         <member name="T:SharpBag.Games.Moles.SCard">
             <summary>Stub type of <see cref="T:SharpBag.Games.Card"/>
             .</summary>
-        </member>
-        <member name="M:SharpBag.Games.Moles.SCard.#ctor(SharpBag.Games.CardType,SharpBag.Games.CardValue)">
-            <summary>Initializes a new instance</summary>
         </member>
         <member name="M:SharpBag.Games.Moles.SCard.#ctor(SharpBag.Games.CardType,SharpBag.Games.CardValue,System.Boolean)">
             <summary>Initializes a new instance</summary>
@@ -7327,7 +7312,7 @@
             <summary>Stub type of <see cref="T:SharpBag.FK.StærstaRunuSumma"/>
             .</summary>
         </member>
-        <member name="M:SharpBag.FK.Moles.SStrstaRunuSumma.#ctor(System.Int32[])">
+        <member name="M:SharpBag.FK.Moles.SStrstaRunuSumma.#ctor(System.Collections.Generic.IEnumerable{System.Int32})">
             <summary>Initializes a new instance</summary>
         </member>
         <member name="M:SharpBag.FK.Moles.SStrstaRunuSumma.#ctor(System.Collections.Generic.List{System.Int32})">

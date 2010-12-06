@@ -12,10 +12,7 @@
         /// <returns>Whether the specified year is leap year or not.</returns>
         public static bool IsLeapYear(int year)
         {
-            if (year % 400 == 0) return true;
-            if (year % 100 == 0) return false;
-            if (year % 4 == 0) return true;
-            return false;
+            return year % 400 == 0 || year % 100 != 0 && year % 4 == 0;
         }
     }
 }

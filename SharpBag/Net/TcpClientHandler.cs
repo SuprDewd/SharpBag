@@ -65,15 +65,15 @@ namespace SharpBag.Net
 
                 if (this._PingInterval > 0 && this.PingThread == null)
                 {
-                    this.PingThread = new Thread(new ThreadStart(() =>
-                    {
-                        while (this.Listening && this._PingInterval > 0)
-                        {
-                            Thread.Sleep(this._PingInterval);
+                    this.PingThread = new Thread(() =>
+                                                     {
+                                                         while (this.Listening && this._PingInterval > 0)
+                                                         {
+                                                             Thread.Sleep(this._PingInterval);
 
-                            this.SendMessage("P");
-                        }
-                    }));
+                                                             this.SendMessage("P");
+                                                         }
+                                                     });
 
                     this.PingThread.Start();
                 }
@@ -113,9 +113,9 @@ namespace SharpBag.Net
             this.Client.ReceiveTimeout = receiveTimeout;
             this.BaseStream = this.Client.GetStream();
             this.BaseStream.ReadTimeout = 1000;
-            this.Reader = new BinaryReader(this.BaseStream, (encoding == null ? Encoding.Default : encoding));
-            this.Writer = new BinaryWriter(this.BaseStream, (encoding == null ? Encoding.Default : encoding));
-            this.Thread = new Thread(new ThreadStart(Listen));
+            this.Reader = new BinaryReader(this.BaseStream, encoding ?? Encoding.Default);
+            this.Writer = new BinaryWriter(this.BaseStream, encoding ?? Encoding.Default);
+            this.Thread = new Thread(Listen);
             this.Thread.Start();
 
             this.Disconnected += c =>

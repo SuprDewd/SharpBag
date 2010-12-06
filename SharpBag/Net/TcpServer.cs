@@ -20,7 +20,7 @@ namespace SharpBag.Net
         /// <returns>A new TcpServer instance.</returns>
         public static TcpServer Create(IEnumerable<int> ports, int checkInterval = 50)
         {
-            int port = ports.First(p => Internet.IsPortFree(p));
+            int port = ports.First(Internet.IsPortFree);
             IPAddress ip = Internet.LocalIPAddresses.First(i => i.AddressFamily == AddressFamily.InterNetwork);
 
             return new TcpServer(new TcpListener(ip, port), checkInterval);
@@ -64,7 +64,7 @@ namespace SharpBag.Net
             this.Listening = true;
             this.CheckInterval = checkInterval;
             this.Listener.Start();
-            this.Thread = new Thread(new ThreadStart(Listen));
+            this.Thread = new Thread(Listen);
             this.Thread.Start();
         }
 

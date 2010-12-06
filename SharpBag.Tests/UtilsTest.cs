@@ -1,13 +1,12 @@
 // <copyright file="UtilsTest.cs" company="SuprDewd">Copyright © SuprDewd 2010</copyright>
 
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using Microsoft.Pex.Framework;
 using Microsoft.Pex.Framework.Validation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SharpBag;
-using System.Collections.Generic;
-using System.IO;
-using System.Diagnostics;
 
 namespace SharpBag
 {
@@ -25,6 +24,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method UtilsTest.Single(!!0)
         }
+
         [PexMethod]
         public IEnumerable<string> ReadLinesFromFile(string path)
         {
@@ -32,6 +32,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method UtilsTest.ReadLinesFromFile(String)
         }
+
         [PexMethod]
         public IEnumerable<string> ReadLinesFromConsole()
         {
@@ -39,6 +40,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method UtilsTest.ReadLinesFromConsole()
         }
+
         [PexMethod]
         public IEnumerable<string> ReadLinesFrom(TextReader reader)
         {
@@ -46,6 +48,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method UtilsTest.ReadLinesFrom(TextReader)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public IEnumerable<T> GenerateEndless<T>(Func<T> generator)
@@ -54,6 +57,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method UtilsTest.GenerateEndless(Func`1<!!0>)
         }
+
         [PexGenericArguments(typeof(object))]
         [PexMethod]
         public IEnumerable<T> Generate<T>(Func<T> generator)
@@ -63,6 +67,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method UtilsTest.Generate(Func`1<!!0>)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public IEnumerable<T> FromEnumerator<T>(IEnumerator<T> enumerator)
@@ -71,6 +76,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method UtilsTest.FromEnumerator(IEnumerator`1<!!0>)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public TResult ExecutionTime01<TResult>(
@@ -83,6 +89,7 @@ namespace SharpBag
             return result01;
             // TODO: add assertions to method UtilsTest.ExecutionTime01(Action, Func`2<Stopwatch,!!0>, Boolean)
         }
+
         [PexMethod]
         public long ExecutionTime(Action a, bool handleGC)
         {
@@ -90,6 +97,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method UtilsTest.ExecutionTime(Action, Boolean)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public IEnumerable<T> CreateIEnumerable<T>(T[] objects)

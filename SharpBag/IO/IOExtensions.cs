@@ -21,7 +21,7 @@ namespace SharpBag.IO
             if (lines == null) throw new ArgumentNullException("lines");
             if (writer == null) throw new ArgumentNullException("writer");
 
-            lines.ForEach((line) => writer.WriteLine(line.ToString()));
+            lines.ForEach(line => writer.WriteLine(line.ToString()));
         }
 
         /// <summary>

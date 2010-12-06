@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 
 namespace SharpBag
 {
@@ -53,8 +54,9 @@ namespace SharpBag
         /// <returns>A random boolean.</returns>
         public static bool NextBool(this Random random, double probability = 0.5)
         {
-            if (probability == 1) return true;
-            if (probability == 0) return false;
+            Contract.Requires(random != null);
+            if (probability >= 1) return true;
+            if (probability <= 0) return false;
             return random.NextDouble() <= probability;
         }
 
@@ -66,6 +68,7 @@ namespace SharpBag
         /// <returns>A random character.</returns>
         public static char NextChar(this Random random, CharType mode)
         {
+            Contract.Requires(random != null);
             switch (mode)
             {
                 case CharType.AlphabeticAny: return random.NextAlphabeticChar();
@@ -86,38 +89,42 @@ namespace SharpBag
         /// <returns>A random character.</returns>
         public static char NextChar(this Random random)
         {
+            Contract.Requires(random != null);
             return random.NextChar(CharType.AlphanumericAny);
         }
 
         private static char NextAlphanumericChar(this Random random, bool uppercase)
         {
+            Contract.Requires(random != null);
             bool numeric = random.NextBool(AlphanumericProbabilityNumericCased);
 
-            if (numeric) return random.NextNumericChar();
-            else return random.NextAlphabeticChar(uppercase);
+            return numeric ? random.NextNumericChar() : random.NextAlphabeticChar(uppercase);
         }
 
         private static char NextAlphanumericChar(this Random random)
         {
+            Contract.Requires(random != null);
             bool numeric = random.NextBool(AlphanumericProbabilityNumericAny);
 
-            if (numeric) return random.NextNumericChar();
-            else return random.NextAlphabeticChar(random.NextBool());
+            return numeric ? random.NextNumericChar() : random.NextAlphabeticChar(random.NextBool());
         }
 
         private static char NextAlphabeticChar(this Random random, bool uppercase)
         {
+            Contract.Requires(random != null);
             if (uppercase) return (char)random.Next(65, 91);
             else return (char)random.Next(97, 123);
         }
 
         private static char NextAlphabeticChar(this Random random)
         {
+            Contract.Requires(random != null);
             return random.NextAlphabeticChar(random.NextBool());
         }
 
         private static char NextNumericChar(this Random random)
         {
+            Contract.Requires(random != null);
             return (char)random.Next(48, 58);
         }
 
@@ -130,6 +137,7 @@ namespace SharpBag
         /// <returns>A random DateTime between minValue and maxValue.</returns>
         public static DateTime NextDateTime(this Random random, DateTime minValue, DateTime maxValue)
         {
+            Contract.Requires(random != null);
             return DateTime.FromOADate(random.NextDouble(minValue.ToOADate(), maxValue.ToOADate()));
         }
 
@@ -140,6 +148,7 @@ namespace SharpBag
         /// <returns>A random DateTime.</returns>
         public static DateTime NextDateTime(this Random random)
         {
+            Contract.Requires(random != null);
             return random.NextDateTime(DateTime.MinValue, DateTime.MaxValue);
         }
 
@@ -152,7 +161,8 @@ namespace SharpBag
         /// <returns>A random double between minValue and maxValue.</returns>
         public static double NextDouble(this Random random, double minValue, double maxValue)
         {
-            if (maxValue < minValue) throw new ArgumentException("Minimum value must be less than maximum value.");
+            Contract.Requires(random != null);
+            Contract.Requires(maxValue >= minValue);
 
             double difference = maxValue - minValue;
             if (!double.IsInfinity(difference)) return minValue + (random.NextDouble() * difference);
@@ -174,6 +184,7 @@ namespace SharpBag
         /// <returns>A random string with the specified length.</returns>
         public static string NextString(this Random random, int numChars, CharType mode = CharType.AlphanumericAny)
         {
+            Contract.Requires(random != null);
             char[] chars = new char[numChars];
 
             for (int i = 0; i < numChars; ++i)
@@ -191,6 +202,7 @@ namespace SharpBag
         /// <returns>A random TimeSpan between minValue and maxValue.</returns>
         public static TimeSpan NextTimeSpan(this Random random, TimeSpan minValue, TimeSpan maxValue)
         {
+            Contract.Requires(random != null);
             return TimeSpan.FromMilliseconds(random.NextDouble(minValue.TotalMilliseconds, maxValue.TotalMilliseconds));
         }
 
@@ -201,6 +213,7 @@ namespace SharpBag
         /// <returns>A random TimeSpan.</returns>
         public static TimeSpan NextTimeSpan(this Random random)
         {
+            Contract.Requires(random != null);
             return random.NextTimeSpan(TimeSpan.MinValue, TimeSpan.MaxValue);
         }
     }

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Diagnostics.Contracts;
 using System.Drawing;
 using System.Numerics;
 
@@ -16,125 +16,126 @@ namespace SharpBag.Math
         /// <summary>
         /// Find points in a circle with a specified radius.
         /// </summary>
-        /// <param name="Radius">The radius of the circle.</param>
+        /// <param name="radius">The radius of the circle.</param>
         /// <returns>An array containing points.</returns>
         /// <exception cref="System.ArgumentException"></exception>
-        public static PointF[] PointsInCircleF(int Radius)
+        public static PointF[] PointsInCircleF(int radius)
         {
-            if (Radius <= 0) throw new ArgumentException("Radius must be greater than 0.");
-            return PointsInCircleF(Radius, new PointF(Radius, Radius), 360);
+            Contract.Requires(radius > 0);
+            return PointsInCircleF(radius, new PointF(radius, radius), 360);
         }
 
         /// <summary>
         /// Find points in a circle with a specified radius.
         /// </summary>
-        /// <param name="Radius">The radius of the circle.</param>
-        /// <param name="Center">The center-point of the circle.</param>
+        /// <param name="radius">The radius of the circle.</param>
+        /// <param name="center">The center-point of the circle.</param>
         /// <returns>An array containing points.</returns>
         /// <exception cref="System.ArgumentNullException"></exception>
         /// <exception cref="System.ArgumentException"></exception>
-        public static PointF[] PointsInCircleF(int Radius, PointF Center)
+        public static PointF[] PointsInCircleF(int radius, PointF center)
         {
-            if (Center == null) throw new ArgumentNullException("Center", "Center must not be null.");
-            if (Radius <= 0) throw new ArgumentException("Radius must be greater than 0.");
-            return PointsInCircleF(Radius, Center, 360);
+            Contract.Requires(radius > 0);
+            return PointsInCircleF(radius, center, 360);
         }
 
         /// <summary>
         /// Find points in a circle with a specified radius.
         /// </summary>
-        /// <param name="Radius">The radius of the circle.</param>
-        /// <param name="Points">Number of points to return.</param>
+        /// <param name="radius">The radius of the circle.</param>
+        /// <param name="points">Number of points to return.</param>
         /// <returns>An array containing points.</returns>
         /// <exception cref="System.ArgumentException"></exception>
-        public static PointF[] PointsInCircleF(int Radius, int Points)
+        public static PointF[] PointsInCircleF(int radius, int points)
         {
-            if (Radius <= 0) throw new ArgumentException("Radius must be greater than 0.");
-            if (Points < 0) throw new ArgumentException("Points must be greater than or equal to 0.");
-            return PointsInCircleF(Radius, new PointF(Radius, Radius), Points);
+            Contract.Requires(radius > 0);
+            Contract.Requires(points > 0);
+            return PointsInCircleF(radius, new PointF(radius, radius), points);
         }
 
         /// <summary>
         /// Find points in a circle with a specified radius.
         /// </summary>
-        /// <param name="Radius">The radius of the circle.</param>
-        /// <param name="Center">The center-point of the circle.</param>
-        /// <param name="Points">Number of points to return.</param>
+        /// <param name="radius">The radius of the circle.</param>
+        /// <param name="center">The center-point of the circle.</param>
+        /// <param name="points">Number of points to return.</param>
         /// <returns>An array containing points.</returns>
         /// <exception cref="System.ArgumentException"></exception>
-        public static PointF[] PointsInCircleF(int Radius, PointF Center, int Points)
+        public static PointF[] PointsInCircleF(int radius, PointF center, int points)
         {
-            if (Radius <= 0) throw new ArgumentException("Radius must be greater than 0.");
-            if (Points < 0) throw new ArgumentException("Points must be greater than or equal to 0.");
-            PointF[] PointArray = new PointF[Points];
-            for (int i = 0; i < Points; i++)
+            Contract.Requires(radius > 0);
+            Contract.Requires(points > 0);
+
+            PointF[] pointArray = new PointF[points];
+            for (int i = 0; i < points; i++)
             {
-                PointArray[i] = new PointF((float)(Center.X + Radius * S.Math.Cos(2 * S.Math.PI * i / Points)), (float)(Center.Y + Radius * S.Math.Sin(2 * S.Math.PI * i / Points)));
+                pointArray[i] = new PointF((float)(center.X + radius * S.Math.Cos(2 * S.Math.PI * i / points)), (float)(center.Y + radius * S.Math.Sin(2 * S.Math.PI * i / points)));
             }
-            return PointArray;
+
+            return pointArray;
         }
 
         /// <summary>
         /// Find points in a circle with a specified radius.
         /// </summary>
-        /// <param name="Radius">The radius of the circle.</param>
+        /// <param name="radius">The radius of the circle.</param>
         /// <returns>An array containing points.</returns>
         /// <exception cref="System.ArgumentException"></exception>
-        public static Point[] PointsInCircle(int Radius)
+        public static Point[] PointsInCircle(int radius)
         {
-            if (Radius <= 0) throw new ArgumentException("Radius must be greater than 0.");
-            return PointsInCircle(Radius, new Point(Radius, Radius), 360);
+            Contract.Requires(radius > 0);
+            return PointsInCircle(radius, new Point(radius, radius), 360);
         }
 
         /// <summary>
         /// Find points in a circle with a specified radius.
         /// </summary>
-        /// <param name="Radius">The radius of the circle.</param>
-        /// <param name="Center">The center-point of the circle.</param>
-        /// <returns>An array containing points.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static Point[] PointsInCircle(int Radius, Point Center)
-        {
-            if (Center == null) throw new ArgumentNullException("Center", "Center must not be null.");
-            if (Radius < 0) throw new ArgumentException("Radius must be greater than 0.");
-            return PointsInCircle(Radius, Center, 360);
-        }
-
-        /// <summary>
-        /// Find points in a circle with a specified radius.
-        /// </summary>
-        /// <param name="Radius">The radius of the circle.</param>
-        /// <param name="Points">Number of points to return.</param>
-        /// <returns>An array containing points.</returns>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static Point[] PointsInCircle(int Radius, int Points)
-        {
-            if (Radius <= 0) throw new ArgumentException("Radius must be greater than 0.");
-            if (Points < 0) throw new ArgumentException("Points must be greater than or equal to 0.");
-            return PointsInCircle(Radius, new Point(Radius, Radius), Points);
-        }
-
-        /// <summary>
-        /// Find points in a circle with a specified radius.
-        /// </summary>
-        /// <param name="Radius">The radius of the circle.</param>
-        /// <param name="Center">The center-point of the circle.</param>
-        /// <param name="Points">Number of points to return.</param>
+        /// <param name="radius">The radius of the circle.</param>
+        /// <param name="center">The center-point of the circle.</param>
         /// <returns>An array containing points.</returns>
         /// <exception cref="System.ArgumentNullException"></exception>
         /// <exception cref="System.ArgumentException"></exception>
-        public static Point[] PointsInCircle(int Radius, Point Center, int Points)
+        public static Point[] PointsInCircle(int radius, Point center)
         {
-            if (Center == null) throw new ArgumentNullException("Center", "Center must not be null.");
-            if (Radius <= 0) throw new ArgumentException("Radius must be greater than 0.");
-            if (Points < 0) throw new ArgumentException("Points must be greater than or equal to 0.");
-            Point[] PointArray = new Point[Points];
-            for (int i = 0; i < Points; i++)
+            Contract.Requires(radius > 0);
+            return PointsInCircle(radius, center, 360);
+        }
+
+        /// <summary>
+        /// Find points in a circle with a specified radius.
+        /// </summary>
+        /// <param name="radius">The radius of the circle.</param>
+        /// <param name="points">Number of points to return.</param>
+        /// <returns>An array containing points.</returns>
+        /// <exception cref="System.ArgumentException"></exception>
+        public static Point[] PointsInCircle(int radius, int points)
+        {
+            Contract.Requires(radius > 0);
+            Contract.Requires(points > 0);
+            return PointsInCircle(radius, new Point(radius, radius), points);
+        }
+
+        /// <summary>
+        /// Find points in a circle with a specified radius.
+        /// </summary>
+        /// <param name="radius">The radius of the circle.</param>
+        /// <param name="center">The center-point of the circle.</param>
+        /// <param name="points">Number of points to return.</param>
+        /// <returns>An array containing points.</returns>
+        /// <exception cref="System.ArgumentNullException"></exception>
+        /// <exception cref="System.ArgumentException"></exception>
+        public static Point[] PointsInCircle(int radius, Point center, int points)
+        {
+            Contract.Requires(radius > 0);
+            Contract.Requires(points > 0);
+
+            Point[] pointArray = new Point[points];
+            for (int i = 0; i < points; i++)
             {
-                PointArray[i] = new Point((int)S.Math.Round(Center.X + Radius * S.Math.Cos(2 * S.Math.PI * i / Points)), (int)S.Math.Round(Center.Y + Radius * S.Math.Sin(2 * S.Math.PI * i / Points)));
+                pointArray[i] = new Point((int)S.Math.Round(center.X + radius * S.Math.Cos(2 * S.Math.PI * i / points)), (int)S.Math.Round(center.Y + radius * S.Math.Sin(2 * S.Math.PI * i / points)));
             }
-            return PointArray;
+
+            return pointArray;
         }
 
         #endregion PointsInCircleF & PointsInCircle & all overloads
@@ -142,11 +143,11 @@ namespace SharpBag.Math
         /// <summary>
         /// Calculates wave length from the average fluctuation time.
         /// </summary>
-        /// <param name="Tz">The average fluctuation time (Tz).</param>
+        /// <param name="tz">The average fluctuation time (Tz).</param>
         /// <returns>The length of the wave.</returns>
-        public static double WaveLength(double Tz)
+        public static double WaveLength(double tz)
         {
-            return (Tz * Tz) * 1.56;
+            return (tz * tz) * 1.56;
         }
 
         /// <summary>
@@ -163,8 +164,7 @@ namespace SharpBag.Math
                 else b %= a;
             }
 
-            if (a == 0) return b;
-            else return a;
+            return a == 0 ? b : a;
         }
 
         #region IsPrime overloads
@@ -178,14 +178,7 @@ namespace SharpBag.Math
         {
             if ((candidate & 1) == 0)
             {
-                if (candidate == 2)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return candidate == 2;
             }
 
             for (int i = 3; (i * i) <= candidate; i += 2)
@@ -195,6 +188,7 @@ namespace SharpBag.Math
                     return false;
                 }
             }
+
             return candidate != 1;
         }
 
@@ -207,14 +201,7 @@ namespace SharpBag.Math
         {
             if ((candidate & 1) == 0)
             {
-                if (candidate == 2)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return candidate == 2;
             }
 
             for (long i = 3; (i * i) <= candidate; i += 2)
@@ -236,14 +223,7 @@ namespace SharpBag.Math
         {
             if ((candidate & 1) == 0)
             {
-                if (candidate == 2)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return candidate == 2;
             }
 
             for (long i = 3; (i * i) <= candidate; i += 2)

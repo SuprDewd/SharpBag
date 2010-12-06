@@ -187,7 +187,7 @@ namespace SharpBag.Torrent
             int end = this.BencodedString.IndexOf('e', this.Index);
             if (end == -1) throw this.Error();
 
-            long integer = 0;
+            long integer;
 
             try
             {
@@ -205,8 +205,8 @@ namespace SharpBag.Torrent
         /// <returns>The string that was read.</returns>
         private BString ReadString()
         {
-            int length = 0;
-            int semicolon = 0;
+            int length;
+            int semicolon;
 
             try
             {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics.Contracts;
+using SharpBag.Math;
 
 namespace SharpBag.FK
 {
@@ -17,16 +18,16 @@ namespace SharpBag.FK
             return this.LessThan1000(i, true);
         }
 
-        private string[] LT10A = new string[] { "núll", "einn", "tveir", "þrír", "fjórir", "fimm", "sex", "sjö", "átta", "níu" };
-        private string[] LT10M = new string[] { "núll", "eitt", "tvö", "þrjú", "fjögur", "fimm", "sex", "sjö", "átta", "níu" };
-        private string[] LT20 = new string[] { "tíu", "ellefu", "tólf", "þrettán", "fjórtán", "fimmtán", "sextán", "sautján", "átján", "nítján" };
-        private string[] T = new string[] { "tíu", "tuttugu", "þrjátíu", "fjörtíu", "fimmtíu", "sextíu", "sjötíu", "áttatíu", "nítíu" };
-        private string[] V10A = new string[] { "tíu", "hundrað", "þúsund", "milljón", "milljarður" };
-        private string[] V10M = new string[] { "tíu", "hundruð", "þúsund", "milljónir", "milljarðir" };
+        private string[] LT10A = new[] { "núll", "einn", "tveir", "þrír", "fjórir", "fimm", "sex", "sjö", "átta", "níu" };
+        private string[] LT10M = new[] { "núll", "eitt", "tvö", "þrjú", "fjögur", "fimm", "sex", "sjö", "átta", "níu" };
+        private string[] LT20 = new[] { "tíu", "ellefu", "tólf", "þrettán", "fjórtán", "fimmtán", "sextán", "sautján", "átján", "nítján" };
+        private string[] T = new[] { "tíu", "tuttugu", "þrjátíu", "fjörtíu", "fimmtíu", "sextíu", "sjötíu", "áttatíu", "nítíu" };
+        private string[] V10A = new[] { "tíu", "hundrað", "þúsund", "milljón", "milljarður" };
+        private string[] V10M = new[] { "tíu", "hundruð", "þúsund", "milljónir", "milljarðir" };
 
         private string LessThan1000(int i, bool alone)
         {
-            if (i > 999) throw new ArgumentException("i");
+            Contract.Requires(i.IsBetweenOrEqualTo(0, 999));
             if (i < 100) return this.LessThan100(i, alone);
 
             int h = i / 100;
@@ -41,7 +42,7 @@ namespace SharpBag.FK
 
         private string LessThan100(int i, bool alone)
         {
-            if (i > 99) throw new ArgumentException("i");
+            Contract.Requires(i.IsBetweenOrEqualTo(0, 99));
             if (i < 10) return this.LessThan10(i, true);
 
             int t = i / 10;
@@ -55,10 +56,9 @@ namespace SharpBag.FK
 
         private string LessThan10(int i, bool alone)
         {
-            if (i > 9) throw new ArgumentException("i");
+            Contract.Requires(i.IsBetweenOrEqualTo(0, 9));
 
-            if (alone) return this.LT10A[i];
-            else return this.LT10M[i];
+            return alone ? this.LT10A[i] : this.LT10M[i];
         }
     }
 }

@@ -22,3 +22,12 @@ C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests\obj\Release\
 C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests\obj\Release\Moles\sb\o\SharpBag.Moles.pdb
 C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests\obj\Release\Moles\sb\o\Decl\SharpBag.Moles.dll
 C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests\obj\Release\Moles\sb\o\Decl\SharpBag.Moles.pdb
+C:\Users\Bjarki\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests\obj\Release\Moles\sb\b\SharpBag.Moles.xml
+C:\Users\Bjarki\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests\obj\Release\Moles\sb\b\SharpBag.Moles.dll
+C:\Users\Bjarki\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests\obj\Release\Moles\sb\b\SharpBag.Moles.pdb
+C:\Users\Bjarki\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests\obj\Release\Moles\sb\b\SharpBag.dll
+C:\Users\Bjarki\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests\obj\Release\Moles\sb\b\SharpBag.pdb
+C:\Users\Bjarki\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests\obj\Release\Moles\sb\o\ResolveAssemblyReference.cache
+C:\Users\Bjarki\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests\obj\Release\Moles\sb\o\SharpBag.Moles.rewritten
+C:\Users\Bjarki\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests\obj\Release\Moles\sb\o\SharpBag.Moles.dll
+C:\Users\Bjarki\Desktop\Projects\Forritun\SharpBag\SharpBag.Tests\obj\Release\Moles\sb\o\SharpBag.Moles.pdb

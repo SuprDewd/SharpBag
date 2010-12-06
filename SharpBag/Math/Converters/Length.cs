@@ -26,7 +26,7 @@ namespace SharpBag.Math.Converters
         /// The constructor.
         /// </summary>
         /// <param name="v"></param>
-        public Length(double v)
+        protected Length(double v)
         {
             this.Value = v;
         }
@@ -41,7 +41,7 @@ namespace SharpBag.Math.Converters
             where TResult : Length, new()
             where TValue : Length, new()
         {
-            return new TResult() { Value = (new TValue().Value * (new TValue().BaseValue / this.BaseValue)) };
+            return new TResult { Value = (new TValue().Value * (new TValue().BaseValue / this.BaseValue)) };
         }
 
         /*
@@ -74,7 +74,7 @@ namespace SharpBag.Math.Converters
         /// <param name="unit">Whether or not to append the measurement unit.</param>
         public string ToString(bool unit)
         {
-            return this.Value.ToString() + (unit ? " " + this.Unit : "");
+            return this.Value + (unit ? " " + this.Unit : "");
         }
 
         /// <see cref="Object.ToString()"/>

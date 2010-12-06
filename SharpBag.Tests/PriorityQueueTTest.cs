@@ -1,11 +1,10 @@
 // <copyright file="PriorityQueueTTest.cs" company="SuprDewd">Copyright © SuprDewd 2010</copyright>
 
 using System;
+using System.Collections.Generic;
 using Microsoft.Pex.Framework;
 using Microsoft.Pex.Framework.Validation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SharpBag.Algorithms;
-using System.Collections.Generic;
 
 namespace SharpBag.Algorithms
 {
@@ -23,6 +22,7 @@ namespace SharpBag.Algorithms
             return result;
             // TODO: add assertions to method PriorityQueueTTest.Peek(PriorityQueue`1<!!0>)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public void ItemSet<T>(
@@ -34,6 +34,7 @@ namespace SharpBag.Algorithms
             target[index] = value;
             // TODO: add assertions to method PriorityQueueTTest.ItemSet(PriorityQueue`1<!!0>, Int32, !!0)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public T ItemGet<T>([PexAssumeUnderTest]PriorityQueue<T> target, int index)
@@ -42,6 +43,7 @@ namespace SharpBag.Algorithms
             return result;
             // TODO: add assertions to method PriorityQueueTTest.ItemGet(PriorityQueue`1<!!0>, Int32)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public IEnumerable<T> GetPriorityEnumerator<T>([PexAssumeUnderTest]PriorityQueue<T> target)
@@ -50,6 +52,7 @@ namespace SharpBag.Algorithms
             return result;
             // TODO: add assertions to method PriorityQueueTTest.GetPriorityEnumerator(PriorityQueue`1<!!0>)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public IEnumerator<T> GetEnumerator01<T>([PexAssumeUnderTest]PriorityQueue<T> target, bool remove)
@@ -58,6 +61,7 @@ namespace SharpBag.Algorithms
             return result;
             // TODO: add assertions to method PriorityQueueTTest.GetEnumerator01(PriorityQueue`1<!!0>, Boolean)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public IEnumerator<T> GetEnumerator<T>([PexAssumeUnderTest]PriorityQueue<T> target)
@@ -66,6 +70,7 @@ namespace SharpBag.Algorithms
             return result;
             // TODO: add assertions to method PriorityQueueTTest.GetEnumerator(PriorityQueue`1<!!0>)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public void Enqueue<T>(
@@ -77,6 +82,7 @@ namespace SharpBag.Algorithms
             target.Enqueue(item, priority);
             // TODO: add assertions to method PriorityQueueTTest.Enqueue(PriorityQueue`1<!!0>, !!0, Int32)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public T Dequeue<T>([PexAssumeUnderTest]PriorityQueue<T> target)
@@ -85,6 +91,7 @@ namespace SharpBag.Algorithms
             return result;
             // TODO: add assertions to method PriorityQueueTTest.Dequeue(PriorityQueue`1<!!0>)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public int CountGet<T>([PexAssumeUnderTest]PriorityQueue<T> target)
@@ -93,6 +100,7 @@ namespace SharpBag.Algorithms
             return result;
             // TODO: add assertions to method PriorityQueueTTest.CountGet(PriorityQueue`1<!!0>)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public PriorityQueue<T> Constructor<T>()
@@ -101,6 +109,7 @@ namespace SharpBag.Algorithms
             return target;
             // TODO: add assertions to method PriorityQueueTTest.Constructor()
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public void Add<T>(

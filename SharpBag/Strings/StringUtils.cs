@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Diagnostics.Contracts;
+using System.Linq;
 using System.Text;
 
 namespace SharpBag.Strings
@@ -16,8 +17,8 @@ namespace SharpBag.Strings
         /// <returns>The new string.</returns>
         public static string Concat(string separator, params string[] strings)
         {
-            if (separator == null) return "";
-            if (strings == null) return "";
+            Contract.Requires(separator != null);
+            Contract.Requires(strings != null);
 
             StringBuilder sb = new StringBuilder(strings.Sum(s => (s ?? "").Length) + ((strings.Length - 1) * separator.Length));
             bool first = true;

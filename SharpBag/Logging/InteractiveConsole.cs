@@ -28,23 +28,23 @@ namespace SharpBag.Logging
         /// <summary>
         /// Can be set to true to shut down the main reading thread and all readers.
         /// </summary>
-        private bool Exit = false;
+        private bool _Exit;
         /// <summary>
         /// Whether or not there is a reading going on.
         /// </summary>
-        private bool Reading = false;
+        private bool _Reading;
         /// <summary>
         /// The command that is currently being written into the console.
         /// </summary>
-        private string Command = "";
+        private string _Command = "";
         /// <summary>
         /// The main reader thread.
         /// </summary>
-        private Thread ReaderThread = null;
+        private Thread _ReaderThread;
         /// <summary>
         /// Valid input characters.
         /// </summary>
-        public static Char[] ValidInput = new char[] { 'á', 'é', 'ú', 'ý', 'í', 'ó', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'ð', '\'', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'æ', '´', '+', '<', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', 'þ', '-', '_', '>', '"', '\\', '/', '!', '#', '$', '%', '&', '(', ')', '=', 'ö', '{', '}', '[', ']', '°', ' ', '*', '~', '?' };
+        private static readonly Char[] ValidInput = new[] { 'á', 'é', 'ú', 'ý', 'í', 'ó', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'ð', '\'', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'æ', '´', '+', '<', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', 'þ', '-', '_', '>', '"', '\\', '/', '!', '#', '$', '%', '&', '(', ')', '=', 'ö', '{', '}', '[', ']', '°', ' ', '*', '~', '?' };
 
         /// <summary>
         /// The main constructor.
@@ -71,15 +71,15 @@ namespace SharpBag.Logging
 
         /// <summary>
         /// Stop all readers and reader threads.
-        /// Note: This should always be called before application shutdown to make sure all threads are terminated.
+        /// This should always be called before application shutdown to make sure all threads are terminated.
         /// </summary>
         public void Stop()
         {
-            this.Exit = true;
+            this._Exit = true;
 
-            if (this.ReaderThread != null)
+            if (this._ReaderThread != null)
             {
-                this.ReaderThread.Abort();
+                this._ReaderThread.Abort();
             }
         }
 
@@ -88,42 +88,39 @@ namespace SharpBag.Logging
         /// </summary>
         public void ReadCommandAsync()
         {
-            this.Exit = false;
-            if (!this.Reading)
+            this._Exit = false;
+            if (!this._Reading)
             {
-                this.ReaderThread = new Thread(new ThreadStart(this._ReadCommandAsync));
-                this.ReaderThread.Start();
+                this._ReaderThread = new Thread(this.ReadCommandListener);
+                this._ReaderThread.Start();
             }
         }
 
         /// <summary>
         /// Reads commands asynchronously and fires the OnCommandEntered event when a command has been entered.
         /// </summary>
-        private void _ReadCommandAsync()
+        private void ReadCommandListener()
         {
-            while (!this.Exit)
-            {
-                this.OnCommandEntered(this.ReadCommand());
-            }
+            while (!this._Exit) this.OnCommandEntered(this.ReadCommand());
         }
 
         /// <summary>
         /// Reads a command and returns it as a string.
-        /// Note: This method will not return anything until the command is entered. Use ReadCommandAsync to read commands asynchronously.
+        /// This method will not return anything until the command is entered. Use ReadCommandAsync to read commands asynchronously.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The command.</returns>
         public string ReadCommand()
         {
-            if (this.Reading) return null;
+            if (this._Reading) return null;
 
-            this.Exit = false;
-            this.Reading = true;
-            string command = "";
+            this._Exit = false;
+            this._Reading = true;
+            string command;
             while (true)
             {
-                if (this.Exit)
+                if (this._Exit)
                 {
-                    this.Reading = false;
+                    this._Reading = false;
                     return null;
                 }
 
@@ -132,8 +129,8 @@ namespace SharpBag.Logging
                     ConsoleKeyInfo c = Console.ReadKey();
                     if (c.Key == ConsoleKey.Enter)
                     {
-                        command = this.Command;
-                        this.Command = "";
+                        command = this._Command;
+                        this._Command = "";
                         this.WriteLine(null);
                         break;
                     }
@@ -141,15 +138,15 @@ namespace SharpBag.Logging
                     {
                         try
                         {
-                            this.Command = this.Command.Substring(0, this.Command.Length - 1);
+                            this._Command = this._Command.Substring(0, this._Command.Length - 1);
                         }
                         catch { }
 
                         this.WriteLine(null);
                     }
-                    else if (ValidInput.Contains<char>(c.KeyChar.ToLower()))
+                    else if (ValidInput.Contains(c.KeyChar.ToLower()))
                     {
-                        this.Command += c.KeyChar;
+                        this._Command += c.KeyChar;
                         this.WriteLine(null);
                     }
                 }
@@ -159,13 +156,13 @@ namespace SharpBag.Logging
                 }
             }
 
-            this.Reading = false;
+            this._Reading = false;
             return command;
         }
 
         /// <summary>
         /// Writes a string to the console.
-        /// Note: This should be used instead of Console.WriteLine and Console.Write.
+        /// This should be used instead of Console.WriteLine and Console.Write.
         /// </summary>
         /// <param name="o"></param>
         public void WriteLine(object o)
@@ -181,8 +178,8 @@ namespace SharpBag.Logging
                 }
             }
 
-            Console.Write((s == null ? "" : "\n") + this.CommandStart + this.Command);
-            int k = Console.BufferWidth - this.Command.Length - 3;
+            Console.Write((s == null ? "" : "\n") + this.CommandStart + this._Command);
+            int k = Console.BufferWidth - this._Command.Length - 3;
             for (int i = 0; i < k; i++)
             {
                 Console.Write(" ");

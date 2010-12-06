@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Numerics;
 using SharpBag.Strings;
@@ -152,6 +153,8 @@ namespace SharpBag.Math
         /// <returns>The Collatz count.</returns>
         public static int CollatzCount(this int n)
         {
+            if (n == 0) return 0;
+
             int i = 0, c = n;
 
             while (c != 1)
@@ -172,6 +175,8 @@ namespace SharpBag.Math
         /// <returns>The Collatz count.</returns>
         public static long CollatzCount(this long n)
         {
+            if (n == 0) return 0;
+
             long i = 0, c = n;
 
             while (c != 1)
@@ -192,6 +197,8 @@ namespace SharpBag.Math
         /// <returns>The Collatz count.</returns>
         public static BigInteger CollatzCount(this BigInteger n)
         {
+            if (n == 0) return 0;
+
             BigInteger i = 0, c = n;
 
             while (c != 1)
@@ -227,6 +234,7 @@ namespace SharpBag.Math
         /// <returns>The current instance rounded.</returns>
         public static double Round(this double d, int digits)
         {
+            Contract.Requires(digits.IsBetweenOrEqualTo(0, 15));
             return System.Math.Round(d, digits);
         }
 
@@ -243,9 +251,7 @@ namespace SharpBag.Math
         /// <returns>The current instance inside the spcified boundaries.</returns>
         public static int Bound(this int d, int lower, int upper)
         {
-            if (d < lower) return lower;
-            if (d > upper) return upper;
-            return d;
+            return d < lower ? lower : (d > upper ? upper : d);
         }
 
         /// <summary>
@@ -257,9 +263,7 @@ namespace SharpBag.Math
         /// <returns>The current instance inside the spcified boundaries.</returns>
         public static double Bound(this double d, double lower, double upper)
         {
-            if (d < lower) return lower;
-            if (d > upper) return upper;
-            return d;
+            return d < lower ? lower : (d > upper ? upper : d);
         }
 
         #endregion Bound overloads
@@ -286,12 +290,7 @@ namespace SharpBag.Math
         /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
         public static bool IsDivisableBy(this int i, IEnumerable<int> nums)
         {
-            foreach (var num in nums)
-            {
-                if (i % num != 0) return false;
-            }
-
-            return true;
+            return nums.All(num => i != 0 && i % num == 0);
         }
 
         /// <summary>
@@ -302,12 +301,7 @@ namespace SharpBag.Math
         /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
         public static bool IsDivisableBy(this int i, params int[] nums)
         {
-            foreach (var num in nums)
-            {
-                if (i % num != 0) return false;
-            }
-
-            return true;
+            return nums.All(num => i != 0 && i % num == 0);
         }
 
         /// <summary>
@@ -330,12 +324,7 @@ namespace SharpBag.Math
         /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
         public static bool IsDivisableBy(this long i, IEnumerable<long> nums)
         {
-            foreach (var num in nums)
-            {
-                if (i % num != 0) return false;
-            }
-
-            return true;
+            return nums.All(num => i != 0 && i % num == 0);
         }
 
         /// <summary>
@@ -346,12 +335,7 @@ namespace SharpBag.Math
         /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
         public static bool IsDivisableBy(this long i, params long[] nums)
         {
-            foreach (var num in nums)
-            {
-                if (i % num != 0) return false;
-            }
-
-            return true;
+            return nums.All(num => i != 0 && i % num == 0);
         }
 
         /// <summary>
@@ -374,12 +358,7 @@ namespace SharpBag.Math
         /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
         public static bool IsDivisableBy(this BigInteger i, IEnumerable<BigInteger> nums)
         {
-            foreach (var num in nums)
-            {
-                if (i % num != 0) return false;
-            }
-
-            return true;
+            return nums.All(num => i != 0 && i % num == 0);
         }
 
         /// <summary>
@@ -390,12 +369,7 @@ namespace SharpBag.Math
         /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
         public static bool IsDivisableBy(this BigInteger i, params BigInteger[] nums)
         {
-            foreach (var num in nums)
-            {
-                if (i % num != 0) return false;
-            }
-
-            return true;
+            return nums.All(num => i != 0 && i % num == 0);
         }
 
         #endregion IsDivisableBy overloads
@@ -531,7 +505,7 @@ namespace SharpBag.Math
         /// <returns>The reversed number.</returns>
         public static long Reverse(this int i)
         {
-            return Convert.ToInt64(i.ToString().Reverse());
+            return Convert.ToInt64(System.Math.Abs(i).ToString().Reverse());
         }
 
         /// <summary>
@@ -541,7 +515,7 @@ namespace SharpBag.Math
         /// <returns>The reversed number.</returns>
         public static BigInteger Reverse(this long i)
         {
-            return BigInteger.Parse(i.ToString().Reverse());
+            return BigInteger.Parse(System.Math.Abs(i).ToString().Reverse());
         }
 
         /// <summary>
@@ -551,7 +525,7 @@ namespace SharpBag.Math
         /// <returns>The reversed number.</returns>
         public static BigInteger Reverse(this BigInteger i)
         {
-            return BigInteger.Parse(i.ToString().Reverse());
+            return BigInteger.Parse(BigInteger.Abs(i).ToString().Reverse());
         }
 
         #endregion Reverse overloads

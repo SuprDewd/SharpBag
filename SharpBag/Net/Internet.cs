@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 
@@ -24,7 +25,7 @@ namespace SharpBag.Net
         /// <summary>
         /// Returns the local machines IP addresses.
         /// </summary>
-        public static IPAddress[] LocalIPAddresses
+        public static IEnumerable<IPAddress> LocalIPAddresses
         {
             get
             {

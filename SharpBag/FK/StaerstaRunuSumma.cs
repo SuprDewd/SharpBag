@@ -17,7 +17,7 @@ namespace SharpBag.FK
         /// </summary>
         public int StærstaSumma;
         /// <summary>
-        /// Allar stærstu runurnar.
+        /// Stærstu runurnar.
         /// </summary>
         public List<List<int>> StærstuRunur;
 
@@ -25,7 +25,7 @@ namespace SharpBag.FK
         /// Smiður fyrir StærstaRunuSumma-klasann.
         /// </summary>
         /// <param name="runa">Array af tölum.</param>
-        public StærstaRunuSumma(int[] runa)
+        public StærstaRunuSumma(IEnumerable<int> runa)
         {
             Runa = runa.ToList();
             FinnaStærstuSummu();
@@ -48,20 +48,16 @@ namespace SharpBag.FK
         {
             if (Runa.Count == 0)
             {
-                StærstuRunur = new List<List<int>>() {
-                    Runa
-                };
+                StærstuRunur = new List<List<int>> { Runa };
                 StærstaSumma = 0;
             }
             else if (Runa.Count == 1)
             {
-                StærstuRunur = new List<List<int>>() {
-                    Runa
-                };
+                StærstuRunur = new List<List<int>> { Runa };
                 StærstaSumma = Runa[0];
             }
 
-            List<List<int>> mo = Moguleikar();
+            IEnumerable<List<int>> mo = Moguleikar();
 
             var max = from m in mo
                       orderby m.Sum() descending
@@ -78,7 +74,7 @@ namespace SharpBag.FK
         /// Finnur allar mögulegar runur.
         /// </summary>
         /// <returns>Allar mögulegar runur.</returns>
-        public List<List<int>> Moguleikar()
+        public IEnumerable<List<int>> Moguleikar()
         {
             List<List<int>> ut = new List<List<int>>();
             for (int i = 1; i <= Runa.Count; i++)

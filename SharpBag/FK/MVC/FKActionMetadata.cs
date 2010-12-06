@@ -22,8 +22,7 @@ namespace SharpBag.FK.MVC
 
         public string ToString(int space)
         {
-            if (this.Description == null) return this.Name;
-            else return String.Format("{0,-" + (space + 1) + "} {1}", this.Name + ":", this.Description);
+            return this.Description == null ? this.Name : String.Format("{0,-" + (space + 1) + "} {1}", this.Name + ":", this.Description);
         }
     }
 }

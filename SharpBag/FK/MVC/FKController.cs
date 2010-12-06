@@ -56,7 +56,7 @@ namespace SharpBag.FK.MVC
         /// <param name="verticalChar">A char for the vertical wall of the title.</param>
         /// <param name="horizontalChar">A char for the horizontal wall of the title.</param>
         /// <param name="args">Arguments, or settings, for the controller.</param>
-        public FKController(FKModel model, string title = null, bool timeAll = false, char verticalChar = '-', char horizontalChar = '|', string[] args = null)
+        protected FKController(FKModel model, string title = null, bool timeAll = false, char verticalChar = '-', char horizontalChar = '|', string[] args = null)
         {
             this.Model = model;
             this.Title = title;
@@ -169,11 +169,7 @@ namespace SharpBag.FK.MVC
         [FKAction("All", Description = "Run all the actions.", Pause = false)]
         public void All()
         {
-            foreach (var item in this.Actions)
-            {
-                if (item.Name.IsIn("All", "Exit")) continue;
-                this.ExecuteAction(item.Name, true);
-            }
+            foreach (var item in this.Actions.Where(item => !item.Name.IsIn("All", "Exit"))) this.ExecuteAction(item.Name, true);
         }
 
         /// <summary>

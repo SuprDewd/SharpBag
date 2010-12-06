@@ -46,9 +46,7 @@ namespace SharpBag.Comparers
                 else
                 {
                     int numberPartCompareResult = Double.Parse(numericX).CompareTo(Double.Parse(numericY));
-                    if (numberPartCompareResult != 0) return numberPartCompareResult;
-
-                    return sc.Compare(a, b);
+                    return numberPartCompareResult != 0 ? numberPartCompareResult : sc.Compare(a, b);
                 }
             }
             else return sc.Compare(a, b);

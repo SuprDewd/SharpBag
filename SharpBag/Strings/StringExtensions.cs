@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
@@ -21,8 +22,7 @@ namespace SharpBag.Strings
         /// <returns>The current string instance reversed.</returns>
         public static string Reverse(this string s)
         {
-            if (s == null) return null;
-
+            Contract.Requires(s != null);
             char[] array = s.ToCharArray();
             Array.Reverse(array);
             return new String(array);
@@ -35,7 +35,7 @@ namespace SharpBag.Strings
         /// <returns>The current string instance reversed.</returns>
         public static string ReverseXor(this string s)
         {
-            if (s == null) return null;
+            Contract.Requires(s != null);
             char[] charArray = s.ToCharArray();
             int len = s.Length - 1;
 
@@ -60,7 +60,10 @@ namespace SharpBag.Strings
         /// <returns>The current instance as a pretty string.</returns>
         public static string ToStringPretty<T>(this IEnumerable<T> source, string before = "", string delimiter = ", ", string after = "")
         {
-            if (source == null) throw new ArgumentNullException("source");
+            Contract.Requires(source != null);
+            Contract.Requires(before != null);
+            Contract.Requires(delimiter != null);
+            Contract.Requires(after != null);
 
             StringBuilder result = new StringBuilder();
             result.Append(before);
@@ -85,12 +88,12 @@ namespace SharpBag.Strings
         /// <returns>The current instance with title case.</returns>
         public static string ToTitleCase(this string text)
         {
-            if (text == null) return null;
+            Contract.Requires(text != null);
 
             CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;
-            TextInfo TextInfo = cultureInfo.TextInfo;
+            TextInfo textInfo = cultureInfo.TextInfo;
 
-            return TextInfo.ToTitleCase(text.ToLower());
+            return textInfo.ToTitleCase(text.ToLower());
         }
 
         /// <summary>
@@ -100,9 +103,8 @@ namespace SharpBag.Strings
         /// <returns>The words.</returns>
         public static string Wordify(this string s)
         {
-            if (!Regex.IsMatch(s, "[a-z]")) return s;
-
-            return string.Join(" ", Regex.Split(s, @"(?<!^)(?=[A-Z])"));
+            Contract.Requires(s != null);
+            return !Regex.IsMatch(s, "[a-z]") ? s : string.Join(" ", Regex.Split(s, @"(?<!^)(?=[A-Z])"));
         }
 
         /// <summary>
@@ -112,12 +114,15 @@ namespace SharpBag.Strings
         /// <returns>The capitalized string.</returns>
         public static string Capitalize(this string word)
         {
+            Contract.Requires(word != null);
             return word[0].ToString().ToUpper() + word.Substring(1);
         }
 
         /// <see cref="String.Format(string, object[])"/>
         public static string Format(this string s, params object[] args)
         {
+            Contract.Requires(s != null);
+            Contract.Requires(args != null);
             return String.Format(s, args);
         }
 
@@ -128,20 +133,19 @@ namespace SharpBag.Strings
         /// <param name="oldValue">The string to be replaced.</param>
         /// <param name="newValue">The string to replace all occurrences of oldValue.</param>
         /// <returns>A string that is equivalent to the current string except that all instances of oldValue are repeatedly replaced with newValue until the new string no longer contains oldValue.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.ArgumentException"></exception>
         public static string ReplaceAll(this string s, string oldValue, string newValue)
         {
-            if (s == null) throw new ArgumentNullException("s", "The current instance must not be null.");
-            if (oldValue == null) throw new ArgumentNullException("oldValue", "oldValue must not be null.");
-            if (newValue == null) throw new ArgumentNullException("newValue", "newValue must not be null.");
-            if (newValue.Contains(oldValue)) throw new ArgumentException("newValue cannot contain oldValue. This will result in an endless loop.");
+            Contract.Requires(s != null);
+            Contract.Requires(oldValue != null);
+            Contract.Requires(newValue != null);
+            Contract.Requires(!newValue.Contains(oldValue));
 
             string tS = s;
             while (tS.Contains(oldValue))
             {
                 tS = tS.Replace(oldValue, newValue);
             }
+
             return tS;
         }
 
@@ -153,7 +157,7 @@ namespace SharpBag.Strings
         /// <exception cref="System.ArgumentNullException"></exception>
         public static string[] Words(this string s)
         {
-            if (s == null) throw new ArgumentNullException("s", "The current instance must not be null.");
+            Contract.Requires(s != null);
             return s.Split(new char[] { ' ', '.', ',', '?' }, StringSplitOptions.RemoveEmptyEntries);
         }
 
@@ -165,7 +169,7 @@ namespace SharpBag.Strings
         /// <exception cref="System.ArgumentNullException"></exception>
         public static string[] Lines(this string s)
         {
-            if (s == null) throw new ArgumentNullException("s", "The current instance must not be null.");
+            Contract.Requires(s != null);
             return s.NoCarriageReturns().Split('\n');
         }
 
@@ -177,7 +181,7 @@ namespace SharpBag.Strings
         /// <exception cref="System.ArgumentNullException"></exception>
         public static string NoCarriageReturns(this string s)
         {
-            if (s == null) throw new ArgumentNullException("s", "The current instance must not be null.");
+            Contract.Requires(s != null);
             return s.Replace("\r", "");
         }
 
@@ -189,7 +193,7 @@ namespace SharpBag.Strings
         /// <exception cref="System.ArgumentNullException"></exception>
         public static string OneLineNoDoubleSpaceTrimmed(this string s)
         {
-            if (s == null) throw new ArgumentNullException("s", "The current instance must not be null.");
+            Contract.Requires(s != null);
             return s.NoCarriageReturns().ReplaceAll("\n", " ").ReplaceAll("  ", " ").Trim();
         }
 
@@ -224,8 +228,8 @@ namespace SharpBag.Strings
         /// <exception cref="System.ArgumentNullException"></exception>
         public static string[] Split(this string s, string separator)
         {
-            if (s == null) throw new ArgumentNullException("s", "The current instance must not be null.");
-            if (separator == null) throw new ArgumentNullException("separator", "separator must not be null.");
+            Contract.Requires(s != null);
+            Contract.Requires(separator != null);
             return s.Split(separator, StringSplitOptions.None);
         }
 
@@ -239,8 +243,8 @@ namespace SharpBag.Strings
         /// <exception cref="System.ArgumentNullException"></exception>
         public static string[] Split(this string s, string separator, StringSplitOptions options)
         {
-            if (s == null) throw new ArgumentNullException("s", "The current instance must not be null.");
-            if (separator == null) throw new ArgumentNullException("separator", "separator must not be null.");
+            Contract.Requires(s != null);
+            Contract.Requires(separator != null);
             return s.Split(new string[] { separator }, options);
         }
 
@@ -253,7 +257,7 @@ namespace SharpBag.Strings
         /// <exception cref="System.ArgumentNullException"></exception>
         public static string[] Split(this string s, char separator)
         {
-            if (s == null) throw new ArgumentNullException("s", "The current instance must not be null.");
+            Contract.Requires(s != null);
             return s.Split(separator, StringSplitOptions.None);
         }
 
@@ -267,52 +271,11 @@ namespace SharpBag.Strings
         /// <exception cref="System.ArgumentNullException"></exception>
         public static string[] Split(this string s, char separator, StringSplitOptions options)
         {
-            if (s == null) throw new ArgumentNullException("s", "The current instance must not be null.");
+            Contract.Requires(s != null);
             return s.Split(new char[] { separator }, options);
         }
 
         #endregion Split overloads.
-
-        /// <summary>
-        /// Splits the current string into substrings using the separator and then converts each substring into an int.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <param name="separator">The separator used to split the string into ints.</param>
-        /// <returns>An array of the ints.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        public static int[] SplitIntoInts(this string s, string separator)
-        {
-            if (s == null) throw new ArgumentNullException("s", "The current instance must not be null.");
-            if (separator == null) throw new ArgumentNullException("separator", "separator must not be null.");
-            List<int> ints = new List<int>();
-
-            foreach (string i in s.Split(separator, StringSplitOptions.None))
-            {
-                ints.Add(Convert.ToInt32(i.Trim()));
-            }
-
-            return ints.ToArray();
-        }
-
-        /// <summary>
-        /// Splits the current string into substrings using the separator and then converts each substring into an int.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <param name="separator">The separator used to split the string into ints.</param>
-        /// <returns>An array of the ints.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        public static int[] SplitIntoInts(this string s, char separator)
-        {
-            if (s == null) throw new ArgumentNullException("s", "The current instance must not be null.");
-            List<int> ints = new List<int>();
-
-            foreach (string i in s.Split(separator, StringSplitOptions.None))
-            {
-                ints.Add(Convert.ToInt32(i.Trim()));
-            }
-
-            return ints.ToArray();
-        }
 
         /// <summary>
         /// Compares the current instance to another string using the specified char array to determine the results.
@@ -324,6 +287,10 @@ namespace SharpBag.Strings
         /// <returns>Whether the current instance is less than, equal to or greater than the specified string.</returns>
         public static int CompareTo(this string s, string b, char[] c, bool caseSensitive = false)
         {
+            Contract.Requires(s != null);
+            Contract.Requires(b != null);
+            Contract.Requires(c != null);
+
             string a = s;
             if (!caseSensitive)
             {
@@ -357,22 +324,19 @@ namespace SharpBag.Strings
         /// <returns>Whether the current instance is less than, equal to or greater than the specified char.</returns>
         public static int CompareTo(this char a, char b, char[] c)
         {
+            Contract.Requires(c != null);
+
             if (a == b) return 0;
 
-            if (!c.Contains(a) || !c.Contains(b))
-            {
-                return ((int)a).CompareTo((int)b);
-            }
-            else
-            {
-                for (int i = 0; i < c.Length; i++)
-                {
-                    if (c[i] == a) return -1;
-                    if (c[i] == b) return 1;
-                }
+            if (!c.Contains(a) || !c.Contains(b)) return ((int)a).CompareTo(b);
 
-                return ((int)a).CompareTo((int)b);
+            for (int i = 0; i < c.Length; i++)
+            {
+                if (c[i] == a) return -1;
+                if (c[i] == b) return 1;
             }
+
+            return ((int)a).CompareTo(b);
         }
 
         /// <summary>
@@ -421,6 +385,8 @@ namespace SharpBag.Strings
         /// <returns>The edit distance between the current instance and the specified string.</returns>
         public static int DistanceTo(this string s, string t)
         {
+            Contract.Requires(s != null);
+            Contract.Requires(t != null);
             return s.DistanceTo(t, true);
         }
 
@@ -432,6 +398,8 @@ namespace SharpBag.Strings
         /// <returns>Whether the current instance equals the specified string, if case is ignored.</returns>
         public static bool EqualsIgnoreCase(this string a, string b)
         {
+            Contract.Requires(a != null);
+            Contract.Requires(b != null);
             return String.Equals(a, b, StringComparison.OrdinalIgnoreCase);
         }
 
@@ -443,6 +411,8 @@ namespace SharpBag.Strings
         /// <returns>Whether the current instance starts with the specified string, if case is ignored.</returns>
         public static bool StartsWithIgnoreCase(this string a, string b)
         {
+            Contract.Requires(a != null);
+            Contract.Requires(b != null);
             return a.StartsWith(b, StringComparison.OrdinalIgnoreCase);
         }
 
@@ -454,6 +424,8 @@ namespace SharpBag.Strings
         /// <returns>Whether the current instance ends with the specified string, if case is ignored.</returns>
         public static bool EndsWithIgnoreCase(this string a, string b)
         {
+            Contract.Requires(a != null);
+            Contract.Requires(b != null);
             return a.EndsWith(b, StringComparison.OrdinalIgnoreCase);
         }
 
@@ -465,6 +437,8 @@ namespace SharpBag.Strings
         /// <returns>Whether the current instance contains the specified string, if case is ignored.</returns>
         public static bool ContainsIgnoreCase(this string a, string b)
         {
+            Contract.Requires(a != null);
+            Contract.Requires(b != null);
             return a.ToLower().Contains(b.ToLower());
         }
 
@@ -476,8 +450,9 @@ namespace SharpBag.Strings
         /// <returns></returns>
         public static bool IsLike(this string s, string regex)
         {
-            if (s == null || String.IsNullOrEmpty(regex)) return false;
-            else return Regex.IsMatch(s, "^" + regex + "$");
+            Contract.Requires(s != null);
+            Contract.Requires(!String.IsNullOrEmpty(regex));
+            return Regex.IsMatch(s, "^" + regex + "$");
         }
 
         /// <summary>
@@ -487,9 +462,10 @@ namespace SharpBag.Strings
         /// <returns>The current instance in an upper-lower name variant.</returns>
         public static string ToUpperLowerNameVariant(this string value)
         {
-            if (string.IsNullOrEmpty(value)) return "";
+            Contract.Requires(value != null);
             char[] valuearray = value.ToLower().ToCharArray();
             bool nextupper = true;
+
             for (int i = 0; i < (valuearray.Count() - 1); i++)
             {
                 if (nextupper)
@@ -505,16 +481,13 @@ namespace SharpBag.Strings
                         case '-':
                         case '.':
                         case ':':
-                        case '\n':
-                            nextupper = true;
-                            break;
-                        default:
-                            nextupper = false;
-                            break;
+                        case '\n': nextupper = true; break;
+                        default: nextupper = false; break;
                     }
                 }
             }
-            return new string(valuearray);
+
+            return new String(valuearray);
         }
 
         /// <summary>
@@ -526,11 +499,11 @@ namespace SharpBag.Strings
         /// <exception cref="ArgumentException">Occurs when stringToEncrypt or key is null or empty.</exception>
         public static string Encrypt(this string stringToEncrypt, string key)
         {
-            if (string.IsNullOrEmpty(stringToEncrypt)) throw new ArgumentException("An empty string value cannot be encrypted.");
-            if (string.IsNullOrEmpty(key)) throw new ArgumentException("Cannot encrypt using an empty key. Please supply an encryption key.");
+            Contract.Requires(!String.IsNullOrEmpty(stringToEncrypt));
+            Contract.Requires(!String.IsNullOrEmpty(key));
 
-            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(new CspParameters() { KeyContainerName = key }) { PersistKeyInCsp = true };
-            return BitConverter.ToString(rsa.Encrypt(UTF8Encoding.UTF8.GetBytes(stringToEncrypt), true));
+            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(new CspParameters { KeyContainerName = key }) { PersistKeyInCsp = true };
+            return BitConverter.ToString(rsa.Encrypt(Encoding.UTF8.GetBytes(stringToEncrypt), true));
         }
 
         /// <summary>
@@ -542,15 +515,11 @@ namespace SharpBag.Strings
         /// <exception cref="ArgumentException">Occurs when stringToDecrypt or key is null or empty.</exception>
         public static string Decrypt(this string stringToDecrypt, string key)
         {
-            if (String.IsNullOrEmpty(stringToDecrypt)) throw new ArgumentException("An empty string value cannot be encrypted.");
-            if (String.IsNullOrEmpty(key)) throw new ArgumentException("Cannot decrypt using an empty key. Please supply a decryption key.");
+            Contract.Requires(!String.IsNullOrEmpty(stringToDecrypt));
+            Contract.Requires(!String.IsNullOrEmpty(key));
 
-            try
-            {
-                RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(new CspParameters() { KeyContainerName = key }) { PersistKeyInCsp = true };
-                return UTF8Encoding.UTF8.GetString(rsa.Decrypt(Array.ConvertAll<string, byte>(stringToDecrypt.Split('-'), (s => Convert.ToByte(Byte.Parse(s, NumberStyles.HexNumber)))), true));
-            }
-            finally { }
+            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(new CspParameters { KeyContainerName = key }) { PersistKeyInCsp = true };
+            return Encoding.UTF8.GetString(rsa.Decrypt(Array.ConvertAll(stringToDecrypt.Split('-'), (s => Convert.ToByte(Byte.Parse(s, NumberStyles.HexNumber)))), true));
         }
 
         /// <summary>
@@ -560,8 +529,7 @@ namespace SharpBag.Strings
         /// <returns>The current instance as a string.</returns>
         public static string AddZeroIfLessThan10(this int i)
         {
-            if (i > 9) return i.ToString();
-            else return "0" + i.ToString();
+            return i > 9 ? i.ToString() : "0" + i.ToString();
         }
     }
 }

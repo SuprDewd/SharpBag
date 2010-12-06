@@ -20,7 +20,7 @@ namespace SharpBag.Math
             {
                 int a = 0;
                 int b = 1;
-                int t = 0;
+                int t;
 
                 yield return a;
                 yield return b;
@@ -43,7 +43,7 @@ namespace SharpBag.Math
             {
                 long a = 0;
                 long b = 1;
-                long t = 0;
+                long t;
 
                 yield return a;
                 yield return b;
@@ -66,7 +66,7 @@ namespace SharpBag.Math
             {
                 BigInteger a = 0;
                 BigInteger b = 1;
-                BigInteger t = 0;
+                BigInteger t;
 
                 yield return a;
                 yield return b;

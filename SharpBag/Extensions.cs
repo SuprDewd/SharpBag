@@ -128,8 +128,6 @@ namespace SharpBag
         /// <returns>An enumerable containing the numbers.</returns>
         public static IEnumerable<BigInteger> To(this BigInteger start, BigInteger end)
         {
-            Contract.Requires(start != null);
-            Contract.Requires(end != null);
             Contract.Ensures(Contract.Result<IEnumerable<BigInteger>>() != null);
             Contract.Ensures(Contract.Result<IEnumerable<BigInteger>>().Any());
 
@@ -145,9 +143,6 @@ namespace SharpBag
         /// <returns>An enumerable containing the numbers.</returns>
         public static IEnumerable<BigInteger> To(this BigInteger start, BigInteger end, BigInteger step)
         {
-            Contract.Requires(start != null);
-            Contract.Requires(end != null);
-            Contract.Requires(step != null);
             Contract.Requires(step > 0);
             Contract.Ensures(Contract.Result<IEnumerable<BigInteger>>() != null);
             Contract.Ensures(Contract.Result<IEnumerable<BigInteger>>().Any());
@@ -303,12 +298,7 @@ namespace SharpBag
         {
             Contract.Requires(a != null);
 
-            foreach (var item in a)
-            {
-                if (item == o) return true;
-            }
-
-            return false;
+            return a.Cast<object>().Any(item => item == o);
         }
 
         /// <summary>
@@ -377,20 +367,19 @@ namespace SharpBag
         /// </summary>
         /// <typeparam name="TKey">The type of the keys in the dictionary.</typeparam>
         /// <typeparam name="TValue">The type of the values in the dictionary.</typeparam>
-        /// <param name="D">The dictionary.</param>
+        /// <param name="d">The dictionary.</param>
         /// <param name="key">The key of the element to add.</param>
         /// <param name="value">The value of the element to add. The value can be null for reference types.</param>
         /// <param name="overwrite">True if the key's value should be overwritten; otherwise false.</param>
-        public static void Add<TKey, TValue>(this Dictionary<TKey, TValue> D, TKey key, TValue value, bool overwrite)
+        public static void Add<TKey, TValue>(this Dictionary<TKey, TValue> d, TKey key, TValue value, bool overwrite)
         {
-            Contract.Requires(D != null);
-            Contract.Requires(key != null);
+            Contract.Requires(d != null);
 
-            if (D.ContainsKey(key))
+            if (d.ContainsKey(key))
             {
-                if (overwrite) D[key] = value;
+                if (overwrite) d[key] = value;
             }
-            else D.Add(key, value);
+            else d.Add(key, value);
         }
 
         #region Fill overloads
@@ -649,9 +638,7 @@ namespace SharpBag
             Contract.Requires(rand != null);
 
             T[] array = collection.ToArray();
-            if (array.Length == 0) return default(T);
-
-            return array[rand.Next(0, array.Length)];
+            return array.Length == 0 ? default(T) : array[rand.Next(0, array.Length)];
         }
 
         #endregion Random overloads
@@ -745,17 +732,7 @@ namespace SharpBag
             Contract.Requires(o != null);
             Contract.Ensures(Contract.Result<Dictionary<string, object>>() != null);
 
-            var dictionary = new Dictionary<string, object>();
-
-            foreach (var propertyInfo in o.GetType().GetProperties())
-            {
-                if (propertyInfo.GetIndexParameters().Length == 0)
-                {
-                    dictionary.Add(propertyInfo.Name, propertyInfo.GetValue(o, null));
-                }
-            }
-
-            return dictionary;
+            return o.GetType().GetProperties().Where(propertyInfo => propertyInfo.GetIndexParameters().Length == 0).ToDictionary(propertyInfo => propertyInfo.Name, propertyInfo => propertyInfo.GetValue(o, null));
         }
 
         /// <summary>
@@ -767,7 +744,7 @@ namespace SharpBag
         /// <returns>The converted value.</returns>
         public static TOut As<TOut>(this object original, TOut defaultValue = default(TOut))
         {
-            return original.As<TOut>(CultureInfo.CurrentCulture, defaultValue);
+            return original.As(CultureInfo.CurrentCulture, defaultValue);
         }
 
         /// <summary>
@@ -838,7 +815,7 @@ namespace SharpBag
                 }
             }
 
-            foreach (var item in array) yield return item;
+            return array;
         }
 
         /// <summary>

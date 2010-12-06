@@ -100,14 +100,7 @@ namespace SharpBag.FK
                         {
                             for (int a = height - 1; a >= 0; a--)
                             {
-                                if (a <= i)
-                                {
-                                    t.Append(s);
-                                }
-                                else
-                                {
-                                    t.Append(p);
-                                }
+                                t.Append(a <= i ? s : p);
                             }
 
                             t.AppendLine();
@@ -121,14 +114,7 @@ namespace SharpBag.FK
                         {
                             for (int a = height - 1; a >= 0; a--)
                             {
-                                if (a > i)
-                                {
-                                    t.Append(p);
-                                }
-                                else
-                                {
-                                    t.Append(s);
-                                }
+                                t.Append(a > i ? p : s);
                             }
 
                             t.AppendLine();

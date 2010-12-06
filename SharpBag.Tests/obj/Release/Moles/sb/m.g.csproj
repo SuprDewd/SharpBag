@@ -3,7 +3,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.21022</ProductVersion>
-    <ProjectGuid>795cfbc6-324c-41d5-b54a-710c7e67bf47</ProjectGuid>
+    <ProjectGuid>ea294c77-a58b-4ae5-a11e-a78a61db4666</ProjectGuid>
     <!-- update GUID here -->
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -49,17 +49,17 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="SharpBag, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag\bin\Release\SharpBag.dll</HintPath>
+      <HintPath>C:\Users\Bjarki\Desktop\Projects\Forritun\SharpBag\SharpBag\bin\Release\SharpBag.dll</HintPath>
       <Aliases>sb</Aliases>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
-    <Reference Include="System.Data">
+    <Reference Include="System">
       <SpecificVersion>False</SpecificVersion>
       <CopyLocal>False</CopyLocal>
       <Aliases>global</Aliases>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
-    <Reference Include="System">
+    <Reference Include="System.Data">
       <SpecificVersion>False</SpecificVersion>
       <CopyLocal>False</CopyLocal>
       <Aliases>global</Aliases>
@@ -71,8 +71,13 @@
       <Aliases>global</Aliases>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.1.2.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d">
-      <HintPath>C:\Users\SuprDewd\Desktop\Projects\Forritun\SharpBag\SharpBag\bin\Release\MySql.Data.dll</HintPath>
+    <Reference Include="System.Core">
+      <SpecificVersion>False</SpecificVersion>
+      <CopyLocal>False</CopyLocal>
+      <Aliases>global</Aliases>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.2.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d">
       <Aliases>msd</Aliases>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
@@ -82,19 +87,13 @@
       <Aliases>global</Aliases>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
-    <Reference Include="System.Core">
+    <Reference Include="System.Numerics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
       <SpecificVersion>False</SpecificVersion>
-      <CopyLocal>False</CopyLocal>
-      <Aliases>global</Aliases>
+      <Aliases>sn</Aliases>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <Aliases>wb</Aliases>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="System.Numerics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-      <SpecificVersion>False</SpecificVersion>
-      <Aliases>sn</Aliases>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
