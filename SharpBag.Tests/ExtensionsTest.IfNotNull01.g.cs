@@ -140,7 +140,33 @@ namespace SharpBag
         }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void If7901()
+public void IfNotNull01597()
+{
+    this.IfNotNull01<object>((object)null, PexChoose.CreateDelegate<Action>());
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void IfNotNull01923()
+{
+    object s0 = new object();
+    this.IfNotNull01<object>(s0, PexChoose.CreateDelegate<Action>());
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void IfNotNull173()
+{
+    this.IfNotNull<object>((object)null, PexChoose.CreateDelegate<Action<object>>());
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void IfNotNull477()
+{
+    object s0 = new object();
+    this.IfNotNull<object>(s0, PexChoose.CreateDelegate<Action<object>>());
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void If79()
 {
     int i;
     i = this.If<int>(0, true, 0);
@@ -148,7 +174,7 @@ public void If7901()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void If92101()
+public void If921()
 {
     int i;
     i = this.If<int>(0, false, 0);
@@ -157,7 +183,7 @@ public void If92101()
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
 [PexRaisedContractException(PexExceptionState.Expected)]
-public void IfNotNull01ThrowsContractException904()
+public void IfNotNull01ThrowsContractException708()
 {
     try
     {
@@ -173,13 +199,13 @@ public void IfNotNull01ThrowsContractException904()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void IfNotNull01597()
+public void IfNotNull0159705()
 {
     this.IfNotNull01<object>((object)null, PexChoose.CreateDelegate<Action>());
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void IfNotNull01923()
+public void IfNotNull0192305()
 {
     object s0 = new object();
     this.IfNotNull01<object>(s0, PexChoose.CreateDelegate<Action>());
@@ -187,7 +213,7 @@ public void IfNotNull01923()
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
 [PexRaisedContractException(PexExceptionState.Expected)]
-public void IfNotNullThrowsContractException244()
+public void IfNotNullThrowsContractException522()
 {
     try
     {
@@ -203,13 +229,13 @@ public void IfNotNullThrowsContractException244()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void IfNotNull173()
+public void IfNotNull17305()
 {
     this.IfNotNull<object>((object)null, PexChoose.CreateDelegate<Action<object>>());
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void IfNotNull477()
+public void IfNotNull47705()
 {
     object s0 = new object();
     this.IfNotNull<object>(s0, PexChoose.CreateDelegate<Action<object>>());

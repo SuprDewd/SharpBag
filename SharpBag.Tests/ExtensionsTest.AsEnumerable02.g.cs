@@ -88,8 +88,24 @@ namespace SharpBag
         }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
+public void AsEnumerable02588()
+{
+    using (PexDisposableContext disposables = PexDisposableContext.Create())
+    {
+      IEnumerator<int> iEnumerator;
+      IEnumerable<int> iEnumerable;
+      int[] ints = new int[0];
+      iEnumerator = ((IEnumerable<int>)ints).GetEnumerator();
+      disposables.Add((IDisposable)iEnumerator);
+      iEnumerable = this.AsEnumerable02<int>(iEnumerator);
+      disposables.Dispose();
+      Assert.IsNotNull((object)iEnumerable);
+    }
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
 [PexRaisedContractException(PexExceptionState.Expected)]
-public void AsEnumerable02ThrowsContractException259()
+public void AsEnumerable02ThrowsContractException447()
 {
     try
     {
@@ -106,7 +122,7 @@ public void AsEnumerable02ThrowsContractException259()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void AsEnumerable02588()
+public void AsEnumerable0258805()
 {
     using (PexDisposableContext disposables = PexDisposableContext.Create())
     {

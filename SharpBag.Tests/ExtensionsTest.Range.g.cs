@@ -59,15 +59,6 @@ namespace SharpBag
         }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void Range37701()
-{
-    IEnumerable<int> iEnumerable;
-    int[] ints = new int[1];
-    iEnumerable = this.Range<int>((IEnumerable<int>)ints, 0, 0);
-    Assert.IsNotNull((object)iEnumerable);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(ExtensionsTest))]
 [PexRaisedContractException(PexExceptionState.Expected)]
 public void RangeThrowsContractException480()
 {
@@ -87,8 +78,17 @@ public void RangeThrowsContractException480()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
+public void Range377()
+{
+    IEnumerable<int> iEnumerable;
+    int[] ints = new int[1];
+    iEnumerable = this.Range<int>((IEnumerable<int>)ints, 0, 0);
+    Assert.IsNotNull((object)iEnumerable);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
 [PexRaisedContractException(PexExceptionState.Expected)]
-public void RangeThrowsContractException204()
+public void RangeThrowsContractException95()
 {
     try
     {

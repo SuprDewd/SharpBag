@@ -226,23 +226,6 @@ public void Add01()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-[PexRaisedContractException(PexExceptionState.Expected)]
-public void AddThrowsContractException315()
-{
-    try
-    {
-      this.Add<int, int>((Dictionary<int, int>)null, 0, 0, false);
-      throw 
-        new AssertFailedException("expected an exception of type ContractException");
-    }
-    catch(Exception ex)
-    {
-      if (!PexContract.IsContractException(ex))
-        throw ex;
-    }
-}
-[TestMethod]
-[PexGeneratedBy(typeof(ExtensionsTest))]
 public void Add60905()
 {
     Dictionary<int, int> dictionary;
@@ -278,6 +261,72 @@ public void Add06()
     dictionary = new Dictionary<int, int>(13798);
     dictionary[0] = 0;
     this.Add<int, int>(dictionary, 0, 0, false);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+[PexRaisedContractException(PexExceptionState.Expected)]
+public void AddThrowsContractException261()
+{
+    try
+    {
+      this.Add<int, int>((Dictionary<int, int>)null, 0, 0, false);
+      throw 
+        new AssertFailedException("expected an exception of type ContractException");
+    }
+    catch(Exception ex)
+    {
+      if (!PexContract.IsContractException(ex))
+        throw ex;
+    }
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void Add60906()
+{
+    Dictionary<int, int> dictionary;
+    dictionary = new Dictionary<int, int>(0);
+    dictionary[0] = 0;
+    this.Add<int, int>(dictionary, 0, 0, false);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void Add29606()
+{
+    Dictionary<int, int> dictionary;
+    dictionary = new Dictionary<int, int>(0);
+    dictionary[1021] = 0;
+    this.Add<int, int>(dictionary, 764, 0, false);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void Add88506()
+{
+    Dictionary<int, int> dictionary;
+    dictionary = new Dictionary<int, int>(0);
+    dictionary[0] = 0;
+    this.Add<int, int>(dictionary, 0, 0, true);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+[Ignore]
+[PexDescription("the test state was: path bounds exceeded")]
+public void Add07()
+{
+    Dictionary<int, int> dictionary;
+    dictionary = new Dictionary<int, int>(13798);
+    dictionary[0] = 0;
+    this.Add<int, int>(dictionary, 0, 0, false);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+[Ignore]
+[PexDescription("the test state was: duplicate path")]
+public void AddThrowsTermDestructionException160()
+{
+    Dictionary<int, int> dictionary;
+    dictionary = new Dictionary<int, int>(48);
+    dictionary[0] = 0;
+    this.Add<int, int>(dictionary, 90892, 0, false);
 }
     }
 }

@@ -106,10 +106,10 @@ namespace SharpBag.Math
         /// <param name="min">The minimum integer.</param>
         /// <param name="max">The maximum integer.</param>
         /// <returns>True if the current instance is between or equal to the two integers; otherwise false.</returns>
-        /// <exception cref="System.ArgumentException"></exception>
+        [Pure]
         public static bool IsBetweenOrEqualTo(this int n, int min, int max)
         {
-            if (min > max) throw new ArgumentException("min must not be greater than max");
+            Contract.Requires(min <= max);
             return (n >= min && n <= max);
         }
 

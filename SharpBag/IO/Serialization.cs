@@ -37,7 +37,6 @@ namespace SharpBag.IO
         public static T Deserialize<T>(string fileName)
         {
             Contract.Requires(!String.IsNullOrEmpty(fileName));
-            Contract.Requires(File.Exists(fileName));
 
             using (FileStream fs = new FileStream(fileName, FileMode.Open))
             {

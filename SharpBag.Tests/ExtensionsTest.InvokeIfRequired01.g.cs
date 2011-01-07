@@ -22,7 +22,7 @@ namespace SharpBag
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
 [PexRaisedContractException(PexExceptionState.Expected)]
-public void InvokeIfRequiredThrowsContractException66()
+public void InvokeIfRequiredThrowsContractException964()
 {
     try
     {
@@ -39,7 +39,7 @@ public void InvokeIfRequiredThrowsContractException66()
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
 [PexRaisedContractException(PexExceptionState.Expected)]
-public void InvokeIfRequired01ThrowsContractException171()
+public void InvokeIfRequired01ThrowsContractException497()
 {
     try
     {

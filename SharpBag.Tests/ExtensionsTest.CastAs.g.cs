@@ -19,7 +19,7 @@ namespace SharpBag
     {
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void CastAs43401()
+public void CastAs434()
 {
     object o;
     o = this.CastAs<object>((object)null);

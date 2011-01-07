@@ -65,8 +65,18 @@ namespace SharpBag
         }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
+public void Iter960()
+{
+    IEnumerable<int> iEnumerable;
+    int[] ints = new int[0];
+    iEnumerable = this.Iter<int>
+                      ((IEnumerable<int>)ints, PexChoose.CreateDelegate<Action<int>>());
+    Assert.IsNotNull((object)iEnumerable);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
 [PexRaisedContractException(PexExceptionState.Expected)]
-public void IterThrowsContractException766()
+public void IterThrowsContractException577()
 {
     try
     {
@@ -84,7 +94,7 @@ public void IterThrowsContractException766()
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
 [PexRaisedContractException(PexExceptionState.Expected)]
-public void IterThrowsContractException919()
+public void IterThrowsContractException105()
 {
     try
     {
@@ -102,7 +112,7 @@ public void IterThrowsContractException919()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void Iter960()
+public void Iter96005()
 {
     IEnumerable<int> iEnumerable;
     int[] ints = new int[0];

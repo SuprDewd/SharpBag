@@ -1,0 +1,146 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="livetemplates.csharp.usevar">False</setting>
+      <setting name="SolutionAnalysisEnabled">True</setting>
+    </boolean>
+  </SettingsComponent>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="186C1E72-526C-4894-8350-9823347FB3AD/f:ExtensionsTest.Take01.g.cs" caret="5145" fromTop="58" />
+      <File id="186C1E72-526C-4894-8350-9823347FB3AD/f:ExtensionsTest.cs" caret="16080" fromTop="13" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/f:RandomExtensions.cs" caret="4703" fromTop="18" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Time/f:TimeExtensions.cs" caret="12375" fromTop="9" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Strings/f:StringExtensions.cs" caret="0" fromTop="0" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/f:Extensions.cs" caret="34944" fromTop="8" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:SmallPrimeUtility.cs" caret="701" fromTop="16" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Permutations.cs" caret="1550" fromTop="31" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:IMetaCollection.cs" caret="625" fromTop="12" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:GenerateOption.cs" caret="331" fromTop="9" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Combinations.cs" caret="1696" fromTop="30" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Variations.cs" caret="1401" fromTop="11" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:CombinatoricExtensions.cs" caret="721" fromTop="16" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/f:Extensions.cs" caret="34953" fromTop="8" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Combinations.cs" caret="190" fromTop="6" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:GenerateOption.cs" caret="157" fromTop="4" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Combinations.cs" caret="1059" fromTop="19" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:IMetaCollection.cs" caret="192" fromTop="5" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Permutations.cs" caret="234" fromTop="7" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:SmallPrimeUtility.cs" caret="219" fromTop="7" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Variations.cs" caret="207" fromTop="6" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Variations.cs" caret="1326" fromTop="26" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:SmallPrimeUtility.cs" caret="701" fromTop="16" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Permutations.cs" caret="1550" fromTop="31" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:IMetaCollection.cs" caret="625" fromTop="12" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:GenerateOption.cs" caret="331" fromTop="9" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Combinations.cs" caret="1696" fromTop="30" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:CombinatoricExtensions.cs" caret="33" fromTop="0" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Variations.cs" caret="14574" fromTop="17" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:CombinatoricExtensions.cs" caret="479" fromTop="15" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:CombinatoricExtensions.cs" caret="260" fromTop="11" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:CombinatoricExtensions.cs" caret="706" fromTop="15" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:CombinatoricExtensions.cs" caret="998" fromTop="20" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:CombinatoricExtensions.cs" caret="895" fromTop="19" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="public" priority="2" />
+      <Item value="static" priority="1" />
+      <Item value="IEnumerable`0" priority="4" />
+      <Item value="TaiwanCalendar`0" priority="0" />
+      <Item value="this" priority="3" />
+      <Item value="T`0" priority="4" />
+      <Item value="int" priority="4" />
+      <Item value="collection" priority="3" />
+      <Item value="indexes" priority="8" />
+      <Item value="foreach" priority="2" />
+      <Item value="yield return" priority="1" />
+      <Item value="array" priority="0" />
+      <Item value="i" priority="1" />
+      <Item value="Contract`0" priority="4" />
+      <Item value="null" priority="4" />
+      <Item value="CaseInsensitiveHashCodeProvider`0" priority="0" />
+      <Item value="if" priority="0" />
+      <Item value="yield break" priority="0" />
+      <Item value="return" priority="5" />
+      <Item value="Enumerable`0" priority="0" />
+      <Item value="params" priority="0" />
+      <Item value="AsEnumerable`1" priority="0" />
+      <Item value="false" priority="1" />
+      <Item value="IEnumerable" priority="2" />
+      <Item value="LowerIndex" priority="0" />
+      <Item value="bool" priority="3" />
+      <Item value="while" priority="0" />
+      <Item value="Distinct" priority="1" />
+      <Item value="distinct" priority="1" />
+      <Item value="SharpBag" priority="0" />
+      <Item value="Combinatorics" priority="0" />
+      <Item value="internal" priority="4" />
+      <Item value="Time" priority="0" />
+      <Item value="new" priority="0" />
+      <Item value="Permutations" priority="0" />
+      <Item value="GenerateOption`0" priority="1" />
+      <Item value="permutation" priority="1" />
+      <Item value="using" priority="0" />
+      <Item value="System" priority="0" />
+      <Item value="Linq" priority="0" />
+      <Item value="Combinations" priority="0" />
+      <Item value="Variations" priority="0" />
+      <Item value="var" priority="0" />
+      <Item value="p" priority="0" />
+      <Item value="per" priority="0" />
+      <Item value="c" priority="0" />
+      <Item value="size" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IEnumerable`1">
+      <Item value="Take`1" priority="1" />
+      <Item value="Max`2" priority="0" />
+      <Item value="ToArray`1" priority="0" />
+      <Item value="Where`1" priority="0" />
+      <Item value="Any`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Diagnostics.Contracts.Contract">
+      <Item value="Requires`1" priority="2" />
+      <Item value="Ensures`0" priority="0" />
+      <Item value="Result`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Linq.Enumerable">
+      <Item value="Empty`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:SharpBag.Combinatorics.Combinations`1">
+      <Item value="Distinct" priority="0" />
+      <Item value="Select`2" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:SharpBag.Combinatorics.Combinations`1+Enumerator">
+      <Item value="GetEnumerator`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@SharpBag.Combinatorics.GenerateOption">
+      <Item value="WithoutRepetition" priority="0" />
+      <Item value="WithRepetition" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:SharpBag.Combinatorics.Permutations`1">
+      <Item value="GetEnumerator`0" priority="0" />
+      <Item value="Select`2" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IList`1">
+      <Item value="ToArray`1" priority="2" />
+      <Item value="Indexer" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+</Configuration>

@@ -8,6 +8,7 @@ using System.Windows.Threading;
 using Microsoft.Pex.Framework;
 using Microsoft.Pex.Framework.Validation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SharpBag;
 
 namespace SharpBag
 {
@@ -455,6 +456,14 @@ namespace SharpBag
             int[,] result = Extensions.Subarray(a, x1, y1, x2, y2);
             return result;
             // TODO: add assertions to method ExtensionsTest.Subarray(Int32[,], Int32, Int32, Int32, Int32)
+        }
+        [PexGenericArguments(typeof(int))]
+        [PexMethod]
+        public IEnumerable<T> Take01<T>(IEnumerable<T> collection, int[] indexes)
+        {
+            IEnumerable<T> result = Extensions.Take<T>(collection, indexes);
+            return result;
+            // TODO: add assertions to method ExtensionsTest.Take01(IEnumerable`1<!!0>, Int32[])
         }
     }
 }

@@ -49,24 +49,6 @@ namespace SharpBag
 
         [TestMethod]
         [PexGeneratedBy(typeof(ExtensionsTest))]
-        [PexRaisedContractException(PexExceptionState.Expected)]
-        public void ForEachThrowsContractException904()
-        {
-            try
-            {
-                this.ForEach<int>((IEnumerable<int>)null, (Action<int>)null);
-                throw
-                  new AssertFailedException("expected an exception of type ContractException");
-            }
-            catch (Exception ex)
-            {
-                if (!PexContract.IsContractException(ex))
-                    throw ex;
-            }
-        }
-
-        [TestMethod]
-        [PexGeneratedBy(typeof(ExtensionsTest))]
         public void ForEach90802()
         {
             int[] ints = new int[0];
@@ -147,24 +129,6 @@ namespace SharpBag
         }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-[PexRaisedContractException(PexExceptionState.Expected)]
-public void ForEachThrowsContractException917()
-{
-    try
-    {
-      int[] ints = new int[0];
-      this.ForEach<int>((IEnumerable<int>)ints, (Action<int>)null);
-      throw 
-        new AssertFailedException("expected an exception of type ContractException");
-    }
-    catch(Exception ex)
-    {
-      if (!PexContract.IsContractException(ex))
-        throw ex;
-    }
-}
-[TestMethod]
-[PexGeneratedBy(typeof(ExtensionsTest))]
 public void ForEach908()
 {
     int[] ints = new int[0];
@@ -182,6 +146,65 @@ public void ForEach788()
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
 public void ForEach125()
+{
+    int[] ints = new int[2];
+    this.ForEach<int>
+        ((IEnumerable<int>)ints, PexChoose.CreateDelegate<Action<int>>());
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+[PexRaisedContractException(PexExceptionState.Expected)]
+public void ForEachThrowsContractException615()
+{
+    try
+    {
+      this.ForEach<int>((IEnumerable<int>)null, (Action<int>)null);
+      throw 
+        new AssertFailedException("expected an exception of type ContractException");
+    }
+    catch(Exception ex)
+    {
+      if (!PexContract.IsContractException(ex))
+        throw ex;
+    }
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+[PexRaisedContractException(PexExceptionState.Expected)]
+public void ForEachThrowsContractException599()
+{
+    try
+    {
+      int[] ints = new int[0];
+      this.ForEach<int>((IEnumerable<int>)ints, (Action<int>)null);
+      throw 
+        new AssertFailedException("expected an exception of type ContractException");
+    }
+    catch(Exception ex)
+    {
+      if (!PexContract.IsContractException(ex))
+        throw ex;
+    }
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void ForEach90805()
+{
+    int[] ints = new int[0];
+    this.ForEach<int>
+        ((IEnumerable<int>)ints, PexChoose.CreateDelegate<Action<int>>());
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void ForEach78805()
+{
+    int[] ints = new int[1];
+    this.ForEach<int>
+        ((IEnumerable<int>)ints, PexChoose.CreateDelegate<Action<int>>());
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void ForEach12505()
 {
     int[] ints = new int[2];
     this.ForEach<int>

@@ -156,23 +156,6 @@ namespace SharpBag
         }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-[PexRaisedContractException(PexExceptionState.Expected)]
-public void Fill01ThrowsContractException166()
-{
-    try
-    {
-      this.Fill01<int>((List<int>)null, 0);
-      throw 
-        new AssertFailedException("expected an exception of type ContractException");
-    }
-    catch(Exception ex)
-    {
-      if (!PexContract.IsContractException(ex))
-        throw ex;
-    }
-}
-[TestMethod]
-[PexGeneratedBy(typeof(ExtensionsTest))]
 public void Fill01571()
 {
     List<int> list;
@@ -200,7 +183,51 @@ public void Fill01105()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void Fill10501()
+[PexRaisedContractException(PexExceptionState.Expected)]
+public void Fill01ThrowsContractException489()
+{
+    try
+    {
+      this.Fill01<int>((List<int>)null, 0);
+      throw 
+        new AssertFailedException("expected an exception of type ContractException");
+    }
+    catch(Exception ex)
+    {
+      if (!PexContract.IsContractException(ex))
+        throw ex;
+    }
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void Fill0157105()
+{
+    List<int> list;
+    int[] ints = new int[0];
+    list = new List<int>((IEnumerable<int>)ints);
+    this.Fill01<int>(list, 0);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void Fill0168805()
+{
+    List<int> list;
+    int[] ints = new int[1];
+    list = new List<int>((IEnumerable<int>)ints);
+    this.Fill01<int>(list, 0);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void Fill0110505()
+{
+    List<int> list;
+    int[] ints = new int[2];
+    list = new List<int>((IEnumerable<int>)ints);
+    this.Fill01<int>(list, 0);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void Fill105()
 {
     int[] ints = new int[2];
     this.Fill<int>(ints, 0);
@@ -208,7 +235,7 @@ public void Fill10501()
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
 [PexRaisedContractException(PexExceptionState.Expected)]
-public void FillThrowsContractException503()
+public void FillThrowsContractException184()
 {
     try
     {

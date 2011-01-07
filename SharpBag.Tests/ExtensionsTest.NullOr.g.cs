@@ -104,8 +104,27 @@ namespace SharpBag
         }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
+public void NullOr907()
+{
+    int i;
+    i = this.NullOr<object, int>
+            ((object)null, PexChoose.CreateDelegate<Func<object, int>>(), 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void NullOr714()
+{
+    int i;
+    object s0 = new object();
+    i =
+      this.NullOr<object, int>(s0, PexChoose.CreateDelegate<Func<object, int>>(), 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
 [PexRaisedContractException(PexExceptionState.Expected)]
-public void NullOrThrowsContractException951()
+public void NullOrThrowsContractException745()
 {
     try
     {
@@ -122,7 +141,7 @@ public void NullOrThrowsContractException951()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void NullOr907()
+public void NullOr90705()
 {
     int i;
     i = this.NullOr<object, int>
@@ -131,7 +150,7 @@ public void NullOr907()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void NullOr714()
+public void NullOr71405()
 {
     int i;
     object s0 = new object();

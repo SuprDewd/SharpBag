@@ -3,7 +3,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.21022</ProductVersion>
-    <ProjectGuid>ea294c77-a58b-4ae5-a11e-a78a61db4666</ProjectGuid>
+    <ProjectGuid>68e0e508-26bc-4ba0-8f3e-f4cd374aa17e</ProjectGuid>
     <!-- update GUID here -->
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -49,7 +49,7 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="SharpBag, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>C:\Users\Bjarki\Desktop\Projects\Forritun\SharpBag\SharpBag\bin\Release\SharpBag.dll</HintPath>
+      <HintPath>C:\Users\SuprDewd\Documents\Projects\SharpBag\SharpBag\bin\Release\SharpBag.dll</HintPath>
       <Aliases>sb</Aliases>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
@@ -71,17 +71,18 @@
       <Aliases>global</Aliases>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
-    <Reference Include="System.Core">
+    <Reference Include="MySql.Data, Version=6.1.2.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d">
+      <HintPath>C:\Users\SuprDewd\Documents\Projects\SharpBag\SharpBag\bin\Release\MySql.Data.dll</HintPath>
+      <Aliases>msd</Aliases>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Drawing">
       <SpecificVersion>False</SpecificVersion>
       <CopyLocal>False</CopyLocal>
       <Aliases>global</Aliases>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.2.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d">
-      <Aliases>msd</Aliases>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="System.Drawing">
+    <Reference Include="System.Core">
       <SpecificVersion>False</SpecificVersion>
       <CopyLocal>False</CopyLocal>
       <Aliases>global</Aliases>
@@ -108,6 +109,7 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.Pex.Framework">
+      <HintPath>C:\Program Files (x86)\Microsoft Moles\PublicAssemblies\Microsoft.Pex.Framework.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.Pex.Linq">
@@ -115,7 +117,7 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
-      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\PublicAssemblies\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</HintPath>
+      <HintPath>c:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\PublicAssemblies\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions">

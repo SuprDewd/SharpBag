@@ -21,7 +21,7 @@ namespace SharpBag
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
 [PexRaisedContractException(PexExceptionState.Expected)]
-public void IsNullableTypeThrowsContractException305()
+public void IsNullableTypeThrowsContractException691()
 {
     try
     {

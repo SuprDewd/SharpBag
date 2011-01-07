@@ -62,7 +62,17 @@ namespace SharpBag
         }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void EmptyIfNull12201()
+[Ignore]
+[PexDescription("the test state was: duplicate path")]
+public void EmptyIfNull57406()
+{
+    IEnumerable<int> iEnumerable;
+    iEnumerable = this.EmptyIfNull<int>((IEnumerable<int>)null);
+    Assert.IsNotNull((object)iEnumerable);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void EmptyIfNull122()
 {
     IEnumerable<int> iEnumerable;
     int[] ints = new int[0];
@@ -71,17 +81,7 @@ public void EmptyIfNull12201()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void EmptyIfNull57401()
-{
-    IEnumerable<int> iEnumerable;
-    iEnumerable = this.EmptyIfNull<int>((IEnumerable<int>)null);
-    Assert.IsNotNull((object)iEnumerable);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(ExtensionsTest))]
-[Ignore]
-[PexDescription("the test state was: duplicate path")]
-public void EmptyIfNull57406()
+public void EmptyIfNull574()
 {
     IEnumerable<int> iEnumerable;
     iEnumerable = this.EmptyIfNull<int>((IEnumerable<int>)null);

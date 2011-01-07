@@ -19,28 +19,28 @@ namespace SharpBag
 {
     public partial class ExtensionsTest
     {
-        [TestMethod]
-        [PexGeneratedBy(typeof(ExtensionsTest))]
-        [PexRaisedContractException(PexExceptionState.Expected)]
-        public void Random01ThrowsContractException824()
-        {
-            try
-            {
-                int i;
-                i = this.Random01<int>((IEnumerable<int>)null, (Random)null);
-                throw
-                  new AssertFailedException("expected an exception of type ContractException");
-            }
-            catch (Exception ex)
-            {
-                if (!PexContract.IsContractException(ex))
-                    throw ex;
-            }
-        }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
 [PexRaisedContractException(PexExceptionState.Expected)]
-public void Random01ThrowsContractException859()
+public void Random01ThrowsContractException508()
+{
+    try
+    {
+      int i;
+      i = this.Random01<int>((IEnumerable<int>)null, (Random)null);
+      throw 
+        new AssertFailedException("expected an exception of type ContractException");
+    }
+    catch(Exception ex)
+    {
+      if (!PexContract.IsContractException(ex))
+        throw ex;
+    }
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+[PexRaisedContractException(PexExceptionState.Expected)]
+public void Random01ThrowsContractException791()
 {
     try
     {
@@ -58,16 +58,7 @@ public void Random01ThrowsContractException859()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void Random57501()
-{
-    int i;
-    int[] ints = new int[0];
-    i = this.Random<int>((IEnumerable<int>)ints);
-    Assert.AreEqual<int>(0, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(ExtensionsTest))]
-public void Random431()
+public void Random43101()
 {
     int i;
     int[] ints = new int[1];
@@ -76,8 +67,17 @@ public void Random431()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
+public void Random575()
+{
+    int i;
+    int[] ints = new int[0];
+    i = this.Random<int>((IEnumerable<int>)ints);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
 [PexRaisedContractException(PexExceptionState.Expected)]
-public void RandomThrowsContractException872()
+public void RandomThrowsContractException730()
 {
     try
     {

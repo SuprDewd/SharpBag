@@ -80,6 +80,13 @@
     <Compile Include="Algorithms\PriorityQueueItem.cs" />
     <Compile Include="Algorithms\Sorting\SortDirection.cs" />
     <Compile Include="Algorithms\Sorting\SortExtensions.cs" />
+    <Compile Include="Combinatorics\Combinations.cs" />
+    <Compile Include="Combinatorics\CombinatoricExtensions.cs" />
+    <Compile Include="Combinatorics\GenerateOption.cs" />
+    <Compile Include="Combinatorics\IMetaCollection.cs" />
+    <Compile Include="Combinatorics\Permutations.cs" />
+    <Compile Include="Combinatorics\SmallPrimeUtility.cs" />
+    <Compile Include="Combinatorics\Variations.cs" />
     <Compile Include="Comparers\AlphaNumberSettings.cs" />
     <Compile Include="Comparers\AlphaNumberComparer.cs" />
     <Compile Include="Database\MSSqlDB.cs" />

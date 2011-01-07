@@ -59,15 +59,6 @@ namespace SharpBag
         }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void GetByPercent56201()
-{
-    int i;
-    int[] ints = new int[1];
-    i = this.GetByPercent<int>(ints, 0);
-    Assert.AreEqual<int>(0, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(ExtensionsTest))]
 [PexRaisedContractException(PexExceptionState.Expected)]
 public void GetByPercentThrowsContractException15101()
 {
@@ -86,8 +77,17 @@ public void GetByPercentThrowsContractException15101()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
+public void GetByPercent562()
+{
+    int i;
+    int[] ints = new int[1];
+    i = this.GetByPercent<int>(ints, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
 [PexRaisedContractException(PexExceptionState.Expected)]
-public void GetByPercentThrowsContractException122()
+public void GetByPercentThrowsContractException75()
 {
     try
     {

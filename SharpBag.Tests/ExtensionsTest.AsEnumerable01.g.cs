@@ -100,8 +100,26 @@ namespace SharpBag
         }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
+public void AsEnumerable01283()
+{
+    IEnumerable<int> iEnumerable;
+    int[,,] ints = new int[0, 0, 0];
+    iEnumerable = this.AsEnumerable01<int>(ints);
+    Assert.IsNotNull((object)iEnumerable);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void AsEnumerable560()
+{
+    IEnumerable<int> iEnumerable;
+    int[,] ints = new int[0, 0];
+    iEnumerable = this.AsEnumerable<int>(ints);
+    Assert.IsNotNull((object)iEnumerable);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
 [PexRaisedContractException(PexExceptionState.Expected)]
-public void AsEnumerable01ThrowsContractException811()
+public void AsEnumerable01ThrowsContractException781()
 {
     try
     {
@@ -118,7 +136,7 @@ public void AsEnumerable01ThrowsContractException811()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void AsEnumerable01283()
+public void AsEnumerable0128305()
 {
     IEnumerable<int> iEnumerable;
     int[,,] ints = new int[0, 0, 0];
@@ -128,7 +146,7 @@ public void AsEnumerable01283()
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
 [PexRaisedContractException(PexExceptionState.Expected)]
-public void AsEnumerableThrowsContractException962()
+public void AsEnumerableThrowsContractException497()
 {
     try
     {
@@ -145,7 +163,7 @@ public void AsEnumerableThrowsContractException962()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void AsEnumerable560()
+public void AsEnumerable56005()
 {
     IEnumerable<int> iEnumerable;
     int[,] ints = new int[0, 0];

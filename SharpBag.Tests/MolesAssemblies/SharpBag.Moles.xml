@@ -1242,6 +1242,46 @@
             <summary>Sets the mole of <see cref="P:SharpBag.Math.Converters.Centimeter.Unit"/>
             </summary>
         </member>
+        <member name="T:SharpBag.Combinatorics.Moles.MCombinatoricExtensions">
+            <summary>Mole type of <see cref="T:SharpBag.Combinatorics.CombinatoricExtensions"/>
+            .</summary>
+        </member>
+        <member name="M:SharpBag.Combinatorics.Moles.MCombinatoricExtensions.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:SharpBag.Combinatorics.Moles.MCombinatoricExtensions.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SharpBag.Combinatorics.Moles.MCombinatoricExtensions.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
+        </member>
+        <member name="M:SharpBag.Combinatorics.Moles.MCombinatoricExtensions.CombinationsTArrayInt32Boolean``1(Microsoft.Moles.Framework.MolesDelegates.Func{``0[],System.Int32,System.Boolean,System.Collections.Generic.IEnumerable{``0[]}})">
+            <summary>Sets the mole of <see cref="M:SharpBag.Combinatorics.CombinatoricExtensions.Combinations``1(``0[],System.Int32,System.Boolean)"/>
+            </summary>
+        </member>
+        <member name="M:SharpBag.Combinatorics.Moles.MCombinatoricExtensions.PermutationsTArrayBoolean``1(Microsoft.Moles.Framework.MolesDelegates.Func{``0[],System.Boolean,System.Collections.Generic.IEnumerable{``0[]}})">
+            <summary>Sets the mole of <see cref="M:SharpBag.Combinatorics.CombinatoricExtensions.Permutations``1(``0[],System.Boolean)"/>
+            </summary>
+        </member>
+        <member name="M:SharpBag.Combinatorics.Moles.MCombinatoricExtensions.VariationsTArrayInt32Boolean``1(Microsoft.Moles.Framework.MolesDelegates.Func{``0[],System.Int32,System.Boolean,System.Collections.Generic.IEnumerable{``0[]}})">
+            <summary>Sets the mole of <see cref="M:SharpBag.Combinatorics.CombinatoricExtensions.Variations``1(``0[],System.Int32,System.Boolean)"/>
+            </summary>
+        </member>
+        <member name="M:SharpBag.Combinatorics.Moles.MCombinatoricExtensions._Combinationsb__1IListOfT``1(Microsoft.Moles.Framework.MolesDelegates.Func{System.Collections.Generic.IList{``0},``0[]})">
+            <summary>Sets the mole of <see cref="M:SharpBag.Combinatorics.CombinatoricExtensions.&lt;Combinations&gt;b__1``1(System.Collections.Generic.IList`1{``0})"/>
+            </summary>
+        </member>
+        <member name="M:SharpBag.Combinatorics.Moles.MCombinatoricExtensions._Permutationsb__0IListOfT``1(Microsoft.Moles.Framework.MolesDelegates.Func{System.Collections.Generic.IList{``0},``0[]})">
+            <summary>Sets the mole of <see cref="M:SharpBag.Combinatorics.CombinatoricExtensions.&lt;Permutations&gt;b__0``1(System.Collections.Generic.IList`1{``0})"/>
+            </summary>
+        </member>
+        <member name="M:SharpBag.Combinatorics.Moles.MCombinatoricExtensions._Variationsb__2IListOfT``1(Microsoft.Moles.Framework.MolesDelegates.Func{System.Collections.Generic.IList{``0},``0[]})">
+            <summary>Sets the mole of <see cref="M:SharpBag.Combinatorics.CombinatoricExtensions.&lt;Variations&gt;b__2``1(System.Collections.Generic.IList`1{``0})"/>
+            </summary>
+        </member>
+        <member name="P:SharpBag.Combinatorics.Moles.MCombinatoricExtensions.Behavior">
+            <summary>Assigns the behavior for all methods of the moled type</summary>
+        </member>
         <member name="T:SharpBag.Database.Moles.MDatabaseExtensions">
             <summary>Mole type of <see cref="T:SharpBag.Database.DatabaseExtensions"/>
             .</summary>
@@ -1527,6 +1567,14 @@
             <summary>Sets the mole of <see cref="M:SharpBag.Extensions.TakeEvery``1(System.Collections.Generic.IEnumerable`1{``0},System.Int32,System.Int32)"/>
             </summary>
         </member>
+        <member name="M:SharpBag.Moles.MExtensions.TakeIEnumerableOfTIEnumerableOfInt32``1(Microsoft.Moles.Framework.MolesDelegates.Func{System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{System.Int32},System.Collections.Generic.IEnumerable{``0}})">
+            <summary>Sets the mole of <see cref="M:SharpBag.Extensions.Take``1(System.Collections.Generic.IEnumerable`1{``0},System.Collections.Generic.IEnumerable`1{System.Int32})"/>
+            </summary>
+        </member>
+        <member name="M:SharpBag.Moles.MExtensions.TakeIEnumerableOfTInt32Array``1(Microsoft.Moles.Framework.MolesDelegates.Func{System.Collections.Generic.IEnumerable{``0},System.Int32[],System.Collections.Generic.IEnumerable{``0}})">
+            <summary>Sets the mole of <see cref="M:SharpBag.Extensions.Take``1(System.Collections.Generic.IEnumerable`1{``0},System.Int32[])"/>
+            </summary>
+        </member>
         <member name="M:SharpBag.Moles.MExtensions.TimesInt32FuncOfT``1(Microsoft.Moles.Framework.MolesDelegates.Func{System.Int32,System.Func{``0},System.Collections.Generic.IEnumerable{``0}})">
             <summary>Sets the mole of <see cref="M:SharpBag.Extensions.Times``1(System.Int32,System.Func`1{``0})"/>
             </summary>
@@ -1545,6 +1593,10 @@
         </member>
         <member name="M:SharpBag.Moles.MExtensions.WithTActionOfT``1(Microsoft.Moles.Framework.MolesDelegates.Action{``0,System.Action{``0}})">
             <summary>Sets the mole of <see cref="M:SharpBag.Extensions.With``1(``0,System.Action`1{``0})"/>
+            </summary>
+        </member>
+        <member name="M:SharpBag.Moles.MExtensions._Takeb__5eInt32``1(Microsoft.Moles.Framework.MolesDelegates.Func{System.Int32,System.Boolean})">
+            <summary>Sets the mole of <see cref="M:SharpBag.Extensions.&lt;Take&gt;b__5e``1(System.Int32)"/>
             </summary>
         </member>
         <member name="P:SharpBag.Moles.MExtensions.AsEnumerableIEnumerator">

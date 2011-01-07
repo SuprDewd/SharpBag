@@ -351,9 +351,7 @@ namespace SharpBag.Time
                     yield return from;
                     from += step;
                 }
-                while (from < to);
-
-                yield return to;
+                while (from <= to);
             }
             else if (from > to)
             {
@@ -361,15 +359,9 @@ namespace SharpBag.Time
                 {
                     yield return from;
                     from -= step;
-                }
-                while (from > to);
-
-                yield return to;
+                } while (from >= to);
             }
-            else
-            {
-                yield return from;
-            }
+            else yield return from;
         }
 
         #endregion To overloads

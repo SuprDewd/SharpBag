@@ -21,7 +21,7 @@ namespace SharpBag
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
 [PexRaisedContractException(PexExceptionState.Expected)]
-public void ContainsArrayThrowsContractException850()
+public void ContainsArrayThrowsContractException828()
 {
     try
     {

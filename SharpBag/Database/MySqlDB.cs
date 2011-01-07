@@ -34,7 +34,7 @@ namespace SharpBag.Database
         /// <returns>The escaped string.</returns>
         public override string SQLEscape(string s)
         {
-            Contract.Requires(s != null);
+            // Contract.Requires(s != null);
             return MySqlHelper.EscapeString(s);
         }
 
@@ -62,8 +62,8 @@ namespace SharpBag.Database
         /// <returns>The query command.</returns>
         protected override DbCommand CreateCommand(string q, MySqlConnection c)
         {
-            Contract.Requires(!string.IsNullOrEmpty(q));
-            Contract.Requires(c != null);
+            // Contract.Requires(!string.IsNullOrEmpty(q));
+            // Contract.Requires(c != null);
 
             return new MySqlCommand(q, c);
         }

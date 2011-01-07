@@ -21,7 +21,7 @@ namespace SharpBag
     {
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void Is37301()
+public void Is373()
 {
     bool b;
     b = this.Is<object>((object)null);
@@ -29,7 +29,7 @@ public void Is37301()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void IsIn013401()
+public void IsIn0134()
 {
     bool b;
     int[] ints = new int[0];
@@ -38,7 +38,7 @@ public void IsIn013401()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void IsIn0157001()
+public void IsIn01570()
 {
     bool b;
     int[] ints = new int[1];
@@ -48,7 +48,7 @@ public void IsIn0157001()
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
 [PexRaisedContractException(PexExceptionState.Expected)]
-public void IsIn01ThrowsContractException541()
+public void IsIn01ThrowsContractException937()
 {
     try
     {
@@ -65,7 +65,7 @@ public void IsIn01ThrowsContractException541()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void IsIn3401()
+public void IsIn34()
 {
     bool b;
     int[] ints = new int[0];
@@ -74,7 +74,7 @@ public void IsIn3401()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void IsIn57001()
+public void IsIn570()
 {
     bool b;
     int[] ints = new int[1];
@@ -84,7 +84,7 @@ public void IsIn57001()
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
 [PexRaisedContractException(PexExceptionState.Expected)]
-public void IsInThrowsContractException401()
+public void IsInThrowsContractException588()
 {
     try
     {

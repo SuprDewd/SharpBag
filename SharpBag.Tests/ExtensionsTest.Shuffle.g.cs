@@ -21,33 +21,6 @@ namespace SharpBag
     {
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void Shuffle521()
-{
-    IEnumerable<int> iEnumerable;
-    int[] ints = new int[0];
-    iEnumerable = this.Shuffle<int>((IEnumerable<int>)ints, (Random)null);
-    Assert.IsNotNull((object)iEnumerable);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(ExtensionsTest))]
-[PexRaisedContractException(PexExceptionState.Expected)]
-public void ShuffleThrowsContractException566()
-{
-    try
-    {
-      IEnumerable<int> iEnumerable;
-      iEnumerable = this.Shuffle<int>((IEnumerable<int>)null, (Random)null);
-      throw 
-        new AssertFailedException("expected an exception of type ContractException");
-    }
-    catch(Exception ex)
-    {
-      if (!PexContract.IsContractException(ex))
-        throw ex;
-    }
-}
-[TestMethod]
-[PexGeneratedBy(typeof(ExtensionsTest))]
 public void Shuffle875()
 {
     IEnumerable<int> iEnumerable;
@@ -75,10 +48,46 @@ public void Shuffle713()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void Shuffle632()
+public void Shuffle52101()
+{
+    IEnumerable<int> iEnumerable;
+    int[] ints = new int[0];
+    iEnumerable = this.Shuffle<int>((IEnumerable<int>)ints, (Random)null);
+    Assert.IsNotNull((object)iEnumerable);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void Shuffle63201()
 {
     IEnumerable<int> iEnumerable;
     int[] ints = new int[4];
+    iEnumerable = this.Shuffle<int>((IEnumerable<int>)ints, (Random)null);
+    Assert.IsNotNull((object)iEnumerable);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+[PexRaisedContractException(PexExceptionState.Expected)]
+public void ShuffleThrowsContractException13()
+{
+    try
+    {
+      IEnumerable<int> iEnumerable;
+      iEnumerable = this.Shuffle<int>((IEnumerable<int>)null, (Random)null);
+      throw 
+        new AssertFailedException("expected an exception of type ContractException");
+    }
+    catch(Exception ex)
+    {
+      if (!PexContract.IsContractException(ex))
+        throw ex;
+    }
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void Shuffle395()
+{
+    IEnumerable<int> iEnumerable;
+    int[] ints = new int[6];
     iEnumerable = this.Shuffle<int>((IEnumerable<int>)ints, (Random)null);
     Assert.IsNotNull((object)iEnumerable);
 }

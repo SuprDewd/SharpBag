@@ -36,7 +36,7 @@ namespace SharpBag
         }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void Execute42401()
+public void Execute424()
 {
     int[] ints = new int[2];
     this.Execute<int>((IEnumerable<int>)ints);
@@ -44,7 +44,7 @@ public void Execute42401()
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
 [PexRaisedContractException(PexExceptionState.Expected)]
-public void ExecuteThrowsContractException956()
+public void ExecuteThrowsContractException357()
 {
     try
     {

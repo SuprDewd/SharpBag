@@ -19,7 +19,7 @@ namespace SharpBag
     {
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void IsNullOrEmpty17701()
+public void IsNullOrEmpty177()
 {
     bool b;
     int[] ints = new int[0];
@@ -28,7 +28,7 @@ public void IsNullOrEmpty17701()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void IsNullOrEmpty83901()
+public void IsNullOrEmpty839()
 {
     bool b;
     int[] ints = new int[1];
@@ -37,7 +37,7 @@ public void IsNullOrEmpty83901()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void IsNullOrEmpty96301()
+public void IsNullOrEmpty963()
 {
     bool b;
     b = this.IsNullOrEmpty<int>((IEnumerable<int>)null);

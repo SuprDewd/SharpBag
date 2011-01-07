@@ -19,7 +19,7 @@ namespace SharpBag
     {
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void IsNot85901()
+public void IsNot859()
 {
     bool b;
     b = this.IsNot<object>((object)null);

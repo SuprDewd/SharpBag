@@ -48,10 +48,7 @@ namespace SharpBag
             Contract.Requires(source != null);
             Contract.Requires(action != null);
 
-            foreach (T elem in source)
-            {
-                action(elem);
-            }
+            foreach (T elem in source) action(elem);
         }
 
         #endregion Igor Ostrovsky
@@ -73,20 +70,8 @@ namespace SharpBag
             Contract.Ensures(Contract.Result<IEnumerable<int>>() != null);
             Contract.Ensures(Contract.Result<IEnumerable<int>>().Any());
 
-            if (start < end)
-            {
-                for (int i = start; i <= end; i += step)
-                {
-                    yield return i;
-                }
-            }
-            else if (start > end)
-            {
-                for (int i = start; i >= end; i -= step)
-                {
-                    yield return i;
-                }
-            }
+            if (start < end) for (int i = start; i <= end; i += step) yield return i;
+            else if (start > end) for (int i = start; i >= end; i -= step) yield return i;
             else yield return end;
         }
 
@@ -103,20 +88,8 @@ namespace SharpBag
             Contract.Ensures(Contract.Result<IEnumerable<long>>() != null);
             Contract.Ensures(Contract.Result<IEnumerable<long>>().Any());
 
-            if (start < end)
-            {
-                for (long i = start; i <= end; i += step)
-                {
-                    yield return i;
-                }
-            }
-            else if (start > end)
-            {
-                for (long i = start; i >= end; i -= step)
-                {
-                    yield return i;
-                }
-            }
+            if (start < end) for (long i = start; i <= end; i += step) yield return i;
+            else if (start > end) for (long i = start; i >= end; i -= step) yield return i;
             else yield return end;
         }
 
@@ -147,20 +120,8 @@ namespace SharpBag
             Contract.Ensures(Contract.Result<IEnumerable<BigInteger>>() != null);
             Contract.Ensures(Contract.Result<IEnumerable<BigInteger>>().Any());
 
-            if (start < end)
-            {
-                for (BigInteger i = start; i <= end; i += step)
-                {
-                    yield return i;
-                }
-            }
-            else if (start > end)
-            {
-                for (BigInteger i = start; i >= end; i -= step)
-                {
-                    yield return i;
-                }
-            }
+            if (start < end) for (BigInteger i = start; i <= end; i += step) yield return i;
+            else if (start > end) for (BigInteger i = start; i >= end; i -= step) yield return i;
             else yield return end;
         }
 
@@ -177,20 +138,8 @@ namespace SharpBag
             Contract.Ensures(Contract.Result<IEnumerable<char>>() != null);
             Contract.Ensures(Contract.Result<IEnumerable<char>>().Any());
 
-            if (start < end)
-            {
-                for (int i = start; i <= end; i += step)
-                {
-                    yield return (char)i;
-                }
-            }
-            else if (start > end)
-            {
-                for (int i = start; i >= end; i -= step)
-                {
-                    yield return (char)i;
-                }
-            }
+            if (start < end) for (int i = start; i <= end; i += step) yield return (char)i;
+            else if (start > end) for (int i = start; i >= end; i -= step) yield return (char)i;
             else yield return end;
         }
 
@@ -255,12 +204,8 @@ namespace SharpBag
             Contract.Ensures(Contract.Result<IEnumerable<T>>() != null);
 
             for (int i1 = 0; i1 < multiDArray.GetLength(0); i1++)
-            {
                 for (int i2 = 0; i2 < multiDArray.GetLength(1); i2++)
-                {
                     yield return multiDArray[i1, i2];
-                }
-            }
         }
 
         /// <summary>
@@ -275,15 +220,9 @@ namespace SharpBag
             Contract.Ensures(Contract.Result<IEnumerable<T>>() != null);
 
             for (int i1 = 0; i1 < multiDArray.GetLength(0); i1++)
-            {
                 for (int i2 = 0; i2 < multiDArray.GetLength(1); i2++)
-                {
                     for (int i3 = 0; i3 < multiDArray.GetLength(2); i3++)
-                    {
                         yield return multiDArray[i1, i2, i3];
-                    }
-                }
-            }
         }
 
         #endregion Multidimensional Arrays
@@ -338,10 +277,7 @@ namespace SharpBag
             Contract.Requires(e != null);
             Contract.Ensures(Contract.Result<IEnumerable<T>>() != null);
 
-            while (e.MoveNext())
-            {
-                yield return e.Current;
-            }
+            while (e.MoveNext()) yield return e.Current;
         }
 
         /// <summary>
@@ -354,10 +290,7 @@ namespace SharpBag
             Contract.Requires(e != null);
             Contract.Ensures(Contract.Result<IEnumerable<object>>() != null);
 
-            while (e.MoveNext())
-            {
-                yield return e.Current;
-            }
+            while (e.MoveNext()) yield return e.Current;
         }
 
         /// <summary>
@@ -394,10 +327,7 @@ namespace SharpBag
         {
             Contract.Requires(array != null);
 
-            for (int i = 0; i < array.Count(); i++)
-            {
-                array[i] = value;
-            }
+            for (int i = 0; i < array.Count(); i++) array[i] = value;
         }
 
         /// <summary>
@@ -410,10 +340,7 @@ namespace SharpBag
         {
             Contract.Requires(array != null);
 
-            for (int i = 0; i < array.Count(); i++)
-            {
-                array[i] = value;
-            }
+            for (int i = 0; i < array.Count(); i++) array[i] = value;
         }
 
         #endregion Fill overloads
@@ -434,10 +361,7 @@ namespace SharpBag
             Contract.Requires(end >= 0 && end < array.Count());
             Contract.Ensures(Contract.Result<IEnumerable<T>>() != null);
 
-            for (int i = start; i <= end; i++)
-            {
-                yield return array.ElementAt(i);
-            }
+            for (int i = start; i <= end; i++) yield return array.ElementAt(i);
         }
 
         #region InvokeIfRequired overloads
@@ -790,8 +714,6 @@ namespace SharpBag
         /// <returns>The shuffled collection.</returns>
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source, Random rand = null)
         {
-            Contract.Requires(source != null);
-            Contract.Ensures(Contract.Result<IEnumerable<T>>() != null);
             return ShuffleIterator(source, rand);
         }
 
@@ -870,6 +792,41 @@ namespace SharpBag
         public static T If<T>(this T obj, bool expression, T def = default(T))
         {
             return expression ? obj : def;
+        }
+
+        /// <summary>
+        /// Returns the items in the current instance with the specified indexes.
+        /// </summary>
+        /// <typeparam name="T">The type of elements in the current instance.</typeparam>
+        /// <param name="collection">The collection.</param>
+        /// <param name="indexes">The indexes.</param>
+        /// <returns>The items in the current instance with the specified indexes.</returns>
+        public static IEnumerable<T> Take<T>(this IEnumerable<T> collection, IEnumerable<int> indexes)
+        {
+            Contract.Requires(collection != null);
+            Contract.Requires(indexes != null);
+            Contract.Ensures(Contract.Result<IEnumerable<T>>() != null);
+
+            indexes = indexes.Where(i => i >= 0);
+            if (!indexes.Any()) return Enumerable.Empty<T>();
+
+            T[] array = collection.Take(indexes.Max() + 1).ToArray();
+
+            return indexes.Select(i => array[i]);
+        }
+
+        /// <summary>
+        /// Returns the items in the current instance with the specified indexes.
+        /// </summary>
+        /// <typeparam name="T">The type of elements in the current instance.</typeparam>
+        /// <param name="collection">The collection.</param>
+        /// <param name="indexes">The indexes.</param>
+        /// <returns>The items in the current instance with the specified indexes.</returns>
+        public static IEnumerable<T> Take<T>(this IEnumerable<T> collection, params int[] indexes)
+        {
+            Contract.Requires(collection != null);
+            Contract.Ensures(Contract.Result<IEnumerable<T>>() != null);
+            return collection.Take(indexes.AsEnumerable());
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data.Common;
+﻿using System.Data.Common;
 using System.Data.SqlClient;
 using System.Diagnostics.Contracts;
 using System.Text;
@@ -34,7 +33,7 @@ namespace SharpBag.Database
         /// <returns>The escaped string.</returns>
         public override string SQLEscape(string s)
         {
-            Contract.Requires(s != null);
+            // Contract.Requires(s != null);
             return s.Replace(@"\", @"\\").Replace(@"\'", "'").Replace(@"'", @"\'");
         }
 
@@ -46,8 +45,8 @@ namespace SharpBag.Database
         /// <returns>The query command.</returns>
         protected override DbCommand CreateCommand(string q, SqlConnection c)
         {
-            Contract.Requires(!String.IsNullOrEmpty(q));
-            Contract.Requires(c != null);
+            // Contract.Requires(!String.IsNullOrEmpty(q));
+            // Contract.Requires(c != null);
 
             return new SqlCommand(q, c);
         }

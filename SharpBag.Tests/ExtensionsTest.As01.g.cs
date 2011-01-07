@@ -745,24 +745,6 @@ namespace SharpBag
         }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-[PexRaisedContractException(PexExceptionState.Expected)]
-public void As01ThrowsContractException684()
-{
-    try
-    {
-      int i;
-      i = this.As01<int>((object)null, (IFormatProvider)null, 0);
-      throw 
-        new AssertFailedException("expected an exception of type ContractException");
-    }
-    catch(Exception ex)
-    {
-      if (!PexContract.IsContractException(ex))
-        throw ex;
-    }
-}
-[TestMethod]
-[PexGeneratedBy(typeof(ExtensionsTest))]
 public void As01367()
 {
     int i;
@@ -915,7 +897,186 @@ public void As0163208()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void As601()
+public void As21516()
+{
+    int i;
+    object box = (object)(default(decimal));
+    i = this.As<int>(box, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+[PexRaisedContractException(PexExceptionState.Expected)]
+public void As01ThrowsContractException598()
+{
+    try
+    {
+      int i;
+      i = this.As01<int>((object)null, (IFormatProvider)null, 0);
+      throw 
+        new AssertFailedException("expected an exception of type ContractException");
+    }
+    catch(Exception ex)
+    {
+      if (!PexContract.IsContractException(ex))
+        throw ex;
+    }
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void As0136705()
+{
+    int i;
+    i = this.As01<int>((object)null, NumberFormatInfo.CurrentInfo, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void As0163245()
+{
+    int i;
+    object boxu = (object)(default(uint));
+    i = this.As01<int>(boxu, NumberFormatInfo.CurrentInfo, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void As0163246()
+{
+    int i;
+    object boxw = (object)(default(ushort));
+    i = this.As01<int>(boxw, NumberFormatInfo.CurrentInfo, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void As0166405()
+{
+    int i;
+    object boxu = (object)(default(uint));
+    PexSafeHelpers.AssignBoxedValue<uint>(boxu, 2147483648u);
+    i = this.As01<int>(boxu, NumberFormatInfo.CurrentInfo, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void As0163247()
+{
+    int i;
+    object boxf = (object)(default(float));
+    i = this.As01<int>(boxf, NumberFormatInfo.CurrentInfo, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void As0132110()
+{
+    int i;
+    object boxb = (object)(default(sbyte));
+    i = this.As01<int>(boxb, NumberFormatInfo.CurrentInfo, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void As0163248()
+{
+    int i;
+    object boxl = (object)(default(long));
+    i = this.As01<int>(boxl, NumberFormatInfo.CurrentInfo, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void As0163249()
+{
+    int i;
+    object boxw = (object)(default(short));
+    i = this.As01<int>(boxw, NumberFormatInfo.CurrentInfo, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void As0163250()
+{
+    int i;
+    object boxd = (object)(default(double));
+    i = this.As01<int>(boxd, NumberFormatInfo.CurrentInfo, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void As0163251()
+{
+    int i;
+    object box = (object)(default(decimal));
+    i = this.As01<int>(box, NumberFormatInfo.CurrentInfo, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void As0166005()
+{
+    int i;
+    object boxc = (object)(default(char));
+    i = this.As01<int>(boxc, NumberFormatInfo.CurrentInfo, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void As0132111()
+{
+    int i;
+    object boxb = (object)(default(byte));
+    i = this.As01<int>(boxb, NumberFormatInfo.CurrentInfo, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void As0130305()
+{
+    int i;
+    object boxb = (object)(default(bool));
+    i = this.As01<int>(boxb, NumberFormatInfo.CurrentInfo, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void As0163252()
+{
+    int i;
+    object boxl = (object)(default(ulong));
+    i = this.As01<int>(boxl, NumberFormatInfo.CurrentInfo, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void As0198305()
+{
+    int i;
+    object box = (object)(default(DateTime));
+    i = this.As01<int>(box, NumberFormatInfo.CurrentInfo, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void As01405()
+{
+    int i;
+    i = this.As01<int>("", NumberFormatInfo.CurrentInfo, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void As0163253()
+{
+    int i;
+    object boxi = (object)(default(int));
+    i = this.As01<int>(boxi, NumberFormatInfo.CurrentInfo, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void As6()
 {
     int i;
     object box = (object)(default(DateTime));
@@ -924,7 +1085,7 @@ public void As601()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void As17001()
+public void As170()
 {
     int i;
     object boxb = (object)(default(bool));
@@ -933,7 +1094,7 @@ public void As17001()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void As21506()
+public void As215()
 {
     int i;
     object boxu = (object)(default(uint));
@@ -942,33 +1103,7 @@ public void As21506()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void As56801()
-{
-    int i;
-    i = this.As<int>("", 0);
-    Assert.AreEqual<int>(0, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(ExtensionsTest))]
-public void As76302()
-{
-    int i;
-    object boxb = (object)(default(sbyte));
-    i = this.As<int>(boxb, 0);
-    Assert.AreEqual<int>(0, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(ExtensionsTest))]
-public void As92801()
-{
-    int i;
-    object boxc = (object)(default(char));
-    i = this.As<int>(boxc, 0);
-    Assert.AreEqual<int>(0, i);
-}
-[TestMethod]
-[PexGeneratedBy(typeof(ExtensionsTest))]
-public void As21509()
+public void As21501()
 {
     int i;
     object boxw = (object)(default(ushort));
@@ -977,7 +1112,7 @@ public void As21509()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void As21510()
+public void As21502()
 {
     int i;
     object boxf = (object)(default(float));
@@ -986,7 +1121,7 @@ public void As21510()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void As21511()
+public void As21503()
 {
     int i;
     object boxl = (object)(default(long));
@@ -995,7 +1130,7 @@ public void As21511()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void As21512()
+public void As21504()
 {
     int i;
     object boxw = (object)(default(short));
@@ -1004,7 +1139,7 @@ public void As21512()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void As21513()
+public void As21505()
 {
     int i;
     object boxd = (object)(default(double));
@@ -1013,7 +1148,7 @@ public void As21513()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void As21514()
+public void As21507()
 {
     int i;
     object boxl = (object)(default(ulong));
@@ -1022,7 +1157,7 @@ public void As21514()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void As21515()
+public void As21508()
 {
     int i;
     object boxi = (object)(default(int));
@@ -1031,7 +1166,24 @@ public void As21515()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void As76303()
+public void As568()
+{
+    int i;
+    i = this.As<int>("", 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void As763()
+{
+    int i;
+    object boxb = (object)(default(sbyte));
+    i = this.As<int>(boxb, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void As76301()
 {
     int i;
     object boxb = (object)(default(byte));
@@ -1040,7 +1192,16 @@ public void As76303()
 }
 [TestMethod]
 [PexGeneratedBy(typeof(ExtensionsTest))]
-public void As21516()
+public void As928()
+{
+    int i;
+    object boxc = (object)(default(char));
+    i = this.As<int>(boxc, 0);
+    Assert.AreEqual<int>(0, i);
+}
+[TestMethod]
+[PexGeneratedBy(typeof(ExtensionsTest))]
+public void As21521()
 {
     int i;
     object box = (object)(default(decimal));

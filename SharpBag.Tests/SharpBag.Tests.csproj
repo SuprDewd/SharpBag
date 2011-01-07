@@ -144,6 +144,9 @@
     <Compile Include="ExtensionsTest.Subarray.g.cs">
       <DependentUpon>ExtensionsTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExtensionsTest.Take01.g.cs">
+      <DependentUpon>ExtensionsTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExtensionsTest.TakeEvery.g.cs">
       <DependentUpon>ExtensionsTest.cs</DependentUpon>
     </Compile>
