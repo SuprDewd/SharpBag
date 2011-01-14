@@ -2710,14 +2710,14 @@
             <summary>
             Checks whether a number is a prime number or not.
             </summary>
-            <param name="candidate">The number to test.</param>
+            <param name="n">The number to test.</param>
             <returns>Whether the number is a prime number or not.</returns>
         </member>
         <member name="M:SharpBag.Math.BagMath.IsPrime(System.Int64)">
             <summary>
             Checks whether a number is a prime number or not.
             </summary>
-            <param name="candidate">The number to test.</param>
+            <param name="n">The number to test.</param>
             <returns>Whether the number is a prime number or not.</returns>
         </member>
         <member name="M:SharpBag.Math.BagMath.IsPrime(System.Numerics.BigInteger)">

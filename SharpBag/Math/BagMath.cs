@@ -172,46 +172,51 @@ namespace SharpBag.Math
         /// <summary>
         /// Checks whether a number is a prime number or not.
         /// </summary>
-        /// <param name="candidate">The number to test.</param>
+        /// <param name="n">The number to test.</param>
         /// <returns>Whether the number is a prime number or not.</returns>
-        public static bool IsPrime(int candidate)
+        public static bool IsPrime(int n)
         {
-            if ((candidate & 1) == 0)
+            if (n <= 1) return false;
+            if (n < 4) return true;
+            if (n % 2 == 0) return false;
+            if (n < 9) return true;
+            if (n % 3 == 0) return false;
+
+            uint r = (uint)System.Math.Floor(System.Math.Sqrt(n));
+            uint f = 5;
+            while (f <= r)
             {
-                return candidate == 2;
+                if (n % f == 0) return false;
+                if (n % (f + 2) == 0) return false;
+                f += 6;
             }
 
-            for (int i = 3; (i * i) <= candidate; i += 2)
-            {
-                if ((candidate % i) == 0)
-                {
-                    return false;
-                }
-            }
-
-            return candidate != 1;
+            return true;
         }
 
         /// <summary>
         /// Checks whether a number is a prime number or not.
         /// </summary>
-        /// <param name="candidate">The number to test.</param>
+        /// <param name="n">The number to test.</param>
         /// <returns>Whether the number is a prime number or not.</returns>
-        public static bool IsPrime(long candidate)
+        public static bool IsPrime(long n)
         {
-            if ((candidate & 1) == 0)
+            if (n <= 1) return false;
+            if (n < 4) return true;
+            if (n % 2 == 0) return false;
+            if (n < 9) return true;
+            if (n % 3 == 0) return false;
+
+            uint r = (uint)System.Math.Floor(System.Math.Sqrt(n));
+            uint f = 5;
+            while (f <= r)
             {
-                return candidate == 2;
+                if (n % f == 0) return false;
+                if (n % (f + 2) == 0) return false;
+                f += 6;
             }
 
-            for (long i = 3; (i * i) <= candidate; i += 2)
-            {
-                if ((candidate % i) == 0)
-                {
-                    return false;
-                }
-            }
-            return candidate != 1;
+            return true;
         }
 
         /// <summary>
@@ -233,6 +238,7 @@ namespace SharpBag.Math
                     return false;
                 }
             }
+
             return candidate != 1;
         }
 
