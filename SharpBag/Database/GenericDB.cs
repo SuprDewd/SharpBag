@@ -210,14 +210,14 @@ namespace SharpBag.Database
         {
             Contract.Requires(dt.Rows.Count > 0);
 
-            string into = schema != null ? schema + "." + dt.TableName : dt.TableName;
+            string into = schema != null ? schema + '.' + dt.TableName : dt.TableName;
             StringBuilder columns = new StringBuilder();
             List<string> nonPrimaryCols = new List<string>();
             bool first = true;
 
             foreach (DataColumn col in dt.Columns)
             {
-                if (!first) columns.Append(",");
+                if (!first) columns.Append(',');
                 else first = false;
 
                 if (!dt.PrimaryKey.ContainsArray(col)) nonPrimaryCols.Add(col.ColumnName);
@@ -236,8 +236,8 @@ namespace SharpBag.Database
                 bool firstCol = true;
                 foreach (DataColumn col in dt.Columns)
                 {
-                    if (!firstCol) values.Append(",");
-                    firstCol = false;
+                    if (firstCol) firstCol = false;
+                    else values.Append(',');
 
                     object o = row[col.ColumnName];
 
@@ -247,7 +247,11 @@ namespace SharpBag.Database
                     }
                     else if (col.DataType == typeof(DateTime))
                     {
-                        values.Append("'").Append(((DateTime)o).ToSQLDateTime()).Append("'");
+                        values.Append('\'').Append(((DateTime)o).ToSQLDateTime()).Append('\'');
+                    }
+                    else if (col.DataType == typeof(bool))
+                    {
+                        values.Append((bool)o ? "TRUE" : "FALSE");
                     }
                     else if (new Type[] { typeof(int), typeof(long), typeof(double), typeof(float), typeof(decimal), typeof(Single) }.ContainsArray(col.DataType))
                     {
@@ -255,13 +259,13 @@ namespace SharpBag.Database
                     }
                     else
                     {
-                        values.Append("'");
+                        values.Append('\'');
                         values.Append(this.SQLEscape(o.ToString()));
-                        values.Append("'");
+                        values.Append('\'');
                     }
                 }
 
-                values.Append(")");
+                values.Append(')');
             }
 
             StringBuilder updCols = new StringBuilder();
@@ -270,15 +274,15 @@ namespace SharpBag.Database
             {
                 foreach (string nCol in nonPrimaryCols)
                 {
-                    if (updCols.ToString() != "") updCols.Append(",");
+                    if (updCols.ToString() != "") updCols.Append(',');
                     updCols.Append(nCol);
                     updCols.Append("=VALUES(");
                     updCols.Append(nCol);
-                    updCols.Append(")");
+                    updCols.Append(')');
                 }
             }
 
-            return new StringBuilder("INSERT INTO ").Append(into).Append(" (").Append(columns.ToString()).Append(") VALUES ").Append(values.ToString()).Append(dt.PrimaryKey.Length == 0 && dt.Columns.Count - dt.PrimaryKey.Length > 0 ? "" : " ON DUPLICATE KEY UPDATE ").Append(updCols.ToString()).Append(";").ToString();
+            return new StringBuilder("INSERT INTO ").Append(into).Append(" (").Append(columns.ToString()).Append(") VALUES ").Append(values.ToString()).Append(dt.PrimaryKey.Length == 0 && dt.Columns.Count - dt.PrimaryKey.Length > 0 ? "" : " ON DUPLICATE KEY UPDATE ").Append(updCols.ToString()).Append(';').ToString();
         }
 
         /// <summary>

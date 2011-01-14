@@ -15,36 +15,51 @@
       <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Time/f:TimeExtensions.cs" caret="12375" fromTop="9" />
       <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Strings/f:StringExtensions.cs" caret="0" fromTop="0" />
       <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/f:Extensions.cs" caret="34944" fromTop="8" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:SmallPrimeUtility.cs" caret="701" fromTop="16" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Permutations.cs" caret="1550" fromTop="31" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:IMetaCollection.cs" caret="625" fromTop="12" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:GenerateOption.cs" caret="331" fromTop="9" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Combinations.cs" caret="1696" fromTop="30" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Variations.cs" caret="1401" fromTop="11" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:CombinatoricExtensions.cs" caret="721" fromTop="16" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:SmallPrimeUtility.cs" caret="5973" fromTop="15" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Variations.cs" caret="2519" fromTop="28" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Permutations.cs" caret="4343" fromTop="17" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:IMetaCollection.cs" caret="945" fromTop="20" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:GenerateOption.cs" caret="357" fromTop="10" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Combinations.cs" caret="781" fromTop="13" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:CombinatoricExtensions.cs" caret="240" fromTop="9" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:MSSqlDB.cs" caret="1308" fromTop="16" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:FK/f:Num2Words.cs" caret="1334" fromTop="17" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:IO/f:Serialization.cs" caret="1697" fromTop="26" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:MathExtensions.cs" caret="4821" fromTop="20" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:MySqlDB.cs" caret="293" fromTop="4" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="10003" fromTop="24" />
     </RecentFiles>
     <RecentEdits>
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/f:Extensions.cs" caret="34953" fromTop="8" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Combinations.cs" caret="190" fromTop="6" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:GenerateOption.cs" caret="157" fromTop="4" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Combinations.cs" caret="1059" fromTop="19" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:IMetaCollection.cs" caret="192" fromTop="5" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Permutations.cs" caret="234" fromTop="7" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:SmallPrimeUtility.cs" caret="219" fromTop="7" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Variations.cs" caret="207" fromTop="6" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Variations.cs" caret="1326" fromTop="26" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:SmallPrimeUtility.cs" caret="701" fromTop="16" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Permutations.cs" caret="1550" fromTop="31" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:IMetaCollection.cs" caret="625" fromTop="12" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:GenerateOption.cs" caret="331" fromTop="9" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Combinations.cs" caret="1696" fromTop="30" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:CombinatoricExtensions.cs" caret="33" fromTop="0" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Variations.cs" caret="14574" fromTop="17" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:CombinatoricExtensions.cs" caret="479" fromTop="15" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:CombinatoricExtensions.cs" caret="260" fromTop="11" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:CombinatoricExtensions.cs" caret="706" fromTop="15" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:CombinatoricExtensions.cs" caret="998" fromTop="20" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:CombinatoricExtensions.cs" caret="895" fromTop="19" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:SmallPrimeUtility.cs" caret="2525" fromTop="11" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:SmallPrimeUtility.cs" caret="2539" fromTop="12" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:SmallPrimeUtility.cs" caret="3591" fromTop="13" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:SmallPrimeUtility.cs" caret="4188" fromTop="26" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:SmallPrimeUtility.cs" caret="4515" fromTop="33" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:SmallPrimeUtility.cs" caret="5623" fromTop="20" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:SmallPrimeUtility.cs" caret="5127" fromTop="17" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:SmallPrimeUtility.cs" caret="5973" fromTop="15" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:CombinatoricExtensions.cs" caret="616" fromTop="16" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:CombinatoricExtensions.cs" caret="1449" fromTop="27" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:CombinatoricExtensions.cs" caret="1414" fromTop="29" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:CombinatoricExtensions.cs" caret="1807" fromTop="22" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:CombinatoricExtensions.cs" caret="2071" fromTop="26" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:MSSqlDB.cs" caret="1779" fromTop="17" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:MSSqlDB.cs" caret="1308" fromTop="16" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:MySqlDB.cs" caret="2271" fromTop="18" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:MathExtensions.cs" caret="4821" fromTop="20" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:IO/f:Serialization.cs" caret="1413" fromTop="17" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:MySqlDB.cs" caret="1360" fromTop="17" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="8569" fromTop="24" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="7960" fromTop="13" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="7987" fromTop="10" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="8396" fromTop="20" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="9068" fromTop="28" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="9147" fromTop="24" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="9432" fromTop="27" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="7357" fromTop="11" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="7058" fromTop="16" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="9607" fromTop="17" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="9952" fromTop="21" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
@@ -61,7 +76,7 @@
   <CompletionStatisticsManager>
     <ItemStatistics item="Default">
       <Item value="public" priority="2" />
-      <Item value="static" priority="1" />
+      <Item value="static" priority="2" />
       <Item value="IEnumerable`0" priority="4" />
       <Item value="TaiwanCalendar`0" priority="0" />
       <Item value="this" priority="3" />
@@ -70,13 +85,13 @@
       <Item value="collection" priority="3" />
       <Item value="indexes" priority="8" />
       <Item value="foreach" priority="2" />
-      <Item value="yield return" priority="1" />
+      <Item value="yield return" priority="2" />
       <Item value="array" priority="0" />
       <Item value="i" priority="1" />
-      <Item value="Contract`0" priority="4" />
+      <Item value="Contract`0" priority="5" />
       <Item value="null" priority="4" />
       <Item value="CaseInsensitiveHashCodeProvider`0" priority="0" />
-      <Item value="if" priority="0" />
+      <Item value="if" priority="1" />
       <Item value="yield break" priority="0" />
       <Item value="return" priority="5" />
       <Item value="Enumerable`0" priority="0" />
@@ -107,6 +122,15 @@
       <Item value="per" priority="0" />
       <Item value="c" priority="0" />
       <Item value="size" priority="0" />
+      <Item value="prime" priority="0" />
+      <Item value="Pure" priority="1" />
+      <Item value="min" priority="0" />
+      <Item value="col" priority="0" />
+      <Item value="typeof" priority="0" />
+      <Item value="values" priority="0" />
+      <Item value="o" priority="0" />
+      <Item value="RowUpdatedEventArgs`0" priority="0" />
+      <Item value="else" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Collections.Generic.IEnumerable`1">
       <Item value="Take`1" priority="1" />
@@ -116,7 +140,7 @@
       <Item value="Any`1" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@System.Diagnostics.Contracts.Contract">
-      <Item value="Requires`1" priority="2" />
+      <Item value="Requires`1" priority="3" />
       <Item value="Ensures`0" priority="0" />
       <Item value="Result`1" priority="0" />
     </ItemStatistics>
@@ -141,6 +165,12 @@
     <ItemStatistics item="Qualified:System.Collections.Generic.IList`1">
       <Item value="ToArray`1" priority="2" />
       <Item value="Indexer" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.DataColumn">
+      <Item value="DataType" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Text.StringBuilder">
+      <Item value="Append`0" priority="0" />
     </ItemStatistics>
   </CompletionStatisticsManager>
 </Configuration>
