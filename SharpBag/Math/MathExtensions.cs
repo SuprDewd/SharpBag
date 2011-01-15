@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Linq;
-using System.Numerics;
 using SharpBag.Strings;
+
+#if DOTNET4
+using System.Diagnostics.Contracts;
+using System.Numerics;
+#endif
 
 namespace SharpBag.Math
 {
@@ -34,6 +37,8 @@ namespace SharpBag.Math
             return start.ToInfinity(1);
         }
 
+#if DOTNET4
+
         /// <summary>
         /// Generates numbers that range from the value of the current instance to positive infinity.
         /// </summary>
@@ -43,6 +48,8 @@ namespace SharpBag.Math
         {
             return start.ToInfinity(1);
         }
+
+#endif
 
         /// <summary>
         /// Generates numbers that range from the value of the current instance to positive infinity.
@@ -68,6 +75,8 @@ namespace SharpBag.Math
                 yield return current;
         }
 
+#if DOTNET4
+
         /// <summary>
         /// Generates numbers that range from the value of the current instance to positive infinity.
         /// </summary>
@@ -79,6 +88,8 @@ namespace SharpBag.Math
             for (var current = start; ; current += step)
                 yield return current;
         }
+
+#endif
 
         #endregion ToInfinity overloads
 
@@ -106,10 +117,15 @@ namespace SharpBag.Math
         /// <param name="min">The minimum integer.</param>
         /// <param name="max">The maximum integer.</param>
         /// <returns>True if the current instance is between or equal to the two integers; otherwise false.</returns>
+#if DOTNET4
         [Pure]
+#endif
+
         public static bool IsBetweenOrEqualTo(this int n, int min, int max)
         {
+#if DOTNET4
             Contract.Requires(min <= max);
+#endif
             return (n >= min && n <= max);
         }
 
@@ -190,6 +206,8 @@ namespace SharpBag.Math
             return i;
         }
 
+#if DOTNET4
+
         /// <summary>
         /// Returns the Collatz count.
         /// </summary>
@@ -211,6 +229,8 @@ namespace SharpBag.Math
 
             return i;
         }
+
+#endif
 
         #endregion CollatzCount overloads
 
@@ -234,7 +254,9 @@ namespace SharpBag.Math
         /// <returns>The current instance rounded.</returns>
         public static double Round(this double d, int digits)
         {
+#if DOTNET4
             Contract.Requires(digits.IsBetweenOrEqualTo(0, 15));
+#endif
             return System.Math.Round(d, digits);
         }
 
@@ -338,6 +360,8 @@ namespace SharpBag.Math
             return nums.All(num => i != 0 && i % num == 0);
         }
 
+#if DOTNET4
+
         /// <summary>
         /// Whether the current instance is divisable by all the specified numbers.
         /// </summary>
@@ -371,6 +395,8 @@ namespace SharpBag.Math
         {
             return nums.All(num => i != 0 && i % num == 0);
         }
+
+#endif
 
         #endregion IsDivisableBy overloads
 
@@ -432,6 +458,8 @@ namespace SharpBag.Math
             }
         }
 
+#if DOTNET4
+
         /// <summary>
         /// The factors of the current instance.
         /// </summary>
@@ -460,6 +488,8 @@ namespace SharpBag.Math
             }
         }
 
+#endif
+
         #endregion Factor overloads
 
         #region Digit overloads
@@ -484,6 +514,8 @@ namespace SharpBag.Math
             return n.ToString().ToCharArray().Select(i => Convert.ToInt16(i.ToString()));
         }
 
+#if DOTNET4
+
         /// <summary>
         /// Returns the digits of the current instance.
         /// </summary>
@@ -493,6 +525,8 @@ namespace SharpBag.Math
         {
             return n.ToString().ToCharArray().Select(i => Convert.ToInt16(i.ToString()));
         }
+
+#endif
 
         #endregion Digit overloads
 
@@ -507,6 +541,8 @@ namespace SharpBag.Math
         {
             return Convert.ToInt64(System.Math.Abs(i).ToString().Reverse());
         }
+
+#if DOTNET4
 
         /// <summary>
         /// Reverses the number.
@@ -527,6 +563,8 @@ namespace SharpBag.Math
         {
             return BigInteger.Parse(BigInteger.Abs(i).ToString().Reverse());
         }
+
+#endif
 
         #endregion Reverse overloads
 
@@ -602,6 +640,8 @@ namespace SharpBag.Math
             return n % 2 == 0;
         }
 
+#if DOTNET4
+
         /// <summary>
         /// Whether the current instance is even.
         /// </summary>
@@ -611,6 +651,8 @@ namespace SharpBag.Math
         {
             return n % 2 == 0;
         }
+
+#endif
 
         #endregion IsEven overloads
 
@@ -636,6 +678,8 @@ namespace SharpBag.Math
             return n % 2 != 0;
         }
 
+#if DOTNET4
+
         /// <summary>
         /// Whether the current instance is even.
         /// </summary>
@@ -645,6 +689,8 @@ namespace SharpBag.Math
         {
             return n % 2 != 0;
         }
+
+#endif
 
         #endregion IsOdd overloads
 
@@ -670,6 +716,8 @@ namespace SharpBag.Math
             return BagMath.IsPrime(n);
         }
 
+#if DOTNET4
+
         /// <summary>
         /// Whether the current instance is prime.
         /// </summary>
@@ -679,6 +727,8 @@ namespace SharpBag.Math
         {
             return BagMath.IsPrime(n);
         }
+
+#endif
 
         #endregion IsPrime
     }

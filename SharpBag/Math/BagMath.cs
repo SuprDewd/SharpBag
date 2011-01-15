@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Drawing;
-using System.Numerics;
-
 using S = System;
+
+#if DOTNET4
+using System.Diagnostics.Contracts;
+using System.Numerics;
+#endif
 
 namespace SharpBag.Math
 {
@@ -20,9 +22,11 @@ namespace SharpBag.Math
         /// <param name="radius">The radius of the circle.</param>
         /// <returns>An array containing points.</returns>
         /// <exception cref="System.ArgumentException"></exception>
-        public static PointF[] PointsInCircleF(int radius)
+        public static IEnumerable<PointF> PointsInCircleF(int radius)
         {
+#if DOTNET4
             Contract.Requires(radius > 0);
+#endif
             return PointsInCircleF(radius, new PointF(radius, radius), 360);
         }
 
@@ -34,9 +38,11 @@ namespace SharpBag.Math
         /// <returns>An array containing points.</returns>
         /// <exception cref="System.ArgumentNullException"></exception>
         /// <exception cref="System.ArgumentException"></exception>
-        public static PointF[] PointsInCircleF(int radius, PointF center)
+        public static IEnumerable<PointF> PointsInCircleF(int radius, PointF center)
         {
+#if DOTNET4
             Contract.Requires(radius > 0);
+#endif
             return PointsInCircleF(radius, center, 360);
         }
 
@@ -47,10 +53,12 @@ namespace SharpBag.Math
         /// <param name="points">Number of points to return.</param>
         /// <returns>An array containing points.</returns>
         /// <exception cref="System.ArgumentException"></exception>
-        public static PointF[] PointsInCircleF(int radius, int points)
+        public static IEnumerable<PointF> PointsInCircleF(int radius, int points)
         {
+#if DOTNET4
             Contract.Requires(radius > 0);
             Contract.Requires(points > 0);
+#endif
             return PointsInCircleF(radius, new PointF(radius, radius), points);
         }
 
@@ -62,18 +70,17 @@ namespace SharpBag.Math
         /// <param name="points">Number of points to return.</param>
         /// <returns>An array containing points.</returns>
         /// <exception cref="System.ArgumentException"></exception>
-        public static PointF[] PointsInCircleF(int radius, PointF center, int points)
+        public static IEnumerable<PointF> PointsInCircleF(int radius, PointF center, int points)
         {
+#if DOTNET4
             Contract.Requires(radius > 0);
             Contract.Requires(points > 0);
+#endif
 
-            PointF[] pointArray = new PointF[points];
             for (int i = 0; i < points; i++)
             {
-                pointArray[i] = new PointF((float)(center.X + radius * S.Math.Cos(2 * S.Math.PI * i / points)), (float)(center.Y + radius * S.Math.Sin(2 * S.Math.PI * i / points)));
+                yield return new PointF((float)(center.X + radius * S.Math.Cos(2 * S.Math.PI * i / points)), (float)(center.Y + radius * S.Math.Sin(2 * S.Math.PI * i / points)));
             }
-
-            return pointArray;
         }
 
         /// <summary>
@@ -82,9 +89,11 @@ namespace SharpBag.Math
         /// <param name="radius">The radius of the circle.</param>
         /// <returns>An array containing points.</returns>
         /// <exception cref="System.ArgumentException"></exception>
-        public static Point[] PointsInCircle(int radius)
+        public static IEnumerable<Point> PointsInCircle(int radius)
         {
+#if DOTNET4
             Contract.Requires(radius > 0);
+#endif
             return PointsInCircle(radius, new Point(radius, radius), 360);
         }
 
@@ -96,9 +105,11 @@ namespace SharpBag.Math
         /// <returns>An array containing points.</returns>
         /// <exception cref="System.ArgumentNullException"></exception>
         /// <exception cref="System.ArgumentException"></exception>
-        public static Point[] PointsInCircle(int radius, Point center)
+        public static IEnumerable<Point> PointsInCircle(int radius, Point center)
         {
+#if DOTNET4
             Contract.Requires(radius > 0);
+#endif
             return PointsInCircle(radius, center, 360);
         }
 
@@ -109,10 +120,12 @@ namespace SharpBag.Math
         /// <param name="points">Number of points to return.</param>
         /// <returns>An array containing points.</returns>
         /// <exception cref="System.ArgumentException"></exception>
-        public static Point[] PointsInCircle(int radius, int points)
+        public static IEnumerable<Point> PointsInCircle(int radius, int points)
         {
+#if DOTNET4
             Contract.Requires(radius > 0);
             Contract.Requires(points > 0);
+#endif
             return PointsInCircle(radius, new Point(radius, radius), points);
         }
 
@@ -125,18 +138,16 @@ namespace SharpBag.Math
         /// <returns>An array containing points.</returns>
         /// <exception cref="System.ArgumentNullException"></exception>
         /// <exception cref="System.ArgumentException"></exception>
-        public static Point[] PointsInCircle(int radius, Point center, int points)
+        public static IEnumerable<Point> PointsInCircle(int radius, Point center, int points)
         {
+#if DOTNET4
             Contract.Requires(radius > 0);
             Contract.Requires(points > 0);
-
-            Point[] pointArray = new Point[points];
+#endif
             for (int i = 0; i < points; i++)
             {
-                pointArray[i] = new Point((int)S.Math.Round(center.X + radius * S.Math.Cos(2 * S.Math.PI * i / points)), (int)S.Math.Round(center.Y + radius * S.Math.Sin(2 * S.Math.PI * i / points)));
+                yield return new Point((int)S.Math.Round(center.X + radius * S.Math.Cos(2 * S.Math.PI * i / points)), (int)S.Math.Round(center.Y + radius * S.Math.Sin(2 * S.Math.PI * i / points)));
             }
-
-            return pointArray;
         }
 
         #endregion PointsInCircleF & PointsInCircle & all overloads
@@ -208,7 +219,7 @@ namespace SharpBag.Math
             if (n < 9) return true;
             if (n % 3 == 0) return false;
 
-            uint r = (uint)System.Math.Floor(System.Math.Sqrt(n));
+            uint r = (uint)S.Math.Floor(S.Math.Sqrt(n));
             uint f = 5;
             while (f <= r)
             {
@@ -219,6 +230,8 @@ namespace SharpBag.Math
 
             return true;
         }
+
+#if DOTNET4
 
         /// <summary>
         /// Checks whether a number is a prime number or not.
@@ -244,6 +257,8 @@ namespace SharpBag.Math
 
             return true;
         }
+
+#endif
 
         #endregion IsPrime overloads
 

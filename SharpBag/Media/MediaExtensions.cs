@@ -1,5 +1,9 @@
 ﻿using System.Collections.Generic;
+
+#if DOTNET4
 using System.Diagnostics.Contracts;
+#endif
+
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -20,8 +24,9 @@ namespace SharpBag.Media
         /// <returns>The BitmapSource.</returns>
         public static BitmapSource ToBitmapSource(this Image img)
         {
+#if DOTNET4
             Contract.Requires(img != null);
-
+#endif
             MemoryStream memStream = new MemoryStream();
             img.Save(memStream, System.Drawing.Imaging.ImageFormat.Png);
             PngBitmapDecoder decoder = new PngBitmapDecoder(memStream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.Default);
@@ -36,8 +41,9 @@ namespace SharpBag.Media
         /// <returns>An enumerable containing all pixels that are in the specified rectangle on the current instance.</returns>
         public static IEnumerable<Color> GetPixels(this Bitmap image, Rectangle rect)
         {
+#if DOTNET4
             Contract.Requires(image != null);
-
+#endif
             return from y in rect.Top.To(rect.Bottom)
                    from x in rect.Left.To(rect.Right)
                    select image.GetPixel(x, y);
@@ -51,7 +57,9 @@ namespace SharpBag.Media
         /// <returns>The luminosity of the specified rectangle in the current instance.</returns>
         public static double GetLuminosity(this Bitmap image, Rectangle rect)
         {
+#if DOTNET4
             Contract.Requires(image != null);
+#endif
             return image.GetPixels(rect).Average(c => .3 * c.R + .59 * c.G + .11 * c.B) / 255;
         }
 
@@ -62,7 +70,9 @@ namespace SharpBag.Media
         /// <returns>A new rectangle that has the same with and height as the current instance.</returns>
         public static Rectangle GetRectangle(this Image image)
         {
+#if DOTNET4
             Contract.Requires(image != null);
+#endif
             return new Rectangle(0, 0, image.Width, image.Height);
         }
 
@@ -105,8 +115,10 @@ namespace SharpBag.Media
         /// <returns>A rectangle.</returns>
         public static Rectangle CreateRectangle(int x, int y, int nextX, int nextY)
         {
+#if DOTNET4
             Contract.Requires(nextX > x);
             Contract.Requires(nextY > y);
+#endif
             return new Rectangle(x, y, nextX - x, nextY - y);
         }
     }

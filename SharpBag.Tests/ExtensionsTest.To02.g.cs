@@ -19,6 +19,7 @@ namespace SharpBag
 {
     public partial class ExtensionsTest
     {
+#if DOTNET4
         [TestMethod]
         [PexGeneratedBy(typeof(ExtensionsTest))]
         public void To02632()
@@ -27,5 +28,6 @@ namespace SharpBag
             iEnumerable = this.To02(default(BigInteger), default(BigInteger));
             Assert.IsNotNull((object)iEnumerable);
         }
+#endif
     }
 }

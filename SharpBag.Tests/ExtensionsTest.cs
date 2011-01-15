@@ -86,6 +86,7 @@ namespace SharpBag
             // TODO: add assertions to method ExtensionsTest.To04(Char, Char, Int32)
         }
 
+#if DOTNET4
         [PexMethod]
         public IEnumerable<BigInteger> To03(
             BigInteger start,
@@ -105,6 +106,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.To02(BigInteger, BigInteger)
         }
+#endif
 
         [PexMethod]
         public IEnumerable<long> To01(
@@ -457,6 +459,7 @@ namespace SharpBag
             return result;
             // TODO: add assertions to method ExtensionsTest.Subarray(Int32[,], Int32, Int32, Int32, Int32)
         }
+
         [PexGenericArguments(typeof(int))]
         [PexMethod]
         public IEnumerable<T> Take01<T>(IEnumerable<T> collection, int[] indexes)

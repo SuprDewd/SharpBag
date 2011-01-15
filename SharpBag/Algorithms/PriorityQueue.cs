@@ -1,5 +1,9 @@
 ﻿using System.Collections.Generic;
+
+#if DOTNET4
 using System.Diagnostics.Contracts;
+#endif
+
 using System.Linq;
 
 namespace SharpBag.Algorithms
@@ -58,7 +62,9 @@ namespace SharpBag.Algorithms
         /// <returns>The next item in the queue.</returns>
         public T Dequeue()
         {
+#if DOTNET4
             Contract.Requires(this.Count > 0);
+#endif
             return this.Dequeue(true);
         }
 
@@ -69,7 +75,9 @@ namespace SharpBag.Algorithms
         /// <returns>The next item in the queue.</returns>
         private T Dequeue(bool remove)
         {
+#if DOTNET4
             Contract.Requires(this.Count > 0);
+#endif
             PriorityQueueItem<T>[] array = this.Items.ToArray();
             if (array.Length == 0) return default(T);
 
@@ -95,7 +103,9 @@ namespace SharpBag.Algorithms
         /// <returns>The next item in the queue.</returns>
         public T Peek()
         {
+#if DOTNET4
             Contract.Requires(this.Count > 0);
+#endif
             return this.Dequeue(false);
         }
 
@@ -108,14 +118,18 @@ namespace SharpBag.Algorithms
         {
             get
             {
+#if DOTNET4
                 Contract.Requires(index >= 0);
                 Contract.Requires(this.Count > index);
+#endif
                 return this.Items[index].Item;
             }
             set
             {
+#if DOTNET4
                 Contract.Requires(index >= 0);
                 Contract.Requires(this.Count > index);
+#endif
                 this.Items[index] = new PriorityQueueItem<T>(value);
             }
         }

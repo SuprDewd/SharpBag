@@ -1,5 +1,8 @@
 using System;
+
+#if DOTNET4
 using System.Diagnostics.Contracts;
+#endif
 
 namespace SharpBag.Games
 {
@@ -22,14 +25,28 @@ namespace SharpBag.Games
         /// Creates a new dice.
         /// </summary>
         /// <param name="sides">The number of sides on the dice.</param>
-        public Dice(int sides = 6) : this(new Random(), sides) { Contract.Requires(sides > 0); }
+        public Dice(int sides = 6)
+            : this(new Random(), sides)
+        {
+#if DOTNET4
+            Contract.Requires(sides > 0);
+#endif
+        }
 
         /// <summary>
         /// Creates a new dice.
         /// </summary>
         /// <param name="rand">The random number generator.</param>
         /// <param name="sides">The number of sides on the dice.</param>
-        public Dice(Random rand, int sides = 6) { Contract.Requires(rand != null); Contract.Requires(sides > 0); this.Sides = sides; this.Rand = rand; }
+        public Dice(Random rand, int sides = 6)
+        {
+#if DOTNET4
+            Contract.Requires(rand != null);
+            Contract.Requires(sides > 0);
+#endif
+            this.Sides = sides;
+            this.Rand = rand;
+        }
 
         /// <summary>
         /// Throw the dice.

@@ -1,4 +1,6 @@
-﻿using System.Diagnostics.Contracts;
+﻿#if DOTNET4
+using System.Diagnostics.Contracts;
+#endif
 
 namespace SharpBag.FK
 {
@@ -33,8 +35,9 @@ namespace SharpBag.FK
         /// <returns>PI</returns>
         public static decimal PI(int rounds = 1000000)
         {
+#if DOTNET4
             Contract.Requires(rounds > 0);
-
+#endif
             decimal pi = 1;
             bool minus = true;
 

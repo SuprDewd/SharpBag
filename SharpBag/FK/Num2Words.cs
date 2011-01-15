@@ -1,4 +1,7 @@
-﻿using System.Diagnostics.Contracts;
+﻿#if DOTNET4
+using System.Diagnostics.Contracts;
+#endif
+
 using SharpBag.Math;
 
 namespace SharpBag.FK
@@ -27,7 +30,9 @@ namespace SharpBag.FK
 
         private string LessThan1000(int i, bool alone)
         {
+#if DOTNET4
             Contract.Requires(i.IsBetweenOrEqualTo(0, 999));
+#endif
             if (i < 100) return this.LessThan100(i, alone);
 
             int h = i / 100;
@@ -42,7 +47,9 @@ namespace SharpBag.FK
 
         private string LessThan100(int i, bool alone)
         {
+#if DOTNET4
             Contract.Requires(i.IsBetweenOrEqualTo(0, 99));
+#endif
             if (i < 10) return this.LessThan10(i, true);
 
             int t = i / 10;
@@ -56,8 +63,9 @@ namespace SharpBag.FK
 
         private string LessThan10(int i, bool alone)
         {
+#if DOTNET4
             Contract.Requires(i.IsBetweenOrEqualTo(0, 9));
-
+#endif
             return alone ? this.LT10A[i] : this.LT10M[i];
         }
     }

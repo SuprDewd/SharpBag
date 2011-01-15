@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+
+#if DOTNET4
 using System.Diagnostics.Contracts;
+#endif
+
 using System.IO;
 using System.Linq;
 
@@ -20,7 +24,9 @@ namespace SharpBag
         /// <returns>The execution time in milliseconds.</returns>
         public static long ExecutionTime(Action a, bool handleGc = true)
         {
+#if DOTNET4
             Contract.Requires(a != null);
+#endif
             return ExecutionTime(a, s => s.ElapsedMilliseconds, handleGc);
         }
 
@@ -34,9 +40,10 @@ namespace SharpBag
         /// <returns>The execution time in milliseconds.</returns>
         public static TResult ExecutionTime<TResult>(Action a, Func<Stopwatch, TResult> result, bool handleGc = true)
         {
+#if DOTNET4
             Contract.Requires(a != null);
             Contract.Requires(result != null);
-
+#endif
             if (handleGc)
             {
                 GC.Collect();
@@ -60,7 +67,9 @@ namespace SharpBag
         /// <returns>The IEnumerable.</returns>
         public static IEnumerable<T> CreateIEnumerable<T>(params T[] objects)
         {
+#if DOTNET4
             Contract.Requires(objects != null);
+#endif
             return objects;
         }
 
@@ -74,8 +83,9 @@ namespace SharpBag
         /// <returns>Values that are generated from the generator.</returns>
         public static IEnumerable<T> Generate<T>(Func<T> generator) where T : class
         {
+#if DOTNET4
             Contract.Requires(generator != null);
-
+#endif
             T t;
             while ((t = generator()) != null) yield return t;
         }
@@ -88,8 +98,9 @@ namespace SharpBag
         /// <returns>Values that are generated from the generator.</returns>
         public static IEnumerable<T> Generate<T>(Func<Nullable<T>> generator) where T : struct
         {
+#if DOTNET4
             Contract.Requires(generator != null);
-
+#endif
             Nullable<T> t;
             while ((t = generator()).HasValue) yield return t.Value;
         }
@@ -102,8 +113,9 @@ namespace SharpBag
         /// <returns>The enumerator as an enumerable.</returns>
         public static IEnumerable<T> FromEnumerator<T>(IEnumerator<T> enumerator)
         {
+#if DOTNET4
             Contract.Requires(enumerator != null);
-
+#endif
             while (enumerator.MoveNext()) yield return enumerator.Current;
         }
 
@@ -125,9 +137,10 @@ namespace SharpBag
         /// <returns>An enumerable that contains all the lines read.</returns>
         public static IEnumerable<string> ReadLinesFromFile(string path)
         {
+#if DOTNET4
             Contract.Requires(path != null);
             Contract.Requires(File.Exists(path));
-
+#endif
             using (StreamReader file = new StreamReader(path))
             {
                 string line;
@@ -151,8 +164,9 @@ namespace SharpBag
         /// <returns>An enumerable that reads lines from the specified TextReader.</returns>
         public static IEnumerable<string> ReadLinesFrom(TextReader reader)
         {
+#if DOTNET4
             Contract.Requires(reader != null);
-
+#endif
             return Generate(reader.ReadLine);
         }
 
@@ -166,8 +180,9 @@ namespace SharpBag
         /// <returns>An endless source of data from the generator.</returns>
         public static IEnumerable<T> GenerateEndless<T>(Func<T> generator)
         {
+#if DOTNET4
             Contract.Requires(generator != null);
-
+#endif
             while (true) yield return generator();
         }
     }

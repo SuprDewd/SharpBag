@@ -9,59 +9,14 @@
   </SettingsComponent>
   <RecentFiles>
     <RecentFiles>
-      <File id="186C1E72-526C-4894-8350-9823347FB3AD/f:ExtensionsTest.cs" caret="16080" fromTop="13" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/f:RandomExtensions.cs" caret="4703" fromTop="18" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Time/f:TimeExtensions.cs" caret="12375" fromTop="9" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Strings/f:StringExtensions.cs" caret="0" fromTop="0" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:SmallPrimeUtility.cs" caret="5973" fromTop="15" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Variations.cs" caret="2519" fromTop="28" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Permutations.cs" caret="4343" fromTop="17" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:IMetaCollection.cs" caret="945" fromTop="20" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:GenerateOption.cs" caret="357" fromTop="10" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:Combinations.cs" caret="781" fromTop="13" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="10003" fromTop="24" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:MySqlDB.cs" caret="293" fromTop="4" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:MathExtensions.cs" caret="4821" fromTop="20" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:IO/f:Serialization.cs" caret="1697" fromTop="26" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:FK/f:Num2Words.cs" caret="1334" fromTop="17" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:MSSqlDB.cs" caret="1308" fromTop="16" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:CombinatoricExtensions.cs" caret="240" fromTop="9" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:BagMath.cs" caret="11448" fromTop="31" />
       <File id="186C1E72-526C-4894-8350-9823347FB3AD/f:ExtensionsTest.Take01.g.cs" caret="2381" fromTop="0" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/f:Extensions.cs" caret="35552" fromTop="24" />
+      <File id="186C1E72-526C-4894-8350-9823347FB3AD/f:ExtensionsTest.To03.g.cs" caret="0" fromTop="0" />
+      <File id="186C1E72-526C-4894-8350-9823347FB3AD/f:ExtensionsTest.To02.g.cs" caret="292" fromTop="7" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:IO/f:Serialization.cs" caret="2749" fromTop="13" />
+      <File id="186C1E72-526C-4894-8350-9823347FB3AD/f:ExtensionsTest.cs" caret="4439" fromTop="9" />
+      <File id="186C1E72-526C-4894-8350-9823347FB3AD/f:ExtensionsTest.Times.g.cs" caret="1113" fromTop="17" />
     </RecentFiles>
-    <RecentEdits>
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:CombinatoricExtensions.cs" caret="1807" fromTop="22" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Combinatorics/f:CombinatoricExtensions.cs" caret="2071" fromTop="26" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:MSSqlDB.cs" caret="1779" fromTop="17" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:MSSqlDB.cs" caret="1308" fromTop="16" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:MySqlDB.cs" caret="2271" fromTop="18" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:MathExtensions.cs" caret="4821" fromTop="20" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:IO/f:Serialization.cs" caret="1413" fromTop="17" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:MySqlDB.cs" caret="1360" fromTop="17" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="8569" fromTop="24" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="7960" fromTop="13" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="7987" fromTop="10" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="8396" fromTop="20" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="9068" fromTop="28" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="9147" fromTop="24" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="9432" fromTop="27" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="7357" fromTop="11" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="7058" fromTop="16" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="9607" fromTop="17" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Database/f:GenericDB.cs" caret="9952" fromTop="21" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:BagMath.cs" caret="7850" fromTop="31" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:BagMath.cs" caret="7185" fromTop="12" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:BagMath.cs" caret="7582" fromTop="22" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:BagMath.cs" caret="8667" fromTop="29" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:BagMath.cs" caret="8001" fromTop="10" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:BagMath.cs" caret="9356" fromTop="23" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:BagMath.cs" caret="9356" fromTop="26" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:BagMath.cs" caret="8989" fromTop="9" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:BagMath.cs" caret="9109" fromTop="14" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:BagMath.cs" caret="9208" fromTop="18" />
-      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:BagMath.cs" caret="9320" fromTop="23" />
-    </RecentEdits>
+    <RecentEdits />
   </RecentFiles>
   <NAntValidationSettings>
     <NAntPath value="" />
@@ -76,8 +31,8 @@
   </UnitTestRunnerNUnit>
   <CompletionStatisticsManager>
     <ItemStatistics item="Default">
-      <Item value="public" priority="2" />
-      <Item value="static" priority="2" />
+      <Item value="public" priority="3" />
+      <Item value="static" priority="3" />
       <Item value="IEnumerable`0" priority="4" />
       <Item value="TaiwanCalendar`0" priority="0" />
       <Item value="this" priority="3" />
@@ -86,7 +41,7 @@
       <Item value="collection" priority="3" />
       <Item value="indexes" priority="8" />
       <Item value="foreach" priority="2" />
-      <Item value="yield return" priority="2" />
+      <Item value="yield return" priority="5" />
       <Item value="array" priority="0" />
       <Item value="i" priority="1" />
       <Item value="Contract`0" priority="5" />
@@ -94,12 +49,12 @@
       <Item value="CaseInsensitiveHashCodeProvider`0" priority="0" />
       <Item value="if" priority="1" />
       <Item value="yield break" priority="0" />
-      <Item value="return" priority="5" />
+      <Item value="return" priority="6" />
       <Item value="Enumerable`0" priority="0" />
       <Item value="params" priority="0" />
       <Item value="AsEnumerable`1" priority="0" />
       <Item value="false" priority="1" />
-      <Item value="IEnumerable" priority="2" />
+      <Item value="IEnumerable" priority="7" />
       <Item value="LowerIndex" priority="0" />
       <Item value="bool" priority="3" />
       <Item value="while" priority="0" />
@@ -109,7 +64,7 @@
       <Item value="Combinatorics" priority="0" />
       <Item value="internal" priority="4" />
       <Item value="Time" priority="0" />
-      <Item value="new" priority="0" />
+      <Item value="new" priority="1" />
       <Item value="Permutations" priority="0" />
       <Item value="GenerateOption`0" priority="1" />
       <Item value="permutation" priority="1" />
@@ -133,6 +88,13 @@
       <Item value="RowUpdatedEventArgs`0" priority="0" />
       <Item value="else" priority="0" />
       <Item value="BigInteger`0" priority="1" />
+      <Item value="uint" priority="0" />
+      <Item value="List" priority="0" />
+      <Item value="ulong" priority="0" />
+      <Item value="List&lt;ulong&gt;" priority="0" />
+      <Item value="primes" priority="0" />
+      <Item value="Obsolete" priority="0" />
+      <Item value="PointF`0" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Collections.Generic.IEnumerable`1">
       <Item value="Take`1" priority="1" />

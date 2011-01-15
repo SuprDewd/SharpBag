@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+
+#if DOTNET4
 using System.Numerics;
+#endif
 
 namespace SharpBag.Math
 {
@@ -57,6 +60,8 @@ namespace SharpBag.Math
             }
         }
 
+#if DOTNET4
+
         /// <summary>
         /// An endless source that will return fibonacci numbers.
         /// </summary>
@@ -79,6 +84,8 @@ namespace SharpBag.Math
                 }
             }
         }
+
+#endif
 
         #endregion Fibonacci numbers
 
@@ -112,6 +119,8 @@ namespace SharpBag.Math
             }
         }
 
+#if DOTNET4
+
         /// <summary>
         /// A possibly endless source that will return prime numbers.
         /// </summary>
@@ -125,6 +134,8 @@ namespace SharpBag.Math
                 }
             }
         }
+
+#endif
 
         #endregion Prime numbers
 
@@ -162,6 +173,8 @@ namespace SharpBag.Math
             }
         }
 
+#if DOTNET4
+
         /// <summary>
         /// An endless source for triangle numbers.
         /// </summary>
@@ -177,6 +190,8 @@ namespace SharpBag.Math
                 }
             }
         }
+
+#endif
 
         #endregion Triangle numbers
 
@@ -208,6 +223,8 @@ namespace SharpBag.Math
             }
         }
 
+#if DOTNET4
+
         /// <summary>
         /// An endless source for perfect numbers.
         /// </summary>
@@ -220,6 +237,8 @@ namespace SharpBag.Math
                        select i;
             }
         }
+
+#endif
 
         #endregion Perfect numbers
 
@@ -251,6 +270,8 @@ namespace SharpBag.Math
             }
         }
 
+#if DOTNET4
+
         /// <summary>
         /// An endless source for deficient numbers.
         /// </summary>
@@ -263,6 +284,8 @@ namespace SharpBag.Math
                        select i;
             }
         }
+
+#endif
 
         #endregion Deficient numbers
 
@@ -294,6 +317,8 @@ namespace SharpBag.Math
             }
         }
 
+#if DOTNET4
+
         /// <summary>
         /// An endless source for abundant number
         /// </summary>
@@ -306,6 +331,8 @@ namespace SharpBag.Math
                        select i;
             }
         }
+
+#endif
 
         #endregion Abundant number
     }

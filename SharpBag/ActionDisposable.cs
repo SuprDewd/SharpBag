@@ -1,5 +1,8 @@
 ﻿using System;
+
+#if DOTNET4
 using System.Diagnostics.Contracts;
+#endif
 
 namespace SharpBag
 {
@@ -16,7 +19,9 @@ namespace SharpBag
         /// <param name="action">The action to execute when the current instance is disposed.</param>
         public ActionDisposable(Action action)
         {
+#if DOTNET4
             Contract.Requires(action != null);
+#endif
             this.DisposeAction = action;
         }
 

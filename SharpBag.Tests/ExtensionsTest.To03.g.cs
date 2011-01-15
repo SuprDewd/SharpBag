@@ -20,6 +20,7 @@ namespace SharpBag
 {
     public partial class ExtensionsTest
     {
+#if DOTNET4
         [TestMethod]
         [PexGeneratedBy(typeof(ExtensionsTest))]
         [PexRaisedContractException(PexExceptionState.Expected)]
@@ -39,5 +40,6 @@ namespace SharpBag
                     throw ex;
             }
         }
+#endif
     }
 }

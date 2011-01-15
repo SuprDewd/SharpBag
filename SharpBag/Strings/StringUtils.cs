@@ -1,4 +1,7 @@
-﻿using System.Diagnostics.Contracts;
+﻿#if DOTNET4
+using System.Diagnostics.Contracts;
+#endif
+
 using System.Linq;
 using System.Text;
 
@@ -17,9 +20,10 @@ namespace SharpBag.Strings
         /// <returns>The new string.</returns>
         public static string Concat(string separator, params string[] strings)
         {
+#if DOTNET4
             Contract.Requires(separator != null);
             Contract.Requires(strings != null);
-
+#endif
             StringBuilder sb = new StringBuilder(strings.Sum(s => (s ?? "").Length) + ((strings.Length - 1) * separator.Length));
             bool first = true;
 

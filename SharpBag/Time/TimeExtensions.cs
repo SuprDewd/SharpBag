@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+
+#if DOTNET4
 using System.Diagnostics.Contracts;
+#endif
+
 using System.Globalization;
 using SharpBag.Math;
 
@@ -19,8 +23,10 @@ namespace SharpBag.Time
         /// <returns>The new DateTime.</returns>
         public static DateTime January(this int day, int year)
         {
+#if DOTNET4
             Contract.Requires(day.IsBetweenOrEqualTo(1, 31));
             Contract.Requires(year.IsBetweenOrEqualTo(0, 9999));
+#endif
             return new DateTime(year, 1, day);
         }
 
@@ -32,8 +38,10 @@ namespace SharpBag.Time
         /// <returns>The new DateTime.</returns>
         public static DateTime February(this int day, int year)
         {
+#if DOTNET4
             Contract.Requires(day.IsBetweenOrEqualTo(1, 31));
             Contract.Requires(year.IsBetweenOrEqualTo(0, 9999));
+#endif
             return new DateTime(year, 2, day);
         }
 
@@ -45,8 +53,10 @@ namespace SharpBag.Time
         /// <returns>The new DateTime.</returns>
         public static DateTime March(this int day, int year)
         {
+#if DOTNET4
             Contract.Requires(day.IsBetweenOrEqualTo(1, 31));
             Contract.Requires(year.IsBetweenOrEqualTo(0, 9999));
+#endif
             return new DateTime(year, 3, day);
         }
 
@@ -58,8 +68,10 @@ namespace SharpBag.Time
         /// <returns>The new DateTime.</returns>
         public static DateTime April(this int day, int year)
         {
+#if DOTNET4
             Contract.Requires(day.IsBetweenOrEqualTo(1, 31));
             Contract.Requires(year.IsBetweenOrEqualTo(0, 9999));
+#endif
             return new DateTime(year, 4, day);
         }
 
@@ -71,8 +83,10 @@ namespace SharpBag.Time
         /// <returns>The new DateTime.</returns>
         public static DateTime May(this int day, int year)
         {
+#if DOTNET4
             Contract.Requires(day.IsBetweenOrEqualTo(1, 31));
             Contract.Requires(year.IsBetweenOrEqualTo(0, 9999));
+#endif
             return new DateTime(year, 5, day);
         }
 
@@ -84,8 +98,10 @@ namespace SharpBag.Time
         /// <returns>The new DateTime.</returns>
         public static DateTime June(this int day, int year)
         {
+#if DOTNET4
             Contract.Requires(day.IsBetweenOrEqualTo(1, 31));
             Contract.Requires(year.IsBetweenOrEqualTo(0, 9999));
+#endif
             return new DateTime(year, 6, day);
         }
 
@@ -97,8 +113,10 @@ namespace SharpBag.Time
         /// <returns>The new DateTime.</returns>
         public static DateTime July(this int day, int year)
         {
+#if DOTNET4
             Contract.Requires(day.IsBetweenOrEqualTo(1, 31));
             Contract.Requires(year.IsBetweenOrEqualTo(0, 9999));
+#endif
             return new DateTime(year, 7, day);
         }
 
@@ -110,8 +128,10 @@ namespace SharpBag.Time
         /// <returns>The new DateTime.</returns>
         public static DateTime August(this int day, int year)
         {
+#if DOTNET4
             Contract.Requires(day.IsBetweenOrEqualTo(1, 31));
             Contract.Requires(year.IsBetweenOrEqualTo(0, 9999));
+#endif
             return new DateTime(year, 8, day);
         }
 
@@ -123,8 +143,10 @@ namespace SharpBag.Time
         /// <returns>The new DateTime.</returns>
         public static DateTime September(this int day, int year)
         {
+#if DOTNET4
             Contract.Requires(day.IsBetweenOrEqualTo(1, 31));
             Contract.Requires(year.IsBetweenOrEqualTo(0, 9999));
+#endif
             return new DateTime(year, 9, day);
         }
 
@@ -136,8 +158,10 @@ namespace SharpBag.Time
         /// <returns>The new DateTime.</returns>
         public static DateTime October(this int day, int year)
         {
+#if DOTNET4
             Contract.Requires(day.IsBetweenOrEqualTo(1, 31));
             Contract.Requires(year.IsBetweenOrEqualTo(0, 9999));
+#endif
             return new DateTime(year, 10, day);
         }
 
@@ -149,8 +173,10 @@ namespace SharpBag.Time
         /// <returns>The new DateTime.</returns>
         public static DateTime November(this int day, int year)
         {
+#if DOTNET4
             Contract.Requires(day.IsBetweenOrEqualTo(1, 31));
             Contract.Requires(year.IsBetweenOrEqualTo(0, 9999));
+#endif
             return new DateTime(year, 11, day);
         }
 
@@ -162,8 +188,10 @@ namespace SharpBag.Time
         /// <returns>The new DateTime.</returns>
         public static DateTime December(this int day, int year)
         {
+#if DOTNET4
             Contract.Requires(day.IsBetweenOrEqualTo(1, 31));
             Contract.Requires(year.IsBetweenOrEqualTo(0, 9999));
+#endif
             return new DateTime(year, 12, day);
         }
 
@@ -178,10 +206,12 @@ namespace SharpBag.Time
         /// <returns>The new DateTime.</returns>
         public static DateTime At(this DateTime datetime, int hour, int minute = 0, int second = 0, int millisecond = 0)
         {
+#if DOTNET4
             Contract.Requires(hour.IsBetweenOrEqualTo(0, 23));
             Contract.Requires(minute.IsBetweenOrEqualTo(0, 59));
             Contract.Requires(second.IsBetweenOrEqualTo(0, 59));
             Contract.Requires(minute.IsBetweenOrEqualTo(0, 999));
+#endif
             return new DateTime(datetime.Year, datetime.Month, datetime.Day, hour, minute, second, millisecond);
         }
 
@@ -202,7 +232,9 @@ namespace SharpBag.Time
         /// <returns>The TimeSpan.</returns>
         public static TimeSpan Milliseconds(this double n)
         {
+#if DOTNET4
             Contract.Requires(!Double.IsNaN(n));
+#endif
             return TimeSpan.FromMilliseconds(n);
         }
 
@@ -213,7 +245,9 @@ namespace SharpBag.Time
         /// <returns>The TimeSpan.</returns>
         public static TimeSpan Seconds(this double n)
         {
+#if DOTNET4
             Contract.Requires(!Double.IsNaN(n));
+#endif
             return TimeSpan.FromSeconds(n);
         }
 
@@ -224,7 +258,9 @@ namespace SharpBag.Time
         /// <returns>The TimeSpan.</returns>
         public static TimeSpan Minutes(this double n)
         {
+#if DOTNET4
             Contract.Requires(!Double.IsNaN(n));
+#endif
             return TimeSpan.FromMinutes(n);
         }
 
@@ -235,7 +271,9 @@ namespace SharpBag.Time
         /// <returns>The TimeSpan.</returns>
         public static TimeSpan Hours(this double n)
         {
+#if DOTNET4
             Contract.Requires(!Double.IsNaN(n));
+#endif
             return TimeSpan.FromHours(n);
         }
 
@@ -246,7 +284,9 @@ namespace SharpBag.Time
         /// <returns>The TimeSpan.</returns>
         public static TimeSpan Days(this double n)
         {
+#if DOTNET4
             Contract.Requires(!Double.IsNaN(n));
+#endif
             return TimeSpan.FromDays(n);
         }
 
@@ -257,7 +297,9 @@ namespace SharpBag.Time
         /// <returns>The TimeSpan.</returns>
         public static TimeSpan Weeks(this double n)
         {
+#if DOTNET4
             Contract.Requires(!Double.IsNaN(n));
+#endif
             return TimeSpan.FromDays(n * 7);
         }
 
@@ -268,7 +310,9 @@ namespace SharpBag.Time
         /// <returns>The TimeSpan.</returns>
         public static TimeSpan Milliseconds(this int n)
         {
+#if DOTNET4
             Contract.Requires(!Double.IsNaN(n));
+#endif
             return TimeSpan.FromMilliseconds(n);
         }
 

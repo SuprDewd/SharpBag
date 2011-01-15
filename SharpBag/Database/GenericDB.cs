@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+
+#if DOTNET4
 using System.Diagnostics.Contracts;
+#endif
+
 using System.Text;
 using System.Threading;
 
@@ -58,10 +62,12 @@ namespace SharpBag.Database
         /// <param name="password">The password used to connect.</param>
         protected GenericDB(string server, string schema, string username, string password)
         {
+#if DOTNET4
             Contract.Requires(server != null);
             Contract.Requires(schema != null);
             Contract.Requires(username != null);
             Contract.Requires(password != null);
+#endif
 
             this.CommandTimeout = 120;
             this.Server = server;
@@ -92,7 +98,9 @@ namespace SharpBag.Database
         /// <returns>A DataTable object with the results from the query.</returns>
         public virtual DataTable Query(string q)
         {
+#if DOTNET4
             Contract.Requires(q != null);
+#endif
 
             Monitor.Enter(this.Connection);
             this.Connect();
@@ -124,7 +132,9 @@ namespace SharpBag.Database
         /// <returns>The scalar value.</returns>
         public virtual object QuerySingle(string q)
         {
+#if DOTNET4
             Contract.Requires(q != null);
+#endif
 
             this.Connect();
             Monitor.Enter(this.Connection);
@@ -162,7 +172,9 @@ namespace SharpBag.Database
         /// <returns>How many rows were affected.</returns>
         public virtual int Execute(string q)
         {
+#if DOTNET4
             Contract.Requires(q != null);
+#endif
 
             this.Connect();
             Monitor.Enter(this.Connection);
@@ -208,7 +220,9 @@ namespace SharpBag.Database
         /// <returns>An SQL string.</returns>
         public virtual string DataTableToSQL(DataTable dt, string schema = null)
         {
+#if DOTNET4
             Contract.Requires(dt.Rows.Count > 0);
+#endif
 
             string into = schema != null ? schema + '.' + dt.TableName : dt.TableName;
             StringBuilder columns = new StringBuilder();
