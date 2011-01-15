@@ -2724,8 +2724,15 @@
             <summary>
             Checks whether a number is a prime number or not.
             </summary>
-            <param name="candidate">The number to test.</param>
+            <param name="n">The number to test.</param>
             <returns>Whether the number is a prime number or not.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BagMath.AtkinSieve(System.UInt64)">
+            <summary>
+            Performs an Atkin sieve to find primes.
+            </summary>
+            <param name="limit">The highest number to check.</param>
+            <returns>The primes.</returns>
         </member>
         <member name="M:SharpBag.Math.BagMath.K(System.Int32,System.Int32)">
             <summary>

@@ -497,6 +497,10 @@
         <member name="M:SharpBag.Math.Moles.MBagMath.BehaveAsNotImplemented">
             <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the moled type</summary>
         </member>
+        <member name="P:SharpBag.Math.Moles.MBagMath.AtkinSieveUInt64">
+            <summary>Sets the mole of <see cref="M:SharpBag.Math.BagMath.AtkinSieve(System.UInt64)"/>
+            </summary>
+        </member>
         <member name="P:SharpBag.Math.Moles.MBagMath.Behavior">
             <summary>Assigns the behavior for all methods of the moled type</summary>
         </member>

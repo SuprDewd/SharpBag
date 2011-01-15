@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.Contracts;
+﻿using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Drawing;
 using System.Numerics;
 
@@ -222,27 +223,69 @@ namespace SharpBag.Math
         /// <summary>
         /// Checks whether a number is a prime number or not.
         /// </summary>
-        /// <param name="candidate">The number to test.</param>
+        /// <param name="n">The number to test.</param>
         /// <returns>Whether the number is a prime number or not.</returns>
-        public static bool IsPrime(BigInteger candidate)
+        public static bool IsPrime(BigInteger n)
         {
-            if ((candidate & 1) == 0)
+            if (n <= 1) return false;
+            if (n < 4) return true;
+            if (n % 2 == 0) return false;
+            if (n < 9) return true;
+            if (n % 3 == 0) return false;
+
+            ulong r = (ulong)System.Math.Exp(BigInteger.Log(n) / 2);
+            ulong f = 5;
+            while (f <= r)
             {
-                return candidate == 2;
+                if (n % f == 0) return false;
+                if (n % (f + 2) == 0) return false;
+                f += 6;
             }
 
-            for (long i = 3; (i * i) <= candidate; i += 2)
-            {
-                if ((candidate % i) == 0)
-                {
-                    return false;
-                }
-            }
-
-            return candidate != 1;
+            return true;
         }
 
         #endregion IsPrime overloads
+
+        /// <summary>
+        /// Performs an Atkin sieve to find primes.
+        /// </summary>
+        /// <param name="limit">The highest number to check.</param>
+        /// <returns>The primes.</returns>
+        public static IEnumerable<ulong> AtkinSieve(ulong limit)
+        {
+            var isPrime = new bool[limit + 1];
+            var sqrt = System.Math.Sqrt(limit);
+
+            for (ulong x = 1; x <= sqrt; x++)
+                for (ulong y = 1; y <= sqrt; y++)
+                {
+                    var n = 4 * x * x + y * y;
+                    if (n <= limit && (n % 12 == 1 || n % 12 == 5))
+                        isPrime[n] ^= true;
+
+                    n = 3 * x * x + y * y;
+                    if (n <= limit && n % 12 == 7)
+                        isPrime[n] ^= true;
+
+                    n = 3 * x * x - y * y;
+                    if (x > y && n <= limit && n % 12 == 11)
+                        isPrime[n] ^= true;
+                }
+
+            for (ulong n = 5; n <= sqrt; n++)
+                if (isPrime[n])
+                {
+                    var s = n * n;
+                    for (ulong k = s; k <= limit; k += s)
+                        isPrime[k] = false;
+                }
+
+            yield return 2;
+            yield return 3;
+            for (ulong n = 5; n <= limit; n += 2)
+                if (isPrime[n]) yield return n;
+        }
 
         #region Sizes
 
