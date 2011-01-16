@@ -2727,12 +2727,20 @@
             <param name="n">The number to test.</param>
             <returns>Whether the number is a prime number or not.</returns>
         </member>
-        <member name="M:SharpBag.Math.BagMath.AtkinSieve(System.UInt64)">
+        <member name="M:SharpBag.Math.BagMath.AtkinSieve(System.Int32)">
             <summary>
             Performs an Atkin sieve to find primes.
             </summary>
-            <param name="limit">The highest number to check.</param>
+            <param name="max">The highest number to check.</param>
             <returns>The primes.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BagMath.AtkinSieveParallel(System.Int32)">
+            <summary>
+            Performs an Atkin sieve to find primes, in parallel.
+            </summary>
+            <param name="max">The highest number to check.</param>
+            <returns>The primes.</returns>
+            <remarks>Parallel is faster for finding primes bigger than 1000.</remarks>
         </member>
         <member name="M:SharpBag.Math.BagMath.K(System.Int32,System.Int32)">
             <summary>

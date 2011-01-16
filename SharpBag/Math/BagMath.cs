@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using System.Threading.Tasks;
 using S = System;
 
 #if DOTNET4
+
 using System.Diagnostics.Contracts;
 using System.Numerics;
+
 #endif
 
 namespace SharpBag.Math
@@ -265,10 +268,11 @@ namespace SharpBag.Math
         /// <summary>
         /// Performs an Atkin sieve to find primes.
         /// </summary>
-        /// <param name="limit">The highest number to check.</param>
+        /// <param name="max">The highest number to check.</param>
         /// <returns>The primes.</returns>
-        public static IEnumerable<ulong> AtkinSieve(ulong limit)
+        public static IEnumerable<ulong> AtkinSieve(int max)
         {
+            var limit = (ulong)max;
             var isPrime = new bool[limit + 1];
             var sqrt = System.Math.Sqrt(limit);
 
@@ -299,6 +303,54 @@ namespace SharpBag.Math
             yield return 2;
             yield return 3;
             for (ulong n = 5; n <= limit; n += 2)
+                if (isPrime[n]) yield return n;
+        }
+
+        /// <summary>
+        /// Performs an Atkin sieve to find primes, in parallel.
+        /// </summary>
+        /// <param name="max">The highest number to check.</param>
+        /// <returns>The primes.</returns>
+        /// <remarks>Parallel is faster for finding primes bigger than 1000.</remarks>
+        public static IEnumerable<uint> AtkinSieveParallel(int max)
+        {
+            var isPrime = new bool[max + 1];
+            var sqrt = (int)S.Math.Sqrt(max);
+
+            Parallel.For(1, sqrt, x =>
+            {
+                uint xx = (uint)(x * x);
+                for (uint y = 1; y <= sqrt; y++)
+                {
+                    var yy = y * y;
+                    var n = 4 * xx + yy;
+                    if (n <= max && (n % 12 == 1 || n % 12 == 5))
+                        isPrime[n] ^= true;
+
+                    n = 3 * xx + yy;
+                    if (n <= max && n % 12 == 7)
+                        isPrime[n] ^= true;
+
+                    n = 3 * xx - yy;
+                    if (x > y && n <= max && n % 12 == 11)
+                        isPrime[n] ^= true;
+                }
+            });
+
+            yield return 2;
+            yield return 3;
+            for (uint n = 5; n <= sqrt; n++)
+            {
+                if (isPrime[n])
+                {
+                    yield return n;
+                    uint nn = n * n;
+                    for (uint k = nn; k <= max; k += nn)
+                        isPrime[k] = false;
+                }
+            }
+
+            for (uint n = (uint)sqrt + 1; n <= max; n++)
                 if (isPrime[n]) yield return n;
         }
 

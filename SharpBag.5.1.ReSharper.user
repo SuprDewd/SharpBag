@@ -15,8 +15,19 @@
       <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:IO/f:Serialization.cs" caret="2749" fromTop="13" />
       <File id="186C1E72-526C-4894-8350-9823347FB3AD/f:ExtensionsTest.cs" caret="4439" fromTop="9" />
       <File id="186C1E72-526C-4894-8350-9823347FB3AD/f:ExtensionsTest.Times.g.cs" caret="1113" fromTop="17" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:BagMath.cs" caret="12048" fromTop="25" />
     </RecentFiles>
-    <RecentEdits />
+    <RecentEdits>
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:BagMath.cs" caret="13832" fromTop="33" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:BagMath.cs" caret="9997" fromTop="7" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:BagMath.cs" caret="9854" fromTop="5" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:BagMath.cs" caret="11174" fromTop="17" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:BagMath.cs" caret="12416" fromTop="14" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:BagMath.cs" caret="11525" fromTop="10" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:BagMath.cs" caret="12609" fromTop="19" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:BagMath.cs" caret="12754" fromTop="24" />
+      <File id="D489AA48-352B-4B07-AD7C-F02E49212D94/d:Math/f:BagMath.cs" caret="11756" fromTop="17" />
+    </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
     <NAntPath value="" />
@@ -31,21 +42,21 @@
   </UnitTestRunnerNUnit>
   <CompletionStatisticsManager>
     <ItemStatistics item="Default">
-      <Item value="public" priority="3" />
-      <Item value="static" priority="3" />
+      <Item value="public" priority="4" />
+      <Item value="static" priority="4" />
       <Item value="IEnumerable`0" priority="4" />
       <Item value="TaiwanCalendar`0" priority="0" />
       <Item value="this" priority="3" />
       <Item value="T`0" priority="4" />
-      <Item value="int" priority="4" />
+      <Item value="int" priority="5" />
       <Item value="collection" priority="3" />
       <Item value="indexes" priority="8" />
       <Item value="foreach" priority="2" />
-      <Item value="yield return" priority="5" />
+      <Item value="yield return" priority="10" />
       <Item value="array" priority="0" />
       <Item value="i" priority="1" />
       <Item value="Contract`0" priority="5" />
-      <Item value="null" priority="4" />
+      <Item value="null" priority="5" />
       <Item value="CaseInsensitiveHashCodeProvider`0" priority="0" />
       <Item value="if" priority="1" />
       <Item value="yield break" priority="0" />
@@ -54,7 +65,7 @@
       <Item value="params" priority="0" />
       <Item value="AsEnumerable`1" priority="0" />
       <Item value="false" priority="1" />
-      <Item value="IEnumerable" priority="7" />
+      <Item value="IEnumerable" priority="8" />
       <Item value="LowerIndex" priority="0" />
       <Item value="bool" priority="3" />
       <Item value="while" priority="0" />
@@ -73,7 +84,7 @@
       <Item value="Linq" priority="0" />
       <Item value="Combinations" priority="0" />
       <Item value="Variations" priority="0" />
-      <Item value="var" priority="0" />
+      <Item value="var" priority="1" />
       <Item value="p" priority="0" />
       <Item value="per" priority="0" />
       <Item value="c" priority="0" />
@@ -88,13 +99,15 @@
       <Item value="RowUpdatedEventArgs`0" priority="0" />
       <Item value="else" priority="0" />
       <Item value="BigInteger`0" priority="1" />
-      <Item value="uint" priority="0" />
+      <Item value="uint" priority="1" />
       <Item value="List" priority="0" />
-      <Item value="ulong" priority="0" />
+      <Item value="ulong" priority="1" />
       <Item value="List&lt;ulong&gt;" priority="0" />
       <Item value="primes" priority="0" />
       <Item value="Obsolete" priority="0" />
       <Item value="PointF`0" priority="1" />
+      <Item value="max" priority="0" />
+      <Item value="n" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Collections.Generic.IEnumerable`1">
       <Item value="Take`1" priority="1" />
