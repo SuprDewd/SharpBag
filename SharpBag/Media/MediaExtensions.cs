@@ -7,7 +7,6 @@ using System.Diagnostics.Contracts;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Windows.Media.Imaging;
 using SharpBag.Math;
 
 namespace SharpBag.Media
@@ -17,22 +16,6 @@ namespace SharpBag.Media
     /// </summary>
     public static class MediaExtensions
     {
-        /// <summary>
-        /// Turns the current instance into a BitmapSource.
-        /// </summary>
-        /// <param name="img">The current instance.</param>
-        /// <returns>The BitmapSource.</returns>
-        public static BitmapSource ToBitmapSource(this Image img)
-        {
-#if DOTNET4
-            Contract.Requires(img != null);
-#endif
-            MemoryStream memStream = new MemoryStream();
-            img.Save(memStream, System.Drawing.Imaging.ImageFormat.Png);
-            PngBitmapDecoder decoder = new PngBitmapDecoder(memStream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.Default);
-            return decoder.Frames[0];
-        }
-
         /// <summary>
         /// Gets an enumerable containing all pixels that are in the specified rectangle on the current instance.
         /// </summary>

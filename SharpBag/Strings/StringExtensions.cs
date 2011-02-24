@@ -582,5 +582,36 @@ namespace SharpBag.Strings
         {
             return i > 9 ? i.ToString() : "0" + i.ToString();
         }
+		
+		/// <summary>
+		/// Repeats the specified string N times.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <param name="s">The specified string.</param>
+		/// <returns>The repeated string.</returns>
+		public static string Times(this int n, string s)
+		{
+			StringBuilder sb = new StringBuilder(s.Length * n);
+			for (int i = 0; i < n; i++) sb.Append(s);
+			return sb.ToString();
+		}
+		
+		/// <summary>
+		/// Repeats the specified string N times.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <param name="s">The specified string.</param>
+		/// <param name="separator">A separator to put between strings.</param>
+		/// <returns>The repeated string.</returns>
+		public static string Times(this int n, string s, string separator)
+		{
+			StringBuilder sb = new StringBuilder((s.Length * n) + ((n - 1) * separator.Length));
+			for (int i = 0; i < n; i++)
+			{
+				if (i != 0) sb.Append(separator);
+				sb.Append(s);
+			}
+			return sb.ToString();
+		}
     }
 }

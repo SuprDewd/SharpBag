@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using SharpBag.Comparers;
 using SharpBag.Strings;
+using System.Diagnostics;
 
 namespace SharpBag.FK.MVC
 {
@@ -147,11 +148,15 @@ namespace SharpBag.FK.MVC
 
             if (action.Timed || this.TimeAll)
             {
-                long time = Utils.ExecutionTime(() => action.Method.Invoke(this, new object[] { }));
+				Stopwatch sw = new Stopwatch();
+				sw.Start();
+				action.Method.Invoke(this, new object[] { });
+				sw.Stop();
+                //long time = Utils.ExecutionTime(() => action.Method.Invoke(this, new object[] { }));
 
                 Console.WriteLine();
                 Console.Write("Time: ");
-                Console.WriteLine(time);
+                Console.WriteLine(sw.ElapsedMilliseconds);
             }
             else
             {
