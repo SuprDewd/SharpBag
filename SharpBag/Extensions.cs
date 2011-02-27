@@ -750,10 +750,10 @@ namespace SharpBag
         }
 
         /// <summary>
-        /// Returns whether or not the specified type is <see cref="Nullable{T}"/>.
+        /// Returns whether or not the specified type is Nullable{T}
         /// </summary>
-        /// <param name="type">A <see cref="Type"/>.</param>
-        /// <returns>True if the specified type is <see cref="Nullable{T}"/>; otherwise, false.</returns>
+        /// <param name="type">A Type.</param>
+        /// <returns>True if the specified type is Nullable{T}; otherwise, false.</returns>
         /// <remarks>Use <see cref="Nullable.GetUnderlyingType"/> to access the underlying type.</remarks>
         public static bool IsNullableType(this Type type)
         {

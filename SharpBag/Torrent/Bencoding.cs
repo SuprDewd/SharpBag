@@ -320,7 +320,9 @@ namespace SharpBag.Torrent
             return this.Value.GetHashCode();
         }
 
-        /// <see cref="int.Equals(object)"/>
+        /// <summary>
+        /// Int32.Equals(object)
+        /// </summary>
         public override bool Equals(object obj)
         {
             try
@@ -398,7 +400,9 @@ namespace SharpBag.Torrent
             return this.Value.GetHashCode();
         }
 
-        /// <see cref="String.Equals(String, Object)"/>
+        /// <summary>
+        /// String.Equals(object)
+        /// </summary>
         public override bool Equals(object obj)
         {
             try

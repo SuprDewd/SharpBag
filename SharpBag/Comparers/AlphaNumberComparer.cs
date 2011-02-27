@@ -22,7 +22,9 @@ namespace SharpBag.Comparers
             this.Location = location;
         }
 
-        /// <see cref="IComparer{T}.Compare(T, T)"/>
+        /// <summary>
+        /// IComparer{T}.Compare(T, T)
+        /// </summary>
         public int Compare(string a, string b)
         {
             StringComparer sc = StringComparer.CurrentCultureIgnoreCase;

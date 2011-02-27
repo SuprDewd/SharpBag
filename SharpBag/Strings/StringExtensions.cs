@@ -132,7 +132,9 @@ namespace SharpBag.Strings
             return word[0].ToString().ToUpper() + word.Substring(1);
         }
 
-        /// <see cref="String.Format(string, object[])"/>
+        /// <summary>
+        /// String.Format(string, object[])
+        /// </summary>
         public static string Format(this string s, params object[] args)
         {
 #if DOTNET4

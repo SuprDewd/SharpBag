@@ -144,15 +144,7 @@
     <Compile Include="Patterns\Singleton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Diagram.cd" />
-    <None Include="README" />
-    <None Include="TODO" />
-  </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Content Include=".gitignore" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

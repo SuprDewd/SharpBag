@@ -255,7 +255,9 @@ namespace SharpBag.Net
             return !(a == b);
         }
 
-        /// <see cref="Object.Equals(object)"/>
+        /// <summary>
+        /// Object.Equals(object)
+        /// </summary>
         public override bool Equals(object obj)
         {
             try
