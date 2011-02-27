@@ -74,9 +74,7 @@ namespace SharpBag.FK.MVC
                     while (true)
                     {
                         this.ExecuteAction(args.First(), true);
-
                         if (endless) continue;
-
                         this.Exit();
                     }
                 }
@@ -114,15 +112,12 @@ namespace SharpBag.FK.MVC
             {
                 Console.Write(this.HorizontalChar);
                 Console.Write(' ');
-
                 Console.Write(line);
-
                 Console.Write(new String(' ', length - line.Length + 1));
                 Console.WriteLine(this.HorizontalChar);
             }
 
             Console.WriteLine(verticalString);
-
             Console.WriteLine();
         }
 
@@ -182,10 +177,19 @@ namespace SharpBag.FK.MVC
         /// </summary>
         public void Run()
         {
+			if (this.Actions.Any(a => a.Start))
+			{
+				Console.Clear();
+				this.PreActionExecute();
+				this.Actions.First(a => a.Start).Method.Invoke(this, new object[] { });
+				this.PostActionExecute();
+				return;
+			}
+			
             while (true)
             {
                 Console.Clear();
-
+				
                 this.ListActions();
                 Console.Write("Run: ");
                 this.ExecuteAction(Console.ReadLine(), true);

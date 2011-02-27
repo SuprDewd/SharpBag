@@ -1,19 +1,22 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="SharpBag/FK/MVC/FKController.cs">
+    <Files>
+      <File FileName="SharpBag/FK/MVC/FKController.cs" Line="190" Column="14" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
+        <State expanded="True" selected="True">
           <Node name="SharpBag" expanded="True">
-            <Node name="References" expanded="True" />
-            <Node name="FK" expanded="True">
-              <Node name="MVC" expanded="True" />
-            </Node>
-            <Node name="Games" expanded="True">
-              <Node name="Card.cs" selected="True" />
-            </Node>
+            <Node name="Algorithms" expanded="True" />
           </Node>
         </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

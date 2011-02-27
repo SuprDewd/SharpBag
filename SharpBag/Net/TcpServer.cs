@@ -18,8 +18,9 @@ namespace SharpBag.Net
         /// <param name="ports">A collection of ports. The first free port in the collection will be used.</param>
         /// <param name="checkInterval">The interval to check for new connections.</param>
         /// <returns>A new TcpServer instance.</returns>
-        public static TcpServer Create(IEnumerable<int> ports, int checkInterval = 50)
+        public static TcpServer Create(IEnumerable<int> ports = null, int checkInterval = 50)
         {
+			if (ports == null) ports = 1.To(0xFFFF);
             int port = ports.First(Internet.IsPortFree);
             IPAddress ip = Internet.LocalIPAddresses.First(i => i.AddressFamily == AddressFamily.InterNetwork);
 
