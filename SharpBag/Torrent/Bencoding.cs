@@ -398,7 +398,7 @@ namespace SharpBag.Torrent
             return this.Value.GetHashCode();
         }
 
-        /// <see cref="string.Equals(object)"/>
+        /// <see cref="String.Equals(String, Object)"/>
         public override bool Equals(object obj)
         {
             try
@@ -414,7 +414,7 @@ namespace SharpBag.Torrent
             return this.Value.ToString();
         }
 
-        /// <see cref="IComparable.CompareTo(object)"/>
+        /// <see cref="IComparable.CompareTo(Object)"/>
         public int CompareTo(BString other)
         {
             return this.Value.CompareTo(other.Value);
