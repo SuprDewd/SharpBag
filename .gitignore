@@ -1,5 +1,7 @@
 /SharpBag/bin/Release/
 /SharpBag/obj/
-/_ReSharper.SharpBag/
-/TestResults/
 /SharpBag.suo
+/SharpBag.userprefs
+/SharpBag.vsmdi
+/SharpBag/SharpBag.pidb
+/SharpBag/SharpBag.csproj.user
