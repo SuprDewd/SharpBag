@@ -44,7 +44,7 @@ namespace SharpBag.FK.MVC
                 return (from a in this.GetType().GetMethods()
                         where a.IsPublic && Attribute.IsDefined(a, typeof(FKActionAttribute)) && !a.GetParameters().Any()
                         let attr = Attribute.GetCustomAttribute(a, typeof(FKActionAttribute)) as FKActionAttribute
-                        select new FKActionMetadata { Method = a, Name = attr.Name, Description = attr.Description + (!attr.Finished ? " (unfinished)" : ""), Timed = attr.Timed, Pause = attr.Pause }).OrderBy(a => a.Name, new AlphaNumberComparer(AlphaNumberSettings.Leading));
+                        select new FKActionMetadata { Method = a, Name = attr.Name, Description = attr.Description + (!attr.Finished ? " (unfinished)" : ""), Timed = attr.Timed, Pause = attr.Pause, Start = attr.Start }).OrderBy(a => a.Name, new AlphaNumberComparer(AlphaNumberSettings.Leading));
             }
         }
 
@@ -180,9 +180,7 @@ namespace SharpBag.FK.MVC
 			if (this.Actions.Any(a => a.Start))
 			{
 				Console.Clear();
-				this.PreActionExecute();
-				this.Actions.First(a => a.Start).Method.Invoke(this, new object[] { });
-				this.PostActionExecute();
+				this.ExecuteAction(this.Actions.First(a => a.Start).Name, true);
 				return;
 			}
 			
