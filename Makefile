@@ -13,4 +13,4 @@ mysql:
 	cp ${BinLocation}/MySql.Data.dll ${OutputLocation}
 
 clean:
-	rm SharpBag/bin/Debug/SharpBag.* SharpBag/bin/Release/SharpBag.*
+	rm SharpBag/bin/Debug/* SharpBag/bin/Release/*
