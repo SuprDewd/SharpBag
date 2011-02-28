@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 #if DOTNET4
 using System.Diagnostics.Contracts;
-using System.Numerics;
 #endif
 
 using System.Globalization;
