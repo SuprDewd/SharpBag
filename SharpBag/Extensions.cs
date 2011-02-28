@@ -19,8 +19,6 @@ namespace SharpBag
     /// </summary>
     public static class Extensions
     {
-        #region Igor Ostrovsky
-
         /// <summary>
         /// Performs an action on each element of the enumerable.
         /// </summary>
@@ -28,6 +26,7 @@ namespace SharpBag
         /// <param name="source">The current instance.</param>
         /// <param name="action">The action to perform on each element.</param>
         /// <returns>The current instance.</returns>
+        /// <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
         public static IEnumerable<T> Iter<T>(this IEnumerable<T> source, Action<T> action)
         {
 #if DOTNET4
@@ -48,6 +47,7 @@ namespace SharpBag
         /// <typeparam name="T">The type of the elements.</typeparam>
         /// <param name="source">The current instance.</param>
         /// <param name="action">The action to perform on each element.</param>
+        /// <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
         public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
         {
 #if DOTNET4
@@ -56,10 +56,6 @@ namespace SharpBag
 #endif
             foreach (T elem in source) action(elem);
         }
-
-        #endregion Igor Ostrovsky
-
-        #region Yet Another Language Geek
 
         #region To overloads
 
@@ -70,6 +66,7 @@ namespace SharpBag
         /// <param name="end">The number to end at.</param>
         /// <param name="step">The step to take on each iteration.</param>
         /// <returns>An enumerable containing the numbers.</returns>
+        /// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
         public static IEnumerable<int> To(this int start, int end, int step = 1)
         {
 #if DOTNET4
@@ -89,6 +86,7 @@ namespace SharpBag
         /// <param name="end">The number to end at.</param>
         /// <param name="step">The step to take on each iteration.</param>
         /// <returns>An enumerable containing the numbers.</returns>
+        /// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
         public static IEnumerable<long> To(this long start, long end, long step = 1)
         {
 #if DOTNET4
@@ -110,10 +108,13 @@ namespace SharpBag
         /// <param name="start">The current instance.</param>
         /// <param name="end">The number to end at.</param>
         /// <returns>An enumerable containing the numbers.</returns>
+        /// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
         public static IEnumerable<BigInteger> To(this BigInteger start, BigInteger end)
         {
+#if DOTNET4
             Contract.Ensures(Contract.Result<IEnumerable<BigInteger>>() != null);
             Contract.Ensures(Contract.Result<IEnumerable<BigInteger>>().Any());
+#endif
 
             return start.To(end, BigInteger.One);
         }
@@ -125,11 +126,14 @@ namespace SharpBag
         /// <param name="end">The number to end at.</param>
         /// <param name="step">The step to take on each iteration.</param>
         /// <returns>An enumerable containing the numbers.</returns>
+        /// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
         public static IEnumerable<BigInteger> To(this BigInteger start, BigInteger end, BigInteger step)
         {
+#if DOTNET4
             Contract.Requires(step > 0);
             Contract.Ensures(Contract.Result<IEnumerable<BigInteger>>() != null);
             Contract.Ensures(Contract.Result<IEnumerable<BigInteger>>().Any());
+#endif
 
             if (start < end) for (BigInteger i = start; i <= end; i += step) yield return i;
             else if (start > end) for (BigInteger i = start; i >= end; i -= step) yield return i;
@@ -145,6 +149,7 @@ namespace SharpBag
         /// <param name="end">The char to end at.</param>
         /// <param name="step">The step to take on each iteration.</param>
         /// <returns>An enumerable containing the numbers.</returns>
+        /// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
         public static IEnumerable<char> To(this char start, char end, int step = 1)
         {
 #if DOTNET4
@@ -166,6 +171,7 @@ namespace SharpBag
         /// <param name="i">The current instance.</param>
         /// <param name="f">The function to execute.</param>
         /// <returns>An enumerable with the returned values of the function.</returns>
+        /// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
         public static IEnumerable<T> Times<T>(this int i, Func<T> f)
         {
 #if DOTNET4
@@ -182,6 +188,7 @@ namespace SharpBag
         /// </summary>
         /// <typeparam name="T">The type of the elements in the enumerable.</typeparam>
         /// <param name="sequence">The current instance.</param>
+        /// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
         public static void Execute<T>(this IEnumerable<T> sequence)
         {
 #if DOTNET4
@@ -197,6 +204,7 @@ namespace SharpBag
         /// <param name="array">The current instance.</param>
         /// <param name="percent">The percent.</param>
         /// <returns>The element in the array located at the specified percent.</returns>
+        /// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
         public static T GetByPercent<T>(this T[] array, double percent)
         {
 #if DOTNET4
@@ -206,8 +214,6 @@ namespace SharpBag
 #endif
             return array[Math.MathExtensions.Round((array.Length - 1) * percent)];
         }
-
-        #endregion Yet Another Language Geek
 
         #region Multidimensional Arrays
 
@@ -428,81 +434,6 @@ namespace SharpBag
         }
 
         #endregion InvokeIfRequired overloads
-
-        #region UnionAll overloads
-
-        /// <summary>
-        /// Unions all elements in the current instance and the specified collection.
-        /// </summary>
-        /// <typeparam name="T">The type of the collections.</typeparam>
-        /// <param name="source">The current instance.</param>
-        /// <param name="other">The collection to union.</param>
-        /// <returns>The current instance and the specified collection unioned.</returns>
-        public static IEnumerable<T> UnionAll<T>(this IEnumerable<T> source, IEnumerable<T> other)
-        {
-#if DOTNET4
-            Contract.Requires(source != null);
-            Contract.Requires(other != null);
-            Contract.Ensures(Contract.Result<IEnumerable<T>>() != null);
-#endif
-            foreach (T item in source)
-            {
-                yield return item;
-            }
-
-            foreach (T item in other)
-            {
-                yield return item;
-            }
-        }
-
-        /// <summary>
-        /// Adds the specified item to the current instance.
-        /// </summary>
-        /// <typeparam name="T">The type of the items.</typeparam>
-        /// <param name="source">The current instance.</param>
-        /// <param name="newItem">The new item.</param>
-        /// <returns>The current instance with the new item.</returns>
-        public static IEnumerable<T> UnionAll<T>(this IEnumerable<T> source, T newItem)
-        {
-#if DOTNET4
-            Contract.Requires(source != null);
-            Contract.Ensures(Contract.Result<IEnumerable<T>>() != null);
-#endif
-            foreach (T item in source)
-            {
-                yield return item;
-            }
-
-            yield return newItem;
-        }
-
-        /// <summary>
-        /// Adds the specified items to the current instance.
-        /// </summary>
-        /// <typeparam name="T">The type of items in the current instance.</typeparam>
-        /// <param name="source">The current instance.</param>
-        /// <param name="newItems">The items to add.</param>
-        /// <returns>The current instance and the new items.</returns>
-        public static IEnumerable<T> UnionAll<T>(this IEnumerable<T> source, params T[] newItems)
-        {
-#if DOTNET4
-            Contract.Requires(source != null);
-            Contract.Requires(newItems != null);
-            Contract.Ensures(Contract.Result<IEnumerable<T>>() != null);
-#endif
-            foreach (T item in source)
-            {
-                yield return item;
-            }
-
-            foreach (T item in newItems)
-            {
-                yield return item;
-            }
-        }
-
-        #endregion UnionAll overloads
 
         /// <summary>
         /// Gets a subarray of the current instance.

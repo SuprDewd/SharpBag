@@ -16,34 +16,37 @@ namespace SharpBag.IO
         /// <typeparam name="T">The type of the lines that will be written.</typeparam>
         /// <param name="lines">The current instance.</param>
         /// <param name="writer">The TextWriter to write to.</param>
+        /// <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
         public static void WriteLinesTo<T>(this IEnumerable<T> lines, TextWriter writer)
         {
             if (lines == null) throw new ArgumentNullException("lines");
             if (writer == null) throw new ArgumentNullException("writer");
-
+        
             lines.ForEach(line => writer.WriteLine(line.ToString()));
         }
-
+        
         /// <summary>
         /// Writes lines from the current instance to the console.
         /// </summary>
         /// <typeparam name="T">The type of the lines that will be written.</typeparam>
         /// <param name="lines">The current instance.</param>
+        /// <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
         public static void WriteLinesToConsole<T>(this IEnumerable<T> lines)
         {
             lines.WriteLinesTo(Console.Out);
         }
-
+        
         /// <summary>
         /// Writes lines from the current instance to the specified file.
         /// </summary>
         /// <typeparam name="T">The type of the lines that will be written.</typeparam>
         /// <param name="lines">The current instance.</param>
         /// <param name="path">The location of the file to write to.</param>
+        /// <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
         public static void WriteLinesToFile<T>(this IEnumerable<T> lines, string path)
         {
             if (path == null) throw new ArgumentNullException("path");
-
+        
             using (TextWriter file = new StreamWriter(path))
             {
                 lines.WriteLinesTo(file);
