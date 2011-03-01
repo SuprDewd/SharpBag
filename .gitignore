@@ -1,7 +1,16 @@
-/SharpBag/bin/Release/
+/SharpBag/bin/
 /SharpBag/obj/
+/SharpBag.Tests/bin/
+/SharpBag.Tests/obj/
 /SharpBag.suo
 /SharpBag.userprefs
 /SharpBag.vsmdi
 /SharpBag/SharpBag.pidb
 /SharpBag/SharpBag.csproj.user
+/SharpBag.Tests/test-results/
+/SharpBag.Tests/SharpBag.Tests.pidb
+TestResult.xml
+*.VisualState.xml
+/Bin/NUnit/
+/Bin/nunit.core.dll
+/Bin/nunit.framework.dll

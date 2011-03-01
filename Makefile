@@ -1,44 +1,47 @@
-Compiler = dmcs
-Tester = nunit-console
-Mono = /opt/mono-2.10
-MonoLibs = ${Mono}/lib/mono/4.0
-Defines = "TRACE;DOTNET4;RELEASE"
 Name = SharpBag
 Tests = ${Name}.Tests
-Bin = bin
-Output = ${Bin}/Release
-NUnit = ${Mono}/lib/monodevelop/AddIns/NUnit
+Defines = "TRACE;DOTNET4;RELEASE"
+Docs = true
+
+Output = Bin
+
+Compiler = dmcs
+Mono = /opt/mono-2.10
+MonoLibs = ${Mono}/lib/mono/4.0
+Tester = ${Mono}/bin/mono --runtime=v4.0 ${Output}/NUnit/nunit-console.exe
+GuiTester = ${Mono}/bin/mono --runtime=v4.0 ${Output}/NUnit/nunit.exe
+
 References := System System.Core System.Drawing System.Numerics System.Data System.Data.DataSetExtensions System.Xml System.Xml.Linq WindowsBase System.Xaml
-TestReferences := ${References} nunit.core nunit.framework
-Docs = false
+TestReferences := ${Output}/nunit.core.dll ${Output}/nunit.framework.dll
 
 all: build
 
 build:
-	mkdir -p ${Name}/${Output}
 	${Compiler} \
 	-t:library \
 	-d:${Defines} \
 	${foreach Lib, ${References}, -r:${MonoLibs}/${Lib}.dll} \
-	-r:MySql.Data.dll \
-	-out:${Name}/${Output}/${Name}.dll \
-	${if, ${Docs}, -doc:${Name}/${Output}/${Name}.xml} \
+	-r:${Output}/MySql.Data.dll \
+	-out:${Output}/${Name}.dll \
+	${if, ${Docs}, -doc:${Output}/${Name}.xml} \
 	`find -iname '*.cs' | grep -E '\./${Name}/.+\.cs'`
 
 buildtests:
-	mkdir -p ${Tests}/${Output}
 	${Compiler} \
 	-t:library \
 	-d:${Defines} \
-	${foreach Lib, ${TestReferences}, -r:${MonoLibs}/${Lib}.dll} \
-	-r:${Name}/${Output}/${Name}.dll \
-	-r:MySql.Data.dll \
-	-out:${Tests}/${Output}/${Tests}.dll \
-	${if, ${Docs}, -doc:${Tests}/${Output}/${Tests}.xml} \
+	${foreach RLib, ${References}, -r:${MonoLibs}/${RLib}.dll} \
+	${foreach TLib, ${TestReferences}, -r:${TLib}} \
+	-r:${Output}/${Name}.dll \
+	-r:${Output}/MySql.Data.dll \
+	-out:${Output}/${Tests}.dll \
 	`find -iname '*.cs' | grep -E '\./${Tests}/.+\.cs'`
 
 test: buildtests
-	${Tester} ${Tests}/${Output}/${Tests}.dll
+	${Tester} ${Output}/${Tests}.dll
+
+guitest: buildtests
+	${GuiTester} ${Output}/${Tests}.dll
 
 clean:
-	rm -rf ${Name}/${Bin} ${Tests}/${Bin}
+	rm -f ${Output}/${Name}.dll ${Output}/${Tests}.dll ${Output}/${Name}.xml ${Output}/${Tests}.xml
