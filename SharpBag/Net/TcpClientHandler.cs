@@ -30,6 +30,11 @@ namespace SharpBag.Net
         /// The stream writer.
         /// </summary>
         public BinaryWriter Writer { get; private set; }
+		
+		/// <summary>
+		/// The encoding to use when reading from the client.
+		/// </summary>
+		public Encoding Encoding { get; private set; }
 
         /// <summary>
         /// The client.
@@ -63,11 +68,11 @@ namespace SharpBag.Net
             {
                 this._PingInterval = value;
 
-                if (this._PingInterval > 0 && this.PingThread == null)
+                if (this._PingInterval >= 0 && this.PingThread == null)
                 {
                     this.PingThread = new Thread(() =>
                                                      {
-                                                         while (this.Listening && this._PingInterval > 0)
+                                                         while (this.Listening && this._PingInterval >= 0)
                                                          {
                                                              Thread.Sleep(this._PingInterval);
 
@@ -77,7 +82,7 @@ namespace SharpBag.Net
 
                     this.PingThread.Start();
                 }
-                else if (this.PingThread != null)
+                else if (this._PingInterval < 0 && this.PingThread != null)
                 {
                     try
                     {
@@ -97,27 +102,22 @@ namespace SharpBag.Net
         /// An event that is fired when the TcpClient disconnects.
         /// </summary>
         public event Action<TcpClientHandler> Disconnected;
-
+		
         /// <summary>
         /// The constructor.
         /// </summary>
         /// <param name="client">The TcpClient.</param>
         /// <param name="encoding">The encoding to use.</param>
         /// <param name="checkInterval">The interval to check for messages.</param>
-        /// <param name="ping">The interval, in milliseconds, to ping the client. If it's a negative integer, no pings are sent.</param>
         /// <param name="receiveTimeout">The time, in milliseconds, before a timeout occurs when reading data from the server.</param>
-        public TcpClientHandler(TcpClient client, Encoding encoding = null, int checkInterval = 50, int ping = -1, int receiveTimeout = 5000)
+        /// <param name="start">Whether to start the handler.</param>
+        public TcpClientHandler(TcpClient client, Encoding encoding = null, int checkInterval = 50, int receiveTimeout = 5000, bool start = false)
         {
             this.CheckInterval = checkInterval;
             this.Client = client;
             this.Client.ReceiveTimeout = receiveTimeout;
-            this.BaseStream = this.Client.GetStream();
-            this.BaseStream.ReadTimeout = 1000;
-            this.Reader = new BinaryReader(this.BaseStream, encoding ?? Encoding.Default);
-            this.Writer = new BinaryWriter(this.BaseStream, encoding ?? Encoding.Default);
-            this.Thread = new Thread(Listen);
-            this.Thread.Start();
-
+			this.Encoding = encoding ?? Encoding.Default;
+            
             this.Disconnected += c =>
             {
                 try
@@ -127,10 +127,27 @@ namespace SharpBag.Net
                 }
                 catch { }
             };
-
-            this.PingInterval = ping;
+			
+			if (start) this.Start();
         }
-
+		
+		/// <summary>
+		/// Opens the TcpListener, starts the listening thread and starts listening for messages.
+		/// </summary>
+        /// <param name="ping">The interval, in milliseconds, to ping the client. If it's a negative integer, no pings are sent.</param>
+		public bool Start(int ping = -1)
+		{
+			if (this.Listening) return false;
+			this.BaseStream = this.Client.GetStream();
+            this.BaseStream.ReadTimeout = 1000;
+            this.Reader = new BinaryReader(this.BaseStream, this.Encoding);
+            this.Writer = new BinaryWriter(this.BaseStream, this.Encoding);
+            this.Thread = new Thread(Listen);
+            this.Thread.Start();
+			this.PingInterval = ping;
+			return true;
+		}
+		
         /// <summary>
         /// Sends a message.
         /// </summary>
@@ -181,8 +198,6 @@ namespace SharpBag.Net
 
             try
             {
-                int tries = 0;
-
                 while (true)
                 {
                     if (this.Listening && Thread.CurrentThread.ThreadState == ThreadState.Running && this.Client.Connected && this.Client.Client.Connected && !this.BaseStream.DataAvailable) { Thread.Sleep(this.CheckInterval); continue; }
@@ -200,24 +215,14 @@ namespace SharpBag.Net
 
                     try
                     {
-                        while (true)
-                        {
-                            if (this.MessageReceived != null)
-                            {
-                                this.MessageReceived(this, msg);
-                                break;
-                            }
-                            else if (tries < 20)
-                            {
-                                tries++;
-                                Thread.Sleep(100);
-                            }
-                        }
+                        this.MessageReceived(this, msg);
                     }
                     catch { }
                 }
             }
-            catch { this.Listening = false; }
+            catch { }
+			
+			this.Listening = false;
         }
 
         /// <summary>
@@ -230,8 +235,8 @@ namespace SharpBag.Net
         {
             try
             {
-                bool aNull = ((object)a) == null;
-                bool bNull = ((object)b) == null;
+                bool aNull = a == null;
+                bool bNull = b == null;
 
                 if (aNull && bNull) return true;
                 if (aNull || bNull) return false;

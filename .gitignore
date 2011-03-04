@@ -14,3 +14,4 @@ TestResult.xml
 /Bin/NUnit/
 /Bin/nunit.core.dll
 /Bin/nunit.framework.dll
+*.vs10x*

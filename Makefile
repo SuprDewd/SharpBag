@@ -23,7 +23,7 @@ build:
 	${foreach Lib, ${References}, -r:${MonoLibs}/${Lib}.dll} \
 	-r:${Output}/MySql.Data.dll \
 	-out:${Output}/${Name}.dll \
-	${if, ${Docs}, -doc:${Output}/${Name}.xml} \
+	${if ${Docs}, -doc:${Output}/${Name}.xml} \
 	`find -iname '*.cs' | grep -E '\./${Name}/.+\.cs'`
 
 buildtests:

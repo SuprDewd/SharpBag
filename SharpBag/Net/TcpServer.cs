@@ -58,16 +58,27 @@ namespace SharpBag.Net
         /// <param name="listener">The TcpListener.</param>
         /// <param name="checkInterval">The interval to check for incoming clients.</param>
         /// <param name="receiveTimeout">The time, in milliseconds, before a timeout occurs when reading data from a client.</param>
-        public TcpServer(TcpListener listener, int checkInterval = 50, int receiveTimeout = 5000)
+        /// <param name="start">Whether to start the server.</param>
+        public TcpServer(TcpListener listener, int checkInterval = 50, int receiveTimeout = 5000, bool start = false)
         {
             this.Listener = listener;
             this.Listener.Server.ReceiveTimeout = receiveTimeout;
-            this.Listening = true;
             this.CheckInterval = checkInterval;
-            this.Listener.Start();
+			
+			if (start) this.Start();
+        }
+		
+		/// <summary>
+        /// Opens the TcpListener, starts the listening thread and starts listening for incoming clients.
+        /// </summary>
+		public bool Start()
+		{
+			if (this.Listening) return false;
+			this.Listener.Start();
             this.Thread = new Thread(Listen);
             this.Thread.Start();
-        }
+			return true;
+		}
 
         /// <summary>
         /// Stops listening for incoming clients, stops the listening thread and closes the TcpListener.

@@ -70,5 +70,75 @@ namespace SharpBag.Tests
 				Assert.AreEqual(factorial(i), memoizedFactorial(i));
 			}
 		}
+
+		[Test]
+		public void Iter()
+		{
+			int[] i = new[] { 10, 4, 16, 1 };
+			List<int> i2 = new List<int>();
+
+			i.Iter(j => i2.Add(j));
+			Assert.AreEqual(0, i2.Count());
+
+			i.Iter(j => i2.Add(j)).ToArray();
+			Assert.AreEqual(i.Length, i2.Count());
+
+			for (int k = 0; k < 4; k++)
+			{
+				Assert.AreEqual(i[k], i2[k]);
+			}
+		}
+
+		[Test]
+		public void ForEach()
+		{
+			int[] i = new[] { 5, 8, 2, 4 };
+			List<int> i2 = new List<int>();
+
+			i.ForEach(j => i2.Add(j));
+			Assert.AreEqual(i.Length, i2.Count());
+
+			for (int k = 0; k < 4; k++)
+			{
+				Assert.AreEqual(i[k], i2[k]);
+			}
+		}
+
+		[Test]
+		public void To()
+		{
+			int[] t1 = 1.To(3).ToArray();
+			int[] t2 = 3.To(1).ToArray();
+			int[] t3 = 1.To(4, 2).ToArray();
+			int[] t4 = 4.To(1, 2).ToArray();
+			int[] t5 = 2.To(7, 3).ToArray();
+			int[] t6 = 7.To(2, 3).ToArray();
+
+			Assert.AreEqual(3, t1.Length);
+			Assert.AreEqual(1, t1[0]);
+			Assert.AreEqual(2, t1[1]);
+			Assert.AreEqual(3, t1[2]);
+
+			Assert.AreEqual(3, t2.Length);
+			Assert.AreEqual(3, t2[0]);
+			Assert.AreEqual(2, t2[1]);
+			Assert.AreEqual(1, t2[2]);
+
+			Assert.AreEqual(2, t3.Length);
+			Assert.AreEqual(1, t3[0]);
+			Assert.AreEqual(3, t3[1]);
+
+			Assert.AreEqual(2, t4.Length);
+			Assert.AreEqual(4, t4[0]);
+			Assert.AreEqual(2, t4[1]);
+
+			Assert.AreEqual(2, t5.Length);
+			Assert.AreEqual(2, t5[0]);
+			Assert.AreEqual(5, t5[1]);
+
+			Assert.AreEqual(2, t6.Length);
+			Assert.AreEqual(7, t6[0]);
+			Assert.AreEqual(4, t6[1]);
+		}
 	}
 }
