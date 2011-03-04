@@ -4,11 +4,12 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 
-namespace SharpBag.Net
+namespace SharpBag.Network
 {
     /// <summary>
     /// A class that handles TcpClients.
     /// </summary>
+    [Obsolete("Use SharpBag.Network.Client instead.")]
     public class TcpClientHandler : IDisposable
     {
         /// <summary>

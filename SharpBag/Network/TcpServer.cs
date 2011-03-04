@@ -5,11 +5,12 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
-namespace SharpBag.Net
+namespace SharpBag.Network
 {
     /// <summary>
     /// A class that manages a multithreaded Tcp server.
     /// </summary>
+    [Obsolete("Use SharpBag.Network.Server instead.")]
     public class TcpServer : IDisposable
     {
         /// <summary>
@@ -21,8 +22,8 @@ namespace SharpBag.Net
         public static TcpServer Create(IEnumerable<int> ports = null, int checkInterval = 50)
         {
 			if (ports == null) ports = 1.To(0xFFFF);
-            int port = ports.First(Internet.IsPortFree);
-            IPAddress ip = Internet.LocalIPAddresses.First(i => i.AddressFamily == AddressFamily.InterNetwork);
+            int port = ports.First(Network.IsPortFree);
+            IPAddress ip = Network.LocalIPAddresses.First(i => i.AddressFamily == AddressFamily.InterNetwork);
 
             return new TcpServer(new TcpListener(ip, port), checkInterval);
         }

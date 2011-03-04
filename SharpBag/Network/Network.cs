@@ -3,12 +3,12 @@ using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 
-namespace SharpBag.Net
+namespace SharpBag.Network
 {
     /// <summary>
-    /// A static class with utilities for working with internet communications and such.
+    /// A static class with utilities for networking.
     /// </summary>
-    public static class Internet
+    public static class Network
     {
         /// <summary>
         /// Checks whether the specified port number is valid and not in use.

@@ -161,6 +161,510 @@
             <param name="func">The current instance.</param>
             <param name="memo">The memo.</param>
         </member>
+        <member name="T:SharpBag.Network.PacketEventArgs">
+            <summary>
+            Packet-event arguments.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.PacketEventArgs.#ctor(SharpBag.Network.ConnectionPacket,SharpBag.Network.ConnectionHandler)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="packet">The packet.</param>
+            <param name="connection">The connection handler.</param>
+        </member>
+        <member name="P:SharpBag.Network.PacketEventArgs.Connection">
+            <summary>
+            The connection handler.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Network.PacketEventArgs.EventID">
+            <summary>
+            The ID of the event.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Network.ConnectionHandler">
+            <summary>
+            A connection handler.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.ConnectionHandler.#ctor(System.Net.Sockets.TcpClient)">
+            <summary>
+            Create a connection handler.
+            </summary>
+            <param name="connection">The connection to handle.</param>
+        </member>
+        <member name="E:SharpBag.Network.ConnectionHandler.OnDisconnect">
+            <summary>
+            An event that is fired when the connection is disconnected.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Network.ConnectionHandler.Available">
+            <summary>
+            The amount of data available from the other side.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Network.ConnectionHandler.RemoteEndPoint">
+            <summary>
+            The remote endpoint.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Network.ConnectionHandler.LocalEndPoint">
+            <summary>
+            The local endpoint.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.ConnectionHandler.Fire(System.Int32)">
+            <summary>
+            Fire the specified event on the other side.
+            </summary>
+            <param name="eventID">The ID of the event.</param>
+        </member>
+        <member name="M:SharpBag.Network.ConnectionHandler.Fire``1(System.Int32,``0)">
+            <summary>
+            Fire the specified event on the other side.
+            </summary>
+            <typeparam name="T">The type of data to send.</typeparam>
+            <param name="eventID">The ID of the event.</param>
+            <param name="obj">The data to send.</param>
+        </member>
+        <member name="M:SharpBag.Network.ConnectionHandler.SendPacket(SharpBag.Network.ConnectionPacket)">
+            <summary>
+            Send the specified packet to the other side.
+            </summary>
+            <param name="packet">The specified packet.</param>
+            <returns>Whether the packet was successfully sent.</returns>
+        </member>
+        <member name="M:SharpBag.Network.ConnectionHandler.ReceivePacket">
+            <summary>
+            Receive a packet from the other side.
+            </summary>
+            <returns>The packet.</returns>
+        </member>
+        <member name="M:SharpBag.Network.ConnectionHandler.FireOnDisconnect">
+            <summary>
+            Fires the OnDisconnect event.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.ConnectionHandler.Ping">
+            <summary>
+            Pings the other side.
+            </summary>
+            <returns>Whether the ping was successful.</returns>
+        </member>
+        <member name="T:SharpBag.Network.ConnectionPacket">
+            <summary>
+            A packet.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Network.ConnectionPacket.EventID">
+            <summary>
+            The ID of an event.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Network.ConnectionPacket.Data">
+            <summary>
+            The data.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Network.IConnection">
+            <summary>
+            A connection.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.IConnection.Close">
+            <summary>
+            Open the connection.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.IConnection.Open">
+            <summary>
+            Close the connection.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Network.Host">
+            <summary>
+            A network host.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.Host.#ctor(System.Int32)">
+            <summary>
+            Create a new host.
+            </summary>
+            <param name="port">The port to listen to.</param>
+        </member>
+        <member name="E:SharpBag.Network.Host.OnClientConnected">
+            <summary>
+            An event that is fired when a client connects.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Network.Host.Opened">
+            <summary>
+            Whether the connection has been opened.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.Host.Open">
+            <summary>
+            Start listening.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.Host.SendAll(SharpBag.Network.ConnectionPacket)">
+            <summary>
+            Send the specified packet to all clients.
+            </summary>
+            <param name="packet">The packet to send.</param>
+        </member>
+        <member name="M:SharpBag.Network.Host.Close">
+            <summary>
+            Stop listening.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.Host.Dispose">
+            <see cref="M:System.IDisposable.Dispose" />
+        </member>
+        <member name="M:SharpBag.Network.Host.Fire``1(System.Int32,``0)">
+            <summary>
+            Fire the specified event on the client.
+            </summary>
+            <typeparam name="T">The type of data to send.</typeparam>
+            <param name="eventID">The ID of the event.</param>
+            <param name="obj">The data to send.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.Network.Host.Fire(System.Int32)">
+            <summary>
+            Fire the specified event on the client.
+            </summary>
+            <param name="eventID">The ID of the event.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="T:SharpBag.Network.TcpServer">
+            <summary>
+            A class that manages a multithreaded Tcp server.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.TcpServer.#ctor(System.Net.Sockets.TcpListener,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="listener">The TcpListener.</param>
+            <param name="checkInterval">The interval to check for incoming clients.</param>
+            <param name="receiveTimeout">The time, in milliseconds, before a timeout occurs when reading data from a client.</param>
+            <param name="start">Whether to start the server.</param>
+        </member>
+        <member name="E:SharpBag.Network.TcpServer.ClientReceived">
+            <summary>
+            An event that is fired when a client is received.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Network.TcpServer.Thread">
+            <summary>
+            The thread to listen for incoming clients.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Network.TcpServer.Listener">
+            <summary>
+            The TcpListener.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Network.TcpServer.Listening">
+            <summary>
+            Whether the server is listening for incoming clients.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Network.TcpServer.CheckInterval">
+            <summary>
+            The interval, in milliseconds, to check for incoming clients.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.TcpServer.Create(System.Collections.Generic.IEnumerable{System.Int32},System.Int32)">
+            <summary>
+            Creates a TcpServer.
+            </summary>
+            <param name="ports">A collection of ports. The first free port in the collection will be used.</param>
+            <param name="checkInterval">The interval to check for new connections.</param>
+            <returns>A new TcpServer instance.</returns>
+        </member>
+        <member name="M:SharpBag.Network.TcpServer.Start">
+            <summary>
+            Opens the TcpListener, starts the listening thread and starts listening for incoming clients.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.TcpServer.Stop">
+            <summary>
+            Stops listening for incoming clients, stops the listening thread and closes the TcpListener.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.TcpServer.Listen">
+            <summary>
+            Listen for incoming clients.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.TcpServer.Dispose">
+            <see cref="M:System.IDisposable.Dispose" />
+        </member>
+        <member name="T:SharpBag.Network.Ping">
+            <summary>
+            A structure that is used when pinging the other side.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Network.NetworkExtensions">
+            <summary>
+            Extensions methods for the Network class.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.NetworkExtensions.Download(System.Uri,System.Text.Encoding)">
+            <summary>
+            Downloads the source of the specified location and returns it as a string.
+            </summary>
+            <param name="page">The location.</param>
+            <param name="encoding">The encoding to use.</param>
+            <returns>
+            </returns>
+        </member>
+        <member name="T:SharpBag.Network.TcpClientHandler">
+            <summary>
+            A class that handles TcpClients.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.TcpClientHandler.#ctor(System.Net.Sockets.TcpClient,System.Text.Encoding,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="client">The TcpClient.</param>
+            <param name="encoding">The encoding to use.</param>
+            <param name="checkInterval">The interval to check for messages.</param>
+            <param name="receiveTimeout">The time, in milliseconds, before a timeout occurs when reading data from the server.</param>
+            <param name="start">Whether to start the handler.</param>
+        </member>
+        <member name="E:SharpBag.Network.TcpClientHandler.MessageReceived">
+            <summary>
+            An event that is fired when a message is received.
+            </summary>
+        </member>
+        <member name="E:SharpBag.Network.TcpClientHandler.Disconnected">
+            <summary>
+            An event that is fired when the TcpClient disconnects.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Network.TcpClientHandler.Thread">
+            <summary>
+            The listening thread.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Network.TcpClientHandler.BaseStream">
+            <summary>
+            The stream.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Network.TcpClientHandler.Reader">
+            <summary>
+            The stream reader.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Network.TcpClientHandler.Writer">
+            <summary>
+            The stream writer.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Network.TcpClientHandler.Encoding">
+            <summary>
+            The encoding to use when reading from the client.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Network.TcpClientHandler.Client">
+            <summary>
+            The client.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Network.TcpClientHandler.Listening">
+            <summary>
+            Whether the handler is listening for messages.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Network.TcpClientHandler.CheckInterval">
+            <summary>
+            The interval, in milliseconds, to check for messages.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Network.TcpClientHandler.PingThread">
+            <summary>
+            The ping thread.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Network.TcpClientHandler.PingInterval">
+            <summary>
+            The ping interval.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.TcpClientHandler.Start(System.Int32)">
+            <summary>
+            Opens the TcpListener, starts the listening thread and starts listening for messages.
+            </summary>
+            <param name="ping">The interval, in milliseconds, to ping the client. If it's a negative integer, no pings are sent.</param>
+        </member>
+        <member name="M:SharpBag.Network.TcpClientHandler.SendMessage(System.String)">
+            <summary>
+            Sends a message.
+            </summary>
+            <param name="s">The message to send.</param>
+            <returns>Whether the message was sent.</returns>
+        </member>
+        <member name="M:SharpBag.Network.TcpClientHandler.Stop">
+            <summary>
+            Stops listening for messages, stops the listening thread and closes the TcpClient.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.TcpClientHandler.Listen">
+            <summary>
+            Listen to messages.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.TcpClientHandler.Equals(System.Object)">
+            <summary>
+            Object.Equals(object)
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.TcpClientHandler.GetHashCode">
+            <see cref="M:System.Object.GetHashCode" />
+        </member>
+        <member name="M:SharpBag.Network.TcpClientHandler.Dispose">
+            <see cref="M:System.IDisposable.Dispose" />
+        </member>
+        <member name="M:SharpBag.Network.TcpClientHandler.op_Equality(SharpBag.Network.TcpClientHandler,SharpBag.Network.TcpClientHandler)">
+            <summary>
+            Checks whether a is equal to b.
+            </summary>
+            <param name="a">A.</param>
+            <param name="b">B.</param>
+            <returns>Whether a is equal to b.</returns>
+        </member>
+        <member name="M:SharpBag.Network.TcpClientHandler.op_Inequality(SharpBag.Network.TcpClientHandler,SharpBag.Network.TcpClientHandler)">
+            <summary>
+            Checks whether a is not equal to b.
+            </summary>
+            <param name="a">A.</param>
+            <param name="b">B.</param>
+            <returns>Whether a is not equal to b.</returns>
+        </member>
+        <member name="T:SharpBag.Network.Network">
+            <summary>
+            A static class with utilities for networking.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Network.Network.LocalIPAddresses">
+            <summary>
+            Returns the local machines IP addresses.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.Network.IsPortFree(System.Int32)">
+            <summary>
+            Checks whether the specified port number is valid and not in use.
+            </summary>
+            <param name="port">The port.</param>
+            <returns>Whether the specified port number is valid and not in use.</returns>
+        </member>
+        <member name="T:SharpBag.Network.Client">
+            <summary>
+            A network client.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.Client.#ctor(System.String,System.Int32)">
+            <summary>
+            Create a new client.
+            </summary>
+            <param name="hostname">The hostname, or IP address, of the destination.</param>
+            <param name="port">The port to connect to.</param>
+        </member>
+        <member name="E:SharpBag.Network.Client.OnDisconnected">
+            <summary>
+            An event that is fired when the client is disconnected.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Network.Client.Connected">
+            <summary>
+            Whether the client is connected.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.Client.Open">
+            <summary>
+            Open the connection.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.Client.Close">
+            <summary>
+            Close the connection.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.Client.Dispose">
+            <see cref="M:System.IDisposable.Dispose" />
+        </member>
+        <member name="M:SharpBag.Network.Client.Fire``1(System.Int32,``0)">
+            <summary>
+            Fire the specified event on the server.
+            </summary>
+            <typeparam name="T">The type of data to send.</typeparam>
+            <param name="eventID">The ID of the event.</param>
+            <param name="obj">The data to send.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.Network.Client.Fire(System.Int32)">
+            <summary>
+            Fire the specified event on the server.
+            </summary>
+            <param name="eventID">The ID of the event.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="T:SharpBag.Network.PacketEventHandler">
+            <summary>
+            A packet-event handler.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Network.PacketEventHandler.Events">
+            <summary>
+            The events.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Network.PacketEventHandler.Fire``1(System.Int32,``0)">
+            <summary>
+            Fire the specified event on the other side.
+            </summary>
+            <typeparam name="T">The type of data to send.</typeparam>
+            <param name="eventID">The ID of the event.</param>
+            <param name="obj">The data to send.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.Network.PacketEventHandler.Fire(System.Int32)">
+            <summary>
+            Fire the specified event on the server.
+            </summary>
+            <param name="eventID">The ID of the event.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.Network.PacketEventHandler.Subscribe(System.Int32,System.Action{System.Object,SharpBag.Network.PacketEventArgs})">
+            <summary>
+            Subscribe to the specified event.
+            </summary>
+            <param name="eventID">The ID of the event.</param>
+            <param name="action">The action to call when the event occurs.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.Network.PacketEventHandler.Subscribe``1(System.Int32,System.Action{``0,SharpBag.Network.PacketEventArgs})">
+            <summary>
+            Subscribe to the specified event.
+            </summary>
+            <typeparam name="T">The type of the data.</typeparam>
+            <param name="eventID">The ID of the event.</param>
+            <param name="action">The action to call when the event occurs.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.Network.PacketEventHandler.Unsubscribe(System.Int32)">
+            <summary>
+            Unsubscribe from the specified event.
+            </summary>
+            <param name="eventID">The ID of the event.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
         <member name="T:SharpBag.Logging.InteractiveConsole">
             <summary>
             A class used for managing the console window, so that the program can both read from the console and write into the console at the samt time.
@@ -5269,250 +5773,6 @@
             and cancelling out all of the denominator terms before taking the product of the numerator terms.
             </summary>
             <returns>The number of permutations.</returns>
-        </member>
-        <member name="T:SharpBag.Net.Internet">
-            <summary>
-            A static class with utilities for working with internet communications and such.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Net.Internet.LocalIPAddresses">
-            <summary>
-            Returns the local machines IP addresses.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Net.Internet.IsPortFree(System.Int32)">
-            <summary>
-            Checks whether the specified port number is valid and not in use.
-            </summary>
-            <param name="port">The port.</param>
-            <returns>Whether the specified port number is valid and not in use.</returns>
-        </member>
-        <member name="T:SharpBag.Net.TcpServer">
-            <summary>
-            A class that manages a multithreaded Tcp server.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Net.TcpServer.#ctor(System.Net.Sockets.TcpListener,System.Int32,System.Int32,System.Boolean)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="listener">The TcpListener.</param>
-            <param name="checkInterval">The interval to check for incoming clients.</param>
-            <param name="receiveTimeout">The time, in milliseconds, before a timeout occurs when reading data from a client.</param>
-            <param name="start">Whether to start the server.</param>
-        </member>
-        <member name="E:SharpBag.Net.TcpServer.ClientReceived">
-            <summary>
-            An event that is fired when a client is received.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Net.TcpServer.Thread">
-            <summary>
-            The thread to listen for incoming clients.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Net.TcpServer.Listener">
-            <summary>
-            The TcpListener.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Net.TcpServer.Listening">
-            <summary>
-            Whether the server is listening for incoming clients.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Net.TcpServer.CheckInterval">
-            <summary>
-            The interval, in milliseconds, to check for incoming clients.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Net.TcpServer.Create(System.Collections.Generic.IEnumerable{System.Int32},System.Int32)">
-            <summary>
-            Creates a TcpServer.
-            </summary>
-            <param name="ports">A collection of ports. The first free port in the collection will be used.</param>
-            <param name="checkInterval">The interval to check for new connections.</param>
-            <returns>A new TcpServer instance.</returns>
-        </member>
-        <member name="M:SharpBag.Net.TcpServer.Start">
-            <summary>
-            Opens the TcpListener, starts the listening thread and starts listening for incoming clients.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Net.TcpServer.Stop">
-            <summary>
-            Stops listening for incoming clients, stops the listening thread and closes the TcpListener.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Net.TcpServer.Listen">
-            <summary>
-            Listen for incoming clients.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Net.TcpServer.Dispose">
-            <see cref="M:System.IDisposable.Dispose" />
-        </member>
-        <member name="T:SharpBag.Net.TcpClientHandler">
-            <summary>
-            A class that handles TcpClients.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Net.TcpClientHandler.#ctor(System.Net.Sockets.TcpClient,System.Text.Encoding,System.Int32,System.Int32,System.Boolean)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="client">The TcpClient.</param>
-            <param name="encoding">The encoding to use.</param>
-            <param name="checkInterval">The interval to check for messages.</param>
-            <param name="receiveTimeout">The time, in milliseconds, before a timeout occurs when reading data from the server.</param>
-            <param name="start">Whether to start the handler.</param>
-        </member>
-        <member name="E:SharpBag.Net.TcpClientHandler.MessageReceived">
-            <summary>
-            An event that is fired when a message is received.
-            </summary>
-        </member>
-        <member name="E:SharpBag.Net.TcpClientHandler.Disconnected">
-            <summary>
-            An event that is fired when the TcpClient disconnects.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Net.TcpClientHandler.Thread">
-            <summary>
-            The listening thread.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Net.TcpClientHandler.BaseStream">
-            <summary>
-            The stream.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Net.TcpClientHandler.Reader">
-            <summary>
-            The stream reader.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Net.TcpClientHandler.Writer">
-            <summary>
-            The stream writer.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Net.TcpClientHandler.Encoding">
-            <summary>
-            The encoding to use when reading from the client.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Net.TcpClientHandler.Client">
-            <summary>
-            The client.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Net.TcpClientHandler.Listening">
-            <summary>
-            Whether the handler is listening for messages.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Net.TcpClientHandler.CheckInterval">
-            <summary>
-            The interval, in milliseconds, to check for messages.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Net.TcpClientHandler.PingThread">
-            <summary>
-            The ping thread.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Net.TcpClientHandler.PingInterval">
-            <summary>
-            The ping interval.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Net.TcpClientHandler.Start(System.Int32)">
-            <summary>
-            Opens the TcpListener, starts the listening thread and starts listening for messages.
-            </summary>
-            <param name="ping">The interval, in milliseconds, to ping the client. If it's a negative integer, no pings are sent.</param>
-        </member>
-        <member name="M:SharpBag.Net.TcpClientHandler.SendMessage(System.String)">
-            <summary>
-            Sends a message.
-            </summary>
-            <param name="s">The message to send.</param>
-            <returns>Whether the message was sent.</returns>
-        </member>
-        <member name="M:SharpBag.Net.TcpClientHandler.Stop">
-            <summary>
-            Stops listening for messages, stops the listening thread and closes the TcpClient.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Net.TcpClientHandler.Listen">
-            <summary>
-            Listen to messages.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Net.TcpClientHandler.Equals(System.Object)">
-            <summary>
-            Object.Equals(object)
-            </summary>
-        </member>
-        <member name="M:SharpBag.Net.TcpClientHandler.GetHashCode">
-            <see cref="M:System.Object.GetHashCode" />
-        </member>
-        <member name="M:SharpBag.Net.TcpClientHandler.Dispose">
-            <see cref="M:System.IDisposable.Dispose" />
-        </member>
-        <member name="M:SharpBag.Net.TcpClientHandler.op_Equality(SharpBag.Net.TcpClientHandler,SharpBag.Net.TcpClientHandler)">
-            <summary>
-            Checks whether a is equal to b.
-            </summary>
-            <param name="a">A.</param>
-            <param name="b">B.</param>
-            <returns>Whether a is equal to b.</returns>
-        </member>
-        <member name="M:SharpBag.Net.TcpClientHandler.op_Inequality(SharpBag.Net.TcpClientHandler,SharpBag.Net.TcpClientHandler)">
-            <summary>
-            Checks whether a is not equal to b.
-            </summary>
-            <param name="a">A.</param>
-            <param name="b">B.</param>
-            <returns>Whether a is not equal to b.</returns>
-        </member>
-        <member name="T:SharpBag.Net.InternetExtensions">
-            <summary>
-            Extensions methods for the BagNet class.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Net.InternetExtensions.Download(System.Uri)">
-            <summary>
-            Downloads the source of the Uri and returns it as a string.
-            </summary>
-            <param name="page">The source of the Uri.</param>
-            <returns>
-            </returns>
-        </member>
-        <member name="M:SharpBag.Net.InternetExtensions.HtmlSafe(System.String)">
-            <summary>
-            Makes the current instance HTML safe.
-            </summary>
-            <param name="s">The current instance.</param>
-            <returns>An HTML safe string.</returns>
-        </member>
-        <member name="M:SharpBag.Net.InternetExtensions.HtmlSafe(System.String,System.Boolean)">
-            <summary>
-            Makes the current instance HTML safe.
-            </summary>
-            <param name="s">The current instance.</param>
-            <param name="all">Whether to make all characters entities or just those needed.</param>
-            <returns>An HTML safe string.</returns>
-        </member>
-        <member name="M:SharpBag.Net.InternetExtensions.HtmlSafe(System.String,System.Boolean,System.Boolean)">
-            <summary>
-            Makes the current instance HTML safe.
-            </summary>
-            <param name="s">The current instance.</param>
-            <param name="all">Whether to make all characters entities or just those needed.</param>
-            <param name="replace">Whether or not to encode spaces and line breaks.</param>
-            <returns>An HTML safe string.</returns>
         </member>
     </members>
 </doc>
