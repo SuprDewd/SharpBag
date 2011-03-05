@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
-namespace SharpBag.Network
+namespace SharpBag.Networking
 {
     /// <summary>
     /// A network host.
@@ -80,10 +80,8 @@ namespace SharpBag.Network
                 catch { }
 
                 Action<object, PacketEventArgs> action;
-                if (this.Events.TryGetValue(packet.EventID, out action))
-                {
-                    action(packet.Data, new PacketEventArgs(packet, client));
-                }
+                if (this.Events.TryGetValue(packet.EventID, out action)) action(packet.Data, new PacketEventArgs(packet, client));
+                if (client.Events.TryGetValue(packet.EventID, out action)) action(packet.Data, new PacketEventArgs(packet, client));
             }
 
             this.OnSendPacket -= onPacketSend;

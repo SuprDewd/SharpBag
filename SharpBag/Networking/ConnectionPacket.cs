@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Runtime.Serialization;
 
-namespace SharpBag.Network
+namespace SharpBag.Networking
 {
     /// <summary>
     /// A packet.

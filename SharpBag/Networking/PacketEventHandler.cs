@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SharpBag.Network
+namespace SharpBag.Networking
 {
     /// <summary>
     /// A packet-event handler.
@@ -26,7 +26,7 @@ namespace SharpBag.Network
         /// <summary>
         /// The events.
         /// </summary>
-        protected Dictionary<int, Action<object, PacketEventArgs>> Events = new Dictionary<int, Action<object, PacketEventArgs>>();
+        internal Dictionary<int, Action<object, PacketEventArgs>> Events = new Dictionary<int, Action<object, PacketEventArgs>>();
 
         /// <summary>
         /// Subscribe to the specified event.

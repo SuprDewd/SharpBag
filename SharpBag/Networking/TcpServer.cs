@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
-namespace SharpBag.Network
+namespace SharpBag.Networking
 {
     /// <summary>
     /// A class that manages a multithreaded Tcp server.

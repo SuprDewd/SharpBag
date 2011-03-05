@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SharpBag.Network
+namespace SharpBag.Networking
 {
     /// <summary>
     /// A connection.

@@ -1,4 +1,4 @@
-﻿namespace SharpBag.Network
+﻿namespace SharpBag.Networking
 {
     /// <summary>
     /// Packet-event arguments.

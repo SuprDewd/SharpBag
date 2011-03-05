@@ -2,7 +2,7 @@
 using System.Net.Sockets;
 using System.Threading;
 
-namespace SharpBag.Network
+namespace SharpBag.Networking
 {
     /// <summary>
     /// A network client.
@@ -56,13 +56,12 @@ namespace SharpBag.Network
                 if (this.Connection.Available == 0) { Thread.Sleep(50); i++; i %= 10; continue; }
 
                 ConnectionPacket packet = this.ConnectionHandler.ReceivePacket();
-                if (packet.Data.GetType() == typeof(Ping)) continue;
+                try { if (packet.Data.GetType() == typeof(Ping)) continue; }
+                catch { }
 
                 Action<object, PacketEventArgs> action;
-                if (this.Events.TryGetValue(packet.EventID, out action))
-                {
-                    action(packet.Data, new PacketEventArgs(packet, this.ConnectionHandler));
-                }
+                if (this.Events.TryGetValue(packet.EventID, out action)) action(packet.Data, new PacketEventArgs(packet, this.ConnectionHandler));
+                if (this.ConnectionHandler.Events.TryGetValue(packet.EventID, out action)) action(packet.Data, new PacketEventArgs(packet, this.ConnectionHandler));
             }
 
             if (this.OnDisconnected != null) this.OnDisconnected();

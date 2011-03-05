@@ -3,12 +3,12 @@ using System.Net;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace SharpBag.Network
+namespace SharpBag.Networking
 {
     /// <summary>
     /// A connection handler.
     /// </summary>
-    public class ConnectionHandler
+    public class ConnectionHandler : PacketEventHandler
     {
         /// <summary>
         /// An event that is fired when the connection is disconnected.
@@ -31,9 +31,10 @@ namespace SharpBag.Network
         /// Fire the specified event on the other side.
         /// </summary>
         /// <param name="eventID">The ID of the event.</param>
-        public void Fire(int eventID)
+        public override PacketEventHandler Fire(int eventID)
         {
             this.SendPacket(new ConnectionPacket() { EventID = eventID });
+            return this;
         }
 
         /// <summary>
@@ -42,9 +43,10 @@ namespace SharpBag.Network
         /// <typeparam name="T">The type of data to send.</typeparam>
         /// <param name="eventID">The ID of the event.</param>
         /// <param name="obj">The data to send.</param>
-        public void Fire<T>(int eventID, T obj)
+        public override PacketEventHandler Fire<T>(int eventID, T obj)
         {
             this.SendPacket(new ConnectionPacket() { EventID = eventID, Data = obj });
+            return this;
         }
         
         /// <summary>
