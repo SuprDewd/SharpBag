@@ -566,6 +566,11 @@
             An event that is fired when the connection is disconnected.
             </summary>
         </member>
+        <member name="P:SharpBag.Networking.ConnectionHandler.Connected">
+            <summary>
+            Whether the connection is connected.
+            </summary>
+        </member>
         <member name="P:SharpBag.Networking.ConnectionHandler.Available">
             <summary>
             The amount of data available from the other side.
