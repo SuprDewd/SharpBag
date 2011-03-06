@@ -16,6 +16,10 @@ namespace SharpBag.Networking
         public event Action OnDisconnect;
         private TcpClient Connection;
         private NetworkStream ConnectionStream;
+        /// <summary>
+        /// Whether the connection is connected.
+        /// </summary>
+        public bool Connected { get; private set; }
 
         /// <summary>
         /// Create a connection handler.
@@ -23,6 +27,7 @@ namespace SharpBag.Networking
         /// <param name="connection">The connection to handle.</param>
         public ConnectionHandler(TcpClient connection)
         {
+            this.Connected = true;
             this.Connection = connection;
             this.ConnectionStream = this.Connection.GetStream();
         }
@@ -85,7 +90,8 @@ namespace SharpBag.Networking
         /// </summary>
         internal void FireOnDisconnect()
         {
-            if (this.OnDisconnect != null) this.OnDisconnect();
+            if (this.Connected && this.OnDisconnect != null) this.OnDisconnect();
+            this.Connected = false;
         }
 
         /// <summary>

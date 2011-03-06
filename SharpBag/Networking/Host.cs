@@ -58,16 +58,19 @@ namespace SharpBag.Networking
             while (this.Opened)
             {
                 if (!this.Connection.Pending()) { Thread.Sleep(50); continue; }
-                ThreadPool.QueueUserWorkItem(o => HandleClient(this.Connection.AcceptTcpClient()));
+                bool waiting = true;
+                ThreadPool.QueueUserWorkItem(o => HandleClient(this.Connection.AcceptTcpClient(), ref waiting));
+                while (waiting) Thread.Sleep(100);
             }
         }
 
-        private void HandleClient(TcpClient tcpClient)
+        private void HandleClient(TcpClient tcpClient, ref bool waiting)
         {
             ConnectionHandler client = new ConnectionHandler(tcpClient);
             Action<ConnectionPacket> onPacketSend = p => { if (!client.SendPacket(p)) this.Close(); };
             this.OnSendPacket += onPacketSend;
             if (this.OnClientConnected != null) this.OnClientConnected(client);
+            waiting = false;
 
             int i = 0;
             while (this.Opened)
