@@ -615,5 +615,18 @@ namespace SharpBag.Strings
 			}
 			return sb.ToString();
 		}
+        /// <summary>
+        /// Sets the specific character at an specific index in the specific string.
+        /// </summary>
+        /// <param name="s">The specified string.</param>
+        /// <param name="i">The index to replace.</param>
+        /// <param name="c">The char to set.</param>
+        /// <returns>The changed string.</returns>
+        public static string SetCharAt(string s, int i, char c)
+        {
+            char[] charArray = s.ToCharArray();
+            charArray[i] = c;
+            return new string(charArray);
+        }
     }
 }
