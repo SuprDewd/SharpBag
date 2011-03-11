@@ -1,16 +1,15 @@
-using System;
+﻿using System;
+using System.Text;
 using System.Collections.Generic;
 using System.Linq;
-using SharpBag;
-using NUnit;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace SharpBag.Tests
 {
-    [TestFixture]
+    [TestClass]
     public class FunctionalTests
     {
-        [Test]
+        [TestMethod]
         public void MemoizeWithDefaultMemo()
         {
             Func<int, int> factorial = null;
@@ -18,12 +17,12 @@ namespace SharpBag.Tests
             Func<int, int> memoizedFactorial = factorial.Memoize();
 
             for (int j = 0; j < 2; j++) for (int i = 0; i < 20; i++)
-            {
-                Assert.AreEqual(factorial(i), memoizedFactorial(i));
-            }
+                {
+                    Assert.AreEqual(factorial(i), memoizedFactorial(i));
+                }
         }
 
-        [Test]
+        [TestMethod]
         public void Memoize()
         {
             Func<int, int> factorial = null;
@@ -35,11 +34,12 @@ namespace SharpBag.Tests
             });
 
             for (int j = 0; j < 2; j++) for (int i = 0; i < 20; i++)
-            {
-                Assert.AreEqual(factorial(i), memoizedFactorial(i));
-            }
+                {
+                    Assert.AreEqual(factorial(i), memoizedFactorial(i));
+                }
         }
 
+        [TestMethod]
         public void Memoize2()
         {
             Func<int, int> testFunc = i => i;
@@ -54,7 +54,7 @@ namespace SharpBag.Tests
             Assert.AreEqual(memoizedTestFunc(3), 3);
         }
 
-        [Test]
+        [TestMethod]
         public void Memoize3()
         {
             Func<int, int> factorial = null;
@@ -68,12 +68,12 @@ namespace SharpBag.Tests
             });
 
             for (int j = 0; j < 2; j++) for (int i = 0; i < 20; i++)
-            {
-                Assert.AreEqual(factorial(i), memoizedFactorial(i));
-            }
+                {
+                    Assert.AreEqual(factorial(i), memoizedFactorial(i));
+                }
         }
 
-        [Test]
+        [TestMethod]
         public void Iter()
         {
             int[] i = new[] { 10, 4, 16, 1 };
@@ -91,7 +91,7 @@ namespace SharpBag.Tests
             }
         }
 
-        [Test]
+        [TestMethod]
         public void ForEach()
         {
             int[] i = new[] { 5, 8, 2, 4 };
@@ -106,7 +106,7 @@ namespace SharpBag.Tests
             }
         }
 
-        [Test]
+        [TestMethod]
         public void To()
         {
             int[] t1 = 1.To(3).ToArray();

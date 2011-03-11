@@ -310,7 +310,7 @@ namespace SharpBag.Torrent
         /// <returns>The bencoded equivalent of the integer.</returns>
         public StringBuilder ToBencodedString(StringBuilder u)
         {
-			if (u == null) u = new StringBuilder();
+            if (u == null) u = new StringBuilder();
             return u.Append('i').Append(Value.ToString()).Append('e');
         }
 
@@ -390,7 +390,7 @@ namespace SharpBag.Torrent
         /// <returns>The bencoded equivalent of the string.</returns>
         public StringBuilder ToBencodedString(StringBuilder u)
         {
-			if (u == null) u = new StringBuilder();
+            if (u == null) u = new StringBuilder();
             return u.Append(this.Value.Length).Append(':').Append(this.Value);
         }
 
@@ -446,7 +446,7 @@ namespace SharpBag.Torrent
         /// <returns>The bencoded equivalent of the list.</returns>
         public StringBuilder ToBencodedString(StringBuilder u)
         {
-			if (u == null) u = new StringBuilder('l');
+            if (u == null) u = new StringBuilder('l');
             else u.Append('l');
 
             foreach (BElement element in base.ToArray())
@@ -497,7 +497,7 @@ namespace SharpBag.Torrent
         /// <returns>The bencoded equivalent of the dictionary.</returns>
         public StringBuilder ToBencodedString(StringBuilder u)
         {
-			if (u == null) u = new StringBuilder('d');
+            if (u == null) u = new StringBuilder('d');
             else u.Append('d');
 
             for (int i = 0; i < base.Count; i++)

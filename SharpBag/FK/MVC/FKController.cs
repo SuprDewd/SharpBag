@@ -143,10 +143,10 @@ namespace SharpBag.FK.MVC
 
             if (action.Timed || this.TimeAll)
             {
-				Stopwatch sw = new Stopwatch();
-				sw.Start();
-				action.Method.Invoke(this, new object[] { });
-				sw.Stop();
+                Stopwatch sw = new Stopwatch();
+                sw.Start();
+                action.Method.Invoke(this, new object[] { });
+                sw.Stop();
                 //long time = Utils.ExecutionTime(() => action.Method.Invoke(this, new object[] { }));
 
                 Console.WriteLine();
@@ -177,17 +177,17 @@ namespace SharpBag.FK.MVC
         /// </summary>
         public void Run()
         {
-			if (this.Actions.Any(a => a.Start))
-			{
-				Console.Clear();
-				this.ExecuteAction(this.Actions.First(a => a.Start).Name, true);
-				return;
-			}
-			
+            if (this.Actions.Any(a => a.Start))
+            {
+                Console.Clear();
+                this.ExecuteAction(this.Actions.First(a => a.Start).Name, true);
+                return;
+            }
+            
             while (true)
             {
                 Console.Clear();
-				
+                
                 this.ListActions();
                 Console.Write("Run: ");
                 this.ExecuteAction(Console.ReadLine(), true);

@@ -1,4 +1,4 @@
-/SharpBag/bin/
+/SharpBag/bin/Debug/
 /SharpBag/obj/
 /SharpBag.Tests/bin/
 /SharpBag.Tests/obj/
@@ -12,7 +12,6 @@
 /SharpBag.Tests/SharpBag.Tests.pidb
 TestResult.xml
 *.VisualState.xml
-/Bin/NUnit/
-/Bin/nunit.core.dll
-/Bin/nunit.framework.dll
 *.vs10x*
+*.dat
+*.pdb

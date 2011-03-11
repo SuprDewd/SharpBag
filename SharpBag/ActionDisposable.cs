@@ -8,7 +8,7 @@ namespace SharpBag
 {
     #region Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx
     
-	/// <summary>
+    /// <summary>
     /// Makes an action disposable.
     /// </summary>
     public class ActionDisposable : IDisposable
@@ -35,6 +35,6 @@ namespace SharpBag
             this.DisposeAction();
         }
     }
-	
-	#endregion
+    
+    #endregion
 }

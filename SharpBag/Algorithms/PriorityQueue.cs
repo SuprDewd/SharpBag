@@ -141,8 +141,8 @@ namespace SharpBag.Algorithms
         {
             return this.Items.OrderByDescending(i => i.Priority).Select(i => i.Item).GetEnumerator();
         }
-		
-		/// <summary>
+        
+        /// <summary>
         /// IEnumerable{T}.GetEnumerator()
         /// </summary>
         /// <param name="remove">Whether to remove the items that have been returned from the enumerator.</param>

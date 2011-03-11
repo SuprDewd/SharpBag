@@ -3,6 +3,7 @@ using System.Diagnostics.Contracts;
 #endif
 
 using SharpBag.Math;
+using System;
 
 namespace SharpBag.FK
 {
@@ -38,7 +39,7 @@ namespace SharpBag.FK
             int h = i / 100;
             int e = i % 100;
 
-            string s = this.LessThan10(h, false) + " " + (h == 1 ? this.V10A[1] : this.V10M[1]);
+            string s = String.Format("{0} {1}", this.LessThan10(h, false), (h == 1 ? this.V10A[1] : this.V10M[1]));
 
             if (e == 0) return s;
 

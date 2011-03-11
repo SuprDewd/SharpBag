@@ -79,7 +79,7 @@
     <Compile Include="ActionDisposable.cs" />
     <Compile Include="Algorithms\PriorityQueue.cs" />
     <Compile Include="Algorithms\PriorityQueueItem.cs" />
-    <Compile Include="Algorithms\Sorting\SortDirection.cs" />
+    <Compile Include="Algorithms\Sorting\SortOrder.cs" />
     <Compile Include="Algorithms\Sorting\SortExtensions.cs" />
     <Compile Include="Combinatorics\Combinations.cs" />
     <Compile Include="Combinatorics\CombinatoricExtensions.cs" />

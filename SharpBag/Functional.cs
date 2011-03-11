@@ -9,12 +9,12 @@ using System.Diagnostics.Contracts;
 
 namespace SharpBag
 {
-	/// <summary>
-	/// Functional methods.
-	/// </summary>
-	public static class Functional
-	{
-		/// <summary>
+    /// <summary>
+    /// Functional methods.
+    /// </summary>
+    public static class Functional
+    {
+        /// <summary>
         /// Performs an action on each element of the enumerable.
         /// </summary>
         /// <typeparam name="T">The type of the elements.</typeparam>
@@ -177,23 +177,23 @@ namespace SharpBag
 
             for (int j = 0; j < i; j++) yield return f();
         }
-		
-		/// <summary>
-		/// Memoizes the current instance.
-		/// </summary>
-		/// <param name="func">The current instance.</param>
-		/// <param name="memo">The memo.</param>
-		public static Func<TIn, TOut> Memoize<TIn, TOut>(this Func<TIn, TOut> func, Dictionary<TIn, TOut> memo = null)
-		{
+        
+        /// <summary>
+        /// Memoizes the current instance.
+        /// </summary>
+        /// <param name="func">The current instance.</param>
+        /// <param name="memo">The memo.</param>
+        public static Func<TIn, TOut> Memoize<TIn, TOut>(this Func<TIn, TOut> func, Dictionary<TIn, TOut> memo = null)
+        {
 #if DOTNET4
-			Contract.Requires(func != null);
+            Contract.Requires(func != null);
 #endif
-			if (memo == null) memo = new Dictionary<TIn, TOut>();
-			return i => {
-				TOut o;
-				if (!memo.TryGetValue(i, out o)) memo.Add(i, o = func(i));
-				return o;
-			};
-		}
-	}
+            if (memo == null) memo = new Dictionary<TIn, TOut>();
+            return i => {
+                TOut o;
+                if (!memo.TryGetValue(i, out o)) memo.Add(i, o = func(i));
+                return o;
+            };
+        }
+    }
 }

@@ -7,6 +7,7 @@ using System.Diagnostics.Contracts;
 
 using System.Text;
 using MySql.Data.MySqlClient;
+using System;
 
 namespace SharpBag.Database
 {
@@ -53,7 +54,7 @@ namespace SharpBag.Database
 
             try
             {
-                this.Execute("KILL " + this.Connection.ServerThread + ";");
+                this.Execute(String.Format("KILL {0};", this.Connection.ServerThread));
             }
             catch { }
 

@@ -31,11 +31,11 @@ namespace SharpBag.Networking
         /// The stream writer.
         /// </summary>
         public BinaryWriter Writer { get; private set; }
-		
-		/// <summary>
-		/// The encoding to use when reading from the client.
-		/// </summary>
-		public Encoding Encoding { get; private set; }
+        
+        /// <summary>
+        /// The encoding to use when reading from the client.
+        /// </summary>
+        public Encoding Encoding { get; private set; }
 
         /// <summary>
         /// The client.
@@ -103,7 +103,7 @@ namespace SharpBag.Networking
         /// An event that is fired when the TcpClient disconnects.
         /// </summary>
         public event Action<TcpClientHandler> Disconnected;
-		
+        
         /// <summary>
         /// The constructor.
         /// </summary>
@@ -117,7 +117,7 @@ namespace SharpBag.Networking
             this.CheckInterval = checkInterval;
             this.Client = client;
             this.Client.ReceiveTimeout = receiveTimeout;
-			this.Encoding = encoding ?? Encoding.Default;
+            this.Encoding = encoding ?? Encoding.Default;
             
             this.Disconnected += c =>
             {
@@ -128,27 +128,27 @@ namespace SharpBag.Networking
                 }
                 catch { }
             };
-			
-			if (start) this.Start();
+            
+            if (start) this.Start();
         }
-		
-		/// <summary>
-		/// Opens the TcpListener, starts the listening thread and starts listening for messages.
-		/// </summary>
+        
+        /// <summary>
+        /// Opens the TcpListener, starts the listening thread and starts listening for messages.
+        /// </summary>
         /// <param name="ping">The interval, in milliseconds, to ping the client. If it's a negative integer, no pings are sent.</param>
-		public bool Start(int ping = -1)
-		{
-			if (this.Listening) return false;
-			this.BaseStream = this.Client.GetStream();
+        public bool Start(int ping = -1)
+        {
+            if (this.Listening) return false;
+            this.BaseStream = this.Client.GetStream();
             this.BaseStream.ReadTimeout = 1000;
             this.Reader = new BinaryReader(this.BaseStream, this.Encoding);
             this.Writer = new BinaryWriter(this.BaseStream, this.Encoding);
             this.Thread = new Thread(Listen);
             this.Thread.Start();
-			this.PingInterval = ping;
-			return true;
-		}
-		
+            this.PingInterval = ping;
+            return true;
+        }
+        
         /// <summary>
         /// Sends a message.
         /// </summary>
@@ -222,8 +222,8 @@ namespace SharpBag.Networking
                 }
             }
             catch { }
-			
-			this.Listening = false;
+            
+            this.Listening = false;
         }
 
         /// <summary>

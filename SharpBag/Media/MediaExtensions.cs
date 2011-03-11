@@ -5,7 +5,6 @@ using System.Diagnostics.Contracts;
 #endif
 
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using SharpBag.Math;
 

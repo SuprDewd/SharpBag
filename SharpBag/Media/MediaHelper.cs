@@ -7,12 +7,12 @@ using System.Diagnostics.Contracts;
 
 namespace SharpBag.Media
 {
-	/// <summary>
-	/// Media helpers.
-	/// </summary>
-	public static class MediaHelper
-	{
-		/// <summary>
+    /// <summary>
+    /// Media helpers.
+    /// </summary>
+    public static class MediaHelper
+    {
+        /// <summary>
         /// Creates a rectangle.
         /// </summary>
         /// <param name="x">The upper left x coordinate.</param>
@@ -29,5 +29,5 @@ namespace SharpBag.Media
         #endif
             return new Rectangle(x, y, nextX - x, nextY - y);
         }
-	}
+    }
 }

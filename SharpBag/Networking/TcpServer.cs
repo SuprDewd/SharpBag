@@ -21,7 +21,7 @@ namespace SharpBag.Networking
         /// <returns>A new TcpServer instance.</returns>
         public static TcpServer Create(IEnumerable<int> ports = null, int checkInterval = 50)
         {
-			if (ports == null) ports = 1.To(0xFFFF);
+            if (ports == null) ports = 1.To(0xFFFF);
             int port = ports.First(Network.IsPortFree);
             IPAddress ip = Network.LocalIPAddresses.First(i => i.AddressFamily == AddressFamily.InterNetwork);
 
@@ -65,21 +65,21 @@ namespace SharpBag.Networking
             this.Listener = listener;
             this.Listener.Server.ReceiveTimeout = receiveTimeout;
             this.CheckInterval = checkInterval;
-			
-			if (start) this.Start();
+            
+            if (start) this.Start();
         }
-		
-		/// <summary>
+        
+        /// <summary>
         /// Opens the TcpListener, starts the listening thread and starts listening for incoming clients.
         /// </summary>
-		public bool Start()
-		{
-			if (this.Listening) return false;
-			this.Listener.Start();
+        public bool Start()
+        {
+            if (this.Listening) return false;
+            this.Listener.Start();
             this.Thread = new Thread(Listen);
             this.Thread.Start();
-			return true;
-		}
+            return true;
+        }
 
         /// <summary>
         /// Stops listening for incoming clients, stops the listening thread and closes the TcpListener.

@@ -81,14 +81,14 @@ namespace SharpBag.Math.Converters
         /// <see cref="Object.ToString()"/>
         public override string ToString()
         {
-            return this.Value.ToString() + " " + Celsius.Unit;
+            return String.Format("{0} {1}", this.Value, Celsius.Unit);
         }
 
         /// <see cref="Object.ToString()"/>
         /// <param name="unit">Whether or not to append the measurement unit.</param>
         public string ToString(bool unit)
         {
-            return this.Value.ToString() + (unit ? " " + Celsius.Unit : "");
+            return this.Value + (unit ? " " + Celsius.Unit : "");
         }
 
         /// <see cref="Object.ToString()"/>
@@ -164,14 +164,14 @@ namespace SharpBag.Math.Converters
         /// <see cref="Object.ToString()"/>
         public override string ToString()
         {
-            return this.Value.ToString() + " " + Fahrenheit.Unit;
+            return String.Format("{0} {1}", this.Value, Fahrenheit.Unit);
         }
 
         /// <see cref="Object.ToString()"/>
         /// <param name="unit">Whether or not to append the measurement unit.</param>
         public string ToString(bool unit)
         {
-            return this.Value.ToString() + (unit ? " " + Fahrenheit.Unit : "");
+            return this.Value + (unit ? " " + Fahrenheit.Unit : "");
         }
 
         /// <see cref="Object.ToString()"/>
@@ -247,14 +247,14 @@ namespace SharpBag.Math.Converters
         /// <see cref="Object.ToString()"/>
         public override string ToString()
         {
-            return this.Value.ToString() + " " + Kelvin.Unit;
+            return this.Value + " " + Kelvin.Unit;
         }
 
         /// <see cref="Object.ToString()"/>
         /// <param name="unit">Whether or not to append the measurement unit.</param>
         public string ToString(bool unit)
         {
-            return this.Value.ToString() + (unit ? " " + Kelvin.Unit : "");
+            return this.Value + (unit ? " " + Kelvin.Unit : "");
         }
 
         /// <see cref="Object.ToString()"/>

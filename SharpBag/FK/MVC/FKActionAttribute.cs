@@ -32,12 +32,12 @@ namespace SharpBag.FK.MVC
         /// Whether the program should be paused when the action finishes.
         /// </summary>
         public bool Pause { get; set; }
-		
-		/// <summary>
-		/// Whether to invoke the action immidiately.
-		/// </summary>
-		public bool Start { get; set; }
-		
+        
+        /// <summary>
+        /// Whether to invoke the action immidiately.
+        /// </summary>
+        public bool Start { get; set; }
+        
         /// <summary>
         /// The constructor.
         /// </summary>

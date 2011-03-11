@@ -74,7 +74,7 @@ namespace SharpBag.Math.Converters
         /// <param name="unit">Whether or not to append the measurement unit.</param>
         public string ToString(bool unit)
         {
-            return this.Value.ToString() + (unit ? " " + this.Unit : "");
+            return this.Value + (unit ? " " + this.Unit : "");
         }
 
         /// <see cref="Object.ToString()"/>

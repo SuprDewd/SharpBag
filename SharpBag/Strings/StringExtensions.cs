@@ -501,7 +501,7 @@ namespace SharpBag.Strings
             Contract.Requires(s != null);
             Contract.Requires(!String.IsNullOrEmpty(regex));
 #endif
-            return Regex.IsMatch(s, "^" + regex + "$");
+            return Regex.IsMatch(s, String.Format("^{0}$", regex));
         }
 
         /// <summary>
@@ -554,8 +554,10 @@ namespace SharpBag.Strings
             Contract.Requires(!String.IsNullOrEmpty(stringToEncrypt));
             Contract.Requires(!String.IsNullOrEmpty(key));
 #endif
-            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(new CspParameters { KeyContainerName = key }) { PersistKeyInCsp = true };
-            return BitConverter.ToString(rsa.Encrypt(Encoding.UTF8.GetBytes(stringToEncrypt), true));
+            using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(new CspParameters { KeyContainerName = key }) { PersistKeyInCsp = true })
+            {
+                return BitConverter.ToString(rsa.Encrypt(Encoding.UTF8.GetBytes(stringToEncrypt), true));
+            }
         }
 
         /// <summary>
@@ -571,8 +573,10 @@ namespace SharpBag.Strings
             Contract.Requires(!String.IsNullOrEmpty(stringToDecrypt));
             Contract.Requires(!String.IsNullOrEmpty(key));
 #endif
-            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(new CspParameters { KeyContainerName = key }) { PersistKeyInCsp = true };
-            return Encoding.UTF8.GetString(rsa.Decrypt(Array.ConvertAll(stringToDecrypt.Split('-'), (s => Convert.ToByte(Byte.Parse(s, NumberStyles.HexNumber)))), true));
+            using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(new CspParameters { KeyContainerName = key }) { PersistKeyInCsp = true })
+            {
+                return Encoding.UTF8.GetString(rsa.Decrypt(Array.ConvertAll(stringToDecrypt.Split('-'), (s => Convert.ToByte(Byte.Parse(s, NumberStyles.HexNumber)))), true));
+            }
         }
 
         /// <summary>
@@ -582,7 +586,7 @@ namespace SharpBag.Strings
         /// <returns>The current instance as a string.</returns>
         public static string AddZeroIfLessThan10(this int i)
         {
-            return i > 9 ? i.ToString() : "0" + i.ToString();
+            return i > 9 ? i.ToString() : "0" + i;
         }
         
         /// <summary>
@@ -593,6 +597,10 @@ namespace SharpBag.Strings
         /// <returns>The repeated string.</returns>
         public static string Times(this int n, string s)
         {
+#if DOTNET4
+            Contract.Requires(n >= 0);
+            Contract.Requires(s != null);
+#endif
             StringBuilder sb = new StringBuilder(s.Length * n);
             for (int i = 0; i < n; i++) sb.Append(s);
             return sb.ToString();
@@ -607,6 +615,11 @@ namespace SharpBag.Strings
         /// <returns>The repeated string.</returns>
         public static string Times(this int n, string s, string separator)
         {
+#if DOTNET4
+            Contract.Requires(n >= 0);
+            Contract.Requires(s != null);
+            Contract.Requires(separator != null);
+#endif
             StringBuilder sb = new StringBuilder((s.Length * n) + ((n - 1) * separator.Length));
             for (int i = 0; i < n; i++)
             {
@@ -625,6 +638,10 @@ namespace SharpBag.Strings
         /// <returns>The new string.</returns>
         public static string SetCharAt(this string s, int i, char c)
         {
+#if DOTNET4
+            Contract.Requires(s != null);
+            Contract.Requires(i >= 0 && i < s.Length);
+#endif
             char[] charArray = s.ToCharArray();
             charArray[i] = c;
             return new String(charArray);

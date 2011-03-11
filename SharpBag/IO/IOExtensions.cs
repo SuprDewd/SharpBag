@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Diagnostics.Contracts;
 
 namespace SharpBag.IO
 {
@@ -19,8 +20,10 @@ namespace SharpBag.IO
         /// <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
         public static void WriteLinesTo<T>(this IEnumerable<T> lines, TextWriter writer)
         {
-            if (lines == null) throw new ArgumentNullException("lines");
-            if (writer == null) throw new ArgumentNullException("writer");
+#if DOTNET4
+            Contract.Requires(lines != null);
+            Contract.Requires(writer != null);
+#endif
         
             lines.ForEach(line => writer.WriteLine(line.ToString()));
         }
@@ -45,7 +48,10 @@ namespace SharpBag.IO
         /// <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
         public static void WriteLinesToFile<T>(this IEnumerable<T> lines, string path)
         {
-            if (path == null) throw new ArgumentNullException("path");
+#if DOTNET4
+            Contract.Requires(lines != null);
+            Contract.Requires(path != null);
+#endif
         
             using (TextWriter file = new StreamWriter(path))
             {
