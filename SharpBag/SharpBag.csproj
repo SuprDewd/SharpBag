@@ -90,6 +90,7 @@
     <Compile Include="Combinatorics\Variations.cs" />
     <Compile Include="Comparers\AlphaNumberSettings.cs" />
     <Compile Include="Comparers\AlphaNumberComparer.cs" />
+    <Compile Include="ConsoleHelper.cs" />
     <Compile Include="Database\MSSqlDB.cs" />
     <Compile Include="Database\GenericDB.cs" />
     <Compile Include="Database\DatabaseExtensions.cs" />

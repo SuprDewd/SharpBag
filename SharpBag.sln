@@ -5,8 +5,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpBag", "SharpBag\SharpB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpBag.Tests", "SharpBag.Tests\SharpBag.Tests.csproj", "{B74E8907-68F5-4F63-880C-A9604C4A067E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1B21756E-68F1-484D-AD0C-DA9D059D4E0B}"
-EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = SharpBag.vsmdi

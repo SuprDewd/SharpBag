@@ -183,7 +183,7 @@ namespace SharpBag
         /// </summary>
         /// <param name="func">The current instance.</param>
         /// <param name="memo">The memo.</param>
-        public static Func<TIn, TOut> Memoize<TIn, TOut>(this Func<TIn, TOut> func, Dictionary<TIn, TOut> memo = null)
+        public static Func<TIn, TOut> Memoize<TIn, TOut>(this Func<TIn, TOut> func, IDictionary<TIn, TOut> memo = null)
         {
 #if DOTNET4
             Contract.Requires(func != null);
@@ -194,6 +194,29 @@ namespace SharpBag
                 if (!memo.TryGetValue(i, out o)) memo.Add(i, o = func(i));
                 return o;
             };
+        }
+
+        /// <summary>
+        /// Memoizes the current instance.
+        /// This overload allows for recursive memoization.
+        /// </summary>
+        /// <param name="func">The current instance.</param>
+        /// <param name="memo">The memo.</param>
+        public static Func<TIn, TOut> Memoize<TIn, TOut>(this Func<TIn, Func<TIn, TOut>, TOut> func, IDictionary<TIn, TOut> memo = null)
+        {
+#if DOTNET4
+            Contract.Requires(func != null);
+#endif
+            if (memo == null) memo = new Dictionary<TIn, TOut>();
+            Func<TIn, TOut> recFunc = null;
+            recFunc = i =>
+            {
+                TOut o;
+                if (!memo.TryGetValue(i, out o)) memo.Add(i, o = func(i, recFunc));
+                return o;
+            };
+
+            return recFunc;
         }
     }
 }

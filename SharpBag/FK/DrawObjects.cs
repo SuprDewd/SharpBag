@@ -5,49 +5,49 @@ using SharpBag.Strings;
 namespace SharpBag.FK
 {
     /// <summary>
+    /// Gerðir af þríhyrningum. Heitir eftir því í hvaða horni eða brún á kassa þríhyrningurinn væri.
+    /// </summary>
+    public enum TriangleType
+    {
+        /// <summary>
+        /// Þríhyrningur sem er með langhliðina á toppnum.
+        /// </summary>
+        Top,
+        /// <summary>
+        /// Þríhyrningur sem er með langhliðina til vinstri.
+        /// </summary>
+        Left,
+        /// <summary>
+        /// Þríhyrningur sem er með langhliðina til hægri.
+        /// </summary>
+        Right,
+        /// <summary>
+        /// Þríhyrningur sem er með langhliðina á botninum.
+        /// </summary>
+        Bottom,
+        /// <summary>
+        /// Þríhyrningur sem er með bendir upp í efra vinstra hornið.
+        /// </summary>
+        TopLeft,
+        /// <summary>
+        /// Þríhyrningur sem er með bendir upp í efra hægra hornið.
+        /// </summary>
+        TopRight,
+        /// <summary>
+        /// Þríhyrningur sem er með bendir upp í neðra vinstra hornið.
+        /// </summary>
+        BottomLeft,
+        /// <summary>
+        /// Þríhyrningur sem er með bendir upp í neðra hægra hornið.
+        /// </summary>
+        BottomRight
+    }
+
+    /// <summary>
     /// Allskonar method til að teikna hluti
     /// </summary>
     public static class DrawObjects
     {
-        /// <summary>
-        /// Gerðir af þríhyrningum. Heitir eftir því í hvaða horni eða brún á kassa þríhyrningurinn væri.
-        /// </summary>
-        public enum TriangleType
-        {
-            /// <summary>
-            /// Þríhyrningur sem er með langhliðina á toppnum.
-            /// </summary>
-            Top,
-            /// <summary>
-            /// Þríhyrningur sem er með langhliðina til vinstri.
-            /// </summary>
-            Left,
-            /// <summary>
-            /// Þríhyrningur sem er með langhliðina til hægri.
-            /// </summary>
-            Right,
-            /// <summary>
-            /// Þríhyrningur sem er með langhliðina á botninum.
-            /// </summary>
-            Bottom,
-            /// <summary>
-            /// Þríhyrningur sem er með bendir upp í efra vinstra hornið.
-            /// </summary>
-            TopLeft,
-            /// <summary>
-            /// Þríhyrningur sem er með bendir upp í efra hægra hornið.
-            /// </summary>
-            TopRight,
-            /// <summary>
-            /// Þríhyrningur sem er með bendir upp í neðra vinstra hornið.
-            /// </summary>
-            BottomLeft,
-            /// <summary>
-            /// Þríhyrningur sem er með bendir upp í neðra hægra hornið.
-            /// </summary>
-            BottomRight
-        }
-
         /// <summary>
         /// Teiknar þríhyrninga
         /// </summary>

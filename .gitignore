@@ -1,4 +1,5 @@
 /SharpBag/bin/Debug/
+/SharpBag/bin/Release/SharpBag.dll.*
 /SharpBag/obj/
 /SharpBag.Tests/bin/
 /SharpBag.Tests/obj/

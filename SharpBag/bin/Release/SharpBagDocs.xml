@@ -1642,9 +1642,17 @@
             <returns>An enumerable with the returned values of the function.</returns>
             <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
         </member>
-        <member name="M:SharpBag.Functional.Memoize``2(System.Func{``0,``1},System.Collections.Generic.Dictionary{``0,``1})">
+        <member name="M:SharpBag.Functional.Memoize``2(System.Func{``0,``1},System.Collections.Generic.IDictionary{``0,``1})">
             <summary>
             Memoizes the current instance.
+            </summary>
+            <param name="func">The current instance.</param>
+            <param name="memo">The memo.</param>
+        </member>
+        <member name="M:SharpBag.Functional.Memoize``2(System.Func{``0,System.Func{``0,``1},``1},System.Collections.Generic.IDictionary{``0,``1})">
+            <summary>
+            Memoizes the current instance.
+            This overload allows for recursive memoization.
             </summary>
             <param name="func">The current instance.</param>
             <param name="memo">The memo.</param>
@@ -2065,6 +2073,20 @@
             <param name="indexes">The indexes.</param>
             <returns>The items in the current instance with the specified indexes.</returns>
         </member>
+        <member name="M:SharpBag.Extensions.Write``1(``0)">
+            <summary>
+            Writes the current instance to the console.
+            </summary>
+            <param name="o">The specified object.</param>
+            <returns>A console helper.</returns>
+        </member>
+        <member name="M:SharpBag.Extensions.WriteLine``1(``0)">
+            <summary>
+            Writes the current instance to the console, and then puts the cursor on a new line.
+            </summary>
+            <param name="o">The specified object.</param>
+            <returns>A console helper.</returns>
+        </member>
         <member name="T:SharpBag.Networking.ConnectionPacket">
             <summary>
             A packet.
@@ -2418,6 +2440,21 @@
         <member name="F:SharpBag.Combinatorics.GenerateOption.WithRepetition">
             <summary>
             Generate additional sets even if repetition is required.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Algorithms.Sorting.SortOrder">
+            <summary>
+            The order to sort in.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Algorithms.Sorting.SortOrder.Ascending">
+            <summary>
+            Sort ascending.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Algorithms.Sorting.SortOrder.Descending">
+            <summary>
+            Sort descending.
             </summary>
         </member>
         <member name="T:SharpBag.Networking.ConnectionHandler">
@@ -5761,20 +5798,61 @@
             <returns>The bytes as a string.</returns>
             <remarks>http://www.west-wind.com/WebLog/posts/197245.aspx</remarks>
         </member>
-        <member name="T:SharpBag.Algorithms.Sorting.SortOrder">
+        <member name="T:SharpBag.ConsoleHelper">
             <summary>
-            The order to sort in.
+            A class for helping with console IO.
             </summary>
         </member>
-        <member name="F:SharpBag.Algorithms.Sorting.SortOrder.Ascending">
+        <member name="M:SharpBag.ConsoleHelper.Create">
             <summary>
-            Sort ascending.
+            Returns an instance of the console helper.
             </summary>
+            <returns>An instance of the console helper.</returns>
         </member>
-        <member name="F:SharpBag.Algorithms.Sorting.SortOrder.Descending">
+        <member name="M:SharpBag.ConsoleHelper.Write``1(``0)">
             <summary>
-            Sort descending.
+            Writes the specified object to the console.
             </summary>
+            <param name="o">The specified object.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.ConsoleHelper.WriteLine``1(``0)">
+            <summary>
+            Writes the specified object to the console, and then puts the cursor on a new line.
+            </summary>
+            <param name="o">The specified object.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.ConsoleHelper.Write(System.String,System.Object[])">
+            <summary>
+            Formats the specified string and objects with String.Format and the writes it to the console.
+            </summary>
+            <param name="format">The format string.</param>
+            <param name="args">The arguments.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.ConsoleHelper.WriteLine(System.String,System.Object[])">
+            <summary>
+            Formats the specified string and objects with String.Format, writes it to the console and the puts the cursor on a new line.
+            </summary>
+            <param name="format">The format string.</param>
+            <param name="args">The arguments.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.ConsoleHelper.ReadLine">
+            <summary>
+            Reads a string from the console.
+            </summary>
+            <returns>The string read from the console.</returns>
+        </member>
+        <member name="M:SharpBag.ConsoleHelper.ReadLine``1">
+            <summary>
+            Reads a string from the console and then converts it to the specified type.
+            </summary>
+            <returns>The converted string read from the console.</returns>
+        </member>
+        <member name="M:SharpBag.ConsoleHelper.ToString">
+            <see cref="M:System.Object.ToString"/>
         </member>
     </members>
 </doc>

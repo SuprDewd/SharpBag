@@ -657,5 +657,25 @@ namespace SharpBag
 #endif
             return collection.Take(indexes.AsEnumerable());
         }
+
+        /// <summary>
+        /// Writes the current instance to the console.
+        /// </summary>
+        /// <param name="o">The specified object.</param>
+        /// <returns>A console helper.</returns>
+        public static ConsoleHelper Write<T>(this T o)
+        {
+            return ConsoleHelper.Create().Write<T>(o);
+        }
+
+        /// <summary>
+        /// Writes the current instance to the console, and then puts the cursor on a new line.
+        /// </summary>
+        /// <param name="o">The specified object.</param>
+        /// <returns>A console helper.</returns>
+        public static ConsoleHelper WriteLine<T>(this T o)
+        {
+            return ConsoleHelper.Create().WriteLine<T>(o);
+        }
     }
 }

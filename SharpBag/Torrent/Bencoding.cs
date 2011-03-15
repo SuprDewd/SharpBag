@@ -194,7 +194,7 @@ namespace SharpBag.Torrent
                 integer = Convert.ToInt64(this.BencodedString.Substring(this.Index, end - this.Index));
                 this.Index = end + 1;
             }
-            catch (Exception e) { throw Error(e); }
+            catch (Exception e) { throw this.Error(e); }
 
             return new BInteger(integer);
         }
@@ -310,8 +310,9 @@ namespace SharpBag.Torrent
         /// <returns>The bencoded equivalent of the integer.</returns>
         public StringBuilder ToBencodedString(StringBuilder u)
         {
-            if (u == null) u = new StringBuilder();
-            return u.Append('i').Append(Value.ToString()).Append('e');
+            if (u == null) u = new StringBuilder('i');
+			else u.Append('i');
+            return u.Append(Value.ToString()).Append('e');
         }
 
         /// <see cref="Object.GetHashCode()"/>
@@ -390,8 +391,9 @@ namespace SharpBag.Torrent
         /// <returns>The bencoded equivalent of the string.</returns>
         public StringBuilder ToBencodedString(StringBuilder u)
         {
-            if (u == null) u = new StringBuilder();
-            return u.Append(this.Value.Length).Append(':').Append(this.Value);
+            if (u == null) u = new StringBuilder(this.Value.Length);
+			else u.Append(this.Value.Length);
+            return u.Append(':').Append(this.Value);
         }
 
         /// <see cref="Object.GetHashCode()"/>
