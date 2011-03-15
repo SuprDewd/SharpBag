@@ -87,5 +87,35 @@ namespace SharpBag.IO
                 }
             }
         }
+
+        /// <summary>
+        /// Serializes the current instance using an xml serializer.
+        /// </summary>
+        /// <typeparam name="T">The type of the object.</typeparam>
+        /// <param name="obj">The current instance.</param>
+        /// <param name="fileName">The file to serialize to.</param>
+        public static T XmlSerializeTo<T>(this T obj, string fileName)
+        {
+#if DOTNET4
+            Contract.Requires(!String.IsNullOrEmpty(fileName));
+#endif
+            Serialization.XmlSerialize<T>(obj, fileName);
+            return obj;
+        }
+
+        /// <summary>
+        /// Serializes the current instance using a binary serializer.
+        /// </summary>
+        /// <typeparam name="T">The type of the object.</typeparam>
+        /// <param name="obj">The current instance.</param>
+        /// <param name="fileName">The file to serialize to.</param>
+        public static T SerializeTo<T>(this T obj, string fileName)
+        {
+#if DOTNET4
+            Contract.Requires(!String.IsNullOrEmpty(fileName));
+#endif
+            Serialization.Serialize<T>(obj, fileName);
+            return obj;
+        }
     }
 }

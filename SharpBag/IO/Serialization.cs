@@ -18,13 +18,13 @@ namespace SharpBag.IO
         /// <summary>
         /// Serializes an object using a binary serializer.
         /// </summary>
-        /// <param name="fileName">The file to serialize to.</param>
+        /// <typeparam name="T">The type of the object.</typeparam>
         /// <param name="obj">The object to serialize.</param>
-        public static void Serialize(string fileName, object obj)
+        /// <param name="fileName">The file to serialize to.</param>
+        public static void Serialize<T>(T obj, string fileName)
         {
 #if DOTNET4
             Contract.Requires(!String.IsNullOrEmpty(fileName));
-            Contract.Requires(obj != null);
 #endif
             using (FileStream fs = new FileStream(fileName, FileMode.Create))
             {
@@ -55,9 +55,9 @@ namespace SharpBag.IO
         /// Serializes an object using an xml serializer.
         /// </summary>
         /// <typeparam name="T">The type of the object.</typeparam>
-        /// <param name="fileName">The file to serialize to.</param>
         /// <param name="obj">The object to serialize.</param>
-        public static void XmlSerialize<T>(string fileName, T obj)
+        /// <param name="fileName">The file to serialize to.</param>
+        public static void XmlSerialize<T>(T obj, string fileName)
         {
 #if DOTNET4
             Contract.Requires(!String.IsNullOrEmpty(fileName));

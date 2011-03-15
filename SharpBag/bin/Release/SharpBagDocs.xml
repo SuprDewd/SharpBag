@@ -42,12 +42,13 @@
             A static class used for object serialization.
             </summary>
         </member>
-        <member name="M:SharpBag.IO.Serialization.Serialize(System.String,System.Object)">
+        <member name="M:SharpBag.IO.Serialization.Serialize``1(``0,System.String)">
             <summary>
             Serializes an object using a binary serializer.
             </summary>
-            <param name="fileName">The file to serialize to.</param>
+            <typeparam name="T">The type of the object.</typeparam>
             <param name="obj">The object to serialize.</param>
+            <param name="fileName">The file to serialize to.</param>
         </member>
         <member name="M:SharpBag.IO.Serialization.Deserialize``1(System.String)">
             <summary>
@@ -57,13 +58,13 @@
             <param name="fileName">The file to deserialize from.</param>
             <returns>The object.</returns>
         </member>
-        <member name="M:SharpBag.IO.Serialization.XmlSerialize``1(System.String,``0)">
+        <member name="M:SharpBag.IO.Serialization.XmlSerialize``1(``0,System.String)">
             <summary>
             Serializes an object using an xml serializer.
             </summary>
             <typeparam name="T">The type of the object.</typeparam>
-            <param name="fileName">The file to serialize to.</param>
             <param name="obj">The object to serialize.</param>
+            <param name="fileName">The file to serialize to.</param>
         </member>
         <member name="M:SharpBag.IO.Serialization.XmlDeserialize``1(System.String)">
             <summary>
@@ -85,12 +86,57 @@
             <param name="i">The specified number.</param>
             <returns>The words.</returns>
         </member>
+        <member name="T:SharpBag.FK.TriangleType">
+            <summary>
+            Gerðir af þríhyrningum. Heitir eftir því í hvaða horni eða brún á kassa þríhyrningurinn væri.
+            </summary>
+        </member>
+        <member name="F:SharpBag.FK.TriangleType.Top">
+            <summary>
+            Þríhyrningur sem er með langhliðina á toppnum.
+            </summary>
+        </member>
+        <member name="F:SharpBag.FK.TriangleType.Left">
+            <summary>
+            Þríhyrningur sem er með langhliðina til vinstri.
+            </summary>
+        </member>
+        <member name="F:SharpBag.FK.TriangleType.Right">
+            <summary>
+            Þríhyrningur sem er með langhliðina til hægri.
+            </summary>
+        </member>
+        <member name="F:SharpBag.FK.TriangleType.Bottom">
+            <summary>
+            Þríhyrningur sem er með langhliðina á botninum.
+            </summary>
+        </member>
+        <member name="F:SharpBag.FK.TriangleType.TopLeft">
+            <summary>
+            Þríhyrningur sem er með bendir upp í efra vinstra hornið.
+            </summary>
+        </member>
+        <member name="F:SharpBag.FK.TriangleType.TopRight">
+            <summary>
+            Þríhyrningur sem er með bendir upp í efra hægra hornið.
+            </summary>
+        </member>
+        <member name="F:SharpBag.FK.TriangleType.BottomLeft">
+            <summary>
+            Þríhyrningur sem er með bendir upp í neðra vinstra hornið.
+            </summary>
+        </member>
+        <member name="F:SharpBag.FK.TriangleType.BottomRight">
+            <summary>
+            Þríhyrningur sem er með bendir upp í neðra hægra hornið.
+            </summary>
+        </member>
         <member name="T:SharpBag.FK.DrawObjects">
             <summary>
             Allskonar method til að teikna hluti
             </summary>
         </member>
-        <member name="M:SharpBag.FK.DrawObjects.Triangle(System.Int32,SharpBag.FK.DrawObjects.TriangleType,System.String,System.String)">
+        <member name="M:SharpBag.FK.DrawObjects.Triangle(System.Int32,SharpBag.FK.TriangleType,System.String,System.String)">
             <summary>
             Teiknar þríhyrninga
             </summary>
@@ -112,51 +158,6 @@
             <param name="filled">Bool um hvort hann sé fylltur eða ekki</param>
             <returns>Kassinn</returns>
             <example>Square(5, 4, "*", " ", false)</example>
-        </member>
-        <member name="T:SharpBag.FK.DrawObjects.TriangleType">
-            <summary>
-            Gerðir af þríhyrningum. Heitir eftir því í hvaða horni eða brún á kassa þríhyrningurinn væri.
-            </summary>
-        </member>
-        <member name="F:SharpBag.FK.DrawObjects.TriangleType.Top">
-            <summary>
-            Þríhyrningur sem er með langhliðina á toppnum.
-            </summary>
-        </member>
-        <member name="F:SharpBag.FK.DrawObjects.TriangleType.Left">
-            <summary>
-            Þríhyrningur sem er með langhliðina til vinstri.
-            </summary>
-        </member>
-        <member name="F:SharpBag.FK.DrawObjects.TriangleType.Right">
-            <summary>
-            Þríhyrningur sem er með langhliðina til hægri.
-            </summary>
-        </member>
-        <member name="F:SharpBag.FK.DrawObjects.TriangleType.Bottom">
-            <summary>
-            Þríhyrningur sem er með langhliðina á botninum.
-            </summary>
-        </member>
-        <member name="F:SharpBag.FK.DrawObjects.TriangleType.TopLeft">
-            <summary>
-            Þríhyrningur sem er með bendir upp í efra vinstra hornið.
-            </summary>
-        </member>
-        <member name="F:SharpBag.FK.DrawObjects.TriangleType.TopRight">
-            <summary>
-            Þríhyrningur sem er með bendir upp í efra hægra hornið.
-            </summary>
-        </member>
-        <member name="F:SharpBag.FK.DrawObjects.TriangleType.BottomLeft">
-            <summary>
-            Þríhyrningur sem er með bendir upp í neðra vinstra hornið.
-            </summary>
-        </member>
-        <member name="F:SharpBag.FK.DrawObjects.TriangleType.BottomRight">
-            <summary>
-            Þríhyrningur sem er með bendir upp í neðra hægra hornið.
-            </summary>
         </member>
         <member name="T:SharpBag.Networking.Ping">
             <summary>
@@ -3935,6 +3936,62 @@
             </summary>
             <returns>The connection string.</returns>
         </member>
+        <member name="T:SharpBag.ConsoleHelper">
+            <summary>
+            A class for helping with console IO.
+            </summary>
+        </member>
+        <member name="M:SharpBag.ConsoleHelper.Create">
+            <summary>
+            Returns an instance of the console helper.
+            </summary>
+            <returns>An instance of the console helper.</returns>
+        </member>
+        <member name="M:SharpBag.ConsoleHelper.Write``1(``0)">
+            <summary>
+            Writes the specified object to the console.
+            </summary>
+            <param name="o">The specified object.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.ConsoleHelper.WriteLine``1(``0)">
+            <summary>
+            Writes the specified object to the console, and then puts the cursor on a new line.
+            </summary>
+            <param name="o">The specified object.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.ConsoleHelper.Write(System.String,System.Object[])">
+            <summary>
+            Formats the specified string and objects with String.Format and the writes it to the console.
+            </summary>
+            <param name="format">The format string.</param>
+            <param name="args">The arguments.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.ConsoleHelper.WriteLine(System.String,System.Object[])">
+            <summary>
+            Formats the specified string and objects with String.Format, writes it to the console and the puts the cursor on a new line.
+            </summary>
+            <param name="format">The format string.</param>
+            <param name="args">The arguments.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.ConsoleHelper.ReadLine">
+            <summary>
+            Reads a string from the console.
+            </summary>
+            <returns>The string read from the console.</returns>
+        </member>
+        <member name="M:SharpBag.ConsoleHelper.ReadLine``1">
+            <summary>
+            Reads a string from the console and then converts it to the specified type.
+            </summary>
+            <returns>The converted string read from the console.</returns>
+        </member>
+        <member name="M:SharpBag.ConsoleHelper.ToString">
+            <see cref="M:System.Object.ToString"/>
+        </member>
         <member name="T:SharpBag.Combinatorics.Combinations`1">
              <summary>
              Combinations defines a meta-collection, typically a list of lists, of all possible
@@ -5798,61 +5855,21 @@
             <returns>The bytes as a string.</returns>
             <remarks>http://www.west-wind.com/WebLog/posts/197245.aspx</remarks>
         </member>
-        <member name="T:SharpBag.ConsoleHelper">
+        <member name="M:SharpBag.IO.IOExtensions.XmlSerializeTo``1(``0,System.String)">
             <summary>
-            A class for helping with console IO.
+            Serializes the current instance using an xml serializer.
             </summary>
+            <typeparam name="T">The type of the object.</typeparam>
+            <param name="obj">The current instance.</param>
+            <param name="fileName">The file to serialize to.</param>
         </member>
-        <member name="M:SharpBag.ConsoleHelper.Create">
+        <member name="M:SharpBag.IO.IOExtensions.SerializeTo``1(``0,System.String)">
             <summary>
-            Returns an instance of the console helper.
+            Serializes the current instance using a binary serializer.
             </summary>
-            <returns>An instance of the console helper.</returns>
-        </member>
-        <member name="M:SharpBag.ConsoleHelper.Write``1(``0)">
-            <summary>
-            Writes the specified object to the console.
-            </summary>
-            <param name="o">The specified object.</param>
-            <returns>The current instance (for chaining).</returns>
-        </member>
-        <member name="M:SharpBag.ConsoleHelper.WriteLine``1(``0)">
-            <summary>
-            Writes the specified object to the console, and then puts the cursor on a new line.
-            </summary>
-            <param name="o">The specified object.</param>
-            <returns>The current instance (for chaining).</returns>
-        </member>
-        <member name="M:SharpBag.ConsoleHelper.Write(System.String,System.Object[])">
-            <summary>
-            Formats the specified string and objects with String.Format and the writes it to the console.
-            </summary>
-            <param name="format">The format string.</param>
-            <param name="args">The arguments.</param>
-            <returns>The current instance (for chaining).</returns>
-        </member>
-        <member name="M:SharpBag.ConsoleHelper.WriteLine(System.String,System.Object[])">
-            <summary>
-            Formats the specified string and objects with String.Format, writes it to the console and the puts the cursor on a new line.
-            </summary>
-            <param name="format">The format string.</param>
-            <param name="args">The arguments.</param>
-            <returns>The current instance (for chaining).</returns>
-        </member>
-        <member name="M:SharpBag.ConsoleHelper.ReadLine">
-            <summary>
-            Reads a string from the console.
-            </summary>
-            <returns>The string read from the console.</returns>
-        </member>
-        <member name="M:SharpBag.ConsoleHelper.ReadLine``1">
-            <summary>
-            Reads a string from the console and then converts it to the specified type.
-            </summary>
-            <returns>The converted string read from the console.</returns>
-        </member>
-        <member name="M:SharpBag.ConsoleHelper.ToString">
-            <see cref="M:System.Object.ToString"/>
+            <typeparam name="T">The type of the object.</typeparam>
+            <param name="obj">The current instance.</param>
+            <param name="fileName">The file to serialize to.</param>
         </member>
     </members>
 </doc>
