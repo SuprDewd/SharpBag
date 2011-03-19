@@ -4215,6 +4215,13 @@
             <returns>A rectangle.</returns>
             <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
         </member>
+        <member name="M:SharpBag.Media.MediaHelper.ToBitmapSource(System.Drawing.Image)">
+            <summary>
+            Turns the current instance into a BitmapSource.
+            </summary>
+            <param name="img">The current instance.</param>
+            <returns>The BitmapSource.</returns>
+        </member>
         <member name="T:SharpBag.Math.Converters.Length">
             <summary>
             An abstract class representing a length.
