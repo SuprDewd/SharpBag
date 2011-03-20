@@ -102,6 +102,7 @@
     <Compile Include="Games\CardType.cs" />
     <Compile Include="Games\CardValue.cs" />
     <Compile Include="Games\Dice.cs" />
+    <Compile Include="LambdaComparer.cs" />
     <Compile Include="Math\PascalTriangle.cs" />
     <Compile Include="Networking\Client.cs" />
     <Compile Include="Networking\ConnectionHandler.cs" />

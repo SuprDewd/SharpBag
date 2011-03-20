@@ -5878,5 +5878,28 @@
             <param name="obj">The current instance.</param>
             <param name="fileName">The file to serialize to.</param>
         </member>
+        <member name="T:SharpBag.LambdaComparer`1">
+            <summary>
+            An IEqualityComparer for use with lambda functions.
+            </summary>
+            <typeparam name="T">The type of object to compare.</typeparam>
+        </member>
+        <member name="M:SharpBag.LambdaComparer`1.#ctor(System.Func{`0,`0,System.Boolean},System.Func{`0,System.Int32})">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="compare">The compare function.</param>
+            <param name="hash">The hash function.</param>
+        </member>
+        <member name="M:SharpBag.LambdaComparer`1.Equals(`0,`0)">
+            <summary>
+            IEqualityComparer{T}.Equals(T, T)
+            </summary>
+        </member>
+        <member name="M:SharpBag.LambdaComparer`1.GetHashCode(`0)">
+            <summary>
+            IEqualityComparer{T}.GetHashCode(T)
+            </summary>
+        </member>
     </members>
 </doc>
