@@ -2088,6 +2088,38 @@
             <param name="o">The specified object.</param>
             <returns>A console helper.</returns>
         </member>
+        <member name="M:SharpBag.Extensions.GetHash(System.IO.Stream,System.Security.Cryptography.HashAlgorithm)">
+            <summary>
+            Gets the current instance's hash.
+            </summary>
+            <param name="s">The current instance.</param>
+            <param name="hasher">The hash function.</param>
+            <returns>The hash.</returns>
+        </member>
+        <member name="M:SharpBag.Extensions.GetHashString(System.IO.Stream,System.Security.Cryptography.HashAlgorithm)">
+            <summary>
+            Gets the current instance's hash.
+            </summary>
+            <param name="s">The current instance.</param>
+            <param name="hasher">The hash function.</param>
+            <returns>The hash.</returns>
+        </member>
+        <member name="M:SharpBag.Extensions.GetHash(System.String,System.Security.Cryptography.HashAlgorithm)">
+            <summary>
+            Gets the current instance's hash.
+            </summary>
+            <param name="s">The current instance.</param>
+            <param name="hasher">The hash function.</param>
+            <returns>The hash.</returns>
+        </member>
+        <member name="M:SharpBag.Extensions.GetHashString(System.String,System.Security.Cryptography.HashAlgorithm)">
+            <summary>
+            Gets the current instance's hash.
+            </summary>
+            <param name="s">The current instance.</param>
+            <param name="hasher">The hash function.</param>
+            <returns>The hash.</returns>
+        </member>
         <member name="T:SharpBag.Networking.ConnectionPacket">
             <summary>
             A packet.
@@ -5167,6 +5199,29 @@
             An event that is fired when a client connects.
             </summary>
         </member>
+        <member name="T:SharpBag.LambdaComparer`1">
+            <summary>
+            An IEqualityComparer for use with lambda functions.
+            </summary>
+            <typeparam name="T">The type of object to compare.</typeparam>
+        </member>
+        <member name="M:SharpBag.LambdaComparer`1.#ctor(System.Func{`0,`0,System.Boolean},System.Func{`0,System.Int32})">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="compare">The compare function.</param>
+            <param name="hash">The hash function.</param>
+        </member>
+        <member name="M:SharpBag.LambdaComparer`1.Equals(`0,`0)">
+            <summary>
+            IEqualityComparer{T}.Equals(T, T)
+            </summary>
+        </member>
+        <member name="M:SharpBag.LambdaComparer`1.GetHashCode(`0)">
+            <summary>
+            IEqualityComparer{T}.GetHashCode(T)
+            </summary>
+        </member>
         <member name="T:SharpBag.Games.Dice">
             <summary>
             A dice.
@@ -5877,29 +5932,6 @@
             <typeparam name="T">The type of the object.</typeparam>
             <param name="obj">The current instance.</param>
             <param name="fileName">The file to serialize to.</param>
-        </member>
-        <member name="T:SharpBag.LambdaComparer`1">
-            <summary>
-            An IEqualityComparer for use with lambda functions.
-            </summary>
-            <typeparam name="T">The type of object to compare.</typeparam>
-        </member>
-        <member name="M:SharpBag.LambdaComparer`1.#ctor(System.Func{`0,`0,System.Boolean},System.Func{`0,System.Int32})">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="compare">The compare function.</param>
-            <param name="hash">The hash function.</param>
-        </member>
-        <member name="M:SharpBag.LambdaComparer`1.Equals(`0,`0)">
-            <summary>
-            IEqualityComparer{T}.Equals(T, T)
-            </summary>
-        </member>
-        <member name="M:SharpBag.LambdaComparer`1.GetHashCode(`0)">
-            <summary>
-            IEqualityComparer{T}.GetHashCode(T)
-            </summary>
         </member>
     </members>
 </doc>

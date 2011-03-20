@@ -10,6 +10,9 @@ using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Windows.Threading;
+using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace SharpBag
 {
@@ -676,6 +679,58 @@ namespace SharpBag
         public static ConsoleHelper WriteLine<T>(this T o)
         {
             return ConsoleHelper.Create().WriteLine<T>(o);
+        }
+
+        /// <summary>
+        /// Gets the current instance's hash.
+        /// </summary>
+        /// <param name="s">The current instance.</param>
+        /// <param name="hasher">The hash function.</param>
+        /// <returns>The hash.</returns>
+        public static byte[] GetHash(this Stream s, HashAlgorithm hasher = null)
+        {
+            if (hasher == null) hasher = SHA1.Create();
+            return hasher.ComputeHash(s);
+        }
+
+        /// <summary>
+        /// Gets the current instance's hash.
+        /// </summary>
+        /// <param name="s">The current instance.</param>
+        /// <param name="hasher">The hash function.</param>
+        /// <returns>The hash.</returns>
+        public static string GetHashString(this Stream s, HashAlgorithm hasher = null)
+        {
+            return String.Join("", s.GetHash(hasher).Select(f =>
+            {
+                string st = Convert.ToString(f, 16);
+                if (st.Length == 1) return "0" + st;
+                else return st;
+            }).ToArray());
+        }
+
+        /// <summary>
+        /// Gets the current instance's hash.
+        /// </summary>
+        /// <param name="s">The current instance.</param>
+        /// <param name="hasher">The hash function.</param>
+        /// <returns>The hash.</returns>
+        public static byte[] GetHash(this string s, HashAlgorithm hasher = null)
+        {
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(s));
+            return ms.GetHash(hasher);
+        }
+
+        /// <summary>
+        /// Gets the current instance's hash.
+        /// </summary>
+        /// <param name="s">The current instance.</param>
+        /// <param name="hasher">The hash function.</param>
+        /// <returns>The hash.</returns>
+        public static string GetHashString(this string s, HashAlgorithm hasher = null)
+        {
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(s));
+            return ms.GetHashString(hasher);
         }
     }
 }
