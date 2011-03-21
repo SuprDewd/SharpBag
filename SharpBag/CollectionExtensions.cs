@@ -27,7 +27,6 @@ namespace SharpBag
 #if DOTNET4
             Contract.Requires(array != null);
             Contract.Requires(min >= 0);
-            Contract.Requires(min <= array.Length);
 #endif
             for (int i = 0; i <= array.Length - min; i++)
             {
@@ -52,7 +51,6 @@ namespace SharpBag
             Contract.Requires(array != null);
             Contract.Requires(min >= 0);
             Contract.Requires(max >= min);
-            Contract.Requires(max <= array.Length);
 #endif
             for (int i = 0; i <= array.Length - min; i++)
             {
