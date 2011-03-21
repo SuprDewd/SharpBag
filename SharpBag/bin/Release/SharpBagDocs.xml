@@ -2651,7 +2651,7 @@
             <param name="max">The maximum length of a subset.</param>
             <returns>The subsets.</returns>
         </member>
-        <member name="M:SharpBag.CollectionExtensions.Line(System.Char[0:,0:],System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:SharpBag.CollectionExtensions.Line``1(``0[0:,0:],System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Returns a line in the current instance.
             </summary>

@@ -70,7 +70,7 @@ namespace SharpBag
         /// <param name="xDelta">The x delta.</param>
         /// <param name="yDelta">The y delta.</param>
         /// <returns>The line.</returns>
-        public static IEnumerable<char> Line(this char[,] g, int x, int y, int xDelta, int yDelta)
+        public static IEnumerable<T> Line<T>(this T[,] g, int x, int y, int xDelta, int yDelta)
         {
 #if DOTNET4
             Contract.Requires(g != null);
