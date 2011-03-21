@@ -42,7 +42,7 @@ namespace SharpBag.Games
         /// </summary>
         public void Shuffle()
         {
-            IEnumerable<Card> cards = Extensions.Shuffle(this);
+            IEnumerable<Card> cards = CollectionExtensions.Shuffle(this);
             base.Clear();
 
             foreach (Card c in cards)

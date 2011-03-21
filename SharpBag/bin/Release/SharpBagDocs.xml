@@ -1756,370 +1756,6 @@
             <param name="generator">A data generator.</param>
             <returns>An endless source of data from the generator.</returns>
         </member>
-        <member name="T:SharpBag.Extensions">
-            <summary>
-            A static class containing static extension methods for various types.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Extensions.Execute``1(System.Collections.Generic.IEnumerable{``0})">
-            <summary>
-            Immediately executes the current instance.
-            </summary>
-            <typeparam name="T">The type of the elements in the enumerable.</typeparam>
-            <param name="sequence">The current instance.</param>
-            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
-        </member>
-        <member name="M:SharpBag.Extensions.GetByPercent``1(``0[],System.Double)">
-            <summary>
-            Gets the element in the array located at the specified percent.
-            </summary>
-            <typeparam name="T">The type of the elements in the array.</typeparam>
-            <param name="array">The current instance.</param>
-            <param name="percent">The percent.</param>
-            <returns>The element in the array located at the specified percent.</returns>
-            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
-        </member>
-        <member name="M:SharpBag.Extensions.AsEnumerable``1(``0[0:,0:])">
-            <summary>
-            Returns an enumerable of all the items in the current instance.
-            </summary>
-            <typeparam name="T">The type of the items.</typeparam>
-            <param name="multiDArray">The current instance.</param>
-            <returns>An enumerable of all the items in the current instance.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.AsEnumerable``1(``0[0:,0:,0:])">
-            <summary>
-            Returns an enumerable of all the items in the current instance.
-            </summary>
-            <typeparam name="T">The type of the items.</typeparam>
-            <param name="multiDArray">The current instance.</param>
-            <returns>An enumerable of all the items in the current instance.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.ContainsArray(System.Array,System.Object)">
-            <summary>
-            Checks whether the array contains the specified object.
-            </summary>
-            <param name="a">The array.</param>
-            <param name="o">The object.</param>
-            <returns>Whether the array contains the specified object.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.IfNotNull``1(``0,System.Action{``0})">
-            <summary>
-            Invokes the specified action if the current object is not null.
-            </summary>
-            <typeparam name="T">The type of the object.</typeparam>
-            <param name="obj">The object.</param>
-            <param name="action">The action.</param>
-        </member>
-        <member name="M:SharpBag.Extensions.IfNotNull``1(``0,System.Action)">
-            <summary>
-            Invokes the specified action if the current object is not null.
-            </summary>
-            <typeparam name="T">The type of the object.</typeparam>
-            <param name="obj">The object.</param>
-            <param name="action">The action.</param>
-        </member>
-        <member name="M:SharpBag.Extensions.AsEnumerable``1(System.Collections.Generic.IEnumerator{``0})">
-            <summary>
-            Converts the current instance into an enumerable.
-            </summary>
-            <typeparam name="T">The type of elements in the current instance.</typeparam>
-            <param name="e">The current instance.</param>
-            <returns>An enumerable.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.AsEnumerable(System.Collections.IEnumerator)">
-            <summary>
-            Converts the current instance into an enumerable.
-            </summary>
-            <param name="e">The current instance.</param>
-            <returns>An enumerable.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.Add``2(System.Collections.Generic.Dictionary{``0,``1},``0,``1,System.Boolean)">
-            <summary>
-            Adds the specified key and value to the dictionary.
-            If overwrite is true and the dictionary contains the specified key, the key's value will be overwritten.
-            If overwrite is false and the dictionary contains the specified key, an exception won't be thrown.
-            </summary>
-            <typeparam name="TKey">The type of the keys in the dictionary.</typeparam>
-            <typeparam name="TValue">The type of the values in the dictionary.</typeparam>
-            <param name="d">The dictionary.</param>
-            <param name="key">The key of the element to add.</param>
-            <param name="value">The value of the element to add. The value can be null for reference types.</param>
-            <param name="overwrite">True if the key's value should be overwritten; otherwise false.</param>
-        </member>
-        <member name="M:SharpBag.Extensions.Fill``1(``0[],``0)">
-            <summary>
-            Fills the current array with the specified value.
-            </summary>
-            <typeparam name="T">The type of the array.</typeparam>
-            <param name="array">The current instance.</param>
-            <param name="value">The value to fill the array with.</param>
-        </member>
-        <member name="M:SharpBag.Extensions.Fill``1(System.Collections.Generic.List{``0},``0)">
-            <summary>
-            Fills the current array with the specified value.
-            </summary>
-            <typeparam name="T">The type of the array.</typeparam>
-            <param name="array">The current instance.</param>
-            <param name="value">The value to fill the array with.</param>
-        </member>
-        <member name="M:SharpBag.Extensions.Range``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32)">
-            <summary>
-            Gets a subarray of an array.
-            </summary>
-            <typeparam name="T">The type of the enumerable.</typeparam>
-            <param name="array">The array.</param>
-            <param name="start">The first index.</param>
-            <param name="end">The last index.</param>
-            <returns>A subarray of the array.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.InvokeIfRequired(System.Windows.Threading.DispatcherObject,System.Action)">
-            <summary>
-            Simple helper extension method to marshall to correct thread if its required.
-            </summary>
-            <param name="control">The source control.</param>
-            <param name="methodcall">The method to call.</param>
-        </member>
-        <member name="M:SharpBag.Extensions.InvokeIfRequired(System.Windows.Threading.DispatcherObject,System.Action,System.Windows.Threading.DispatcherPriority)">
-            <summary>
-            Simple helper extension method to marshall to correct thread if its required.
-            </summary>
-            <param name="control">The source control.</param>
-            <param name="methodcall">The method to call.</param>
-            <param name="priorityForCall">The thread priority.</param>
-        </member>
-        <member name="M:SharpBag.Extensions.Subarray(System.Int32[0:,0:],System.Int32,System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Gets a subarray of the current instance.
-            </summary>
-            <param name="a">The current instance.</param>
-            <param name="x1">X-coordinate 1.</param>
-            <param name="y1">Y-coordinate 1.</param>
-            <param name="x2">X-coordinate 2.</param>
-            <param name="y2">Y-coordinate 2.</param>
-            <returns>The subarray.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.IsIn``1(``0,System.Collections.Generic.IEnumerable{``0})">
-            <summary>
-            Whether the current instance is in the specified collection.
-            </summary>
-            <typeparam name="T">The type of the current instance.</typeparam>
-            <param name="item">The current instance.</param>
-            <param name="collection">The collection.</param>
-            <returns>Whether the current instance is in the specified collection.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.IsIn``1(``0,``0[])">
-            <summary>
-            Whether the current instance is in the specified collection.
-            </summary>
-            <typeparam name="T">The type of the current instance.</typeparam>
-            <param name="item">The current instance.</param>
-            <param name="collection">The collection.</param>
-            <returns>Whether the current instance is in the specified collection.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.Random``1(System.Collections.Generic.IEnumerable{``0})">
-            <summary>
-            Returns a random item from the current instance.
-            </summary>
-            <typeparam name="T">The type of the items.</typeparam>
-            <param name="collection">The current instance.</param>
-            <returns>A random item from  the current instance.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.Random``1(System.Collections.Generic.IEnumerable{``0},System.Random)">
-            <summary>
-            Returns a random item from the current instance.
-            </summary>
-            <typeparam name="T">The type of the items.</typeparam>
-            <param name="collection">The current instance.</param>
-            <param name="rand">A random number generator.</param>
-            <returns>A random item from  the current instance.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.With``1(``0,System.Action{``0})">
-            <summary>
-            Executes the specified action on the current instance.
-            </summary>
-            <typeparam name="T">The type of the current instance.</typeparam>
-            <param name="obj">The current instance.</param>
-            <param name="act">An action.</param>
-        </member>
-        <member name="M:SharpBag.Extensions.NullOr``2(``0,System.Func{``0,``1},``1)">
-            <summary>
-            If the current instance is not null, returns the value returned from selector function, else returns the elseValue.
-            </summary>
-            <typeparam name="TIn">The type of the current instance.</typeparam>
-            <typeparam name="TReturn">The type of the return value.</typeparam>
-            <param name="obj">The current instance.</param>
-            <param name="selector">A selector function.</param>
-            <param name="elseValue">The default value to return.</param>
-            <returns>If the current instance is not null, returns the value returned from selector function, else returns the elseValue.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.IsNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0})">
-            <summary>
-            Whether the current instance is null or empty.
-            </summary>
-            <typeparam name="T">The type of items in the current instance.</typeparam>
-            <param name="collection">The current instance.</param>
-            <returns>Whether the current instance is null or empty.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.Is``1(System.Object)">
-            <summary>
-            Whether the current instance is T.
-            </summary>
-            <typeparam name="T">The type to check against.</typeparam>
-            <param name="item">The current instance.</param>
-            <returns>Whether the current instance is T.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.IsNot``1(System.Object)">
-            <summary>
-            Whether the current instance is not T.
-            </summary>
-            <typeparam name="T">The type to check against.</typeparam>
-            <param name="item">The current instance.</param>
-            <returns>Whether the current instance is not T.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.CastAs``1(System.Object)">
-            <summary>
-            Returns the current instance as T.
-            </summary>
-            <typeparam name="T">The type to return the current instance as.</typeparam>
-            <param name="item">The current instance.</param>
-            <returns>The current instance as T.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.EmptyIfNull``1(System.Collections.Generic.IEnumerable{``0})">
-            <summary>
-            Returns an empty enumerable if the current instance is null.
-            </summary>
-            <typeparam name="T">The type of items in the current instance.</typeparam>
-            <param name="pSeq">The current instance.</param>
-            <returns>An empty enumerable if the current instance is null.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.ToDictionary(System.Object)">
-            <summary>
-            Converts an the current instance to a dictionary, with it's properties as the keys.
-            </summary>
-            <param name="o">The current instance.</param>
-            <returns>The current instance as a dictionary.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.As``1(System.Object,``0)">
-            <summary>
-            Converts the current instance to the specified type.
-            </summary>
-            <typeparam name="TOut">Type the current instance will be converted to.</typeparam>
-            <param name="original">The current instance.</param>
-            <param name="defaultValue">The default value to use in case the current instance can't be converted.</param>
-            <returns>The converted value.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.As``1(System.Object,System.IFormatProvider,``0)">
-            <summary>
-            Converts the current instance to the specified type.
-            </summary>
-            <typeparam name="TOut">Type the current instance will be converted to.</typeparam>
-            <param name="original">The current instance.</param>
-            <param name="provider">An IFormatProvider.</param>
-            <param name="defaultValue">The default value to use in case the current instance can't be converted.</param>
-            <returns>The converted value.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.IsNullableType(System.Type)">
-            <summary>
-            Returns whether or not the specified type is Nullable{T}
-            </summary>
-            <param name="type">A Type.</param>
-            <returns>True if the specified type is Nullable{T}; otherwise, false.</returns>
-            <remarks>Use <see cref="M:System.Nullable.GetUnderlyingType(System.Type)"/> to access the underlying type.</remarks>
-        </member>
-        <member name="M:SharpBag.Extensions.Shuffle``1(System.Collections.Generic.IEnumerable{``0},System.Random)">
-            <summary>
-            Shuffle the collection.
-            </summary>
-            <typeparam name="T">The type of items in the current instance.</typeparam>
-            <param name="source">The current instance.</param>
-            <param name="rand">A random number generator.</param>
-            <returns>The shuffled collection.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.TakeEvery``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32)">
-            <summary>
-            Takes every n-th item of the collection.
-            </summary>
-            <typeparam name="T">The type of the items.</typeparam>
-            <param name="enumeration">The current instance.</param>
-            <param name="step">The step to take.</param>
-            <param name="start">The location to start at.</param>
-            <returns>Every n-th item of the collection.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.If``1(``0,System.Boolean,``0)">
-            <summary>
-            Returns the current instance if the specified expression is true, else returns the specified default value.
-            </summary>
-            <typeparam name="T">The type of the current instance.</typeparam>
-            <param name="obj">The current instance.</param>
-            <param name="expression">An expression.</param>
-            <param name="def">The default value.</param>
-            <returns>The current instance if the specified expression is true, else returns the specified default value.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.Take``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{System.Int32})">
-            <summary>
-            Returns the items in the current instance with the specified indexes.
-            </summary>
-            <typeparam name="T">The type of elements in the current instance.</typeparam>
-            <param name="collection">The collection.</param>
-            <param name="indexes">The indexes.</param>
-            <returns>The items in the current instance with the specified indexes.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.Take``1(System.Collections.Generic.IEnumerable{``0},System.Int32[])">
-            <summary>
-            Returns the items in the current instance with the specified indexes.
-            </summary>
-            <typeparam name="T">The type of elements in the current instance.</typeparam>
-            <param name="collection">The collection.</param>
-            <param name="indexes">The indexes.</param>
-            <returns>The items in the current instance with the specified indexes.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.Write``1(``0)">
-            <summary>
-            Writes the current instance to the console.
-            </summary>
-            <param name="o">The specified object.</param>
-            <returns>A console helper.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.WriteLine``1(``0)">
-            <summary>
-            Writes the current instance to the console, and then puts the cursor on a new line.
-            </summary>
-            <param name="o">The specified object.</param>
-            <returns>A console helper.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.GetHash(System.IO.Stream,System.Security.Cryptography.HashAlgorithm)">
-            <summary>
-            Gets the current instance's hash.
-            </summary>
-            <param name="s">The current instance.</param>
-            <param name="hasher">The hash function.</param>
-            <returns>The hash.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.GetHashString(System.IO.Stream,System.Security.Cryptography.HashAlgorithm)">
-            <summary>
-            Gets the current instance's hash.
-            </summary>
-            <param name="s">The current instance.</param>
-            <param name="hasher">The hash function.</param>
-            <returns>The hash.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.GetHash(System.String,System.Security.Cryptography.HashAlgorithm)">
-            <summary>
-            Gets the current instance's hash.
-            </summary>
-            <param name="s">The current instance.</param>
-            <param name="hasher">The hash function.</param>
-            <returns>The hash.</returns>
-        </member>
-        <member name="M:SharpBag.Extensions.GetHashString(System.String,System.Security.Cryptography.HashAlgorithm)">
-            <summary>
-            Gets the current instance's hash.
-            </summary>
-            <param name="s">The current instance.</param>
-            <param name="hasher">The hash function.</param>
-            <returns>The hash.</returns>
-        </member>
         <member name="T:SharpBag.Networking.ConnectionPacket">
             <summary>
             A packet.
@@ -5932,6 +5568,413 @@
             <typeparam name="T">The type of the object.</typeparam>
             <param name="obj">The current instance.</param>
             <param name="fileName">The file to serialize to.</param>
+        </member>
+        <member name="T:SharpBag.CollectionExtensions">
+            <summary>
+            Extension methods for collections.
+            </summary>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.Subsets``1(``0[],System.Int32)">
+            <summary>
+            Returns all the subsets of the current instance with the specified minimum length.
+            </summary>
+            <typeparam name="T">The type of values the current instance holds.</typeparam>
+            <param name="array">The current instance.</param>
+            <param name="min">The minimum length of a subset.</param>
+            <returns>The subsets.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.Subsets``1(``0[],System.Int32,System.Int32)">
+            <summary>
+            Returns all the subsets of the current instance with the specified minimum length and the specified maximum length.
+            </summary>
+            <typeparam name="T">The type of values the current instance holds.</typeparam>
+            <param name="array">The current instance.</param>
+            <param name="min">The minimum length of a subset.</param>
+            <param name="max">The maximum length of a subset.</param>
+            <returns>The subsets.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.Line(System.Char[0:,0:],System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Returns a line in the current instance.
+            </summary>
+            <param name="g">The current instance.</param>
+            <param name="x">The first x coordinate.</param>
+            <param name="y">The first y coordinate.</param>
+            <param name="xDelta">The x delta.</param>
+            <param name="yDelta">The y delta.</param>
+            <returns>The line.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.Take``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Returns the items in the current instance with the specified indexes.
+            </summary>
+            <typeparam name="T">The type of elements in the current instance.</typeparam>
+            <param name="collection">The collection.</param>
+            <param name="indexes">The indexes.</param>
+            <returns>The items in the current instance with the specified indexes.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.Take``1(System.Collections.Generic.IEnumerable{``0},System.Int32[])">
+            <summary>
+            Returns the items in the current instance with the specified indexes.
+            </summary>
+            <typeparam name="T">The type of elements in the current instance.</typeparam>
+            <param name="collection">The collection.</param>
+            <param name="indexes">The indexes.</param>
+            <returns>The items in the current instance with the specified indexes.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.Shuffle``1(System.Collections.Generic.IEnumerable{``0},System.Random)">
+            <summary>
+            Shuffle the collection.
+            </summary>
+            <typeparam name="T">The type of items in the current instance.</typeparam>
+            <param name="source">The current instance.</param>
+            <param name="rand">A random number generator.</param>
+            <returns>The shuffled collection.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.TakeEvery``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32)">
+            <summary>
+            Takes every n-th item of the collection.
+            </summary>
+            <typeparam name="T">The type of the items.</typeparam>
+            <param name="enumeration">The current instance.</param>
+            <param name="step">The step to take.</param>
+            <param name="start">The location to start at.</param>
+            <returns>Every n-th item of the collection.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.EmptyIfNull``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Returns an empty enumerable if the current instance is null.
+            </summary>
+            <typeparam name="T">The type of items in the current instance.</typeparam>
+            <param name="pSeq">The current instance.</param>
+            <returns>An empty enumerable if the current instance is null.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.IsIn``1(``0,System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Whether the current instance is in the specified collection.
+            </summary>
+            <typeparam name="T">The type of the current instance.</typeparam>
+            <param name="item">The current instance.</param>
+            <param name="collection">The collection.</param>
+            <returns>Whether the current instance is in the specified collection.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.IsIn``1(``0,``0[])">
+            <summary>
+            Whether the current instance is in the specified collection.
+            </summary>
+            <typeparam name="T">The type of the current instance.</typeparam>
+            <param name="item">The current instance.</param>
+            <param name="collection">The collection.</param>
+            <returns>Whether the current instance is in the specified collection.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.Random``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Returns a random item from the current instance.
+            </summary>
+            <typeparam name="T">The type of the items.</typeparam>
+            <param name="collection">The current instance.</param>
+            <returns>A random item from  the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.Random``1(System.Collections.Generic.IEnumerable{``0},System.Random)">
+            <summary>
+            Returns a random item from the current instance.
+            </summary>
+            <typeparam name="T">The type of the items.</typeparam>
+            <param name="collection">The current instance.</param>
+            <param name="rand">A random number generator.</param>
+            <returns>A random item from  the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.Subarray(System.Int32[0:,0:],System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Gets a subarray of the current instance.
+            </summary>
+            <param name="a">The current instance.</param>
+            <param name="x1">X-coordinate 1.</param>
+            <param name="y1">Y-coordinate 1.</param>
+            <param name="x2">X-coordinate 2.</param>
+            <param name="y2">Y-coordinate 2.</param>
+            <returns>The subarray.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.AsEnumerable``1(System.Collections.Generic.IEnumerator{``0})">
+            <summary>
+            Converts the current instance into an enumerable.
+            </summary>
+            <typeparam name="T">The type of elements in the current instance.</typeparam>
+            <param name="e">The current instance.</param>
+            <returns>An enumerable.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.AsEnumerable(System.Collections.IEnumerator)">
+            <summary>
+            Converts the current instance into an enumerable.
+            </summary>
+            <param name="e">The current instance.</param>
+            <returns>An enumerable.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.Add``2(System.Collections.Generic.Dictionary{``0,``1},``0,``1,System.Boolean)">
+            <summary>
+            Adds the specified key and value to the dictionary.
+            If overwrite is true and the dictionary contains the specified key, the key's value will be overwritten.
+            If overwrite is false and the dictionary contains the specified key, an exception won't be thrown.
+            </summary>
+            <typeparam name="TKey">The type of the keys in the dictionary.</typeparam>
+            <typeparam name="TValue">The type of the values in the dictionary.</typeparam>
+            <param name="d">The dictionary.</param>
+            <param name="key">The key of the element to add.</param>
+            <param name="value">The value of the element to add. The value can be null for reference types.</param>
+            <param name="overwrite">True if the key's value should be overwritten; otherwise false.</param>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.Fill``1(``0[],``0)">
+            <summary>
+            Fills the current array with the specified value.
+            </summary>
+            <typeparam name="T">The type of the array.</typeparam>
+            <param name="array">The current instance.</param>
+            <param name="value">The value to fill the array with.</param>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.Fill``1(System.Collections.Generic.List{``0},``0)">
+            <summary>
+            Fills the current array with the specified value.
+            </summary>
+            <typeparam name="T">The type of the array.</typeparam>
+            <param name="array">The current instance.</param>
+            <param name="value">The value to fill the array with.</param>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.Range``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32)">
+            <summary>
+            Gets a subarray of an array.
+            </summary>
+            <typeparam name="T">The type of the enumerable.</typeparam>
+            <param name="array">The array.</param>
+            <param name="start">The first index.</param>
+            <param name="end">The last index.</param>
+            <returns>A subarray of the array.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.Execute``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Immediately executes the current instance.
+            </summary>
+            <typeparam name="T">The type of the elements in the enumerable.</typeparam>
+            <param name="sequence">The current instance.</param>
+            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.GetByPercent``1(``0[],System.Double)">
+            <summary>
+            Gets the element in the array located at the specified percent.
+            </summary>
+            <typeparam name="T">The type of the elements in the array.</typeparam>
+            <param name="array">The current instance.</param>
+            <param name="percent">The percent.</param>
+            <returns>The element in the array located at the specified percent.</returns>
+            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.AsEnumerable``1(``0[0:,0:])">
+            <summary>
+            Returns an enumerable of all the items in the current instance.
+            </summary>
+            <typeparam name="T">The type of the items.</typeparam>
+            <param name="multiDArray">The current instance.</param>
+            <returns>An enumerable of all the items in the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.AsEnumerable``1(``0[0:,0:,0:])">
+            <summary>
+            Returns an enumerable of all the items in the current instance.
+            </summary>
+            <typeparam name="T">The type of the items.</typeparam>
+            <param name="multiDArray">The current instance.</param>
+            <returns>An enumerable of all the items in the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.ArrayContains(System.Array,System.Object)">
+            <summary>
+            Checks whether the array contains the specified object.
+            </summary>
+            <param name="a">The array.</param>
+            <param name="o">The object.</param>
+            <returns>Whether the array contains the specified object.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.ToMultidimensional``1(``0[][])">
+            <summary>
+            Converts the current instance to a multidimensional array.
+            </summary>
+            <typeparam name="T">The type of items the current instance holds.</typeparam>
+            <param name="jagged">The current instance.</param>
+            <returns>A multidimensional array.</returns>
+        </member>
+        <member name="T:SharpBag.GenericExtensions">
+            <summary>
+            A static class containing generic extension methods.
+            </summary>
+        </member>
+        <member name="M:SharpBag.GenericExtensions.IfNotNull``1(``0,System.Action{``0})">
+            <summary>
+            Invokes the specified action if the current object is not null.
+            </summary>
+            <typeparam name="T">The type of the object.</typeparam>
+            <param name="obj">The object.</param>
+            <param name="action">The action.</param>
+        </member>
+        <member name="M:SharpBag.GenericExtensions.IfNotNull``1(``0,System.Action)">
+            <summary>
+            Invokes the specified action if the current object is not null.
+            </summary>
+            <typeparam name="T">The type of the object.</typeparam>
+            <param name="obj">The object.</param>
+            <param name="action">The action.</param>
+        </member>
+        <member name="M:SharpBag.GenericExtensions.InvokeIfRequired(System.Windows.Threading.DispatcherObject,System.Action)">
+            <summary>
+            Simple helper extension method to marshall to correct thread if its required.
+            </summary>
+            <param name="control">The source control.</param>
+            <param name="methodcall">The method to call.</param>
+        </member>
+        <member name="M:SharpBag.GenericExtensions.InvokeIfRequired(System.Windows.Threading.DispatcherObject,System.Action,System.Windows.Threading.DispatcherPriority)">
+            <summary>
+            Simple helper extension method to marshall to correct thread if its required.
+            </summary>
+            <param name="control">The source control.</param>
+            <param name="methodcall">The method to call.</param>
+            <param name="priorityForCall">The thread priority.</param>
+        </member>
+        <member name="M:SharpBag.GenericExtensions.With``1(``0,System.Action{``0})">
+            <summary>
+            Executes the specified action on the current instance.
+            </summary>
+            <typeparam name="T">The type of the current instance.</typeparam>
+            <param name="obj">The current instance.</param>
+            <param name="act">An action.</param>
+        </member>
+        <member name="M:SharpBag.GenericExtensions.NullOr``2(``0,System.Func{``0,``1},``1)">
+            <summary>
+            If the current instance is not null, returns the value returned from selector function, else returns the elseValue.
+            </summary>
+            <typeparam name="TIn">The type of the current instance.</typeparam>
+            <typeparam name="TReturn">The type of the return value.</typeparam>
+            <param name="obj">The current instance.</param>
+            <param name="selector">A selector function.</param>
+            <param name="elseValue">The default value to return.</param>
+            <returns>If the current instance is not null, returns the value returned from selector function, else returns the elseValue.</returns>
+        </member>
+        <member name="M:SharpBag.GenericExtensions.IsNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Whether the current instance is null or empty.
+            </summary>
+            <typeparam name="T">The type of items in the current instance.</typeparam>
+            <param name="collection">The current instance.</param>
+            <returns>Whether the current instance is null or empty.</returns>
+        </member>
+        <member name="M:SharpBag.GenericExtensions.Is``1(System.Object)">
+            <summary>
+            Whether the current instance is T.
+            </summary>
+            <typeparam name="T">The type to check against.</typeparam>
+            <param name="item">The current instance.</param>
+            <returns>Whether the current instance is T.</returns>
+        </member>
+        <member name="M:SharpBag.GenericExtensions.IsNot``1(System.Object)">
+            <summary>
+            Whether the current instance is not T.
+            </summary>
+            <typeparam name="T">The type to check against.</typeparam>
+            <param name="item">The current instance.</param>
+            <returns>Whether the current instance is not T.</returns>
+        </member>
+        <member name="M:SharpBag.GenericExtensions.CastAs``1(System.Object)">
+            <summary>
+            Returns the current instance as T.
+            </summary>
+            <typeparam name="T">The type to return the current instance as.</typeparam>
+            <param name="item">The current instance.</param>
+            <returns>The current instance as T.</returns>
+        </member>
+        <member name="M:SharpBag.GenericExtensions.ToDictionary(System.Object)">
+            <summary>
+            Converts an the current instance to a dictionary, with it's properties as the keys.
+            </summary>
+            <param name="o">The current instance.</param>
+            <returns>The current instance as a dictionary.</returns>
+        </member>
+        <member name="M:SharpBag.GenericExtensions.As``1(System.Object,``0)">
+            <summary>
+            Converts the current instance to the specified type.
+            </summary>
+            <typeparam name="TOut">Type the current instance will be converted to.</typeparam>
+            <param name="original">The current instance.</param>
+            <param name="defaultValue">The default value to use in case the current instance can't be converted.</param>
+            <returns>The converted value.</returns>
+        </member>
+        <member name="M:SharpBag.GenericExtensions.As``1(System.Object,System.IFormatProvider,``0)">
+            <summary>
+            Converts the current instance to the specified type.
+            </summary>
+            <typeparam name="TOut">Type the current instance will be converted to.</typeparam>
+            <param name="original">The current instance.</param>
+            <param name="provider">An IFormatProvider.</param>
+            <param name="defaultValue">The default value to use in case the current instance can't be converted.</param>
+            <returns>The converted value.</returns>
+        </member>
+        <member name="M:SharpBag.GenericExtensions.IsNullableType(System.Type)">
+            <summary>
+            Returns whether or not the specified type is Nullable{T}
+            </summary>
+            <param name="type">A Type.</param>
+            <returns>True if the specified type is Nullable{T}; otherwise, false.</returns>
+            <remarks>Use <see cref="M:System.Nullable.GetUnderlyingType(System.Type)"/> to access the underlying type.</remarks>
+        </member>
+        <member name="M:SharpBag.GenericExtensions.If``1(``0,System.Boolean,``0)">
+            <summary>
+            Returns the current instance if the specified expression is true, else returns the specified default value.
+            </summary>
+            <typeparam name="T">The type of the current instance.</typeparam>
+            <param name="obj">The current instance.</param>
+            <param name="expression">An expression.</param>
+            <param name="def">The default value.</param>
+            <returns>The current instance if the specified expression is true, else returns the specified default value.</returns>
+        </member>
+        <member name="M:SharpBag.GenericExtensions.Write``1(``0)">
+            <summary>
+            Writes the current instance to the console.
+            </summary>
+            <param name="o">The specified object.</param>
+            <returns>A console helper.</returns>
+        </member>
+        <member name="M:SharpBag.GenericExtensions.WriteLine``1(``0)">
+            <summary>
+            Writes the current instance to the console, and then puts the cursor on a new line.
+            </summary>
+            <param name="o">The specified object.</param>
+            <returns>A console helper.</returns>
+        </member>
+        <member name="M:SharpBag.GenericExtensions.GetHash(System.IO.Stream,System.Security.Cryptography.HashAlgorithm)">
+            <summary>
+            Gets the current instance's hash.
+            </summary>
+            <param name="s">The current instance.</param>
+            <param name="hasher">The hash function.</param>
+            <returns>The hash.</returns>
+        </member>
+        <member name="M:SharpBag.GenericExtensions.GetHashString(System.IO.Stream,System.Security.Cryptography.HashAlgorithm)">
+            <summary>
+            Gets the current instance's hash.
+            </summary>
+            <param name="s">The current instance.</param>
+            <param name="hasher">The hash function.</param>
+            <returns>The hash.</returns>
+        </member>
+        <member name="M:SharpBag.GenericExtensions.GetHash(System.String,System.Security.Cryptography.HashAlgorithm)">
+            <summary>
+            Gets the current instance's hash.
+            </summary>
+            <param name="s">The current instance.</param>
+            <param name="hasher">The hash function.</param>
+            <returns>The hash.</returns>
+        </member>
+        <member name="M:SharpBag.GenericExtensions.GetHashString(System.String,System.Security.Cryptography.HashAlgorithm)">
+            <summary>
+            Gets the current instance's hash.
+            </summary>
+            <param name="s">The current instance.</param>
+            <param name="hasher">The hash function.</param>
+            <returns>The hash.</returns>
         </member>
     </members>
 </doc>

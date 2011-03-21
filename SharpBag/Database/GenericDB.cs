@@ -234,7 +234,7 @@ namespace SharpBag.Database
                 if (!first) columns.Append(',');
                 else first = false;
 
-                if (!dt.PrimaryKey.ContainsArray(col)) nonPrimaryCols.Add(col.ColumnName);
+                if (!dt.PrimaryKey.ArrayContains(col)) nonPrimaryCols.Add(col.ColumnName);
 
                 columns.Append(col.ColumnName);
             }
@@ -267,7 +267,7 @@ namespace SharpBag.Database
                     {
                         values.Append((bool)o ? "TRUE" : "FALSE");
                     }
-                    else if (new Type[] { typeof(int), typeof(long), typeof(double), typeof(float), typeof(decimal), typeof(Single) }.ContainsArray(col.DataType))
+                    else if (new Type[] { typeof(int), typeof(long), typeof(double), typeof(float), typeof(decimal), typeof(Single) }.ArrayContains(col.DataType))
                     {
                         values.Append(o.ToString());
                     }

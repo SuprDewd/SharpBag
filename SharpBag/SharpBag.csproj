@@ -79,6 +79,7 @@
     <Compile Include="Algorithms\PriorityQueueItem.cs" />
     <Compile Include="Algorithms\Sorting\SortOrder.cs" />
     <Compile Include="Algorithms\Sorting\SortExtensions.cs" />
+    <Compile Include="CollectionExtensions.cs" />
     <Compile Include="Combinatorics\Combinations.cs" />
     <Compile Include="Combinatorics\CombinatoricExtensions.cs" />
     <Compile Include="Combinatorics\GenerateOption.cs" />
@@ -115,7 +116,7 @@
     <Compile Include="RandomExtensions.cs" />
     <Compile Include="Strings\StringUtils.cs" />
     <Compile Include="Time\TimeExtensions.cs" />
-    <Compile Include="Extensions.cs" />
+    <Compile Include="GenericExtensions.cs" />
     <Compile Include="FK\DrawObjects.cs" />
     <Compile Include="FK\Kennitala.cs" />
     <Compile Include="FK\Minesweeper.cs" />
