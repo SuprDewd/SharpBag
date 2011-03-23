@@ -2205,6 +2205,141 @@
             Sort descending.
             </summary>
         </member>
+        <member name="T:SharpBag.FunctionalExtensions">
+            <summary>
+            Functional methods.
+            </summary>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.Iter``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            Performs an action on each element of the enumerable.
+            </summary>
+            <typeparam name="T">The type of the elements.</typeparam>
+            <param name="source">The current instance.</param>
+            <param name="action">The action to perform on each element.</param>
+            <returns>The current instance.</returns>
+            <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            Performs an action on each element of the enumerable.
+            </summary>
+            <typeparam name="T">The type of the elements.</typeparam>
+            <param name="source">The current instance.</param>
+            <param name="action">The action to perform on each element.</param>
+            <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.To(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Generates numbers that range from the value of the current instance to the value of end.
+            </summary>
+            <param name="start">The current instance.</param>
+            <param name="end">The number to end at.</param>
+            <param name="step">The step to take on each iteration.</param>
+            <returns>An enumerable containing the numbers.</returns>
+            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.To(System.Int64,System.Int64,System.Int64)">
+            <summary>
+            Generates numbers that range from the value of the current instance to the value of end.
+            </summary>
+            <param name="start">The current instance.</param>
+            <param name="end">The number to end at.</param>
+            <param name="step">The step to take on each iteration.</param>
+            <returns>An enumerable containing the numbers.</returns>
+            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.To(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+            <summary>
+            Generates numbers that range from the value of the current instance to the value of end.
+            </summary>
+            <param name="start">The current instance.</param>
+            <param name="end">The number to end at.</param>
+            <returns>An enumerable containing the numbers.</returns>
+            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.To(System.Numerics.BigInteger,System.Numerics.BigInteger,System.Numerics.BigInteger)">
+            <summary>
+            Generates numbers that range from the value of the current instance to the value of end.
+            </summary>
+            <param name="start">The current instance.</param>
+            <param name="end">The number to end at.</param>
+            <param name="step">The step to take on each iteration.</param>
+            <returns>An enumerable containing the numbers.</returns>
+            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.To(System.Char,System.Char,System.Int32)">
+            <summary>
+            Generates chars that range from the current instance to end.
+            </summary>
+            <param name="start">The current instance.</param>
+            <param name="end">The char to end at.</param>
+            <param name="step">The step to take on each iteration.</param>
+            <returns>An enumerable containing the numbers.</returns>
+            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.Times``1(System.Int32,System.Func{``0})">
+            <summary>
+            Executes the specified function N times where N is the value of the current instance.
+            </summary>
+            <typeparam name="T">The type of the value returned from the function.</typeparam>
+            <param name="i">The current instance.</param>
+            <param name="f">The function to execute.</param>
+            <returns>An enumerable with the returned values of the function.</returns>
+            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.Memoize``2(System.Func{``0,``1},System.Collections.Generic.IDictionary{``0,``1})">
+            <summary>
+            Memoizes the current instance.
+            </summary>
+            <param name="func">The current instance.</param>
+            <param name="memo">The memo.</param>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.Memoize``2(System.Func{``0,System.Func{``0,``1},``1},System.Collections.Generic.IDictionary{``0,``1})">
+            <summary>
+            Memoizes the current instance.
+            This overload allows for recursive memoization.
+            </summary>
+            <param name="func">The current instance.</param>
+            <param name="memo">The memo.</param>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.And``1(System.Func{``0,System.Boolean},System.Func{``0,System.Boolean})">
+            <summary>
+            Returns a function that returns true if both of the specified functions return true.
+            </summary>
+            <typeparam name="T">The return type.</typeparam>
+            <param name="f1">The current instance.</param>
+            <param name="f2">Another function.</param>
+            <returns>A boolean.</returns>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.Or``1(System.Func{``0,System.Boolean},System.Func{``0,System.Boolean})">
+            <summary>
+            Returns a function that returns true if either of the specified functions return true.
+            </summary>
+            <typeparam name="T">The return type.</typeparam>
+            <param name="f1">The current instance.</param>
+            <param name="f2">Another function.</param>
+            <returns>A boolean.</returns>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.Not``1(System.Func{``0,System.Boolean})">
+            <summary>
+            Returns a function that returns the opposite of the current instance when called.
+            </summary>
+            <typeparam name="T">The type.</typeparam>
+            <param name="f">The current instance.</param>
+            <returns>A function that returns the opposite of the current instance when called.</returns>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.Then``2(System.Func{``0,System.Boolean},``1,``1)">
+            <summary>
+            Returns a function, that when called, returns the specified value or the default specified value, depending on the return value of the expression function.
+            </summary>
+            <typeparam name="TIn">The input type.</typeparam>
+            <typeparam name="TOut">The output type.</typeparam>
+            <param name="expression">The expression function.</param>
+            <param name="obj">The value.</param>
+            <param name="def">The default value.</param>
+            <returns>A function, that when called, returns the specified value or the default specified value, depending on the return value of the expression function.</returns>
+        </member>
         <member name="T:SharpBag.Networking.ConnectionHandler">
             <summary>
             A connection handler.
@@ -5877,141 +6012,6 @@
             <typeparam name="T">The type of the object.</typeparam>
             <param name="obj">The current instance.</param>
             <param name="fileName">The file to serialize to.</param>
-        </member>
-        <member name="T:SharpBag.FunctionalExtensions">
-            <summary>
-            Functional methods.
-            </summary>
-        </member>
-        <member name="M:SharpBag.FunctionalExtensions.Iter``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
-            <summary>
-            Performs an action on each element of the enumerable.
-            </summary>
-            <typeparam name="T">The type of the elements.</typeparam>
-            <param name="source">The current instance.</param>
-            <param name="action">The action to perform on each element.</param>
-            <returns>The current instance.</returns>
-            <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
-        </member>
-        <member name="M:SharpBag.FunctionalExtensions.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
-            <summary>
-            Performs an action on each element of the enumerable.
-            </summary>
-            <typeparam name="T">The type of the elements.</typeparam>
-            <param name="source">The current instance.</param>
-            <param name="action">The action to perform on each element.</param>
-            <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
-        </member>
-        <member name="M:SharpBag.FunctionalExtensions.To(System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Generates numbers that range from the value of the current instance to the value of end.
-            </summary>
-            <param name="start">The current instance.</param>
-            <param name="end">The number to end at.</param>
-            <param name="step">The step to take on each iteration.</param>
-            <returns>An enumerable containing the numbers.</returns>
-            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
-        </member>
-        <member name="M:SharpBag.FunctionalExtensions.To(System.Int64,System.Int64,System.Int64)">
-            <summary>
-            Generates numbers that range from the value of the current instance to the value of end.
-            </summary>
-            <param name="start">The current instance.</param>
-            <param name="end">The number to end at.</param>
-            <param name="step">The step to take on each iteration.</param>
-            <returns>An enumerable containing the numbers.</returns>
-            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
-        </member>
-        <member name="M:SharpBag.FunctionalExtensions.To(System.Numerics.BigInteger,System.Numerics.BigInteger)">
-            <summary>
-            Generates numbers that range from the value of the current instance to the value of end.
-            </summary>
-            <param name="start">The current instance.</param>
-            <param name="end">The number to end at.</param>
-            <returns>An enumerable containing the numbers.</returns>
-            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
-        </member>
-        <member name="M:SharpBag.FunctionalExtensions.To(System.Numerics.BigInteger,System.Numerics.BigInteger,System.Numerics.BigInteger)">
-            <summary>
-            Generates numbers that range from the value of the current instance to the value of end.
-            </summary>
-            <param name="start">The current instance.</param>
-            <param name="end">The number to end at.</param>
-            <param name="step">The step to take on each iteration.</param>
-            <returns>An enumerable containing the numbers.</returns>
-            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
-        </member>
-        <member name="M:SharpBag.FunctionalExtensions.To(System.Char,System.Char,System.Int32)">
-            <summary>
-            Generates chars that range from the current instance to end.
-            </summary>
-            <param name="start">The current instance.</param>
-            <param name="end">The char to end at.</param>
-            <param name="step">The step to take on each iteration.</param>
-            <returns>An enumerable containing the numbers.</returns>
-            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
-        </member>
-        <member name="M:SharpBag.FunctionalExtensions.Times``1(System.Int32,System.Func{``0})">
-            <summary>
-            Executes the specified function N times where N is the value of the current instance.
-            </summary>
-            <typeparam name="T">The type of the value returned from the function.</typeparam>
-            <param name="i">The current instance.</param>
-            <param name="f">The function to execute.</param>
-            <returns>An enumerable with the returned values of the function.</returns>
-            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
-        </member>
-        <member name="M:SharpBag.FunctionalExtensions.Memoize``2(System.Func{``0,``1},System.Collections.Generic.IDictionary{``0,``1})">
-            <summary>
-            Memoizes the current instance.
-            </summary>
-            <param name="func">The current instance.</param>
-            <param name="memo">The memo.</param>
-        </member>
-        <member name="M:SharpBag.FunctionalExtensions.Memoize``2(System.Func{``0,System.Func{``0,``1},``1},System.Collections.Generic.IDictionary{``0,``1})">
-            <summary>
-            Memoizes the current instance.
-            This overload allows for recursive memoization.
-            </summary>
-            <param name="func">The current instance.</param>
-            <param name="memo">The memo.</param>
-        </member>
-        <member name="M:SharpBag.FunctionalExtensions.And``1(System.Func{``0,System.Boolean},System.Func{``0,System.Boolean})">
-            <summary>
-            Returns a function that returns true if both of the specified functions return true.
-            </summary>
-            <typeparam name="T">The return type.</typeparam>
-            <param name="f1">The current instance.</param>
-            <param name="f2">Another function.</param>
-            <returns>A boolean.</returns>
-        </member>
-        <member name="M:SharpBag.FunctionalExtensions.Or``1(System.Func{``0,System.Boolean},System.Func{``0,System.Boolean})">
-            <summary>
-            Returns a function that returns true if either of the specified functions return true.
-            </summary>
-            <typeparam name="T">The return type.</typeparam>
-            <param name="f1">The current instance.</param>
-            <param name="f2">Another function.</param>
-            <returns>A boolean.</returns>
-        </member>
-        <member name="M:SharpBag.FunctionalExtensions.Not``1(System.Func{``0,System.Boolean})">
-            <summary>
-            Returns a function that returns the opposite of the current instance when called.
-            </summary>
-            <typeparam name="T">The type.</typeparam>
-            <param name="f">The current instance.</param>
-            <returns>A function that returns the opposite of the current instance when called.</returns>
-        </member>
-        <member name="M:SharpBag.FunctionalExtensions.Then``2(System.Func{``0,System.Boolean},``1,``1)">
-            <summary>
-            Returns a function, that when called, returns the specified value or the default specified value, depending on the return value of the expression function.
-            </summary>
-            <typeparam name="TIn">The input type.</typeparam>
-            <typeparam name="TOut">The output type.</typeparam>
-            <param name="expression">The expression function.</param>
-            <param name="obj">The value.</param>
-            <param name="def">The default value.</param>
-            <returns>A function, that when called, returns the specified value or the default specified value, depending on the return value of the expression function.</returns>
         </member>
     </members>
 </doc>

@@ -106,11 +106,8 @@ namespace SharpBag
         /// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
         public static IEnumerable<BigInteger> To(this BigInteger start, BigInteger end)
         {
-#if DOTNET4
             Contract.Ensures(Contract.Result<IEnumerable<BigInteger>>() != null);
             Contract.Ensures(Contract.Result<IEnumerable<BigInteger>>().Any());
-#endif
-
             return start.To(end, BigInteger.One);
         }
 
@@ -124,12 +121,9 @@ namespace SharpBag
         /// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
         public static IEnumerable<BigInteger> To(this BigInteger start, BigInteger end, BigInteger step)
         {
-#if DOTNET4
             Contract.Requires(step > 0);
             Contract.Ensures(Contract.Result<IEnumerable<BigInteger>>() != null);
             Contract.Ensures(Contract.Result<IEnumerable<BigInteger>>().Any());
-#endif
-
             if (start < end) for (BigInteger i = start; i <= end; i += step) yield return i;
             else if (start > end) for (BigInteger i = start; i >= end; i -= step) yield return i;
             else yield return end;
