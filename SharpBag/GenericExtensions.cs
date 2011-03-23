@@ -222,14 +222,14 @@ namespace SharpBag
         }
 
         /// <summary>
-        /// Returns the current instance if the specified expression is true, else returns the specified default value.
+        /// If the current instance is true, the specified value is returned, else the specified default value is returned.
         /// </summary>
         /// <typeparam name="T">The type of the current instance.</typeparam>
         /// <param name="obj">The current instance.</param>
-        /// <param name="expression">An expression.</param>
+        /// <param name="expression">The value.</param>
         /// <param name="def">The default value.</param>
-        /// <returns>The current instance if the specified expression is true, else returns the specified default value.</returns>
-        public static T If<T>(this T obj, bool expression, T def = default(T))
+        /// <returns>The specified value is returned, else the specified default value is returned.</returns>
+        public static T Then<T>(this bool expression, T obj, T def = default(T))
         {
             return expression ? obj : def;
         }

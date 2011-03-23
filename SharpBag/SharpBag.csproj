@@ -152,7 +152,7 @@
     <Compile Include="Patterns\LockedLazySingleton.cs" />
     <Compile Include="Patterns\Singleton.cs" />
     <Compile Include="Media\MediaHelper.cs" />
-    <Compile Include="Functional.cs" />
+    <Compile Include="FunctionalExtensions.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -12,7 +12,7 @@ namespace SharpBag
     /// <summary>
     /// Functional methods.
     /// </summary>
-    public static class Functional
+    public static class FunctionalExtensions
     {
         /// <summary>
         /// Performs an action on each element of the enumerable.
@@ -217,6 +217,55 @@ namespace SharpBag
             };
 
             return recFunc;
+        }
+
+        /// <summary>
+        /// Returns a function that returns true if both of the specified functions return true.
+        /// </summary>
+        /// <typeparam name="T">The return type.</typeparam>
+        /// <param name="f1">The current instance.</param>
+        /// <param name="f2">Another function.</param>
+        /// <returns>A boolean.</returns>
+        public static Func<T, bool> And<T>(this Func<T, bool> f1, Func<T, bool> f2)
+        {
+            return o => f1(o) && f2(o);
+        }
+
+        /// <summary>
+        /// Returns a function that returns true if either of the specified functions return true.
+        /// </summary>
+        /// <typeparam name="T">The return type.</typeparam>
+        /// <param name="f1">The current instance.</param>
+        /// <param name="f2">Another function.</param>
+        /// <returns>A boolean.</returns>
+        public static Func<T, bool> Or<T>(this Func<T, bool> f1, Func<T, bool> f2)
+        {
+            return o => f1(o) || f2(o);
+        }
+
+        /// <summary>
+        /// Returns a function that returns the opposite of the current instance when called.
+        /// </summary>
+        /// <typeparam name="T">The type.</typeparam>
+        /// <param name="f">The current instance.</param>
+        /// <returns>A function that returns the opposite of the current instance when called.</returns>
+        public static Func<T, bool> Not<T>(this Func<T, bool> f)
+        {
+            return o => !f(o);
+        }
+
+        /// <summary>
+        /// Returns a function, that when called, returns the specified value or the default specified value, depending on the return value of the expression function.
+        /// </summary>
+        /// <typeparam name="TIn">The input type.</typeparam>
+        /// <typeparam name="TOut">The output type.</typeparam>
+        /// <param name="expression">The expression function.</param>
+        /// <param name="obj">The value.</param>
+        /// <param name="def">The default value.</param>
+        /// <returns>A function, that when called, returns the specified value or the default specified value, depending on the return value of the expression function.</returns>
+        public static Func<TIn, TOut> Then<TIn, TOut>(this Func<TIn, bool> expression, TOut obj, TOut def = default(TOut))
+        {
+            return o => expression(o) ? obj : def;
         }
     }
 }
