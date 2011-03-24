@@ -2396,6 +2396,15 @@
             <param name="value">The current instance.</param>
             <returns>The result of the match.</returns>
         </member>
+        <member name="M:SharpBag.FunctionalExtensions.AssignTo``1(``0,``0@)">
+            <summary>
+            Assigns the current instance to the specified variable.
+            </summary>
+            <typeparam name="T">The type of the current isntance.</typeparam>
+            <param name="value">The current instance.</param>
+            <param name="to">The variable.</param>
+            <returns>The current instance.</returns>
+        </member>
         <member name="T:SharpBag.Networking.ConnectionHandler">
             <summary>
             A connection handler.

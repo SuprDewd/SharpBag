@@ -305,5 +305,17 @@ namespace SharpBag
             MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(s));
             return ms.GetHashString(hasher);
         }
+
+        /// <summary>
+        /// Assigns the current instance to the specified variable.
+        /// </summary>
+        /// <typeparam name="T">The type of the current isntance.</typeparam>
+        /// <param name="value">The current instance.</param>
+        /// <param name="to">The variable.</param>
+        /// <returns>The current instance.</returns>
+        public static T AssignTo<T>(this T value, out T to)
+        {
+            return to = value;
+        }
     }
 }
