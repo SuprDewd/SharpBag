@@ -261,5 +261,199 @@ namespace SharpBag
         {
             return o => expression(o) ? obj : def;
         }
+
+        #region Unfold overloads
+
+        /// <summary>
+        /// Unfolds the current instance.
+        /// </summary>
+        /// <typeparam name="T">The type of the unfolded values.</typeparam>
+        /// <param name="f">The function to unfold.</param>
+        /// <returns>The unfolded values.</returns>
+        public static IEnumerable<T> Unfold<T>(this Func<int, Option<T>> f)
+        {
+#if DOTNET4
+            Contract.Requires(f != null);
+#endif
+            int index = 0;
+            Option<T> res = f(index++);
+
+            while (res != null && res.IsSome)
+            {
+                yield return res.Value;
+                res = f(index++);
+            }
+        }
+
+        /// <summary>
+        /// Unfolds the current instance.
+        /// </summary>
+        /// <typeparam name="T">The type of the unfolded values.</typeparam>
+        /// <param name="f">The function to unfold.</param>
+        /// <returns>The unfolded values.</returns>
+        public static IEnumerable<T> Unfold<T>(this Func<Option<T>> f)
+        {
+#if DOTNET4
+            Contract.Requires(f != null);
+#endif
+            Option<T> res = f();
+
+            while (res != null && res.IsSome)
+            {
+                yield return res.Value;
+                res = f();
+            }
+        }
+
+        /// <summary>
+        /// Unfolds the current instance.
+        /// </summary>
+        /// <typeparam name="T">The type of the unfolded values.</typeparam>
+        /// <param name="f">The function to unfold.</param>
+        /// <param name="seed">The seed to feed the function.</param>
+        /// <param name="step">A function to apply on every unfolded value, to update the seed.</param>
+        /// <returns>The unfolded values.</returns>
+        public static IEnumerable<T> Unfold<T>(this Func<T, Option<T>> f, T seed, Func<T, T> step = null)
+        {
+#if DOTNET4
+            Contract.Requires(f != null);
+#endif
+            if (step == null) step = s => s;
+            Option<T> res = f(seed);
+
+            while (res != null && res.IsSome)
+            {
+                yield return res.Value;
+                seed = step(seed);
+                res = f(seed);
+            }
+        }
+
+        /// <summary>
+        /// Unfolds the current instance.
+        /// </summary>
+        /// <typeparam name="T">The type of the unfolded values.</typeparam>
+        /// <param name="f">The function to unfold.</param>
+        /// <returns>The unfolded values.</returns>
+        public static IEnumerable<T> Unfold<T>(this Func<int, T> f)
+        {
+#if DOTNET4
+            Contract.Requires(f != null);
+#endif
+            int index = 0;
+            while (true) yield return f(index++);
+        }
+
+        /// <summary>
+        /// Unfolds the current instance.
+        /// </summary>
+        /// <typeparam name="T">The type of the unfolded values.</typeparam>
+        /// <param name="f">The function to unfold.</param>
+        /// <returns>The unfolded values.</returns>
+        public static IEnumerable<T> Unfold<T>(this Func<T> f)
+        {
+#if DOTNET4
+            Contract.Requires(f != null);
+#endif
+            while (true) yield return f();
+        }
+
+        /// <summary>
+        /// Unfolds the current instance.
+        /// </summary>
+        /// <typeparam name="T">The type of the unfolded values.</typeparam>
+        /// <param name="f">The function to unfold.</param>
+        /// <param name="seed">The seed to feed the function.</param>
+        /// <param name="step">A function to apply on every unfolded value, to update the seed.</param>
+        /// <returns>The unfolded values.</returns>
+        public static IEnumerable<T> Unfold<T>(this Func<T, T> f, T seed, Func<T, T> step = null)
+        {
+#if DOTNET4
+            Contract.Requires(f != null);
+#endif
+            if (step == null) step = s => s;
+
+            while (true)
+            {
+                yield return f(seed);
+                seed = step(seed);
+            }
+        }
+
+        /// <summary>
+        /// Unfolds the current instance.
+        /// </summary>
+        /// <typeparam name="T">The type of the unfolded values.</typeparam>
+        /// <typeparam name="T2">The type of the seed.</typeparam>
+        /// <param name="f">The function to unfold.</param>
+        /// <param name="open">The opener.</param>
+        /// <param name="close">The closer.</param>
+        /// <returns>The unfolded values.</returns>
+        public static IEnumerable<T> Unfold<T, T2>(this Func<T2, Option<T>> f, Func<T2> open, Action<T2> close)
+        {
+#if DOTNET4
+            Contract.Requires(f != null);
+            Contract.Requires(open != null);
+            Contract.Requires(close != null);
+#endif
+            T2 o = open();
+
+            try
+            {
+                Option<T> res = f(o);
+
+                while (res != null && res.IsSome)
+                {
+                    yield return res.Value;
+                    res = f(o);
+                }
+            }
+            finally
+            {
+                close(o);
+            }
+        }
+
+        /// <summary>
+        /// Unfolds the current instance, and then disposes it.
+        /// </summary>
+        /// <typeparam name="T">The type of the unfolded values.</typeparam>
+        /// <typeparam name="T2">The type of the seed.</typeparam>
+        /// <param name="f">The function to unfold.</param>
+        /// <param name="open">The opener.</param>
+        /// <returns>The unfolded values.</returns>
+        public static IEnumerable<T> Unfold<T, T2>(this Func<T2, Option<T>> f, Func<T2> open) where T2 : IDisposable
+        {
+#if DOTNET4
+            Contract.Requires(f != null);
+            Contract.Requires(open != null);
+#endif
+            T2 o = open();
+
+            using (o)
+            {
+                Option<T> res = f(o);
+
+                while (res != null && res.IsSome)
+                {
+                    yield return res.Value;
+                    res = f(o);
+                }
+            }
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Returns a new Matcher with the current instance as the target.
+        /// </summary>
+        /// <typeparam name="TIn">The type of the current instance.</typeparam>
+        /// <typeparam name="TOut">The result of the match.</typeparam>
+        /// <param name="value">The current instance.</param>
+        /// <returns>The result of the match.</returns>
+        public static Matcher<TIn, TOut> Match<TIn, TOut>(this TIn value)
+        {
+            return new Matcher<TIn, TOut>(value);
+        }
     }
 }

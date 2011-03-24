@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
 
 #if DOTNET4
 using System.Diagnostics.Contracts;
 #endif
 
-using System.IO;
-using System.Linq;
 
 namespace SharpBag
 {
@@ -74,38 +74,6 @@ namespace SharpBag
         }
 
         /// <summary>
-        /// Returns values that are generated from the generator.
-        /// </summary>
-        /// <typeparam name="T">The type of what is being generated.</typeparam>
-        /// <param name="generator">The main generator.</param>
-        /// <returns>Values that are generated from the generator.</returns>
-        /// <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
-        public static IEnumerable<T> Generate<T>(Func<T> generator) where T : class
-        {
-#if DOTNET4
-            Contract.Requires(generator != null);
-#endif
-            T t;
-            while ((t = generator()) != null) yield return t;
-        }
-
-        /// <summary>
-        /// Returns values that are generated from the generator.
-        /// </summary>
-        /// <typeparam name="T">The type of what is being generated.</typeparam>
-        /// <param name="generator">The main generator.</param>
-        /// <returns>Values that are generated from the generator.</returns>
-        /// <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
-        public static IEnumerable<T> Generate<T>(Func<Nullable<T>> generator) where T : struct
-        {
-#if DOTNET4
-            Contract.Requires(generator != null);
-#endif
-            Nullable<T> t;
-            while ((t = generator()).HasValue) yield return t.Value;
-        }
-
-        /// <summary>
         /// Converts an enumerator to an enumerable.
         /// </summary>
         /// <typeparam name="T">The type of what is being enumered.</typeparam>
@@ -129,7 +97,7 @@ namespace SharpBag
         /// <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
         public static IEnumerable<T> Single<T>(T value)
         {
-            return Enumerable.Repeat(value, 1);
+            yield return value;
         }
 
         /// <summary>
@@ -172,21 +140,8 @@ namespace SharpBag
 #if DOTNET4
             Contract.Requires(reader != null);
 #endif
-            return Generate(reader.ReadLine);
-        }
-
-        /// <summary>
-        /// Generates data with the specified data generator.
-        /// </summary>
-        /// <typeparam name="T">The type of items returned by the generator.</typeparam>
-        /// <param name="generator">A data generator.</param>
-        /// <returns>An endless source of data from the generator.</returns>
-        public static IEnumerable<T> GenerateEndless<T>(Func<T> generator)
-        {
-#if DOTNET4
-            Contract.Requires(generator != null);
-#endif
-            while (true) yield return generator();
+            Func<string> readLine = () => reader.ReadLine();
+            return readLine.Unfold();
         }
     }
 }

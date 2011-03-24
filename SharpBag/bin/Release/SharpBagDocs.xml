@@ -1768,24 +1768,6 @@
             <param name="objects">The objects.</param>
             <returns>The IEnumerable.</returns>
         </member>
-        <member name="M:SharpBag.Utils.Generate``1(System.Func{``0})">
-            <summary>
-            Returns values that are generated from the generator.
-            </summary>
-            <typeparam name="T">The type of what is being generated.</typeparam>
-            <param name="generator">The main generator.</param>
-            <returns>Values that are generated from the generator.</returns>
-            <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
-        </member>
-        <member name="M:SharpBag.Utils.Generate``1(System.Func{System.Nullable{``0}})">
-            <summary>
-            Returns values that are generated from the generator.
-            </summary>
-            <typeparam name="T">The type of what is being generated.</typeparam>
-            <param name="generator">The main generator.</param>
-            <returns>Values that are generated from the generator.</returns>
-            <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
-        </member>
         <member name="M:SharpBag.Utils.FromEnumerator``1(System.Collections.Generic.IEnumerator{``0})">
             <summary>
             Converts an enumerator to an enumerable.
@@ -1826,14 +1808,6 @@
             <param name="reader">The TextReader to read from.</param>
             <returns>An enumerable that reads lines from the specified TextReader.</returns>
             <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
-        </member>
-        <member name="M:SharpBag.Utils.GenerateEndless``1(System.Func{``0})">
-            <summary>
-            Generates data with the specified data generator.
-            </summary>
-            <typeparam name="T">The type of items returned by the generator.</typeparam>
-            <param name="generator">A data generator.</param>
-            <returns>An endless source of data from the generator.</returns>
         </member>
         <member name="T:SharpBag.Networking.ConnectionPacket">
             <summary>
@@ -2339,6 +2313,88 @@
             <param name="obj">The value.</param>
             <param name="def">The default value.</param>
             <returns>A function, that when called, returns the specified value or the default specified value, depending on the return value of the expression function.</returns>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.Unfold``1(System.Func{System.Int32,SharpBag.Option{``0}})">
+            <summary>
+            Unfolds the current instance.
+            </summary>
+            <typeparam name="T">The type of the unfolded values.</typeparam>
+            <param name="f">The function to unfold.</param>
+            <returns>The unfolded values.</returns>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.Unfold``1(System.Func{SharpBag.Option{``0}})">
+            <summary>
+            Unfolds the current instance.
+            </summary>
+            <typeparam name="T">The type of the unfolded values.</typeparam>
+            <param name="f">The function to unfold.</param>
+            <returns>The unfolded values.</returns>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.Unfold``1(System.Func{``0,SharpBag.Option{``0}},``0,System.Func{``0,``0})">
+            <summary>
+            Unfolds the current instance.
+            </summary>
+            <typeparam name="T">The type of the unfolded values.</typeparam>
+            <param name="f">The function to unfold.</param>
+            <param name="seed">The seed to feed the function.</param>
+            <param name="step">A function to apply on every unfolded value, to update the seed.</param>
+            <returns>The unfolded values.</returns>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.Unfold``1(System.Func{System.Int32,``0})">
+            <summary>
+            Unfolds the current instance.
+            </summary>
+            <typeparam name="T">The type of the unfolded values.</typeparam>
+            <param name="f">The function to unfold.</param>
+            <returns>The unfolded values.</returns>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.Unfold``1(System.Func{``0})">
+            <summary>
+            Unfolds the current instance.
+            </summary>
+            <typeparam name="T">The type of the unfolded values.</typeparam>
+            <param name="f">The function to unfold.</param>
+            <returns>The unfolded values.</returns>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.Unfold``1(System.Func{``0,``0},``0,System.Func{``0,``0})">
+            <summary>
+            Unfolds the current instance.
+            </summary>
+            <typeparam name="T">The type of the unfolded values.</typeparam>
+            <param name="f">The function to unfold.</param>
+            <param name="seed">The seed to feed the function.</param>
+            <param name="step">A function to apply on every unfolded value, to update the seed.</param>
+            <returns>The unfolded values.</returns>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.Unfold``2(System.Func{``1,SharpBag.Option{``0}},System.Func{``1},System.Action{``1})">
+            <summary>
+            Unfolds the current instance.
+            </summary>
+            <typeparam name="T">The type of the unfolded values.</typeparam>
+            <typeparam name="T2">The type of the seed.</typeparam>
+            <param name="f">The function to unfold.</param>
+            <param name="open">The opener.</param>
+            <param name="close">The closer.</param>
+            <returns>The unfolded values.</returns>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.Unfold``2(System.Func{``1,SharpBag.Option{``0}},System.Func{``1})">
+            <summary>
+            Unfolds the current instance, and then disposes it.
+            </summary>
+            <typeparam name="T">The type of the unfolded values.</typeparam>
+            <typeparam name="T2">The type of the seed.</typeparam>
+            <param name="f">The function to unfold.</param>
+            <param name="open">The opener.</param>
+            <returns>The unfolded values.</returns>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.Match``2(``0)">
+            <summary>
+            Returns a new Matcher with the current instance as the target.
+            </summary>
+            <typeparam name="TIn">The type of the current instance.</typeparam>
+            <typeparam name="TOut">The result of the match.</typeparam>
+            <param name="value">The current instance.</param>
+            <returns>The result of the match.</returns>
         </member>
         <member name="T:SharpBag.Networking.ConnectionHandler">
             <summary>
@@ -6012,6 +6068,183 @@
             <typeparam name="T">The type of the object.</typeparam>
             <param name="obj">The current instance.</param>
             <param name="fileName">The file to serialize to.</param>
+        </member>
+        <member name="T:SharpBag.Option`1">
+            <summary>
+            An option.
+            </summary>
+            <typeparam name="T">The type of the option.</typeparam>
+        </member>
+        <member name="M:SharpBag.Option`1.#ctor">
+            <summary>
+            Initializes a None option.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Option`1.#ctor(`0)">
+            <summary>
+            Initializes a Some option with the specified value.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Option`1.Value">
+            <summary>
+            The value of the Option.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Option`1.IsSome">
+            <summary>
+            Whether the Option is Some.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Option`1.IsNone">
+            <summary>
+            Whether the Options is None.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Option">
+            <summary>
+            A factory class for Options.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Option.None``1">
+            <summary>
+            Create a new None Option.
+            </summary>
+            <typeparam name="T">The type of the Option.</typeparam>
+            <returns>The new None Option.</returns>
+        </member>
+        <member name="M:SharpBag.Option.Some``1(``0)">
+            <summary>
+            Create a new Some Option with the specified value.
+            </summary>
+            <typeparam name="T">The type of the Option.</typeparam>
+            <returns>The new Some Option.</returns>
+        </member>
+        <member name="T:SharpBag.Matcher`2">
+            <summary>
+            A class for object matching.
+            </summary>
+            <typeparam name="TIn">The type to match.</typeparam>
+            <typeparam name="TOut">The type of the result.</typeparam>
+        </member>
+        <member name="F:SharpBag.Matcher`2.Matchers">
+            <summary>
+            The matcher functions.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Matcher`2.#ctor(`0)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="value">The value to match.</param>
+        </member>
+        <member name="M:SharpBag.Matcher`2.When(`0,`1)">
+            <summary>
+            Adds a matcher and a result to the match evaluator.
+            </summary>
+            <param name="other">The matcher.</param>
+            <param name="result">The result.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.Matcher`2.When(`0,System.Func{`1})">
+            <summary>
+            Adds a matcher and a result to the match evaluator.
+            </summary>
+            <param name="other">The matcher.</param>
+            <param name="result">The result.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.Matcher`2.When(`0,System.Func{`0,`1})">
+            <summary>
+            Adds a matcher and a result to the match evaluator.
+            </summary>
+            <param name="other">The matcher.</param>
+            <param name="result">The result.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.Matcher`2.When(System.Func{System.Boolean},`1)">
+            <summary>
+            Adds a matcher and a result to the match evaluator.
+            </summary>
+            <param name="func">The matcher.</param>
+            <param name="result">The result.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.Matcher`2.When(System.Func{System.Boolean},System.Func{`1})">
+            <summary>
+            Adds a matcher and a result to the match evaluator.
+            </summary>
+            <param name="func">The matcher.</param>
+            <param name="result">The result.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.Matcher`2.When(System.Func{System.Boolean},System.Func{`0,`1})">
+            <summary>
+            Adds a matcher and a result to the match evaluator.
+            </summary>
+            <param name="func">The matcher.</param>
+            <param name="result">The result.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.Matcher`2.When(System.Func{`0,System.Boolean},`1)">
+            <summary>
+            Adds a matcher and a result to the match evaluator.
+            </summary>
+            <param name="func">The matcher.</param>
+            <param name="result">The result.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.Matcher`2.When(System.Func{`0,System.Boolean},System.Func{`1})">
+            <summary>
+            Adds a matcher and a result to the match evaluator.
+            </summary>
+            <param name="func">The matcher.</param>
+            <param name="result">The result.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.Matcher`2.When(System.Func{`0,System.Boolean},System.Func{`0,`1})">
+            <summary>
+            Adds a matcher and a result to the match evaluator.
+            </summary>
+            <param name="func">The matcher.</param>
+            <param name="result">The result.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.Matcher`2.Default(`1)">
+            <summary>
+            Specifies what the default value of the match will be.
+            </summary>
+            <param name="value">The default value.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.Matcher`2.Default(System.Func{`1})">
+            <summary>
+            Specifies what the default value of the match will be.
+            </summary>
+            <param name="value">The default value.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.Matcher`2.Default(System.Func{`0,`1})">
+            <summary>
+            Specifies what the default value of the match will be.
+            </summary>
+            <param name="value">The default value.</param>
+            <returns>The current instance (for chaining).</returns>
+        </member>
+        <member name="M:SharpBag.Matcher`2.EndMatch">
+            <summary>
+            Evaluates the match.
+            </summary>
+            <returns>The result.</returns>
+        </member>
+        <member name="P:SharpBag.Matcher`2.Value">
+            <summary>
+            The value to match.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Matcher`2.DefaultValue">
+            <summary>
+            The default value.
+            </summary>
         </member>
     </members>
 </doc>

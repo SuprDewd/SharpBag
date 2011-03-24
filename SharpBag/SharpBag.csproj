@@ -105,6 +105,7 @@
     <Compile Include="Games\CardValue.cs" />
     <Compile Include="Games\Dice.cs" />
     <Compile Include="LambdaComparer.cs" />
+    <Compile Include="Matcher.cs" />
     <Compile Include="Math\PascalTriangle.cs" />
     <Compile Include="Networking\Client.cs" />
     <Compile Include="Networking\ConnectionHandler.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Networking\PacketEventArgs.cs" />
     <Compile Include="Networking\PacketEventHandler.cs" />
     <Compile Include="Networking\Ping.cs" />
+    <Compile Include="Option.cs" />
     <Compile Include="RandomExtensions.cs" />
     <Compile Include="Strings\StringUtils.cs" />
     <Compile Include="Time\TimeExtensions.cs" />
