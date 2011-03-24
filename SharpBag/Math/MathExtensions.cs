@@ -4,8 +4,10 @@ using System.Linq;
 using SharpBag.Strings;
 
 #if DOTNET4
+
 using System.Diagnostics.Contracts;
 using System.Numerics;
+
 #endif
 
 namespace SharpBag.Math
@@ -118,6 +120,7 @@ namespace SharpBag.Math
         /// <param name="max">The maximum integer.</param>
         /// <returns>True if the current instance is between or equal to the two integers; otherwise false.</returns>
 #if DOTNET4
+
         [Pure]
 #endif
 

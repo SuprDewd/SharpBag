@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 
 #if DOTNET4
+
 using System.Diagnostics.Contracts;
+
 #endif
 
 using System.Globalization;
@@ -588,7 +590,7 @@ namespace SharpBag.Strings
         {
             return i > 9 ? i.ToString() : "0" + i;
         }
-        
+
         /// <summary>
         /// Repeats the specified string N times.
         /// </summary>
@@ -605,7 +607,7 @@ namespace SharpBag.Strings
             for (int i = 0; i < n; i++) sb.Append(s);
             return sb.ToString();
         }
-        
+
         /// <summary>
         /// Repeats the specified string N times.
         /// </summary>

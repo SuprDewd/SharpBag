@@ -9,6 +9,7 @@
         /// The connection handler.
         /// </summary>
         public ConnectionHandler Connection { get; private set; }
+
         /// <summary>
         /// The ID of the event.
         /// </summary>

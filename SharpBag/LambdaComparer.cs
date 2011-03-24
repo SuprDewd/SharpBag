@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Diagnostics.Contracts;
 
 namespace SharpBag
@@ -13,6 +11,7 @@ namespace SharpBag
     public class LambdaComparer<T> : IEqualityComparer<T>
     {
         private Func<T, T, bool> Comparer { get; set; }
+
         private Func<T, int> Hasher { get; set; }
 
         /// <summary>

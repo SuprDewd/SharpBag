@@ -16,6 +16,7 @@ namespace SharpBag.Networking
         /// <param name="obj">The data to send.</param>
         /// <returns>The current instance (for chaining).</returns>
         public abstract PacketEventHandler Fire<T>(int eventID, T obj);
+
         /// <summary>
         /// Fire the specified event on the server.
         /// </summary>

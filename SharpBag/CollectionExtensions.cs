@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 #if DOTNET4
+
 using System.Diagnostics.Contracts;
 using System.Collections;
+
 #endif
 
 namespace SharpBag

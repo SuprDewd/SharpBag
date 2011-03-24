@@ -4,7 +4,9 @@ using System.Data;
 using System.Data.Common;
 
 #if DOTNET4
+
 using System.Diagnostics.Contracts;
+
 #endif
 
 using System.Text;

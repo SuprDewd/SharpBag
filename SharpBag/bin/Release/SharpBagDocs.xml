@@ -159,6 +159,56 @@
             <returns>Kassinn</returns>
             <example>Square(5, 4, "*", " ", false)</example>
         </member>
+        <member name="T:SharpBag.Option`1">
+            <summary>
+            An option.
+            </summary>
+            <typeparam name="T">The type of the option.</typeparam>
+        </member>
+        <member name="M:SharpBag.Option`1.#ctor">
+            <summary>
+            Initializes a None option.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Option`1.#ctor(`0)">
+            <summary>
+            Initializes a Some option with the specified value.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Option`1.Value">
+            <summary>
+            The value of the Option.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Option`1.IsSome">
+            <summary>
+            Whether the Option is Some.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Option`1.IsNone">
+            <summary>
+            Whether the Options is None.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Option">
+            <summary>
+            A factory class for Options.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Option.None``1">
+            <summary>
+            Create a new None Option.
+            </summary>
+            <typeparam name="T">The type of the Option.</typeparam>
+            <returns>The new None Option.</returns>
+        </member>
+        <member name="M:SharpBag.Option.Some``1(``0)">
+            <summary>
+            Create a new Some Option with the specified value.
+            </summary>
+            <typeparam name="T">The type of the Option.</typeparam>
+            <returns>The new Some Option.</returns>
+        </member>
         <member name="T:SharpBag.Networking.Ping">
             <summary>
             A structure that is used when pinging the other side.
@@ -671,6 +721,15 @@
             <param name="s">The current instance.</param>
             <param name="hasher">The hash function.</param>
             <returns>The hash.</returns>
+        </member>
+        <member name="M:SharpBag.GenericExtensions.AssignTo``1(``0,``0@)">
+            <summary>
+            Assigns the current instance to the specified variable.
+            </summary>
+            <typeparam name="T">The type of the current isntance.</typeparam>
+            <param name="value">The current instance.</param>
+            <param name="to">The variable.</param>
+            <returns>The current instance.</returns>
         </member>
         <member name="T:SharpBag.Database.GenericDB`1">
             <summary>
@@ -2395,15 +2454,6 @@
             <typeparam name="TOut">The result of the match.</typeparam>
             <param name="value">The current instance.</param>
             <returns>The result of the match.</returns>
-        </member>
-        <member name="M:SharpBag.FunctionalExtensions.AssignTo``1(``0,``0@)">
-            <summary>
-            Assigns the current instance to the specified variable.
-            </summary>
-            <typeparam name="T">The type of the current isntance.</typeparam>
-            <param name="value">The current instance.</param>
-            <param name="to">The variable.</param>
-            <returns>The current instance.</returns>
         </member>
         <member name="T:SharpBag.Networking.ConnectionHandler">
             <summary>
@@ -6077,56 +6127,6 @@
             <typeparam name="T">The type of the object.</typeparam>
             <param name="obj">The current instance.</param>
             <param name="fileName">The file to serialize to.</param>
-        </member>
-        <member name="T:SharpBag.Option`1">
-            <summary>
-            An option.
-            </summary>
-            <typeparam name="T">The type of the option.</typeparam>
-        </member>
-        <member name="M:SharpBag.Option`1.#ctor">
-            <summary>
-            Initializes a None option.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Option`1.#ctor(`0)">
-            <summary>
-            Initializes a Some option with the specified value.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Option`1.Value">
-            <summary>
-            The value of the Option.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Option`1.IsSome">
-            <summary>
-            Whether the Option is Some.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Option`1.IsNone">
-            <summary>
-            Whether the Options is None.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Option">
-            <summary>
-            A factory class for Options.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Option.None``1">
-            <summary>
-            Create a new None Option.
-            </summary>
-            <typeparam name="T">The type of the Option.</typeparam>
-            <returns>The new None Option.</returns>
-        </member>
-        <member name="M:SharpBag.Option.Some``1(``0)">
-            <summary>
-            Create a new Some Option with the specified value.
-            </summary>
-            <typeparam name="T">The type of the Option.</typeparam>
-            <returns>The new Some Option.</returns>
         </member>
         <member name="T:SharpBag.Matcher`2">
             <summary>

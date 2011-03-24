@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 
 #if DOTNET4
-using System.Diagnostics.Contracts;
-#endif
 
+using System.Diagnostics.Contracts;
+
+#endif
 
 namespace SharpBag
 {

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace SharpBag
 {
@@ -11,8 +8,9 @@ namespace SharpBag
     public class ConsoleHelper
     {
         private static ConsoleHelper Instance { get; set; }
+
         private ConsoleHelper() { }
-        
+
         /// <summary>
         /// Returns an instance of the console helper.
         /// </summary>

@@ -10,16 +10,20 @@ namespace SharpBag.Networking
     public class Client : PacketEventHandler, IConnection
     {
         private TcpClient Connection { get; set; }
+
         private string Hostname;
         private int Port;
+
         /// <summary>
         /// Whether the client is connected.
         /// </summary>
         public bool Connected { get; private set; }
+
         /// <summary>
         /// An event that is fired when the client is disconnected.
         /// </summary>
         public event Action OnDisconnected;
+
         private ConnectionHandler ConnectionHandler { get; set; }
 
         /// <summary>

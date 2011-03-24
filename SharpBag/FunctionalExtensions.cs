@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 
 #if DOTNET4
+
 using System.Numerics;
 using System.Diagnostics.Contracts;
+
 #endif
 
 namespace SharpBag
@@ -171,7 +173,7 @@ namespace SharpBag
 
             for (int j = 0; j < i; j++) yield return f();
         }
-        
+
         /// <summary>
         /// Memoizes the current instance.
         /// </summary>
@@ -183,7 +185,8 @@ namespace SharpBag
             Contract.Requires(func != null);
 #endif
             if (memo == null) memo = new Dictionary<TIn, TOut>();
-            return i => {
+            return i =>
+            {
                 TOut o;
                 if (!memo.TryGetValue(i, out o)) memo.Add(i, o = func(i));
                 return o;
@@ -442,7 +445,7 @@ namespace SharpBag
             }
         }
 
-        #endregion
+        #endregion Unfold overloads
 
         /// <summary>
         /// Returns a new Matcher with the current instance as the target.

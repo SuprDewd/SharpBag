@@ -11,6 +11,7 @@ namespace SharpBag.Networking
         /// Open the connection.
         /// </summary>
         void Close();
+
         /// <summary>
         /// Close the connection.
         /// </summary>

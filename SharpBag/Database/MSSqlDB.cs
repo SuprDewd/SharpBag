@@ -2,7 +2,9 @@
 using System.Data.SqlClient;
 
 #if DOTNET4
+
 using System.Diagnostics.Contracts;
+
 #endif
 
 using System.Text;

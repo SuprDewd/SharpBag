@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Diagnostics.Contracts;
+﻿using System.Diagnostics.Contracts;
 
 namespace SharpBag
 {
@@ -30,6 +26,7 @@ namespace SharpBag
         }
 
         private T _Value { get; set; }
+
         private bool _HasValue { get; set; }
 
         /// <summary>
@@ -50,13 +47,13 @@ namespace SharpBag
         /// Whether the Option is Some.
         /// </summary>
         public bool IsSome { get { return this._HasValue; } }
-        
+
         /// <summary>
         /// Whether the Options is None.
         /// </summary>
         public bool IsNone { get { return !this._HasValue; } }
     }
-    
+
     /// <summary>
     /// A factory class for Options.
     /// </summary>

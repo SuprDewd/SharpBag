@@ -13,7 +13,7 @@ namespace SharpBag.Comparers
         /// </summary>
         /// <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
         public AlphaNumberSettings Location { get; set; }
-    
+
         /// <summary>
         /// The constructor.
         /// </summary>
@@ -22,26 +22,26 @@ namespace SharpBag.Comparers
         {
             this.Location = location;
         }
-    
+
         /// <summary>
         /// IComparer{T}.Compare(T, T)
         /// </summary>
         public int Compare(string a, string b)
         {
             StringComparer sc = StringComparer.CurrentCultureIgnoreCase;
-    
+
             if (string.IsNullOrEmpty(a) || string.IsNullOrEmpty(b)) return sc.Compare(a, b);
-    
+
             string numericX = this.Location == AlphaNumberSettings.Leading ? FindLeadingNumber(a) : FindTrailingNumber(a);
             string numericY = this.Location == AlphaNumberSettings.Leading ? FindLeadingNumber(b) : FindTrailingNumber(b);
-    
+
             if (numericX != string.Empty && numericY != string.Empty)
             {
                 if (this.Location == AlphaNumberSettings.Trailing)
                 {
                     int stringPartCompareResult = sc.Compare(a.Remove(a.Length - numericX.Length), b.Remove(b.Length - numericY.Length));
                     if (stringPartCompareResult != 0) return stringPartCompareResult;
-    
+
                     Double nX = Double.Parse(numericX);
                     Double nY = Double.Parse(numericY);
                     return nX.CompareTo(nY);
@@ -54,7 +54,7 @@ namespace SharpBag.Comparers
             }
             else return sc.Compare(a, b);
         }
-    
+
         /// <summary>
         /// Finds a trailing number.
         /// </summary>
@@ -63,16 +63,16 @@ namespace SharpBag.Comparers
         private static string FindTrailingNumber(string s)
         {
             string numeric = string.Empty;
-    
+
             for (int i = s.Length - 1; i > -1; i--)
             {
                 if (char.IsNumber(s[i])) numeric = s[i] + numeric;
                 else break;
             }
-    
+
             return numeric;
         }
-    
+
         /// <summary>
         /// Finds a leading number.
         /// </summary>
@@ -81,13 +81,13 @@ namespace SharpBag.Comparers
         private static string FindLeadingNumber(string s)
         {
             string numeric = string.Empty;
-    
+
             for (int i = 0; i < s.Length; i++)
             {
                 if (char.IsNumber(s[i])) numeric = numeric + s[i];
                 else break;
             }
-    
+
             return numeric;
         }
     }

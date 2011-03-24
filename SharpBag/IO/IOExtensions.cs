@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.IO;
 using System.Text;
-using System.Diagnostics.Contracts;
 
 namespace SharpBag.IO
 {
@@ -24,10 +24,10 @@ namespace SharpBag.IO
             Contract.Requires(lines != null);
             Contract.Requires(writer != null);
 #endif
-        
+
             lines.ForEach(line => writer.WriteLine(line.ToString()));
         }
-        
+
         /// <summary>
         /// Writes lines from the current instance to the console.
         /// </summary>
@@ -38,7 +38,7 @@ namespace SharpBag.IO
         {
             lines.WriteLinesTo(Console.Out);
         }
-        
+
         /// <summary>
         /// Writes lines from the current instance to the specified file.
         /// </summary>
@@ -52,7 +52,7 @@ namespace SharpBag.IO
             Contract.Requires(lines != null);
             Contract.Requires(path != null);
 #endif
-        
+
             using (TextWriter file = new StreamWriter(path))
             {
                 lines.WriteLinesTo(file);

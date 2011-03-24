@@ -31,7 +31,7 @@ namespace SharpBag.Networking
         /// The stream writer.
         /// </summary>
         public BinaryWriter Writer { get; private set; }
-        
+
         /// <summary>
         /// The encoding to use when reading from the client.
         /// </summary>
@@ -103,7 +103,7 @@ namespace SharpBag.Networking
         /// An event that is fired when the TcpClient disconnects.
         /// </summary>
         public event Action<TcpClientHandler> Disconnected;
-        
+
         /// <summary>
         /// The constructor.
         /// </summary>
@@ -118,7 +118,7 @@ namespace SharpBag.Networking
             this.Client = client;
             this.Client.ReceiveTimeout = receiveTimeout;
             this.Encoding = encoding ?? Encoding.Default;
-            
+
             this.Disconnected += c =>
             {
                 try
@@ -128,10 +128,10 @@ namespace SharpBag.Networking
                 }
                 catch { }
             };
-            
+
             if (start) this.Start();
         }
-        
+
         /// <summary>
         /// Opens the TcpListener, starts the listening thread and starts listening for messages.
         /// </summary>
@@ -148,7 +148,7 @@ namespace SharpBag.Networking
             this.PingInterval = ping;
             return true;
         }
-        
+
         /// <summary>
         /// Sends a message.
         /// </summary>
@@ -222,7 +222,7 @@ namespace SharpBag.Networking
                 }
             }
             catch { }
-            
+
             this.Listening = false;
         }
 

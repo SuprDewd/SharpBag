@@ -2,7 +2,9 @@
 using System.Linq;
 
 #if DOTNET4
+
 using System.Numerics;
+
 #endif
 
 namespace SharpBag.Math

@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 
 #if DOTNET4
+
 using System.Diagnostics.Contracts;
+
 #endif
 
 using System.Drawing;
@@ -24,14 +26,14 @@ namespace SharpBag.Media
         /// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
         public static IEnumerable<Color> GetPixels(this Bitmap image, Rectangle rect)
         {
-        #if DOTNET4
+#if DOTNET4
             Contract.Requires(image != null);
-        #endif
+#endif
             return from y in rect.Top.To(rect.Bottom)
                    from x in rect.Left.To(rect.Right)
                    select image.GetPixel(x, y);
         }
-        
+
         /// <summary>
         /// Gets the luminosity of the specified rectangle in the current instance.
         /// </summary>
@@ -41,12 +43,12 @@ namespace SharpBag.Media
         /// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
         public static double GetLuminosity(this Bitmap image, Rectangle rect)
         {
-        #if DOTNET4
+#if DOTNET4
             Contract.Requires(image != null);
-        #endif
+#endif
             return image.GetPixels(rect).Average(c => .3 * c.R + .59 * c.G + .11 * c.B) / 255;
         }
-        
+
         /// <summary>
         /// Gets a new rectangle that has the same with and height as the current instance.
         /// </summary>
@@ -55,12 +57,12 @@ namespace SharpBag.Media
         /// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
         public static Rectangle GetRectangle(this Image image)
         {
-        #if DOTNET4
+#if DOTNET4
             Contract.Requires(image != null);
-        #endif
+#endif
             return new Rectangle(0, 0, image.Width, image.Height);
         }
-        
+
         /// <summary>
         /// Gets the contrast of the current instance.
         /// </summary>
@@ -72,7 +74,7 @@ namespace SharpBag.Media
         {
             return (((d - .5) * contrast) + .5).Bound(0, 1);
         }
-        
+
         /// <summary>
         /// Gets a subset of rectangles all with the specified width and height from the current instance.
         /// </summary>

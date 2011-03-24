@@ -65,10 +65,10 @@ namespace SharpBag.Networking
             this.Listener = listener;
             this.Listener.Server.ReceiveTimeout = receiveTimeout;
             this.CheckInterval = checkInterval;
-            
+
             if (start) this.Start();
         }
-        
+
         /// <summary>
         /// Opens the TcpListener, starts the listening thread and starts listening for incoming clients.
         /// </summary>

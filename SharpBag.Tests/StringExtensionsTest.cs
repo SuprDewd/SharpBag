@@ -1,7 +1,5 @@
-﻿using SharpBag.Strings;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SharpBag.Strings;
 
 namespace SharpBag.Tests
 {

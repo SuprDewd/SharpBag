@@ -11,11 +11,14 @@ namespace SharpBag.Networking
     public class Host : PacketEventHandler, IConnection, IDisposable
     {
         private TcpListener Connection { get; set; }
+
         /// <summary>
         /// Whether the connection has been opened.
         /// </summary>
         public bool Opened { get; private set; }
+
         private int Port { get; set; }
+
         private event Action<ConnectionPacket> OnSendPacket;
         /// <summary>
         /// An event that is fired when a client connects.

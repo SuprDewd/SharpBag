@@ -311,7 +311,7 @@ namespace SharpBag.Torrent
         public StringBuilder ToBencodedString(StringBuilder u)
         {
             if (u == null) u = new StringBuilder('i');
-			else u.Append('i');
+            else u.Append('i');
             return u.Append(Value.ToString()).Append('e');
         }
 
@@ -392,7 +392,7 @@ namespace SharpBag.Torrent
         public StringBuilder ToBencodedString(StringBuilder u)
         {
             if (u == null) u = new StringBuilder(this.Value.Length);
-			else u.Append(this.Value.Length);
+            else u.Append(this.Value.Length);
             return u.Append(':').Append(this.Value);
         }
 

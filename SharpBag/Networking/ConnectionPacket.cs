@@ -14,7 +14,9 @@ namespace SharpBag.Networking
         /// The ID of an event.
         /// </summary>
         public int EventID { get; set; }
+
         private object _Data;
+
         /// <summary>
         /// The data.
         /// </summary>

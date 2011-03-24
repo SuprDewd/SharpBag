@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 
 #if DOTNET4
+
 using System.Diagnostics.Contracts;
+
 #endif
 
 using System.Linq;
@@ -141,7 +143,7 @@ namespace SharpBag.Algorithms
         {
             return this.Items.OrderByDescending(i => i.Priority).Select(i => i.Item).GetEnumerator();
         }
-        
+
         /// <summary>
         /// IEnumerable{T}.GetEnumerator()
         /// </summary>

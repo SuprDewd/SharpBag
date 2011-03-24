@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using SharpBag.Comparers;
 using SharpBag.Strings;
-using System.Diagnostics;
 
 namespace SharpBag.FK.MVC
 {
@@ -183,11 +183,11 @@ namespace SharpBag.FK.MVC
                 this.ExecuteAction(this.Actions.First(a => a.Start).Name, true);
                 return;
             }
-            
+
             while (true)
             {
                 Console.Clear();
-                
+
                 this.ListActions();
                 Console.Write("Run: ");
                 this.ExecuteAction(Console.ReadLine(), true);

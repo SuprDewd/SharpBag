@@ -1,5 +1,7 @@
 ﻿#if DOTNET4
+
 using System.Diagnostics.Contracts;
+
 #endif
 
 using SharpBag.Math;

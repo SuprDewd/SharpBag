@@ -16,6 +16,7 @@ namespace SharpBag.Networking
         public event Action OnDisconnect;
         private TcpClient Connection;
         private NetworkStream ConnectionStream;
+
         /// <summary>
         /// Whether the connection is connected.
         /// </summary>
@@ -53,7 +54,7 @@ namespace SharpBag.Networking
             this.SendPacket(new ConnectionPacket() { EventID = eventID, Data = obj });
             return this;
         }
-        
+
         /// <summary>
         /// Send the specified packet to the other side.
         /// </summary>
@@ -112,6 +113,7 @@ namespace SharpBag.Networking
         /// The remote endpoint.
         /// </summary>
         public EndPoint RemoteEndPoint { get { return this.Connection.Client.RemoteEndPoint; } }
+
         /// <summary>
         /// The local endpoint.
         /// </summary>
