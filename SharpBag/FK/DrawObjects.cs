@@ -136,27 +136,21 @@ namespace SharpBag.FK
                     }
                 case TriangleType.Top:
                     {
-                        t.Append(Triangle(height - 1, TriangleType.TopRight, s, p));
-                        StringBuilder l = new StringBuilder();
-
-                        for (int i = 0; i < height; i++)
+                        for (int i = height - 1; i >= 0; i--)
                         {
-                            l.AppendLine(s);
+                            t.AppendLine((height - i - 1).Times(p) + (2 * i + 1).Times(s));
                         }
 
-                        return Tools.MergeStrings(Tools.MergeStrings(t.ToString(), l.ToString().TrimEnd()), Triangle(height - 1, TriangleType.TopLeft, s, p)).TrimEnd();
+                        return t.ToString().TrimEnd();
                     }
                 case TriangleType.Bottom:
                     {
-                        t.Append(Triangle(height - 1, TriangleType.BottomRight, s, p));
-                        StringBuilder l = new StringBuilder();
-
                         for (int i = 0; i < height; i++)
                         {
-                            l.AppendLine(s);
+                            t.AppendLine((height - i - 1).Times(p) + (2 * i + 1).Times(s));
                         }
 
-                        return Tools.MergeStrings(Tools.MergeStrings(t.Insert(0, "\n").ToString(), l.ToString().TrimEnd()), "\n" + Triangle(height - 1, TriangleType.BottomLeft, s, p)).TrimEnd();
+                        return t.ToString().TrimEnd();
                     }
                 case TriangleType.Right:
                     {
