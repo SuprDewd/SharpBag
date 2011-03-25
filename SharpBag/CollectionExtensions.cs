@@ -335,7 +335,6 @@ namespace SharpBag
             Contract.Requires(e != null);
             Contract.Ensures(Contract.Result<IEnumerable<T>>() != null);
 #endif
-
             while (e.MoveNext()) yield return e.Current;
         }
 
