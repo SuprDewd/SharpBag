@@ -538,5 +538,24 @@ namespace SharpBag
 
             return arr;
         }
+
+        /// <summary>
+        /// Selects a collection of elements for every element, and returns all the selected elements.
+        /// </summary>
+        /// <typeparam name="TIn">The type of items in the current instance.</typeparam>
+        /// <typeparam name="TOut">The type of items in the result.</typeparam>
+        /// <param name="collection">The current instance.</param>
+        /// <param name="selector">The selector function.</param>
+        /// <returns>The new collection.</returns>
+        public static IEnumerable<TOut> SelectAll<TIn, TOut>(this IEnumerable<TIn> collection, Func<TIn, IEnumerable<TOut>> selector)
+        {
+            foreach (TIn inItem in collection)
+            {
+                foreach (TOut outItem in selector(inItem))
+                {
+                    yield return outItem;
+                }
+            }
+        }
     }
 }
