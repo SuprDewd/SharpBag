@@ -119,7 +119,6 @@
     <Compile Include="Strings\StringUtils.cs" />
     <Compile Include="Time\TimeExtensions.cs" />
     <Compile Include="GenericExtensions.cs" />
-    <Compile Include="FK\DrawObjects.cs" />
     <Compile Include="Games\Card.cs" />
     <Compile Include="Games\CardStack.cs" />
     <Compile Include="IO\IOExtensions.cs" />
