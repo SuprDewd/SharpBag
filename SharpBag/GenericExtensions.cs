@@ -318,5 +318,31 @@ namespace SharpBag
         {
             return to = value;
         }
+
+        /// <summary>
+        /// Executes the specified action and returns the current instance.
+        /// </summary>
+        /// <typeparam name="T">The type of the current instance.</typeparam>
+        /// <param name="variable">The current instance.</param>
+        /// <param name="action">The action to execute.</param>
+        /// <returns>The current instance.</returns>
+        public static T Do<T>(this T variable, Action<T> action)
+        {
+            action(variable);
+            return variable;
+        }
+
+        /// <summary>
+        /// Executes the specified function and returns the result.
+        /// </summary>
+        /// <typeparam name="TIn">The type of the current instance.</typeparam>
+        /// <typeparam name="TOut">The type of the result.</typeparam>
+        /// <param name="variable">The current instance.</param>
+        /// <param name="func">The function to execute.</param>
+        /// <returns>The function result.</returns>
+        public static TOut Do<TIn, TOut>(this TIn variable, Func<TIn, TOut> func)
+        {
+            return func(variable);
+        }
     }
 }

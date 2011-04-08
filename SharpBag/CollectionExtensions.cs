@@ -87,6 +87,56 @@ namespace SharpBag
         }
 
         /// <summary>
+        /// Returns a line in the current instance.
+        /// </summary>
+        /// <param name="g">The current instance.</param>
+        /// <param name="x">The first x coordinate.</param>
+        /// <param name="y">The first y coordinate.</param>
+        /// <param name="xDelta">The x delta.</param>
+        /// <param name="yDelta">The y delta.</param>
+        /// <param name="selector">The result selector.</param>
+        /// <returns>The line.</returns>
+        public static IEnumerable<TOut> Line<TIn, TOut>(this TIn[,] g, int x, int y, int xDelta, int yDelta, Func<TIn, int, int, TOut> selector)
+        {
+#if DOTNET4
+            Contract.Requires(g != null);
+            Contract.Requires(!(xDelta == 0 && yDelta == 0));
+#endif
+            int xl = g.GetLength(0), yl = g.GetLength(1);
+            while (x >= 0 && y >= 0 && x < xl && y < yl)
+            {
+                yield return selector(g[x, y], x, y);
+                x += xDelta;
+                y += yDelta;
+            }
+        }
+
+        /// <summary>
+        /// Returns a line in the current instance.
+        /// </summary>
+        /// <param name="g">The current instance.</param>
+        /// <param name="x">The first x coordinate.</param>
+        /// <param name="y">The first y coordinate.</param>
+        /// <param name="xDelta">The x delta.</param>
+        /// <param name="yDelta">The y delta.</param>
+        /// <param name="selector">The result selector.</param>
+        /// <returns>The line.</returns>
+        public static IEnumerable<TOut> Line<TIn, TOut>(this TIn[,] g, int x, int y, int xDelta, int yDelta, Func<TIn, TOut> selector)
+        {
+#if DOTNET4
+            Contract.Requires(g != null);
+            Contract.Requires(!(xDelta == 0 && yDelta == 0));
+#endif
+            int xl = g.GetLength(0), yl = g.GetLength(1);
+            while (x >= 0 && y >= 0 && x < xl && y < yl)
+            {
+                yield return selector(g[x, y]);
+                x += xDelta;
+                y += yDelta;
+            }
+        }
+
+        /// <summary>
         /// Returns the items in the current instance with the specified indexes.
         /// </summary>
         /// <typeparam name="T">The type of elements in the current instance.</typeparam>
@@ -496,22 +546,6 @@ namespace SharpBag
                         yield return multiDArray[i1, i2, i3];
         }
 
-        #endregion Multidimensional Arrays
-
-        /// <summary>
-        /// Checks whether the array contains the specified object.
-        /// </summary>
-        /// <param name="a">The array.</param>
-        /// <param name="o">The object.</param>
-        /// <returns>Whether the array contains the specified object.</returns>
-        public static bool ArrayContains(this Array a, object o)
-        {
-#if DOTNET4
-            Contract.Requires(a != null);
-#endif
-            return a.Cast<object>().Any(item => item == o);
-        }
-
         /// <summary>
         /// Converts the current instance to a multidimensional array.
         /// </summary>
@@ -540,22 +574,140 @@ namespace SharpBag
         }
 
         /// <summary>
-        /// Selects a collection of elements for every element, and returns all the selected elements.
+        /// Projects every element in the current instance using the specified function.
         /// </summary>
-        /// <typeparam name="TIn">The type of items in the current instance.</typeparam>
-        /// <typeparam name="TOut">The type of items in the result.</typeparam>
-        /// <param name="collection">The current instance.</param>
-        /// <param name="selector">The selector function.</param>
-        /// <returns>The new collection.</returns>
-        public static IEnumerable<TOut> SelectAll<TIn, TOut>(this IEnumerable<TIn> collection, Func<TIn, IEnumerable<TOut>> selector)
+        /// <typeparam name="TIn">The types in the current instance.</typeparam>
+        /// <typeparam name="TOut">The types in the result.</typeparam>
+        /// <param name="mArr">The current instance.</param>
+        /// <param name="func">The projector function.</param>
+        /// <returns>The new array.</returns>
+        public static TOut[,] Select<TIn, TOut>(this TIn[,] mArr, Func<TIn, TOut> func)
         {
-            foreach (TIn inItem in collection)
+#if DOTNET4
+            Contract.Requires(mArr != null);
+            Contract.Requires(func != null);
+#endif
+            int xLen = mArr.GetLength(0), yLen = mArr.GetLength(1);
+            TOut[,] mArrOut = new TOut[xLen, yLen];
+
+            for (int x = 0; x < xLen; x++)
             {
-                foreach (TOut outItem in selector(inItem))
+                for (int y = 0; y < yLen; y++)
                 {
-                    yield return outItem;
+                    mArrOut[x, y] = func(mArr[x, y]);
                 }
             }
+
+            return mArrOut;
+        }
+
+        /// <summary>
+        /// Turns the current instance into a multidimensional array.
+        /// </summary>
+        /// <typeparam name="T">The type of elements in the current instance.</typeparam>
+        /// <param name="collection">The current instance.</param>
+        /// <param name="cols">The number of columns in the result array.</param>
+        /// <returns>The multidimensional array.</returns>
+        public static T[,] AsMultidimensional<T>(this IEnumerable<T> collection, int cols)
+        {
+#if DOTNET4
+            Contract.Requires(cols > 0);
+            Contract.Requires(collection.Count() % cols == 0);
+#endif
+            int count = collection.Count(),
+                rows = count / cols,
+                i = 0;
+
+            T[,] outArr = new T[rows, cols];
+
+            foreach (T item in collection)
+            {
+                outArr[i / cols, i % cols] = item;
+                i++;
+            }
+
+            return outArr;
+        }
+
+        /// <summary>
+        /// Combines the current instance with another multidimensional array.
+        /// </summary>
+        /// <typeparam name="TIn">The type of items in the current instance.</typeparam>
+        /// <typeparam name="TOut">The type of items in the result array.</typeparam>
+        /// <param name="arrFirst">The current instance.</param>
+        /// <param name="arrSecond">The other array.</param>
+        /// <param name="func">The function.</param>
+        /// <returns>The combined array.</returns>
+        public static TOut[,] Zip<TIn, TOut>(this TIn[,] arrFirst, TIn[,] arrSecond, Func<TIn, TIn, TOut> func)
+        {
+#if DOTNET4
+            Contract.Requires(arrFirst.GetLength(0) == arrSecond.GetLength(0));
+            Contract.Requires(arrFirst.GetLength(1) == arrSecond.GetLength(1));
+#endif
+            int xLen = arrFirst.GetLength(0), yLen = arrFirst.GetLength(1);
+            TOut[,] resArr = new TOut[xLen, yLen];
+
+            for (int x = 0; x < xLen; x++)
+            {
+                for (int y = 0; y < yLen; y++)
+                {
+                    resArr[x, y] = func(arrFirst[x, y], arrSecond[x, y]);
+                }
+            }
+
+            return resArr;
+        }
+
+        /// <summary>
+        /// Shifts each element in the current instance.
+        /// </summary>
+        /// <typeparam name="T">The type of elements in the current instance.</typeparam>
+        /// <param name="arr">The current instance.</param>
+        /// <param name="xDelta">The x delta.</param>
+        /// <param name="yDelta">The y delta.</param>
+        /// <param name="wrap">Whether to wrap.</param>
+        /// <returns>The new array with shifted elements.</returns>
+        public static T[,] Shift<T>(this T[,] arr, int xDelta, int yDelta, bool wrap = false)
+        {
+            int xLen = arr.GetLength(0), yLen = arr.GetLength(1);
+            T[,] outArr = new T[xLen, yLen];
+
+            for (int x = 0; x < xLen; x++)
+            {
+                for (int y = 0; y < yLen; y++)
+                {
+                    int nextX = (x + xDelta),
+                        nextY = (y + yDelta);
+
+                    if (!wrap && (nextX >= xLen || nextX < 0 || nextY >= yLen || nextY < 0)) continue;
+
+                    nextX %= xLen;
+                    nextY %= yLen;
+
+                    while (nextX < 0) nextX += xLen;
+                    while (nextY < 0) nextY += yLen;
+
+                    outArr[nextX, nextY] = arr[x, y];
+                }
+            }
+
+            return outArr;
+        }
+
+        #endregion Multidimensional Arrays
+
+        /// <summary>
+        /// Checks whether the array contains the specified object.
+        /// </summary>
+        /// <param name="a">The array.</param>
+        /// <param name="o">The object.</param>
+        /// <returns>Whether the array contains the specified object.</returns>
+        public static bool ArrayContains(this Array a, object o)
+        {
+#if DOTNET4
+            Contract.Requires(a != null);
+#endif
+            return a.Cast<object>().Any(item => item == o);
         }
     }
 }

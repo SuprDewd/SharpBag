@@ -74,79 +74,6 @@
             <param name="fileName">The file to deserialize from.</param>
             <returns>The object.</returns>
         </member>
-        <member name="T:SharpBag.FK.TriangleType">
-            <summary>
-            Gerðir af þríhyrningum. Heitir eftir því í hvaða horni eða brún á kassa þríhyrningurinn væri.
-            </summary>
-        </member>
-        <member name="F:SharpBag.FK.TriangleType.Top">
-            <summary>
-            Þríhyrningur sem er með langhliðina á toppnum.
-            </summary>
-        </member>
-        <member name="F:SharpBag.FK.TriangleType.Left">
-            <summary>
-            Þríhyrningur sem er með langhliðina til vinstri.
-            </summary>
-        </member>
-        <member name="F:SharpBag.FK.TriangleType.Right">
-            <summary>
-            Þríhyrningur sem er með langhliðina til hægri.
-            </summary>
-        </member>
-        <member name="F:SharpBag.FK.TriangleType.Bottom">
-            <summary>
-            Þríhyrningur sem er með langhliðina á botninum.
-            </summary>
-        </member>
-        <member name="F:SharpBag.FK.TriangleType.TopLeft">
-            <summary>
-            Þríhyrningur sem er með bendir upp í efra vinstra hornið.
-            </summary>
-        </member>
-        <member name="F:SharpBag.FK.TriangleType.TopRight">
-            <summary>
-            Þríhyrningur sem er með bendir upp í efra hægra hornið.
-            </summary>
-        </member>
-        <member name="F:SharpBag.FK.TriangleType.BottomLeft">
-            <summary>
-            Þríhyrningur sem er með bendir upp í neðra vinstra hornið.
-            </summary>
-        </member>
-        <member name="F:SharpBag.FK.TriangleType.BottomRight">
-            <summary>
-            Þríhyrningur sem er með bendir upp í neðra hægra hornið.
-            </summary>
-        </member>
-        <member name="T:SharpBag.FK.DrawObjects">
-            <summary>
-            Allskonar method til að teikna hluti
-            </summary>
-        </member>
-        <member name="M:SharpBag.FK.DrawObjects.Triangle(System.Int32,SharpBag.FK.TriangleType,System.String,System.String)">
-            <summary>
-            Teiknar þríhyrninga
-            </summary>
-            <param name="height">Hæð þríhyrningsins</param>
-            <param name="TT">Týpan af þríhyrningi</param>
-            <param name="s">Strengurinn sem er notaður inní þríhyrningnum</param>
-            <param name="p">Strengurinn sem er notaður fyrir utan þríhyrninginn</param>
-            <returns>Þríhyrningurinn</returns>
-            <example>Triangle(5, TriangleType.Top, "*", " ")</example>
-        </member>
-        <member name="M:SharpBag.FK.DrawObjects.Square(System.Int32,System.Int32,System.String,System.String,System.Boolean)">
-            <summary>
-            Teiknar kassa
-            </summary>
-            <param name="height">Hæðin á kassanum</param>
-            <param name="width">Breyddin á kassanum</param>
-            <param name="s">Strengurinn sem er inní kassanum</param>
-            <param name="p">Strengurinn sem er innæi kassanum ef hann er ekki fylltur</param>
-            <param name="filled">Bool um hvort hann sé fylltur eða ekki</param>
-            <returns>Kassinn</returns>
-            <example>Square(5, 4, "*", " ", false)</example>
-        </member>
         <member name="T:SharpBag.Option`1">
             <summary>
             An option.
@@ -677,6 +604,48 @@
             <param name="value">The current instance.</param>
             <param name="to">The variable.</param>
             <returns>The current instance.</returns>
+        </member>
+        <member name="M:SharpBag.GenericExtensions.Do``1(``0,System.Action{``0})">
+            <summary>
+            Executes the specified action and returns the current instance.
+            </summary>
+            <typeparam name="T">The type of the current instance.</typeparam>
+            <param name="variable">The current instance.</param>
+            <param name="action">The action to execute.</param>
+            <returns>The current instance.</returns>
+        </member>
+        <member name="M:SharpBag.GenericExtensions.Do``2(``0,System.Func{``0,``1})">
+            <summary>
+            Executes the specified function and returns the result.
+            </summary>
+            <typeparam name="TIn">The type of the current instance.</typeparam>
+            <typeparam name="TOut">The type of the result.</typeparam>
+            <param name="variable">The current instance.</param>
+            <param name="func">The function to execute.</param>
+            <returns>The function result.</returns>
+        </member>
+        <member name="T:SharpBag.LambdaComparer`1">
+            <summary>
+            An IEqualityComparer for use with lambda functions.
+            </summary>
+            <typeparam name="T">The type of object to compare.</typeparam>
+        </member>
+        <member name="M:SharpBag.LambdaComparer`1.#ctor(System.Func{`0,`0,System.Boolean},System.Func{`0,System.Int32})">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="compare">The compare function.</param>
+            <param name="hash">The hash function.</param>
+        </member>
+        <member name="M:SharpBag.LambdaComparer`1.Equals(`0,`0)">
+            <summary>
+            IEqualityComparer{T}.Equals(T, T)
+            </summary>
+        </member>
+        <member name="M:SharpBag.LambdaComparer`1.GetHashCode(`0)">
+            <summary>
+            IEqualityComparer{T}.GetHashCode(T)
+            </summary>
         </member>
         <member name="T:SharpBag.Database.GenericDB`1">
             <summary>
@@ -2517,6 +2486,77 @@
             An event that is fired when the client is disconnected.
             </summary>
         </member>
+        <member name="T:SharpBag.Misc.ProblemController">
+            <summary>
+            A problem controller.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Misc.ProblemController.#ctor(System.String,System.Boolean)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="title">The title of the controller.</param>
+            <param name="timeAll">Whether to time all problems.</param>
+        </member>
+        <member name="M:SharpBag.Misc.ProblemController.Run">
+            <summary>
+            Run the controller.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Misc.ProblemController.Read``1(System.String,System.String,System.Func{``0,System.Boolean})">
+            <summary>
+            Read an object from the console.
+            </summary>
+            <typeparam name="T">The type of the object to read.</typeparam>
+            <param name="q">A description of the object.</param>
+            <param name="separator">A separator between the description and the object.</param>
+            <param name="validator">A validator function.</param>
+            <returns>The object that was read.</returns>
+        </member>
+        <member name="M:SharpBag.Misc.ProblemController.Read(System.String,System.String,System.Func{System.String,System.Boolean})">
+            <summary>
+            Read a string from the console.
+            </summary>
+            <param name="q">A description of the string.</param>
+            <param name="separator">A separator between the description and the string.</param>
+            <param name="validator">A validator function.</param>
+            <returns>The string that was read.</returns>
+        </member>
+        <member name="M:SharpBag.Misc.ProblemController.ReadDouble(System.String,System.String,System.Func{System.Double,System.Boolean})">
+            <summary>
+            Read a double from the console.
+            </summary>
+            <param name="q">A description of the string.</param>
+            <param name="separator">A separator between the description and the string.</param>
+            <param name="validator">A validator function.</param>
+            <returns>The string that was read.</returns>
+        </member>
+        <member name="M:SharpBag.Misc.ProblemController.ReadFile(System.String,System.Text.Encoding)">
+            <summary>
+            Reads the specified file.
+            </summary>
+            <param name="fileName">The name of the file to read.</param>
+            <param name="encoding">An encoding.</param>
+            <returns>The content of the file.</returns>
+        </member>
+        <member name="M:SharpBag.Misc.ProblemController.ReadFileLines(System.String,System.Text.Encoding)">
+            <summary>
+            Reads the specified file.
+            </summary>
+            <param name="fileName">The name of the file to read.</param>
+            <param name="encoding">An encoding.</param>
+            <returns>The lines of the file.</returns>
+        </member>
+        <member name="P:SharpBag.Misc.ProblemController.Title">
+            <summary>
+            The title of the controller.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Misc.ProblemController.TimeAll">
+            <summary>
+            Whether to time all problems.
+            </summary>
+        </member>
         <member name="T:SharpBag.CollectionExtensions">
             <summary>
             Extension methods for collections.
@@ -2550,6 +2590,30 @@
             <param name="y">The first y coordinate.</param>
             <param name="xDelta">The x delta.</param>
             <param name="yDelta">The y delta.</param>
+            <returns>The line.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.Line``2(``0[0:,0:],System.Int32,System.Int32,System.Int32,System.Int32,System.Func{``0,System.Int32,System.Int32,``1})">
+            <summary>
+            Returns a line in the current instance.
+            </summary>
+            <param name="g">The current instance.</param>
+            <param name="x">The first x coordinate.</param>
+            <param name="y">The first y coordinate.</param>
+            <param name="xDelta">The x delta.</param>
+            <param name="yDelta">The y delta.</param>
+            <param name="selector">The result selector.</param>
+            <returns>The line.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.Line``2(``0[0:,0:],System.Int32,System.Int32,System.Int32,System.Int32,System.Func{``0,``1})">
+            <summary>
+            Returns a line in the current instance.
+            </summary>
+            <param name="g">The current instance.</param>
+            <param name="x">The first x coordinate.</param>
+            <param name="y">The first y coordinate.</param>
+            <param name="xDelta">The x delta.</param>
+            <param name="yDelta">The y delta.</param>
+            <param name="selector">The result selector.</param>
             <returns>The line.</returns>
         </member>
         <member name="M:SharpBag.CollectionExtensions.Take``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{System.Int32})">
@@ -2731,14 +2795,6 @@
             <param name="multiDArray">The current instance.</param>
             <returns>An enumerable of all the items in the current instance.</returns>
         </member>
-        <member name="M:SharpBag.CollectionExtensions.ArrayContains(System.Array,System.Object)">
-            <summary>
-            Checks whether the array contains the specified object.
-            </summary>
-            <param name="a">The array.</param>
-            <param name="o">The object.</param>
-            <returns>Whether the array contains the specified object.</returns>
-        </member>
         <member name="M:SharpBag.CollectionExtensions.ToMultidimensional``1(``0[][])">
             <summary>
             Converts the current instance to a multidimensional array.
@@ -2747,15 +2803,54 @@
             <param name="jagged">The current instance.</param>
             <returns>A multidimensional array.</returns>
         </member>
-        <member name="M:SharpBag.CollectionExtensions.SelectAll``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Collections.Generic.IEnumerable{``1}})">
+        <member name="M:SharpBag.CollectionExtensions.Select``2(``0[0:,0:],System.Func{``0,``1})">
             <summary>
-            Selects a collection of elements for every element, and returns all the selected elements.
+            Projects every element in the current instance using the specified function.
+            </summary>
+            <typeparam name="TIn">The types in the current instance.</typeparam>
+            <typeparam name="TOut">The types in the result.</typeparam>
+            <param name="mArr">The current instance.</param>
+            <param name="func">The projector function.</param>
+            <returns>The new array.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.AsMultidimensional``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+            Turns the current instance into a multidimensional array.
+            </summary>
+            <typeparam name="T">The type of elements in the current instance.</typeparam>
+            <param name="collection">The current instance.</param>
+            <param name="cols">The number of columns in the result array.</param>
+            <returns>The multidimensional array.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.Zip``2(``0[0:,0:],``0[0:,0:],System.Func{``0,``0,``1})">
+            <summary>
+            Combines the current instance with another multidimensional array.
             </summary>
             <typeparam name="TIn">The type of items in the current instance.</typeparam>
-            <typeparam name="TOut">The type of items in the result.</typeparam>
-            <param name="collection">The current instance.</param>
-            <param name="selector">The selector function.</param>
-            <returns>The new collection.</returns>
+            <typeparam name="TOut">The type of items in the result array.</typeparam>
+            <param name="arrFirst">The current instance.</param>
+            <param name="arrSecond">The other array.</param>
+            <param name="func">The function.</param>
+            <returns>The combined array.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.Shift``1(``0[0:,0:],System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Shifts each element in the current instance.
+            </summary>
+            <typeparam name="T">The type of elements in the current instance.</typeparam>
+            <param name="arr">The current instance.</param>
+            <param name="xDelta">The x delta.</param>
+            <param name="yDelta">The y delta.</param>
+            <param name="wrap">Whether to wrap.</param>
+            <returns>The new array with shifted elements.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.ArrayContains(System.Array,System.Object)">
+            <summary>
+            Checks whether the array contains the specified object.
+            </summary>
+            <param name="a">The array.</param>
+            <param name="o">The object.</param>
+            <returns>Whether the array contains the specified object.</returns>
         </member>
         <member name="T:SharpBag.Time.TimeUtils">
             <summary>
@@ -3082,6 +3177,57 @@
             </summary>
             <param name="random">The current instance.</param>
             <returns>A random TimeSpan.</returns>
+        </member>
+        <member name="T:SharpBag.Misc.Draw">
+            <summary>
+            A class for drawing shapes.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Misc.Draw.Square(System.Int32,System.Int32,System.Char,System.Char)">
+            <summary>
+            Draw a square.
+            </summary>
+            <param name="rows">The number of rows.</param>
+            <param name="cols">The number of columns.</param>
+            <param name="border">The border.</param>
+            <param name="fill">The fill.</param>
+            <returns>The drawn square.</returns>
+        </member>
+        <member name="M:SharpBag.Misc.Draw.TriangleTL(System.Int32,System.Char,System.Char)">
+            <summary>
+            Draw a triangle.
+            </summary>
+            <param name="size">The size.</param>
+            <param name="border">The border.</param>
+            <param name="fill">The fill.</param>
+            <returns>The drawn triangle.</returns>
+        </member>
+        <member name="M:SharpBag.Misc.Draw.TriangleTR(System.Int32,System.Char,System.Char)">
+            <summary>
+            Draw a triangle.
+            </summary>
+            <param name="size">The size.</param>
+            <param name="border">The border.</param>
+            <param name="fill">The fill.</param>
+            <returns>The drawn triangle.</returns>
+        </member>
+        <member name="M:SharpBag.Misc.Draw.TriangleBR(System.Int32,System.Char,System.Char)">
+            <summary>
+            Draw a triangle.
+            </summary>
+            <param name="size">The size.</param>
+            <param name="border">The border.</param>
+            <param name="fill">The fill.</param>
+            <returns>The drawn triangle.</returns>
+        </member>
+        <member name="M:SharpBag.Misc.Draw.TriangleBL(System.Int32,System.Char,System.Char)">
+            <summary>
+            Draw a triangle.
+            </summary>
+            <param name="size">The size.</param>
+            <param name="border">The border.</param>
+            <param name="fill">The fill.</param>
+            <returns>The drawn triangle.</returns>
         </member>
         <member name="T:SharpBag.Algorithms.PriorityQueue`1">
             <summary>
@@ -4608,6 +4754,47 @@
             The ID of the event.
             </summary>
         </member>
+        <member name="T:SharpBag.Misc.ProblemAttribute">
+            <summary>
+            A problem.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Misc.ProblemAttribute.#ctor(System.String)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="title">The title of the problem.</param>
+        </member>
+        <member name="P:SharpBag.Misc.ProblemAttribute.Title">
+            <summary>
+            The title of the problem.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Misc.ProblemAttribute.Description">
+            <summary>
+            The description of the problem.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Misc.ProblemAttribute.Time">
+            <summary>
+            Whether to time the problem.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Misc.ProblemAttribute.Finished">
+            <summary>
+            Whether the problem is finished.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Misc.ProblemAttribute.Pause">
+            <summary>
+            Whether to pause after the problem has finished running.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Misc.ProblemAttribute.Start">
+            <summary>
+            Whether to run the problem on start.
+            </summary>
+        </member>
         <member name="T:SharpBag.Strings.StringExtensions">
             <summary>
             Extension methods for the BagStrings namespace.
@@ -5779,192 +5966,6 @@
             <summary>
             The default value.
             </summary>
-        </member>
-        <member name="T:SharpBag.Misc.ProblemController">
-            <summary>
-            A problem controller.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Misc.ProblemController.#ctor(System.String,System.Boolean)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="title">The title of the controller.</param>
-            <param name="timeAll">Whether to time all problems.</param>
-        </member>
-        <member name="M:SharpBag.Misc.ProblemController.Run">
-            <summary>
-            Run the controller.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Misc.ProblemController.Read``1(System.String,System.String,System.Func{``0,System.Boolean})">
-            <summary>
-            Read an object from the console.
-            </summary>
-            <typeparam name="T">The type of the object to read.</typeparam>
-            <param name="q">A description of the object.</param>
-            <param name="separator">A separator between the description and the object.</param>
-            <param name="validator">A validator function.</param>
-            <returns>The object that was read.</returns>
-        </member>
-        <member name="M:SharpBag.Misc.ProblemController.Read(System.String,System.String,System.Func{System.String,System.Boolean})">
-            <summary>
-            Read a string from the console.
-            </summary>
-            <param name="q">A description of the string.</param>
-            <param name="separator">A separator between the description and the string.</param>
-            <param name="validator">A validator function.</param>
-            <returns>The string that was read.</returns>
-        </member>
-        <member name="M:SharpBag.Misc.ProblemController.ReadDouble(System.String,System.String,System.Func{System.Double,System.Boolean})">
-            <summary>
-            Read a double from the console.
-            </summary>
-            <param name="q">A description of the string.</param>
-            <param name="separator">A separator between the description and the string.</param>
-            <param name="validator">A validator function.</param>
-            <returns>The string that was read.</returns>
-        </member>
-        <member name="M:SharpBag.Misc.ProblemController.ReadFile(System.String,System.Text.Encoding)">
-            <summary>
-            Reads the specified file.
-            </summary>
-            <param name="fileName">The name of the file to read.</param>
-            <param name="encoding">An encoding.</param>
-            <returns>The content of the file.</returns>
-        </member>
-        <member name="M:SharpBag.Misc.ProblemController.ReadFileLines(System.String,System.Text.Encoding)">
-            <summary>
-            Reads the specified file.
-            </summary>
-            <param name="fileName">The name of the file to read.</param>
-            <param name="encoding">An encoding.</param>
-            <returns>The lines of the file.</returns>
-        </member>
-        <member name="P:SharpBag.Misc.ProblemController.Title">
-            <summary>
-            The title of the controller.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Misc.ProblemController.TimeAll">
-            <summary>
-            Whether to time all problems.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Misc.ProblemAttribute">
-            <summary>
-            A problem.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Misc.ProblemAttribute.#ctor(System.String)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="title">The title of the problem.</param>
-        </member>
-        <member name="P:SharpBag.Misc.ProblemAttribute.Title">
-            <summary>
-            The title of the problem.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Misc.ProblemAttribute.Description">
-            <summary>
-            The description of the problem.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Misc.ProblemAttribute.Time">
-            <summary>
-            Whether to time the problem.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Misc.ProblemAttribute.Finished">
-            <summary>
-            Whether the problem is finished.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Misc.ProblemAttribute.Pause">
-            <summary>
-            Whether to pause after the problem has finished running.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Misc.ProblemAttribute.Start">
-            <summary>
-            Whether to run the problem on start.
-            </summary>
-        </member>
-        <member name="T:SharpBag.LambdaComparer`1">
-            <summary>
-            An IEqualityComparer for use with lambda functions.
-            </summary>
-            <typeparam name="T">The type of object to compare.</typeparam>
-        </member>
-        <member name="M:SharpBag.LambdaComparer`1.#ctor(System.Func{`0,`0,System.Boolean},System.Func{`0,System.Int32})">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="compare">The compare function.</param>
-            <param name="hash">The hash function.</param>
-        </member>
-        <member name="M:SharpBag.LambdaComparer`1.Equals(`0,`0)">
-            <summary>
-            IEqualityComparer{T}.Equals(T, T)
-            </summary>
-        </member>
-        <member name="M:SharpBag.LambdaComparer`1.GetHashCode(`0)">
-            <summary>
-            IEqualityComparer{T}.GetHashCode(T)
-            </summary>
-        </member>
-        <member name="T:SharpBag.Misc.Draw">
-            <summary>
-            A class for drawing shapes.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Misc.Draw.Square(System.Int32,System.Int32,System.Char,System.Char)">
-            <summary>
-            Draw a square.
-            </summary>
-            <param name="rows">The number of rows.</param>
-            <param name="cols">The number of columns.</param>
-            <param name="border">The border.</param>
-            <param name="fill">The fill.</param>
-            <returns>The drawn square.</returns>
-        </member>
-        <member name="M:SharpBag.Misc.Draw.TriangleTL(System.Int32,System.Char,System.Char)">
-            <summary>
-            Draw a triangle.
-            </summary>
-            <param name="size">The size.</param>
-            <param name="border">The border.</param>
-            <param name="fill">The fill.</param>
-            <returns>The drawn triangle.</returns>
-        </member>
-        <member name="M:SharpBag.Misc.Draw.TriangleTR(System.Int32,System.Char,System.Char)">
-            <summary>
-            Draw a triangle.
-            </summary>
-            <param name="size">The size.</param>
-            <param name="border">The border.</param>
-            <param name="fill">The fill.</param>
-            <returns>The drawn triangle.</returns>
-        </member>
-        <member name="M:SharpBag.Misc.Draw.TriangleBR(System.Int32,System.Char,System.Char)">
-            <summary>
-            Draw a triangle.
-            </summary>
-            <param name="size">The size.</param>
-            <param name="border">The border.</param>
-            <param name="fill">The fill.</param>
-            <returns>The drawn triangle.</returns>
-        </member>
-        <member name="M:SharpBag.Misc.Draw.TriangleBL(System.Int32,System.Char,System.Char)">
-            <summary>
-            Draw a triangle.
-            </summary>
-            <param name="size">The size.</param>
-            <param name="border">The border.</param>
-            <param name="fill">The fill.</param>
-            <returns>The drawn triangle.</returns>
         </member>
     </members>
 </doc>
