@@ -14,7 +14,7 @@ namespace SharpBag.Misc
 
         public string Description { get; set; }
 
-        public bool Time { get; set; }
+        public Nullable<bool> Time { get; set; }
 
         public bool Finished { get; set; }
 
@@ -35,7 +35,7 @@ namespace SharpBag.Misc
 
         public string ToString(int space)
         {
-            return this.Description == null ? this.Title : String.Format("{0,-" + (space + 1) + "} {1}", this.Title + ":", this.Description);
+            return this.Description == null ? this.Title : String.Format("{0,-" + (space + 1) + "}: {2}{1}", this.Title, this.Finished ? "" : " (Not Finished)", this.Description);
         }
     }
 }

@@ -44,6 +44,8 @@ namespace SharpBag.Misc
                              select new ProblemMetadata(attr, m)).OrderBy(m => m.Title, new AlphaNumberComparer()).ToArray();
         }
 
+        private string CurrentTitle = null;
+
         /// <summary>
         /// Run the controller.
         /// </summary>
@@ -68,21 +70,32 @@ namespace SharpBag.Misc
             }
         }
 
-        private void ExecuteProblem(ProblemMetadata m)
+        /// <summary>
+        /// Clears the Console.
+        /// </summary>
+        public void ClearScreen()
         {
             Console.Clear();
-            if (m.Title != null) this.WriteHeader(m.Title + (m.Description != null ? "\n" + m.Description : ""));
+            if (this.CurrentTitle != null) this.WriteHeader(this.CurrentTitle);
+        }
 
-            if (this.TimeAll || m.Time)
+        private void ExecuteProblem(ProblemMetadata m, bool time = false)
+        {
+            Console.Clear();
+            if (m.Title != null) this.WriteHeader(this.CurrentTitle = (m.Title + (m.Description != null ? "\n" + m.Description : "")));
+            else this.CurrentTitle = null;
+
+            if ((m.Time.HasValue && m.Time.Value) || (!m.Time.HasValue && this.TimeAll) || time)
             {
-                long time = Utils.ExecutionTime(() =>
+                long exTime = Utils.ExecutionTime(() =>
                     {
                         m.Method.Invoke(this, new object[0]);
                     });
 
                 Console.WriteLine();
                 Console.Write("Time: ");
-                Console.WriteLine(time);
+                Console.Write(exTime);
+                Console.WriteLine(" (ms)");
             }
             else
             {

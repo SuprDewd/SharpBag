@@ -166,11 +166,11 @@ namespace SharpBag.Math
         }
 
         /// <summary>
-        /// Finds the greatest common divisor (gcd) of two integers.
+        /// Finds the greatest common divisor (gcd) of the specified integers.
         /// </summary>
         /// <param name="a">An integer.</param>
         /// <param name="b">An integer.</param>
-        /// <returns>The greatest commond divisor (gcd) of the two integers.</returns>
+        /// <returns>The greatest commond divisor (gcd) of the specified integers.</returns>
         public static int Gcd(int a, int b)
         {
             while (a != 0 && b != 0)
@@ -180,6 +180,17 @@ namespace SharpBag.Math
             }
 
             return a == 0 ? b : a;
+        }
+
+        /// <summary>
+        /// Finds the least common multiple (lcm) of the specified integers.
+        /// </summary>
+        /// <param name="a">An integer.</param>
+        /// <param name="b">An integer.</param>
+        /// <returns>The least common multiple (lcm) of the specified integers.</returns>
+        public static int Lcm(int a, int b)
+        {
+            return (a / Gcd(a, b)) * b;
         }
 
         #region IsPrime overloads
@@ -353,6 +364,80 @@ namespace SharpBag.Math
             for (uint n = (uint)sqrt + 1; n <= max; n++)
                 if (isPrime[n]) yield return n;
         }
+
+        #region CollatzCount overloads
+
+        /// <summary>
+        /// Returns the Collatz count.
+        /// </summary>
+        /// <param name="n">The current instance.</param>
+        /// <returns>The Collatz count.</returns>
+        public static int CollatzCount(int n)
+        {
+            if (n == 0) return 0;
+
+            int i = 0, c = n;
+
+            while (c != 1)
+            {
+                i++;
+
+                if (c % 2 == 0) c = c / 2;
+                else c = c * 3 + 1;
+            }
+
+            return i;
+        }
+
+        /// <summary>
+        /// Returns the Collatz count.
+        /// </summary>
+        /// <param name="n">The current instance.</param>
+        /// <returns>The Collatz count.</returns>
+        public static long CollatzCount(long n)
+        {
+            if (n == 0) return 0;
+
+            long i = 0, c = n;
+
+            while (c != 1)
+            {
+                i++;
+
+                if (c % 2 == 0) c = c / 2;
+                else c = c * 3 + 1;
+            }
+
+            return i;
+        }
+
+#if DOTNET4
+
+        /// <summary>
+        /// Returns the Collatz count.
+        /// </summary>
+        /// <param name="n">The current instance.</param>
+        /// <returns>The Collatz count.</returns>
+        public static BigInteger CollatzCount(BigInteger n)
+        {
+            if (n == 0) return 0;
+
+            BigInteger i = 0, c = n;
+
+            while (c != 1)
+            {
+                i++;
+
+                if (c % 2 == 0) c = c / 2;
+                else c = c * 3 + 1;
+            }
+
+            return i;
+        }
+
+#endif
+
+        #endregion CollatzCount overloads
 
         #region Sizes
 

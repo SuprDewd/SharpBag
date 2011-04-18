@@ -709,5 +709,143 @@ namespace SharpBag
 #endif
             return a.Cast<object>().Any(item => item == o);
         }
+
+        /// <summary>
+        /// Adds extended info to the current instance.
+        /// </summary>
+        /// <typeparam name="T">The type of items in the current instance.</typeparam>
+        /// <param name="collection">The current instance.</param>
+        /// <returns>The current instance with extended info.</returns>
+        public static IEnumerable<EnumerableEntry.WithInfo<T>> WithInfo<T>(this IEnumerable<T> collection)
+        {
+            bool first = true, last = false;
+            T previous = default(T), next = default(T);
+            int index = 0;
+
+            using (IEnumerator<T> en = collection.GetEnumerator())
+            {
+                if (!en.MoveNext()) yield break;
+
+                while (!last)
+                {
+                    T current = en.Current;
+                    last = !en.MoveNext();
+                    next = last ? default(T) : en.Current;
+                    yield return new EnumerableEntry.WithInfo<T>(current, index++, first, last, previous, next);
+                    first = false;
+                    previous = current;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Adds indexes to the current instance.
+        /// </summary>
+        /// <typeparam name="T">The type of items in the current instance.</typeparam>
+        /// <param name="collection">The current instance.</param>
+        /// <returns>The current instance with indexes.</returns>
+        public static IEnumerable<EnumerableEntry.WithIndex<T>> WithIndex<T>(this IEnumerable<T> collection)
+        {
+            int index = 0;
+
+            foreach (T value in collection)
+            {
+                yield return new EnumerableEntry.WithIndex<T>(value, index++);
+            }
+        }
+
+        /// <summary>
+        /// Converts the current instance to a Stack.
+        /// </summary>
+        /// <typeparam name="T">The type of items in the current instance.</typeparam>
+        /// <param name="items">The current instance.</param>
+        /// <returns>The new Stack.</returns>
+        public static Stack<T> ToStack<T>(this IEnumerable<T> items)
+        {
+            return items.Aggregate(new Stack<T>(), (stack, item) =>
+            {
+                stack.Push(item);
+                return stack;
+            });
+        }
+
+        /// <summary>
+        /// Converts the current instance to a Queue.
+        /// </summary>
+        /// <typeparam name="T">The type of items in the current instance.</typeparam>
+        /// <param name="items">The current instance.</param>
+        /// <returns>The new Queue.</returns>
+        public static Queue<T> ToQueue<T>(this IEnumerable<T> items)
+        {
+            return items.Aggregate(new Queue<T>(), (stack, item) =>
+            {
+                stack.Enqueue(item);
+                return stack;
+            });
+        }
+
+        /// <summary>
+        /// Returns the item where the selector returns the maximum value.
+        /// </summary>
+        /// <typeparam name="T">The type of items in the current instance.</typeparam>
+        /// <typeparam name="TCompare">The type to compare.</typeparam>
+        /// <param name="sequence">The current instance.</param>
+        /// <param name="selector">The selector.</param>
+        /// <returns>The item where the selector returns the maximum value.</returns>
+        public static T MaxItem<T, TCompare>(this IEnumerable<T> sequence, Func<T, TCompare> selector) where TCompare : IComparable<TCompare>
+        {
+            using (IEnumerator<T> enumerator = sequence.GetEnumerator())
+            {
+                enumerator.MoveNext();
+                T max = enumerator.Current;
+                TCompare maxComparator = selector(max);
+
+                while (enumerator.MoveNext())
+                {
+                    T cur = enumerator.Current;
+                    TCompare curComparator = selector(cur);
+
+                    if (curComparator.CompareTo(maxComparator) > 0)
+                    {
+                        max = cur;
+                        maxComparator = curComparator;
+                    }
+                }
+
+                return max;
+            }
+        }
+
+        /// <summary>
+        /// Returns the item where the selector returns the minimum value.
+        /// </summary>
+        /// <typeparam name="T">The type of items in the current instance.</typeparam>
+        /// <typeparam name="TCompare">The type to compare.</typeparam>
+        /// <param name="sequence">The current instance.</param>
+        /// <param name="selector">The selector.</param>
+        /// <returns>The item where the selector returns the minimum value.</returns>
+        public static T MinItem<T, TCompare>(this IEnumerable<T> sequence, Func<T, TCompare> selector) where TCompare : IComparable<TCompare>
+        {
+            using (IEnumerator<T> enumerator = sequence.GetEnumerator())
+            {
+                enumerator.MoveNext();
+                T min = enumerator.Current;
+                TCompare minComparator = selector(min);
+
+                while (enumerator.MoveNext())
+                {
+                    T cur = enumerator.Current;
+                    TCompare curComparator = selector(cur);
+
+                    if (curComparator.CompareTo(minComparator) < 0)
+                    {
+                        min = cur;
+                        minComparator = curComparator;
+                    }
+                }
+
+                return min;
+            }
+        }
     }
 }

@@ -199,7 +199,7 @@ namespace SharpBag
         /// </summary>
         /// <param name="func">The current instance.</param>
         /// <param name="memo">The memo.</param>
-        public static Func<TIn, TOut> Memoize<TIn, TOut>(this Func<TIn, Func<TIn, TOut>, TOut> func, IDictionary<TIn, TOut> memo = null)
+        public static Func<TIn, TOut> Memoize<TIn, TOut>(this Func<Func<TIn, TOut>, TIn, TOut> func, IDictionary<TIn, TOut> memo = null)
         {
 #if DOTNET4
             Contract.Requires(func != null);
@@ -209,7 +209,7 @@ namespace SharpBag
             recFunc = i =>
             {
                 TOut o;
-                if (!memo.TryGetValue(i, out o)) memo.Add(i, o = func(i, recFunc));
+                if (!memo.TryGetValue(i, out o)) memo.Add(i, o = func(recFunc, i));
                 return o;
             };
 
@@ -457,6 +457,42 @@ namespace SharpBag
         public static Matcher<TIn, TOut> Match<TIn, TOut>(this TIn value)
         {
             return new Matcher<TIn, TOut>(value);
+        }
+
+        /// <summary>
+        /// Lazily aggregate the current instance.
+        /// </summary>
+        /// <typeparam name="T">The type of items in the current instance.</typeparam>
+        /// <typeparam name="TAccumulate">The result of the aggregation.</typeparam>
+        /// <param name="sequence">The current instance.</param>
+        /// <param name="seed">The seed.</param>
+        /// <param name="aggregator">The aggregator.</param>
+        /// <returns>The aggregates.</returns>
+        public static IEnumerable<TAccumulate> LazilyAggregate<T, TAccumulate>(this IEnumerable<T> sequence, TAccumulate seed, Func<TAccumulate, T, TAccumulate> aggregator)
+        {
+#if DOTNET4
+            Contract.Requires(sequence != null);
+            Contract.Requires(aggregator != null);
+#endif
+            yield return seed;
+            foreach (T item in sequence) yield return seed = aggregator(seed, item);
+        }
+
+        /// <summary>
+        /// Lazily aggregate the current instance.
+        /// </summary>
+        /// <typeparam name="T">The type of items in the current instance.</typeparam>
+        /// <typeparam name="TAccumulate">The result of the aggregation.</typeparam>
+        /// <param name="sequence">The current instance.</param>
+        /// <param name="aggregator">The aggregator.</param>
+        /// <returns>The aggregates.</returns>
+        public static IEnumerable<TAccumulate> LazilyAggregate<T, TAccumulate>(this IEnumerable<T> sequence, Func<TAccumulate, T, TAccumulate> aggregator)
+        {
+#if DOTNET4
+            Contract.Requires(sequence != null);
+            Contract.Requires(aggregator != null);
+#endif
+            return sequence.LazilyAggregate(default(TAccumulate), aggregator);
         }
     }
 }

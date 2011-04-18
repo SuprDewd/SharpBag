@@ -163,80 +163,6 @@ namespace SharpBag.Math
 
         #endregion IsBetween methods
 
-        #region CollatzCount overloads
-
-        /// <summary>
-        /// Returns the Collatz count.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>The Collatz count.</returns>
-        public static int CollatzCount(this int n)
-        {
-            if (n == 0) return 0;
-
-            int i = 0, c = n;
-
-            while (c != 1)
-            {
-                i++;
-
-                if (c % 2 == 0) c = c / 2;
-                else c = c * 3 + 1;
-            }
-
-            return i;
-        }
-
-        /// <summary>
-        /// Returns the Collatz count.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>The Collatz count.</returns>
-        public static long CollatzCount(this long n)
-        {
-            if (n == 0) return 0;
-
-            long i = 0, c = n;
-
-            while (c != 1)
-            {
-                i++;
-
-                if (c % 2 == 0) c = c / 2;
-                else c = c * 3 + 1;
-            }
-
-            return i;
-        }
-
-#if DOTNET4
-
-        /// <summary>
-        /// Returns the Collatz count.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>The Collatz count.</returns>
-        public static BigInteger CollatzCount(this BigInteger n)
-        {
-            if (n == 0) return 0;
-
-            BigInteger i = 0, c = n;
-
-            while (c != 1)
-            {
-                i++;
-
-                if (c % 2 == 0) c = c / 2;
-                else c = c * 3 + 1;
-            }
-
-            return i;
-        }
-
-#endif
-
-        #endregion CollatzCount overloads
-
         #region Round overloads
 
         /// <summary>
@@ -412,24 +338,14 @@ namespace SharpBag.Math
         /// <returns>The factors.</returns>
         public static IEnumerable<int> Factors(this int n)
         {
-            for (int i = 1; i < n; i++)
+            int sqrt = (int)System.Math.Sqrt(n);
+            for (int i = 1; i <= sqrt; i++)
             {
-                if (n % i == 0) yield return i;
-            }
-
-            yield return n;
-        }
-
-        /// <summary>
-        /// The factors of the current instance, except it self.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>The factors.</returns>
-        public static IEnumerable<int> FactorsButSelf(this int n)
-        {
-            for (int i = 1; i < n; i++)
-            {
-                if (n % i == 0) yield return i;
+                if (n % i == 0)
+                {
+                    yield return i;
+                    if (i != sqrt) yield return n / i;
+                }
             }
         }
 
@@ -440,24 +356,14 @@ namespace SharpBag.Math
         /// <returns>The factors.</returns>
         public static IEnumerable<long> Factors(this long n)
         {
-            for (long i = 1; i < n; i++)
+            long sqrt = (long)System.Math.Sqrt(n);
+            for (long i = 1; i <= sqrt; i++)
             {
-                if (n % i == 0) yield return i;
-            }
-
-            yield return n;
-        }
-
-        /// <summary>
-        /// The factors of the current instance, except it self.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>The factors.</returns>
-        public static IEnumerable<long> FactorsButSelf(this long n)
-        {
-            for (long i = 1; i <= n; i++)
-            {
-                if (n % i == 0) yield return i;
+                if (n % i == 0)
+                {
+                    yield return i;
+                    if (i != sqrt) yield return n / i;
+                }
             }
         }
 
@@ -470,30 +376,150 @@ namespace SharpBag.Math
         /// <returns>The factors.</returns>
         public static IEnumerable<BigInteger> Factors(this BigInteger n)
         {
-            for (BigInteger i = 1; i < n; i++)
+            BigInteger sq;
+            for (BigInteger i = 1; (sq = i * i) <= n; i++)
             {
-                if (n % i == 0) yield return i;
-            }
-
-            yield return n;
-        }
-
-        /// <summary>
-        /// The factors of the current instance, except it self.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>The factors.</returns>
-        public static IEnumerable<BigInteger> FactorsButSelf(this BigInteger n)
-        {
-            for (BigInteger i = 1; i <= n; i++)
-            {
-                if (n % i == 0) yield return i;
+                if (n % i == 0)
+                {
+                    yield return i;
+                    if (sq != n) yield return n / i;
+                }
             }
         }
 
 #endif
 
+        #region Momerath - http://www.dreamincode.net/code/snippet5562.htm
+
+        /// <summary>
+        /// Calculates the prime factors of the current instance.
+        /// </summary>
+        /// <param name="i">The current instance.</param>
+        /// <returns>The prime factors of the current instance.</returns>
+        public static IEnumerable<int> PrimeFactors(this int i)
+        {
+            int divisor = 2;
+
+            while (divisor <= i)
+            {
+                if (i % divisor == 0)
+                {
+                    yield return divisor;
+                    i /= divisor;
+                }
+                else divisor++;
+            }
+        }
+
+        /// <summary>
+        /// Calculates the prime factors of the current instance.
+        /// </summary>
+        /// <param name="i">The current instance.</param>
+        /// <returns>The prime factors of the current instance.</returns>
+        public static IEnumerable<long> PrimeFactors(this long i)
+        {
+            long divisor = 2;
+
+            while (divisor <= i)
+            {
+                if (i % divisor == 0)
+                {
+                    yield return divisor;
+                    i /= divisor;
+                }
+                else divisor++;
+            }
+        }
+
+#if DOTNET4
+
+        /// <summary>
+        /// Calculates the prime factors of the current instance.
+        /// </summary>
+        /// <param name="i">The current instance.</param>
+        /// <returns>The prime factors of the current instance.</returns>
+        public static IEnumerable<BigInteger> PrimeFactors(this BigInteger i)
+        {
+            BigInteger divisor = 2;
+
+            while (divisor <= i)
+            {
+                if (i % divisor == 0)
+                {
+                    yield return divisor;
+                    i /= divisor;
+                }
+                else divisor++;
+            }
+        }
+
+#endif
+
+        #endregion Momerath - http://www.dreamincode.net/code/snippet5562.htm
+
         #endregion Factor overloads
+
+        #region Divisor overloads
+
+        /// <summary>
+        /// The divisors of the current instance.
+        /// </summary>
+        /// <param name="n">The current instance.</param>
+        /// <returns>The divisors.</returns>
+        public static IEnumerable<int> Divisors(this int n)
+        {
+            int sqrt = (int)System.Math.Sqrt(n);
+            for (int i = 1; i <= sqrt; i++)
+            {
+                if (n % i == 0)
+                {
+                    yield return i;
+                    if (i != sqrt && i != 1) yield return n / i;
+                }
+            }
+        }
+
+        /// <summary>
+        /// The divisors of the current instance.
+        /// </summary>
+        /// <param name="n">The current instance.</param>
+        /// <returns>The divisors.</returns>
+        public static IEnumerable<long> Divisors(this long n)
+        {
+            long sqrt = (long)System.Math.Sqrt(n);
+            for (long i = 1; i <= sqrt; i++)
+            {
+                if (n % i == 0)
+                {
+                    yield return i;
+                    if (i != sqrt && i != 1) yield return n / i;
+                }
+            }
+        }
+
+#if DOTNET4
+
+        /// <summary>
+        /// The divisors of the current instance.
+        /// </summary>
+        /// <param name="n">The current instance.</param>
+        /// <returns>The divisors.</returns>
+        public static IEnumerable<BigInteger> Divisors(this BigInteger n)
+        {
+            BigInteger sq;
+            for (BigInteger i = 1; (sq = i * i) <= n; i++)
+            {
+                if (n % i == 0)
+                {
+                    yield return i;
+                    if (sq != n && n != 1) yield return n / i;
+                }
+            }
+        }
+
+#endif
+
+        #endregion Divisor overloads
 
         #region Digit overloads
 
@@ -619,6 +645,26 @@ namespace SharpBag.Math
             return sum;
         }
 
+        /// <summary>
+        /// Calculates the factorial of the current instance.
+        /// </summary>
+        /// <param name="n">The current instance.</param>
+        /// <returns>The factorial.</returns>
+        public static BigInteger FactorialBig(this int n)
+        {
+            if (n < 0) return 0;
+            if (n == 0) return 1;
+
+            BigInteger sum = 1;
+
+            for (int i = n; i >= 2; i--)
+            {
+                sum *= i;
+            }
+
+            return sum;
+        }
+
         #endregion Factorial overloads
 
         #region IsEven overloads
@@ -630,7 +676,7 @@ namespace SharpBag.Math
         /// <returns>Whether the current instance is even.</returns>
         public static bool IsEven(this int n)
         {
-            return n % 2 == 0;
+            return (n & 1) == 0;
         }
 
         /// <summary>
@@ -640,7 +686,7 @@ namespace SharpBag.Math
         /// <returns>Whether the current instance is even.</returns>
         public static bool IsEven(this long n)
         {
-            return n % 2 == 0;
+            return (n & 1) == 0;
         }
 
 #if DOTNET4
@@ -652,7 +698,7 @@ namespace SharpBag.Math
         /// <returns>Whether the current instance is even.</returns>
         public static bool IsEven(this BigInteger n)
         {
-            return n % 2 == 0;
+            return (n & 1) == 0;
         }
 
 #endif
@@ -668,7 +714,7 @@ namespace SharpBag.Math
         /// <returns>Whether the current instance is odd.</returns>
         public static bool IsOdd(this int n)
         {
-            return n % 2 != 0;
+            return (n & 1) == 1;
         }
 
         /// <summary>
@@ -678,7 +724,7 @@ namespace SharpBag.Math
         /// <returns>Whether the current instance is odd.</returns>
         public static bool IsOdd(this long n)
         {
-            return n % 2 != 0;
+            return (n & 1) == 1;
         }
 
 #if DOTNET4
@@ -690,7 +736,7 @@ namespace SharpBag.Math
         /// <returns>Whether the current instance is odd.</returns>
         public static bool IsOdd(this BigInteger n)
         {
-            return n % 2 != 0;
+            return (n & 1) == 1;
         }
 
 #endif

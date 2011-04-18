@@ -96,6 +96,7 @@
     <Compile Include="Database\DatabaseExtensions.cs" />
     <Compile Include="Database\MySqlDB.cs" />
     <Compile Include="Delegates.cs" />
+    <Compile Include="ExpressionUtil.cs" />
     <Compile Include="Games\CardType.cs" />
     <Compile Include="Games\CardValue.cs" />
     <Compile Include="Games\Dice.cs" />
@@ -114,8 +115,11 @@
     <Compile Include="Networking\PacketEventArgs.cs" />
     <Compile Include="Networking\PacketEventHandler.cs" />
     <Compile Include="Networking\Ping.cs" />
+    <Compile Include="NullOp.cs" />
+    <Compile Include="Operator.cs" />
     <Compile Include="Option.cs" />
     <Compile Include="RandomExtensions.cs" />
+    <Compile Include="EnumerableEntry.cs" />
     <Compile Include="Strings\StringUtils.cs" />
     <Compile Include="Time\TimeExtensions.cs" />
     <Compile Include="GenericExtensions.cs" />
@@ -132,7 +136,7 @@
     <Compile Include="Math\Converters\Weight.cs" />
     <Compile Include="Math\BagMath.cs" />
     <Compile Include="Math\MathExtensions.cs" />
-    <Compile Include="Math\Sources.cs" />
+    <Compile Include="Math\Sequences.cs" />
     <Compile Include="Media\MediaExtensions.cs" />
     <Compile Include="Networking\Network.cs" />
     <Compile Include="Networking\NetworkExtensions.cs" />
@@ -149,7 +153,10 @@
     <Compile Include="Media\MediaHelper.cs" />
     <Compile Include="FunctionalExtensions.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="README" />
+    <None Include="TODO" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

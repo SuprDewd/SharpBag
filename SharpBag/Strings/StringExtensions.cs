@@ -1,12 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
-#if DOTNET4
-
-using System.Diagnostics.Contracts;
-
-#endif
-
 using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
@@ -14,10 +7,16 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 
+#if DOTNET4
+
+using System.Diagnostics.Contracts;
+
+#endif
+
 namespace SharpBag.Strings
 {
     /// <summary>
-    /// Extension methods for the BagStrings namespace.
+    /// Extension methods for strings.
     /// </summary>
     public static class StringExtensions
     {
@@ -104,7 +103,6 @@ namespace SharpBag.Strings
 #endif
             CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;
             TextInfo textInfo = cultureInfo.TextInfo;
-
             return textInfo.ToTitleCase(text.ToLower());
         }
 
@@ -162,11 +160,7 @@ namespace SharpBag.Strings
             Contract.Requires(!newValue.Contains(oldValue));
 #endif
             string tS = s;
-            while (tS.Contains(oldValue))
-            {
-                tS = tS.Replace(oldValue, newValue);
-            }
-
+            while (tS.Contains(oldValue)) tS = tS.Replace(oldValue, newValue);
             return tS;
         }
 
@@ -223,7 +217,7 @@ namespace SharpBag.Strings
 #if DOTNET4
             Contract.Requires(s != null);
 #endif
-            return s.NoCarriageReturns().ReplaceAll("\n", " ").ReplaceAll("  ", " ").Trim();
+            return s.Trim().NoCarriageReturns().Replace("\n", " ").ReplaceAll("  ", " ");
         }
 
         /// <summary>
@@ -385,7 +379,7 @@ namespace SharpBag.Strings
         /// <param name="t">The string to compare to.</param>
         /// <param name="caseSensitive">Whether or not to perform a case sensitive comparison.</param>
         /// <returns>The edit distance between the current instance and the specified string.</returns>
-        public static int DistanceTo(this string s, string t, bool caseSensitive)
+        public static int DistanceTo(this string s, string t, bool caseSensitive = true)
         {
             if (!caseSensitive)
             {
@@ -414,21 +408,6 @@ namespace SharpBag.Strings
             }
 
             return d[n, m];
-        }
-
-        /// <summary>
-        /// Calculates the edit distance between the current instance and the specified string.
-        /// </summary>
-        /// <param name="s">The current instance.</param>
-        /// <param name="t">The string to compare to.</param>
-        /// <returns>The edit distance between the current instance and the specified string.</returns>
-        public static int DistanceTo(this string s, string t)
-        {
-#if DOTNET4
-            Contract.Requires(s != null);
-            Contract.Requires(t != null);
-#endif
-            return s.DistanceTo(t, true);
         }
 
         /// <summary>

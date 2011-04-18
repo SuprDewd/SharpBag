@@ -12,7 +12,7 @@ namespace SharpBag.Math
     /// <summary>
     /// A class for number sources.
     /// </summary>
-    public static class Sources
+    public static class Sequences
     {
         #region Fibonacci numbers
 
@@ -90,6 +90,61 @@ namespace SharpBag.Math
 #endif
 
         #endregion Fibonacci numbers
+
+        #region Factorial numbers
+
+        /// <summary>
+        /// An endless source that will return factorial numbers.
+        /// </summary>
+        public static IEnumerable<int> Factorial
+        {
+            get
+            {
+                int cur = 1;
+
+                for (int i = 1; ; i++)
+                {
+                    yield return cur;
+                    cur *= i;
+                }
+            }
+        }
+
+        /// <summary>
+        /// An endless source that will return factorial numbers.
+        /// </summary>
+        public static IEnumerable<long> Factorial64
+        {
+            get
+            {
+                long cur = 1;
+
+                for (long i = 1; ; i++)
+                {
+                    yield return cur;
+                    cur *= i;
+                }
+            }
+        }
+
+        /// <summary>
+        /// An endless source that will return factorial numbers.
+        /// </summary>
+        public static IEnumerable<BigInteger> FactorialBig
+        {
+            get
+            {
+                BigInteger cur = 1;
+
+                for (BigInteger i = 1; ; i++)
+                {
+                    yield return cur;
+                    cur *= i;
+                }
+            }
+        }
+
+        #endregion Factorial numbers
 
         #region Prime numbers
 
@@ -207,7 +262,7 @@ namespace SharpBag.Math
             get
             {
                 return from i in 1.ToInfinity()
-                       where i.FactorsButSelf().Sum() == i
+                       where i.Divisors().Sum() == i
                        select i;
             }
         }
@@ -220,7 +275,7 @@ namespace SharpBag.Math
             get
             {
                 return from i in 1L.ToInfinity()
-                       where i.FactorsButSelf().Sum() == i
+                       where i.Divisors().Sum() == i
                        select i;
             }
         }
@@ -235,7 +290,7 @@ namespace SharpBag.Math
             get
             {
                 return from i in BigInteger.One.ToInfinity()
-                       where i.FactorsButSelf().Aggregate(BigInteger.Zero, (a, b) => a + b) == i
+                       where i.Divisors().Aggregate(BigInteger.Zero, (a, b) => a + b) == i
                        select i;
             }
         }
@@ -254,7 +309,7 @@ namespace SharpBag.Math
             get
             {
                 return from i in 1.ToInfinity()
-                       where i.FactorsButSelf().Sum() < i
+                       where i.Divisors().Sum() < i
                        select i;
             }
         }
@@ -267,7 +322,7 @@ namespace SharpBag.Math
             get
             {
                 return from i in 1L.ToInfinity()
-                       where i.FactorsButSelf().Sum() < i
+                       where i.Divisors().Sum() < i
                        select i;
             }
         }
@@ -282,7 +337,7 @@ namespace SharpBag.Math
             get
             {
                 return from i in BigInteger.One.ToInfinity()
-                       where i.FactorsButSelf().Aggregate(BigInteger.Zero, (a, n) => a + n) < i
+                       where i.Divisors().Aggregate(BigInteger.Zero, (a, n) => a + n) < i
                        select i;
             }
         }
@@ -301,7 +356,7 @@ namespace SharpBag.Math
             get
             {
                 return from i in 1.ToInfinity()
-                       where i.FactorsButSelf().Sum() > i
+                       where i.Divisors().Sum() > i
                        select i;
             }
         }
@@ -314,7 +369,7 @@ namespace SharpBag.Math
             get
             {
                 return from i in 1L.ToInfinity()
-                       where i.FactorsButSelf().Sum() > i
+                       where i.Divisors().Sum() > i
                        select i;
             }
         }
@@ -329,7 +384,7 @@ namespace SharpBag.Math
             get
             {
                 return from i in BigInteger.One.ToInfinity()
-                       where i.FactorsButSelf().Aggregate(BigInteger.Zero, (a, n) => a + n) > i
+                       where i.Divisors().Aggregate(BigInteger.Zero, (a, n) => a + n) > i
                        select i;
             }
         }

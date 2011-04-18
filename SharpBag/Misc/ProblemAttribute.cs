@@ -24,7 +24,7 @@ namespace SharpBag.Misc
         /// <summary>
         /// Whether to time the problem.
         /// </summary>
-        public bool Time { get; set; }
+        public Nullable<bool> Time { get; set; }
 
         /// <summary>
         /// Whether the problem is finished.
