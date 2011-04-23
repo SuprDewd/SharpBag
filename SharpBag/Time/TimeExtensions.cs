@@ -382,7 +382,7 @@ namespace SharpBag.Time
         }
 
         /// <summary>
-        /// Returns a collection of DateTimes with a one date interval.
+        /// Returns a collection of DateTimes with the specified interval.
         /// </summary>
         /// <param name="from">The current instance, or the DateTime to start at.</param>
         /// <param name="to">The DateTime to end at.</param>
@@ -405,6 +405,38 @@ namespace SharpBag.Time
                 {
                     yield return from;
                     from -= step;
+                } while (from >= to);
+            }
+            else yield return from;
+        }
+
+        /// <summary>
+        /// Returns a collection of DateTimes with a the specified interval.
+        /// </summary>
+        /// <param name="from">The current instance, or the DateTime to start at.</param>
+        /// <param name="to">The DateTime to end at.</param>
+        /// <param name="step">The step to take on each iteration.</param>
+        /// <returns>A collection of DateTimes with a one date interval.</returns>
+        public static IEnumerable<DateTime> To(this DateTime from, DateTime to, Func<DateTime, DateTime> step)
+        {
+#if DOTNET4
+            Contract.Requires(step != null);
+#endif
+            if (from < to)
+            {
+                do
+                {
+                    yield return from;
+                    from = step(from);
+                }
+                while (from <= to);
+            }
+            else if (from > to)
+            {
+                do
+                {
+                    yield return from;
+                    from = step(from);
                 } while (from >= to);
             }
             else yield return from;

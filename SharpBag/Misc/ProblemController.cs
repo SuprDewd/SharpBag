@@ -14,7 +14,10 @@ namespace SharpBag.Misc
     /// </summary>
     public abstract class ProblemController
     {
-        private ProblemMetadata[] Problems { get; set; }
+        /// <summary>
+        /// The problems.
+        /// </summary>
+        public ProblemMetadata[] Problems { get; private set; }
 
         /// <summary>
         /// The title of the controller.
@@ -36,6 +39,7 @@ namespace SharpBag.Misc
         /// <param name="timeAll">Whether to time all problems.</param>
         public ProblemController(string title = null, bool timeAll = false)
         {
+            this.Output = true;
             this.Title = title;
             this.TimeAll = timeAll;
             this.Problems = (from m in this.GetType().GetMethods()
@@ -75,8 +79,32 @@ namespace SharpBag.Misc
         /// </summary>
         public void ClearScreen()
         {
+            if (!this.Output) return;
             Console.Clear();
             if (this.CurrentTitle != null) this.WriteHeader(this.CurrentTitle);
+        }
+
+        /// <summary>
+        /// Whether to write to the console.
+        /// </summary>
+        public bool Output { get; set; }
+
+        /// <summary>
+        /// Displays the object.
+        /// </summary>
+        /// <param name="o">The object.</param>
+        public void WriteLine(object o)
+        {
+            if (this.Output) Console.WriteLine(o);
+        }
+
+        /// <summary>
+        /// Displays the object.
+        /// </summary>
+        /// <param name="o">The object.</param>
+        public void Write(object o)
+        {
+            if (this.Output) Console.Write(o);
         }
 
         private void ExecuteProblem(ProblemMetadata m, bool time = false)

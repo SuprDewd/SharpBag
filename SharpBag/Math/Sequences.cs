@@ -262,7 +262,7 @@ namespace SharpBag.Math
             get
             {
                 return from i in 1.ToInfinity()
-                       where i.Divisors().Sum() == i
+                       where i.ProperDivisors().Sum() == i
                        select i;
             }
         }
@@ -275,7 +275,7 @@ namespace SharpBag.Math
             get
             {
                 return from i in 1L.ToInfinity()
-                       where i.Divisors().Sum() == i
+                       where i.ProperDivisors().Sum() == i
                        select i;
             }
         }
@@ -290,7 +290,7 @@ namespace SharpBag.Math
             get
             {
                 return from i in BigInteger.One.ToInfinity()
-                       where i.Divisors().Aggregate(BigInteger.Zero, (a, b) => a + b) == i
+                       where i.ProperDivisors().Aggregate(BigInteger.Zero, (a, b) => a + b) == i
                        select i;
             }
         }
@@ -309,7 +309,7 @@ namespace SharpBag.Math
             get
             {
                 return from i in 1.ToInfinity()
-                       where i.Divisors().Sum() < i
+                       where i.ProperDivisors().Sum() < i
                        select i;
             }
         }
@@ -322,7 +322,7 @@ namespace SharpBag.Math
             get
             {
                 return from i in 1L.ToInfinity()
-                       where i.Divisors().Sum() < i
+                       where i.ProperDivisors().Sum() < i
                        select i;
             }
         }
@@ -337,7 +337,7 @@ namespace SharpBag.Math
             get
             {
                 return from i in BigInteger.One.ToInfinity()
-                       where i.Divisors().Aggregate(BigInteger.Zero, (a, n) => a + n) < i
+                       where i.ProperDivisors().Aggregate(BigInteger.Zero, (a, n) => a + n) < i
                        select i;
             }
         }
@@ -356,7 +356,7 @@ namespace SharpBag.Math
             get
             {
                 return from i in 1.ToInfinity()
-                       where i.Divisors().Sum() > i
+                       where i.ProperDivisors().Sum() > i
                        select i;
             }
         }
@@ -369,7 +369,7 @@ namespace SharpBag.Math
             get
             {
                 return from i in 1L.ToInfinity()
-                       where i.Divisors().Sum() > i
+                       where i.ProperDivisors().Sum() > i
                        select i;
             }
         }
@@ -384,7 +384,7 @@ namespace SharpBag.Math
             get
             {
                 return from i in BigInteger.One.ToInfinity()
-                       where i.Divisors().Aggregate(BigInteger.Zero, (a, n) => a + n) > i
+                       where i.ProperDivisors().Aggregate(BigInteger.Zero, (a, n) => a + n) > i
                        select i;
             }
         }

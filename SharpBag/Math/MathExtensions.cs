@@ -17,7 +17,7 @@ namespace SharpBag.Math
     /// </summary>
     public static class MathExtensions
     {
-        #region ToInfinity overloads
+        #region ToInfinity
 
         /// <summary>
         /// Generates numbers that range from the value of the current instance to positive infinity.
@@ -93,9 +93,9 @@ namespace SharpBag.Math
 
 #endif
 
-        #endregion ToInfinity overloads
+        #endregion ToInfinity
 
-        #region IsBetween methods
+        #region IsBetween
 
         /// <summary>
         /// Checks if the current instance is between, but not equal to, two integers.
@@ -108,7 +108,9 @@ namespace SharpBag.Math
         /// <exception cref="System.ArgumentException"></exception>
         public static bool IsBetween(this int n, int min, int max)
         {
-            if (min > max) throw new ArgumentException("min must not be greater than max.");
+#if DOTNET4
+            Contract.Requires(min <= max);
+#endif
             return (n > min && n < max);
         }
 
@@ -123,7 +125,6 @@ namespace SharpBag.Math
 
         [Pure]
 #endif
-
         public static bool IsBetweenOrEqualTo(this int n, int min, int max)
         {
 #if DOTNET4
@@ -161,9 +162,9 @@ namespace SharpBag.Math
             return (n >= min && n <= max);
         }
 
-        #endregion IsBetween methods
+        #endregion IsBetween
 
-        #region Round overloads
+        #region Round
 
         /// <summary>
         /// Rounds the current instance.
@@ -189,9 +190,9 @@ namespace SharpBag.Math
             return System.Math.Round(d, digits);
         }
 
-        #endregion Round overloads
+        #endregion Round
 
-        #region Bound overloads
+        #region Bound
 
         /// <summary>
         /// Gets the current instance inside the specified boundaries.
@@ -217,9 +218,9 @@ namespace SharpBag.Math
             return d < lower ? lower : (d > upper ? upper : d);
         }
 
-        #endregion Bound overloads
+        #endregion Bound
 
-        #region IsDivisableBy overloads
+        #region IsDivisableBy
 
         /// <summary>
         /// Whether the current instance is divisable by all the specified numbers.
@@ -327,16 +328,16 @@ namespace SharpBag.Math
 
 #endif
 
-        #endregion IsDivisableBy overloads
+        #endregion IsDivisableBy
 
-        #region Factor overloads
+        #region Divisors
 
         /// <summary>
-        /// The factors of the current instance.
+        /// The divisors of the current instance.
         /// </summary>
         /// <param name="n">The current instance.</param>
-        /// <returns>The factors.</returns>
-        public static IEnumerable<int> Factors(this int n)
+        /// <returns>The divisors.</returns>
+        public static IEnumerable<int> Divisors(this int n)
         {
             int sqrt = (int)System.Math.Sqrt(n);
             for (int i = 1; i <= sqrt; i++)
@@ -350,11 +351,11 @@ namespace SharpBag.Math
         }
 
         /// <summary>
-        /// The factors of the current instance.
+        /// The divisors of the current instance.
         /// </summary>
         /// <param name="n">The current instance.</param>
-        /// <returns>The factors.</returns>
-        public static IEnumerable<long> Factors(this long n)
+        /// <returns>The divisors.</returns>
+        public static IEnumerable<long> Divisors(this long n)
         {
             long sqrt = (long)System.Math.Sqrt(n);
             for (long i = 1; i <= sqrt; i++)
@@ -370,11 +371,11 @@ namespace SharpBag.Math
 #if DOTNET4
 
         /// <summary>
-        /// The factors of the current instance.
+        /// The divisors of the current instance.
         /// </summary>
         /// <param name="n">The current instance.</param>
-        /// <returns>The factors.</returns>
-        public static IEnumerable<BigInteger> Factors(this BigInteger n)
+        /// <returns>The divisors.</returns>
+        public static IEnumerable<BigInteger> Divisors(this BigInteger n)
         {
             BigInteger sq;
             for (BigInteger i = 1; (sq = i * i) <= n; i++)
@@ -388,6 +389,80 @@ namespace SharpBag.Math
         }
 
 #endif
+
+        #endregion Divisors
+
+        #region ProperDivisors
+
+        /// <summary>
+        /// The proper divisors of the current instance.
+        /// </summary>
+        /// <param name="n">The current instance.</param>
+        /// <returns>The proper divisors.</returns>
+        public static IEnumerable<int> ProperDivisors(this int n)
+        {
+            int sqrt = (int)System.Math.Sqrt(n);
+            bool perf = sqrt * sqrt == n;
+
+            yield return 1;
+
+            for (int i = 2; i <= sqrt; i++)
+            {
+                if (n % i == 0)
+                {
+                    yield return i;
+                    if (i != sqrt || !perf) yield return n / i;
+                }
+            }
+        }
+
+        /// <summary>
+        /// The proper divisors of the current instance.
+        /// </summary>
+        /// <param name="n">The current instance.</param>
+        /// <returns>The proper divisors.</returns>
+        public static IEnumerable<long> ProperDivisors(this long n)
+        {
+            long sqrt = (long)System.Math.Sqrt(n);
+            bool perf = sqrt * sqrt == n;
+
+            yield return 1;
+
+            for (long i = 2; i <= sqrt; i++)
+            {
+                if (n % i == 0)
+                {
+                    yield return i;
+                    if (i != sqrt || !perf) yield return n / i;
+                }
+            }
+        }
+
+#if DOTNET4
+
+        /// <summary>
+        /// The proper divisors of the current instance.
+        /// </summary>
+        /// <param name="n">The current instance.</param>
+        /// <returns>The proper divisors.</returns>
+        public static IEnumerable<BigInteger> ProperDivisors(this BigInteger n)
+        {
+            BigInteger sq;
+            for (BigInteger i = 1; (sq = i * i) <= n; i++)
+            {
+                if (n % i == 0)
+                {
+                    yield return i;
+                    if (sq != n && n != 1) yield return n / i;
+                }
+            }
+        }
+
+#endif
+
+        #endregion ProperDivisors
+
+        #region PrimeFactors
 
         #region Momerath - http://www.dreamincode.net/code/snippet5562.htm
 
@@ -457,71 +532,9 @@ namespace SharpBag.Math
 
         #endregion Momerath - http://www.dreamincode.net/code/snippet5562.htm
 
-        #endregion Factor overloads
+        #endregion PrimeFactors
 
-        #region Divisor overloads
-
-        /// <summary>
-        /// The divisors of the current instance.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>The divisors.</returns>
-        public static IEnumerable<int> Divisors(this int n)
-        {
-            int sqrt = (int)System.Math.Sqrt(n);
-            for (int i = 1; i <= sqrt; i++)
-            {
-                if (n % i == 0)
-                {
-                    yield return i;
-                    if (i != sqrt && i != 1) yield return n / i;
-                }
-            }
-        }
-
-        /// <summary>
-        /// The divisors of the current instance.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>The divisors.</returns>
-        public static IEnumerable<long> Divisors(this long n)
-        {
-            long sqrt = (long)System.Math.Sqrt(n);
-            for (long i = 1; i <= sqrt; i++)
-            {
-                if (n % i == 0)
-                {
-                    yield return i;
-                    if (i != sqrt && i != 1) yield return n / i;
-                }
-            }
-        }
-
-#if DOTNET4
-
-        /// <summary>
-        /// The divisors of the current instance.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>The divisors.</returns>
-        public static IEnumerable<BigInteger> Divisors(this BigInteger n)
-        {
-            BigInteger sq;
-            for (BigInteger i = 1; (sq = i * i) <= n; i++)
-            {
-                if (n % i == 0)
-                {
-                    yield return i;
-                    if (sq != n && n != 1) yield return n / i;
-                }
-            }
-        }
-
-#endif
-
-        #endregion Divisor overloads
-
-        #region Digit overloads
+        #region Digits
 
         /// <summary>
         /// Returns the digits of the current instance.
@@ -557,9 +570,9 @@ namespace SharpBag.Math
 
 #endif
 
-        #endregion Digit overloads
+        #endregion Digits
 
-        #region Reverse overloads
+        #region Reverse
 
         /// <summary>
         /// Reverses the number.
@@ -595,9 +608,9 @@ namespace SharpBag.Math
 
 #endif
 
-        #endregion Reverse overloads
+        #endregion Reverse
 
-        #region Pow overloads
+        #region Pow
 
         /// <summary>
         /// Puts the current instance to the specified power.
@@ -621,9 +634,9 @@ namespace SharpBag.Math
             return System.Math.Pow(i, power);
         }
 
-        #endregion Pow overloads
+        #endregion Pow
 
-        #region Factorial overloads
+        #region Factorial
 
         /// <summary>
         /// Calculates the factorial of the current instance.
@@ -665,9 +678,9 @@ namespace SharpBag.Math
             return sum;
         }
 
-        #endregion Factorial overloads
+        #endregion Factorial
 
-        #region IsEven overloads
+        #region IsEven
 
         /// <summary>
         /// Whether the current instance is even.
@@ -703,9 +716,9 @@ namespace SharpBag.Math
 
 #endif
 
-        #endregion IsEven overloads
+        #endregion IsEven
 
-        #region IsOdd overloads
+        #region IsOdd
 
         /// <summary>
         /// Whether the current instance is odd.
@@ -741,7 +754,7 @@ namespace SharpBag.Math
 
 #endif
 
-        #endregion IsOdd overloads
+        #endregion IsOdd
 
         #region IsPrime
 

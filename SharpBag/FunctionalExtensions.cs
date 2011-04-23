@@ -84,6 +84,26 @@ namespace SharpBag
         /// <param name="step">The step to take on each iteration.</param>
         /// <returns>An enumerable containing the numbers.</returns>
         /// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
+        public static IEnumerable<int> To(this int start, int end, Func<int, int> step)
+        {
+#if DOTNET4
+            Contract.Requires(step != null);
+            Contract.Ensures(Contract.Result<IEnumerable<int>>() != null);
+            Contract.Ensures(Contract.Result<IEnumerable<int>>().Any());
+#endif
+            if (start < end) for (int i = start; i <= end; i = step(i)) yield return i;
+            else if (start > end) for (int i = start; i >= end; i = step(i)) yield return i;
+            else yield return end;
+        }
+
+        /// <summary>
+        /// Generates numbers that range from the value of the current instance to the value of end.
+        /// </summary>
+        /// <param name="start">The current instance.</param>
+        /// <param name="end">The number to end at.</param>
+        /// <param name="step">The step to take on each iteration.</param>
+        /// <returns>An enumerable containing the numbers.</returns>
+        /// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
         public static IEnumerable<long> To(this long start, long end, long step = 1)
         {
 #if DOTNET4
@@ -94,6 +114,27 @@ namespace SharpBag
 
             if (start < end) for (long i = start; i <= end; i += step) yield return i;
             else if (start > end) for (long i = start; i >= end; i -= step) yield return i;
+            else yield return end;
+        }
+
+        /// <summary>
+        /// Generates numbers that range from the value of the current instance to the value of end.
+        /// </summary>
+        /// <param name="start">The current instance.</param>
+        /// <param name="end">The number to end at.</param>
+        /// <param name="step">The step to take on each iteration.</param>
+        /// <returns>An enumerable containing the numbers.</returns>
+        /// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
+        public static IEnumerable<long> To(this long start, long end, Func<long, long> step)
+        {
+#if DOTNET4
+            Contract.Requires(step != null);
+            Contract.Ensures(Contract.Result<IEnumerable<long>>() != null);
+            Contract.Ensures(Contract.Result<IEnumerable<long>>().Any());
+#endif
+
+            if (start < end) for (long i = start; i <= end; i = step(i)) yield return i;
+            else if (start > end) for (long i = start; i >= end; i = step(i)) yield return i;
             else yield return end;
         }
 
@@ -131,6 +172,24 @@ namespace SharpBag
             else yield return end;
         }
 
+        /// <summary>
+        /// Generates numbers that range from the value of the current instance to the value of end.
+        /// </summary>
+        /// <param name="start">The current instance.</param>
+        /// <param name="end">The number to end at.</param>
+        /// <param name="step">The step to take on each iteration.</param>
+        /// <returns>An enumerable containing the numbers.</returns>
+        /// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
+        public static IEnumerable<BigInteger> To(this BigInteger start, BigInteger end, Func<BigInteger, BigInteger> step)
+        {
+            Contract.Requires(step != null);
+            Contract.Ensures(Contract.Result<IEnumerable<BigInteger>>() != null);
+            Contract.Ensures(Contract.Result<IEnumerable<BigInteger>>().Any());
+            if (start < end) for (BigInteger i = start; i <= end; i = step(i)) yield return i;
+            else if (start > end) for (BigInteger i = start; i >= end; i = step(i)) yield return i;
+            else yield return end;
+        }
+
 #endif
 
         /// <summary>
@@ -150,6 +209,26 @@ namespace SharpBag
 #endif
             if (start < end) for (int i = start; i <= end; i += step) yield return (char)i;
             else if (start > end) for (int i = start; i >= end; i -= step) yield return (char)i;
+            else yield return end;
+        }
+
+        /// <summary>
+        /// Generates chars that range from the current instance to end.
+        /// </summary>
+        /// <param name="start">The current instance.</param>
+        /// <param name="end">The char to end at.</param>
+        /// <param name="step">The step to take on each iteration.</param>
+        /// <returns>An enumerable containing the numbers.</returns>
+        /// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
+        public static IEnumerable<char> To(this char start, char end, Func<int, int> step)
+        {
+#if DOTNET4
+            Contract.Requires(step != null);
+            Contract.Ensures(Contract.Result<IEnumerable<char>>() != null);
+            Contract.Ensures(Contract.Result<IEnumerable<char>>().Any());
+#endif
+            if (start < end) for (int i = start; i <= end; i = step(i)) yield return (char)i;
+            else if (start > end) for (int i = start; i >= end; i = step(i)) yield return (char)i;
             else yield return end;
         }
 
@@ -493,6 +572,19 @@ namespace SharpBag
             Contract.Requires(aggregator != null);
 #endif
             return sequence.LazilyAggregate(default(TAccumulate), aggregator);
+        }
+
+        /// <summary>
+        /// Unfolds the current instance using the unfolder.
+        /// </summary>
+        /// <typeparam name="T">The type of the current instance.</typeparam>
+        /// <param name="item">The current instance.</param>
+        /// <param name="unfolder">The unfolder.</param>
+        /// <returns>The unfolded elements.</returns>
+        public static IEnumerable<T> Unfold<T>(this T item, Func<T, T> unfolder)
+        {
+            yield return item;
+            while (true) yield return item = unfolder(item);
         }
     }
 }

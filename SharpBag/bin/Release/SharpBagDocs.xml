@@ -1564,269 +1564,6 @@
             An event that is fired when a client is received.
             </summary>
         </member>
-        <member name="T:SharpBag.Math.Converters.BitSize">
-            <summary>
-            An abstract class defining a bit size.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Converters.BitSize.#ctor(System.Double)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="v"></param>
-        </member>
-        <member name="M:SharpBag.Math.Converters.BitSize.As``2">
-            <summary>
-            Converts a bit size to another bit size.
-            </summary>
-            <typeparam name="TValue">The type of the value.</typeparam>
-            <typeparam name="TResult">The type of the result.</typeparam>
-            <returns>The bit size converted to another bit size.</returns>
-        </member>
-        <member name="M:SharpBag.Math.Converters.BitSize.op_Implicit(SharpBag.Math.Converters.BitSize)~System.Double">
-            <summary>
-            An implicit convert from a bit size to a double.
-            </summary>
-            <param name="v">The bit size.</param>
-            <returns>The bit size as a double.</returns>
-        </member>
-        <member name="M:SharpBag.Math.Converters.BitSize.ToString">
-            <see cref="M:System.Object.ToString"/>
-        </member>
-        <member name="M:SharpBag.Math.Converters.BitSize.ToString(System.Boolean)">
-            <see cref="M:System.Object.ToString"/>
-            <param name="unit">Whether or not to append the measurement unit.</param>
-        </member>
-        <member name="M:SharpBag.Math.Converters.BitSize.ToString(System.Boolean,System.Func{System.Double,System.String})">
-            <see cref="M:System.Object.ToString"/>
-            <param name="unit">Whether or not to append the measurement unit.</param>
-            <param name="result">The result.</param>
-        </member>
-        <member name="P:SharpBag.Math.Converters.BitSize.Unit">
-            <summary>
-            The unit.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Converters.BitSize.BaseValue">
-            <summary>
-            The base value.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Converters.BitSize.Value">
-            <summary>
-            THe value.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Math.Converters.Bit">
-            <summary>
-            A class representing a bit.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Bit.#ctor(System.Double)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="v">The value.</param>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Bit.Unit">
-            <summary>
-            The unit.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Bit.BaseValue">
-            <summary>
-            The base value.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Math.Converters.Kilobit">
-            <summary>
-            A class reperesenting a kilobit.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Kilobit.#ctor(System.Double)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="v">The value.</param>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Kilobit.Unit">
-            <summary>
-            The unit.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Kilobit.BaseValue">
-            <summary>
-            The base value.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Math.Converters.Megabit">
-            <summary>
-            A class reperesenting a megabit.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Megabit.#ctor(System.Double)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="v">The value.</param>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Megabit.Unit">
-            <summary>
-            The unit.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Megabit.BaseValue">
-            <summary>
-            The base value.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Math.Converters.Gigabit">
-            <summary>
-            A class reperesenting a gigabit.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Gigabit.#ctor(System.Double)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="v">The value.</param>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Gigabit.Unit">
-            <summary>
-            The unit.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Gigabit.BaseValue">
-            <summary>
-            The base value.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Math.Converters.Terabit">
-            <summary>
-            A class reperesenting a terabit.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Terabit.#ctor(System.Double)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="v">The value.</param>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Terabit.Unit">
-            <summary>
-            The unit.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Terabit.BaseValue">
-            <summary>
-            The base value.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Math.Converters.Byte">
-            <summary>
-            A class reperesenting a byte.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Byte.#ctor(System.Double)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="v">The value.</param>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Byte.Unit">
-            <summary>
-            The unit.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Byte.BaseValue">
-            <summary>
-            The base value.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Math.Converters.Kilobyte">
-            <summary>
-            A class reperesenting a kilobyte.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Kilobyte.#ctor(System.Double)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="v">The value.</param>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Kilobyte.Unit">
-            <summary>
-            The unit.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Kilobyte.BaseValue">
-            <summary>
-            The base value.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Math.Converters.Megabyte">
-            <summary>
-            A class reperesenting a megabyte.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Megabyte.#ctor(System.Double)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="v">The value.</param>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Megabyte.Unit">
-            <summary>
-            The unit.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Megabyte.BaseValue">
-            <summary>
-            The base value.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Math.Converters.Gigabyte">
-            <summary>
-            A class reperesenting a gigabyte.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Gigabyte.#ctor(System.Double)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="v">The value.</param>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Gigabyte.Unit">
-            <summary>
-            The unit.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Gigabyte.BaseValue">
-            <summary>
-            The base value.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Math.Converters.Terabyte">
-            <summary>
-            A class reperesenting a terabyte.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Terabyte.#ctor(System.Double)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="v">The value.</param>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Terabyte.Unit">
-            <summary>
-            The unit.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Terabyte.BaseValue">
-            <summary>
-            The base value.
-            </summary>
-        </member>
         <member name="T:SharpBag.Games.Card">
             <summary>
             A class representing a Card in a Card Game.
@@ -2363,7 +2100,16 @@
         </member>
         <member name="M:SharpBag.Time.TimeExtensions.To(System.DateTime,System.DateTime,System.TimeSpan)">
             <summary>
-            Returns a collection of DateTimes with a one date interval.
+            Returns a collection of DateTimes with the specified interval.
+            </summary>
+            <param name="from">The current instance, or the DateTime to start at.</param>
+            <param name="to">The DateTime to end at.</param>
+            <param name="step">The step to take on each iteration.</param>
+            <returns>A collection of DateTimes with a one date interval.</returns>
+        </member>
+        <member name="M:SharpBag.Time.TimeExtensions.To(System.DateTime,System.DateTime,System.Func{System.DateTime,System.DateTime})">
+            <summary>
+            Returns a collection of DateTimes with a the specified interval.
             </summary>
             <param name="from">The current instance, or the DateTime to start at.</param>
             <param name="to">The DateTime to end at.</param>
@@ -2516,7 +2262,27 @@
             <returns>An enumerable containing the numbers.</returns>
             <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
         </member>
+        <member name="M:SharpBag.FunctionalExtensions.To(System.Int32,System.Int32,System.Func{System.Int32,System.Int32})">
+            <summary>
+            Generates numbers that range from the value of the current instance to the value of end.
+            </summary>
+            <param name="start">The current instance.</param>
+            <param name="end">The number to end at.</param>
+            <param name="step">The step to take on each iteration.</param>
+            <returns>An enumerable containing the numbers.</returns>
+            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
+        </member>
         <member name="M:SharpBag.FunctionalExtensions.To(System.Int64,System.Int64,System.Int64)">
+            <summary>
+            Generates numbers that range from the value of the current instance to the value of end.
+            </summary>
+            <param name="start">The current instance.</param>
+            <param name="end">The number to end at.</param>
+            <param name="step">The step to take on each iteration.</param>
+            <returns>An enumerable containing the numbers.</returns>
+            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.To(System.Int64,System.Int64,System.Func{System.Int64,System.Int64})">
             <summary>
             Generates numbers that range from the value of the current instance to the value of end.
             </summary>
@@ -2545,7 +2311,27 @@
             <returns>An enumerable containing the numbers.</returns>
             <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
         </member>
+        <member name="M:SharpBag.FunctionalExtensions.To(System.Numerics.BigInteger,System.Numerics.BigInteger,System.Func{System.Numerics.BigInteger,System.Numerics.BigInteger})">
+            <summary>
+            Generates numbers that range from the value of the current instance to the value of end.
+            </summary>
+            <param name="start">The current instance.</param>
+            <param name="end">The number to end at.</param>
+            <param name="step">The step to take on each iteration.</param>
+            <returns>An enumerable containing the numbers.</returns>
+            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
+        </member>
         <member name="M:SharpBag.FunctionalExtensions.To(System.Char,System.Char,System.Int32)">
+            <summary>
+            Generates chars that range from the current instance to end.
+            </summary>
+            <param name="start">The current instance.</param>
+            <param name="end">The char to end at.</param>
+            <param name="step">The step to take on each iteration.</param>
+            <returns>An enumerable containing the numbers.</returns>
+            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.To(System.Char,System.Char,System.Func{System.Int32,System.Int32})">
             <summary>
             Generates chars that range from the current instance to end.
             </summary>
@@ -2719,6 +2505,15 @@
             <param name="sequence">The current instance.</param>
             <param name="aggregator">The aggregator.</param>
             <returns>The aggregates.</returns>
+        </member>
+        <member name="M:SharpBag.FunctionalExtensions.Unfold``1(``0,System.Func{``0,``0})">
+            <summary>
+            Unfolds the current instance using the unfolder.
+            </summary>
+            <typeparam name="T">The type of the current instance.</typeparam>
+            <param name="item">The current instance.</param>
+            <param name="unfolder">The unfolder.</param>
+            <returns>The unfolded elements.</returns>
         </member>
         <member name="T:SharpBag.Networking.ConnectionHandler">
             <summary>
@@ -2932,6 +2727,18 @@
             Clears the Console.
             </summary>
         </member>
+        <member name="M:SharpBag.Misc.ProblemController.WriteLine(System.Object)">
+            <summary>
+            Displays the object.
+            </summary>
+            <param name="o">The object.</param>
+        </member>
+        <member name="M:SharpBag.Misc.ProblemController.Write(System.Object)">
+            <summary>
+            Displays the object.
+            </summary>
+            <param name="o">The object.</param>
+        </member>
         <member name="M:SharpBag.Misc.ProblemController.Read``1(System.String,System.String,System.Func{``0,System.Boolean})">
             <summary>
             Read an object from the console.
@@ -2976,6 +2783,11 @@
             <param name="encoding">An encoding.</param>
             <returns>The lines of the file.</returns>
         </member>
+        <member name="P:SharpBag.Misc.ProblemController.Problems">
+            <summary>
+            The problems.
+            </summary>
+        </member>
         <member name="P:SharpBag.Misc.ProblemController.Title">
             <summary>
             The title of the controller.
@@ -2984,6 +2796,11 @@
         <member name="P:SharpBag.Misc.ProblemController.TimeAll">
             <summary>
             Whether to time all problems.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Misc.ProblemController.Output">
+            <summary>
+            Whether to write to the console.
             </summary>
         </member>
         <member name="T:SharpBag.CollectionExtensions">
@@ -3289,13 +3106,45 @@
             <param name="collection">The current instance.</param>
             <returns>The current instance with extended info.</returns>
         </member>
-        <member name="M:SharpBag.CollectionExtensions.WithIndex``1(System.Collections.Generic.IEnumerable{``0})">
+        <member name="M:SharpBag.CollectionExtensions.WithoutInfo``1(System.Collections.Generic.IEnumerable{SharpBag.EnumerableEntry.WithInfo{``0}})">
             <summary>
-            Adds indexes to the current instance.
+            Removes extended info from the current instance.
             </summary>
             <typeparam name="T">The type of items in the current instance.</typeparam>
             <param name="collection">The current instance.</param>
-            <returns>The current instance with indexes.</returns>
+            <returns>The current instance without extended info.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.UpdateInfo``1(System.Collections.Generic.IEnumerable{SharpBag.EnumerableEntry.WithInfo{``0}})">
+            <summary>
+            Updates extended info of the current instance.
+            </summary>
+            <typeparam name="T">The type of items in the current instance.</typeparam>
+            <param name="collection">The current instance.</param>
+            <returns>The current instance with updated info.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.WithIndex``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Adds indices to the current instance.
+            </summary>
+            <typeparam name="T">The type of items in the current instance.</typeparam>
+            <param name="collection">The current instance.</param>
+            <returns>The current instance with indices.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.WithoutIndex``1(System.Collections.Generic.IEnumerable{SharpBag.EnumerableEntry.WithIndex{``0}})">
+            <summary>
+            Removes indices from the current instance.
+            </summary>
+            <typeparam name="T">The type of items in the current instance.</typeparam>
+            <param name="collection">The current instance.</param>
+            <returns>The current instance without indices.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.UpdateIndex``1(System.Collections.Generic.IEnumerable{SharpBag.EnumerableEntry.WithIndex{``0}})">
+            <summary>
+            Updates indices of the current instance.
+            </summary>
+            <typeparam name="T">The type of items in the current instance.</typeparam>
+            <param name="collection">The current instance.</param>
+            <returns>The current instance with updated indices.</returns>
         </member>
         <member name="M:SharpBag.CollectionExtensions.ToStack``1(System.Collections.Generic.IEnumerable{``0})">
             <summary>
@@ -3333,6 +3182,24 @@
             <param name="selector">The selector.</param>
             <returns>The item where the selector returns the minimum value.</returns>
         </member>
+        <member name="M:SharpBag.CollectionExtensions.Cycle``1(System.Collections.Generic.IEnumerable{``0},System.Boolean)">
+            <summary>
+            Cycles the items in the current instance.
+            </summary>
+            <typeparam name="T">The items in the current instance.</typeparam>
+            <param name="collection">The current instance.</param>
+            <param name="cache">Whether to cache items returned from the current instance.</param>
+            <returns>The items in the current instance in a cycle.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.Add``1(System.Collections.Generic.IEnumerable{``0},``0[])">
+            <summary>
+            Adds the specified items to the current instance.
+            </summary>
+            <typeparam name="T">The type of items in the current instance.</typeparam>
+            <param name="collection">The current instance.</param>
+            <param name="items">The items to add.</param>
+            <returns>The current instance and the specified items.</returns>
+        </member>
         <member name="T:SharpBag.Time.TimeUtils">
             <summary>
             A static class with utilites regarding dates and time.
@@ -3349,88 +3216,6 @@
             <summary>
             A static class containing methods for doing calculations.
             </summary>
-        </member>
-        <member name="M:SharpBag.Math.BagMath.PointsInCircleF(System.Int32)">
-            <summary>
-            Find points in a circle with a specified radius.
-            </summary>
-            <param name="radius">The radius of the circle.</param>
-            <returns>An array containing points.</returns>
-            <exception cref="T:System.ArgumentException"></exception>
-        </member>
-        <member name="M:SharpBag.Math.BagMath.PointsInCircleF(System.Int32,System.Drawing.PointF)">
-            <summary>
-            Find points in a circle with a specified radius.
-            </summary>
-            <param name="radius">The radius of the circle.</param>
-            <param name="center">The center-point of the circle.</param>
-            <returns>An array containing points.</returns>
-            <exception cref="T:System.ArgumentNullException"></exception>
-            <exception cref="T:System.ArgumentException"></exception>
-        </member>
-        <member name="M:SharpBag.Math.BagMath.PointsInCircleF(System.Int32,System.Int32)">
-            <summary>
-            Find points in a circle with a specified radius.
-            </summary>
-            <param name="radius">The radius of the circle.</param>
-            <param name="points">Number of points to return.</param>
-            <returns>An array containing points.</returns>
-            <exception cref="T:System.ArgumentException"></exception>
-        </member>
-        <member name="M:SharpBag.Math.BagMath.PointsInCircleF(System.Int32,System.Drawing.PointF,System.Int32)">
-            <summary>
-            Find points in a circle with a specified radius.
-            </summary>
-            <param name="radius">The radius of the circle.</param>
-            <param name="center">The center-point of the circle.</param>
-            <param name="points">Number of points to return.</param>
-            <returns>An array containing points.</returns>
-            <exception cref="T:System.ArgumentException"></exception>
-        </member>
-        <member name="M:SharpBag.Math.BagMath.PointsInCircle(System.Int32)">
-            <summary>
-            Find points in a circle with a specified radius.
-            </summary>
-            <param name="radius">The radius of the circle.</param>
-            <returns>An array containing points.</returns>
-            <exception cref="T:System.ArgumentException"></exception>
-        </member>
-        <member name="M:SharpBag.Math.BagMath.PointsInCircle(System.Int32,System.Drawing.Point)">
-            <summary>
-            Find points in a circle with a specified radius.
-            </summary>
-            <param name="radius">The radius of the circle.</param>
-            <param name="center">The center-point of the circle.</param>
-            <returns>An array containing points.</returns>
-            <exception cref="T:System.ArgumentNullException"></exception>
-            <exception cref="T:System.ArgumentException"></exception>
-        </member>
-        <member name="M:SharpBag.Math.BagMath.PointsInCircle(System.Int32,System.Int32)">
-            <summary>
-            Find points in a circle with a specified radius.
-            </summary>
-            <param name="radius">The radius of the circle.</param>
-            <param name="points">Number of points to return.</param>
-            <returns>An array containing points.</returns>
-            <exception cref="T:System.ArgumentException"></exception>
-        </member>
-        <member name="M:SharpBag.Math.BagMath.PointsInCircle(System.Int32,System.Drawing.Point,System.Int32)">
-            <summary>
-            Find points in a circle with a specified radius.
-            </summary>
-            <param name="radius">The radius of the circle.</param>
-            <param name="center">The center-point of the circle.</param>
-            <param name="points">Number of points to return.</param>
-            <returns>An array containing points.</returns>
-            <exception cref="T:System.ArgumentNullException"></exception>
-            <exception cref="T:System.ArgumentException"></exception>
-        </member>
-        <member name="M:SharpBag.Math.BagMath.WaveLength(System.Double)">
-            <summary>
-            Calculates wave length from the average fluctuation time.
-            </summary>
-            <param name="tz">The average fluctuation time (Tz).</param>
-            <returns>The length of the wave.</returns>
         </member>
         <member name="M:SharpBag.Math.BagMath.Gcd(System.Int32,System.Int32)">
             <summary>
@@ -4024,26 +3809,47 @@
             <param name="nums">The numbers.</param>
             <returns>Whether the current instance is divisable by all the specified numbers.</returns>
         </member>
-        <member name="M:SharpBag.Math.MathExtensions.Factors(System.Int32)">
+        <member name="M:SharpBag.Math.MathExtensions.Divisors(System.Int32)">
             <summary>
-            The factors of the current instance.
+            The divisors of the current instance.
             </summary>
             <param name="n">The current instance.</param>
-            <returns>The factors.</returns>
+            <returns>The divisors.</returns>
         </member>
-        <member name="M:SharpBag.Math.MathExtensions.Factors(System.Int64)">
+        <member name="M:SharpBag.Math.MathExtensions.Divisors(System.Int64)">
             <summary>
-            The factors of the current instance.
+            The divisors of the current instance.
             </summary>
             <param name="n">The current instance.</param>
-            <returns>The factors.</returns>
+            <returns>The divisors.</returns>
         </member>
-        <member name="M:SharpBag.Math.MathExtensions.Factors(System.Numerics.BigInteger)">
+        <member name="M:SharpBag.Math.MathExtensions.Divisors(System.Numerics.BigInteger)">
             <summary>
-            The factors of the current instance.
+            The divisors of the current instance.
             </summary>
             <param name="n">The current instance.</param>
-            <returns>The factors.</returns>
+            <returns>The divisors.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.ProperDivisors(System.Int32)">
+            <summary>
+            The proper divisors of the current instance.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>The proper divisors.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.ProperDivisors(System.Int64)">
+            <summary>
+            The proper divisors of the current instance.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>The proper divisors.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.ProperDivisors(System.Numerics.BigInteger)">
+            <summary>
+            The proper divisors of the current instance.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>The proper divisors.</returns>
         </member>
         <member name="M:SharpBag.Math.MathExtensions.PrimeFactors(System.Int32)">
             <summary>
@@ -4065,27 +3871,6 @@
             </summary>
             <param name="i">The current instance.</param>
             <returns>The prime factors of the current instance.</returns>
-        </member>
-        <member name="M:SharpBag.Math.MathExtensions.Divisors(System.Int32)">
-            <summary>
-            The divisors of the current instance.
-            </summary>
-            <param name="n">The current instance.</param>
-            <returns>The divisors.</returns>
-        </member>
-        <member name="M:SharpBag.Math.MathExtensions.Divisors(System.Int64)">
-            <summary>
-            The divisors of the current instance.
-            </summary>
-            <param name="n">The current instance.</param>
-            <returns>The divisors.</returns>
-        </member>
-        <member name="M:SharpBag.Math.MathExtensions.Divisors(System.Numerics.BigInteger)">
-            <summary>
-            The divisors of the current instance.
-            </summary>
-            <param name="n">The current instance.</param>
-            <returns>The divisors.</returns>
         </member>
         <member name="M:SharpBag.Math.MathExtensions.Digits(System.Int32)">
             <summary>
@@ -4405,6 +4190,53 @@
             A function used for logging.
             </summary>
             <param name="s">The output string that needs to be handled.</param>
+        </member>
+        <member name="T:SharpBag.Misc.ProblemMetadata">
+            <summary>
+            A problem.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Misc.ProblemMetadata.#ctor(SharpBag.Misc.ProblemAttribute,System.Reflection.MethodInfo)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="problem">The problem.</param>
+            <param name="method">The method.</param>
+        </member>
+        <member name="P:SharpBag.Misc.ProblemMetadata.Method">
+            <summary>
+            The method.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Misc.ProblemMetadata.Title">
+            <summary>
+            The title.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Misc.ProblemMetadata.Description">
+            <summary>
+            The description.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Misc.ProblemMetadata.Time">
+            <summary>
+            Whether to time the problem
+            </summary>
+        </member>
+        <member name="P:SharpBag.Misc.ProblemMetadata.Finished">
+            <summary>
+            Whether the problem is finished.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Misc.ProblemMetadata.Pause">
+            <summary>
+            Whether to pause after the problem has finished running.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Misc.ProblemMetadata.Start">
+            <summary>
+            Whether to run the problem on start.
+            </summary>
         </member>
         <member name="T:SharpBag.Games.CardType">
             <summary>
@@ -4757,143 +4589,6 @@
             <param name="img">The current instance.</param>
             <returns>The BitmapSource.</returns>
         </member>
-        <member name="T:SharpBag.Math.Converters.Length">
-            <summary>
-            An abstract class representing a length.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Length.#ctor(System.Double)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="v"></param>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Length.As``2">
-            <summary>
-            Convert on length to another length.
-            </summary>
-            <typeparam name="TValue">The type of input length.</typeparam>
-            <typeparam name="TResult">The type of output length.</typeparam>
-            <returns>The input length as an output length.</returns>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Length.op_Implicit(SharpBag.Math.Converters.Length)~System.Double">
-            <summary>
-            Implicitly converts a length to a double.
-            </summary>
-            <param name="v">The length.</param>
-            <returns>The length as a double.</returns>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Length.ToString">
-            <see cref="M:System.Object.ToString"/>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Length.ToString(System.Boolean)">
-            <see cref="M:System.Object.ToString"/>
-            <param name="unit">Whether or not to append the measurement unit.</param>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Length.ToString(System.Boolean,System.Func{System.Double,System.String})">
-            <see cref="M:System.Object.ToString"/>
-            <param name="unit">Whether or not to append the measurement unit.</param>
-            <param name="result">The result.</param>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Length.Unit">
-            <summary>
-            The unit.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Length.BaseValue">
-            <summary>
-            The base value.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Length.Value">
-            <summary>
-            The value.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Math.Converters.Millimeter">
-            <summary>
-            A class representing a millimeter.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Millimeter.#ctor(System.Double)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="v">The value.</param>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Millimeter.Unit">
-            <summary>
-            The unit.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Millimeter.BaseValue">
-            <summary>
-            The base value.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Math.Converters.Centimeter">
-            <summary>
-            A class representing a centimeter.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Centimeter.#ctor(System.Double)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="v">The value.</param>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Centimeter.Unit">
-            <summary>
-            The unit.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Centimeter.BaseValue">
-            <summary>
-            The base value.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Math.Converters.Meter">
-            <summary>
-            A class representing a meter.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Meter.#ctor(System.Double)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="v">The value.</param>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Meter.Unit">
-            <summary>
-            The unit.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Meter.BaseValue">
-            <summary>
-            The base value.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Math.Converters.Kilometer">
-            <summary>
-            A class representing a kilometer.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Kilometer.#ctor(System.Double)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="v">The value.</param>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Kilometer.Unit">
-            <summary>
-            The unit.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Kilometer.BaseValue">
-            <summary>
-            The base value.
-            </summary>
-        </member>
         <member name="T:SharpBag.Database.DatabaseExtensions">
             <summary>
             Extension methods for the database classes.
@@ -5123,122 +4818,6 @@
         <member name="M:SharpBag.ActionDisposable.Dispose">
             <summary>
             The disposer which executes the dispose action.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Math.Converters.Weight">
-            <summary>
-            An abstract class for weight.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Weight.#ctor(System.Double)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="v"></param>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Weight.As``2">
-            <summary>
-            Converts one weight to another weight.
-            </summary>
-            <typeparam name="TValue">The type of input weight.</typeparam>
-            <typeparam name="TResult">The type of output weight.</typeparam>
-            <returns>The input weight as output weight.</returns>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Weight.op_Implicit(SharpBag.Math.Converters.Weight)~System.Double">
-            <summary>
-            An implicit convert from a weight to a double.
-            </summary>
-            <param name="v">The weight.</param>
-            <returns>The weight as a double.</returns>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Weight.ToString">
-            <see cref="M:System.Object.ToString"/>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Weight.ToString(System.Boolean)">
-            <see cref="M:System.Object.ToString"/>
-            <param name="unit">Whether or not to append the measurement unit.</param>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Weight.ToString(System.Boolean,System.Func{System.Double,System.String})">
-            <see cref="M:System.Object.ToString"/>
-            <param name="unit">Whether or not to append the measurement unit.</param>
-            <param name="result">The result.</param>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Weight.Unit">
-            <summary>
-            The unit.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Weight.BaseValue">
-            <summary>
-            The base value.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Weight.Value">
-            <summary>
-            THe value.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Math.Converters.Milligram">
-            <summary>
-            A class representing a milligram.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Milligram.#ctor(System.Double)">
-            <summary>
-            The main constructor.
-            </summary>
-            <param name="v">The value.</param>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Milligram.Unit">
-            <summary>
-            The unit.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Milligram.BaseValue">
-            <summary>
-            The base value.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Math.Converters.Gram">
-            <summary>
-            A class representing a gram.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Gram.#ctor(System.Double)">
-            <summary>
-            The main constructor.
-            </summary>
-            <param name="v">The value.</param>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Gram.Unit">
-            <summary>
-            The unit.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Gram.BaseValue">
-            <summary>
-            The base value.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Math.Converters.Kilogram">
-            <summary>
-            A class representing a kilogram.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Kilogram.#ctor(System.Double)">
-            <summary>
-            The main constructor.
-            </summary>
-            <param name="v">The value.</param>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Kilogram.Unit">
-            <summary>
-            The unit.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Converters.Kilogram.BaseValue">
-            <summary>
-            The base value.
             </summary>
         </member>
         <member name="T:SharpBag.Networking.PacketEventArgs">
@@ -6041,188 +5620,6 @@
             <param name="key">The key of the value to get or set.</param>
             <returns>The value assosiated with the specified key.</returns>
         </member>
-        <member name="T:SharpBag.Math.Converters.Temperature">
-            <summary>
-            An interface for temperatures.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Temperature.ToString(System.Boolean)">
-            <see cref="M:System.Object.ToString"/>
-            <param name="unit">Whether or not to append the measurement unit.</param>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Temperature.ToString(System.Boolean,System.Func{System.Double,System.String})">
-            <see cref="M:System.Object.ToString"/>
-            <param name="unit">Whether or not to append the measurement unit.</param>
-            <param name="result">The result.</param>
-        </member>
-        <member name="T:SharpBag.Math.Converters.Celsius">
-            <summary>
-            The Celsius temperature unit.
-            </summary>
-        </member>
-        <member name="F:SharpBag.Math.Converters.Celsius.Unit">
-            <summary>
-            The Celsius unit.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Celsius.#ctor(System.Double)">
-            <summary>
-            The Celsius temperature unit.
-            </summary>
-            <param name="v">The value.</param>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Celsius.op_Implicit(System.Double)~SharpBag.Math.Converters.Celsius">
-            <summary>
-            An implicit conversion from double to Celsius.
-            </summary>
-            <param name="v">The double value.</param>
-            <returns>The double value as Celsius.</returns>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Celsius.op_Implicit(SharpBag.Math.Converters.Celsius)~System.Double">
-            <summary>
-            An implicit conversion from Celsius to double.
-            </summary>
-            <param name="v">The Celsius value.</param>
-            <returns>The Celsius value as a double.</returns>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Celsius.op_Explicit(SharpBag.Math.Converters.Kelvin)~SharpBag.Math.Converters.Celsius">
-            <summary>
-            An explicit conversion from Kelvin to Celsius.
-            </summary>
-            <param name="v">The Kelvin value.</param>
-            <returns>The Kelvin value as Celsius.</returns>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Celsius.op_Explicit(SharpBag.Math.Converters.Fahrenheit)~SharpBag.Math.Converters.Celsius">
-            <summary>
-            An explicit conversion from Fahrenheit to Celsius.
-            </summary>
-            <param name="v">The Fahrenheit value.</param>
-            <returns>The Fahrenheit value as Celsius.</returns>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Celsius.ToString">
-            <see cref="M:System.Object.ToString"/>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Celsius.ToString(System.Boolean)">
-            <see cref="M:System.Object.ToString"/>
-            <param name="unit">Whether or not to append the measurement unit.</param>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Celsius.ToString(System.Boolean,System.Func{System.Double,System.String})">
-            <see cref="M:System.Object.ToString"/>
-            <param name="unit">Whether or not to append the measurement unit.</param>
-            <param name="result">The result.</param>
-        </member>
-        <member name="T:SharpBag.Math.Converters.Fahrenheit">
-            <summary>
-            The Fahrenheit temperature unit.
-            </summary>
-        </member>
-        <member name="F:SharpBag.Math.Converters.Fahrenheit.Unit">
-            <summary>
-            The Fahrenheit unit.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Fahrenheit.#ctor(System.Double)">
-            <summary>
-            The Fahrenheit temperature unit.
-            </summary>
-            <param name="v">The value.</param>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Fahrenheit.op_Implicit(System.Double)~SharpBag.Math.Converters.Fahrenheit">
-            <summary>
-            An implicit conversion from double to Fahrenheit.
-            </summary>
-            <param name="v">The double value.</param>
-            <returns>The double value as Fahrenheit.</returns>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Fahrenheit.op_Implicit(SharpBag.Math.Converters.Fahrenheit)~System.Double">
-            <summary>
-            An implicit conversion from Fahrenheit to double.
-            </summary>
-            <param name="v">The Fahrenheit value.</param>
-            <returns>The Fahrenheit value as a double.</returns>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Fahrenheit.op_Explicit(SharpBag.Math.Converters.Kelvin)~SharpBag.Math.Converters.Fahrenheit">
-            <summary>
-            An explicit conversion from Kelvin to Fahrenheit.
-            </summary>
-            <param name="v">The Kelvin value.</param>
-            <returns>The Kelvin value as Fahrenheit.</returns>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Fahrenheit.op_Explicit(SharpBag.Math.Converters.Celsius)~SharpBag.Math.Converters.Fahrenheit">
-            <summary>
-            An explicit conversion from Celsius to Fahrenheit.
-            </summary>
-            <param name="v">The Celsius value.</param>
-            <returns>The Celsius value as Fahrenheit.</returns>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Fahrenheit.ToString">
-            <see cref="M:System.Object.ToString"/>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Fahrenheit.ToString(System.Boolean)">
-            <see cref="M:System.Object.ToString"/>
-            <param name="unit">Whether or not to append the measurement unit.</param>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Fahrenheit.ToString(System.Boolean,System.Func{System.Double,System.String})">
-            <see cref="M:System.Object.ToString"/>
-            <param name="unit">Whether or not to append the measurement unit.</param>
-            <param name="result">The result.</param>
-        </member>
-        <member name="T:SharpBag.Math.Converters.Kelvin">
-            <summary>
-            The Kelvin temperature unit.
-            </summary>
-        </member>
-        <member name="F:SharpBag.Math.Converters.Kelvin.Unit">
-            <summary>
-            The Kelvin unit.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Kelvin.#ctor(System.Double)">
-            <summary>
-            The Kelvin temperature unit.
-            </summary>
-            <param name="v">The value.</param>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Kelvin.op_Implicit(System.Double)~SharpBag.Math.Converters.Kelvin">
-            <summary>
-            An implicit conversion from double to Kelvin.
-            </summary>
-            <param name="v">The double value.</param>
-            <returns>The double value as Kelvin.</returns>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Kelvin.op_Implicit(SharpBag.Math.Converters.Kelvin)~System.Double">
-            <summary>
-            An implicit conversion from Kelvin to double.
-            </summary>
-            <param name="v">The Kelvin value.</param>
-            <returns>The Kelvin value as a double.</returns>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Kelvin.op_Explicit(SharpBag.Math.Converters.Fahrenheit)~SharpBag.Math.Converters.Kelvin">
-            <summary>
-            An explicit conversion from Fahrenheit to Kelvin.
-            </summary>
-            <param name="v">The Fahrenheit value.</param>
-            <returns>The Fahrenheit value as Kelvin.</returns>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Kelvin.op_Explicit(SharpBag.Math.Converters.Celsius)~SharpBag.Math.Converters.Kelvin">
-            <summary>
-            An explicit conversion from Celsius to Kelvin.
-            </summary>
-            <param name="v">The Celsius value.</param>
-            <returns>The Celsius value as Kelvin.</returns>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Kelvin.ToString">
-            <see cref="M:System.Object.ToString"/>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Kelvin.ToString(System.Boolean)">
-            <see cref="M:System.Object.ToString"/>
-            <param name="unit">Whether or not to append the measurement unit.</param>
-        </member>
-        <member name="M:SharpBag.Math.Converters.Kelvin.ToString(System.Boolean,System.Func{System.Double,System.String})">
-            <see cref="M:System.Object.ToString"/>
-            <param name="unit">Whether or not to append the measurement unit.</param>
-            <param name="result">The result.</param>
-        </member>
         <member name="T:SharpBag.Math.Converters.BaseConverter">
             <summary>
             Converts numbers between bases.
@@ -6255,19 +5652,6 @@
             <param name="targetBase">The target base.</param>
             <returns>The target in the target base.</returns>
             <remarks>Bases must be in the range 2 to 36.</remarks>
-        </member>
-        <member name="T:SharpBag.Math.PascalTriangle">
-            <summary>
-            A static class with methods concerning the Pascal triangle.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.PascalTriangle.GetEntry(System.Int32,System.Int32)">
-            <summary>
-            Gets an entry at the specified row and column.
-            </summary>
-            <param name="row">The specified row.</param>
-            <param name="column">The specified column.</param>
-            <returns>The value at the specified row and column.</returns>
         </member>
         <member name="T:SharpBag.Networking.Network">
             <summary>
@@ -6467,6 +5851,45 @@
             <summary>
             The default value.
             </summary>
+        </member>
+        <member name="T:SharpBag.Math.PascalsTriangle">
+            <summary>
+            A static class with methods concerning Pascals triangle.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.PascalsTriangle.GetEntry(System.Int32,System.Int32)">
+            <summary>
+            Gets an entry at the specified row and column.
+            </summary>
+            <param name="row">The specified row.</param>
+            <param name="column">The specified column.</param>
+            <returns>The value at the specified row and column.</returns>
+        </member>
+        <member name="M:SharpBag.Math.PascalsTriangle.GetEntryBig(System.Int64,System.Int64)">
+            <summary>
+            Gets an entry at the specified row and column.
+            </summary>
+            <param name="row">The specified row.</param>
+            <param name="column">The specified column.</param>
+            <returns>The value at the specified row and column.</returns>
+        </member>
+        <member name="M:SharpBag.Math.PascalsTriangle.Rows">
+            <summary>
+            Calculates the rows of Pascal's triangle.
+            </summary>
+            <returns>The rows.</returns>
+        </member>
+        <member name="M:SharpBag.Math.PascalsTriangle.Rows64">
+            <summary>
+            Calculates the rows of Pascal's triangle.
+            </summary>
+            <returns>The rows.</returns>
+        </member>
+        <member name="M:SharpBag.Math.PascalsTriangle.RowsBig">
+            <summary>
+            Calculates the rows of Pascal's triangle.
+            </summary>
+            <returns>The rows.</returns>
         </member>
     </members>
 </doc>

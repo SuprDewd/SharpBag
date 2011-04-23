@@ -102,7 +102,7 @@
     <Compile Include="Games\Dice.cs" />
     <Compile Include="Comparers\LambdaComparer.cs" />
     <Compile Include="Matcher.cs" />
-    <Compile Include="Math\PascalTriangle.cs" />
+    <Compile Include="Math\PascalsTriangle.cs" />
     <Compile Include="Misc\Draw.cs" />
     <Compile Include="Misc\ProblemAttribute.cs" />
     <Compile Include="Misc\ProblemController.cs" />
@@ -130,10 +130,6 @@
     <Compile Include="Logging\InteractiveConsole.cs" />
     <Compile Include="Logging\Logger.cs" />
     <Compile Include="Math\Converters\BaseConverter.cs" />
-    <Compile Include="Math\Converters\BitsBytes.cs" />
-    <Compile Include="Math\Converters\Length.cs" />
-    <Compile Include="Math\Converters\Temperature.cs" />
-    <Compile Include="Math\Converters\Weight.cs" />
     <Compile Include="Math\BagMath.cs" />
     <Compile Include="Math\MathExtensions.cs" />
     <Compile Include="Math\Sequences.cs" />

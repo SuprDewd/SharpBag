@@ -739,11 +739,33 @@ namespace SharpBag
         }
 
         /// <summary>
-        /// Adds indexes to the current instance.
+        /// Removes extended info from the current instance.
         /// </summary>
         /// <typeparam name="T">The type of items in the current instance.</typeparam>
         /// <param name="collection">The current instance.</param>
-        /// <returns>The current instance with indexes.</returns>
+        /// <returns>The current instance without extended info.</returns>
+        public static IEnumerable<T> WithoutInfo<T>(this IEnumerable<EnumerableEntry.WithInfo<T>> collection)
+        {
+            return collection.Select(i => i.Value);
+        }
+
+        /// <summary>
+        /// Updates extended info of the current instance.
+        /// </summary>
+        /// <typeparam name="T">The type of items in the current instance.</typeparam>
+        /// <param name="collection">The current instance.</param>
+        /// <returns>The current instance with updated info.</returns>
+        public static IEnumerable<EnumerableEntry.WithInfo<T>> UpdateInfo<T>(this IEnumerable<EnumerableEntry.WithInfo<T>> collection)
+        {
+            return collection.WithoutInfo().WithInfo();
+        }
+
+        /// <summary>
+        /// Adds indices to the current instance.
+        /// </summary>
+        /// <typeparam name="T">The type of items in the current instance.</typeparam>
+        /// <param name="collection">The current instance.</param>
+        /// <returns>The current instance with indices.</returns>
         public static IEnumerable<EnumerableEntry.WithIndex<T>> WithIndex<T>(this IEnumerable<T> collection)
         {
             int index = 0;
@@ -752,6 +774,28 @@ namespace SharpBag
             {
                 yield return new EnumerableEntry.WithIndex<T>(value, index++);
             }
+        }
+
+        /// <summary>
+        /// Removes indices from the current instance.
+        /// </summary>
+        /// <typeparam name="T">The type of items in the current instance.</typeparam>
+        /// <param name="collection">The current instance.</param>
+        /// <returns>The current instance without indices.</returns>
+        public static IEnumerable<T> WithoutIndex<T>(this IEnumerable<EnumerableEntry.WithIndex<T>> collection)
+        {
+            return collection.Select(i => i.Value);
+        }
+
+        /// <summary>
+        /// Updates indices of the current instance.
+        /// </summary>
+        /// <typeparam name="T">The type of items in the current instance.</typeparam>
+        /// <param name="collection">The current instance.</param>
+        /// <returns>The current instance with updated indices.</returns>
+        public static IEnumerable<EnumerableEntry.WithIndex<T>> UpdateIndex<T>(this IEnumerable<EnumerableEntry.WithIndex<T>> collection)
+        {
+            return collection.WithoutIndex().WithIndex();
         }
 
         /// <summary>
@@ -846,6 +890,45 @@ namespace SharpBag
 
                 return min;
             }
+        }
+
+        /// <summary>
+        /// Cycles the items in the current instance.
+        /// </summary>
+        /// <typeparam name="T">The items in the current instance.</typeparam>
+        /// <param name="collection">The current instance.</param>
+        /// <param name="cache">Whether to cache items returned from the current instance.</param>
+        /// <returns>The items in the current instance in a cycle.</returns>
+        public static IEnumerable<T> Cycle<T>(this IEnumerable<T> collection, bool cache = true)
+        {
+            List<T> c = new List<T>();
+
+            foreach (T item in collection)
+            {
+                if (cache) c.Add(item);
+                yield return item;
+            }
+
+            T[] arr = c.ToArray();
+
+            while (true)
+            {
+                if (cache) foreach (T item in arr) yield return item;
+                else foreach (T item in collection) yield return item;
+            }
+        }
+
+        /// <summary>
+        /// Adds the specified items to the current instance.
+        /// </summary>
+        /// <typeparam name="T">The type of items in the current instance.</typeparam>
+        /// <param name="collection">The current instance.</param>
+        /// <param name="items">The items to add.</param>
+        /// <returns>The current instance and the specified items.</returns>
+        public static IEnumerable<T> Add<T>(this IEnumerable<T> collection, params T[] items)
+        {
+            foreach (T item in collection) yield return item;
+            foreach (T item in items) yield return item;
         }
     }
 }

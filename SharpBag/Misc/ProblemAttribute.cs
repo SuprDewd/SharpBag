@@ -24,7 +24,9 @@ namespace SharpBag.Misc
         /// <summary>
         /// Whether to time the problem.
         /// </summary>
-        public Nullable<bool> Time { get; set; }
+        public bool Time { set { this.InternalTime = value; } get { return this.InternalTime.HasValue && this.InternalTime.Value; } }
+
+        internal Nullable<bool> InternalTime { get; set; }
 
         /// <summary>
         /// Whether the problem is finished.

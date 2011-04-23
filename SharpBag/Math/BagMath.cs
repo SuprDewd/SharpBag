@@ -17,154 +17,6 @@ namespace SharpBag.Math
     /// </summary>
     public static class BagMath
     {
-        #region PointsInCircleF & PointsInCircle & all overloads
-
-        /// <summary>
-        /// Find points in a circle with a specified radius.
-        /// </summary>
-        /// <param name="radius">The radius of the circle.</param>
-        /// <returns>An array containing points.</returns>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static IEnumerable<PointF> PointsInCircleF(int radius)
-        {
-#if DOTNET4
-            Contract.Requires(radius > 0);
-#endif
-            return PointsInCircleF(radius, new PointF(radius, radius), 360);
-        }
-
-        /// <summary>
-        /// Find points in a circle with a specified radius.
-        /// </summary>
-        /// <param name="radius">The radius of the circle.</param>
-        /// <param name="center">The center-point of the circle.</param>
-        /// <returns>An array containing points.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static IEnumerable<PointF> PointsInCircleF(int radius, PointF center)
-        {
-#if DOTNET4
-            Contract.Requires(radius > 0);
-#endif
-            return PointsInCircleF(radius, center, 360);
-        }
-
-        /// <summary>
-        /// Find points in a circle with a specified radius.
-        /// </summary>
-        /// <param name="radius">The radius of the circle.</param>
-        /// <param name="points">Number of points to return.</param>
-        /// <returns>An array containing points.</returns>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static IEnumerable<PointF> PointsInCircleF(int radius, int points)
-        {
-#if DOTNET4
-            Contract.Requires(radius > 0);
-            Contract.Requires(points > 0);
-#endif
-            return PointsInCircleF(radius, new PointF(radius, radius), points);
-        }
-
-        /// <summary>
-        /// Find points in a circle with a specified radius.
-        /// </summary>
-        /// <param name="radius">The radius of the circle.</param>
-        /// <param name="center">The center-point of the circle.</param>
-        /// <param name="points">Number of points to return.</param>
-        /// <returns>An array containing points.</returns>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static IEnumerable<PointF> PointsInCircleF(int radius, PointF center, int points)
-        {
-#if DOTNET4
-            Contract.Requires(radius > 0);
-            Contract.Requires(points > 0);
-#endif
-
-            for (int i = 0; i < points; i++)
-            {
-                yield return new PointF((float)(center.X + radius * S.Math.Cos(2 * S.Math.PI * i / points)), (float)(center.Y + radius * S.Math.Sin(2 * S.Math.PI * i / points)));
-            }
-        }
-
-        /// <summary>
-        /// Find points in a circle with a specified radius.
-        /// </summary>
-        /// <param name="radius">The radius of the circle.</param>
-        /// <returns>An array containing points.</returns>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static IEnumerable<Point> PointsInCircle(int radius)
-        {
-#if DOTNET4
-            Contract.Requires(radius > 0);
-#endif
-            return PointsInCircle(radius, new Point(radius, radius), 360);
-        }
-
-        /// <summary>
-        /// Find points in a circle with a specified radius.
-        /// </summary>
-        /// <param name="radius">The radius of the circle.</param>
-        /// <param name="center">The center-point of the circle.</param>
-        /// <returns>An array containing points.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static IEnumerable<Point> PointsInCircle(int radius, Point center)
-        {
-#if DOTNET4
-            Contract.Requires(radius > 0);
-#endif
-            return PointsInCircle(radius, center, 360);
-        }
-
-        /// <summary>
-        /// Find points in a circle with a specified radius.
-        /// </summary>
-        /// <param name="radius">The radius of the circle.</param>
-        /// <param name="points">Number of points to return.</param>
-        /// <returns>An array containing points.</returns>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static IEnumerable<Point> PointsInCircle(int radius, int points)
-        {
-#if DOTNET4
-            Contract.Requires(radius > 0);
-            Contract.Requires(points > 0);
-#endif
-            return PointsInCircle(radius, new Point(radius, radius), points);
-        }
-
-        /// <summary>
-        /// Find points in a circle with a specified radius.
-        /// </summary>
-        /// <param name="radius">The radius of the circle.</param>
-        /// <param name="center">The center-point of the circle.</param>
-        /// <param name="points">Number of points to return.</param>
-        /// <returns>An array containing points.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static IEnumerable<Point> PointsInCircle(int radius, Point center, int points)
-        {
-#if DOTNET4
-            Contract.Requires(radius > 0);
-            Contract.Requires(points > 0);
-#endif
-            for (int i = 0; i < points; i++)
-            {
-                yield return new Point((int)S.Math.Round(center.X + radius * S.Math.Cos(2 * S.Math.PI * i / points)), (int)S.Math.Round(center.Y + radius * S.Math.Sin(2 * S.Math.PI * i / points)));
-            }
-        }
-
-        #endregion PointsInCircleF & PointsInCircle & all overloads
-
-        /// <summary>
-        /// Calculates wave length from the average fluctuation time.
-        /// </summary>
-        /// <param name="tz">The average fluctuation time (Tz).</param>
-        /// <returns>The length of the wave.</returns>
-        public static double WaveLength(double tz)
-        {
-            return (tz * tz) * 1.56;
-        }
-
         /// <summary>
         /// Finds the greatest common divisor (gcd) of the specified integers.
         /// </summary>
@@ -460,7 +312,7 @@ namespace SharpBag.Math
         /// <returns>The correct value of the current instance.</returns>
         public static int M(this int n, int thousand = 1000)
         {
-            return n * thousand * thousand;
+            return n * (int)S.Math.Pow(thousand, 2);
         }
 
         /// <summary>
@@ -471,7 +323,7 @@ namespace SharpBag.Math
         /// <returns>The correct value of the current instance.</returns>
         public static int G(this int n, int thousand = 1000)
         {
-            return n * thousand * thousand * thousand;
+            return n * (int)S.Math.Pow(thousand, 3);
         }
 
         /// <summary>
@@ -482,7 +334,7 @@ namespace SharpBag.Math
         /// <returns>The correct value of the current instance.</returns>
         public static int T(this int n, int thousand = 1000)
         {
-            return n * thousand * thousand * thousand * thousand;
+            return n * (int)S.Math.Pow(thousand, 4);
         }
 
         #endregion Sizes
