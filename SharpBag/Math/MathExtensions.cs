@@ -401,6 +401,8 @@ namespace SharpBag.Math
         /// <returns>The proper divisors.</returns>
         public static IEnumerable<int> ProperDivisors(this int n)
         {
+            if (n == 1) yield break;
+
             int sqrt = (int)System.Math.Sqrt(n);
             bool perf = sqrt * sqrt == n;
 
@@ -423,6 +425,8 @@ namespace SharpBag.Math
         /// <returns>The proper divisors.</returns>
         public static IEnumerable<long> ProperDivisors(this long n)
         {
+            if (n == 1) yield break;
+
             long sqrt = (long)System.Math.Sqrt(n);
             bool perf = sqrt * sqrt == n;
 
@@ -447,13 +451,15 @@ namespace SharpBag.Math
         /// <returns>The proper divisors.</returns>
         public static IEnumerable<BigInteger> ProperDivisors(this BigInteger n)
         {
+            if (n == 1) yield break;
+
             BigInteger sq;
             for (BigInteger i = 1; (sq = i * i) <= n; i++)
             {
                 if (n % i == 0)
                 {
                     yield return i;
-                    if (sq != n && n != 1) yield return n / i;
+                    if (sq != n && i != 1) yield return n / i;
                 }
             }
         }

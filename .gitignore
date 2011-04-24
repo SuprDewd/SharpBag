@@ -11,6 +11,7 @@
 /SharpBag/SharpBag.csproj.user
 /SharpBag.Tests/test-results/
 /SharpBag.Tests/SharpBag.Tests.pidb
+/TestResults/
 TestResult.xml
 *.VisualState.xml
 *.vs10x*

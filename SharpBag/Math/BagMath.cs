@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Drawing;
 using System.Threading.Tasks;
 using S = System;
 
 #if DOTNET4
 
-using System.Diagnostics.Contracts;
 using System.Numerics;
 
 #endif

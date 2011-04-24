@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SharpBag
+﻿namespace SharpBag
 {
     #region Marc Gravell - http://www.yoda.arachsys.com/csharp/miscutil/index.html
 

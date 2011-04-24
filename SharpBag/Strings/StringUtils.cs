@@ -1,11 +1,6 @@
 ﻿#if DOTNET4
 
-using System.Diagnostics.Contracts;
-
 #endif
-
-using System.Linq;
-using System.Text;
 
 namespace SharpBag.Strings
 {

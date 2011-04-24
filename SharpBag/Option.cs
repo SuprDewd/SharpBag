@@ -1,4 +1,8 @@
-﻿using System.Diagnostics.Contracts;
+﻿#if DOTNET4
+
+using System.Diagnostics.Contracts;
+
+#endif
 
 namespace SharpBag
 {
