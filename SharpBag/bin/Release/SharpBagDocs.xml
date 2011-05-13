@@ -1826,25 +1826,25 @@
             A class for sequences.
             </summary>
         </member>
-        <member name="M:SharpBag.Math.Sequences.NAgonalNumbers(System.Int32)">
+        <member name="M:SharpBag.Math.Sequences.FigurateNumbers(System.Int32)">
             <summary>
-            Numbers which are N-agonal.
+            Numbers which are n-figurate.
             </summary>
-            <param name="n">The N in N-agonal.</param>
+            <param name="n">The n in n-figurate.</param>
             <returns>The numbers.</returns>
         </member>
-        <member name="M:SharpBag.Math.Sequences.NAgonalNumbers(System.Int64)">
+        <member name="M:SharpBag.Math.Sequences.FigurateNumbers(System.Int64)">
             <summary>
-            Numbers which are N-agonal.
+            Numbers which are n-figurate.
             </summary>
-            <param name="n">The N in N-agonal.</param>
+            <param name="n">The n in n-figurate.</param>
             <returns>The numbers.</returns>
         </member>
-        <member name="M:SharpBag.Math.Sequences.NAgonalNumbers(System.Numerics.BigInteger)">
+        <member name="M:SharpBag.Math.Sequences.FigurateNumbers(System.Numerics.BigInteger)">
             <summary>
-            Numbers which are N-agonal.
+            Numbers which are n-figurate.
             </summary>
-            <param name="n">The N in N-agonal.</param>
+            <param name="n">The n in n-figurate.</param>
             <returns>The numbers.</returns>
         </member>
         <member name="P:SharpBag.Math.Sequences.Fibonacci">

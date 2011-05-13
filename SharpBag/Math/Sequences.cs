@@ -406,17 +406,17 @@ namespace SharpBag.Math
 
 		#endregion Pythagorean Triplets
 
-		#region N-agonal Numbers
+		#region Figurate Numbers
 
 		/// <summary>
-		/// Numbers which are N-agonal.
+		/// Numbers which are n-figurate.
 		/// </summary>
-		/// <param name="n">The N in N-agonal.</param>
+		/// <param name="n">The n in n-figurate.</param>
 		/// <returns>The numbers.</returns>
-		public static IEnumerable<int> NAgonalNumbers(int n)
+		public static IEnumerable<int> FigurateNumbers(int n)
 		{
 #if DOTNET4
-			Contract.Requires(n >= 1);
+			Contract.Requires(n >= 0);
 #endif
 			int cur = 1;
 
@@ -428,14 +428,14 @@ namespace SharpBag.Math
 		}
 
 		/// <summary>
-		/// Numbers which are N-agonal.
+		/// Numbers which are n-figurate.
 		/// </summary>
-		/// <param name="n">The N in N-agonal.</param>
+		/// <param name="n">The n in n-figurate.</param>
 		/// <returns>The numbers.</returns>
-		public static IEnumerable<long> NAgonalNumbers(long n)
+		public static IEnumerable<long> FigurateNumbers(long n)
 		{
 #if DOTNET4
-			Contract.Requires(n >= 1);
+			Contract.Requires(n >= 0);
 #endif
 			long cur = 1;
 
@@ -449,13 +449,13 @@ namespace SharpBag.Math
 #if DOTNET4
 
 		/// <summary>
-		/// Numbers which are N-agonal.
+		/// Numbers which are n-figurate.
 		/// </summary>
-		/// <param name="n">The N in N-agonal.</param>
+		/// <param name="n">The n in n-figurate.</param>
 		/// <returns>The numbers.</returns>
-		public static IEnumerable<BigInteger> NAgonalNumbers(BigInteger n)
+		public static IEnumerable<BigInteger> FigurateNumbers(BigInteger n)
 		{
-			Contract.Requires(n >= 1);
+			Contract.Requires(n >= 0);
 			BigInteger cur = 1;
 
 			for (BigInteger i = 1; ; i += n)
@@ -467,6 +467,6 @@ namespace SharpBag.Math
 
 #endif
 
-		#endregion N-agonal Numbers
+		#endregion Figurate Numbers
 	}
 }
