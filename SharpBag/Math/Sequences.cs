@@ -1,396 +1,472 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 #if DOTNET4
 
 using System.Numerics;
+using System.Diagnostics.Contracts;
 
 #endif
 
 namespace SharpBag.Math
 {
-    /// <summary>
-    /// A class for number sources.
-    /// </summary>
-    public static class Sequences
-    {
-        #region Fibonacci numbers
+	/// <summary>
+	/// A class for sequences.
+	/// </summary>
+	public static class Sequences
+	{
+		#region Fibonacci numbers
 
-        /// <summary>
-        /// An endless source that will return fibonacci numbers.
-        /// </summary>
-        public static IEnumerable<int> Fibonacci
-        {
-            get
-            {
-                int a = 0;
-                int b = 1;
-                int t;
+		/// <summary>
+		/// An endless source of fibonacci numbers.
+		/// </summary>
+		public static IEnumerable<int> Fibonacci
+		{
+			get
+			{
+				int a = 0;
+				int b = 1;
+				int t;
 
-                yield return a;
-                yield return b;
+				yield return a;
+				yield return b;
 
-                while (true)
-                {
-                    yield return t = a + b;
-                    a = b;
-                    b = t;
-                }
-            }
-        }
+				while (true)
+				{
+					yield return t = a + b;
+					a = b;
+					b = t;
+				}
+			}
+		}
 
-        /// <summary>
-        /// An endless source that will return fibonacci numbers.
-        /// </summary>
-        public static IEnumerable<long> Fibonacci64
-        {
-            get
-            {
-                long a = 0;
-                long b = 1;
-                long t;
+		/// <summary>
+		/// An endless source of fibonacci numbers.
+		/// </summary>
+		public static IEnumerable<long> Fibonacci64
+		{
+			get
+			{
+				long a = 0;
+				long b = 1;
+				long t;
 
-                yield return a;
-                yield return b;
+				yield return a;
+				yield return b;
 
-                while (true)
-                {
-                    yield return t = a + b;
-                    a = b;
-                    b = t;
-                }
-            }
-        }
-
-#if DOTNET4
-
-        /// <summary>
-        /// An endless source that will return fibonacci numbers.
-        /// </summary>
-        public static IEnumerable<BigInteger> FibonacciBig
-        {
-            get
-            {
-                BigInteger a = 0;
-                BigInteger b = 1;
-                BigInteger t;
-
-                yield return a;
-                yield return b;
-
-                while (true)
-                {
-                    yield return t = a + b;
-                    a = b;
-                    b = t;
-                }
-            }
-        }
-
-#endif
-
-        #endregion Fibonacci numbers
-
-        #region Factorial numbers
-
-        /// <summary>
-        /// An endless source that will return factorial numbers.
-        /// </summary>
-        public static IEnumerable<int> Factorial
-        {
-            get
-            {
-                int cur = 1;
-
-                for (int i = 1; ; i++)
-                {
-                    yield return cur;
-                    cur *= i;
-                }
-            }
-        }
-
-        /// <summary>
-        /// An endless source that will return factorial numbers.
-        /// </summary>
-        public static IEnumerable<long> Factorial64
-        {
-            get
-            {
-                long cur = 1;
-
-                for (long i = 1; ; i++)
-                {
-                    yield return cur;
-                    cur *= i;
-                }
-            }
-        }
-
-        /// <summary>
-        /// An endless source that will return factorial numbers.
-        /// </summary>
-        public static IEnumerable<BigInteger> FactorialBig
-        {
-            get
-            {
-                BigInteger cur = 1;
-
-                for (BigInteger i = 1; ; i++)
-                {
-                    yield return cur;
-                    cur *= i;
-                }
-            }
-        }
-
-        #endregion Factorial numbers
-
-        #region Prime numbers
-
-        /// <summary>
-        /// A possibly endless source that will return prime numbers.
-        /// </summary>
-        public static IEnumerable<int> Primes
-        {
-            get
-            {
-                for (int i = 2; ; i++)
-                {
-                    if (BagMath.IsPrime(i)) yield return i;
-                }
-            }
-        }
-
-        /// <summary>
-        /// A possibly endless source that will return prime numbers.
-        /// </summary>
-        public static IEnumerable<long> Primes64
-        {
-            get
-            {
-                for (long i = 2; ; i++)
-                {
-                    if (BagMath.IsPrime(i)) yield return i;
-                }
-            }
-        }
+				while (true)
+				{
+					yield return t = a + b;
+					a = b;
+					b = t;
+				}
+			}
+		}
 
 #if DOTNET4
 
-        /// <summary>
-        /// A possibly endless source that will return prime numbers.
-        /// </summary>
-        public static IEnumerable<BigInteger> PrimesBig
-        {
-            get
-            {
-                for (BigInteger i = 2; ; i++)
-                {
-                    if (BagMath.IsPrime(i)) yield return i;
-                }
-            }
-        }
+		/// <summary>
+		/// An endless source of fibonacci numbers.
+		/// </summary>
+		public static IEnumerable<BigInteger> FibonacciBig
+		{
+			get
+			{
+				BigInteger a = 0;
+				BigInteger b = 1;
+				BigInteger t;
+
+				yield return a;
+				yield return b;
+
+				while (true)
+				{
+					yield return t = a + b;
+					a = b;
+					b = t;
+				}
+			}
+		}
 
 #endif
 
-        #endregion Prime numbers
+		#endregion Fibonacci numbers
 
-        #region Triangle numbers
+		#region Factorial numbers
 
-        /// <summary>
-        /// An endless source for triangle numbers.
-        /// </summary>
-        public static IEnumerable<int> TriangleNumbers
-        {
-            get
-            {
-                int triangle = 0;
-                for (int i = 1; ; i++)
-                {
-                    triangle += i;
-                    yield return triangle;
-                }
-            }
-        }
+		/// <summary>
+		/// An endless source of factorial numbers.
+		/// </summary>
+		public static IEnumerable<int> Factorial
+		{
+			get
+			{
+				int cur = 1;
 
-        /// <summary>
-        /// An endless source for triangle numbers.
-        /// </summary>
-        public static IEnumerable<long> TriangleNumbers64
-        {
-            get
-            {
-                long triangle = 0;
-                for (long i = 1; ; i++)
-                {
-                    triangle += i;
-                    yield return triangle;
-                }
-            }
-        }
+				for (int i = 1; ; i++)
+				{
+					yield return cur;
+					cur *= i;
+				}
+			}
+		}
+
+		/// <summary>
+		/// An endless source of factorial numbers.
+		/// </summary>
+		public static IEnumerable<long> Factorial64
+		{
+			get
+			{
+				long cur = 1;
+
+				for (long i = 1; ; i++)
+				{
+					yield return cur;
+					cur *= i;
+				}
+			}
+		}
+
+		/// <summary>
+		/// An endless source of factorial numbers.
+		/// </summary>
+		public static IEnumerable<BigInteger> FactorialBig
+		{
+			get
+			{
+				BigInteger cur = 1;
+
+				for (BigInteger i = 1; ; i++)
+				{
+					yield return cur;
+					cur *= i;
+				}
+			}
+		}
+
+		#endregion Factorial numbers
+
+		#region Prime numbers
+
+		/// <summary>
+		/// A possibly endless source of prime numbers.
+		/// </summary>
+		public static IEnumerable<int> Primes
+		{
+			get
+			{
+				yield return 2;
+
+				for (int i = 3; ; i += 2)
+				{
+					if (BagMath.IsPrime(i)) yield return i;
+				}
+			}
+		}
+
+		/// <summary>
+		/// A possibly endless source of prime numbers.
+		/// </summary>
+		public static IEnumerable<long> Primes64
+		{
+			get
+			{
+				yield return 2;
+
+				for (long i = 3; ; i += 2)
+				{
+					if (BagMath.IsPrime(i)) yield return i;
+				}
+			}
+		}
 
 #if DOTNET4
 
-        /// <summary>
-        /// An endless source for triangle numbers.
-        /// </summary>
-        public static IEnumerable<BigInteger> TriangleNumbersBig
-        {
-            get
-            {
-                BigInteger triangle = 0;
-                for (BigInteger i = 1; ; i++)
-                {
-                    triangle += i;
-                    yield return triangle;
-                }
-            }
-        }
+		/// <summary>
+		/// A possibly endless source of prime numbers.
+		/// </summary>
+		public static IEnumerable<BigInteger> PrimesBig
+		{
+			get
+			{
+				yield return 2;
+
+				for (BigInteger i = 3; ; i += 2)
+				{
+					if (BagMath.IsPrime(i)) yield return i;
+				}
+			}
+		}
 
 #endif
 
-        #endregion Triangle numbers
+		#endregion Prime numbers
 
-        #region Perfect numbers
+		#region Perfect numbers
 
-        /// <summary>
-        /// An endless source for perfect numbers.
-        /// </summary>
-        public static IEnumerable<int> PerfectNumbers
-        {
-            get
-            {
-                return from i in 1.ToInfinity()
-                       where i.ProperDivisors().Sum() == i
-                       select i;
-            }
-        }
+		/// <summary>
+		/// An endless source of perfect numbers.
+		/// </summary>
+		public static IEnumerable<int> PerfectNumbers
+		{
+			get
+			{
+				return from i in 1.ToInfinity()
+					   where i.DivisorSum() - i == i
+					   select i;
+			}
+		}
 
-        /// <summary>
-        /// An endless source for perfect numbers.
-        /// </summary>
-        public static IEnumerable<long> PerfectNumbers64
-        {
-            get
-            {
-                return from i in 1L.ToInfinity()
-                       where i.ProperDivisors().Sum() == i
-                       select i;
-            }
-        }
+		/// <summary>
+		/// An endless source of perfect numbers.
+		/// </summary>
+		public static IEnumerable<long> PerfectNumbers64
+		{
+			get
+			{
+				return from i in 1L.ToInfinity()
+					   where i.DivisorSum() - i == i
+					   select i;
+			}
+		}
 
 #if DOTNET4
 
-        /// <summary>
-        /// An endless source for perfect numbers.
-        /// </summary>
-        public static IEnumerable<BigInteger> PerfectNumbersBig
-        {
-            get
-            {
-                return from i in BigInteger.One.ToInfinity()
-                       where i.ProperDivisors().Aggregate(BigInteger.Zero, (a, b) => a + b) == i
-                       select i;
-            }
-        }
+		/// <summary>
+		/// An endless source of perfect numbers.
+		/// </summary>
+		public static IEnumerable<BigInteger> PerfectNumbersBig
+		{
+			get
+			{
+				return from i in BigInteger.One.ToInfinity()
+					   where i.DivisorSum() - i == i
+					   select i;
+			}
+		}
 
 #endif
 
-        #endregion Perfect numbers
+		#endregion Perfect numbers
 
-        #region Deficient numbers
+		#region Deficient numbers
 
-        /// <summary>
-        /// An endless source for deficient numbers.
-        /// </summary>
-        public static IEnumerable<int> DeficientNumbers
-        {
-            get
-            {
-                return from i in 1.ToInfinity()
-                       where i.ProperDivisors().Sum() < i
-                       select i;
-            }
-        }
+		/// <summary>
+		/// An endless source of deficient numbers.
+		/// </summary>
+		public static IEnumerable<int> DeficientNumbers
+		{
+			get
+			{
+				return from i in 1.ToInfinity()
+					   where i.DivisorSum() - i < i
+					   select i;
+			}
+		}
 
-        /// <summary>
-        /// An endless source for deficient numbers.
-        /// </summary>
-        public static IEnumerable<long> DeficientNumbers64
-        {
-            get
-            {
-                return from i in 1L.ToInfinity()
-                       where i.ProperDivisors().Sum() < i
-                       select i;
-            }
-        }
+		/// <summary>
+		/// An endless source of deficient numbers.
+		/// </summary>
+		public static IEnumerable<long> DeficientNumbers64
+		{
+			get
+			{
+				return from i in 1L.ToInfinity()
+					   where i.DivisorSum() - i < i
+					   select i;
+			}
+		}
 
 #if DOTNET4
 
-        /// <summary>
-        /// An endless source for deficient numbers.
-        /// </summary>
-        public static IEnumerable<BigInteger> DeficientNumbersBig
-        {
-            get
-            {
-                return from i in BigInteger.One.ToInfinity()
-                       where i.ProperDivisors().Aggregate(BigInteger.Zero, (a, n) => a + n) < i
-                       select i;
-            }
-        }
+		/// <summary>
+		/// An endless source of deficient numbers.
+		/// </summary>
+		public static IEnumerable<BigInteger> DeficientNumbersBig
+		{
+			get
+			{
+				return from i in BigInteger.One.ToInfinity()
+					   where i.DivisorSum() - i < i
+					   select i;
+			}
+		}
 
 #endif
 
-        #endregion Deficient numbers
+		#endregion Deficient numbers
 
-        #region Abundant number
+		#region Abundant number
 
-        /// <summary>
-        /// An endless source for abundant number
-        /// </summary>
-        public static IEnumerable<int> AbundantNumbers
-        {
-            get
-            {
-                return from i in 1.ToInfinity()
-                       where i.ProperDivisors().Sum() > i
-                       select i;
-            }
-        }
+		/// <summary>
+		/// An endless source of abundant number.
+		/// </summary>
+		public static IEnumerable<int> AbundantNumbers
+		{
+			get
+			{
+				return from i in 1.ToInfinity()
+					   where i.DivisorSum() - i > i
+					   select i;
+			}
+		}
 
-        /// <summary>
-        /// An endless source for abundant number
-        /// </summary>
-        public static IEnumerable<long> AbundantNumbers64
-        {
-            get
-            {
-                return from i in 1L.ToInfinity()
-                       where i.ProperDivisors().Sum() > i
-                       select i;
-            }
-        }
+		/// <summary>
+		/// An endless source of abundant number.
+		/// </summary>
+		public static IEnumerable<long> AbundantNumbers64
+		{
+			get
+			{
+				return from i in 1L.ToInfinity()
+					   where i.DivisorSum() - i > i
+					   select i;
+			}
+		}
 
 #if DOTNET4
 
-        /// <summary>
-        /// An endless source for abundant number
-        /// </summary>
-        public static IEnumerable<BigInteger> AbundantNumbersBig
-        {
-            get
-            {
-                return from i in BigInteger.One.ToInfinity()
-                       where i.ProperDivisors().Aggregate(BigInteger.Zero, (a, n) => a + n) > i
-                       select i;
-            }
-        }
+		/// <summary>
+		/// An endless source of abundant number.
+		/// </summary>
+		public static IEnumerable<BigInteger> AbundantNumbersBig
+		{
+			get
+			{
+				return from i in BigInteger.One.ToInfinity()
+					   where i.DivisorSum() - i > i
+					   select i;
+			}
+		}
 
 #endif
 
-        #endregion Abundant number
-    }
+		#endregion Abundant number
+
+		#region Pythagorean Triplets
+
+		/// <summary>
+		/// An endless source of Pythagorean Triplets.
+		/// </summary>
+		public static IEnumerable<Tuple<int, int, int>> PythagoreanTriplets
+		{
+			get
+			{
+				for (int m = 2; ; m++)
+				{
+					for (int n = 1; n < m; n++)
+					{
+						int nsq = n * n,
+							msq = m * m;
+						yield return new Tuple<int, int, int>(msq - nsq, 2 * m * n, msq + nsq);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// An endless source of Pythagorean Triplets.
+		/// </summary>
+		public static IEnumerable<Tuple<long, long, long>> PythagoreanTriplets64
+		{
+			get
+			{
+				for (long m = 2; ; m++)
+				{
+					for (long n = 1; n < m; n++)
+					{
+						long nsq = n * n,
+							 msq = m * m;
+						yield return new Tuple<long, long, long>(msq - nsq, 2 * m * n, msq + nsq);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// An endless source of Pythagorean Triplets.
+		/// </summary>
+		public static IEnumerable<Tuple<BigInteger, BigInteger, BigInteger>> PythagoreanTripletsBig
+		{
+			get
+			{
+				for (BigInteger m = 2; ; m++)
+				{
+					for (BigInteger n = 1; n < m; n++)
+					{
+						BigInteger nsq = n * n,
+								   msq = m * m;
+						yield return new Tuple<BigInteger, BigInteger, BigInteger>(msq - nsq, 2 * m * n, msq + nsq);
+					}
+				}
+			}
+		}
+
+		#endregion Pythagorean Triplets
+
+		#region N-agonal Numbers
+
+		/// <summary>
+		/// Numbers which are N-agonal.
+		/// </summary>
+		/// <param name="n">The N in N-agonal.</param>
+		/// <returns>The numbers.</returns>
+		public static IEnumerable<int> NAgonalNumbers(int n)
+		{
+#if DOTNET4
+			Contract.Requires(n >= 1);
+#endif
+			int cur = 1;
+
+			for (int i = 1; ; i += n)
+			{
+				yield return cur;
+				cur += i;
+			}
+		}
+
+		/// <summary>
+		/// Numbers which are N-agonal.
+		/// </summary>
+		/// <param name="n">The N in N-agonal.</param>
+		/// <returns>The numbers.</returns>
+		public static IEnumerable<long> NAgonalNumbers(long n)
+		{
+#if DOTNET4
+			Contract.Requires(n >= 1);
+#endif
+			long cur = 1;
+
+			for (long i = 1; ; i += n)
+			{
+				yield return cur;
+				cur += i;
+			}
+		}
+
+#if DOTNET4
+
+		/// <summary>
+		/// Numbers which are N-agonal.
+		/// </summary>
+		/// <param name="n">The N in N-agonal.</param>
+		/// <returns>The numbers.</returns>
+		public static IEnumerable<BigInteger> NAgonalNumbers(BigInteger n)
+		{
+			Contract.Requires(n >= 1);
+			BigInteger cur = 1;
+
+			for (BigInteger i = 1; ; i += n)
+			{
+				yield return cur;
+				cur += i;
+			}
+		}
+
+#endif
+
+		#endregion N-agonal Numbers
+	}
 }

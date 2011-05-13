@@ -127,8 +127,8 @@
     <Compile Include="Games\CardStack.cs" />
     <Compile Include="IO\IOExtensions.cs" />
     <Compile Include="IO\Serialization.cs" />
-    <Compile Include="Logging\InteractiveConsole.cs" />
-    <Compile Include="Logging\Logger.cs" />
+    <Compile Include="IO\Logging\InteractiveConsole.cs" />
+    <Compile Include="IO\Logging\Logger.cs" />
     <Compile Include="Math\Converters\BaseConverter.cs" />
     <Compile Include="Math\BagMath.cs" />
     <Compile Include="Math\MathExtensions.cs" />

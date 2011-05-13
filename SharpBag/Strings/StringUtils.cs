@@ -4,10 +4,10 @@
 
 namespace SharpBag.Strings
 {
-    /// <summary>
-    /// A static class with string utilities.
-    /// </summary>
-    public static class StringUtils
-    {
-    }
+	/// <summary>
+	/// A static class with string utilities.
+	/// </summary>
+	public static class StringUtils
+	{
+	}
 }

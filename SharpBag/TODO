@@ -1,6 +1,6 @@
 
  TODO:
-	
+
 	- Add arithmetic overflow checks.
 	- Only loop up to Sqrt(N) in BigInteger.Factors().
 	- Replace DOTNET4 with USECODECONSTRAINTS (or something built-in with Code Contracts) where applicable.

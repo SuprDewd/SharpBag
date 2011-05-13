@@ -12,792 +12,1135 @@ using System.Numerics;
 
 namespace SharpBag.Math
 {
-    /// <summary>
-    /// Extensions methods for the BagMath class.
-    /// </summary>
-    public static class MathExtensions
-    {
-        #region ToInfinity
+	/// <summary>
+	/// Extension methods for the BagMath class.
+	/// </summary>
+	public static class MathExtensions
+	{
+		#region ToInfinity
 
-        /// <summary>
-        /// Generates numbers that range from the value of the current instance to positive infinity.
-        /// </summary>
-        /// <param name="start">The current instance.</param>
-        /// <returns>An enumerable containing the numbers.</returns>
-        public static IEnumerable<long> ToInfinity(this long start)
-        {
-            return start.ToInfinity(1);
-        }
+		/// <summary>
+		/// Generates numbers that range from the value of the current instance to positive infinity.
+		/// </summary>
+		/// <param name="start">The current instance.</param>
+		/// <param name="step">The step to take on each iteration.</param>
+		/// <returns>An enumerable containing the numbers.</returns>
+		public static IEnumerable<long> ToInfinity(this long start, long step = 1)
+		{
+			for (var current = start; ; current += step)
+				yield return current;
+		}
 
-        /// <summary>
-        /// Generates numbers that range from the value of the current instance to positive infinity.
-        /// </summary>
-        /// <param name="start">The current instance.</param>
-        /// <returns>An enumerable containing the numbers.</returns>
-        public static IEnumerable<int> ToInfinity(this int start)
-        {
-            return start.ToInfinity(1);
-        }
-
-#if DOTNET4
-
-        /// <summary>
-        /// Generates numbers that range from the value of the current instance to positive infinity.
-        /// </summary>
-        /// <param name="start">The current instance.</param>
-        /// <returns>An enumerable containing the numbers.</returns>
-        public static IEnumerable<BigInteger> ToInfinity(this BigInteger start)
-        {
-            return start.ToInfinity(1);
-        }
-
-#endif
-
-        /// <summary>
-        /// Generates numbers that range from the value of the current instance to positive infinity.
-        /// </summary>
-        /// <param name="start">The current instance.</param>
-        /// <param name="step">The step to take on each iteration.</param>
-        /// <returns>An enumerable containing the numbers.</returns>
-        public static IEnumerable<long> ToInfinity(this long start, long step)
-        {
-            for (var current = start; ; current += step)
-                yield return current;
-        }
-
-        /// <summary>
-        /// Generates numbers that range from the value of the current instance to positive infinity.
-        /// </summary>
-        /// <param name="start">The current instance.</param>
-        /// <param name="step">The step to take on each iteration.</param>
-        /// <returns>An enumerable containing the numbers.</returns>
-        public static IEnumerable<int> ToInfinity(this int start, int step)
-        {
-            for (var current = start; ; current += step)
-                yield return current;
-        }
+		/// <summary>
+		/// Generates numbers that range from the value of the current instance to positive infinity.
+		/// </summary>
+		/// <param name="start">The current instance.</param>
+		/// <param name="step">The step to take on each iteration.</param>
+		/// <returns>An enumerable containing the numbers.</returns>
+		public static IEnumerable<int> ToInfinity(this int start, int step = 1)
+		{
+			for (var current = start; ; current += step)
+				yield return current;
+		}
 
 #if DOTNET4
 
-        /// <summary>
-        /// Generates numbers that range from the value of the current instance to positive infinity.
-        /// </summary>
-        /// <param name="start">The current instance.</param>
-        /// <param name="step">The step to take on each iteration.</param>
-        /// <returns>An enumerable containing the numbers.</returns>
-        public static IEnumerable<BigInteger> ToInfinity(this BigInteger start, BigInteger step)
-        {
-            for (var current = start; ; current += step)
-                yield return current;
-        }
+		/// <summary>
+		/// Generates numbers that range from the value of the current instance to positive infinity.
+		/// </summary>
+		/// <param name="start">The current instance.</param>
+		/// <returns>An enumerable containing the numbers.</returns>
+		public static IEnumerable<BigInteger> ToInfinity(this BigInteger start)
+		{
+			return start.ToInfinity(1);
+		}
+
+		/// <summary>
+		/// Generates numbers that range from the value of the current instance to positive infinity.
+		/// </summary>
+		/// <param name="start">The current instance.</param>
+		/// <param name="step">The step to take on each iteration.</param>
+		/// <returns>An enumerable containing the numbers.</returns>
+		public static IEnumerable<BigInteger> ToInfinity(this BigInteger start, BigInteger step)
+		{
+			for (var current = start; ; current += step)
+				yield return current;
+		}
 
 #endif
 
-        #endregion ToInfinity
+		#endregion ToInfinity
 
-        #region IsBetween
+		#region IsBetween
 
-        /// <summary>
-        /// Checks if the current instance is between, but not equal to, two integers.
-        /// </summary>
-        /// <param name="n">The current integers.</param>
-        /// <param name="min">The lower boundary.</param>
-        /// <param name="max">The upper boundary.</param>
-        /// <returns>True if the current instance is between, but not equal to, the two integers; otherwise false.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static bool IsBetween(this int n, int min, int max)
-        {
+		/// <summary>
+		/// Checks if the current instance is between, but not equal to, two integers.
+		/// </summary>
+		/// <param name="n">The current integers.</param>
+		/// <param name="min">The lower boundary.</param>
+		/// <param name="max">The upper boundary.</param>
+		/// <returns>True if the current instance is between, but not equal to, the two integers; otherwise false.</returns>
+		/// <exception cref="System.ArgumentNullException"></exception>
+		/// <exception cref="System.ArgumentException"></exception>
+		public static bool IsBetween(this int n, int min, int max)
+		{
 #if DOTNET4
-            Contract.Requires(min <= max);
+			Contract.Requires(min <= max);
 #endif
-            return (n > min && n < max);
-        }
+			return (n > min && n < max);
+		}
 
-        /// <summary>
-        /// Checks if the current instance is between or equal to two integers.
-        /// </summary>
-        /// <param name="n">The current integers.</param>
-        /// <param name="min">The minimum integer.</param>
-        /// <param name="max">The maximum integer.</param>
-        /// <returns>True if the current instance is between or equal to the two integers; otherwise false.</returns>
+		/// <summary>
+		/// Checks if the current instance is between or equal to two integers.
+		/// </summary>
+		/// <param name="n">The current integers.</param>
+		/// <param name="min">The minimum integer.</param>
+		/// <param name="max">The maximum integer.</param>
+		/// <returns>True if the current instance is between or equal to the two integers; otherwise false.</returns>
 #if DOTNET4
 
-        [Pure]
+		[Pure]
 #endif
-        public static bool IsBetweenOrEqualTo(this int n, int min, int max)
-        {
+		public static bool IsBetweenOrEqualTo(this int n, int min, int max)
+		{
 #if DOTNET4
-            Contract.Requires(min <= max);
+			Contract.Requires(min <= max);
 #endif
-            return (n >= min && n <= max);
-        }
+			return (n >= min && n <= max);
+		}
 
-        /// <summary>
-        /// Checks if the current instance is between, but not equal to, two integers.
-        /// </summary>
-        /// <param name="n">The current integers.</param>
-        /// <param name="min">The lower boundary.</param>
-        /// <param name="max">The upper boundary.</param>
-        /// <returns>True if the current instance is between, but not equal to, the two integers; otherwise false.</returns>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static bool IsBetween(this double n, double min, double max)
-        {
-            if (min > max) throw new ArgumentException("min must not be greater than max.");
-            return (n > min && n < max);
-        }
+		/// <summary>
+		/// Checks if the current instance is between, but not equal to, two integers.
+		/// </summary>
+		/// <param name="n">The current integers.</param>
+		/// <param name="min">The lower boundary.</param>
+		/// <param name="max">The upper boundary.</param>
+		/// <returns>True if the current instance is between, but not equal to, the two integers; otherwise false.</returns>
+		/// <exception cref="System.ArgumentNullException"></exception>
+		/// <exception cref="System.ArgumentException"></exception>
+		public static bool IsBetween(this double n, double min, double max)
+		{
+			if (min > max) throw new ArgumentException("min must not be greater than max.");
+			return (n > min && n < max);
+		}
 
-        /// <summary>
-        /// Checks if the current instance is between or equal to two integers.
-        /// </summary>
-        /// <param name="n">The current integers.</param>
-        /// <param name="min">The minimum integer.</param>
-        /// <param name="max">The maximum integer.</param>
-        /// <returns>True if the current instance is between or equal to the two integers; otherwise false.</returns>
-        /// <exception cref="System.ArgumentException"></exception>
-        public static bool IsBetweenOrEqualTo(this double n, double min, double max)
-        {
-            if (min > max) throw new ArgumentException("min must not be greater than max");
-            return (n >= min && n <= max);
-        }
+		/// <summary>
+		/// Checks if the current instance is between or equal to two integers.
+		/// </summary>
+		/// <param name="n">The current integers.</param>
+		/// <param name="min">The minimum integer.</param>
+		/// <param name="max">The maximum integer.</param>
+		/// <returns>True if the current instance is between or equal to the two integers; otherwise false.</returns>
+		/// <exception cref="System.ArgumentException"></exception>
+		public static bool IsBetweenOrEqualTo(this double n, double min, double max)
+		{
+			if (min > max) throw new ArgumentException("min must not be greater than max");
+			return (n >= min && n <= max);
+		}
 
-        #endregion IsBetween
+		#endregion IsBetween
 
-        #region Round
+		#region Round
 
-        /// <summary>
-        /// Rounds the current instance.
-        /// </summary>
-        /// <param name="d">The current instance.</param>
-        /// <returns>The current instance rounded.</returns>
-        public static int Round(this double d)
-        {
-            return (int)System.Math.Round(d);
-        }
+		/// <summary>
+		/// Rounds the current instance.
+		/// </summary>
+		/// <param name="d">The current instance.</param>
+		/// <returns>The current instance rounded.</returns>
+		public static int Round(this double d)
+		{
+			return (int)System.Math.Round(d);
+		}
 
-        /// <summary>
-        /// Rounds the current instance.
-        /// </summary>
-        /// <param name="d">The current instance.</param>
-        /// <param name="digits">Number of digits to keep after the comma.</param>
-        /// <returns>The current instance rounded.</returns>
-        public static double Round(this double d, int digits)
-        {
+		/// <summary>
+		/// Rounds the current instance.
+		/// </summary>
+		/// <param name="d">The current instance.</param>
+		/// <param name="digits">Number of digits to keep after the comma.</param>
+		/// <returns>The current instance rounded.</returns>
+		public static double Round(this double d, int digits)
+		{
 #if DOTNET4
-            Contract.Requires(digits.IsBetweenOrEqualTo(0, 15));
+			Contract.Requires(digits.IsBetweenOrEqualTo(0, 15));
 #endif
-            return System.Math.Round(d, digits);
-        }
+			return System.Math.Round(d, digits);
+		}
 
-        #endregion Round
+		#endregion Round
 
-        #region Bound
+		#region Bound
 
-        /// <summary>
-        /// Gets the current instance inside the specified boundaries.
-        /// </summary>
-        /// <param name="d">The current instance.</param>
-        /// <param name="lower">The lower boundary.</param>
-        /// <param name="upper">The upper boundary.</param>
-        /// <returns>The current instance inside the spcified boundaries.</returns>
-        public static int Bound(this int d, int lower, int upper)
-        {
-            return d < lower ? lower : (d > upper ? upper : d);
-        }
+		/// <summary>
+		/// Gets the current instance inside the specified boundaries.
+		/// </summary>
+		/// <param name="d">The current instance.</param>
+		/// <param name="lower">The lower boundary.</param>
+		/// <param name="upper">The upper boundary.</param>
+		/// <returns>The current instance inside the spcified boundaries.</returns>
+		public static int Bound(this int d, int lower, int upper)
+		{
+			return d < lower ? lower : (d > upper ? upper : d);
+		}
 
-        /// <summary>
-        /// Gets the current instance inside the specified boundaries.
-        /// </summary>
-        /// <param name="d">The current instance.</param>
-        /// <param name="lower">The lower boundary.</param>
-        /// <param name="upper">The upper boundary.</param>
-        /// <returns>The current instance inside the spcified boundaries.</returns>
-        public static double Bound(this double d, double lower, double upper)
-        {
-            return d < lower ? lower : (d > upper ? upper : d);
-        }
+		/// <summary>
+		/// Gets the current instance inside the specified boundaries.
+		/// </summary>
+		/// <param name="d">The current instance.</param>
+		/// <param name="lower">The lower boundary.</param>
+		/// <param name="upper">The upper boundary.</param>
+		/// <returns>The current instance inside the spcified boundaries.</returns>
+		public static double Bound(this double d, double lower, double upper)
+		{
+			return d < lower ? lower : (d > upper ? upper : d);
+		}
 
-        #endregion Bound
+		#endregion Bound
 
-        #region IsDivisableBy
+		#region Divisors
 
-        /// <summary>
-        /// Whether the current instance is divisable by all the specified numbers.
-        /// </summary>
-        /// <param name="i">The current instance.</param>
-        /// <param name="from">The smallest number.</param>
-        /// <param name="to">The largest number.</param>
-        /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        public static bool IsDivisableBy(this int i, int from, int to)
-        {
-            return i.IsDivisableBy(from.To(to));
-        }
+		/// <summary>
+		/// The divisors of the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>The divisors.</returns>
+		public static IEnumerable<int> Divisors(this int n)
+		{
+			int sqrt = (int)System.Math.Sqrt(n);
+			for (int i = 1; i <= sqrt; i++)
+			{
+				if (n % i == 0)
+				{
+					yield return i;
+					if (i != sqrt) yield return n / i;
+				}
+			}
+		}
 
-        /// <summary>
-        /// Whether the current instance is divisable by all the specified numbers.
-        /// </summary>
-        /// <param name="i">The current instance.</param>
-        /// <param name="nums">The numbers.</param>
-        /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        public static bool IsDivisableBy(this int i, IEnumerable<int> nums)
-        {
-            return nums.All(num => i != 0 && i % num == 0);
-        }
-
-        /// <summary>
-        /// Whether the current instance is divisable by all the specified numbers.
-        /// </summary>
-        /// <param name="i">The current instance.</param>
-        /// <param name="nums">The numbers.</param>
-        /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        public static bool IsDivisableBy(this int i, params int[] nums)
-        {
-            return nums.All(num => i != 0 && i % num == 0);
-        }
-
-        /// <summary>
-        /// Whether the current instance is divisable by all the specified numbers.
-        /// </summary>
-        /// <param name="i">The current instance.</param>
-        /// <param name="from">The smallest number.</param>
-        /// <param name="to">The largest number.</param>
-        /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        public static bool IsDivisableBy(this long i, long from, long to)
-        {
-            return i.IsDivisableBy(from.To(to));
-        }
-
-        /// <summary>
-        /// Whether the current instance is divisable by all the specified numbers.
-        /// </summary>
-        /// <param name="i">The current instance.</param>
-        /// <param name="nums">The numbers.</param>
-        /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        public static bool IsDivisableBy(this long i, IEnumerable<long> nums)
-        {
-            return nums.All(num => i != 0 && i % num == 0);
-        }
-
-        /// <summary>
-        /// Whether the current instance is divisable by all the specified numbers.
-        /// </summary>
-        /// <param name="i">The current instance.</param>
-        /// <param name="nums">The numbers.</param>
-        /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        public static bool IsDivisableBy(this long i, params long[] nums)
-        {
-            return nums.All(num => i != 0 && i % num == 0);
-        }
+		/// <summary>
+		/// The divisors of the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>The divisors.</returns>
+		public static IEnumerable<long> Divisors(this long n)
+		{
+			long sqrt = (long)System.Math.Sqrt(n);
+			for (long i = 1; i <= sqrt; i++)
+			{
+				if (n % i == 0)
+				{
+					yield return i;
+					if (i != sqrt) yield return n / i;
+				}
+			}
+		}
 
 #if DOTNET4
 
-        /// <summary>
-        /// Whether the current instance is divisable by all the specified numbers.
-        /// </summary>
-        /// <param name="i">The current instance.</param>
-        /// <param name="from">The smallest number.</param>
-        /// <param name="to">The largest number.</param>
-        /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        public static bool IsDivisableBy(this BigInteger i, BigInteger from, BigInteger to)
-        {
-            return i.IsDivisableBy(from.To(to));
-        }
-
-        /// <summary>
-        /// Whether the current instance is divisable by all the specified numbers.
-        /// </summary>
-        /// <param name="i">The current instance.</param>
-        /// <param name="nums">The numbers.</param>
-        /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        public static bool IsDivisableBy(this BigInteger i, IEnumerable<BigInteger> nums)
-        {
-            return nums.All(num => i != 0 && i % num == 0);
-        }
-
-        /// <summary>
-        /// Whether the current instance is divisable by all the specified numbers.
-        /// </summary>
-        /// <param name="i">The current instance.</param>
-        /// <param name="nums">The numbers.</param>
-        /// <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        public static bool IsDivisableBy(this BigInteger i, params BigInteger[] nums)
-        {
-            return nums.All(num => i != 0 && i % num == 0);
-        }
+		/// <summary>
+		/// The divisors of the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>The divisors.</returns>
+		public static IEnumerable<BigInteger> Divisors(this BigInteger n)
+		{
+			BigInteger sq;
+			for (BigInteger i = 1; (sq = i * i) <= n; i++)
+			{
+				if (n % i == 0)
+				{
+					yield return i;
+					if (sq != n) yield return n / i;
+				}
+			}
+		}
 
 #endif
 
-        #endregion IsDivisableBy
+		#endregion Divisors
 
-        #region Divisors
+		#region DivisorCount
 
-        /// <summary>
-        /// The divisors of the current instance.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>The divisors.</returns>
-        public static IEnumerable<int> Divisors(this int n)
-        {
-            int sqrt = (int)System.Math.Sqrt(n);
-            for (int i = 1; i <= sqrt; i++)
-            {
-                if (n % i == 0)
-                {
-                    yield return i;
-                    if (i != sqrt) yield return n / i;
-                }
-            }
-        }
+		/// <summary>
+		/// Returns the number of divisors of the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>The number of divisors of the current instance.</returns>
+		public static int DivisorCount(this int n)
+		{
+#if DOTNET4
+			Contract.Requires(n >= 0);
+#endif
+			int count = 2, sqrt = (int)System.Math.Sqrt(n);
+			for (int i = 2; i <= sqrt; i++) if (n % i == 0) count += 2;
+			return sqrt * sqrt == n ? count - 1 : count;
+		}
 
-        /// <summary>
-        /// The divisors of the current instance.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>The divisors.</returns>
-        public static IEnumerable<long> Divisors(this long n)
-        {
-            long sqrt = (long)System.Math.Sqrt(n);
-            for (long i = 1; i <= sqrt; i++)
-            {
-                if (n % i == 0)
-                {
-                    yield return i;
-                    if (i != sqrt) yield return n / i;
-                }
-            }
-        }
+		/// <summary>
+		/// Returns the number of divisors of the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <param name="primes">Primes.</param>
+		/// <returns>The number of divisors of the current instance.</returns>
+		/// <remarks>The largest prime needed is p * p > n.</remarks>
+		public static int DivisorCount(this int n, IEnumerable<int> primes)
+		{
+#if DOTNET4
+			Contract.Requires(n >= 0);
+			Contract.Requires(primes != null);
+#endif
+			if (n <= 1) return 1;
+			int count = 1;
+
+			foreach (int prime in primes)
+			{
+				if (prime * prime > n)
+				{
+					count *= 2;
+					break;
+				}
+
+				int exp = 1;
+				while (n % prime == 0)
+				{
+					exp++;
+					n /= prime;
+				}
+
+				if (exp > 1) count *= exp;
+				if (n == 1) break;
+			}
+
+			return count;
+		}
+
+		/// <summary>
+		/// Returns the number of divisors of the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>The number of divisors of the current instance.</returns>
+		public static long DivisorCount(this long n)
+		{
+#if DOTNET4
+			Contract.Requires(n >= 0);
+#endif
+			long count = 2, sqrt = (long)System.Math.Sqrt(n);
+			for (long i = 2; i <= sqrt; i++) if (n % i == 0) count += 2;
+			return sqrt * sqrt == n ? count - 1 : count;
+		}
+
+		/// <summary>
+		/// Returns the number of divisors of the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <param name="primes">Primes.</param>
+		/// <returns>The number of divisors of the current instance.</returns>
+		/// <remarks>The largest prime needed is p * p > n.</remarks>
+		public static long DivisorCount(this long n, IEnumerable<long> primes)
+		{
+#if DOTNET4
+			Contract.Requires(n >= 0);
+			Contract.Requires(primes != null);
+#endif
+			if (n <= 1) return 1;
+			long count = 1;
+
+			foreach (long prime in primes)
+			{
+				if (prime * prime > n)
+				{
+					count *= 2;
+					break;
+				}
+
+				long exp = 1;
+				while (n % prime == 0)
+				{
+					exp++;
+					n /= prime;
+				}
+
+				if (exp > 1) count *= exp;
+				if (n == 1) break;
+			}
+
+			return count;
+		}
 
 #if DOTNET4
 
-        /// <summary>
-        /// The divisors of the current instance.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>The divisors.</returns>
-        public static IEnumerable<BigInteger> Divisors(this BigInteger n)
-        {
-            BigInteger sq;
-            for (BigInteger i = 1; (sq = i * i) <= n; i++)
-            {
-                if (n % i == 0)
-                {
-                    yield return i;
-                    if (sq != n) yield return n / i;
-                }
-            }
-        }
+		/// <summary>
+		/// Returns the number of divisors of the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>The number of divisors of the current instance.</returns>
+		public static BigInteger DivisorCount(this BigInteger n)
+		{
+			Contract.Requires(n >= 0);
+			BigInteger count = 2, sq;
+			for (BigInteger i = 2; (sq = i * i) <= n; i++)
+			{
+				if (n % i == 0) count += 2;
+				if (sq == n) count--;
+			}
+
+			return count;
+		}
+
+		/// <summary>
+		/// Returns the number of divisors of the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <param name="primes">Primes.</param>
+		/// <returns>The number of divisors of the current instance.</returns>
+		/// <remarks>The largest prime needed is pMax * pMax > n.</remarks>
+		public static BigInteger DivisorCount(this BigInteger n, IEnumerable<BigInteger> primes)
+		{
+			Contract.Requires(n >= 0);
+			Contract.Requires(primes != null);
+			if (n <= 1) return 1;
+			BigInteger count = 1;
+
+			foreach (BigInteger prime in primes)
+			{
+				if (prime * prime > n)
+				{
+					count *= 2;
+					break;
+				}
+
+				BigInteger exp = BigInteger.One;
+				while (n % prime == 0)
+				{
+					exp++;
+					n /= prime;
+				}
+
+				if (exp > 1) count *= exp;
+				if (n == 1) break;
+			}
+
+			return count;
+		}
 
 #endif
 
-        #endregion Divisors
+		#endregion DivisorCount
 
-        #region ProperDivisors
+		#region DivisorSum
 
-        /// <summary>
-        /// The proper divisors of the current instance.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>The proper divisors.</returns>
-        public static IEnumerable<int> ProperDivisors(this int n)
-        {
-            if (n == 1) yield break;
+		/// <summary>
+		/// Calculates the sum of the divisors of the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>The sum of the divisors of the current instance.</returns>
+		public static int DivisorSum(this int n)
+		{
+#if DOTNET4
+			Contract.Requires(n >= 0);
+#endif
+			int sum = 1, p = 2;
 
-            int sqrt = (int)System.Math.Sqrt(n);
-            bool perf = sqrt * sqrt == n;
+			while (p * p <= n && n > 1)
+			{
+				if (n % p == 0)
+				{
+					int j = p * p;
+					n /= p;
 
-            yield return 1;
+					while (n % p == 0)
+					{
+						j *= p;
+						n /= p;
+					}
 
-            for (int i = 2; i <= sqrt; i++)
-            {
-                if (n % i == 0)
-                {
-                    yield return i;
-                    if (i != sqrt || !perf) yield return n / i;
-                }
-            }
-        }
+					sum *= j - 1;
+					sum /= p - 1;
+				}
 
-        /// <summary>
-        /// The proper divisors of the current instance.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>The proper divisors.</returns>
-        public static IEnumerable<long> ProperDivisors(this long n)
-        {
-            if (n == 1) yield break;
+				p = p == 2 ? 3 : p + 2;
+			}
 
-            long sqrt = (long)System.Math.Sqrt(n);
-            bool perf = sqrt * sqrt == n;
+			if (n > 1) sum *= n + 1;
+			return sum;
+		}
 
-            yield return 1;
+		/// <summary>
+		/// Calculates the sum of the divisors of the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>The sum of the divisors of the current instance.</returns>
+		public static long DivisorSum(this long n)
+		{
+#if DOTNET4
+			Contract.Requires(n >= 0);
+#endif
+			long sum = 1, p = 2;
 
-            for (long i = 2; i <= sqrt; i++)
-            {
-                if (n % i == 0)
-                {
-                    yield return i;
-                    if (i != sqrt || !perf) yield return n / i;
-                }
-            }
-        }
+			while (p * p <= n && n > 1)
+			{
+				if (n % p == 0)
+				{
+					long j = p * p;
+					n /= p;
+
+					while (n % p == 0)
+					{
+						j *= p;
+						n /= p;
+					}
+
+					sum *= j - 1;
+					sum /= p - 1;
+				}
+
+				p = p == 2 ? 3 : p + 2;
+			}
+
+			if (n > 1) sum *= n + 1;
+			return sum;
+		}
 
 #if DOTNET4
 
-        /// <summary>
-        /// The proper divisors of the current instance.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>The proper divisors.</returns>
-        public static IEnumerable<BigInteger> ProperDivisors(this BigInteger n)
-        {
-            if (n == 1) yield break;
+		/// <summary>
+		/// Calculates the sum of the divisors of the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>The sum of the divisors of the current instance.</returns>
+		public static BigInteger DivisorSum(this BigInteger n)
+		{
+#if DOTNET4
+			Contract.Requires(n >= 0);
+#endif
+			BigInteger sum = 1, p = 2;
 
-            BigInteger sq;
-            for (BigInteger i = 1; (sq = i * i) <= n; i++)
-            {
-                if (n % i == 0)
-                {
-                    yield return i;
-                    if (sq != n && i != 1) yield return n / i;
-                }
-            }
-        }
+			while (p * p <= n && n > 1)
+			{
+				if (n % p == 0)
+				{
+					BigInteger j = p * p;
+					n /= p;
+
+					while (n % p == 0)
+					{
+						j *= p;
+						n /= p;
+					}
+
+					sum *= j - 1;
+					sum /= p - 1;
+				}
+
+				p = p == 2 ? 3 : p + 2;
+			}
+
+			if (n > 1) sum *= n + 1;
+			return sum;
+		}
 
 #endif
 
-        #endregion ProperDivisors
+		#endregion DivisorSum
 
-        #region PrimeFactors
+		#region ProperDivisors
 
-        #region Momerath - http://www.dreamincode.net/code/snippet5562.htm
+		/// <summary>
+		/// The proper divisors of the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>The proper divisors.</returns>
+		public static IEnumerable<int> ProperDivisors(this int n)
+		{
+			if (n == 1) yield break;
 
-        /// <summary>
-        /// Calculates the prime factors of the current instance.
-        /// </summary>
-        /// <param name="i">The current instance.</param>
-        /// <returns>The prime factors of the current instance.</returns>
-        public static IEnumerable<int> PrimeFactors(this int i)
-        {
-            int divisor = 2;
+			int sqrt = (int)System.Math.Sqrt(n);
+			bool perf = sqrt * sqrt == n;
 
-            while (divisor <= i)
-            {
-                if (i % divisor == 0)
-                {
-                    yield return divisor;
-                    i /= divisor;
-                }
-                else divisor++;
-            }
-        }
+			yield return 1;
 
-        /// <summary>
-        /// Calculates the prime factors of the current instance.
-        /// </summary>
-        /// <param name="i">The current instance.</param>
-        /// <returns>The prime factors of the current instance.</returns>
-        public static IEnumerable<long> PrimeFactors(this long i)
-        {
-            long divisor = 2;
+			for (int i = 2; i <= sqrt; i++)
+			{
+				if (n % i == 0)
+				{
+					yield return i;
+					if (i != sqrt || !perf) yield return n / i;
+				}
+			}
+		}
 
-            while (divisor <= i)
-            {
-                if (i % divisor == 0)
-                {
-                    yield return divisor;
-                    i /= divisor;
-                }
-                else divisor++;
-            }
-        }
+		/// <summary>
+		/// The proper divisors of the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>The proper divisors.</returns>
+		public static IEnumerable<long> ProperDivisors(this long n)
+		{
+			if (n == 1) yield break;
+
+			long sqrt = (long)System.Math.Sqrt(n);
+			bool perf = sqrt * sqrt == n;
+
+			yield return 1;
+
+			for (long i = 2; i <= sqrt; i++)
+			{
+				if (n % i == 0)
+				{
+					yield return i;
+					if (i != sqrt || !perf) yield return n / i;
+				}
+			}
+		}
 
 #if DOTNET4
 
-        /// <summary>
-        /// Calculates the prime factors of the current instance.
-        /// </summary>
-        /// <param name="i">The current instance.</param>
-        /// <returns>The prime factors of the current instance.</returns>
-        public static IEnumerable<BigInteger> PrimeFactors(this BigInteger i)
-        {
-            BigInteger divisor = 2;
+		/// <summary>
+		/// The proper divisors of the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>The proper divisors.</returns>
+		public static IEnumerable<BigInteger> ProperDivisors(this BigInteger n)
+		{
+			if (n == 1) yield break;
 
-            while (divisor <= i)
-            {
-                if (i % divisor == 0)
-                {
-                    yield return divisor;
-                    i /= divisor;
-                }
-                else divisor++;
-            }
-        }
+			BigInteger sq;
+			for (BigInteger i = 1; (sq = i * i) <= n; i++)
+			{
+				if (n % i == 0)
+				{
+					yield return i;
+					if (sq != n && i != 1) yield return n / i;
+				}
+			}
+		}
 
 #endif
 
-        #endregion Momerath - http://www.dreamincode.net/code/snippet5562.htm
+		#endregion ProperDivisors
 
-        #endregion PrimeFactors
+		#region PrimeFactors
 
-        #region Digits
+		#region Momerath - http://www.dreamincode.net/code/snippet5562.htm
 
-        /// <summary>
-        /// Returns the digits of the current instance.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>The digits.</returns>
-        public static IEnumerable<short> Digits(this int n)
-        {
-            return n.ToString().ToCharArray().Select(i => Convert.ToInt16(i.ToString()));
-        }
+		/// <summary>
+		/// Calculates the prime factors of the current instance.
+		/// </summary>
+		/// <param name="i">The current instance.</param>
+		/// <returns>The prime factors of the current instance.</returns>
+		public static IEnumerable<int> PrimeFactors(this int i)
+		{
+#if DOTNET4
+			Contract.Requires(i >= 0);
+#endif
+			int divisor = 2;
 
-        /// <summary>
-        /// Returns the digits of the current instance.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>The digits.</returns>
-        public static IEnumerable<short> Digits(this long n)
-        {
-            return n.ToString().ToCharArray().Select(i => Convert.ToInt16(i.ToString()));
-        }
+			while (divisor <= i)
+			{
+				if (i % divisor == 0)
+				{
+					yield return divisor;
+					i /= divisor;
+				}
+				else divisor = divisor == 2 ? 3 : divisor + 2;
+			}
+		}
+
+		/// <summary>
+		/// Calculates the prime factors of the current instance.
+		/// </summary>
+		/// <param name="i">The current instance.</param>
+		/// <param name="primes">An array of primes.</param>
+		/// <returns>The prime factors of the current instance.</returns>
+		public static IEnumerable<int> PrimeFactors(this int i, IEnumerable<int> primes)
+		{
+#if DOTNET4
+			Contract.Requires(i >= 0);
+#endif
+			if (i <= 1) yield break;
+
+			foreach (int prime in primes.TakeWhile(p => p <= i))
+			{
+				while (i % prime == 0)
+				{
+					yield return prime;
+					i /= prime;
+				}
+
+				if (i == 1) yield break;
+			}
+		}
+
+		/// <summary>
+		/// Calculates the prime factors of the current instance.
+		/// </summary>
+		/// <param name="i">The current instance.</param>
+		/// <returns>The prime factors of the current instance.</returns>
+		public static IEnumerable<long> PrimeFactors(this long i)
+		{
+#if DOTNET4
+			Contract.Requires(i >= 0);
+#endif
+			long divisor = 2;
+
+			while (divisor <= i)
+			{
+				if (i % divisor == 0)
+				{
+					yield return divisor;
+					i /= divisor;
+				}
+				else divisor = divisor == 2 ? 3 : divisor + 2;
+			}
+		}
+
+		/// <summary>
+		/// Calculates the prime factors of the current instance.
+		/// </summary>
+		/// <param name="i">The current instance.</param>
+		/// <param name="primes">An array of primes.</param>
+		/// <returns>The prime factors of the current instance.</returns>
+		public static IEnumerable<long> PrimeFactors(this long i, IEnumerable<long> primes)
+		{
+#if DOTNET4
+			Contract.Requires(i >= 0);
+#endif
+			if (i <= 1) yield break;
+
+			foreach (long prime in primes.TakeWhile(p => p <= i))
+			{
+				while (i % prime == 0)
+				{
+					yield return prime;
+					i /= prime;
+				}
+
+				if (i == 1) yield break;
+			}
+		}
 
 #if DOTNET4
 
-        /// <summary>
-        /// Returns the digits of the current instance.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>The digits.</returns>
-        public static IEnumerable<short> Digits(this BigInteger n)
-        {
-            return n.ToString().ToCharArray().Select(i => Convert.ToInt16(i.ToString()));
-        }
+		/// <summary>
+		/// Calculates the prime factors of the current instance.
+		/// </summary>
+		/// <param name="i">The current instance.</param>
+		/// <returns>The prime factors of the current instance.</returns>
+		public static IEnumerable<BigInteger> PrimeFactors(this BigInteger i)
+		{
+#if DOTNET4
+			Contract.Requires(i >= 0);
+#endif
+			BigInteger divisor = 2;
+
+			while (divisor <= i)
+			{
+				if (i % divisor == 0)
+				{
+					yield return divisor;
+					i /= divisor;
+				}
+				else divisor = divisor == 2 ? 3 : divisor + 2;
+			}
+		}
+
+		/// <summary>
+		/// Calculates the prime factors of the current instance.
+		/// </summary>
+		/// <param name="i">The current instance.</param>
+		/// <param name="primes">An array of primes.</param>
+		/// <returns>The prime factors of the current instance.</returns>
+		public static IEnumerable<BigInteger> PrimeFactors(this BigInteger i, IEnumerable<BigInteger> primes)
+		{
+#if DOTNET4
+			Contract.Requires(i >= 0);
+#endif
+			if (i <= 1) yield break;
+
+			foreach (BigInteger prime in primes.TakeWhile(p => p <= i))
+			{
+				while (i % prime == 0)
+				{
+					yield return prime;
+					i /= prime;
+				}
+
+				if (i == 1) yield break;
+			}
+		}
 
 #endif
 
-        #endregion Digits
+		#endregion Momerath - http://www.dreamincode.net/code/snippet5562.htm
 
-        #region Reverse
+		#endregion PrimeFactors
 
-        /// <summary>
-        /// Reverses the number.
-        /// </summary>
-        /// <param name="i">The current instance.</param>
-        /// <returns>The reversed number.</returns>
-        public static long Reverse(this int i)
-        {
-            return Convert.ToInt64(System.Math.Abs(i).ToString().Reverse());
-        }
+		#region Digits
+
+		/// <summary>
+		/// Returns the digits of the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>The digits.</returns>
+		public static IEnumerable<int> Digits(this int n)
+		{
+			return n.ToString().Select(i => i - '0');
+		}
+
+		/// <summary>
+		/// Returns the digits of the current instance in the specified base.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <param name="baseNum"></param>
+		/// <returns>The digits.</returns>
+		public static IEnumerable<int> DigitsBase(this int n, int baseNum)
+		{
+			if (n == 0) yield return 0;
+			else while (n > 0)
+				{
+					yield return n % baseNum;
+					n /= baseNum;
+				}
+		}
+
+		/// <summary>
+		/// Returns the digits of the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>The digits.</returns>
+		public static IEnumerable<int> Digits(this long n)
+		{
+			return n.ToString().Select(i => i - '0');
+		}
+
+		/// <summary>
+		/// Returns the digits of the current instance in the specified base.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <param name="baseNum"></param>
+		/// <returns>The digits.</returns>
+		public static IEnumerable<int> DigitsBase(this long n, int baseNum)
+		{
+			if (n == 0) yield return 0;
+			else while (n > 0)
+				{
+					yield return (int)(n % baseNum);
+					n /= baseNum;
+				}
+		}
 
 #if DOTNET4
 
-        /// <summary>
-        /// Reverses the number.
-        /// </summary>
-        /// <param name="i">The current instance.</param>
-        /// <returns>The reversed number.</returns>
-        public static BigInteger Reverse(this long i)
-        {
-            return BigInteger.Parse(System.Math.Abs(i).ToString().Reverse());
-        }
+		/// <summary>
+		/// Returns the digits of the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>The digits.</returns>
+		public static IEnumerable<int> Digits(this BigInteger n)
+		{
+			return n.ToString().Select(i => i - '0');
+		}
 
-        /// <summary>
-        /// Reverses the number.
-        /// </summary>
-        /// <param name="i">The current instance.</param>
-        /// <returns>The reversed number.</returns>
-        public static BigInteger Reverse(this BigInteger i)
-        {
-            return BigInteger.Parse(BigInteger.Abs(i).ToString().Reverse());
-        }
+		/// <summary>
+		/// Returns the digits of the current instance in the specified base.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <param name="baseNum"></param>
+		/// <returns>The digits.</returns>
+		public static IEnumerable<int> DigitsBase(this BigInteger n, int baseNum)
+		{
+			if (n == 0) yield return 0;
+			else while (n > 0)
+				{
+					yield return (int)(n % baseNum);
+					n /= baseNum;
+				}
+		}
 
 #endif
 
-        #endregion Reverse
+		#endregion Digits
 
-        #region Pow
+		#region Reverse
 
-        /// <summary>
-        /// Puts the current instance to the specified power.
-        /// </summary>
-        /// <param name="i">The current instance.</param>
-        /// <param name="power">The specified power.</param>
-        /// <returns>The current instance in the specified power.</returns>
-        public static int Pow(this int i, int power)
-        {
-            return (int)System.Math.Pow(i, power);
-        }
+		/// <summary>
+		/// Reverses the current instance.
+		/// </summary>
+		/// <param name="i">The current instance.</param>
+		/// <returns>The reversed current instance.</returns>
+		public static long Reverse(this int i)
+		{
+			return Convert.ToInt64(System.Math.Abs(i).ToString().Reverse());
+		}
 
-        /// <summary>
-        /// Puts the current instance to the specified power.
-        /// </summary>
-        /// <param name="i">The current instance.</param>
-        /// <param name="power">The specified power.</param>
-        /// <returns>The current instance in the specified power.</returns>
-        public static double Pow(this double i, double power)
-        {
-            return System.Math.Pow(i, power);
-        }
+		/// <summary>
+		/// Reverses the current instance in the specified base.
+		/// </summary>
+		/// <param name="i">The current instance.</param>
+		/// <param name="baseNum">The specified base.</param>
+		/// <returns>The reversed current instance in the specifed base.</returns>
+		public static long ReverseBase(this int i, int baseNum)
+		{
+			long rev = 0;
 
-        #endregion Pow
+			while (i > 0)
+			{
+				rev = rev * baseNum + i % baseNum;
+				i /= baseNum;
+			}
 
-        #region Factorial
-
-        /// <summary>
-        /// Calculates the factorial of the current instance.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>The factorial.</returns>
-        public static long Factorial(this int n)
-        {
-            if (n < 0) return 0;
-            if (n == 0) return 1;
-
-            long sum = 1;
-
-            for (int i = n; i >= 2; i--)
-            {
-                sum *= i;
-            }
-
-            return sum;
-        }
-
-        /// <summary>
-        /// Calculates the factorial of the current instance.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>The factorial.</returns>
-        public static BigInteger FactorialBig(this int n)
-        {
-            if (n < 0) return 0;
-            if (n == 0) return 1;
-
-            BigInteger sum = 1;
-
-            for (int i = n; i >= 2; i--)
-            {
-                sum *= i;
-            }
-
-            return sum;
-        }
-
-        #endregion Factorial
-
-        #region IsEven
-
-        /// <summary>
-        /// Whether the current instance is even.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>Whether the current instance is even.</returns>
-        public static bool IsEven(this int n)
-        {
-            return (n & 1) == 0;
-        }
-
-        /// <summary>
-        /// Whether the current instance is even.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>Whether the current instance is even.</returns>
-        public static bool IsEven(this long n)
-        {
-            return (n & 1) == 0;
-        }
+			return rev;
+		}
 
 #if DOTNET4
 
-        /// <summary>
-        /// Whether the current instance is even.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>Whether the current instance is even.</returns>
-        public static bool IsEven(this BigInteger n)
-        {
-            return (n & 1) == 0;
-        }
+		/// <summary>
+		/// Reverses the current instance.
+		/// </summary>
+		/// <param name="i">The current instance.</param>
+		/// <returns>The reversed current instance.</returns>
+		public static BigInteger Reverse(this long i)
+		{
+			return BigInteger.Parse(System.Math.Abs(i).ToString().Reverse());
+		}
+
+		/// <summary>
+		/// Reverses the current instance in the specified base.
+		/// </summary>
+		/// <param name="i">The current instance.</param>
+		/// <param name="baseNum">The specified base.</param>
+		/// <returns>The reversed current instance in the specifed base.</returns>
+		public static BigInteger ReverseBase(this long i, int baseNum)
+		{
+			BigInteger rev = 0;
+
+			while (i > 0)
+			{
+				rev = rev * baseNum + i % baseNum;
+				i /= baseNum;
+			}
+
+			return rev;
+		}
+
+		/// <summary>
+		/// Reverses the current instance.
+		/// </summary>
+		/// <param name="i">The current instance.</param>
+		/// <returns>The reversed current instance.</returns>
+		public static BigInteger Reverse(this BigInteger i)
+		{
+			return BigInteger.Parse(BigInteger.Abs(i).ToString().Reverse());
+		}
+
+		/// <summary>
+		/// Reverses the current instance in the specified base.
+		/// </summary>
+		/// <param name="i">The current instance.</param>
+		/// <param name="baseNum">The specified base.</param>
+		/// <returns>The reversed current instance in the specifed base.</returns>
+		public static BigInteger ReverseBase(this BigInteger i, int baseNum)
+		{
+			BigInteger rev = 0;
+
+			while (i > 0)
+			{
+				rev = rev * baseNum + i % baseNum;
+				i /= baseNum;
+			}
+
+			return rev;
+		}
 
 #endif
 
-        #endregion IsEven
+		#endregion Reverse
 
-        #region IsOdd
+		#region Pow
 
-        /// <summary>
-        /// Whether the current instance is odd.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>Whether the current instance is odd.</returns>
-        public static bool IsOdd(this int n)
-        {
-            return (n & 1) == 1;
-        }
+		/// <summary>
+		/// Puts the current instance to the specified power.
+		/// </summary>
+		/// <param name="i">The current instance.</param>
+		/// <param name="power">The specified power.</param>
+		/// <returns>The current instance in the specified power.</returns>
+		public static int Pow(this int i, int power)
+		{
+			return (int)System.Math.Pow(i, power);
+		}
 
-        /// <summary>
-        /// Whether the current instance is odd.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>Whether the current instance is odd.</returns>
-        public static bool IsOdd(this long n)
-        {
-            return (n & 1) == 1;
-        }
+		/// <summary>
+		/// Puts the current instance to the specified power.
+		/// </summary>
+		/// <param name="i">The current instance.</param>
+		/// <param name="power">The specified power.</param>
+		/// <returns>The current instance in the specified power.</returns>
+		public static double Pow(this double i, double power)
+		{
+			return System.Math.Pow(i, power);
+		}
+
+		#endregion Pow
+
+		#region IsEven
+
+		/// <summary>
+		/// Whether the current instance is even.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>Whether the current instance is even.</returns>
+		public static bool IsEven(this int n)
+		{
+			return (n & 1) == 0;
+		}
+
+		/// <summary>
+		/// Whether the current instance is even.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>Whether the current instance is even.</returns>
+		public static bool IsEven(this long n)
+		{
+			return (n & 1) == 0;
+		}
 
 #if DOTNET4
 
-        /// <summary>
-        /// Whether the current instance is even.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>Whether the current instance is odd.</returns>
-        public static bool IsOdd(this BigInteger n)
-        {
-            return (n & 1) == 1;
-        }
+		/// <summary>
+		/// Whether the current instance is even.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>Whether the current instance is even.</returns>
+		public static bool IsEven(this BigInteger n)
+		{
+			return (n & 1) == 0;
+		}
 
 #endif
 
-        #endregion IsOdd
+		#endregion IsEven
 
-        #region IsPrime
+		#region IsOdd
 
-        /// <summary>
-        /// Whether the current instance is prime.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>Whether the current instance is prime.</returns>
-        public static bool IsPrime(this int n)
-        {
-            return BagMath.IsPrime(n);
-        }
+		/// <summary>
+		/// Whether the current instance is odd.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>Whether the current instance is odd.</returns>
+		public static bool IsOdd(this int n)
+		{
+			return (n & 1) == 1;
+		}
 
-        /// <summary>
-        /// Whether the current instance is prime.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>Whether the current instance is prime.</returns>
-        public static bool IsPrime(this long n)
-        {
-            return BagMath.IsPrime(n);
-        }
+		/// <summary>
+		/// Whether the current instance is odd.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>Whether the current instance is odd.</returns>
+		public static bool IsOdd(this long n)
+		{
+			return (n & 1) == 1;
+		}
 
 #if DOTNET4
 
-        /// <summary>
-        /// Whether the current instance is prime.
-        /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <returns>Whether the current instance is prime.</returns>
-        public static bool IsPrime(this BigInteger n)
-        {
-            return BagMath.IsPrime(n);
-        }
+		/// <summary>
+		/// Whether the current instance is even.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>Whether the current instance is odd.</returns>
+		public static bool IsOdd(this BigInteger n)
+		{
+			return (n & 1) == 1;
+		}
 
 #endif
 
-        #endregion IsPrime
-    }
+		#endregion IsOdd
+
+		#region IsPrime
+
+		/// <summary>
+		/// Whether the current instance is prime.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>Whether the current instance is prime.</returns>
+		public static bool IsPrime(this int n)
+		{
+			return BagMath.IsPrime(n);
+		}
+
+		/// <summary>
+		/// Whether the current instance is prime.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>Whether the current instance is prime.</returns>
+		public static bool IsPrime(this long n)
+		{
+			return BagMath.IsPrime(n);
+		}
+
+#if DOTNET4
+
+		/// <summary>
+		/// Whether the current instance is prime.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>Whether the current instance is prime.</returns>
+		public static bool IsPrime(this BigInteger n)
+		{
+			return BagMath.IsPrime(n);
+		}
+
+#endif
+
+		#endregion IsPrime
+
+		#region Sizes
+
+		/// <summary>
+		/// Returns the correct value of the current instance, as if the current instance were in K's.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <param name="thousand">The value of a one thousand.</param>
+		/// <returns>The correct value of the current instance.</returns>
+		public static int K(this int n, int thousand = 1000)
+		{
+			return n * thousand;
+		}
+
+		/// <summary>
+		/// Returns the correct value of the current instance, as if the current instance were in M's.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <param name="thousand">The value of a one thousand.</param>
+		/// <returns>The correct value of the current instance.</returns>
+		public static int M(this int n, int thousand = 1000)
+		{
+			return n * (int)System.Math.Pow(thousand, 2);
+		}
+
+		/// <summary>
+		/// Returns the correct value of the current instance, as if the current instance were in G's.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <param name="thousand">The value of a one thousand.</param>
+		/// <returns>The correct value of the current instance.</returns>
+		public static int G(this int n, int thousand = 1000)
+		{
+			return n * (int)System.Math.Pow(thousand, 3);
+		}
+
+		/// <summary>
+		/// Returns the correct value of the current instance, as if the current instance were in T's.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <param name="thousand">The value of a one thousand.</param>
+		/// <returns>The correct value of the current instance.</returns>
+		public static int T(this int n, int thousand = 1000)
+		{
+			return n * (int)System.Math.Pow(thousand, 4);
+		}
+
+		#endregion Sizes
+	}
 }

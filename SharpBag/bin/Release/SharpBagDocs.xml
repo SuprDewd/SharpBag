@@ -37,6 +37,65 @@
             An action to initialize the object.
             </summary>
         </member>
+        <member name="T:SharpBag.Logging.Logger">
+            <summary>
+            A class used for application logging.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Logging.Logger.#ctor(SharpBag.Logging.Logger.LogFunction,System.Boolean,System.String)">
+            <summary>
+            A class used for application logging.
+            </summary>
+            <param name="logger">The log function.</param>
+            <param name="timestamp">Whether to put a timestamp on all logs.</param>
+            <param name="timeformat">The format of the timestamp.</param>
+        </member>
+        <member name="M:SharpBag.Logging.Logger.Log(System.String)">
+            <summary>
+            Log the specified string.
+            </summary>
+            <param name="s">The string to be logged.</param>
+        </member>
+        <member name="M:SharpBag.Logging.Logger.LogIf(System.Boolean,System.String)">
+            <summary>
+            Log the specified string if expression is true.
+            </summary>
+            <param name="expression">An expression.</param>
+            <param name="s">The string to be logged.</param>
+        </member>
+        <member name="M:SharpBag.Logging.Logger.LogIfNot(System.Boolean,System.String)">
+            <summary>
+            Log the specified string if expression is false.
+            </summary>
+            <param name="expression">An expression.</param>
+            <param name="s">The string to be logged.</param>
+        </member>
+        <member name="P:SharpBag.Logging.Logger.LoggerFunction">
+            <summary>
+            The logger.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Logging.Logger.Timestamp">
+            <summary>
+            Whether to prepend a timestamp on the output string or not.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Logging.Logger.Timeformat">
+            <summary>
+            The format of the timestamp. See DateTime.ToString().
+            </summary>
+        </member>
+        <member name="P:SharpBag.Logging.Logger.Enabled">
+            <summary>
+            Whether the logger is enabled or not.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Logging.Logger.LogFunction">
+            <summary>
+            A function used for logging.
+            </summary>
+            <param name="s">The output string that needs to be handled.</param>
+        </member>
         <member name="T:SharpBag.IO.Serialization">
             <summary>
             A static class used for object serialization.
@@ -392,6 +451,93 @@
             <summary>
             The current variation.
             </summary>
+        </member>
+        <member name="T:SharpBag.Logging.InteractiveConsole">
+            <summary>
+            A class used for managing the console window, so that the program can both read from the console and write into the console at the samt time.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Logging.InteractiveConsole._Exit">
+            <summary>
+            Can be set to true to shut down the main reading thread and all readers.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Logging.InteractiveConsole._Reading">
+            <summary>
+            Whether or not there is a reading going on.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Logging.InteractiveConsole._Command">
+            <summary>
+            The command that is currently being written into the console.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Logging.InteractiveConsole._ReaderThread">
+            <summary>
+            The main reader thread.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Logging.InteractiveConsole.ValidInput">
+            <summary>
+            Valid input characters.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Logging.InteractiveConsole.#ctor(System.String)">
+            <summary>
+            The main constructor.
+            </summary>
+            <param name="commandStart">The start of the command line.</param>
+        </member>
+        <member name="M:SharpBag.Logging.InteractiveConsole.Finalize">
+            <summary>
+            The main deconstructor.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Logging.InteractiveConsole.Stop">
+            <summary>
+            Stop all readers and reader threads.
+            This should always be called before application shutdown to make sure all threads are terminated.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Logging.InteractiveConsole.ReadCommandAsync">
+            <summary>
+            Reads commands asynchronously and fires the OnCommandEntered event when a command has been entered.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Logging.InteractiveConsole.ReadCommandListener">
+            <summary>
+            Reads commands asynchronously and fires the OnCommandEntered event when a command has been entered.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Logging.InteractiveConsole.ReadCommand">
+            <summary>
+            Reads a command and returns it as a string.
+            This method will not return anything until the command is entered. Use ReadCommandAsync to read commands asynchronously.
+            </summary>
+            <returns>The command.</returns>
+        </member>
+        <member name="M:SharpBag.Logging.InteractiveConsole.WriteLine(System.Object)">
+            <summary>
+            Writes a string to the console.
+            This should be used instead of Console.WriteLine and Console.Write.
+            </summary>
+            <param name="o"></param>
+        </member>
+        <member name="E:SharpBag.Logging.InteractiveConsole.OnCommandEntered">
+            <summary>
+            An event that will be fired when a user enters a command into the console window.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Logging.InteractiveConsole.CommandStart">
+            <summary>
+            The start of the command line.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Logging.InteractiveConsole.CommandEnteredEvent">
+            <summary>
+            A delegate that can be called when a command is entered.
+            </summary>
+            <param name="command">The command that was entered.</param>
         </member>
         <member name="T:SharpBag.Operator">
             <summary>
@@ -1126,93 +1272,6 @@
             </summary>
             <returns>The object instance.</returns>
         </member>
-        <member name="T:SharpBag.Logging.InteractiveConsole">
-            <summary>
-            A class used for managing the console window, so that the program can both read from the console and write into the console at the samt time.
-            </summary>
-        </member>
-        <member name="F:SharpBag.Logging.InteractiveConsole._Exit">
-            <summary>
-            Can be set to true to shut down the main reading thread and all readers.
-            </summary>
-        </member>
-        <member name="F:SharpBag.Logging.InteractiveConsole._Reading">
-            <summary>
-            Whether or not there is a reading going on.
-            </summary>
-        </member>
-        <member name="F:SharpBag.Logging.InteractiveConsole._Command">
-            <summary>
-            The command that is currently being written into the console.
-            </summary>
-        </member>
-        <member name="F:SharpBag.Logging.InteractiveConsole._ReaderThread">
-            <summary>
-            The main reader thread.
-            </summary>
-        </member>
-        <member name="F:SharpBag.Logging.InteractiveConsole.ValidInput">
-            <summary>
-            Valid input characters.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Logging.InteractiveConsole.#ctor(System.String)">
-            <summary>
-            The main constructor.
-            </summary>
-            <param name="commandStart">The start of the command line.</param>
-        </member>
-        <member name="M:SharpBag.Logging.InteractiveConsole.Finalize">
-            <summary>
-            The main deconstructor.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Logging.InteractiveConsole.Stop">
-            <summary>
-            Stop all readers and reader threads.
-            This should always be called before application shutdown to make sure all threads are terminated.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Logging.InteractiveConsole.ReadCommandAsync">
-            <summary>
-            Reads commands asynchronously and fires the OnCommandEntered event when a command has been entered.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Logging.InteractiveConsole.ReadCommandListener">
-            <summary>
-            Reads commands asynchronously and fires the OnCommandEntered event when a command has been entered.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Logging.InteractiveConsole.ReadCommand">
-            <summary>
-            Reads a command and returns it as a string.
-            This method will not return anything until the command is entered. Use ReadCommandAsync to read commands asynchronously.
-            </summary>
-            <returns>The command.</returns>
-        </member>
-        <member name="M:SharpBag.Logging.InteractiveConsole.WriteLine(System.Object)">
-            <summary>
-            Writes a string to the console.
-            This should be used instead of Console.WriteLine and Console.Write.
-            </summary>
-            <param name="o"></param>
-        </member>
-        <member name="E:SharpBag.Logging.InteractiveConsole.OnCommandEntered">
-            <summary>
-            An event that will be fired when a user enters a command into the console window.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Logging.InteractiveConsole.CommandStart">
-            <summary>
-            The start of the command line.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Logging.InteractiveConsole.CommandEnteredEvent">
-            <summary>
-            A delegate that can be called when a command is entered.
-            </summary>
-            <param name="command">The command that was entered.</param>
-        </member>
         <member name="T:SharpBag.Comparers.AlphaNumberSettings">
             <summary>
             Settings for the AlphaNumberComparer.
@@ -1724,21 +1783,6 @@
             <returns>An enumerable that contains all the lines read.</returns>
             <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
         </member>
-        <member name="M:SharpBag.Utils.ReadLinesFromConsole">
-            <summary>
-            Reads a line from the console and returns it as an enumerable.
-            </summary>
-            <returns>The line read as an enumerable.</returns>
-            <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
-        </member>
-        <member name="M:SharpBag.Utils.ReadLinesFrom(System.IO.TextReader)">
-            <summary>
-            Creates an enumerable that reads lines from the specified TextReader.
-            </summary>
-            <param name="reader">The TextReader to read from.</param>
-            <returns>An enumerable that reads lines from the specified TextReader.</returns>
-            <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
-        </member>
         <member name="T:SharpBag.Networking.ConnectionPacket">
             <summary>
             A packet.
@@ -1779,112 +1823,133 @@
         </member>
         <member name="T:SharpBag.Math.Sequences">
             <summary>
-            A class for number sources.
+            A class for sequences.
             </summary>
+        </member>
+        <member name="M:SharpBag.Math.Sequences.NAgonalNumbers(System.Int32)">
+            <summary>
+            Numbers which are N-agonal.
+            </summary>
+            <param name="n">The N in N-agonal.</param>
+            <returns>The numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Sequences.NAgonalNumbers(System.Int64)">
+            <summary>
+            Numbers which are N-agonal.
+            </summary>
+            <param name="n">The N in N-agonal.</param>
+            <returns>The numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Sequences.NAgonalNumbers(System.Numerics.BigInteger)">
+            <summary>
+            Numbers which are N-agonal.
+            </summary>
+            <param name="n">The N in N-agonal.</param>
+            <returns>The numbers.</returns>
         </member>
         <member name="P:SharpBag.Math.Sequences.Fibonacci">
             <summary>
-            An endless source that will return fibonacci numbers.
+            An endless source of fibonacci numbers.
             </summary>
         </member>
         <member name="P:SharpBag.Math.Sequences.Fibonacci64">
             <summary>
-            An endless source that will return fibonacci numbers.
+            An endless source of fibonacci numbers.
             </summary>
         </member>
         <member name="P:SharpBag.Math.Sequences.FibonacciBig">
             <summary>
-            An endless source that will return fibonacci numbers.
+            An endless source of fibonacci numbers.
             </summary>
         </member>
         <member name="P:SharpBag.Math.Sequences.Factorial">
             <summary>
-            An endless source that will return factorial numbers.
+            An endless source of factorial numbers.
             </summary>
         </member>
         <member name="P:SharpBag.Math.Sequences.Factorial64">
             <summary>
-            An endless source that will return factorial numbers.
+            An endless source of factorial numbers.
             </summary>
         </member>
         <member name="P:SharpBag.Math.Sequences.FactorialBig">
             <summary>
-            An endless source that will return factorial numbers.
+            An endless source of factorial numbers.
             </summary>
         </member>
         <member name="P:SharpBag.Math.Sequences.Primes">
             <summary>
-            A possibly endless source that will return prime numbers.
+            A possibly endless source of prime numbers.
             </summary>
         </member>
         <member name="P:SharpBag.Math.Sequences.Primes64">
             <summary>
-            A possibly endless source that will return prime numbers.
+            A possibly endless source of prime numbers.
             </summary>
         </member>
         <member name="P:SharpBag.Math.Sequences.PrimesBig">
             <summary>
-            A possibly endless source that will return prime numbers.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Sequences.TriangleNumbers">
-            <summary>
-            An endless source for triangle numbers.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Sequences.TriangleNumbers64">
-            <summary>
-            An endless source for triangle numbers.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Sequences.TriangleNumbersBig">
-            <summary>
-            An endless source for triangle numbers.
+            A possibly endless source of prime numbers.
             </summary>
         </member>
         <member name="P:SharpBag.Math.Sequences.PerfectNumbers">
             <summary>
-            An endless source for perfect numbers.
+            An endless source of perfect numbers.
             </summary>
         </member>
         <member name="P:SharpBag.Math.Sequences.PerfectNumbers64">
             <summary>
-            An endless source for perfect numbers.
+            An endless source of perfect numbers.
             </summary>
         </member>
         <member name="P:SharpBag.Math.Sequences.PerfectNumbersBig">
             <summary>
-            An endless source for perfect numbers.
+            An endless source of perfect numbers.
             </summary>
         </member>
         <member name="P:SharpBag.Math.Sequences.DeficientNumbers">
             <summary>
-            An endless source for deficient numbers.
+            An endless source of deficient numbers.
             </summary>
         </member>
         <member name="P:SharpBag.Math.Sequences.DeficientNumbers64">
             <summary>
-            An endless source for deficient numbers.
+            An endless source of deficient numbers.
             </summary>
         </member>
         <member name="P:SharpBag.Math.Sequences.DeficientNumbersBig">
             <summary>
-            An endless source for deficient numbers.
+            An endless source of deficient numbers.
             </summary>
         </member>
         <member name="P:SharpBag.Math.Sequences.AbundantNumbers">
             <summary>
-            An endless source for abundant number
+            An endless source of abundant number.
             </summary>
         </member>
         <member name="P:SharpBag.Math.Sequences.AbundantNumbers64">
             <summary>
-            An endless source for abundant number
+            An endless source of abundant number.
             </summary>
         </member>
         <member name="P:SharpBag.Math.Sequences.AbundantNumbersBig">
             <summary>
-            An endless source for abundant number
+            An endless source of abundant number.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Sequences.PythagoreanTriplets">
+            <summary>
+            An endless source of Pythagorean Triplets.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Sequences.PythagoreanTriplets64">
+            <summary>
+            An endless source of Pythagorean Triplets.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Sequences.PythagoreanTripletsBig">
+            <summary>
+            An endless source of Pythagorean Triplets.
             </summary>
         </member>
         <member name="T:SharpBag.Time.TimeExtensions">
@@ -2129,6 +2194,45 @@
             </summary>
             <param name="datetime">The current instance.</param>
             <returns>What week of the year, the current instance is on.</returns>
+        </member>
+        <member name="T:SharpBag.Math.PascalsTriangle">
+            <summary>
+            A static class with methods concerning Pascals triangle.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.PascalsTriangle.GetEntry(System.Int32,System.Int32)">
+            <summary>
+            Gets an entry at the specified row and column.
+            </summary>
+            <param name="row">The specified row.</param>
+            <param name="column">The specified column.</param>
+            <returns>The value at the specified row and column.</returns>
+        </member>
+        <member name="M:SharpBag.Math.PascalsTriangle.GetEntryBig(System.Int64,System.Int64)">
+            <summary>
+            Gets an entry at the specified row and column.
+            </summary>
+            <param name="row">The specified row.</param>
+            <param name="column">The specified column.</param>
+            <returns>The value at the specified row and column.</returns>
+        </member>
+        <member name="M:SharpBag.Math.PascalsTriangle.Rows">
+            <summary>
+            Calculates the rows of Pascal's triangle.
+            </summary>
+            <returns>The rows.</returns>
+        </member>
+        <member name="M:SharpBag.Math.PascalsTriangle.Rows64">
+            <summary>
+            Calculates the rows of Pascal's triangle.
+            </summary>
+            <returns>The rows.</returns>
+        </member>
+        <member name="M:SharpBag.Math.PascalsTriangle.RowsBig">
+            <summary>
+            Calculates the rows of Pascal's triangle.
+            </summary>
+            <returns>The rows.</returns>
         </member>
         <member name="T:SharpBag.Combinatorics.SmallPrimeUtility">
             <summary>
@@ -2868,7 +2972,7 @@
             </summary>
             <typeparam name="T">The type of elements in the current instance.</typeparam>
             <param name="collection">The collection.</param>
-            <param name="indexes">The indexes.</param>
+            <param name="indices">The indices.</param>
             <returns>The items in the current instance with the specified indexes.</returns>
         </member>
         <member name="M:SharpBag.CollectionExtensions.Take``1(System.Collections.Generic.IEnumerable{``0},System.Int32[])">
@@ -2877,7 +2981,7 @@
             </summary>
             <typeparam name="T">The type of elements in the current instance.</typeparam>
             <param name="collection">The collection.</param>
-            <param name="indexes">The indexes.</param>
+            <param name="indices">The indices.</param>
             <returns>The items in the current instance with the specified indexes.</returns>
         </member>
         <member name="M:SharpBag.CollectionExtensions.Shuffle``1(System.Collections.Generic.IEnumerable{``0},System.Random)">
@@ -3200,6 +3304,40 @@
             <param name="items">The items to add.</param>
             <returns>The current instance and the specified items.</returns>
         </member>
+        <member name="M:SharpBag.CollectionExtensions.GroupsOf``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+            Split the current instance into groups of the specified size.
+            </summary>
+            <typeparam name="T">The type of elements in the current instance.</typeparam>
+            <param name="collection">The current instance.</param>
+            <param name="size">The size of each group.</param>
+            <returns>The current instance split into groups.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.CastAll``1(System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            Cast all the items in the current instance to the specified type.
+            </summary>
+            <typeparam name="TResult">The type to cast to.</typeparam>
+            <param name="collection">The current instance.</param>
+            <returns>The current instance with the items cast to the specified type.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.GroupNeighbours``1(System.Collections.Generic.IEnumerable{``0},System.Func{System.Collections.Generic.IEnumerable{``0},``0,System.Boolean})">
+            <summary>
+            Groups neighbours in the current instance according to the specified predicate.
+            </summary>
+            <typeparam name="T">The type of items in the current instance.</typeparam>
+            <param name="collection">The current instance.</param>
+            <param name="predicate">The predicate.</param>
+            <returns>The grouped collection.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.Flatten``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.IEnumerable{``0}})">
+            <summary>
+            Flattens the current instance.
+            </summary>
+            <typeparam name="T">The type of the items.</typeparam>
+            <param name="collection">The current instance.</param>
+            <returns>All the items in all the collections in the current instance.</returns>
+        </member>
         <member name="T:SharpBag.Time.TimeUtils">
             <summary>
             A static class with utilites regarding dates and time.
@@ -3214,7 +3352,7 @@
         </member>
         <member name="T:SharpBag.Math.BagMath">
             <summary>
-            A static class containing methods for doing calculations.
+            A static class containing methods for math.
             </summary>
         </member>
         <member name="M:SharpBag.Math.BagMath.Gcd(System.Int32,System.Int32)">
@@ -3223,9 +3361,41 @@
             </summary>
             <param name="a">An integer.</param>
             <param name="b">An integer.</param>
-            <returns>The greatest commond divisor (gcd) of the specified integers.</returns>
+            <returns>The greatest common divisor (gcd) of the specified integers.</returns>
         </member>
         <member name="M:SharpBag.Math.BagMath.Lcm(System.Int32,System.Int32)">
+            <summary>
+            Finds the least common multiple (lcm) of the specified integers.
+            </summary>
+            <param name="a">An integer.</param>
+            <param name="b">An integer.</param>
+            <returns>The least common multiple (lcm) of the specified integers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BagMath.Gcd(System.Int64,System.Int64)">
+            <summary>
+            Finds the greatest common divisor (gcd) of the specified integers.
+            </summary>
+            <param name="a">An integer.</param>
+            <param name="b">An integer.</param>
+            <returns>The greatest common divisor (gcd) of the specified integers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BagMath.Lcm(System.Int64,System.Int64)">
+            <summary>
+            Finds the least common multiple (lcm) of the specified integers.
+            </summary>
+            <param name="a">An integer.</param>
+            <param name="b">An integer.</param>
+            <returns>The least common multiple (lcm) of the specified integers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BagMath.Gcd(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+            <summary>
+            Finds the greatest common divisor (gcd) of the specified integers.
+            </summary>
+            <param name="a">An integer.</param>
+            <param name="b">An integer.</param>
+            <returns>The greatest common divisor (gcd) of the specified integers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BagMath.Lcm(System.Numerics.BigInteger,System.Numerics.BigInteger)">
             <summary>
             Finds the least common multiple (lcm) of the specified integers.
             </summary>
@@ -3254,14 +3424,28 @@
             <param name="n">The number to test.</param>
             <returns>Whether the number is a prime number or not.</returns>
         </member>
-        <member name="M:SharpBag.Math.BagMath.AtkinSieve(System.Int32)">
+        <member name="M:SharpBag.Math.BagMath.SieveOfEratosthenes(System.Int32)">
+            <summary>
+            Performs an Eratosthenes sieve to find primes.
+            </summary>
+            <param name="upperLimit">The highest number to check.</param>
+            <returns>The primes.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BagMath.SieveOfEratosthenes(System.UInt64)">
+            <summary>
+            Performs an Eratosthenes sieve to find primes.
+            </summary>
+            <param name="upperLimit">The highest number to check.</param>
+            <returns>The primes.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BagMath.SieveOfAtkin(System.UInt64)">
             <summary>
             Performs an Atkin sieve to find primes.
             </summary>
             <param name="max">The highest number to check.</param>
             <returns>The primes.</returns>
         </member>
-        <member name="M:SharpBag.Math.BagMath.AtkinSieveParallel(System.Int32)">
+        <member name="M:SharpBag.Math.BagMath.SieveOfAtkinParallel(System.Int32)">
             <summary>
             Performs an Atkin sieve to find primes, in parallel.
             </summary>
@@ -3289,38 +3473,6 @@
             </summary>
             <param name="n">The current instance.</param>
             <returns>The Collatz count.</returns>
-        </member>
-        <member name="M:SharpBag.Math.BagMath.K(System.Int32,System.Int32)">
-            <summary>
-            Returns the correct value of the current instance, as if the current instance were in K's.
-            </summary>
-            <param name="n">The current instance.</param>
-            <param name="thousand">The value of a one thousand.</param>
-            <returns>The correct value of the current instance.</returns>
-        </member>
-        <member name="M:SharpBag.Math.BagMath.M(System.Int32,System.Int32)">
-            <summary>
-            Returns the correct value of the current instance, as if the current instance were in M's.
-            </summary>
-            <param name="n">The current instance.</param>
-            <param name="thousand">The value of a one thousand.</param>
-            <returns>The correct value of the current instance.</returns>
-        </member>
-        <member name="M:SharpBag.Math.BagMath.G(System.Int32,System.Int32)">
-            <summary>
-            Returns the correct value of the current instance, as if the current instance were in G's.
-            </summary>
-            <param name="n">The current instance.</param>
-            <param name="thousand">The value of a one thousand.</param>
-            <returns>The correct value of the current instance.</returns>
-        </member>
-        <member name="M:SharpBag.Math.BagMath.T(System.Int32,System.Int32)">
-            <summary>
-            Returns the correct value of the current instance, as if the current instance were in T's.
-            </summary>
-            <param name="n">The current instance.</param>
-            <param name="thousand">The value of a one thousand.</param>
-            <returns>The correct value of the current instance.</returns>
         </member>
         <member name="T:SharpBag.Games.CardStack">
             <summary>
@@ -3612,29 +3764,8 @@
         </member>
         <member name="T:SharpBag.Math.MathExtensions">
             <summary>
-            Extensions methods for the BagMath class.
+            Extension methods for the BagMath class.
             </summary>
-        </member>
-        <member name="M:SharpBag.Math.MathExtensions.ToInfinity(System.Int64)">
-            <summary>
-            Generates numbers that range from the value of the current instance to positive infinity.
-            </summary>
-            <param name="start">The current instance.</param>
-            <returns>An enumerable containing the numbers.</returns>
-        </member>
-        <member name="M:SharpBag.Math.MathExtensions.ToInfinity(System.Int32)">
-            <summary>
-            Generates numbers that range from the value of the current instance to positive infinity.
-            </summary>
-            <param name="start">The current instance.</param>
-            <returns>An enumerable containing the numbers.</returns>
-        </member>
-        <member name="M:SharpBag.Math.MathExtensions.ToInfinity(System.Numerics.BigInteger)">
-            <summary>
-            Generates numbers that range from the value of the current instance to positive infinity.
-            </summary>
-            <param name="start">The current instance.</param>
-            <returns>An enumerable containing the numbers.</returns>
         </member>
         <member name="M:SharpBag.Math.MathExtensions.ToInfinity(System.Int64,System.Int64)">
             <summary>
@@ -3650,6 +3781,13 @@
             </summary>
             <param name="start">The current instance.</param>
             <param name="step">The step to take on each iteration.</param>
+            <returns>An enumerable containing the numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.ToInfinity(System.Numerics.BigInteger)">
+            <summary>
+            Generates numbers that range from the value of the current instance to positive infinity.
+            </summary>
+            <param name="start">The current instance.</param>
             <returns>An enumerable containing the numbers.</returns>
         </member>
         <member name="M:SharpBag.Math.MathExtensions.ToInfinity(System.Numerics.BigInteger,System.Numerics.BigInteger)">
@@ -3734,81 +3872,6 @@
             <param name="upper">The upper boundary.</param>
             <returns>The current instance inside the spcified boundaries.</returns>
         </member>
-        <member name="M:SharpBag.Math.MathExtensions.IsDivisableBy(System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Whether the current instance is divisable by all the specified numbers.
-            </summary>
-            <param name="i">The current instance.</param>
-            <param name="from">The smallest number.</param>
-            <param name="to">The largest number.</param>
-            <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        </member>
-        <member name="M:SharpBag.Math.MathExtensions.IsDivisableBy(System.Int32,System.Collections.Generic.IEnumerable{System.Int32})">
-            <summary>
-            Whether the current instance is divisable by all the specified numbers.
-            </summary>
-            <param name="i">The current instance.</param>
-            <param name="nums">The numbers.</param>
-            <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        </member>
-        <member name="M:SharpBag.Math.MathExtensions.IsDivisableBy(System.Int32,System.Int32[])">
-            <summary>
-            Whether the current instance is divisable by all the specified numbers.
-            </summary>
-            <param name="i">The current instance.</param>
-            <param name="nums">The numbers.</param>
-            <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        </member>
-        <member name="M:SharpBag.Math.MathExtensions.IsDivisableBy(System.Int64,System.Int64,System.Int64)">
-            <summary>
-            Whether the current instance is divisable by all the specified numbers.
-            </summary>
-            <param name="i">The current instance.</param>
-            <param name="from">The smallest number.</param>
-            <param name="to">The largest number.</param>
-            <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        </member>
-        <member name="M:SharpBag.Math.MathExtensions.IsDivisableBy(System.Int64,System.Collections.Generic.IEnumerable{System.Int64})">
-            <summary>
-            Whether the current instance is divisable by all the specified numbers.
-            </summary>
-            <param name="i">The current instance.</param>
-            <param name="nums">The numbers.</param>
-            <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        </member>
-        <member name="M:SharpBag.Math.MathExtensions.IsDivisableBy(System.Int64,System.Int64[])">
-            <summary>
-            Whether the current instance is divisable by all the specified numbers.
-            </summary>
-            <param name="i">The current instance.</param>
-            <param name="nums">The numbers.</param>
-            <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        </member>
-        <member name="M:SharpBag.Math.MathExtensions.IsDivisableBy(System.Numerics.BigInteger,System.Numerics.BigInteger,System.Numerics.BigInteger)">
-            <summary>
-            Whether the current instance is divisable by all the specified numbers.
-            </summary>
-            <param name="i">The current instance.</param>
-            <param name="from">The smallest number.</param>
-            <param name="to">The largest number.</param>
-            <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        </member>
-        <member name="M:SharpBag.Math.MathExtensions.IsDivisableBy(System.Numerics.BigInteger,System.Collections.Generic.IEnumerable{System.Numerics.BigInteger})">
-            <summary>
-            Whether the current instance is divisable by all the specified numbers.
-            </summary>
-            <param name="i">The current instance.</param>
-            <param name="nums">The numbers.</param>
-            <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        </member>
-        <member name="M:SharpBag.Math.MathExtensions.IsDivisableBy(System.Numerics.BigInteger,System.Numerics.BigInteger[])">
-            <summary>
-            Whether the current instance is divisable by all the specified numbers.
-            </summary>
-            <param name="i">The current instance.</param>
-            <param name="nums">The numbers.</param>
-            <returns>Whether the current instance is divisable by all the specified numbers.</returns>
-        </member>
         <member name="M:SharpBag.Math.MathExtensions.Divisors(System.Int32)">
             <summary>
             The divisors of the current instance.
@@ -3829,6 +3892,75 @@
             </summary>
             <param name="n">The current instance.</param>
             <returns>The divisors.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.DivisorCount(System.Int32)">
+            <summary>
+            Returns the number of divisors of the current instance.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>The number of divisors of the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.DivisorCount(System.Int32,System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Returns the number of divisors of the current instance.
+            </summary>
+            <param name="n">The current instance.</param>
+            <param name="primes">Primes.</param>
+            <returns>The number of divisors of the current instance.</returns>
+            <remarks>The largest prime needed is p * p > n.</remarks>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.DivisorCount(System.Int64)">
+            <summary>
+            Returns the number of divisors of the current instance.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>The number of divisors of the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.DivisorCount(System.Int64,System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            Returns the number of divisors of the current instance.
+            </summary>
+            <param name="n">The current instance.</param>
+            <param name="primes">Primes.</param>
+            <returns>The number of divisors of the current instance.</returns>
+            <remarks>The largest prime needed is p * p > n.</remarks>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.DivisorCount(System.Numerics.BigInteger)">
+            <summary>
+            Returns the number of divisors of the current instance.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>The number of divisors of the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.DivisorCount(System.Numerics.BigInteger,System.Collections.Generic.IEnumerable{System.Numerics.BigInteger})">
+            <summary>
+            Returns the number of divisors of the current instance.
+            </summary>
+            <param name="n">The current instance.</param>
+            <param name="primes">Primes.</param>
+            <returns>The number of divisors of the current instance.</returns>
+            <remarks>The largest prime needed is pMax * pMax > n.</remarks>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.DivisorSum(System.Int32)">
+            <summary>
+            Calculates the sum of the divisors of the current instance.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>The sum of the divisors of the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.DivisorSum(System.Int64)">
+            <summary>
+            Calculates the sum of the divisors of the current instance.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>The sum of the divisors of the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.DivisorSum(System.Numerics.BigInteger)">
+            <summary>
+            Calculates the sum of the divisors of the current instance.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>The sum of the divisors of the current instance.</returns>
         </member>
         <member name="M:SharpBag.Math.MathExtensions.ProperDivisors(System.Int32)">
             <summary>
@@ -3858,11 +3990,27 @@
             <param name="i">The current instance.</param>
             <returns>The prime factors of the current instance.</returns>
         </member>
+        <member name="M:SharpBag.Math.MathExtensions.PrimeFactors(System.Int32,System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Calculates the prime factors of the current instance.
+            </summary>
+            <param name="i">The current instance.</param>
+            <param name="primes">An array of primes.</param>
+            <returns>The prime factors of the current instance.</returns>
+        </member>
         <member name="M:SharpBag.Math.MathExtensions.PrimeFactors(System.Int64)">
             <summary>
             Calculates the prime factors of the current instance.
             </summary>
             <param name="i">The current instance.</param>
+            <returns>The prime factors of the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.PrimeFactors(System.Int64,System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            Calculates the prime factors of the current instance.
+            </summary>
+            <param name="i">The current instance.</param>
+            <param name="primes">An array of primes.</param>
             <returns>The prime factors of the current instance.</returns>
         </member>
         <member name="M:SharpBag.Math.MathExtensions.PrimeFactors(System.Numerics.BigInteger)">
@@ -3872,11 +4020,27 @@
             <param name="i">The current instance.</param>
             <returns>The prime factors of the current instance.</returns>
         </member>
+        <member name="M:SharpBag.Math.MathExtensions.PrimeFactors(System.Numerics.BigInteger,System.Collections.Generic.IEnumerable{System.Numerics.BigInteger})">
+            <summary>
+            Calculates the prime factors of the current instance.
+            </summary>
+            <param name="i">The current instance.</param>
+            <param name="primes">An array of primes.</param>
+            <returns>The prime factors of the current instance.</returns>
+        </member>
         <member name="M:SharpBag.Math.MathExtensions.Digits(System.Int32)">
             <summary>
             Returns the digits of the current instance.
             </summary>
             <param name="n">The current instance.</param>
+            <returns>The digits.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.DigitsBase(System.Int32,System.Int32)">
+            <summary>
+            Returns the digits of the current instance in the specified base.
+            </summary>
+            <param name="n">The current instance.</param>
+            <param name="baseNum"></param>
             <returns>The digits.</returns>
         </member>
         <member name="M:SharpBag.Math.MathExtensions.Digits(System.Int64)">
@@ -3886,6 +4050,14 @@
             <param name="n">The current instance.</param>
             <returns>The digits.</returns>
         </member>
+        <member name="M:SharpBag.Math.MathExtensions.DigitsBase(System.Int64,System.Int32)">
+            <summary>
+            Returns the digits of the current instance in the specified base.
+            </summary>
+            <param name="n">The current instance.</param>
+            <param name="baseNum"></param>
+            <returns>The digits.</returns>
+        </member>
         <member name="M:SharpBag.Math.MathExtensions.Digits(System.Numerics.BigInteger)">
             <summary>
             Returns the digits of the current instance.
@@ -3893,26 +4065,58 @@
             <param name="n">The current instance.</param>
             <returns>The digits.</returns>
         </member>
+        <member name="M:SharpBag.Math.MathExtensions.DigitsBase(System.Numerics.BigInteger,System.Int32)">
+            <summary>
+            Returns the digits of the current instance in the specified base.
+            </summary>
+            <param name="n">The current instance.</param>
+            <param name="baseNum"></param>
+            <returns>The digits.</returns>
+        </member>
         <member name="M:SharpBag.Math.MathExtensions.Reverse(System.Int32)">
             <summary>
-            Reverses the number.
+            Reverses the current instance.
             </summary>
             <param name="i">The current instance.</param>
-            <returns>The reversed number.</returns>
+            <returns>The reversed current instance.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.ReverseBase(System.Int32,System.Int32)">
+            <summary>
+            Reverses the current instance in the specified base.
+            </summary>
+            <param name="i">The current instance.</param>
+            <param name="baseNum">The specified base.</param>
+            <returns>The reversed current instance in the specifed base.</returns>
         </member>
         <member name="M:SharpBag.Math.MathExtensions.Reverse(System.Int64)">
             <summary>
-            Reverses the number.
+            Reverses the current instance.
             </summary>
             <param name="i">The current instance.</param>
-            <returns>The reversed number.</returns>
+            <returns>The reversed current instance.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.ReverseBase(System.Int64,System.Int32)">
+            <summary>
+            Reverses the current instance in the specified base.
+            </summary>
+            <param name="i">The current instance.</param>
+            <param name="baseNum">The specified base.</param>
+            <returns>The reversed current instance in the specifed base.</returns>
         </member>
         <member name="M:SharpBag.Math.MathExtensions.Reverse(System.Numerics.BigInteger)">
             <summary>
-            Reverses the number.
+            Reverses the current instance.
             </summary>
             <param name="i">The current instance.</param>
-            <returns>The reversed number.</returns>
+            <returns>The reversed current instance.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.ReverseBase(System.Numerics.BigInteger,System.Int32)">
+            <summary>
+            Reverses the current instance in the specified base.
+            </summary>
+            <param name="i">The current instance.</param>
+            <param name="baseNum">The specified base.</param>
+            <returns>The reversed current instance in the specifed base.</returns>
         </member>
         <member name="M:SharpBag.Math.MathExtensions.Pow(System.Int32,System.Int32)">
             <summary>
@@ -3929,20 +4133,6 @@
             <param name="i">The current instance.</param>
             <param name="power">The specified power.</param>
             <returns>The current instance in the specified power.</returns>
-        </member>
-        <member name="M:SharpBag.Math.MathExtensions.Factorial(System.Int32)">
-            <summary>
-            Calculates the factorial of the current instance.
-            </summary>
-            <param name="n">The current instance.</param>
-            <returns>The factorial.</returns>
-        </member>
-        <member name="M:SharpBag.Math.MathExtensions.FactorialBig(System.Int32)">
-            <summary>
-            Calculates the factorial of the current instance.
-            </summary>
-            <param name="n">The current instance.</param>
-            <returns>The factorial.</returns>
         </member>
         <member name="M:SharpBag.Math.MathExtensions.IsEven(System.Int32)">
             <summary>
@@ -4006,6 +4196,38 @@
             </summary>
             <param name="n">The current instance.</param>
             <returns>Whether the current instance is prime.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.K(System.Int32,System.Int32)">
+            <summary>
+            Returns the correct value of the current instance, as if the current instance were in K's.
+            </summary>
+            <param name="n">The current instance.</param>
+            <param name="thousand">The value of a one thousand.</param>
+            <returns>The correct value of the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.M(System.Int32,System.Int32)">
+            <summary>
+            Returns the correct value of the current instance, as if the current instance were in M's.
+            </summary>
+            <param name="n">The current instance.</param>
+            <param name="thousand">The value of a one thousand.</param>
+            <returns>The correct value of the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.G(System.Int32,System.Int32)">
+            <summary>
+            Returns the correct value of the current instance, as if the current instance were in G's.
+            </summary>
+            <param name="n">The current instance.</param>
+            <param name="thousand">The value of a one thousand.</param>
+            <returns>The correct value of the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.T(System.Int32,System.Int32)">
+            <summary>
+            Returns the correct value of the current instance, as if the current instance were in T's.
+            </summary>
+            <param name="n">The current instance.</param>
+            <param name="thousand">The value of a one thousand.</param>
+            <returns>The correct value of the current instance.</returns>
         </member>
         <member name="T:SharpBag.Strings.StringUtils">
             <summary>
@@ -4131,65 +4353,6 @@
             <param name="height">The height of all sub-rectangles.</param>
             <returns>An enumerable with the sub-rectangles.</returns>
             <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
-        </member>
-        <member name="T:SharpBag.Logging.Logger">
-            <summary>
-            A class used for application logging.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Logging.Logger.#ctor(SharpBag.Logging.Logger.LogFunction,System.Boolean,System.String)">
-            <summary>
-            A class used for application logging.
-            </summary>
-            <param name="logger">The log function.</param>
-            <param name="timestamp">Whether to put a timestamp on all logs.</param>
-            <param name="timeformat">The format of the timestamp.</param>
-        </member>
-        <member name="M:SharpBag.Logging.Logger.Log(System.String)">
-            <summary>
-            Log the specified string.
-            </summary>
-            <param name="s">The string to be logged.</param>
-        </member>
-        <member name="M:SharpBag.Logging.Logger.LogIf(System.Boolean,System.String)">
-            <summary>
-            Log the specified string if expression is true.
-            </summary>
-            <param name="expression">An expression.</param>
-            <param name="s">The string to be logged.</param>
-        </member>
-        <member name="M:SharpBag.Logging.Logger.LogIfNot(System.Boolean,System.String)">
-            <summary>
-            Log the specified string if expression is false.
-            </summary>
-            <param name="expression">An expression.</param>
-            <param name="s">The string to be logged.</param>
-        </member>
-        <member name="P:SharpBag.Logging.Logger.LoggerFunction">
-            <summary>
-            The logger.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Logging.Logger.Timestamp">
-            <summary>
-            Whether to prepend a timestamp on the output string or not.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Logging.Logger.Timeformat">
-            <summary>
-            The format of the timestamp. See DateTime.ToString().
-            </summary>
-        </member>
-        <member name="P:SharpBag.Logging.Logger.Enabled">
-            <summary>
-            Whether the logger is enabled or not.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Logging.Logger.LogFunction">
-            <summary>
-            A function used for logging.
-            </summary>
-            <param name="s">The output string that needs to be handled.</param>
         </member>
         <member name="T:SharpBag.Misc.ProblemMetadata">
             <summary>
@@ -5701,6 +5864,14 @@
             <param name="path">The location of the file to write to.</param>
             <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
         </member>
+        <member name="M:SharpBag.IO.IOExtensions.ReadLines(System.IO.TextReader)">
+            <summary>
+            Creates an enumerable that reads lines from the specified TextReader.
+            </summary>
+            <param name="reader">The TextReader to read from.</param>
+            <returns>An enumerable that reads lines from the specified TextReader.</returns>
+            <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
+        </member>
         <member name="M:SharpBag.IO.IOExtensions.GetString(System.Byte[])">
             <summary>
             Converts a byte array to a string, using its byte order mark to convert it to the right encoding.
@@ -5851,45 +6022,6 @@
             <summary>
             The default value.
             </summary>
-        </member>
-        <member name="T:SharpBag.Math.PascalsTriangle">
-            <summary>
-            A static class with methods concerning Pascals triangle.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.PascalsTriangle.GetEntry(System.Int32,System.Int32)">
-            <summary>
-            Gets an entry at the specified row and column.
-            </summary>
-            <param name="row">The specified row.</param>
-            <param name="column">The specified column.</param>
-            <returns>The value at the specified row and column.</returns>
-        </member>
-        <member name="M:SharpBag.Math.PascalsTriangle.GetEntryBig(System.Int64,System.Int64)">
-            <summary>
-            Gets an entry at the specified row and column.
-            </summary>
-            <param name="row">The specified row.</param>
-            <param name="column">The specified column.</param>
-            <returns>The value at the specified row and column.</returns>
-        </member>
-        <member name="M:SharpBag.Math.PascalsTriangle.Rows">
-            <summary>
-            Calculates the rows of Pascal's triangle.
-            </summary>
-            <returns>The rows.</returns>
-        </member>
-        <member name="M:SharpBag.Math.PascalsTriangle.Rows64">
-            <summary>
-            Calculates the rows of Pascal's triangle.
-            </summary>
-            <returns>The rows.</returns>
-        </member>
-        <member name="M:SharpBag.Math.PascalsTriangle.RowsBig">
-            <summary>
-            Calculates the rows of Pascal's triangle.
-            </summary>
-            <returns>The rows.</returns>
         </member>
     </members>
 </doc>
