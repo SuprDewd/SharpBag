@@ -418,12 +418,12 @@ namespace SharpBag.Math
 #if DOTNET4
 			Contract.Requires(n >= 0);
 #endif
-			int cur = 1;
+			int cur = 0;
 
 			for (int i = 1; ; i += n)
 			{
-				yield return cur;
 				cur += i;
+				yield return cur;
 			}
 		}
 
@@ -437,12 +437,12 @@ namespace SharpBag.Math
 #if DOTNET4
 			Contract.Requires(n >= 0);
 #endif
-			long cur = 1;
+			long cur = 0;
 
 			for (long i = 1; ; i += n)
 			{
-				yield return cur;
 				cur += i;
+				yield return cur;
 			}
 		}
 
@@ -456,12 +456,12 @@ namespace SharpBag.Math
 		public static IEnumerable<BigInteger> FigurateNumbers(BigInteger n)
 		{
 			Contract.Requires(n >= 0);
-			BigInteger cur = 1;
+			BigInteger cur = 0;
 
 			for (BigInteger i = 1; ; i += n)
 			{
-				yield return cur;
 				cur += i;
+				yield return cur;
 			}
 		}
 

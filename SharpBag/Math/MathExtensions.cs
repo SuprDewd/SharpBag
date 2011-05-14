@@ -1063,20 +1063,22 @@ namespace SharpBag.Math
 		/// Whether the current instance is prime.
 		/// </summary>
 		/// <param name="n">The current instance.</param>
+		/// <param name="checkCache">Whether to check cache for primality.</param>
 		/// <returns>Whether the current instance is prime.</returns>
-		public static bool IsPrime(this int n)
+		public static bool IsPrime(this int n, bool checkCache = true)
 		{
-			return BagMath.IsPrime(n);
+			return BagMath.IsPrime(n, checkCache);
 		}
 
 		/// <summary>
 		/// Whether the current instance is prime.
 		/// </summary>
 		/// <param name="n">The current instance.</param>
+		/// <param name="checkCache">Whether to check cache for primality.</param>
 		/// <returns>Whether the current instance is prime.</returns>
-		public static bool IsPrime(this long n)
+		public static bool IsPrime(this long n, bool checkCache = true)
 		{
-			return BagMath.IsPrime(n);
+			return BagMath.IsPrime(n, checkCache);
 		}
 
 #if DOTNET4
@@ -1085,10 +1087,11 @@ namespace SharpBag.Math
 		/// Whether the current instance is prime.
 		/// </summary>
 		/// <param name="n">The current instance.</param>
+		/// <param name="checkCache">Whether to check cache for primality.</param>
 		/// <returns>Whether the current instance is prime.</returns>
-		public static bool IsPrime(this BigInteger n)
+		public static bool IsPrime(this BigInteger n, bool checkCache = true)
 		{
-			return BagMath.IsPrime(n);
+			return BagMath.IsPrime(n, checkCache);
 		}
 
 #endif
@@ -1142,5 +1145,197 @@ namespace SharpBag.Math
 		}
 
 		#endregion Sizes
+
+		#region IsPandigital
+
+		#region Andras Vass - http://stackoverflow.com/questions/2484892/fastest-algorithm-to-check-if-a-number-is-pandigital
+
+		/// <summary>
+		/// Returns whether the current instance is pandigital.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>Whether the current instance is pandigital.</returns>
+		public static bool IsPandigital(this int n)
+		{
+#if DOTNET4
+			Contract.Requires(n >= 0);
+#endif
+			int digits = 0, count = 0, tmp;
+
+			for (; n > 0; n /= 10, ++count)
+			{
+				if ((tmp = digits) == (digits |= 1 << (n - ((n / 10) * 10) - 1))) return false;
+			}
+
+			return digits == (1 << count) - 1;
+		}
+
+		/// <summary>
+		/// Returns whether the current instance is pandigital.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>Whether the current instance is pandigital.</returns>
+		public static bool IsPandigital(this long n)
+		{
+#if DOTNET4
+			Contract.Requires(n >= 0);
+#endif
+			int digits = 0, count = 0, tmp;
+
+			for (; n > 0; n /= 10, ++count)
+			{
+				if ((tmp = digits) == (digits |= 1 << (int)(n - ((n / 10) * 10) - 1))) return false;
+			}
+
+			return digits == (1L << count) - 1;
+		}
+
+#if DOTNET4
+
+		/// <summary>
+		/// Returns whether the current instance is pandigital.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>Whether the current instance is pandigital.</returns>
+		public static bool IsPandigital(this BigInteger n)
+		{
+			Contract.Requires(n >= 0);
+			int digits = 0, count = 0, tmp;
+
+			for (; n > 0; n /= 10, ++count)
+			{
+				if ((tmp = digits) == (digits |= 1 << (int)(n - ((n / 10) * 10) - 1))) return false;
+			}
+
+			return digits == (1L << count) - 1;
+		}
+
+#endif
+
+		#endregion Andras Vass - http://stackoverflow.com/questions/2484892/fastest-algorithm-to-check-if-a-number-is-pandigital
+
+		#endregion IsPandigital
+
+		#region Concat
+
+		/// <summary>
+		/// Concatenates the current instance and the specified integer.
+		/// </summary>
+		/// <param name="a">The current instance.</param>
+		/// <param name="b">The specified integer.</param>
+		/// <returns>The concatenated integer.</returns>
+		public static long Concat(this int a, int b)
+		{
+#if DOTNET4
+			Contract.Requires(a >= 0);
+			Contract.Requires(b >= 0);
+#endif
+			int c = b;
+			while (c > 0)
+			{
+				a *= 10;
+				c /= 10;
+			}
+
+			return (long)a + b;
+		}
+
+		/// <summary>
+		/// Concatenates the current instance and the specified integer.
+		/// </summary>
+		/// <param name="a">The current instance.</param>
+		/// <param name="b">The specified integer.</param>
+		/// <returns>The concatenated integer.</returns>
+		public static BigInteger Concat(this long a, long b)
+		{
+#if DOTNET4
+			Contract.Requires(a >= 0);
+			Contract.Requires(b >= 0);
+#endif
+			long c = b;
+			while (c > 0)
+			{
+				a *= 10;
+				c /= 10;
+			}
+
+			return (BigInteger)a + b;
+		}
+
+		/// <summary>
+		/// Concatenates the current instance and the specified integer.
+		/// </summary>
+		/// <param name="a">The current instance.</param>
+		/// <param name="b">The specified integer.</param>
+		/// <returns>The concatenated integer.</returns>
+		public static BigInteger Concat(this BigInteger a, BigInteger b)
+		{
+			Contract.Requires(a >= 0);
+			Contract.Requires(b >= 0);
+			BigInteger c = b;
+			while (c > 0)
+			{
+				a *= 10;
+				c /= 10;
+			}
+
+			return (BigInteger)a + b;
+		}
+
+		#endregion Concat
+
+		#region IsProbablePrime
+
+		#region http://www.docjar.com/html/api/java/math/Primality.java.html
+
+#if DOTNET4
+
+		/// <summary>
+		/// Whether the current instance is probably prime.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <param name="t">The accuracy of the test, higher is more accurate, max is 50.</param>
+		/// <param name="rnd">A random number generator.</param>
+		/// <returns>Whether the current instance is probably prime.</returns>
+		public static bool IsProbablePrime(this BigInteger n, int t, Random rnd = null)
+		{
+			Contract.Requires(t >= 0);
+			Contract.Requires(t <= 50);
+
+			if (n <= 1) return false;
+			if (n == 2) return true;
+			if (n.IsEven) return false;
+			if (n <= BagMath.LargestSmallPrime) return Array.BinarySearch<int>(BagMath.SmallPrimes, (int)n) >= 0;
+
+			if (t >= BagMath.SmallPrimes.Length) t = BagMath.SmallPrimes.Length - 1;
+			BigInteger x, y, nMinusOne = n - 1, q;
+			int k = (int)BigInteger.Log(n & -n, 2);
+			q = nMinusOne >> k;
+			if (rnd == null) rnd = new Random();
+
+			for (int i = 0; i < t; i++)
+			{
+				x = BagMath.SmallPrimes[i];
+				y = BigInteger.ModPow(x, q, n);
+				if (y == 1 || y == nMinusOne) continue;
+
+				for (int j = 0; j < k; j++)
+				{
+					if (y == nMinusOne) continue;
+					y = BigInteger.ModPow(y, 2, n);
+					if (y == 1) return false;
+				}
+
+				if (y != nMinusOne) return false;
+			}
+
+			return true;
+		}
+
+#endif
+
+		#endregion http://www.docjar.com/html/api/java/math/Primality.java.html
+
+		#endregion IsProbablePrime
 	}
 }

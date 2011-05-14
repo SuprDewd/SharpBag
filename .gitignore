@@ -17,3 +17,4 @@ TestResult.xml
 *.vs10x*
 *.dat
 *.pdb
+*.sln.docstates

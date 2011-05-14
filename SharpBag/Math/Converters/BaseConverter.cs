@@ -1,12 +1,11 @@
 ﻿using System;
+using System.Text;
 
 #if DOTNET4
 
 using System.Diagnostics.Contracts;
 
 #endif
-
-using System.Text;
 
 namespace SharpBag.Math.Converters
 {

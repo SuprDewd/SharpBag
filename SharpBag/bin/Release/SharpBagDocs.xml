@@ -3403,26 +3403,29 @@
             <param name="b">An integer.</param>
             <returns>The least common multiple (lcm) of the specified integers.</returns>
         </member>
-        <member name="M:SharpBag.Math.BagMath.IsPrime(System.Int32)">
+        <member name="M:SharpBag.Math.BagMath.IsPrime(System.Int32,System.Boolean)">
             <summary>
             Checks whether a number is a prime number or not.
             </summary>
             <param name="n">The number to test.</param>
-            <returns>Whether the number is a prime number or not.</returns>
+            <param name="checkCache">Whether to check cache for primality.</param>
+            <returns>Whether the number is prime.</returns>
         </member>
-        <member name="M:SharpBag.Math.BagMath.IsPrime(System.Int64)">
+        <member name="M:SharpBag.Math.BagMath.IsPrime(System.Int64,System.Boolean)">
             <summary>
             Checks whether a number is a prime number or not.
             </summary>
             <param name="n">The number to test.</param>
-            <returns>Whether the number is a prime number or not.</returns>
+            <param name="checkCache">Whether to check cache for primality.</param>
+            <returns>Whether the number is prime.</returns>
         </member>
-        <member name="M:SharpBag.Math.BagMath.IsPrime(System.Numerics.BigInteger)">
+        <member name="M:SharpBag.Math.BagMath.IsPrime(System.Numerics.BigInteger,System.Boolean)">
             <summary>
             Checks whether a number is a prime number or not.
             </summary>
             <param name="n">The number to test.</param>
-            <returns>Whether the number is a prime number or not.</returns>
+            <param name="checkCache">Whether to check cache for primality.</param>
+            <returns>Whether the number is prime.</returns>
         </member>
         <member name="M:SharpBag.Math.BagMath.SieveOfEratosthenes(System.Int32)">
             <summary>
@@ -3473,6 +3476,16 @@
             </summary>
             <param name="n">The current instance.</param>
             <returns>The Collatz count.</returns>
+        </member>
+        <member name="P:SharpBag.Math.BagMath.SmallPrimes">
+            <summary>
+            All primes below or equal to 1021, sorted in ascending order.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.BagMath.LargestSmallPrime">
+            <summary>
+            The largest value in the SmallPrime array, which is 1021.
+            </summary>
         </member>
         <member name="T:SharpBag.Games.CardStack">
             <summary>
@@ -4176,25 +4189,28 @@
             <param name="n">The current instance.</param>
             <returns>Whether the current instance is odd.</returns>
         </member>
-        <member name="M:SharpBag.Math.MathExtensions.IsPrime(System.Int32)">
+        <member name="M:SharpBag.Math.MathExtensions.IsPrime(System.Int32,System.Boolean)">
             <summary>
             Whether the current instance is prime.
             </summary>
             <param name="n">The current instance.</param>
+            <param name="checkCache">Whether to check cache for primality.</param>
             <returns>Whether the current instance is prime.</returns>
         </member>
-        <member name="M:SharpBag.Math.MathExtensions.IsPrime(System.Int64)">
+        <member name="M:SharpBag.Math.MathExtensions.IsPrime(System.Int64,System.Boolean)">
             <summary>
             Whether the current instance is prime.
             </summary>
             <param name="n">The current instance.</param>
+            <param name="checkCache">Whether to check cache for primality.</param>
             <returns>Whether the current instance is prime.</returns>
         </member>
-        <member name="M:SharpBag.Math.MathExtensions.IsPrime(System.Numerics.BigInteger)">
+        <member name="M:SharpBag.Math.MathExtensions.IsPrime(System.Numerics.BigInteger,System.Boolean)">
             <summary>
             Whether the current instance is prime.
             </summary>
             <param name="n">The current instance.</param>
+            <param name="checkCache">Whether to check cache for primality.</param>
             <returns>Whether the current instance is prime.</returns>
         </member>
         <member name="M:SharpBag.Math.MathExtensions.K(System.Int32,System.Int32)">
@@ -4228,6 +4244,60 @@
             <param name="n">The current instance.</param>
             <param name="thousand">The value of a one thousand.</param>
             <returns>The correct value of the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.IsPandigital(System.Int32)">
+            <summary>
+            Returns whether the current instance is pandigital.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>Whether the current instance is pandigital.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.IsPandigital(System.Int64)">
+            <summary>
+            Returns whether the current instance is pandigital.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>Whether the current instance is pandigital.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.IsPandigital(System.Numerics.BigInteger)">
+            <summary>
+            Returns whether the current instance is pandigital.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>Whether the current instance is pandigital.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.Concat(System.Int32,System.Int32)">
+            <summary>
+            Concatenates the current instance and the specified integer.
+            </summary>
+            <param name="a">The current instance.</param>
+            <param name="b">The specified integer.</param>
+            <returns>The concatenated integer.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.Concat(System.Int64,System.Int64)">
+            <summary>
+            Concatenates the current instance and the specified integer.
+            </summary>
+            <param name="a">The current instance.</param>
+            <param name="b">The specified integer.</param>
+            <returns>The concatenated integer.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.Concat(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+            <summary>
+            Concatenates the current instance and the specified integer.
+            </summary>
+            <param name="a">The current instance.</param>
+            <param name="b">The specified integer.</param>
+            <returns>The concatenated integer.</returns>
+        </member>
+        <member name="M:SharpBag.Math.MathExtensions.IsProbablePrime(System.Numerics.BigInteger,System.Int32,System.Random)">
+            <summary>
+            Whether the current instance is probably prime.
+            </summary>
+            <param name="n">The current instance.</param>
+            <param name="t">The accuracy of the test, higher is more accurate, max is 50.</param>
+            <param name="rnd">A random number generator.</param>
+            <returns>Whether the current instance is probably prime.</returns>
         </member>
         <member name="T:SharpBag.Strings.StringUtils">
             <summary>

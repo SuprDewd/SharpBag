@@ -6,6 +6,8 @@ using S = System;
 
 using System.Numerics;
 
+using System;
+
 #endif
 
 namespace SharpBag.Math
@@ -140,16 +142,18 @@ namespace SharpBag.Math
 		/// Checks whether a number is a prime number or not.
 		/// </summary>
 		/// <param name="n">The number to test.</param>
-		/// <returns>Whether the number is a prime number or not.</returns>
-		public static bool IsPrime(int n)
+		/// <param name="checkCache">Whether to check cache for primality.</param>
+		/// <returns>Whether the number is prime.</returns>
+		public static bool IsPrime(int n, bool checkCache = true)
 		{
 			if (n <= 1) return false;
+			if (checkCache && n <= BagMath.LargestSmallPrime) return Array.BinarySearch<int>(BagMath.SmallPrimes, n) >= 0;
 			if (n < 4) return true;
 			if (n % 2 == 0) return false;
 			if (n < 9) return true;
 			if (n % 3 == 0) return false;
 
-			uint r = (uint)System.Math.Floor(System.Math.Sqrt(n));
+			uint r = (uint)System.Math.Sqrt(n);
 			uint f = 5;
 			while (f <= r)
 			{
@@ -165,16 +169,18 @@ namespace SharpBag.Math
 		/// Checks whether a number is a prime number or not.
 		/// </summary>
 		/// <param name="n">The number to test.</param>
-		/// <returns>Whether the number is a prime number or not.</returns>
-		public static bool IsPrime(long n)
+		/// <param name="checkCache">Whether to check cache for primality.</param>
+		/// <returns>Whether the number is prime.</returns>
+		public static bool IsPrime(long n, bool checkCache = true)
 		{
 			if (n <= 1) return false;
+			if (checkCache && n <= BagMath.LargestSmallPrime) return Array.BinarySearch<int>(BagMath.SmallPrimes, (int)n) >= 0;
 			if (n < 4) return true;
 			if (n % 2 == 0) return false;
 			if (n < 9) return true;
 			if (n % 3 == 0) return false;
 
-			uint r = (uint)S.Math.Floor(S.Math.Sqrt(n));
+			uint r = (uint)S.Math.Sqrt(n);
 			uint f = 5;
 			while (f <= r)
 			{
@@ -192,10 +198,12 @@ namespace SharpBag.Math
 		/// Checks whether a number is a prime number or not.
 		/// </summary>
 		/// <param name="n">The number to test.</param>
-		/// <returns>Whether the number is a prime number or not.</returns>
-		public static bool IsPrime(BigInteger n)
+		/// <param name="checkCache">Whether to check cache for primality.</param>
+		/// <returns>Whether the number is prime.</returns>
+		public static bool IsPrime(BigInteger n, bool checkCache = true)
 		{
 			if (n <= 1) return false;
+			if (checkCache && n <= BagMath.LargestSmallPrime) return Array.BinarySearch<int>(BagMath.SmallPrimes, (int)n) >= 0;
 			if (n < 4) return true;
 			if (n % 2 == 0) return false;
 			if (n < 9) return true;
@@ -458,5 +466,36 @@ namespace SharpBag.Math
 #endif
 
 		#endregion CollatzCount overloads
+
+		#region SmallPrimes
+
+		private static readonly int[] _SmallPrimes = {
+			2, 3, 5, 7, 11, 13, 17, 19, 23, 29,
+			31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101,
+			103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167,
+			173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239,
+			241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313,
+			317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397,
+			401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467,
+			479, 487, 491, 499, 503, 509, 521, 523, 541, 547, 557, 563, 569,
+			571, 577, 587, 593, 599, 601, 607, 613, 617, 619, 631, 641, 643,
+			647, 653, 659, 661, 673, 677, 683, 691, 701, 709, 719, 727, 733,
+			739, 743, 751, 757, 761, 769, 773, 787, 797, 809, 811, 821, 823,
+			827, 829, 839, 853, 857, 859, 863, 877, 881, 883, 887, 907, 911,
+			919, 929, 937, 941, 947, 953, 967, 971, 977, 983, 991, 997, 1009,
+			1013, 1019, 1021
+		};
+
+		/// <summary>
+		/// All primes below or equal to 1021, sorted in ascending order.
+		/// </summary>
+		public static int[] SmallPrimes { get { return _SmallPrimes; } }
+
+		/// <summary>
+		/// The largest value in the SmallPrime array, which is 1021.
+		/// </summary>
+		public static int LargestSmallPrime { get { return 1021; } }
+
+		#endregion SmallPrimes
 	}
 }
