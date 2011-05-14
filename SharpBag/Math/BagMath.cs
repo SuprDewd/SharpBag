@@ -2,11 +2,12 @@
 using System.Threading.Tasks;
 using S = System;
 
+using System;
+
 #if DOTNET4
 
 using System.Numerics;
-
-using System;
+using System.Diagnostics.Contracts;
 
 #endif
 
@@ -209,8 +210,9 @@ namespace SharpBag.Math
 			if (n < 9) return true;
 			if (n % 3 == 0) return false;
 
-			ulong r = (ulong)System.Math.Exp(BigInteger.Log(n) / 2);
-			ulong f = 5;
+			BigInteger r = n.Sqrt(),
+					   f = 5;
+
 			while (f <= r)
 			{
 				if (n % f == 0) return false;
@@ -497,5 +499,114 @@ namespace SharpBag.Math
 		public static int LargestSmallPrime { get { return 1021; } }
 
 		#endregion SmallPrimes
+
+		#region BitLength
+
+		/// <summary>
+		/// Returns how many bits are in the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>How many bits are in the current instance.</returns>
+		public static int BitLength(this int n)
+		{
+#if DOTNET4
+			Contract.Requires(n >= 0);
+#endif
+			if (n == 0) return 1;
+			int bitLength = 0;
+			while (n != 0)
+			{
+				n >>= 1;
+				bitLength += 1;
+			}
+
+			return bitLength;
+		}
+
+		/// <summary>
+		/// Returns how many bits are in the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>How many bits are in the current instance.</returns>
+		public static int BitLength(this long n)
+		{
+#if DOTNET4
+			Contract.Requires(n >= 0);
+#endif
+			if (n == 0) return 1;
+			int bitLength = 0;
+			while (n != 0)
+			{
+				n >>= 1;
+				bitLength += 1;
+			}
+
+			return bitLength;
+		}
+
+#if DOTNET4
+
+		/// <summary>
+		/// Returns how many bits are in the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>How many bits are in the current instance.</returns>
+		public static int BitLength(this BigInteger n)
+		{
+			Contract.Requires(n >= 0);
+			if (n == 0) return 1;
+			int bitLength = 0;
+			while (n != 0)
+			{
+				n >>= 1;
+				bitLength += 1;
+			}
+
+			return bitLength;
+		}
+
+#endif
+
+		#endregion BitLength
+
+		#region Sqrt
+
+#if DOTNET4
+
+		/// <summary>
+		/// Calculates the square root of the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>The square root of the current instance.</returns>
+		public static BigInteger Sqrt(this BigInteger n)
+		{
+			Contract.Requires(n >= 0);
+			if (n <= 1) return n;
+			BigInteger root = n, lastRoot = BigInteger.Zero;
+			int count = 0;
+			int bitLength = (n.BitLength() + 1) / 2;
+			root = n >> bitLength;
+
+			do
+			{
+				if (lastRoot > root)
+				{
+					if (count++ > 1000)
+					{
+						return root;
+					}
+				}
+
+				lastRoot = root;
+				root = (BigInteger.Divide(n, root) + root) >> 1;
+			}
+			while ((root ^ lastRoot) != 0);
+
+			return root;
+		}
+
+#endif
+
+		#endregion Sqrt
 	}
 }

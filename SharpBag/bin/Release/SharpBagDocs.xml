@@ -3477,6 +3477,34 @@
             <param name="n">The current instance.</param>
             <returns>The Collatz count.</returns>
         </member>
+        <member name="M:SharpBag.Math.BagMath.BitLength(System.Int32)">
+            <summary>
+            Returns how many bits are in the current instance.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>How many bits are in the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BagMath.BitLength(System.Int64)">
+            <summary>
+            Returns how many bits are in the current instance.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>How many bits are in the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BagMath.BitLength(System.Numerics.BigInteger)">
+            <summary>
+            Returns how many bits are in the current instance.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>How many bits are in the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BagMath.Sqrt(System.Numerics.BigInteger)">
+            <summary>
+            Calculates the square root of the current instance.
+            </summary>
+            <param name="n">The current instance.</param>
+            <returns>The square root of the current instance.</returns>
+        </member>
         <member name="P:SharpBag.Math.BagMath.SmallPrimes">
             <summary>
             All primes below or equal to 1021, sorted in ascending order.

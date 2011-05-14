@@ -243,13 +243,13 @@ namespace SharpBag.Math
 		/// <returns>The divisors.</returns>
 		public static IEnumerable<BigInteger> Divisors(this BigInteger n)
 		{
-			BigInteger sq;
-			for (BigInteger i = 1; (sq = i * i) <= n; i++)
+			BigInteger sq = n.Sqrt();
+			for (BigInteger i = 1; i <= sq; i++)
 			{
 				if (n % i == 0)
 				{
 					yield return i;
-					if (sq != n) yield return n / i;
+					if (sq != i) yield return n / i;
 				}
 			}
 		}
