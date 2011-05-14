@@ -4290,15 +4290,6 @@
             <param name="b">The specified integer.</param>
             <returns>The concatenated integer.</returns>
         </member>
-        <member name="M:SharpBag.Math.MathExtensions.IsProbablePrime(System.Numerics.BigInteger,System.Int32,System.Random)">
-            <summary>
-            Whether the current instance is probably prime.
-            </summary>
-            <param name="n">The current instance.</param>
-            <param name="t">The accuracy of the test, higher is more accurate, max is 50.</param>
-            <param name="rnd">A random number generator.</param>
-            <returns>Whether the current instance is probably prime.</returns>
-        </member>
         <member name="T:SharpBag.Strings.StringUtils">
             <summary>
             A static class with string utilities.

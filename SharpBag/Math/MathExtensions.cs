@@ -1283,59 +1283,5 @@ namespace SharpBag.Math
 		}
 
 		#endregion Concat
-
-		#region IsProbablePrime
-
-		#region http://www.docjar.com/html/api/java/math/Primality.java.html
-
-#if DOTNET4
-
-		/// <summary>
-		/// Whether the current instance is probably prime.
-		/// </summary>
-		/// <param name="n">The current instance.</param>
-		/// <param name="t">The accuracy of the test, higher is more accurate, max is 50.</param>
-		/// <param name="rnd">A random number generator.</param>
-		/// <returns>Whether the current instance is probably prime.</returns>
-		public static bool IsProbablePrime(this BigInteger n, int t, Random rnd = null)
-		{
-			Contract.Requires(t >= 0);
-			Contract.Requires(t <= 50);
-
-			if (n <= 1) return false;
-			if (n == 2) return true;
-			if (n.IsEven) return false;
-			if (n <= BagMath.LargestSmallPrime) return Array.BinarySearch<int>(BagMath.SmallPrimes, (int)n) >= 0;
-
-			if (t >= BagMath.SmallPrimes.Length) t = BagMath.SmallPrimes.Length - 1;
-			BigInteger x, y, nMinusOne = n - 1, q;
-			int k = (int)BigInteger.Log(n & -n, 2);
-			q = nMinusOne >> k;
-			if (rnd == null) rnd = new Random();
-
-			for (int i = 0; i < t; i++)
-			{
-				x = BagMath.SmallPrimes[i];
-				y = BigInteger.ModPow(x, q, n);
-				if (y == 1 || y == nMinusOne) continue;
-
-				for (int j = 0; j < k; j++)
-				{
-					if (y == nMinusOne) continue;
-					y = BigInteger.ModPow(y, 2, n);
-					if (y == 1) return false;
-				}
-
-				if (y != nMinusOne) return false;
-			}
-
-			return true;
-		}
-
-#endif
-
-		#endregion http://www.docjar.com/html/api/java/math/Primality.java.html
-
-		#endregion IsProbablePrime
 	}
 }
