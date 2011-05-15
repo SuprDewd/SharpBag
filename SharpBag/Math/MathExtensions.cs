@@ -1337,5 +1337,93 @@ namespace SharpBag.Math
 		#endregion http://www.docjar.com/html/api/java/math/Primality.java.html
 
 		#endregion IsProbablePrime
+
+		#region BitLength
+
+		/// <summary>
+		/// Returns how many bits are in the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>How many bits are in the current instance.</returns>
+		public static int BitLength(this int n)
+		{
+#if DOTNET4
+			Contract.Requires(n >= 0);
+#endif
+			if (n == 0) return 1;
+			return (int)System.Math.Log(n, 2) + 1;
+		}
+
+		/// <summary>
+		/// Returns how many bits are in the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>How many bits are in the current instance.</returns>
+		public static int BitLength(this long n)
+		{
+#if DOTNET4
+			Contract.Requires(n >= 0);
+#endif
+			if (n == 0) return 1;
+			return (int)System.Math.Log(n, 2) + 1;
+		}
+
+#if DOTNET4
+
+		/// <summary>
+		/// Returns how many bits are in the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>How many bits are in the current instance.</returns>
+		public static int BitLength(this BigInteger n)
+		{
+			Contract.Requires(n >= 0);
+			if (n == 0) return 1;
+			return (int)BigInteger.Log(n, 2) + 1;
+		}
+
+#endif
+
+		#endregion BitLength
+
+		#region Sqrt
+
+#if DOTNET4
+
+		/// <summary>
+		/// Calculates the square root of the current instance.
+		/// </summary>
+		/// <param name="n">The current instance.</param>
+		/// <returns>The square root of the current instance.</returns>
+		public static BigInteger Sqrt(this BigInteger n)
+		{
+			Contract.Requires(n >= 0);
+			if (n <= 1) return n;
+			BigInteger root = n, lastRoot = BigInteger.Zero;
+			int count = 0;
+			int bitLength = (n.BitLength() + 1) / 2;
+			root = n >> bitLength;
+
+			do
+			{
+				if (lastRoot > root)
+				{
+					if (count++ > 1000)
+					{
+						return root;
+					}
+				}
+
+				lastRoot = root;
+				root = (BigInteger.Divide(n, root) + root) >> 1;
+			}
+			while ((root ^ lastRoot) != 0);
+
+			return root;
+		}
+
+#endif
+
+		#endregion Sqrt
 	}
 }
