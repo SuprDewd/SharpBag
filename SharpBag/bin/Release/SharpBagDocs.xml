@@ -3338,6 +3338,24 @@
             <param name="collection">The current instance.</param>
             <returns>All the items in all the collections in the current instance.</returns>
         </member>
+        <member name="M:SharpBag.CollectionExtensions.InterpolateLinear``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``0,``0})">
+            <summary>
+            Performs a linear interpolation of the current instance using the specified average function.
+            </summary>
+            <typeparam name="T">The type of items in the current instance.</typeparam>
+            <param name="collection">The current instance.</param>
+            <param name="average">A function that calculates the average of two items.</param>
+            <returns>The interpolated collection.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.InterpolateLinear``1(``0[0:,0:],System.Func{``0,``0,``0})">
+            <summary>
+            Performs a linear interpolation of the current instance using the specified average function.
+            </summary>
+            <typeparam name="T">The type of items in the current instance.</typeparam>
+            <param name="matrix">The current instance.</param>
+            <param name="average">A function that calculates the average of two items.</param>
+            <returns>The interpolated matrix.</returns>
+        </member>
         <member name="T:SharpBag.Time.TimeUtils">
             <summary>
             A static class with utilites regarding dates and time.
@@ -3479,12 +3497,12 @@
         </member>
         <member name="P:SharpBag.Math.BagMath.SmallPrimes">
             <summary>
-            All primes below or equal to 1021, sorted in ascending order.
+            All primes below or equal to 1999, sorted in ascending order.
             </summary>
         </member>
         <member name="P:SharpBag.Math.BagMath.LargestSmallPrime">
             <summary>
-            The largest value in the SmallPrime array, which is 1021.
+            The largest value in the SmallPrime array, which is 1999.
             </summary>
         </member>
         <member name="T:SharpBag.Games.CardStack">

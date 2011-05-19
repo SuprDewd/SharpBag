@@ -1041,5 +1041,65 @@ namespace SharpBag
 		{
 			foreach (IEnumerable<T> coll in collection) foreach (T item in coll) yield return item;
 		}
+
+		/// <summary>
+		/// Performs a linear interpolation of the current instance using the specified average function.
+		/// </summary>
+		/// <typeparam name="T">The type of items in the current instance.</typeparam>
+		/// <param name="collection">The current instance.</param>
+		/// <param name="average">A function that calculates the average of two items.</param>
+		/// <returns>The interpolated collection.</returns>
+		public static IEnumerable<T> InterpolateLinear<T>(this IEnumerable<T> collection, Func<T, T, T> average)
+		{
+			using (IEnumerator<T> en = collection.GetEnumerator())
+			{
+				if (!en.MoveNext()) yield break;
+				T last = en.Current;
+				yield return last;
+
+				while (en.MoveNext())
+				{
+					T cur = en.Current;
+					yield return average(last, cur);
+					yield return cur;
+					last = cur;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Performs a linear interpolation of the current instance using the specified average function.
+		/// </summary>
+		/// <typeparam name="T">The type of items in the current instance.</typeparam>
+		/// <param name="matrix">The current instance.</param>
+		/// <param name="average">A function that calculates the average of two items.</param>
+		/// <returns>The interpolated matrix.</returns>
+		public static T[,] InterpolateLinear<T>(this T[,] matrix, Func<T, T, T> average)
+		{
+			T[,] newMatrix = new T[matrix.GetLength(0) * 2 - 1, matrix.GetLength(1) * 2 - 1];
+
+			for (int row = 0; row < matrix.GetLength(0); row++)
+			{
+				int nextRow = row * 2;
+				newMatrix[nextRow, 0] = matrix[row, 0];
+
+				for (int col = 1; col < matrix.GetLength(1); col++)
+				{
+					int nextCol = col * 2;
+					newMatrix[nextRow, nextCol] = matrix[row, col];
+					newMatrix[nextRow, nextCol - 1] = average(matrix[row, col - 1], matrix[row, col]);
+				}
+			}
+
+			for (int row = 1; row < newMatrix.GetLength(0) - 1; row += 2)
+			{
+				for (int col = 0; col < newMatrix.GetLength(1); col++)
+				{
+					newMatrix[row, col] = average(newMatrix[row - 1, col], newMatrix[row + 1, col]);
+				}
+			}
+
+			return newMatrix;
+		}
 	}
 }
