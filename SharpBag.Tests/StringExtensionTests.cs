@@ -4,7 +4,7 @@ using SharpBag.Strings;
 namespace SharpBag.Tests
 {
 	[TestClass]
-	public class StringExtensionsTest
+	public class StringExtensionTests
 	{
 		[TestMethod]
 		public void SetCharAt()

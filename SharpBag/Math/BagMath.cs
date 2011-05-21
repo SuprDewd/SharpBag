@@ -30,6 +30,8 @@ namespace SharpBag.Math
 		{
 			if (a == 1 || b == 1) return 1;
 			int c;
+			if (a < 0) a = -a;
+			if (b < 0) b = -b;
 
 			while (b > 1)
 			{
@@ -62,6 +64,8 @@ namespace SharpBag.Math
 		{
 			if (a == 1 || b == 1) return 1;
 			long c;
+			if (a < 0) a = -a;
+			if (b < 0) b = -b;
 
 			while (b > 1)
 			{
@@ -96,6 +100,8 @@ namespace SharpBag.Math
 		{
 			if (a == 1 || b == 1) return 1;
 			BigInteger c;
+			if (a < 0) a = -a;
+			if (b < 0) b = -b;
 
 			while (b > 1)
 			{

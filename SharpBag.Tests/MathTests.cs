@@ -10,7 +10,7 @@ using SharpBag.Strings;
 namespace SharpBag.Tests
 {
 	[TestClass]
-	public class MathTest
+	public class MathTests
 	{
 		[TestMethod]
 		public void ProperDivisors()
