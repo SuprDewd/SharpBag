@@ -268,6 +268,13 @@ namespace SharpBag.Math
 		}
 
 		/// <summary>
+		/// The negation operator.
+		/// </summary>
+		/// <param name="fraction">The fraction.</param>
+		/// <returns>The negated fraction.</returns>
+		public static Fraction operator -(Fraction fraction) { return new Fraction(-fraction.Numerator, fraction.Denominator); }
+
+		/// <summary>
 		/// The multiplication operator.
 		/// </summary>
 		/// <param name="left">The left fraction.</param>
