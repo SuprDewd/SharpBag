@@ -28,22 +28,17 @@ namespace SharpBag.Math
 		/// <returns>The greatest common divisor (gcd) of the specified integers.</returns>
 		public static int Gcd(int a, int b)
 		{
-			int y = b, x = a, temp;
+			if (a == 1 || b == 1) return 1;
+			int c;
 
-			if (a > b)
+			while (b > 1)
 			{
-				x = a;
-				y = b;
+				c = b;
+				b = a % b;
+				a = c;
 			}
 
-			while (x % y != 0)
-			{
-				temp = x;
-				x = y;
-				y = temp % x;
-			}
-
-			return y;
+			return b == 1 ? 1 : a;
 		}
 
 		/// <summary>
@@ -65,22 +60,17 @@ namespace SharpBag.Math
 		/// <returns>The greatest common divisor (gcd) of the specified integers.</returns>
 		public static long Gcd(long a, long b)
 		{
-			long y = b, x = a, temp;
+			if (a == 1 || b == 1) return 1;
+			long c;
 
-			if (a > b)
+			while (b > 1)
 			{
-				x = a;
-				y = b;
+				c = b;
+				b = a % b;
+				a = c;
 			}
 
-			while (x % y != 0)
-			{
-				temp = x;
-				x = y;
-				y = temp % x;
-			}
-
-			return y;
+			return b == 1 ? 1 : a;
 		}
 
 		/// <summary>
@@ -104,22 +94,17 @@ namespace SharpBag.Math
 		/// <returns>The greatest common divisor (gcd) of the specified integers.</returns>
 		public static BigInteger Gcd(BigInteger a, BigInteger b)
 		{
-			BigInteger y = b, x = a, temp;
+			if (a == 1 || b == 1) return 1;
+			BigInteger c;
 
-			if (a > b)
+			while (b > 1)
 			{
-				x = a;
-				y = b;
+				c = b;
+				b = a % b;
+				a = c;
 			}
 
-			while (x % y != 0)
-			{
-				temp = x;
-				x = y;
-				y = temp % x;
-			}
-
-			return y;
+			return b == 1 ? 1 : a;
 		}
 
 		/// <summary>
