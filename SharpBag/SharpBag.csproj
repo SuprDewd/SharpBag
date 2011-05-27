@@ -102,9 +102,12 @@
     <Compile Include="Games\Dice.cs" />
     <Compile Include="Comparers\LambdaComparer.cs" />
     <Compile Include="Matcher.cs" />
+    <Compile Include="Math\Calculators\BigIntegerCalculator.cs" />
+    <Compile Include="Math\Calculators\FractionCalculator.cs" />
+    <Compile Include="Math\Calculators\Int64Calculator.cs" />
+    <Compile Include="Math\Calculators\Int32Calculator.cs" />
     <Compile Include="Math\Fraction.cs" />
-    <Compile Include="Math\Fraction64.cs" />
-    <Compile Include="Math\FractionBig.cs" />
+    <Compile Include="Math\Calculator.cs" />
     <Compile Include="Math\PascalsTriangle.cs" />
     <Compile Include="Misc\Draw.cs" />
     <Compile Include="Misc\ProblemAttribute.cs" />

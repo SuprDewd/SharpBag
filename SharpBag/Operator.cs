@@ -191,6 +191,18 @@ namespace SharpBag
 		}
 
 		/// <summary>
+		/// Modulo the values.
+		/// </summary>
+		/// <typeparam name="T">The type.</typeparam>
+		/// <param name="value1">The first value.</param>
+		/// <param name="value2">The second value.</param>
+		/// <returns>The result.</returns>
+		public static T Modulo<T>(T value1, T value2)
+		{
+			return Operator<T>.Modulo(value1, value2);
+		}
+
+		/// <summary>
 		/// Divide the values.
 		/// </summary>
 		/// <typeparam name="TArg1">The first value.</typeparam>
@@ -309,9 +321,10 @@ namespace SharpBag
 			subtract = ExpressionUtil.CreateExpression<TResult, TValue, TResult>(Expression.Subtract, true);
 			multiply = ExpressionUtil.CreateExpression<TResult, TValue, TResult>(Expression.Multiply, true);
 			divide = ExpressionUtil.CreateExpression<TResult, TValue, TResult>(Expression.Divide, true);
+			modulo = ExpressionUtil.CreateExpression<TResult, TValue, TResult>(Expression.Modulo, true);
 		}
 
-		private static readonly Func<TResult, TValue, TResult> add, subtract, multiply, divide;
+		private static readonly Func<TResult, TValue, TResult> add, subtract, multiply, divide, modulo;
 
 		/// <summary>
 		/// Add the values.
@@ -332,6 +345,11 @@ namespace SharpBag
 		/// Divide the values.
 		/// </summary>
 		public static Func<TResult, TValue, TResult> Divide { get { return divide; } }
+
+		/// <summary>
+		/// Modulo the values.
+		/// </summary>
+		public static Func<TResult, TValue, TResult> Modulo { get { return divide; } }
 	}
 
 	/// <summary>
@@ -379,7 +397,7 @@ namespace SharpBag
 		/// </summary>
 		public static Func<T, T, T> Xor { get { return xor; } }
 
-		static readonly Func<T, T, T> add, subtract, multiply, divide;
+		static readonly Func<T, T, T> add, subtract, multiply, divide, modulo;
 
 		/// <summary>
 		/// Add the values.
@@ -400,6 +418,11 @@ namespace SharpBag
 		/// Divide the values.
 		/// </summary>
 		public static Func<T, T, T> Divide { get { return divide; } }
+
+		/// <summary>
+		/// Modulo the values.
+		/// </summary>
+		public static Func<T, T, T> Modulo { get { return modulo; } }
 
 		static readonly Func<T, T, bool> equal, notEqual, greaterThan, lessThan, greaterThanOrEqual, lessThanOrEqual;
 
@@ -438,6 +461,7 @@ namespace SharpBag
 			add = ExpressionUtil.CreateExpression<T, T, T>(Expression.Add);
 			subtract = ExpressionUtil.CreateExpression<T, T, T>(Expression.Subtract);
 			divide = ExpressionUtil.CreateExpression<T, T, T>(Expression.Divide);
+			modulo = ExpressionUtil.CreateExpression<T, T, T>(Expression.Modulo);
 			multiply = ExpressionUtil.CreateExpression<T, T, T>(Expression.Multiply);
 
 			greaterThan = ExpressionUtil.CreateExpression<T, T, bool>(Expression.GreaterThan);
