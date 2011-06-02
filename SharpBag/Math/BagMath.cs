@@ -229,14 +229,16 @@ namespace SharpBag.Math
 		/// <returns>The primes.</returns>
 		public static IEnumerable<int> SieveOfEratosthenes(int upperLimit)
 		{
-			int sieveBound = (int)(upperLimit - 1) / 2,
+			int sieveBound = (upperLimit - 1) / 2,
 				upperSqrt = ((int)S.Math.Sqrt(upperLimit) - 1) / 2;
 
 			bool[] PrimeBits = new bool[sieveBound + 1];
 
 			yield return 2;
 
-			for (int i = 1; i <= upperSqrt; i++) if (!PrimeBits[i])
+			for (int i = 1; i <= upperSqrt; i++)
+			{
+				if (!PrimeBits[i])
 				{
 					yield return 2 * i + 1;
 
@@ -245,10 +247,14 @@ namespace SharpBag.Math
 						PrimeBits[j] = true;
 					}
 				}
+			}
 
 			for (int i = upperSqrt + 1; i <= sieveBound; i++)
 			{
-				if (!PrimeBits[i]) yield return 2 * i + 1;
+				if (!PrimeBits[i])
+				{
+					yield return 2 * i + 1;
+				}
 			}
 		}
 
@@ -259,14 +265,16 @@ namespace SharpBag.Math
 		/// <returns>The primes.</returns>
 		public static IEnumerable<ulong> SieveOfEratosthenes(ulong upperLimit)
 		{
-			ulong sieveBound = (ulong)(upperLimit - 1) / 2,
+			ulong sieveBound = (upperLimit - 1) / 2,
 				  upperSqrt = ((ulong)S.Math.Sqrt(upperLimit) - 1) / 2;
 
 			bool[] PrimeBits = new bool[sieveBound + 1];
 
 			yield return 2;
 
-			for (ulong i = 1; i <= upperSqrt; i++) if (!PrimeBits[i])
+			for (ulong i = 1; i <= upperSqrt; i++)
+			{
+				if (!PrimeBits[i])
 				{
 					yield return 2 * i + 1;
 
@@ -275,10 +283,14 @@ namespace SharpBag.Math
 						PrimeBits[j] = true;
 					}
 				}
+			}
 
 			for (ulong i = upperSqrt + 1; i <= sieveBound; i++)
 			{
-				if (!PrimeBits[i]) yield return 2 * i + 1;
+				if (!PrimeBits[i])
+				{
+					yield return 2 * i + 1;
+				}
 			}
 		}
 
