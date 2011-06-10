@@ -1120,6 +1120,39 @@
             <param name="func">The function to execute.</param>
             <returns>The function result.</returns>
         </member>
+        <member name="T:SharpBag.Math.BaseConverter">
+            <summary>
+            Converts numbers between bases.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.BaseConverter.ToBase(System.String,System.Int32,System.Int32)">
+            <summary>
+            Converts the specified number from the specified start base to the specified target base.
+            </summary>
+            <param name="number">The number as a string.</param>
+            <param name="startBase">The base of the number.</param>
+            <param name="targetBase">The base to convert to.</param>
+            <returns>The specified number in the specified target base.</returns>
+            <remarks>Bases must be in the range 2 to 36.</remarks>
+        </member>
+        <member name="M:SharpBag.Math.BaseConverter.ToBase10(System.String,System.Int32)">
+            <summary>
+            Converts the specified number from the specified start base to base 10.
+            </summary>
+            <param name="number">The number as a string.</param>
+            <param name="startBase">The base of the number.</param>
+            <returns>The number in base 10.</returns>
+            <remarks>Bases must be in the range 2 to 36.</remarks>
+        </member>
+        <member name="M:SharpBag.Math.BaseConverter.FromBase10(System.Int32,System.Int32)">
+            <summary>
+            Converts the specified base 10 number to the specified target base.
+            </summary>
+            <param name="number">The base 10 number.</param>
+            <param name="targetBase">The target base.</param>
+            <returns>The target in the target base.</returns>
+            <remarks>Bases must be in the range 2 to 36.</remarks>
+        </member>
         <member name="T:SharpBag.LambdaComparer`1">
             <summary>
             An IEqualityComparer for use with lambda functions.
@@ -6610,39 +6643,6 @@
             </summary>
             <param name="key">The key of the value to get or set.</param>
             <returns>The value assosiated with the specified key.</returns>
-        </member>
-        <member name="T:SharpBag.Math.Converters.BaseConverter">
-            <summary>
-            Converts numbers between bases.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Converters.BaseConverter.ToBase(System.String,System.Int32,System.Int32)">
-            <summary>
-            Converts the specified number from the specified start base to the specified target base.
-            </summary>
-            <param name="number">The number as a string.</param>
-            <param name="startBase">The base of the number.</param>
-            <param name="targetBase">The base to convert to.</param>
-            <returns>The specified number in the specified target base.</returns>
-            <remarks>Bases must be in the range 2 to 36.</remarks>
-        </member>
-        <member name="M:SharpBag.Math.Converters.BaseConverter.ToBase10(System.String,System.Int32)">
-            <summary>
-            Converts the specified number from the specified start base to base 10.
-            </summary>
-            <param name="number">The number as a string.</param>
-            <param name="startBase">The base of the number.</param>
-            <returns>The number in base 10.</returns>
-            <remarks>Bases must be in the range 2 to 36.</remarks>
-        </member>
-        <member name="M:SharpBag.Math.Converters.BaseConverter.FromBase10(System.Int32,System.Int32)">
-            <summary>
-            Converts the specified base 10 number to the specified target base.
-            </summary>
-            <param name="number">The base 10 number.</param>
-            <param name="targetBase">The target base.</param>
-            <returns>The target in the target base.</returns>
-            <remarks>Bases must be in the range 2 to 36.</remarks>
         </member>
         <member name="T:SharpBag.Networking.Network">
             <summary>

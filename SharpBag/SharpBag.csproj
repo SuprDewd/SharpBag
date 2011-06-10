@@ -104,6 +104,7 @@
     <Compile Include="Matcher.cs" />
     <Compile Include="Math\BaseConverter.cs" />
     <Compile Include="Math\Calculators\BigIntegerCalculator.cs" />
+    <Compile Include="Math\Calculators\CheckedCalculator.cs" />
     <Compile Include="Math\Calculators\FractionCalculator.cs" />
     <Compile Include="Math\Calculators\Int64Calculator.cs" />
     <Compile Include="Math\Calculators\Int32Calculator.cs" />
