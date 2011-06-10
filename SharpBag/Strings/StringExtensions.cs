@@ -217,7 +217,7 @@ namespace SharpBag.Strings
 #if DOTNET4
 			Contract.Requires(s != null);
 #endif
-			return s.Trim().NoCarriageReturns().Replace("\n", " ").ReplaceAll("  ", " ");
+			return s.Trim().NoCarriageReturns().Replace('\n', ' ').ReplaceAll("  ", " ");
 		}
 
 		/// <summary>
@@ -240,7 +240,7 @@ namespace SharpBag.Strings
 			return c.ToString().ToLower()[0];
 		}
 
-		#region Split overloads.
+		#region Split
 
 		/// <summary>
 		/// Returns a string array that contains the substrings in this string that are delimited by the specified string. A parameter specifies whether to return empty array elements.
@@ -306,7 +306,7 @@ namespace SharpBag.Strings
 			return s.Split(new char[] { separator }, options);
 		}
 
-		#endregion Split overloads.
+		#endregion Split
 
 		/// <summary>
 		/// Compares the current instance to another string using the specified char array to determine the results.
@@ -389,10 +389,11 @@ namespace SharpBag.Strings
 
 			int n = s.Length;
 			int m = t.Length;
-			int[,] d = new int[n + 1, m + 1];
 
 			if (n == 0) return m;
 			if (m == 0) return n;
+
+			int[,] d = new int[n + 1, m + 1];
 
 			for (int i = 0; i <= n; d[i, 0] = i++) ;
 			for (int j = 0; j <= m; d[0, j] = j++) ;
@@ -402,7 +403,6 @@ namespace SharpBag.Strings
 				for (int j = 1; j <= m; j++)
 				{
 					int cost = (t[j - 1] == s[i - 1]) ? 0 : 1;
-
 					d[i, j] = System.Math.Min(System.Math.Min(d[i - 1, j] + 1, d[i, j - 1] + 1), d[i - 1, j - 1] + cost);
 				}
 			}
@@ -607,6 +607,7 @@ namespace SharpBag.Strings
 				if (i != 0) sb.Append(separator);
 				sb.Append(s);
 			}
+
 			return sb.ToString();
 		}
 

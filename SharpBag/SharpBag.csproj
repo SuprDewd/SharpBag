@@ -76,10 +76,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionDisposable.cs" />
-    <Compile Include="Algorithms\PriorityQueue.cs" />
-    <Compile Include="Algorithms\PriorityQueueItem.cs" />
-    <Compile Include="Algorithms\Sorting\SortOrder.cs" />
-    <Compile Include="Algorithms\Sorting\SortExtensions.cs" />
     <Compile Include="CollectionExtensions.cs" />
     <Compile Include="Combinatorics\Combinations.cs" />
     <Compile Include="Combinatorics\CombinatoricExtensions.cs" />
@@ -128,7 +124,6 @@
     <Compile Include="Option.cs" />
     <Compile Include="RandomExtensions.cs" />
     <Compile Include="EnumerableEntry.cs" />
-    <Compile Include="Strings\StringUtils.cs" />
     <Compile Include="Time\TimeExtensions.cs" />
     <Compile Include="GenericExtensions.cs" />
     <Compile Include="Games\Card.cs" />
@@ -140,7 +135,6 @@
     <Compile Include="Math\BagMath.cs" />
     <Compile Include="Math\MathExtensions.cs" />
     <Compile Include="Math\Sequences.cs" />
-    <Compile Include="Media\MediaExtensions.cs" />
     <Compile Include="Networking\Network.cs" />
     <Compile Include="Networking\NetworkExtensions.cs" />
     <Compile Include="Networking\TcpClientHandler.cs" />
@@ -149,11 +143,7 @@
     <Compile Include="Time\TimeUtils.cs" />
     <Compile Include="Torrent\Bencoding.cs" />
     <Compile Include="Utils.cs" />
-    <Compile Include="Patterns\EagerSingleton.cs" />
-    <Compile Include="Patterns\LazySingleton.cs" />
-    <Compile Include="Patterns\LockedLazySingleton.cs" />
-    <Compile Include="Patterns\Singleton.cs" />
-    <Compile Include="Media\MediaHelper.cs" />
+    <Compile Include="Media\MediaExtensions.cs" />
     <Compile Include="FunctionalExtensions.cs" />
   </ItemGroup>
   <ItemGroup>

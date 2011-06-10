@@ -6,46 +6,6 @@ using System.Text;
 namespace SharpBag.Torrent
 {
 	/// <summary>
-	/// A bencoding exception.
-	/// </summary>
-	public class BencodingException : FormatException
-	{
-		/// <summary>
-		/// Creates a new BencodingException.
-		/// </summary>
-		public BencodingException() { }
-
-		/// <summary>
-		/// Creates a new BencodingException.
-		/// </summary>
-		/// <param name="message">The message.</param>
-		public BencodingException(string message) : base(message) { }
-
-		/// <summary>
-		/// Creates a new BencodingException.
-		/// </summary>
-		/// <param name="message">The message.</param>
-		/// <param name="inner">The inner exception.</param>
-		public BencodingException(string message, Exception inner) : base(message, inner) { }
-	}
-
-	/// <summary>
-	/// A class with extension methods for use with Bencoding.
-	/// </summary>
-	public static class BencodingExtensions
-	{
-		/// <summary>
-		/// Decode the current instance.
-		/// </summary>
-		/// <param name="s">The current instance.</param>
-		/// <returns>The root elements of the decoded string.</returns>
-		public static BElement[] BDecode(this string s)
-		{
-			return BencodeDecoder.Decode(s);
-		}
-	}
-
-	/// <summary>
 	/// A class used for decoding Bencoding.
 	/// </summary>
 	public class BencodeDecoder
@@ -556,6 +516,46 @@ namespace SharpBag.Torrent
 			{
 				this[new BString(key)] = value;
 			}
+		}
+	}
+
+	// <summary>
+	/// A bencoding exception.
+	/// </summary>
+	public class BencodingException : FormatException
+	{
+		/// <summary>
+		/// Creates a new BencodingException.
+		/// </summary>
+		public BencodingException() { }
+
+		/// <summary>
+		/// Creates a new BencodingException.
+		/// </summary>
+		/// <param name="message">The message.</param>
+		public BencodingException(string message) : base(message) { }
+
+		/// <summary>
+		/// Creates a new BencodingException.
+		/// </summary>
+		/// <param name="message">The message.</param>
+		/// <param name="inner">The inner exception.</param>
+		public BencodingException(string message, Exception inner) : base(message, inner) { }
+	}
+
+	/// <summary>
+	/// A class with extension methods for use with Bencoding.
+	/// </summary>
+	public static class BencodingExtensions
+	{
+		/// <summary>
+		/// Decode the current instance.
+		/// </summary>
+		/// <param name="s">The current instance.</param>
+		/// <returns>The root elements of the decoded string.</returns>
+		public static BElement[] BDecode(this string s)
+		{
+			return BencodeDecoder.Decode(s);
 		}
 	}
 }

@@ -4,39 +4,6 @@
         <name>SharpBag</name>
     </assembly>
     <members>
-        <member name="T:SharpBag.Patterns.Singleton`1">
-            <summary>
-            A singleton.
-            </summary>
-            <typeparam name="T">The type of the object, the singleton will wrap.</typeparam>
-        </member>
-        <member name="M:SharpBag.Patterns.Singleton`1.#ctor">
-            <summary>
-            The constructor.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Patterns.Singleton`1.#ctor(System.Action{`0})">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="initializeAction">An action to initialize the object.</param>
-        </member>
-        <member name="M:SharpBag.Patterns.Singleton`1.GetInstance">
-            <summary>
-            Gets the object instance.
-            </summary>
-            <returns>The object instance.</returns>
-        </member>
-        <member name="P:SharpBag.Patterns.Singleton`1.UniqueInstance">
-            <summary>
-            The unique instance of the object.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Patterns.Singleton`1.InitializeAction">
-            <summary>
-            An action to initialize the object.
-            </summary>
-        </member>
         <member name="T:SharpBag.Logging.Logger">
             <summary>
             A class used for application logging.
@@ -889,32 +856,6 @@
             Whether the first value is less than or equal to the second value.
             </summary>
         </member>
-        <member name="T:SharpBag.Algorithms.PriorityQueueItem`1">
-            <summary>
-            An item in a priority queue.
-            </summary>
-            <typeparam name="T">The type of the item.</typeparam>
-        </member>
-        <member name="M:SharpBag.Algorithms.PriorityQueueItem`1.#ctor(`0,System.Int32)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="item">The item.</param>
-            <param name="priority">The priority. Defaults to 0.</param>
-        </member>
-        <member name="M:SharpBag.Algorithms.PriorityQueueItem`1.ToString">
-            <see cref="M:System.Object.ToString"/>
-        </member>
-        <member name="P:SharpBag.Algorithms.PriorityQueueItem`1.Priority">
-            <summary>
-            The priority of the item.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Algorithms.PriorityQueueItem`1.Item">
-            <summary>
-            The item.
-            </summary>
-        </member>
         <member name="T:SharpBag.GenericExtensions">
             <summary>
             A static class containing generic extension methods.
@@ -1300,29 +1241,6 @@
             <summary>
             The connection.
             </summary>
-        </member>
-        <member name="T:SharpBag.Patterns.LazySingleton`1">
-            <summary>
-            A lazy singleton.
-            </summary>
-            <typeparam name="T">The type of the object, the singleton will wrap.</typeparam>
-        </member>
-        <member name="M:SharpBag.Patterns.LazySingleton`1.#ctor">
-            <summary>
-            The constructor.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Patterns.LazySingleton`1.#ctor(System.Action{`0})">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="initializeAction">An action to initialize the object.</param>
-        </member>
-        <member name="M:SharpBag.Patterns.LazySingleton`1.GetInstance">
-            <summary>
-            Gets the object instance.
-            </summary>
-            <returns>The object instance.</returns>
         </member>
         <member name="T:SharpBag.Math.Calculators.Calculator`1">
             <summary>
@@ -1915,29 +1833,6 @@
             <summary>
             Inner class that wraps an IComparer around a type T when it is IComparable
             </summary>
-        </member>
-        <member name="T:SharpBag.Patterns.EagerSingleton`1">
-            <summary>
-            An eager singleton.
-            </summary>
-            <typeparam name="T">The type of the object, the singleton will wrap.</typeparam>
-        </member>
-        <member name="M:SharpBag.Patterns.EagerSingleton`1.#ctor">
-            <summary>
-            The constructor.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Patterns.EagerSingleton`1.#ctor(System.Action{`0})">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="initializeAction">An action to initialize the object.</param>
-        </member>
-        <member name="M:SharpBag.Patterns.EagerSingleton`1.GetInstance">
-            <summary>
-            Gets the object instance.
-            </summary>
-            <returns>The object instance.</returns>
         </member>
         <member name="T:SharpBag.Networking.TcpServer">
             <summary>
@@ -2543,29 +2438,6 @@
             A fraction that represents NaN (not a number).
             </summary>
         </member>
-        <member name="T:SharpBag.Patterns.LockedLazySingleton`1">
-            <summary>
-            An eager singleton.
-            </summary>
-            <typeparam name="T">The type of the object, the singleton will wrap.</typeparam>
-        </member>
-        <member name="M:SharpBag.Patterns.LockedLazySingleton`1.#ctor">
-            <summary>
-            The constructor.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Patterns.LockedLazySingleton`1.#ctor(System.Action{`0})">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="initializeAction">An action to initialize the object.</param>
-        </member>
-        <member name="M:SharpBag.Patterns.LockedLazySingleton`1.GetInstance">
-            <summary>
-            Gets the object instance.
-            </summary>
-            <returns>The object instance.</returns>
-        </member>
         <member name="T:SharpBag.Math.Sequences">
             <summary>
             A class for sequences.
@@ -3060,21 +2932,6 @@
         <member name="F:SharpBag.Combinatorics.GenerateOption.WithRepetition">
             <summary>
             Generate additional sets even if repetition is required.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Algorithms.Sorting.SortOrder">
-            <summary>
-            The order to sort in.
-            </summary>
-        </member>
-        <member name="F:SharpBag.Algorithms.Sorting.SortOrder.Ascending">
-            <summary>
-            Sort ascending.
-            </summary>
-        </member>
-        <member name="F:SharpBag.Algorithms.Sorting.SortOrder.Descending">
-            <summary>
-            Sort descending.
             </summary>
         </member>
         <member name="T:SharpBag.FunctionalExtensions">
@@ -4452,79 +4309,6 @@
             <param name="fill">The fill.</param>
             <returns>The drawn triangle.</returns>
         </member>
-        <member name="T:SharpBag.Algorithms.PriorityQueue`1">
-            <summary>
-            A priority queue.
-            </summary>
-            <typeparam name="T">The type of items in the priority queue.</typeparam>
-        </member>
-        <member name="M:SharpBag.Algorithms.PriorityQueue`1.Add(`0,System.Int32)">
-            <summary>
-            Adds an item to the queue.
-            </summary>
-            <param name="item">An item.</param>
-            <param name="priority">The priority of the item. Defaults to 0.</param>
-        </member>
-        <member name="M:SharpBag.Algorithms.PriorityQueue`1.Enqueue(`0,System.Int32)">
-            <summary>
-            Adds an item to the queue.
-            </summary>
-            <param name="item">An item.</param>
-            <param name="priority">The priority of the item. Defaults to 0.</param>
-        </member>
-        <member name="M:SharpBag.Algorithms.PriorityQueue`1.GetPriorityEnumerator">
-            <summary>
-            Gets an enumerator sorted by the priority.
-            </summary>
-            <returns>The enumerator.</returns>
-        </member>
-        <member name="M:SharpBag.Algorithms.PriorityQueue`1.Dequeue">
-            <summary>
-            Returns the next item in the queue, and then removes it from queue.
-            </summary>
-            <returns>The next item in the queue.</returns>
-        </member>
-        <member name="M:SharpBag.Algorithms.PriorityQueue`1.Dequeue(System.Boolean)">
-            <summary>
-            Returns the next item in the queue.
-            </summary>
-            <param name="remove">Whether to remove the item from the queue.</param>
-            <returns>The next item in the queue.</returns>
-        </member>
-        <member name="M:SharpBag.Algorithms.PriorityQueue`1.Peek">
-            <summary>
-            Returns the next item in the queue, without removing it.
-            </summary>
-            <returns>The next item in the queue.</returns>
-        </member>
-        <member name="M:SharpBag.Algorithms.PriorityQueue`1.GetEnumerator">
-            <summary>
-            IEnumerable{T}.GetEnumerator()
-            </summary>
-        </member>
-        <member name="M:SharpBag.Algorithms.PriorityQueue`1.GetEnumerator(System.Boolean)">
-            <summary>
-            IEnumerable{T}.GetEnumerator()
-            </summary>
-            <param name="remove">Whether to remove the items that have been returned from the enumerator.</param>
-        </member>
-        <member name="M:SharpBag.Algorithms.PriorityQueue`1.System#Collections#IEnumerable#GetEnumerator">
-            <summary>
-            IEnumerable{T}.GetEnumerator()
-            </summary>
-        </member>
-        <member name="P:SharpBag.Algorithms.PriorityQueue`1.Count">
-            <summary>
-            The number of items in the priority queue.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Algorithms.PriorityQueue`1.Item(System.Int32)">
-            <summary>
-            Gets or sets the item at the specified index.
-            </summary>
-            <param name="index">The specified index.</param>
-            <returns>The item.</returns>
-        </member>
         <member name="T:SharpBag.Networking.NetworkExtensions">
             <summary>
             Extensions methods for the Network class.
@@ -5090,11 +4874,6 @@
             <param name="n">The current instance.</param>
             <returns>The square root of the current instance.</returns>
         </member>
-        <member name="T:SharpBag.Strings.StringUtils">
-            <summary>
-            A static class with string utilities.
-            </summary>
-        </member>
         <member name="T:SharpBag.Games.CardValue">
             <summary>
             An enumeration containing values of cards.
@@ -5164,56 +4943,6 @@
             <summary>
             A king.
             </summary>
-        </member>
-        <member name="T:SharpBag.Media.MediaExtensions">
-            <summary>
-            Media extensions.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Media.MediaExtensions.GetPixels(System.Drawing.Bitmap,System.Drawing.Rectangle)">
-            <summary>
-            Gets an enumerable containing all pixels that are in the specified rectangle on the current instance.
-            </summary>
-            <param name="image">The current instance.</param>
-            <param name="rect">The rectangle in the current instance.</param>
-            <returns>An enumerable containing all pixels that are in the specified rectangle on the current instance.</returns>
-            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
-        </member>
-        <member name="M:SharpBag.Media.MediaExtensions.GetLuminosity(System.Drawing.Bitmap,System.Drawing.Rectangle)">
-            <summary>
-            Gets the luminosity of the specified rectangle in the current instance.
-            </summary>
-            <param name="image">The current instance.</param>
-            <param name="rect">The rectangle in the current instance.</param>
-            <returns>The luminosity of the specified rectangle in the current instance.</returns>
-            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
-        </member>
-        <member name="M:SharpBag.Media.MediaExtensions.GetRectangle(System.Drawing.Image)">
-            <summary>
-            Gets a new rectangle that has the same with and height as the current instance.
-            </summary>
-            <param name="image">The current instance.</param>
-            <returns>A new rectangle that has the same with and height as the current instance.</returns>
-            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
-        </member>
-        <member name="M:SharpBag.Media.MediaExtensions.Contrast(System.Double,System.Double)">
-            <summary>
-            Gets the contrast of the current instance.
-            </summary>
-            <param name="d">The current instance.</param>
-            <param name="contrast">The contrast.</param>
-            <returns>The contrast.</returns>
-            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
-        </member>
-        <member name="M:SharpBag.Media.MediaExtensions.GetSubRectangles(System.Drawing.Rectangle,System.Int32,System.Int32)">
-            <summary>
-            Gets a subset of rectangles all with the specified width and height from the current instance.
-            </summary>
-            <param name="rect">The current instance.</param>
-            <param name="width">The width of all sub-rectangles.</param>
-            <param name="height">The height of all sub-rectangles.</param>
-            <returns>An enumerable with the sub-rectangles.</returns>
-            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
         </member>
         <member name="T:SharpBag.Misc.ProblemMetadata">
             <summary>
@@ -5589,29 +5318,6 @@
             <summary>
             The current combination
             </summary>
-        </member>
-        <member name="T:SharpBag.Media.MediaHelper">
-            <summary>
-            Media helpers.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Media.MediaHelper.CreateRectangle(System.Int32,System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Creates a rectangle.
-            </summary>
-            <param name="x">The upper left x coordinate.</param>
-            <param name="y">The upper left y coordinate.</param>
-            <param name="nextX">The lower right x coordinate.</param>
-            <param name="nextY">The lower right y coordinate.</param>
-            <returns>A rectangle.</returns>
-            <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
-        </member>
-        <member name="M:SharpBag.Media.MediaHelper.ToBitmapSource(System.Drawing.Image)">
-            <summary>
-            Turns the current instance into a BitmapSource.
-            </summary>
-            <param name="img">The current instance.</param>
-            <returns>The BitmapSource.</returns>
         </member>
         <member name="T:SharpBag.Database.DatabaseExtensions">
             <summary>
@@ -6307,73 +6013,6 @@
             </summary>
             <returns>The connection string.</returns>
         </member>
-        <member name="T:SharpBag.Algorithms.Sorting.SortExtensions">
-            <summary>
-            Sorting extensions.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Algorithms.Sorting.SortExtensions.BubbleSort``1(System.Collections.Generic.IEnumerable{``0},SharpBag.Algorithms.Sorting.SortOrder)">
-            <summary>
-            BubbleSorts the current instance.
-            </summary>
-            <typeparam name="T">The type of the items in the current instance.</typeparam>
-            <param name="collection">The current instance.</param>
-            <param name="order">The order to sort in.</param>
-            <returns>The sorted collection.</returns>
-        </member>
-        <member name="M:SharpBag.Algorithms.Sorting.SortExtensions.SelectionSort``1(System.Collections.Generic.IEnumerable{``0},SharpBag.Algorithms.Sorting.SortOrder)">
-            <summary>
-            SelectionSorts the current instance.
-            </summary>
-            /// <typeparam name="T">The type of the items in the current instance.</typeparam>
-            <param name="collection">The current instance.</param>
-            <param name="order">The order to sort in.</param>
-            <returns>The sorted collection.</returns>
-        </member>
-        <member name="M:SharpBag.Algorithms.Sorting.SortExtensions.InsertionSort``1(System.Collections.Generic.IEnumerable{``0},SharpBag.Algorithms.Sorting.SortOrder)">
-            <summary>
-            InsertionSorts the current instance.
-            </summary>
-            /// <typeparam name="T">The type of the items in the current instance.</typeparam>
-            <param name="collection">The current instance.</param>
-            <param name="order">The order to sort in.</param>
-            <returns>The sorted collection.</returns>
-        </member>
-        <member name="T:SharpBag.Torrent.BencodingException">
-            <summary>
-            A bencoding exception.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Torrent.BencodingException.#ctor">
-            <summary>
-            Creates a new BencodingException.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Torrent.BencodingException.#ctor(System.String)">
-            <summary>
-            Creates a new BencodingException.
-            </summary>
-            <param name="message">The message.</param>
-        </member>
-        <member name="M:SharpBag.Torrent.BencodingException.#ctor(System.String,System.Exception)">
-            <summary>
-            Creates a new BencodingException.
-            </summary>
-            <param name="message">The message.</param>
-            <param name="inner">The inner exception.</param>
-        </member>
-        <member name="T:SharpBag.Torrent.BencodingExtensions">
-            <summary>
-            A class with extension methods for use with Bencoding.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Torrent.BencodingExtensions.BDecode(System.String)">
-            <summary>
-            Decode the current instance.
-            </summary>
-            <param name="s">The current instance.</param>
-            <returns>The root elements of the decoded string.</returns>
-        </member>
         <member name="T:SharpBag.Torrent.BencodeDecoder">
             <summary>
             A class used for decoding Bencoding.
@@ -6644,6 +6283,37 @@
             <param name="key">The key of the value to get or set.</param>
             <returns>The value assosiated with the specified key.</returns>
         </member>
+        <!-- Badly formed XML comment ignored for member "T:SharpBag.Torrent.BencodingException" -->
+        <member name="M:SharpBag.Torrent.BencodingException.#ctor">
+            <summary>
+            Creates a new BencodingException.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Torrent.BencodingException.#ctor(System.String)">
+            <summary>
+            Creates a new BencodingException.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:SharpBag.Torrent.BencodingException.#ctor(System.String,System.Exception)">
+            <summary>
+            Creates a new BencodingException.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="inner">The inner exception.</param>
+        </member>
+        <member name="T:SharpBag.Torrent.BencodingExtensions">
+            <summary>
+            A class with extension methods for use with Bencoding.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Torrent.BencodingExtensions.BDecode(System.String)">
+            <summary>
+            Decode the current instance.
+            </summary>
+            <param name="s">The current instance.</param>
+            <returns>The root elements of the decoded string.</returns>
+        </member>
         <member name="T:SharpBag.Math.Calculators.CheckedCalculator`1">
             <summary>
             A calculator with all operations checked for overflow.
@@ -6867,6 +6537,18 @@
             <summary>
             The default value.
             </summary>
+        </member>
+        <member name="T:SharpBag.Media.MediaExtensions">
+            <summary>
+            Media extensions.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Media.MediaExtensions.ToBitmapSource(System.Drawing.Image)">
+            <summary>
+            Turns the current instance into a BitmapSource.
+            </summary>
+            <param name="img">The current instance.</param>
+            <returns>The BitmapSource.</returns>
         </member>
     </members>
 </doc>

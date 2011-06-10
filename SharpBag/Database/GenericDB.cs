@@ -248,6 +248,7 @@ namespace SharpBag.Database
 			{
 				values.Append(first ? "(" : ",(");
 				first = false;
+				Type[] intTypes = new Type[] { typeof(int), typeof(long), typeof(double), typeof(float), typeof(decimal), typeof(Single) };
 
 				bool firstCol = true;
 				foreach (DataColumn col in dt.Columns)
@@ -269,7 +270,7 @@ namespace SharpBag.Database
 					{
 						values.Append((bool)o ? "TRUE" : "FALSE");
 					}
-					else if (new Type[] { typeof(int), typeof(long), typeof(double), typeof(float), typeof(decimal), typeof(Single) }.ArrayContains(col.DataType))
+					else if (intTypes.ArrayContains(col.DataType))
 					{
 						values.Append(o.ToString());
 					}
