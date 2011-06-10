@@ -13,6 +13,11 @@ namespace SharpBag.Math.Calculators
 			return a + b;
 		}
 
+		public override BigInteger Subtract(BigInteger a, BigInteger b)
+		{
+			return a - b;
+		}
+
 		public override BigInteger Multiply(BigInteger a, BigInteger b)
 		{
 			return a * b;
@@ -171,6 +176,11 @@ namespace SharpBag.Math.Calculators
 		public override BigInteger Lcm(BigInteger a, BigInteger b)
 		{
 			return BagMath.Lcm(a, b);
+		}
+
+		public override BigInteger Sqrt(BigInteger n)
+		{
+			return n.Sqrt();
 		}
 
 		public override int Compare(BigInteger a, BigInteger b)

@@ -13,6 +13,11 @@ namespace SharpBag.Math.Calculators
 			return a + b;
 		}
 
+		public override Fraction<T> Subtract(Fraction<T> a, Fraction<T> b)
+		{
+			return a - b;
+		}
+
 		public override Fraction<T> Multiply(Fraction<T> a, Fraction<T> b)
 		{
 			return a * b;
@@ -174,6 +179,11 @@ namespace SharpBag.Math.Calculators
 		}
 
 		public override Fraction<T> Lcm(Fraction<T> a, Fraction<T> b)
+		{
+			throw new NotImplementedException();
+		}
+
+		public override Fraction<T> Sqrt(Fraction<T> n)
 		{
 			throw new NotImplementedException();
 		}

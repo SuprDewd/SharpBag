@@ -13,6 +13,11 @@ namespace SharpBag.Math.Calculators
 			return a + b;
 		}
 
+		public override int Subtract(int a, int b)
+		{
+			return a - b;
+		}
+
 		public override int Multiply(int a, int b)
 		{
 			return a * b;
@@ -171,6 +176,11 @@ namespace SharpBag.Math.Calculators
 		public override int Lcm(int a, int b)
 		{
 			return BagMath.Lcm(a, b);
+		}
+
+		public override int Sqrt(int n)
+		{
+			return (int)System.Math.Sqrt(n);
 		}
 
 		public override int Compare(int a, int b)

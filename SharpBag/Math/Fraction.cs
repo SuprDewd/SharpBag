@@ -26,6 +26,9 @@ namespace SharpBag.Math
 
 		private static Calculator<T> _Calculator;
 
+		/// <summary>
+		/// The calculator.
+		/// </summary>
 		public static Calculator<T> Calculator
 		{
 			get { return _Calculator; }
@@ -58,9 +61,9 @@ namespace SharpBag.Math
 		public T Denominator { get { return _Denominator; } private set { _Denominator = value; } }
 
 		/// <summary>
-		/// Returns the convergents of the fraction.
+		/// Returns the partial quotients of the fraction.
 		/// </summary>
-		public IEnumerable<T> Convergents
+		public IEnumerable<T> PartialQuotients
 		{
 			get
 			{
@@ -104,6 +107,9 @@ namespace SharpBag.Math
 			}
 		}
 
+		/// <summary>
+		/// Returns the floor of the fraction.
+		/// </summary>
 		public Fraction<T> Floor
 		{
 			get
@@ -112,6 +118,9 @@ namespace SharpBag.Math
 			}
 		}
 
+		/// <summary>
+		/// Returns the ceiling of the fraction.
+		/// </summary>
 		public Fraction<T> Ceiling
 		{
 			get
@@ -134,10 +143,19 @@ namespace SharpBag.Math
 		/// </summary>
 		public static Fraction<T> NegativeInfinity { get; private set; }
 
+		/// <summary>
+		/// A fraction that represents one.
+		/// </summary>
 		public static Fraction<T> One { get; private set; }
 
+		/// <summary>
+		/// A fraction that represents negative one.
+		/// </summary>
 		public static Fraction<T> NegativeOne { get; private set; }
 
+		/// <summary>
+		/// A fraction that represents zero.
+		/// </summary>
 		public static Fraction<T> Zero { get; private set; }
 
 		/// <summary>
@@ -218,25 +236,30 @@ namespace SharpBag.Math
 
 		#endregion Helpers
 
-		#region Static Factories
+		#region Static Methods
 
 		/// <summary>
-		/// Returns the fraction represented by the convergents.
+		/// Returns the fraction represented by the partial quotients.
 		/// </summary>
-		/// <param name="convergents">The convergents.</param>
-		/// <returns>The fraction represented by the convergents.</returns>
-		public static Fraction<T> FromConvergents(T[] convergents)
+		/// <param name="terms">The partial quotients of the continued fraction.</param>
+		/// <returns>The fraction represented by the partial quotients.</returns>
+		public static Fraction<T> FromPartialQuotients(T[] terms)
 		{
-			Fraction<T> fract = new Fraction<T>(convergents[convergents.Length - 1], Calculator.One);
+			Fraction<T> fract = new Fraction<T>(terms[terms.Length - 1], Calculator.One);
 
-			for (int i = convergents.Length - 2; i >= 0; i--)
+			for (int i = terms.Length - 2; i >= 0; i--)
 			{
-				fract = new Fraction<T>(Calculator.Add(Calculator.Multiply(convergents[i], fract.Numerator), fract.Denominator), fract.Numerator);
+				fract = new Fraction<T>(Calculator.Add(Calculator.Multiply(terms[i], fract.Numerator), fract.Denominator), fract.Numerator);
 			}
 
 			return fract;
 		}
 
+		/// <summary>
+		/// Returns the fraction represented by the floting point number.
+		/// </summary>
+		/// <param name="value">The floating point number.</param>
+		/// <returns>The fraction represented by the floting point number.</returns>
 		public static Fraction<T> FromFloatingPoint(double value)
 		{
 			if (Double.IsPositiveInfinity(value)) return Fraction<T>.PositiveInfinity;
@@ -282,7 +305,28 @@ namespace SharpBag.Math
 			return new Fraction<T>(Calculator.Convert(fraction.Substring(0, slash)), Calculator.Convert(fraction.Substring(slash + 1)));
 		}
 
-		#endregion Static Factories
+		/// <summary>
+		/// Returns the partial quotients of the square root of the specified number.
+		/// </summary>
+		/// <param name="s">The number.</param>
+		/// <returns>The partial quotients of the square root of the specified number.</returns>
+		public static IEnumerable<T> PartialQuotientsOfSquareRoot(T s)
+		{
+			T m = Calculator.Zero,
+			  d = Calculator.One,
+			  a0 = Calculator.Floor(Calculator.Sqrt(s)),
+			  a = a0;
+
+			while (true)
+			{
+				yield return a;
+				m = Calculator.Subtract(Calculator.Multiply(d, a), m);
+				d = Calculator.Divide(Calculator.Subtract(s, Calculator.Multiply(m, m)), d);
+				a = Calculator.Floor(Calculator.Divide(Calculator.Add(a0, m), d));
+			}
+		}
+
+		#endregion Static Methods
 
 		#region Operators
 
@@ -310,6 +354,11 @@ namespace SharpBag.Math
 			return new Fraction<T>(Calculator.Subtract(Calculator.Multiply(left.Numerator, right.Denominator), Calculator.Multiply(right.Numerator, left.Denominator)), Calculator.Multiply(left.Denominator, right.Denominator));
 		}
 
+		/// <summary>
+		/// The negation operator.
+		/// </summary>
+		/// <param name="fraction">The fraction.</param>
+		/// <returns>The negated fraction.</returns>
 		public static Fraction<T> operator -(Fraction<T> fraction)
 		{
 			return new Fraction<T>(Calculator.Negate(fraction.Numerator), fraction.Denominator);
@@ -464,12 +513,29 @@ namespace SharpBag.Math
 		/// <returns>The result.</returns>
 		public static bool operator <=(Fraction<T> left, Fraction<T> right) { return left.CompareTo(right) <= 0; }
 
+		/// <summary>
+		/// Converts the fraction to an int fraction.
+		/// </summary>
+		/// <returns>The converted fraction.</returns>
 		public Fraction<int> AsIntFraction() { return new Fraction<int>(Calculator.ConvertToInt(this.Numerator), Calculator.ConvertToInt(this.Denominator)); }
 
+		/// <summary>
+		/// Converts the fraction to a long fraction.
+		/// </summary>
+		/// <returns>The converted fraction.</returns>
 		public Fraction<long> AsLongFraction() { return new Fraction<long>(Calculator.ConvertToLong(this.Numerator), Calculator.ConvertToLong(this.Denominator)); }
 
+		/// <summary>
+		/// Converts the fraction to a BigInteger fraction.
+		/// </summary>
+		/// <returns>The converted fraction.</returns>
 		public Fraction<BigInteger> AsBigIntegerFraction() { return new Fraction<BigInteger>(Calculator.ConvertToBigInteger(this.Numerator), Calculator.ConvertToBigInteger(this.Denominator)); }
 
+		/// <summary>
+		/// Raises the fraction to the specified power.
+		/// </summary>
+		/// <param name="power">The power.</param>
+		/// <returns>The fraction raised to the specified power.</returns>
 		public Fraction<T> Pow(T power) { return new Fraction<T>(Calculator.Pow(this.Numerator, power), Calculator.Pow(this.Denominator, power)); }
 
 		#endregion Operators
