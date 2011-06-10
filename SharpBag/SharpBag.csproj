@@ -102,6 +102,7 @@
     <Compile Include="Games\Dice.cs" />
     <Compile Include="Comparers\LambdaComparer.cs" />
     <Compile Include="Matcher.cs" />
+    <Compile Include="Math\BaseConverter.cs" />
     <Compile Include="Math\Calculators\BigIntegerCalculator.cs" />
     <Compile Include="Math\Calculators\CheckedCalculator.cs" />
     <Compile Include="Math\Calculators\FractionCalculator.cs" />
@@ -136,7 +137,6 @@
     <Compile Include="IO\Serialization.cs" />
     <Compile Include="IO\Logging\InteractiveConsole.cs" />
     <Compile Include="IO\Logging\Logger.cs" />
-    <Compile Include="Math\Converters\BaseConverter.cs" />
     <Compile Include="Math\BagMath.cs" />
     <Compile Include="Math\MathExtensions.cs" />
     <Compile Include="Math\Sequences.cs" />

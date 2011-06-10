@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using SharpBag.Math.Calculators;
 
 namespace SharpBag.Math
 {
@@ -11,68 +12,120 @@ namespace SharpBag.Math
 	/// A fraction.
 	/// </summary>
 	/// <remarks>http://www.codeproject.com/KB/recipes/fractiion.aspx</remarks>
-	public struct Fraction : IComparable<Fraction>, IEquatable<Fraction>, ICloneable
+	public struct Fraction<T> : IComparable<Fraction<T>>, IEquatable<Fraction<T>>, ICloneable
 	{
+		static Fraction()
+		{
+			if (Calculator == null)
+			{
+				if (typeof(T) == typeof(int)) Calculator = (Calculator<T>)(object)new Int32Calculator();
+				else if (typeof(T) == typeof(long)) Calculator = (Calculator<T>)(object)new Int64Calculator();
+				else if (typeof(T) == typeof(BigInteger)) Calculator = (Calculator<T>)(object)new BigIntegerCalculator();
+			}
+		}
+
+		private static Calculator<T> _Calculator;
+
+		/// <summary>
+		/// The calculator.
+		/// </summary>
+		public static Calculator<T> Calculator
+		{
+			get { return _Calculator; }
+			set
+			{
+				_Calculator = value;
+				PositiveInfinity = new Fraction<T>(Calculator.One, Calculator.Zero);
+				NegativeInfinity = new Fraction<T>(Calculator.NegativeOne, Calculator.Zero);
+				NaN = new Fraction<T>(Calculator.Zero, Calculator.Zero);
+				One = new Fraction<T>(Calculator.One, Calculator.One);
+				Zero = new Fraction<T>(Calculator.Zero, Calculator.One);
+				NegativeOne = new Fraction<T>(Calculator.NegativeOne, Calculator.One);
+			}
+		}
+
 		#region Properties
 
-		private int _Numerator;
+		private T _Numerator;
 
 		/// <summary>
 		/// The numerator.
 		/// </summary>
-		public int Numerator { get { return _Numerator; } private set { _Numerator = value; } }
+		public T Numerator { get { return _Numerator; } private set { _Numerator = value; } }
 
-		private int _Denominator;
+		private T _Denominator;
 
 		/// <summary>
 		/// The denominator.
 		/// </summary>
-		public int Denominator { get { return _Denominator; } private set { _Denominator = value; } }
+		public T Denominator { get { return _Denominator; } private set { _Denominator = value; } }
 
 		/// <summary>
 		/// Returns the partial quotients of the fraction.
 		/// </summary>
-		public IEnumerable<int> Convergents
+		public IEnumerable<T> PartialQuotients
 		{
 			get
 			{
-				Fraction fract = this;
+				Fraction<T> fract = this;
 
-				while (fract.Denominator > 1)
+				while (Calculator.GreaterThan(fract.Denominator, Calculator.One))
 				{
-					int wholes = fract.Numerator / fract.Denominator;
+					T wholes = Calculator.Floor(Calculator.Divide(fract.Numerator, fract.Denominator));
 					yield return wholes;
-					fract = new Fraction(fract.Denominator, fract.Numerator - wholes * fract.Denominator);
+					fract = new Fraction<T>(fract.Denominator, Calculator.Subtract(fract.Numerator, Calculator.Multiply(wholes, fract.Denominator)));
 				}
 
-				if (fract.Denominator != 0) yield return fract.Numerator;
+				if (!Calculator.Equal(fract.Denominator, Calculator.Zero)) yield return fract.Numerator;
 			}
 		}
 
 		/// <summary>
 		/// Returns the reciprocal of the fraction.
 		/// </summary>
-		public Fraction Reciprocal { get { return new Fraction(this.Denominator, this.Numerator); } }
+		public Fraction<T> Reciprocal { get { return new Fraction<T>(this.Denominator, this.Numerator); } }
 
 		/// <summary>
 		/// Returns the number of wholes in the fraction.
 		/// </summary>
-		public int Wholes
+		public T Wholes
 		{
 			get
 			{
-				return this.Numerator / this.Denominator;
+				return Calculator.Divide(this.Numerator, this.Denominator);
 			}
 		}
 
 		/// <summary>
 		/// Returns the remainder of the fraction.
 		/// </summary>
-		public int Remainder
+		public T Remainder
 		{
 			get
 			{
-				return this.Numerator % this.Denominator;
+				return Calculator.Modulo(this.Numerator, this.Denominator);
+			}
+		}
+
+		/// <summary>
+		/// Returns the floor of the fraction.
+		/// </summary>
+		public Fraction<T> Floor
+		{
+			get
+			{
+				return new Fraction<T>(Calculator.Multiply(Calculator.Floor(Calculator.Divide(this.Numerator, this.Denominator)), this.Denominator), this.Denominator);
+			}
+		}
+
+		/// <summary>
+		/// Returns the ceiling of the fraction.
+		/// </summary>
+		public Fraction<T> Ceiling
+		{
+			get
+			{
+				return new Fraction<T>(Calculator.Multiply(Calculator.Ceiling(Calculator.Divide(this.Numerator, this.Denominator)), this.Denominator), this.Denominator);
 			}
 		}
 
@@ -83,17 +136,32 @@ namespace SharpBag.Math
 		/// <summary>
 		/// A fraction that represents positive infinity.
 		/// </summary>
-		public static readonly Fraction PositiveInfinity = new Fraction(1, 0);
+		public static Fraction<T> PositiveInfinity { get; private set; }
 
 		/// <summary>
 		/// A fraction that represents negative infinity.
 		/// </summary>
-		public static readonly Fraction NegativeInfinity = new Fraction(-1, 0);
+		public static Fraction<T> NegativeInfinity { get; private set; }
+
+		/// <summary>
+		/// A fraction that represents one.
+		/// </summary>
+		public static Fraction<T> One { get; private set; }
+
+		/// <summary>
+		/// A fraction that represents negative one.
+		/// </summary>
+		public static Fraction<T> NegativeOne { get; private set; }
+
+		/// <summary>
+		/// A fraction that represents zero.
+		/// </summary>
+		public static Fraction<T> Zero { get; private set; }
 
 		/// <summary>
 		/// A fraction that represents NaN (not a number).
 		/// </summary>
-		public static readonly Fraction NaN = new Fraction(0, 0);
+		public static Fraction<T> NaN { get; private set; }
 
 		#endregion Static Instances
 
@@ -104,7 +172,7 @@ namespace SharpBag.Math
 		/// </summary>
 		/// <param name="numerator">The numerator.</param>
 		/// <param name="denominator">The denominator.</param>
-		public Fraction(int numerator, int denominator)
+		public Fraction(T numerator, T denominator)
 		{
 			_Numerator = numerator;
 			_Denominator = denominator;
@@ -115,10 +183,10 @@ namespace SharpBag.Math
 		/// The constructor.
 		/// </summary>
 		/// <param name="wholeNumber">The number of wholes.</param>
-		public Fraction(int wholeNumber)
+		public Fraction(T wholeNumber)
 		{
 			_Numerator = wholeNumber;
-			_Denominator = 1;
+			_Denominator = Calculator.One;
 		}
 
 		/// <summary>
@@ -126,7 +194,7 @@ namespace SharpBag.Math
 		/// </summary>
 		/// <param name="numerator">The numerator.</param>
 		/// <param name="denominator">The denominator.</param>
-		public Fraction(Fraction numerator, Fraction denominator)
+		public Fraction(Fraction<T> numerator, Fraction<T> denominator)
 		{
 			this = numerator / denominator;
 		}
@@ -135,50 +203,10 @@ namespace SharpBag.Math
 		/// The constructor.
 		/// </summary>
 		/// <param name="other">Another fraction to copy.</param>
-		public Fraction(Fraction other)
+		public Fraction(Fraction<T> other)
 		{
 			_Numerator = other.Numerator;
 			_Denominator = other.Denominator;
-		}
-
-		/// <summary>
-		/// The constructor.
-		/// </summary>
-		/// <param name="value">The floating point representation of the fraction.</param>
-		public Fraction(double value)
-		{
-			if (Double.IsPositiveInfinity(value)) this = Fraction.PositiveInfinity;
-			else if (Double.IsNegativeInfinity(value)) this = Fraction.NegativeInfinity;
-			else if (Double.IsNaN(value)) this = Fraction.NaN;
-			else
-			{
-				int sign = 1;
-				if (value < 0)
-				{
-					value = -value;
-					sign = -sign;
-				}
-
-				int fractionNumerator = (int)value, maxIterations = 594;
-				double fractionDenominator = 1,
-					previousDenominator = 0,
-					remainingDigits = value,
-					scratch;
-
-				while (remainingDigits != System.Math.Floor(remainingDigits) && System.Math.Abs(value - (fractionNumerator / fractionDenominator)) > Double.Epsilon)
-				{
-					remainingDigits = 1.0 / (remainingDigits - System.Math.Floor(remainingDigits));
-					scratch = fractionDenominator;
-					fractionDenominator = (System.Math.Floor(remainingDigits) * fractionDenominator) + previousDenominator;
-					fractionNumerator = (int)(value * fractionDenominator + 0.5);
-					previousDenominator = scratch;
-					if (maxIterations-- < 0) break;
-				}
-
-				_Numerator = fractionNumerator * sign;
-				_Denominator = (int)fractionDenominator;
-				this.Reduce();
-			}
 		}
 
 		#endregion Constructors
@@ -187,23 +215,23 @@ namespace SharpBag.Math
 
 		private void Reduce()
 		{
-			if (this.Denominator < 0)
+			if (Calculator.LessThan(this.Denominator, Calculator.Zero))
 			{
-				this.Numerator = -this.Numerator;
-				this.Denominator = -this.Denominator;
+				this.Numerator = Calculator.Negate(this.Numerator);
+				this.Denominator = Calculator.Negate(this.Denominator);
 			}
 
-			if (this.Denominator == 1) return;
-			if (this.Denominator == 0)
+			if (Calculator.Equal(this.Denominator, Calculator.One)) return;
+			if (Calculator.Equal(this.Denominator, Calculator.Zero))
 			{
-				this.Numerator = this.Numerator == 0 ? 0 : this.Numerator < 0 ? -1 : 1;
+				this.Numerator = Calculator.Equal(this.Numerator, Calculator.Zero) ? Calculator.Zero : Calculator.LessThan(this.Numerator, Calculator.Zero) ? Calculator.NegativeOne : Calculator.One;
 				return;
 			}
 
-			int gcd = BagMath.Gcd(this.Numerator, this.Denominator);
-			if (gcd <= 1) return;
-			this.Numerator /= gcd;
-			this.Denominator /= gcd;
+			T gcd = Calculator.Gcd(this.Numerator, this.Denominator);
+			if (Calculator.LessThanOrEqual(gcd, Calculator.One)) return;
+			this.Numerator = Calculator.Divide(this.Numerator, gcd);
+			this.Denominator = Calculator.Divide(this.Denominator, gcd);
 		}
 
 		#endregion Helpers
@@ -213,19 +241,56 @@ namespace SharpBag.Math
 		/// <summary>
 		/// Returns the fraction represented by the partial quotients.
 		/// </summary>
-
-		/// <param name="convergents">The convergents.</param>
-		/// <returns>The fraction represented by the convergents.</returns>
-		public static Fraction FromConvergents(int[] convergents)
+		/// <param name="terms">The partial quotients of the continued fraction.</param>
+		/// <returns>The fraction represented by the partial quotients.</returns>
+		public static Fraction<T> FromPartialQuotients(T[] terms)
 		{
-			Fraction fract = new Fraction(convergents[convergents.Length - 1], 1);
+			Fraction<T> fract = new Fraction<T>(terms[terms.Length - 1], Calculator.One);
 
-			for (int i = convergents.Length - 2; i >= 0; i--)
+			for (int i = terms.Length - 2; i >= 0; i--)
 			{
-				fract = new Fraction(convergents[i] * fract.Numerator + fract.Denominator, fract.Numerator);
+				fract = new Fraction<T>(Calculator.Add(Calculator.Multiply(terms[i], fract.Numerator), fract.Denominator), fract.Numerator);
 			}
 
 			return fract;
+		}
+
+		/// <summary>
+		/// Returns the fraction represented by the floting point number.
+		/// </summary>
+		/// <param name="value">The floating point number.</param>
+		/// <returns>The fraction represented by the floting point number.</returns>
+		public static Fraction<T> FromFloatingPoint(double value)
+		{
+			if (Double.IsPositiveInfinity(value)) return Fraction<T>.PositiveInfinity;
+			if (Double.IsNegativeInfinity(value)) return Fraction<T>.NegativeInfinity;
+			if (Double.IsNaN(value)) return Fraction<T>.NaN;
+
+			T sign = Calculator.One;
+			if (value < 0)
+			{
+				value = -value;
+				sign = Calculator.Negate(sign);
+			}
+
+			T fractionNumerator = Calculator.Convert(value);
+			int maxIterations = 594;
+			double fractionDenominator = 1,
+				previousDenominator = 0,
+				remainingDigits = value,
+				scratch;
+
+			while (remainingDigits != System.Math.Floor(remainingDigits) && System.Math.Abs(value - Calculator.ConvertToDouble(fractionNumerator) / fractionDenominator) > Double.Epsilon)
+			{
+				remainingDigits = 1.0 / (remainingDigits - System.Math.Floor(remainingDigits));
+				scratch = fractionDenominator;
+				fractionDenominator = (System.Math.Floor(remainingDigits) * fractionDenominator) + previousDenominator;
+				fractionNumerator = Calculator.Convert(value * fractionDenominator + 0.5);
+				previousDenominator = scratch;
+				if (maxIterations-- < 0) break;
+			}
+
+			return new Fraction<T>(Calculator.Multiply(fractionNumerator, sign), Calculator.Convert(fractionDenominator));
 		}
 
 		/// <summary>
@@ -233,11 +298,32 @@ namespace SharpBag.Math
 		/// </summary>
 		/// <param name="fraction">The fraction as a string.</param>
 		/// <returns>The parsed fraction.</returns>
-		public static Fraction Parse(string fraction)
+		public static Fraction<T> Parse(string fraction)
 		{
 			int slash = fraction.IndexOf('/');
-			if (slash == -1) return new Fraction(Convert.ToInt32(fraction));
-			return new Fraction(Convert.ToInt32(fraction.Substring(0, slash)), Convert.ToInt32(fraction.Substring(slash + 1)));
+			if (slash == -1) return new Fraction<T>(Calculator.Convert(fraction));
+			return new Fraction<T>(Calculator.Convert(fraction.Substring(0, slash)), Calculator.Convert(fraction.Substring(slash + 1)));
+		}
+
+		/// <summary>
+		/// Returns the partial quotients of the square root of the specified number.
+		/// </summary>
+		/// <param name="s">The number.</param>
+		/// <returns>The partial quotients of the square root of the specified number.</returns>
+		public static IEnumerable<T> PartialQuotientsOfSquareRoot(T s)
+		{
+			T m = Calculator.Zero,
+			  d = Calculator.One,
+			  a0 = Calculator.Floor(Calculator.Sqrt(s)),
+			  a = a0;
+
+			while (true)
+			{
+				yield return a;
+				m = Calculator.Subtract(Calculator.Multiply(d, a), m);
+				d = Calculator.Divide(Calculator.Subtract(s, Calculator.Multiply(m, m)), d);
+				a = Calculator.Floor(Calculator.Divide(Calculator.Add(a0, m), d));
+			}
 		}
 
 		#endregion Static Methods
@@ -250,10 +336,10 @@ namespace SharpBag.Math
 		/// <param name="left">The left fraction.</param>
 		/// <param name="right">The right fraction.</param>
 		/// <returns>The added fractions.</returns>
-		public static Fraction operator +(Fraction left, Fraction right)
+		public static Fraction<T> operator +(Fraction<T> left, Fraction<T> right)
 		{
-			if (left.Denominator == right.Denominator) return new Fraction(left.Numerator + right.Numerator, left.Denominator);
-			return new Fraction(left.Numerator * right.Denominator + right.Numerator * left.Denominator, left.Denominator * right.Denominator);
+			if (Calculator.Equal(left.Denominator, right.Denominator)) return new Fraction<T>(Calculator.Add(left.Numerator, right.Numerator), left.Denominator);
+			return new Fraction<T>(Calculator.Add(Calculator.Multiply(left.Numerator, right.Denominator), Calculator.Multiply(right.Numerator, left.Denominator)), Calculator.Multiply(left.Denominator, right.Denominator));
 		}
 
 		/// <summary>
@@ -262,10 +348,10 @@ namespace SharpBag.Math
 		/// <param name="left">The left fraction.</param>
 		/// <param name="right">The right fraction.</param>
 		/// <returns>The subtracted fractions.</returns>
-		public static Fraction operator -(Fraction left, Fraction right)
+		public static Fraction<T> operator -(Fraction<T> left, Fraction<T> right)
 		{
-			if (left.Denominator == right.Denominator) return new Fraction(left.Numerator - right.Numerator, left.Denominator);
-			return new Fraction(left.Numerator * right.Denominator - right.Numerator * left.Denominator, left.Denominator * right.Denominator);
+			if (Calculator.Equal(left.Denominator, right.Denominator)) return new Fraction<T>(Calculator.Subtract(left.Numerator, right.Numerator), left.Denominator);
+			return new Fraction<T>(Calculator.Subtract(Calculator.Multiply(left.Numerator, right.Denominator), Calculator.Multiply(right.Numerator, left.Denominator)), Calculator.Multiply(left.Denominator, right.Denominator));
 		}
 
 		/// <summary>
@@ -273,7 +359,7 @@ namespace SharpBag.Math
 		/// </summary>
 		/// <param name="fraction">The fraction.</param>
 		/// <returns>The negated fraction.</returns>
-		public static Fraction operator -(Fraction fraction) { return new Fraction(-fraction.Numerator, fraction.Denominator); }
+		public static Fraction<T> operator -(Fraction<T> fraction) { return new Fraction<T>(Calculator.Negate(fraction.Numerator), fraction.Denominator); }
 
 		/// <summary>
 		/// The multiplication operator.
@@ -281,7 +367,7 @@ namespace SharpBag.Math
 		/// <param name="left">The left fraction.</param>
 		/// <param name="right">The right fraction.</param>
 		/// <returns>The fractions multiplied.</returns>
-		public static Fraction operator *(Fraction left, Fraction right) { return new Fraction(left.Numerator * right.Numerator, left.Denominator * right.Denominator); }
+		public static Fraction<T> operator *(Fraction<T> left, Fraction<T> right) { return new Fraction<T>(Calculator.Multiply(left.Numerator, right.Numerator), Calculator.Multiply(left.Denominator, right.Denominator)); }
 
 		/// <summary>
 		/// The division operator.
@@ -289,7 +375,7 @@ namespace SharpBag.Math
 		/// <param name="left">The left fraction.</param>
 		/// <param name="right">The right fraction.</param>
 		/// <returns>The fractions divided.</returns>
-		public static Fraction operator /(Fraction left, Fraction right) { return left * right.Reciprocal; }
+		public static Fraction<T> operator /(Fraction<T> left, Fraction<T> right) { return left * right.Reciprocal; }
 
 		/// <summary>
 		/// The modulo operator.
@@ -297,77 +383,77 @@ namespace SharpBag.Math
 		/// <param name="left">The left fraction.</param>
 		/// <param name="right">The right fraction.</param>
 		/// <returns>The left fraction modulo the right fraction.</returns>
-		public static Fraction operator %(Fraction left, Fraction right) { return left - (left / right).Wholes * right; }
+		public static Fraction<T> operator %(Fraction<T> left, Fraction<T> right) { return left - new Fraction<T>((left / right).Wholes) * right; }
 
 		/// <summary>
 		/// An explicit cast operator from a fraction to a double.
 		/// </summary>
 		/// <param name="fraction">The fraction.</param>
 		/// <returns>The double.</returns>
-		public static explicit operator double(Fraction fraction) { return (double)fraction.Numerator / (double)fraction.Denominator; }
+		public static explicit operator double(Fraction<T> fraction) { return Calculator.ConvertToDouble(fraction.Numerator) / Calculator.ConvertToDouble(fraction.Denominator); }
 
 		/// <summary>
 		/// An explicit cast operator from a fraction to a decimal.
 		/// </summary>
 		/// <param name="fraction">The fraction.</param>
 		/// <returns>The decimal.</returns>
-		public static explicit operator decimal(Fraction fraction) { return (decimal)fraction.Numerator / (decimal)fraction.Denominator; }
+		public static explicit operator decimal(Fraction<T> fraction) { return Calculator.ConvertToDecimal(fraction.Numerator) / Calculator.ConvertToDecimal(fraction.Denominator); }
 
 		/// <summary>
 		/// An explicit cast operator from a fraction to a float.
 		/// </summary>
 		/// <param name="fraction">The fraction.</param>
 		/// <returns>The float.</returns>
-		public static explicit operator float(Fraction fraction) { return (float)fraction.Numerator / (float)fraction.Denominator; }
+		public static explicit operator float(Fraction<T> fraction) { return Calculator.ConvertToFloat(fraction.Numerator) / Calculator.ConvertToFloat(fraction.Denominator); }
 
 		/// <summary>
 		/// An explicit cast operator from a fraction to an integer.
 		/// </summary>
 		/// <param name="fraction">The fraction.</param>
 		/// <returns>The integer.</returns>
-		public static explicit operator int(Fraction fraction) { return fraction.Numerator / fraction.Denominator; }
+		public static explicit operator int(Fraction<T> fraction) { return Calculator.ConvertToInt(fraction.Numerator) / Calculator.ConvertToInt(fraction.Denominator); }
 
 		/// <summary>
 		/// An explicit cast operator from a fraction to a long integer.
 		/// </summary>
 		/// <param name="fraction">The fraction.</param>
 		/// <returns>The long integer.</returns>
-		public static explicit operator long(Fraction fraction) { return (long)fraction.Numerator / fraction.Denominator; }
+		public static explicit operator long(Fraction<T> fraction) { return Calculator.ConvertToLong(fraction.Numerator) / Calculator.ConvertToLong(fraction.Denominator); }
 
 		/// <summary>
 		/// An explicit cast operator from a fraction to a BigInteger.
 		/// </summary>
 		/// <param name="fraction">The fraction.</param>
 		/// <returns>The BigInteger.</returns>
-		public static explicit operator BigInteger(Fraction fraction) { return (BigInteger)fraction.Numerator / (BigInteger)fraction.Denominator; }
+		public static explicit operator BigInteger(Fraction<T> fraction) { return Calculator.ConvertToBigInteger(fraction.Numerator) / Calculator.ConvertToBigInteger(fraction.Denominator); }
 
 		/// <summary>
 		/// An implicit cast operator from a whole number to a fraction.
 		/// </summary>
 		/// <param name="wholeNumber">The whole number.</param>
 		/// <returns>The fraction.</returns>
-		public static implicit operator Fraction(int wholeNumber) { return new Fraction(wholeNumber); }
+		public static implicit operator Fraction<T>(T wholeNumber) { return new Fraction<T>(wholeNumber); }
 
 		/// <summary>
 		/// An explicit cast operator from a floating point number to a fraction.
 		/// </summary>
 		/// <param name="fraction">The floating point number.</param>
 		/// <returns>The fraction.</returns>
-		public static explicit operator Fraction(double fraction) { return new Fraction(fraction); }
+		public static explicit operator Fraction<T>(double fraction) { return Fraction<T>.FromFloatingPoint(fraction); }
 
 		/// <summary>
 		/// An explicit cast operator from a floating point number to a fraction.
 		/// </summary>
 		/// <param name="fraction">The floating point number.</param>
 		/// <returns>The fraction.</returns>
-		public static explicit operator Fraction(decimal fraction) { return new Fraction((double)fraction); }
+		public static explicit operator Fraction<T>(decimal fraction) { return Fraction<T>.FromFloatingPoint((double)fraction); }
 
 		/// <summary>
 		/// An explicit cast operator from a floating point number to a fraction.
 		/// </summary>
 		/// <param name="fraction">The floating point number.</param>
 		/// <returns>The fraction.</returns>
-		public static explicit operator Fraction(float fraction) { return new Fraction(fraction); }
+		public static explicit operator Fraction<T>(float fraction) { return Fraction<T>.FromFloatingPoint(fraction); }
 
 		/// <summary>
 		/// The equal operator.
@@ -375,7 +461,7 @@ namespace SharpBag.Math
 		/// <param name="left">The left fraction.</param>
 		/// <param name="right">The right fraction.</param>
 		/// <returns>The result.</returns>
-		public static bool operator ==(Fraction left, Fraction right) { return left.Equals(right); }
+		public static bool operator ==(Fraction<T> left, Fraction<T> right) { return left.Equals(right); }
 
 		/// <summary>
 		/// The not equal operator.
@@ -383,14 +469,14 @@ namespace SharpBag.Math
 		/// <param name="left">The left fraction.</param>
 		/// <param name="right">The right fraction.</param>
 		/// <returns>The result.</returns>
-		public static bool operator !=(Fraction left, Fraction right) { return !left.Equals(right); }
+		public static bool operator !=(Fraction<T> left, Fraction<T> right) { return !left.Equals(right); }
 
 		/// <summary>
 		/// Whether the fractions are equal.
 		/// </summary>
 		/// <param name="other">Another fraction.</param>
 		/// <returns>Whether the fractions are equal.</returns>
-		public bool Equals(Fraction other) { return this.Numerator == other.Numerator && this.Denominator == other.Denominator; }
+		public bool Equals(Fraction<T> other) { return Calculator.Equal(this.Numerator, other.Numerator) && Calculator.Equal(this.Denominator, other.Denominator); }
 
 		/// <summary>
 		/// The greater than operator.
@@ -398,7 +484,7 @@ namespace SharpBag.Math
 		/// <param name="left">The left fraction.</param>
 		/// <param name="right">The right fraction.</param>
 		/// <returns>The result.</returns>
-		public static bool operator >(Fraction left, Fraction right) { return left.CompareTo(right) > 0; }
+		public static bool operator >(Fraction<T> left, Fraction<T> right) { return left.CompareTo(right) > 0; }
 
 		/// <summary>
 		/// The greater than or equal to operator.
@@ -406,7 +492,7 @@ namespace SharpBag.Math
 		/// <param name="left">The left fraction.</param>
 		/// <param name="right">The right fraction.</param>
 		/// <returns>The result.</returns>
-		public static bool operator >=(Fraction left, Fraction right) { return left.CompareTo(right) >= 0; }
+		public static bool operator >=(Fraction<T> left, Fraction<T> right) { return left.CompareTo(right) >= 0; }
 
 		/// <summary>
 		/// The less than operator.
@@ -414,7 +500,7 @@ namespace SharpBag.Math
 		/// <param name="left">The left fraction.</param>
 		/// <param name="right">The right fraction.</param>
 		/// <returns>The result.</returns>
-		public static bool operator <(Fraction left, Fraction right) { return left.CompareTo(right) < 0; }
+		public static bool operator <(Fraction<T> left, Fraction<T> right) { return left.CompareTo(right) < 0; }
 
 		/// <summary>
 		/// The less than or equal to operator.
@@ -422,21 +508,32 @@ namespace SharpBag.Math
 		/// <param name="left">The left fraction.</param>
 		/// <param name="right">The right fraction.</param>
 		/// <returns>The result.</returns>
-		public static bool operator <=(Fraction left, Fraction right) { return left.CompareTo(right) <= 0; }
+		public static bool operator <=(Fraction<T> left, Fraction<T> right) { return left.CompareTo(right) <= 0; }
 
 		/// <summary>
-		/// An implicit cast operator from a fraction to a 64-bit fraction.
+		/// Converts the fraction to an int fraction.
 		/// </summary>
-		/// <param name="fraction">The fraction.</param>
-		/// <returns>The 64-bit fraction.</returns>
-		public static implicit operator Fraction64(Fraction fraction) { return new Fraction64(fraction.Numerator, fraction.Denominator); }
+		/// <returns>The converted fraction.</returns>
+		public Fraction<int> AsIntFraction() { return new Fraction<int>(Calculator.ConvertToInt(this.Numerator), Calculator.ConvertToInt(this.Denominator)); }
 
 		/// <summary>
-		/// An implicit cast operator from a fraction to a BigInteger fraction.
+		/// Converts the fraction to a long fraction.
 		/// </summary>
-		/// <param name="fraction">The fraction.</param>
-		/// <returns>The BigInteger fraction.</returns>
-		public static implicit operator FractionBig(Fraction fraction) { return new FractionBig(fraction.Numerator, fraction.Denominator); }
+		/// <returns>The converted fraction.</returns>
+		public Fraction<long> AsLongFraction() { return new Fraction<long>(Calculator.ConvertToLong(this.Numerator), Calculator.ConvertToLong(this.Denominator)); }
+
+		/// <summary>
+		/// Converts the fraction to a BigInteger fraction.
+		/// </summary>
+		/// <returns>The converted fraction.</returns>
+		public Fraction<BigInteger> AsBigIntegerFraction() { return new Fraction<BigInteger>(Calculator.ConvertToBigInteger(this.Numerator), Calculator.ConvertToBigInteger(this.Denominator)); }
+
+		/// <summary>
+		/// Raises the fraction to the specified power.
+		/// </summary>
+		/// <param name="power">The power.</param>
+		/// <returns>The fraction raised to the specified power.</returns>
+		public Fraction<T> Pow(T power) { return new Fraction<T>(Calculator.Pow(this.Numerator, power), Calculator.Pow(this.Denominator, power)); }
 
 		#endregion Operators
 
@@ -447,11 +544,11 @@ namespace SharpBag.Math
 		/// </summary>
 		/// <param name="other">Another fraction.</param>
 		/// <returns>The result.</returns>
-		public int CompareTo(Fraction other)
+		public int CompareTo(Fraction<T> other)
 		{
-			if (this.Denominator == other.Denominator) return this.Numerator.CompareTo(other.Numerator);
-			if (this.Numerator == other.Numerator) return -this.Denominator.CompareTo(other.Denominator);
-			return (this.Numerator * other.Denominator).CompareTo(other.Numerator * this.Denominator);
+			if (Calculator.Equal(this.Denominator, other.Denominator)) return Calculator.Compare(this.Numerator, other.Numerator);
+			if (Calculator.Equal(this.Numerator, other.Numerator)) return -Calculator.Compare(this.Denominator, other.Denominator);
+			return Calculator.Compare(Calculator.Multiply(this.Numerator, other.Denominator), Calculator.Multiply(other.Numerator, this.Denominator));
 		}
 
 		/// <summary>
@@ -460,25 +557,25 @@ namespace SharpBag.Math
 		/// <returns>The string representation of the fraction.</returns>
 		public override string ToString()
 		{
-			if (this.Denominator == 1) return this.Numerator.ToString();
-			if (this == Fraction.PositiveInfinity) return NumberFormatInfo.CurrentInfo.PositiveInfinitySymbol;
-			if (this == Fraction.NegativeInfinity) return NumberFormatInfo.CurrentInfo.NegativeInfinitySymbol;
-			if (this == Fraction.NaN) return NumberFormatInfo.CurrentInfo.NaNSymbol;
-			return this.Numerator + "/" + this.Denominator;
+			if (Calculator.Equal(this.Denominator, Calculator.One)) return this.Numerator.ToString();
+			if (this == Fraction<T>.PositiveInfinity) return NumberFormatInfo.CurrentInfo.PositiveInfinitySymbol;
+			if (this == Fraction<T>.NegativeInfinity) return NumberFormatInfo.CurrentInfo.NegativeInfinitySymbol;
+			if (this == Fraction<T>.NaN) return NumberFormatInfo.CurrentInfo.NaNSymbol;
+			return Calculator.ConvertToString(this.Numerator) + "/" + Calculator.ConvertToString(this.Denominator);
 		}
 
 		/// <summary>
 		/// Clones the fraction.
 		/// </summary>
 		/// <returns>The cloned fraction.</returns>
-		public object Clone() { return new Fraction(this.Numerator, this.Denominator); }
+		public object Clone() { return new Fraction<T>(this.Numerator, this.Denominator); }
 
 		/// <summary>
 		/// Object.Equals()
 		/// </summary>
 		/// <param name="obj">The other object.</param>
 		/// <returns>Whether the object are equal.</returns>
-		public override bool Equals(object obj) { return obj.GetType() == typeof(Fraction) && this == (Fraction)obj; }
+		public override bool Equals(object obj) { return obj.GetType() == typeof(Fraction<T>) && this == (Fraction<T>)obj; }
 
 		/// <summary>
 		/// Object.GetHashCode()
