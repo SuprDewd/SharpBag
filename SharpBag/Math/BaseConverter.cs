@@ -7,7 +7,7 @@ using System.Diagnostics.Contracts;
 
 #endif
 
-namespace SharpBag.Math.Converters
+namespace SharpBag.Math
 {
 	/// <summary>
 	/// Converts numbers between bases.

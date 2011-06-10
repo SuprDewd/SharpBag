@@ -1294,13 +1294,12 @@ namespace SharpBag.Math
 		/// Whether the current instance is probably prime.
 		/// </summary>
 		/// <param name="n">The current instance.</param>
-		/// <param name="t">The accuracy of the test, higher is more accurate, max is 50.</param>
+		/// <param name="t">The accuracy of the test, higher is more accurate.</param>
 		/// <param name="rnd">A random number generator.</param>
 		/// <returns>Whether the current instance is probably prime.</returns>
 		public static bool IsProbablePrime(this BigInteger n, int t, Random rnd = null)
 		{
 			Contract.Requires(t >= 0);
-			Contract.Requires(t <= 50);
 
 			if (n <= 1) return false;
 			if (n == 2) return true;

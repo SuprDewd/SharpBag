@@ -30,7 +30,7 @@ namespace SharpBag.Math
 		public int Denominator { get { return _Denominator; } private set { _Denominator = value; } }
 
 		/// <summary>
-		/// Returns the convergents of the fraction.
+		/// Returns the partial quotients of the fraction.
 		/// </summary>
 		public IEnumerable<int> Convergents
 		{
@@ -208,11 +208,12 @@ namespace SharpBag.Math
 
 		#endregion Helpers
 
-		#region Static Factories
+		#region Static Methods
 
 		/// <summary>
-		/// Returns the fraction represented by the convergents.
+		/// Returns the fraction represented by the partial quotients.
 		/// </summary>
+
 		/// <param name="convergents">The convergents.</param>
 		/// <returns>The fraction represented by the convergents.</returns>
 		public static Fraction FromConvergents(int[] convergents)
@@ -239,7 +240,7 @@ namespace SharpBag.Math
 			return new Fraction(Convert.ToInt32(fraction.Substring(0, slash)), Convert.ToInt32(fraction.Substring(slash + 1)));
 		}
 
-		#endregion Static Factories
+		#endregion Static Methods
 
 		#region Operators
 
