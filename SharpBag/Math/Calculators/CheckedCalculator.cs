@@ -344,6 +344,14 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		public virtual T Abs(T n)
+		{
+			checked
+			{
+				return this.Calculator.Abs(n);
+			}
+		}
+
 		public override T One
 		{
 			get { return this.Calculator.One; }

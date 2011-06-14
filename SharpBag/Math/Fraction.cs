@@ -92,18 +92,18 @@ namespace SharpBag.Math
 		{
 			get
 			{
-				return Calculator.Divide(this.Numerator, this.Denominator);
+				return Calculator.Floor(Calculator.Divide(this.Numerator, this.Denominator));
 			}
 		}
 
 		/// <summary>
 		/// Returns the remainder of the fraction.
 		/// </summary>
-		public T Remainder
+		public Fraction<T> Remainder
 		{
 			get
 			{
-				return Calculator.Modulo(this.Numerator, this.Denominator);
+				return new Fraction<T>(Calculator.Modulo(this.Numerator, this.Denominator), this.Denominator);
 			}
 		}
 
@@ -562,6 +562,40 @@ namespace SharpBag.Math
 			if (this == Fraction<T>.NegativeInfinity) return NumberFormatInfo.CurrentInfo.NegativeInfinitySymbol;
 			if (this == Fraction<T>.NaN) return NumberFormatInfo.CurrentInfo.NaNSymbol;
 			return Calculator.ConvertToString(this.Numerator) + "/" + Calculator.ConvertToString(this.Denominator);
+		}
+
+		/// <summary>
+		/// Object.ToString()
+		/// </summary>
+		/// <param name="digits">The maximum number of digits after the comma.</param>
+		/// <returns>The string representation of the fraction.</returns>
+		public string ToString(int digits)
+		{
+			if (Calculator.Equal(this.Denominator, Calculator.One)) return this.Numerator.ToString();
+			if (this == Fraction<T>.PositiveInfinity) return NumberFormatInfo.CurrentInfo.PositiveInfinitySymbol;
+			if (this == Fraction<T>.NegativeInfinity) return NumberFormatInfo.CurrentInfo.NegativeInfinitySymbol;
+			if (this == Fraction<T>.NaN) return NumberFormatInfo.CurrentInfo.NaNSymbol;
+			if (digits == 0) return this.Wholes.ToString();
+			bool negative = Calculator.LessThan(this.Numerator, Calculator.Zero);
+			Fraction<T> fraction = new Fraction<T>(Calculator.Abs(this.Numerator), this.Denominator);
+			Fraction<T> remainder = fraction.Remainder;
+			T wholes = fraction.Wholes;
+			if (negative) wholes = Calculator.Negate(wholes);
+			StringBuilder sb = new StringBuilder(wholes.ToString()).Append('.');
+			T ten = Calculator.Convert(10);
+
+			do
+			{
+				remainder = remainder * ten;
+				sb.Append(remainder.Wholes.ToString());
+				digits--;
+
+				if (digits == 0) break;
+				remainder = new Fraction<T>(Calculator.Modulo(remainder.Numerator, remainder.Denominator), remainder.Denominator);
+			}
+			while (!Calculator.Equal(remainder.Numerator, Calculator.Zero));
+
+			return sb.ToString().TrimEnd('0', '.');
 		}
 
 		/// <summary>

@@ -284,6 +284,17 @@ namespace SharpBag.Math.Calculators
 		/// <returns>The square root.</returns>
 		public abstract T Sqrt(T n);
 
+		/// <summary>
+		/// Calculates the absolute value of the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The absolute value of the number.</returns>
+		public virtual T Abs(T n)
+		{
+			if (this.GreaterThanOrEqual(n, this.Zero)) return n;
+			return this.Negate(n);
+		}
+
 		#endregion Functions
 
 		#region Comparisons

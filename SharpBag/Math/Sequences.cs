@@ -151,7 +151,7 @@ namespace SharpBag.Math
 		#region Prime numbers
 
 		/// <summary>
-		/// A possibly endless source of prime numbers.
+		/// An endless source of prime numbers.
 		/// </summary>
 		public static IEnumerable<int> Primes
 		{
@@ -167,7 +167,7 @@ namespace SharpBag.Math
 		}
 
 		/// <summary>
-		/// A possibly endless source of prime numbers.
+		/// An endless source of prime numbers.
 		/// </summary>
 		public static IEnumerable<long> Primes64
 		{
@@ -185,7 +185,7 @@ namespace SharpBag.Math
 #if DOTNET4
 
 		/// <summary>
-		/// A possibly endless source of prime numbers.
+		/// An endless source of prime numbers.
 		/// </summary>
 		public static IEnumerable<BigInteger> PrimesBig
 		{

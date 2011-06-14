@@ -1508,6 +1508,13 @@
             <param name="n">The number.</param>
             <returns>The square root.</returns>
         </member>
+        <member name="M:SharpBag.Math.Calculators.Calculator`1.Abs(`0)">
+            <summary>
+            Calculates the absolute value of the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The absolute value of the number.</returns>
+        </member>
         <member name="M:SharpBag.Math.Calculators.Calculator`1.GreaterThan(`0,`0)">
             <summary>
             Checks whether the first number is greater than the second number.
@@ -2344,6 +2351,13 @@
             </summary>
             <returns>The string representation of the fraction.</returns>
         </member>
+        <member name="M:SharpBag.Math.Fraction`1.ToString(System.Int32)">
+            <summary>
+            Object.ToString()
+            </summary>
+            <param name="digits">The maximum number of digits after the comma.</param>
+            <returns>The string representation of the fraction.</returns>
+        </member>
         <member name="M:SharpBag.Math.Fraction`1.Clone">
             <summary>
             Clones the fraction.
@@ -2496,17 +2510,17 @@
         </member>
         <member name="P:SharpBag.Math.Sequences.Primes">
             <summary>
-            A possibly endless source of prime numbers.
+            An endless source of prime numbers.
             </summary>
         </member>
         <member name="P:SharpBag.Math.Sequences.Primes64">
             <summary>
-            A possibly endless source of prime numbers.
+            An endless source of prime numbers.
             </summary>
         </member>
         <member name="P:SharpBag.Math.Sequences.PrimesBig">
             <summary>
-            A possibly endless source of prime numbers.
+            An endless source of prime numbers.
             </summary>
         </member>
         <member name="P:SharpBag.Math.Sequences.PerfectNumbers">
@@ -6549,6 +6563,22 @@
             </summary>
             <param name="img">The current instance.</param>
             <returns>The BitmapSource.</returns>
+        </member>
+        <member name="T:SharpBag.Math.Constants">
+            <summary>
+            Mathematical constants.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Constants.GoldenRatio">
+            <summary>
+            The golden ratio.
+            </summary>
+            <remarks>(1 + Sqrt(5)) / 2</remarks>
+        </member>
+        <member name="P:SharpBag.Math.Constants.e">
+            <summary>
+            The constant e.
+            </summary>
         </member>
     </members>
 </doc>
