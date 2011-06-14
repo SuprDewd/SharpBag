@@ -1242,6 +1242,22 @@
             The connection.
             </summary>
         </member>
+        <member name="T:SharpBag.Math.Constants">
+            <summary>
+            Mathematical constants.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Constants.GoldenRatio">
+            <summary>
+            The golden ratio.
+            </summary>
+            <remarks>(1 + Sqrt(5)) / 2</remarks>
+        </member>
+        <member name="P:SharpBag.Math.Constants.e">
+            <summary>
+            The constant e.
+            </summary>
+        </member>
         <member name="T:SharpBag.Math.Calculators.Calculator`1">
             <summary>
             A generic calculator.
@@ -4958,6 +4974,18 @@
             A king.
             </summary>
         </member>
+        <member name="T:SharpBag.Media.MediaExtensions">
+            <summary>
+            Media extensions.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Media.MediaExtensions.ToBitmapSource(System.Drawing.Image)">
+            <summary>
+            Turns the current instance into a BitmapSource.
+            </summary>
+            <param name="img">The current instance.</param>
+            <returns>The BitmapSource.</returns>
+        </member>
         <member name="T:SharpBag.Misc.ProblemMetadata">
             <summary>
             A problem.
@@ -6550,34 +6578,6 @@
         <member name="P:SharpBag.Matcher`2.DefaultValue">
             <summary>
             The default value.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Media.MediaExtensions">
-            <summary>
-            Media extensions.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Media.MediaExtensions.ToBitmapSource(System.Drawing.Image)">
-            <summary>
-            Turns the current instance into a BitmapSource.
-            </summary>
-            <param name="img">The current instance.</param>
-            <returns>The BitmapSource.</returns>
-        </member>
-        <member name="T:SharpBag.Math.Constants">
-            <summary>
-            Mathematical constants.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Constants.GoldenRatio">
-            <summary>
-            The golden ratio.
-            </summary>
-            <remarks>(1 + Sqrt(5)) / 2</remarks>
-        </member>
-        <member name="P:SharpBag.Math.Constants.e">
-            <summary>
-            The constant e.
             </summary>
         </member>
     </members>

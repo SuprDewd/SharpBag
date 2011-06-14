@@ -158,10 +158,12 @@ namespace SharpBag.Math
 			get
 			{
 				yield return 2;
+				yield return 3;
 
-				for (int i = 3; ; i += 2)
+				for (int i = 5; ; i += 6)
 				{
 					if (BagMath.IsPrime(i)) yield return i;
+					if (BagMath.IsPrime(i + 2)) yield return i + 2;
 				}
 			}
 		}
@@ -174,10 +176,12 @@ namespace SharpBag.Math
 			get
 			{
 				yield return 2;
+				yield return 3;
 
-				for (long i = 3; ; i += 2)
+				for (long i = 5; ; i += 6)
 				{
 					if (BagMath.IsPrime(i)) yield return i;
+					if (BagMath.IsPrime(i + 2)) yield return i + 2;
 				}
 			}
 		}
@@ -192,10 +196,12 @@ namespace SharpBag.Math
 			get
 			{
 				yield return 2;
+				yield return 3;
 
-				for (BigInteger i = 3; ; i += 2)
+				for (BigInteger i = 5; ; i += 6)
 				{
 					if (BagMath.IsPrime(i)) yield return i;
+					if (BagMath.IsPrime(i + 2)) yield return i + 2;
 				}
 			}
 		}
@@ -356,10 +362,10 @@ namespace SharpBag.Math
 			{
 				for (int m = 2; ; m++)
 				{
+					int msq = m * m;
 					for (int n = 1; n < m; n++)
 					{
-						int nsq = n * n,
-							msq = m * m;
+						int nsq = n * n;
 						yield return new Tuple<int, int, int>(msq - nsq, 2 * m * n, msq + nsq);
 					}
 				}
@@ -375,10 +381,10 @@ namespace SharpBag.Math
 			{
 				for (long m = 2; ; m++)
 				{
+					long msq = m * m;
 					for (long n = 1; n < m; n++)
 					{
-						long nsq = n * n,
-							 msq = m * m;
+						long nsq = n * n;
 						yield return new Tuple<long, long, long>(msq - nsq, 2 * m * n, msq + nsq);
 					}
 				}
@@ -394,10 +400,10 @@ namespace SharpBag.Math
 			{
 				for (BigInteger m = 2; ; m++)
 				{
+					BigInteger msq = m * m;
 					for (BigInteger n = 1; n < m; n++)
 					{
-						BigInteger nsq = n * n,
-								   msq = m * m;
+						BigInteger nsq = n * n;
 						yield return new Tuple<BigInteger, BigInteger, BigInteger>(msq - nsq, 2 * m * n, msq + nsq);
 					}
 				}
