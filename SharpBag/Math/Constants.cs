@@ -21,16 +21,5 @@ namespace SharpBag.Math
 		public static double GoldenRatio { get { return _GoldenRatio; } }
 
 		#endregion The Golden Ratio
-
-		#region e
-
-		private static double _e = 2.7182818284590452;
-
-		/// <summary>
-		/// The constant e.
-		/// </summary>
-		public static double e { get { return _e; } }
-
-		#endregion e
 	}
 }
