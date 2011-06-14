@@ -77,6 +77,10 @@
   <ItemGroup>
     <Compile Include="ActionDisposable.cs" />
     <Compile Include="CollectionExtensions.cs" />
+    <Compile Include="Collections\BinaryHeap.cs" />
+    <Compile Include="Collections\MaxHeap.cs" />
+    <Compile Include="Collections\MinHeap.cs" />
+    <Compile Include="Collections\PriorityQueue.cs" />
     <Compile Include="Combinatorics\Combinations.cs" />
     <Compile Include="Combinatorics\CombinatoricExtensions.cs" />
     <Compile Include="Combinatorics\GenerateOption.cs" />
