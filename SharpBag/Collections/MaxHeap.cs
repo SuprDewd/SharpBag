@@ -18,6 +18,27 @@ namespace SharpBag.Collections
 			return this.InternalArray[firstIndex].CompareTo(this.InternalArray[secondIndex]);
 		}
 
+		public bool Contains(T item)
+		{
+			return this.Contains(item, 0);
+		}
+
+		private bool Contains(T item, int i)
+		{
+			if (item.CompareTo(this.InternalArray[i]) == 0) return true;
+
+			int left = this.Left(i);
+			if (left < this.Count)
+			{
+				if (item.CompareTo(this.InternalArray[left]) <= 0 && this.Contains(item, left)) return true;
+
+				int right = this.Right(i);
+				if (right < this.Count && item.CompareTo(this.InternalArray[right]) <= 0 && this.Contains(item, right)) return true;
+			}
+
+			return false;
+		}
+
 		public static IEnumerable<T> Sort(T[] array)
 		{
 			MaxHeap<T> heap = new MaxHeap<T>(array);

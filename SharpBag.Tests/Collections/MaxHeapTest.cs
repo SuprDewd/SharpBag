@@ -97,5 +97,36 @@ namespace SharpBag.Tests.Collections
 			Assert.AreEqual(arr2.ToStringPretty(), MaxHeap<int>.SortDescending((int[])arr2.Clone()).ToStringPretty());
 			Assert.AreEqual(arr2.ToStringPretty(), MaxHeap<int>.SortDescending((int[])arr3.Clone()).ToStringPretty());
 		}
+
+		[TestMethod]
+		public void Contains()
+		{
+			MaxHeap<int> heap1 = new MaxHeap<int>(new int[] { 1, 2, 3, 4, 5 }),
+						 heap2 = new MaxHeap<int>(new int[] { 5, 4, 3, 2, 1 }),
+						 heap3 = new MaxHeap<int>(new int[] { 2, 4, 5, 1, 3 }),
+						 heap4 = new MaxHeap<int>(new int[] { 1, 2, 4, 5 }),
+						 heap5 = new MaxHeap<int>(new int[] { 5, 4, 2, 1 }),
+						 heap6 = new MaxHeap<int>(new int[] { 2, 4, 5, 1 });
+
+			for (int i = 1; i <= 5; i++)
+			{
+				Assert.IsTrue(heap1.Contains(i));
+				Assert.IsTrue(heap2.Contains(i));
+				Assert.IsTrue(heap3.Contains(i));
+
+				if (i != 3)
+				{
+					Assert.IsTrue(heap4.Contains(i));
+					Assert.IsTrue(heap5.Contains(i));
+					Assert.IsTrue(heap6.Contains(i));
+				}
+				else
+				{
+					Assert.IsFalse(heap4.Contains(i));
+					Assert.IsFalse(heap5.Contains(i));
+					Assert.IsFalse(heap6.Contains(i));
+				}
+			}
+		}
 	}
 }

@@ -7,22 +7,42 @@ using System.Text;
 
 namespace SharpBag.Collections
 {
+	/// <summary>
+	/// A binary heap.
+	/// </summary>
+	/// <typeparam name="T">The type of items in the heap.</typeparam>
 	public abstract class BinaryHeap<T>
 	{
 		#region Fields
 
+		/// <summary>
+		/// The number of items in the heap.
+		/// </summary>
 		public int Count { get; protected set; }
 
+		/// <summary>
+		/// The maximum number of items that can be stored in the heap.
+		/// </summary>
 		public int Capacity { get; protected set; }
 
+		/// <summary>
+		/// The internal array.
+		/// </summary>
 		protected T[] InternalArray;
 
 		#endregion Fields
 
 		#region Constructors
 
+		/// <summary>
+		/// The constructor.
+		/// </summary>
 		public BinaryHeap() : this(16) { }
 
+		/// <summary>
+		/// The constructor.
+		/// </summary>
+		/// <param name="capacity">The maximum number of items that can be stored in the heap.</param>
 		public BinaryHeap(int capacity)
 		{
 			this.Count = 0;
@@ -30,6 +50,10 @@ namespace SharpBag.Collections
 			this.InternalArray = new T[this.Capacity];
 		}
 
+		/// <summary>
+		/// The constructor.
+		/// </summary>
+		/// <param name="array">An array of items.</param>
 		public BinaryHeap(T[] array)
 		{
 			this.InternalArray = array;
@@ -45,6 +69,10 @@ namespace SharpBag.Collections
 
 		#region Data Structuring
 
+		/// <summary>
+		/// Maintain the heap.
+		/// </summary>
+		/// <param name="i">The highest item to maintain.</param>
 		protected void MaintainHeap(int i)
 		{
 			while (true)
@@ -77,11 +105,19 @@ namespace SharpBag.Collections
 			}
 		}
 
+		/// <summary>
+		/// Peek at the next item in the heap.
+		/// </summary>
+		/// <returns>The item.</returns>
 		public T Peek()
 		{
 			return this.InternalArray[0];
 		}
 
+		/// <summary>
+		/// Pop the next item from the heap.
+		/// </summary>
+		/// <returns>The item.</returns>
 		public T Pop()
 		{
 			T ret = this.InternalArray[0];
@@ -91,6 +127,10 @@ namespace SharpBag.Collections
 			return ret;
 		}
 
+		/// <summary>
+		/// Push an item into the heap.
+		/// </summary>
+		/// <param name="item">The item.</param>
 		public void Push(T item)
 		{
 			if (this.Count == this.Capacity)
