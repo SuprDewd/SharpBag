@@ -16,12 +16,7 @@ namespace SharpBag.Math
 	{
 		static Fraction()
 		{
-			if (Calculator == null)
-			{
-				if (typeof(T) == typeof(int)) Calculator = (Calculator<T>)(object)new Int32Calculator();
-				else if (typeof(T) == typeof(long)) Calculator = (Calculator<T>)(object)new Int64Calculator();
-				else if (typeof(T) == typeof(BigInteger)) Calculator = (Calculator<T>)(object)new BigIntegerCalculator();
-			}
+			if (Calculator == null) Calculator = CalculatorFactory.GetInstanceFor<T>();
 		}
 
 		private static Calculator<T> _Calculator;
@@ -534,6 +529,12 @@ namespace SharpBag.Math
 		/// <param name="power">The power.</param>
 		/// <returns>The fraction raised to the specified power.</returns>
 		public Fraction<T> Pow(T power) { return new Fraction<T>(Calculator.Pow(this.Numerator, power), Calculator.Pow(this.Denominator, power)); }
+
+		/// <summary>
+		/// Computes the square root of the fraction.
+		/// </summary>
+		/// <returns>The square root.</returns>
+		public Fraction<T> Sqrt() { return new Fraction<T>(Calculator.Sqrt(Calculator.Multiply(this.Numerator, this.Denominator)), this.Denominator); }
 
 		#endregion Operators
 

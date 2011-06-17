@@ -8,6 +8,19 @@ namespace SharpBag.Math.Calculators
 {
 	public class FractionCalculator<T> : Calculator<Fraction<T>>
 	{
+		static FractionCalculator()
+		{
+			if (Calculator == null) Calculator = CalculatorFactory.GetInstanceFor<T>();
+		}
+
+		private static Calculator<T> _Calculator;
+
+		public static Calculator<T> Calculator
+		{
+			get { return _Calculator; }
+			set { _Calculator = value; }
+		}
+
 		public override Fraction<T> Add(Fraction<T> a, Fraction<T> b)
 		{
 			return a + b;
@@ -40,122 +53,122 @@ namespace SharpBag.Math.Calculators
 
 		public override Fraction<T> Convert(byte n)
 		{
-			throw new NotImplementedException();
+			return Calculator.Convert(n);
 		}
 
 		public override byte ConvertToByte(Fraction<T> n)
 		{
-			throw new NotImplementedException();
+			return Calculator.ConvertToByte(Calculator.Divide(n.Numerator, n.Denominator));
 		}
 
 		public override Fraction<T> Convert(short n)
 		{
-			throw new NotImplementedException();
+			return Calculator.Convert(n);
 		}
 
 		public override short ConvertToShort(Fraction<T> n)
 		{
-			throw new NotImplementedException();
+			return Calculator.ConvertToShort(Calculator.Divide(n.Numerator, n.Denominator));
 		}
 
 		public override Fraction<T> Convert(ushort n)
 		{
-			throw new NotImplementedException();
+			return Calculator.Convert(n);
 		}
 
 		public override ushort ConvertToUShort(Fraction<T> n)
 		{
-			throw new NotImplementedException();
+			return Calculator.ConvertToUShort(Calculator.Divide(n.Numerator, n.Denominator));
 		}
 
 		public override Fraction<T> Convert(int n)
 		{
-			throw new NotImplementedException();
+			return Calculator.Convert(n);
 		}
 
 		public override int ConvertToInt(Fraction<T> n)
 		{
-			throw new NotImplementedException();
+			return Calculator.ConvertToInt(Calculator.Divide(n.Numerator, n.Denominator));
 		}
 
 		public override Fraction<T> Convert(uint n)
 		{
-			throw new NotImplementedException();
+			return Calculator.Convert(n);
 		}
 
 		public override uint ConvertToUInt(Fraction<T> n)
 		{
-			throw new NotImplementedException();
+			return Calculator.ConvertToUInt(Calculator.Divide(n.Numerator, n.Denominator));
 		}
 
 		public override Fraction<T> Convert(long n)
 		{
-			throw new NotImplementedException();
+			return Calculator.Convert(n);
 		}
 
 		public override long ConvertToLong(Fraction<T> n)
 		{
-			throw new NotImplementedException();
+			return Calculator.ConvertToLong(Calculator.Divide(n.Numerator, n.Denominator));
 		}
 
 		public override Fraction<T> Convert(ulong n)
 		{
-			throw new NotImplementedException();
+			return Calculator.Convert(n);
 		}
 
 		public override ulong ConvertToULong(Fraction<T> n)
 		{
-			throw new NotImplementedException();
+			return Calculator.ConvertToULong(Calculator.Divide(n.Numerator, n.Denominator));
 		}
 
 		public override Fraction<T> Convert(float n)
 		{
-			throw new NotImplementedException();
+			return Calculator.Convert(n);
 		}
 
 		public override float ConvertToFloat(Fraction<T> n)
 		{
-			throw new NotImplementedException();
+			return Calculator.ConvertToFloat(Calculator.Divide(n.Numerator, n.Denominator));
 		}
 
 		public override Fraction<T> Convert(double n)
 		{
-			throw new NotImplementedException();
+			return Calculator.Convert(n);
 		}
 
 		public override double ConvertToDouble(Fraction<T> n)
 		{
-			throw new NotImplementedException();
+			return Calculator.ConvertToDouble(Calculator.Divide(n.Numerator, n.Denominator));
 		}
 
 		public override Fraction<T> Convert(decimal n)
 		{
-			throw new NotImplementedException();
+			return Calculator.Convert(n);
 		}
 
 		public override decimal ConvertToDecimal(Fraction<T> n)
 		{
-			throw new NotImplementedException();
+			return Calculator.ConvertToDecimal(Calculator.Divide(n.Numerator, n.Denominator));
 		}
 
 		public override Fraction<T> Convert(BigInteger n)
 		{
-			throw new NotImplementedException();
+			return Calculator.Convert(n);
 		}
 
 		public override BigInteger ConvertToBigInteger(Fraction<T> n)
 		{
-			throw new NotImplementedException();
+			return Calculator.ConvertToBigInteger(Calculator.Divide(n.Numerator, n.Denominator));
 		}
 
 		public override Fraction<T> Convert(string n)
 		{
-			throw new NotImplementedException();
+			return Calculator.Convert(n);
 		}
 
 		public override string ConvertToString(Fraction<T> n)
 		{
-			throw new NotImplementedException();
+			return Calculator.ConvertToString(Calculator.Divide(n.Numerator, n.Denominator));
 		}
 
 		public override Fraction<T> Ceiling(Fraction<T> n)
@@ -170,7 +183,7 @@ namespace SharpBag.Math.Calculators
 
 		public override Fraction<T> Pow(Fraction<T> n, Fraction<T> power)
 		{
-			throw new NotImplementedException();
+			return n.Pow(Calculator.Divide(power.Numerator, power.Denominator));
 		}
 
 		public override Fraction<T> Gcd(Fraction<T> a, Fraction<T> b)
@@ -185,7 +198,7 @@ namespace SharpBag.Math.Calculators
 
 		public override Fraction<T> Sqrt(Fraction<T> n)
 		{
-			throw new NotImplementedException();
+			return n.Sqrt();
 		}
 
 		public override int Compare(Fraction<T> a, Fraction<T> b)

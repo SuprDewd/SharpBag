@@ -2354,6 +2354,12 @@
             <param name="power">The power.</param>
             <returns>The fraction raised to the specified power.</returns>
         </member>
+        <member name="M:SharpBag.Math.Fraction`1.Sqrt">
+            <summary>
+            Computes the square root of the fraction.
+            </summary>
+            <returns>The square root.</returns>
+        </member>
         <member name="M:SharpBag.Math.Fraction`1.CompareTo(SharpBag.Math.Fraction{`0})">
             <summary>
             Compare the fraction.
@@ -3590,6 +3596,52 @@
             Push an item into the heap.
             </summary>
             <param name="item">The item.</param>
+        </member>
+        <member name="M:SharpBag.Collections.BinaryHeap`1.Clear">
+            <summary>
+            Clears the heap.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Collections.BinaryHeap`1.Compare(System.Int32,System.Int32)">
+            <summary>
+            The item comparer.
+            </summary>
+            <param name="firstIndex">The index of the first item.</param>
+            <param name="secondIndex">The index of the second item.</param>
+            <returns>The order of the items.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.BinaryHeap`1.Left(System.Int32)">
+            <summary>
+            Gets the left child of the specified index.
+            </summary>
+            <param name="i">The specified index.</param>
+            <returns>The left child.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.BinaryHeap`1.Right(System.Int32)">
+            <summary>
+            Gets the right child of the specified index.
+            </summary>
+            <param name="i">The specified index.</param>
+            <returns>The right child.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.BinaryHeap`1.Parent(System.Int32)">
+            <summary>
+            Gets the parent of the specified index.
+            </summary>
+            <param name="i">The specified index.</param>
+            <returns>The parent.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.BinaryHeap`1.InternalSort">
+            <summary>
+            The internal heap sort.
+            </summary>
+            <returns>The sorted items.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.BinaryHeap`1.InternalSortReversed">
+            <summary>
+            The reverse internal heap sort.
+            </summary>
+            <returns>The reverse sorted items.</returns>
         </member>
         <member name="P:SharpBag.Collections.BinaryHeap`1.Count">
             <summary>
@@ -5638,6 +5690,58 @@
             </summary>
             <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
         </member>
+        <member name="T:SharpBag.Collections.MaxHeap`1">
+            <summary>
+            A max heap.
+            </summary>
+            <typeparam name="T">The type of items in the heap.</typeparam>
+        </member>
+        <member name="M:SharpBag.Collections.MaxHeap`1.#ctor">
+            <summary>
+            The constructor.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Collections.MaxHeap`1.#ctor(System.Int32)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="capacity">The capacity of the heap.</param>
+        </member>
+        <member name="M:SharpBag.Collections.MaxHeap`1.#ctor(`0[])">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="array">The items.</param>
+        </member>
+        <member name="M:SharpBag.Collections.MaxHeap`1.Compare(System.Int32,System.Int32)">
+            <summary>
+            The item comparer.
+            </summary>
+            <param name="firstIndex">The index of the first item.</param>
+            <param name="secondIndex">The index of the second item.</param>
+            <returns>The order of the items.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.MaxHeap`1.Contains(`0)">
+            <summary>
+            Whether the heap contains the item.
+            </summary>
+            <param name="item">The item.</param>
+            <returns>Whether the heap contains the item.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.MaxHeap`1.Sort(`0[])">
+            <summary>
+            Heapsort the array.
+            </summary>
+            <param name="array">The array.</param>
+            <returns>The sorted array.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.MaxHeap`1.SortDescending(`0[])">
+            <summary>
+            Heapsort the array, in descending order.
+            </summary>
+            <param name="array">The array.</param>
+            <returns>The sorted array.</returns>
+        </member>
         <member name="T:SharpBag.ActionDisposable">
             <summary>
             Makes an action disposable.
@@ -6641,6 +6745,72 @@
             <summary>
             The default value.
             </summary>
+        </member>
+        <member name="T:SharpBag.Math.Interpolation">
+            <summary>
+            Methods for interpolation.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.Interpolation.CubicSpline(SharpBag.Math.Point{System.Double}[])">
+            <summary>
+            A natural cubic spline interpolation.
+            </summary>
+            <param name="points">The known data points.</param>
+            <returns>An interpolation function.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Interpolation.CubicSpline``1(SharpBag.Math.Point{``0}[],SharpBag.Math.Calculators.Calculator{``0})">
+            <summary>
+            A natural cubic spline interpolation.
+            </summary>
+            <param name="points">The known data points.</param>
+            <param name="calc">The calculator.</param>
+            <returns>An interpolation function.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Interpolation.LinearSpline(SharpBag.Math.Point{System.Double}[])">
+            <summary>
+            A linear spline interpolation.
+            </summary>
+            <param name="points">The known data points.</param>
+            <param name="calc">The calculator.</param>
+            <returns>An interpolation function.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Interpolation.LinearSpline``1(SharpBag.Math.Point{``0}[],SharpBag.Math.Calculators.Calculator{``0})">
+            <summary>
+            A linear spline interpolation.
+            </summary>
+            <param name="points">The known data points.</param>
+            <param name="calc">The calculator.</param>
+            <returns>An interpolation function.</returns>
+        </member>
+        <member name="T:SharpBag.Math.Point`1">
+            <summary>
+            A point.
+            </summary>
+            <typeparam name="T">The type of numbers to represent the point.</typeparam>
+        </member>
+        <member name="P:SharpBag.Math.Point`1.Calculator">
+            <summary>
+            The calculator.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Math.Calculators.CalculatorFactory">
+            <summary>
+            A calculator factory.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CalculatorFactory.GetInstanceFor``1">
+            <summary>
+            Get a calculator instance for the specified type.
+            </summary>
+            <typeparam name="T">The specified type.</typeparam>
+            <returns>The calculator instance.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CalculatorFactory.GetCheckedInstanceFor``1">
+            <summary>
+            Get a checked calculator instance for the specified type.
+            </summary>
+            <typeparam name="T">The specified type.</typeparam>
+            <returns>The checked calculator instance.</returns>
         </member>
     </members>
 </doc>

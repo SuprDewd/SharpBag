@@ -154,6 +154,9 @@ namespace SharpBag.Collections
 			}
 		}
 
+		/// <summary>
+		/// Clears the heap.
+		/// </summary>
 		public void Clear()
 		{
 			this.Count = 0;
@@ -163,22 +166,43 @@ namespace SharpBag.Collections
 
 		#region Ordering
 
+		/// <summary>
+		/// The item comparer.
+		/// </summary>
+		/// <param name="firstIndex">The index of the first item.</param>
+		/// <param name="secondIndex">The index of the second item.</param>
+		/// <returns>The order of the items.</returns>
 		protected abstract int Compare(int firstIndex, int secondIndex);
 
 		#endregion Ordering
 
 		#region Traversing
 
+		/// <summary>
+		/// Gets the left child of the specified index.
+		/// </summary>
+		/// <param name="i">The specified index.</param>
+		/// <returns>The left child.</returns>
 		protected int Left(int i)
 		{
 			return ((i + 1) << 1) - 1;
 		}
 
+		/// <summary>
+		/// Gets the right child of the specified index.
+		/// </summary>
+		/// <param name="i">The specified index.</param>
+		/// <returns>The right child.</returns>
 		protected int Right(int i)
 		{
 			return (i + 1) << 1;
 		}
 
+		/// <summary>
+		/// Gets the parent of the specified index.
+		/// </summary>
+		/// <param name="i">The specified index.</param>
+		/// <returns>The parent.</returns>
 		protected int Parent(int i)
 		{
 			return i >> 1;
@@ -188,6 +212,10 @@ namespace SharpBag.Collections
 
 		#region Heapsort
 
+		/// <summary>
+		/// The internal heap sort.
+		/// </summary>
+		/// <returns>The sorted items.</returns>
 		protected IEnumerable<T> InternalSort()
 		{
 			while (this.Count > 0)
@@ -202,6 +230,10 @@ namespace SharpBag.Collections
 			}
 		}
 
+		/// <summary>
+		/// The reverse internal heap sort.
+		/// </summary>
+		/// <returns>The reverse sorted items.</returns>
 		protected IEnumerable<T> InternalSortReversed()
 		{
 			int count = this.Count;
