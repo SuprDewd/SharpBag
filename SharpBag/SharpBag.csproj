@@ -77,6 +77,10 @@
   <ItemGroup>
     <Compile Include="ActionDisposable.cs" />
     <Compile Include="CollectionExtensions.cs" />
+    <Compile Include="Collections\BinaryHeap.cs" />
+    <Compile Include="Collections\MaxHeap.cs" />
+    <Compile Include="Collections\MinHeap.cs" />
+    <Compile Include="Collections\PriorityQueue.cs" />
     <Compile Include="Combinatorics\Combinations.cs" />
     <Compile Include="Combinatorics\CombinatoricExtensions.cs" />
     <Compile Include="Combinatorics\GenerateOption.cs" />
@@ -100,14 +104,19 @@
     <Compile Include="Matcher.cs" />
     <Compile Include="Math\BaseConverter.cs" />
     <Compile Include="Math\Calculators\BigIntegerCalculator.cs" />
+    <Compile Include="Math\Calculators\CalculatorFactory.cs" />
     <Compile Include="Math\Calculators\CheckedCalculator.cs" />
+    <Compile Include="Math\Calculators\DoubleCalculator.cs" />
     <Compile Include="Math\Calculators\FractionCalculator.cs" />
     <Compile Include="Math\Calculators\Int64Calculator.cs" />
     <Compile Include="Math\Calculators\Int32Calculator.cs" />
     <Compile Include="Math\Constants.cs" />
     <Compile Include="Math\Fraction.cs" />
     <Compile Include="Math\Calculators\Calculator.cs" />
+    <Compile Include="Math\Interpolation.cs" />
     <Compile Include="Math\PascalsTriangle.cs" />
+    <Compile Include="Math\Point.cs" />
+    <Compile Include="Math\Polynomial.cs" />
     <Compile Include="Misc\Draw.cs" />
     <Compile Include="Misc\ProblemAttribute.cs" />
     <Compile Include="Misc\ProblemController.cs" />

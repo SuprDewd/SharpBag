@@ -344,7 +344,7 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
-		public virtual T Abs(T n)
+		public override T Abs(T n)
 		{
 			checked
 			{

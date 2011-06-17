@@ -1061,203 +1061,6 @@
             <param name="func">The function to execute.</param>
             <returns>The function result.</returns>
         </member>
-        <member name="T:SharpBag.Math.BaseConverter">
-            <summary>
-            Converts numbers between bases.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.BaseConverter.ToBase(System.String,System.Int32,System.Int32)">
-            <summary>
-            Converts the specified number from the specified start base to the specified target base.
-            </summary>
-            <param name="number">The number as a string.</param>
-            <param name="startBase">The base of the number.</param>
-            <param name="targetBase">The base to convert to.</param>
-            <returns>The specified number in the specified target base.</returns>
-            <remarks>Bases must be in the range 2 to 36.</remarks>
-        </member>
-        <member name="M:SharpBag.Math.BaseConverter.ToBase10(System.String,System.Int32)">
-            <summary>
-            Converts the specified number from the specified start base to base 10.
-            </summary>
-            <param name="number">The number as a string.</param>
-            <param name="startBase">The base of the number.</param>
-            <returns>The number in base 10.</returns>
-            <remarks>Bases must be in the range 2 to 36.</remarks>
-        </member>
-        <member name="M:SharpBag.Math.BaseConverter.FromBase10(System.Int32,System.Int32)">
-            <summary>
-            Converts the specified base 10 number to the specified target base.
-            </summary>
-            <param name="number">The base 10 number.</param>
-            <param name="targetBase">The target base.</param>
-            <returns>The target in the target base.</returns>
-            <remarks>Bases must be in the range 2 to 36.</remarks>
-        </member>
-        <member name="T:SharpBag.LambdaComparer`1">
-            <summary>
-            An IEqualityComparer for use with lambda functions.
-            </summary>
-            <typeparam name="T">The type of object to compare.</typeparam>
-        </member>
-        <member name="M:SharpBag.LambdaComparer`1.#ctor(System.Func{`0,`0,System.Boolean},System.Func{`0,System.Int32})">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="compare">The compare function.</param>
-            <param name="hash">The hash function.</param>
-        </member>
-        <member name="M:SharpBag.LambdaComparer`1.Equals(`0,`0)">
-            <summary>
-            IEqualityComparer{T}.Equals(T, T)
-            </summary>
-        </member>
-        <member name="M:SharpBag.LambdaComparer`1.GetHashCode(`0)">
-            <summary>
-            IEqualityComparer{T}.GetHashCode(T)
-            </summary>
-        </member>
-        <member name="T:SharpBag.Database.GenericDB`1">
-            <summary>
-            A class for working with databases.
-            </summary>
-            <typeparam name="TConn">The type of the connection.</typeparam>
-        </member>
-        <member name="M:SharpBag.Database.GenericDB`1.#ctor(System.String,System.String,System.String,System.String)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="server">The server to connect to.</param>
-            <param name="schema">The default schema.</param>
-            <param name="username">The username used to connect.</param>
-            <param name="password">The password used to connect.</param>
-        </member>
-        <member name="M:SharpBag.Database.GenericDB`1.Connect">
-            <summary>
-            Connects, or reconnects, to the database.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Database.GenericDB`1.Query(System.String)">
-            <summary>
-            Send a query to the database.
-            </summary>
-            <param name="q">The query string.</param>
-            <returns>A DataTable object with the results from the query.</returns>
-        </member>
-        <member name="M:SharpBag.Database.GenericDB`1.QuerySingle(System.String)">
-            <summary>
-            Send a query to the database and returns a scalar value.
-            </summary>
-            <param name="q">The query string.</param>
-            <returns>The scalar value.</returns>
-        </member>
-        <member name="M:SharpBag.Database.GenericDB`1.QuerySingle``1(System.String)">
-            <summary>
-            Send a query to the database and returns a scalar value, as the type of T.
-            </summary>
-            <typeparam name="T">The type of the first column.</typeparam>
-            <param name="q">The query string.</param>
-            <returns>The scalar value, as the type of T.</returns>
-        </member>
-        <member name="M:SharpBag.Database.GenericDB`1.Execute(System.String)">
-            <summary>
-            Executes a query on the database and returns how many rows were affected.
-            </summary>
-            <param name="q">The query to execute.</param>
-            <returns>How many rows were affected.</returns>
-        </member>
-        <member name="M:SharpBag.Database.GenericDB`1.Close">
-            <summary>
-            Closes the connection.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Database.GenericDB`1.DateTimeToSQL(System.DateTime)">
-            <summary>
-            Converts a DateTime object into an SQL compatible string.
-            </summary>
-            <param name="dt">The DateTime object.</param>
-            <returns>An SQL formatted string.</returns>
-        </member>
-        <member name="M:SharpBag.Database.GenericDB`1.DataTableToSQL(System.Data.DataTable,System.String)">
-            <summary>
-            Generates a SQL insert query for the specified DataTable.
-            </summary>
-            <param name="dt">The DataTable.</param>
-            <param name="schema">The schema to insert into.</param>
-            <returns>An SQL string.</returns>
-        </member>
-        <member name="M:SharpBag.Database.GenericDB`1.CreateConnectionString">
-            <summary>
-            Creates connection string.
-            </summary>
-            <returns>The connection string.</returns>
-        </member>
-        <member name="M:SharpBag.Database.GenericDB`1.CreateCommand(System.String,`0)">
-            <summary>
-            Creates a query command.
-            </summary>
-            <param name="q">The query.</param>
-            <param name="c">The connection.</param>
-            <returns>The query command.</returns>
-        </member>
-        <member name="M:SharpBag.Database.GenericDB`1.SQLEscape(System.String)">
-            <summary>
-            Escapes a string for use in an SQL query.
-            </summary>
-            <param name="s">The string to escape.</param>
-            <returns>The escaped string.</returns>
-        </member>
-        <member name="P:SharpBag.Database.GenericDB`1.Server">
-            <summary>
-            The server to connect to.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Database.GenericDB`1.Schema">
-            <summary>
-            The default schema.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Database.GenericDB`1.Username">
-            <summary>
-            The username used to connect.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Database.GenericDB`1.Password">
-            <summary>
-            The password used to connect.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Database.GenericDB`1.CommandTimeout">
-            <summary>
-            The time before the connection times out.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Database.GenericDB`1.State">
-            <summary>
-            The state of the connection.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Database.GenericDB`1.Connection">
-            <summary>
-            The connection.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Math.Constants">
-            <summary>
-            Mathematical constants.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Constants.GoldenRatio">
-            <summary>
-            The golden ratio.
-            </summary>
-            <remarks>(1 + Sqrt(5)) / 2</remarks>
-        </member>
-        <member name="P:SharpBag.Math.Constants.e">
-            <summary>
-            The constant e.
-            </summary>
-        </member>
         <member name="T:SharpBag.Math.Calculators.Calculator`1">
             <summary>
             A generic calculator.
@@ -1593,6 +1396,198 @@
             <summary>
             A zero.
             </summary>
+        </member>
+        <member name="T:SharpBag.Math.BaseConverter">
+            <summary>
+            Converts numbers between bases.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.BaseConverter.ToBase(System.String,System.Int32,System.Int32)">
+            <summary>
+            Converts the specified number from the specified start base to the specified target base.
+            </summary>
+            <param name="number">The number as a string.</param>
+            <param name="startBase">The base of the number.</param>
+            <param name="targetBase">The base to convert to.</param>
+            <returns>The specified number in the specified target base.</returns>
+            <remarks>Bases must be in the range 2 to 36.</remarks>
+        </member>
+        <member name="M:SharpBag.Math.BaseConverter.ToBase10(System.String,System.Int32)">
+            <summary>
+            Converts the specified number from the specified start base to base 10.
+            </summary>
+            <param name="number">The number as a string.</param>
+            <param name="startBase">The base of the number.</param>
+            <returns>The number in base 10.</returns>
+            <remarks>Bases must be in the range 2 to 36.</remarks>
+        </member>
+        <member name="M:SharpBag.Math.BaseConverter.FromBase10(System.Int32,System.Int32)">
+            <summary>
+            Converts the specified base 10 number to the specified target base.
+            </summary>
+            <param name="number">The base 10 number.</param>
+            <param name="targetBase">The target base.</param>
+            <returns>The target in the target base.</returns>
+            <remarks>Bases must be in the range 2 to 36.</remarks>
+        </member>
+        <member name="T:SharpBag.LambdaComparer`1">
+            <summary>
+            An IEqualityComparer for use with lambda functions.
+            </summary>
+            <typeparam name="T">The type of object to compare.</typeparam>
+        </member>
+        <member name="M:SharpBag.LambdaComparer`1.#ctor(System.Func{`0,`0,System.Boolean},System.Func{`0,System.Int32})">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="compare">The compare function.</param>
+            <param name="hash">The hash function.</param>
+        </member>
+        <member name="M:SharpBag.LambdaComparer`1.Equals(`0,`0)">
+            <summary>
+            IEqualityComparer{T}.Equals(T, T)
+            </summary>
+        </member>
+        <member name="M:SharpBag.LambdaComparer`1.GetHashCode(`0)">
+            <summary>
+            IEqualityComparer{T}.GetHashCode(T)
+            </summary>
+        </member>
+        <member name="T:SharpBag.Database.GenericDB`1">
+            <summary>
+            A class for working with databases.
+            </summary>
+            <typeparam name="TConn">The type of the connection.</typeparam>
+        </member>
+        <member name="M:SharpBag.Database.GenericDB`1.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="server">The server to connect to.</param>
+            <param name="schema">The default schema.</param>
+            <param name="username">The username used to connect.</param>
+            <param name="password">The password used to connect.</param>
+        </member>
+        <member name="M:SharpBag.Database.GenericDB`1.Connect">
+            <summary>
+            Connects, or reconnects, to the database.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Database.GenericDB`1.Query(System.String)">
+            <summary>
+            Send a query to the database.
+            </summary>
+            <param name="q">The query string.</param>
+            <returns>A DataTable object with the results from the query.</returns>
+        </member>
+        <member name="M:SharpBag.Database.GenericDB`1.QuerySingle(System.String)">
+            <summary>
+            Send a query to the database and returns a scalar value.
+            </summary>
+            <param name="q">The query string.</param>
+            <returns>The scalar value.</returns>
+        </member>
+        <member name="M:SharpBag.Database.GenericDB`1.QuerySingle``1(System.String)">
+            <summary>
+            Send a query to the database and returns a scalar value, as the type of T.
+            </summary>
+            <typeparam name="T">The type of the first column.</typeparam>
+            <param name="q">The query string.</param>
+            <returns>The scalar value, as the type of T.</returns>
+        </member>
+        <member name="M:SharpBag.Database.GenericDB`1.Execute(System.String)">
+            <summary>
+            Executes a query on the database and returns how many rows were affected.
+            </summary>
+            <param name="q">The query to execute.</param>
+            <returns>How many rows were affected.</returns>
+        </member>
+        <member name="M:SharpBag.Database.GenericDB`1.Close">
+            <summary>
+            Closes the connection.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Database.GenericDB`1.DateTimeToSQL(System.DateTime)">
+            <summary>
+            Converts a DateTime object into an SQL compatible string.
+            </summary>
+            <param name="dt">The DateTime object.</param>
+            <returns>An SQL formatted string.</returns>
+        </member>
+        <member name="M:SharpBag.Database.GenericDB`1.DataTableToSQL(System.Data.DataTable,System.String)">
+            <summary>
+            Generates a SQL insert query for the specified DataTable.
+            </summary>
+            <param name="dt">The DataTable.</param>
+            <param name="schema">The schema to insert into.</param>
+            <returns>An SQL string.</returns>
+        </member>
+        <member name="M:SharpBag.Database.GenericDB`1.CreateConnectionString">
+            <summary>
+            Creates connection string.
+            </summary>
+            <returns>The connection string.</returns>
+        </member>
+        <member name="M:SharpBag.Database.GenericDB`1.CreateCommand(System.String,`0)">
+            <summary>
+            Creates a query command.
+            </summary>
+            <param name="q">The query.</param>
+            <param name="c">The connection.</param>
+            <returns>The query command.</returns>
+        </member>
+        <member name="M:SharpBag.Database.GenericDB`1.SQLEscape(System.String)">
+            <summary>
+            Escapes a string for use in an SQL query.
+            </summary>
+            <param name="s">The string to escape.</param>
+            <returns>The escaped string.</returns>
+        </member>
+        <member name="P:SharpBag.Database.GenericDB`1.Server">
+            <summary>
+            The server to connect to.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Database.GenericDB`1.Schema">
+            <summary>
+            The default schema.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Database.GenericDB`1.Username">
+            <summary>
+            The username used to connect.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Database.GenericDB`1.Password">
+            <summary>
+            The password used to connect.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Database.GenericDB`1.CommandTimeout">
+            <summary>
+            The time before the connection times out.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Database.GenericDB`1.State">
+            <summary>
+            The state of the connection.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Database.GenericDB`1.Connection">
+            <summary>
+            The connection.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Math.Constants">
+            <summary>
+            Mathematical constants.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Constants.GoldenRatio">
+            <summary>
+            The golden ratio.
+            </summary>
+            <remarks>(1 + Sqrt(5)) / 2</remarks>
         </member>
         <member name="T:SharpBag.Comparers.AlphaNumberSettings">
             <summary>
@@ -2354,6 +2349,12 @@
             <param name="power">The power.</param>
             <returns>The fraction raised to the specified power.</returns>
         </member>
+        <member name="M:SharpBag.Math.Fraction`1.Sqrt">
+            <summary>
+            Computes the square root of the fraction.
+            </summary>
+            <returns>The square root.</returns>
+        </member>
         <member name="M:SharpBag.Math.Fraction`1.CompareTo(SharpBag.Math.Fraction{`0})">
             <summary>
             Compare the fraction.
@@ -2880,6 +2881,25 @@
             Calculates the rows of Pascal's triangle.
             </summary>
             <returns>The rows.</returns>
+        </member>
+        <member name="T:SharpBag.Math.Calculators.CalculatorFactory">
+            <summary>
+            A calculator factory.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CalculatorFactory.GetInstanceFor``1">
+            <summary>
+            Get a calculator instance for the specified type.
+            </summary>
+            <typeparam name="T">The specified type.</typeparam>
+            <returns>The calculator instance.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CalculatorFactory.GetCheckedInstanceFor``1">
+            <summary>
+            Get a checked calculator instance for the specified type.
+            </summary>
+            <typeparam name="T">The specified type.</typeparam>
+            <returns>The checked calculator instance.</returns>
         </member>
         <member name="T:SharpBag.Combinatorics.SmallPrimeUtility">
             <summary>
@@ -3537,6 +3557,114 @@
         <member name="P:SharpBag.Misc.ProblemController.Output">
             <summary>
             Whether to write to the console.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Collections.BinaryHeap`1">
+            <summary>
+            A binary heap.
+            </summary>
+            <typeparam name="T">The type of items in the heap.</typeparam>
+        </member>
+        <member name="F:SharpBag.Collections.BinaryHeap`1.InternalArray">
+            <summary>
+            The internal array.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Collections.BinaryHeap`1.#ctor">
+            <summary>
+            The constructor.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Collections.BinaryHeap`1.#ctor(System.Int32)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="capacity">The maximum number of items that can be stored in the heap.</param>
+        </member>
+        <member name="M:SharpBag.Collections.BinaryHeap`1.#ctor(`0[])">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="array">An array of items.</param>
+        </member>
+        <member name="M:SharpBag.Collections.BinaryHeap`1.MaintainHeap(System.Int32)">
+            <summary>
+            Maintain the heap.
+            </summary>
+            <param name="i">The highest item to maintain.</param>
+        </member>
+        <member name="M:SharpBag.Collections.BinaryHeap`1.Peek">
+            <summary>
+            Peek at the next item in the heap.
+            </summary>
+            <returns>The item.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.BinaryHeap`1.Pop">
+            <summary>
+            Pop the next item from the heap.
+            </summary>
+            <returns>The item.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.BinaryHeap`1.Push(`0)">
+            <summary>
+            Push an item into the heap.
+            </summary>
+            <param name="item">The item.</param>
+        </member>
+        <member name="M:SharpBag.Collections.BinaryHeap`1.Clear">
+            <summary>
+            Clears the heap.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Collections.BinaryHeap`1.Compare(System.Int32,System.Int32)">
+            <summary>
+            The item comparer.
+            </summary>
+            <param name="firstIndex">The index of the first item.</param>
+            <param name="secondIndex">The index of the second item.</param>
+            <returns>The order of the items.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.BinaryHeap`1.Left(System.Int32)">
+            <summary>
+            Gets the left child of the specified index.
+            </summary>
+            <param name="i">The specified index.</param>
+            <returns>The left child.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.BinaryHeap`1.Right(System.Int32)">
+            <summary>
+            Gets the right child of the specified index.
+            </summary>
+            <param name="i">The specified index.</param>
+            <returns>The right child.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.BinaryHeap`1.Parent(System.Int32)">
+            <summary>
+            Gets the parent of the specified index.
+            </summary>
+            <param name="i">The specified index.</param>
+            <returns>The parent.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.BinaryHeap`1.InternalSort">
+            <summary>
+            The internal heap sort.
+            </summary>
+            <returns>The sorted items.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.BinaryHeap`1.InternalSortReversed">
+            <summary>
+            The reverse internal heap sort.
+            </summary>
+            <returns>The reverse sorted items.</returns>
+        </member>
+        <member name="P:SharpBag.Collections.BinaryHeap`1.Count">
+            <summary>
+            The number of items in the heap.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Collections.BinaryHeap`1.Capacity">
+            <summary>
+            The maximum number of items that can be stored in the heap.
             </summary>
         </member>
         <member name="T:SharpBag.CollectionExtensions">
@@ -4339,6 +4467,34 @@
             <param name="fill">The fill.</param>
             <returns>The drawn triangle.</returns>
         </member>
+        <member name="T:SharpBag.Math.Point`1">
+            <summary>
+            A point.
+            </summary>
+            <typeparam name="T">The type of numbers to represent the point.</typeparam>
+        </member>
+        <member name="M:SharpBag.Math.Point`1.#ctor(`0,`0)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="x">The X coordinate.</param>
+            <param name="y">The Y coordinate.</param>
+        </member>
+        <member name="P:SharpBag.Math.Point`1.Calculator">
+            <summary>
+            The calculator.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Point`1.X">
+            <summary>
+            The X coordinate.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Point`1.Y">
+            <summary>
+            The Y coordinate.
+            </summary>
+        </member>
         <member name="T:SharpBag.Networking.NetworkExtensions">
             <summary>
             Extensions methods for the Network class.
@@ -4903,6 +5059,42 @@
             </summary>
             <param name="n">The current instance.</param>
             <returns>The square root of the current instance.</returns>
+        </member>
+        <member name="T:SharpBag.Math.Interpolation">
+            <summary>
+            Methods for interpolation.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.Interpolation.CubicSpline(SharpBag.Math.Point{System.Double}[])">
+            <summary>
+            A natural cubic spline interpolation.
+            </summary>
+            <param name="points">The known data points.</param>
+            <returns>An interpolation function.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Interpolation.CubicSpline``1(SharpBag.Math.Point{``0}[],SharpBag.Math.Calculators.Calculator{``0})">
+            <summary>
+            A natural cubic spline interpolation.
+            </summary>
+            <param name="points">The known data points.</param>
+            <param name="calc">The calculator.</param>
+            <returns>An interpolation function.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Interpolation.LinearSpline(SharpBag.Math.Point{System.Double}[])">
+            <summary>
+            A linear spline interpolation.
+            </summary>
+            <param name="points">The known data points.</param>
+            <param name="calc">The calculator.</param>
+            <returns>An interpolation function.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Interpolation.LinearSpline``1(SharpBag.Math.Point{``0}[],SharpBag.Math.Calculators.Calculator{``0})">
+            <summary>
+            A linear spline interpolation.
+            </summary>
+            <param name="points">The known data points.</param>
+            <param name="calc">The calculator.</param>
+            <returns>An interpolation function.</returns>
         </member>
         <member name="T:SharpBag.Games.CardValue">
             <summary>
@@ -5575,6 +5767,58 @@
             The location of the number.
             </summary>
             <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
+        </member>
+        <member name="T:SharpBag.Collections.MaxHeap`1">
+            <summary>
+            A max heap.
+            </summary>
+            <typeparam name="T">The type of items in the heap.</typeparam>
+        </member>
+        <member name="M:SharpBag.Collections.MaxHeap`1.#ctor">
+            <summary>
+            The constructor.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Collections.MaxHeap`1.#ctor(System.Int32)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="capacity">The capacity of the heap.</param>
+        </member>
+        <member name="M:SharpBag.Collections.MaxHeap`1.#ctor(`0[])">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="array">The items.</param>
+        </member>
+        <member name="M:SharpBag.Collections.MaxHeap`1.Compare(System.Int32,System.Int32)">
+            <summary>
+            The item comparer.
+            </summary>
+            <param name="firstIndex">The index of the first item.</param>
+            <param name="secondIndex">The index of the second item.</param>
+            <returns>The order of the items.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.MaxHeap`1.Contains(`0)">
+            <summary>
+            Whether the heap contains the item.
+            </summary>
+            <param name="item">The item.</param>
+            <returns>Whether the heap contains the item.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.MaxHeap`1.Sort(`0[])">
+            <summary>
+            Heapsort the array.
+            </summary>
+            <param name="array">The array.</param>
+            <returns>The sorted array.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.MaxHeap`1.SortDescending(`0[])">
+            <summary>
+            Heapsort the array, in descending order.
+            </summary>
+            <param name="array">The array.</param>
+            <returns>The sorted array.</returns>
         </member>
         <member name="T:SharpBag.ActionDisposable">
             <summary>
