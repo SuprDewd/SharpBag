@@ -1,3 +1,9 @@
 
  TODO:
-	
+
+	- Add arithmetic overflow checks.
+	- Replace DOTNET4 with USECODECONSTRAINTS (or something built-in with Code Contracts) where applicable.
+	- Add more unit tests.
+	- K[] Calculator.ArrayOfSize<K>(T).
+	- Cycle detection.
+	- Bilinear Interpolation.
