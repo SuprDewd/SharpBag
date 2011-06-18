@@ -6072,6 +6072,26 @@
             Methods for interpolation.
             </summary>
         </member>
+        <member name="M:SharpBag.Math.Interpolation.ConvertToPoints(System.Double[],System.Double,System.Double)">
+            <summary>
+            Convert an array of values to an array of points.
+            </summary>
+            <param name="points">The known data points.</param>
+            <param name="x0">The first x.</param>
+            <param name="xDelta">The x delta.</param>
+            <returns>The array of points.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Interpolation.CubicSpline``1(``0[],``0,``0,SharpBag.Math.Calculators.Calculator{``0})">
+            <summary>
+            Convert an array of values to an array of points.
+            </summary>
+            <typeparam name="T">The type of points.</typeparam>
+            <param name="points">The known data points.</param>
+            <param name="x0">The first x.</param>
+            <param name="xDelta">The x delta.</param>
+            <param name="calc">The calculator.</param>
+            <returns>The array of points.</returns>
+        </member>
         <member name="M:SharpBag.Math.Interpolation.CubicSpline(SharpBag.Math.Point{System.Double}[])">
             <summary>
             A natural cubic spline interpolation.
@@ -6100,6 +6120,29 @@
             </summary>
             <param name="points">The known data points.</param>
             <param name="calc">The calculator.</param>
+            <returns>An interpolation function.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Interpolation.Bilinear(System.Double[0:,0:],System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            A bilinear interpolation.
+            </summary>
+            <param name="points">The known data points.</param>
+            <param name="x0">First X.</param>
+            <param name="y0">First Y.</param>
+            <param name="xDelta">X delta.</param>
+            <param name="yDelta">Y delta.</param>
+            <returns>An interpolation function.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Interpolation.Bilinear``1(``0[0:,0:],``0,``0,``0,``0,SharpBag.Math.Calculators.Calculator{``0})">
+            <summary>
+            A bilinear interpolation.
+            </summary>
+            <param name="points">The known data points.</param>
+            <param name="x0">First X.</param>
+            <param name="y0">First Y.</param>
+            <param name="xDelta">X delta.</param>
+            <param name="yDelta">Y delta.</param>
+            <param name="calc">A calculator.</param>
             <returns>An interpolation function.</returns>
         </member>
         <member name="T:SharpBag.Games.CardValue">

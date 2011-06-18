@@ -156,10 +156,6 @@
     <Compile Include="Media\MediaExtensions.cs" />
     <Compile Include="FunctionalExtensions.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="README" />
-    <None Include="TODO" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

@@ -12,6 +12,49 @@ namespace SharpBag.Math
 	public static class Interpolation
 	{
 		/// <summary>
+		/// Convert an array of values to an array of points.
+		/// </summary>
+		/// <param name="points">The known data points.</param>
+		/// <param name="x0">The first x.</param>
+		/// <param name="xDelta">The x delta.</param>
+		/// <returns>The array of points.</returns>
+		public static Point<double>[] ConvertToPoints(double[] points, double x0, double xDelta)
+		{
+			Point<double>[] pointArray = new Point<double>[points.Length];
+
+			for (int i = 0; i < points.Length; i++)
+			{
+				pointArray[i] = new Point<double>(x0, points[i]);
+				x0 += xDelta;
+			}
+
+			return pointArray;
+		}
+
+		/// <summary>
+		/// Convert an array of values to an array of points.
+		/// </summary>
+		/// <typeparam name="T">The type of points.</typeparam>
+		/// <param name="points">The known data points.</param>
+		/// <param name="x0">The first x.</param>
+		/// <param name="xDelta">The x delta.</param>
+		/// <param name="calc">The calculator.</param>
+		/// <returns>The array of points.</returns>
+		public static Point<T>[] CubicSpline<T>(T[] points, T x0, T xDelta, Calculator<T> calc = null)
+		{
+			if (calc == null) calc = CalculatorFactory.GetInstanceFor<T>();
+			Point<T>[] pointArray = new Point<T>[points.Length];
+
+			for (int i = 0; i < points.Length; i++)
+			{
+				pointArray[i] = new Point<T>(x0, points[i]);
+				x0 = calc.Add(x0, xDelta);
+			}
+
+			return pointArray;
+		}
+
+		/// <summary>
 		/// A natural cubic spline interpolation.
 		/// </summary>
 		/// <param name="points">The known data points.</param>
@@ -220,6 +263,98 @@ namespace SharpBag.Math
 				}
 
 				return last.Evaluate(calc.Subtract(x, points[i - 1].X));
+			};
+		}
+
+		/// <summary>
+		/// A bilinear interpolation.
+		/// </summary>
+		/// <param name="points">The known data points.</param>
+		/// <param name="x0">First X.</param>
+		/// <param name="y0">First Y.</param>
+		/// <param name="xDelta">X delta.</param>
+		/// <param name="yDelta">Y delta.</param>
+		/// <returns>An interpolation function.</returns>
+		public static Func<double, double, double> Bilinear(double[,] points, double x0, double y0, double xDelta, double yDelta)
+		{
+			if (points.GetLength(0) < 2 || points.GetLength(1) < 2) return null;
+
+			return (x, y) =>
+			{
+				double x1 = x0,
+					   y1 = y0;
+
+				int i = 0, j = 0;
+
+				for (i = 0; (x1 + xDelta) < x && i < points.GetLength(0) - 1; i++)
+				{
+					x1 += xDelta;
+				}
+
+				for (j = 0; (y1 + yDelta) < y && j < points.GetLength(1) - 1; j++)
+				{
+					y1 += yDelta;
+				}
+
+				double d = xDelta * yDelta,
+					   x2 = x1 + xDelta,
+					   y2 = y1 + yDelta,
+					   n1 = x2 - x,
+					   n2 = y2 - y,
+					   n3 = x - x1,
+					   n4 = y - y1;
+
+				return points[i, j] / d * n1 * n2 +
+					   points[i + 1, j] / d * n3 * n2 +
+					   points[i, j + 1] / d * n1 * n4 +
+					   points[i + 1, j + 1] / d * n3 * n4;
+			};
+		}
+
+		/// <summary>
+		/// A bilinear interpolation.
+		/// </summary>
+		/// <param name="points">The known data points.</param>
+		/// <param name="x0">First X.</param>
+		/// <param name="y0">First Y.</param>
+		/// <param name="xDelta">X delta.</param>
+		/// <param name="yDelta">Y delta.</param>
+		/// <param name="calc">A calculator.</param>
+		/// <returns>An interpolation function.</returns>
+		public static Func<T, T, T> Bilinear<T>(T[,] points, T x0, T y0, T xDelta, T yDelta, Calculator<T> calc = null)
+		{
+			if (points.GetLength(0) < 2 || points.GetLength(1) < 2) return null;
+			if (calc == null) calc = CalculatorFactory.GetInstanceFor<T>();
+
+			return (x, y) =>
+			{
+				T x1 = x0,
+				  y1 = y0;
+
+				int i = 0, j = 0;
+
+				for (i = 0; calc.LessThan(calc.Add(x1, xDelta), x) && i < points.GetLength(0) - 1; i++)
+				{
+					x1 = calc.Add(x1, xDelta);
+				}
+
+				for (j = 0; calc.LessThan(calc.Add(y1, yDelta), y) && j < points.GetLength(1) - 1; j++)
+				{
+					y1 = calc.Add(y1, yDelta);
+				}
+
+				T d = calc.Multiply(xDelta, yDelta),
+					   x2 = calc.Add(x1, xDelta),
+					   y2 = calc.Add(y1, yDelta),
+					   n1 = calc.Subtract(x2, x),
+					   n2 = calc.Subtract(y2, y),
+					   n3 = calc.Subtract(x, x1),
+					   n4 = calc.Subtract(y, y1);
+
+				return calc.Add(calc.Multiply(calc.Multiply(calc.Divide(points[i, j], d), n1), n2),
+					   calc.Add(calc.Multiply(calc.Multiply(calc.Divide(points[i + 1, j], d), n3), n2),
+					   calc.Add(calc.Multiply(calc.Multiply(calc.Divide(points[i, j + 1], d), n1), n4),
+					   calc.Multiply(calc.Multiply(calc.Divide(points[i + 1, j + 1], d), n3), n4))));
 			};
 		}
 	}
