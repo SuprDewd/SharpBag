@@ -26,6 +26,12 @@ namespace SharpBag.Math.Calculators
 			this.Calculator = calculator;
 		}
 
+		/// <summary>
+		/// Adds the specified numbers.
+		/// </summary>
+		/// <param name="a">The first number.</param>
+		/// <param name="b">The second number.</param>
+		/// <returns>The added numbers.</returns>
 		public override T Add(T a, T b)
 		{
 			checked
@@ -34,6 +40,12 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Subtracts the specified numbers.
+		/// </summary>
+		/// <param name="a">The first number.</param>
+		/// <param name="b">The second number.</param>
+		/// <returns>The subtracted numbers.</returns>
 		public override T Subtract(T a, T b)
 		{
 			checked
@@ -42,6 +54,12 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Multiplies the specified numbers.
+		/// </summary>
+		/// <param name="a">The first number.</param>
+		/// <param name="b">The second number.</param>
+		/// <returns>The multiplied numbers.</returns>
 		public override T Multiply(T a, T b)
 		{
 			checked
@@ -50,6 +68,12 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Divides the specified numbers.
+		/// </summary>
+		/// <param name="a">The first number.</param>
+		/// <param name="b">The second number.</param>
+		/// <returns>The divided numbers.</returns>
 		public override T Divide(T a, T b)
 		{
 			checked
@@ -58,6 +82,12 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Calculates the remainder of the first number divided by the second number.
+		/// </summary>
+		/// <param name="a">The first number.</param>
+		/// <param name="b">The second number.</param>
+		/// <returns>The remainder of the first number divided by the second number..</returns>
 		public override T Modulo(T a, T b)
 		{
 			checked
@@ -66,6 +96,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Negates the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The negated number.</returns>
 		public override T Negate(T n)
 		{
 			checked
@@ -74,6 +109,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Converts the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The converted number.</returns>
 		public override T Convert(byte n)
 		{
 			checked
@@ -82,6 +122,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Converts the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The converted number.</returns>
 		public override byte ConvertToByte(T n)
 		{
 			checked
@@ -90,6 +135,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Converts the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The converted number.</returns>
 		public override T Convert(short n)
 		{
 			checked
@@ -98,6 +148,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Converts the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The converted number.</returns>
 		public override short ConvertToShort(T n)
 		{
 			checked
@@ -106,6 +161,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Converts the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The converted number.</returns>
 		public override T Convert(ushort n)
 		{
 			checked
@@ -114,6 +174,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Converts the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The converted number.</returns>
 		public override ushort ConvertToUShort(T n)
 		{
 			checked
@@ -122,6 +187,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Converts the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The converted number.</returns>
 		public override T Convert(int n)
 		{
 			checked
@@ -130,6 +200,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Converts the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The converted number.</returns>
 		public override int ConvertToInt(T n)
 		{
 			checked
@@ -138,6 +213,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Converts the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The converted number.</returns>
 		public override T Convert(uint n)
 		{
 			checked
@@ -146,6 +226,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Converts the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The converted number.</returns>
 		public override uint ConvertToUInt(T n)
 		{
 			checked
@@ -154,6 +239,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Converts the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The converted number.</returns>
 		public override T Convert(long n)
 		{
 			checked
@@ -162,6 +252,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Converts the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The converted number.</returns>
 		public override long ConvertToLong(T n)
 		{
 			checked
@@ -170,6 +265,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Converts the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The converted number.</returns>
 		public override T Convert(ulong n)
 		{
 			checked
@@ -178,6 +278,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Converts the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The converted number.</returns>
 		public override ulong ConvertToULong(T n)
 		{
 			checked
@@ -186,6 +291,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Converts the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The converted number.</returns>
 		public override T Convert(float n)
 		{
 			checked
@@ -194,6 +304,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Converts the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The converted number.</returns>
 		public override float ConvertToFloat(T n)
 		{
 			checked
@@ -202,6 +317,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Converts the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The converted number.</returns>
 		public override T Convert(double n)
 		{
 			checked
@@ -210,6 +330,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Converts the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The converted number.</returns>
 		public override double ConvertToDouble(T n)
 		{
 			checked
@@ -218,6 +343,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Converts the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The converted number.</returns>
 		public override T Convert(decimal n)
 		{
 			checked
@@ -226,6 +356,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Converts the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The converted number.</returns>
 		public override decimal ConvertToDecimal(T n)
 		{
 			checked
@@ -234,6 +369,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Converts the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The converted number.</returns>
 		public override T Convert(BigInteger n)
 		{
 			checked
@@ -242,6 +382,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Converts the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The converted number.</returns>
 		public override BigInteger ConvertToBigInteger(T n)
 		{
 			checked
@@ -250,6 +395,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Converts the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The converted number.</returns>
 		public override T Convert(string n)
 		{
 			checked
@@ -258,11 +408,22 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Converts the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The converted number.</returns>
 		public override string ConvertToString(T n)
 		{
 			return this.Calculator.ConvertToString(n);
 		}
 
+		/// <summary>
+		/// Compares the first number to the second number.
+		/// </summary>
+		/// <param name="a">The first number.</param>
+		/// <param name="b">The second number.</param>
+		/// <returns>The result.</returns>
 		public override int Compare(T a, T b)
 		{
 			checked
@@ -271,31 +432,66 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Checks whether the first number is equal to the second number.
+		/// </summary>
+		/// <param name="a">The first number.</param>
+		/// <param name="b">The second number.</param>
+		/// <returns>The result.</returns>
 		public override bool Equal(T a, T b)
 		{
 			return this.Calculator.Equal(a, b);
 		}
 
+		/// <summary>
+		/// Checks whether the first number is greater than the second number.
+		/// </summary>
+		/// <param name="a">The first number.</param>
+		/// <param name="b">The second number.</param>
+		/// <returns>The result.</returns>
 		public override bool GreaterThan(T a, T b)
 		{
 			return this.Calculator.GreaterThan(a, b);
 		}
 
+		/// <summary>
+		/// Checks whether the first number is greater than or equal to the second number.
+		/// </summary>
+		/// <param name="a">The first number.</param>
+		/// <param name="b">The second number.</param>
+		/// <returns>The result.</returns>
 		public override bool GreaterThanOrEqual(T a, T b)
 		{
 			return this.Calculator.GreaterThanOrEqual(a, b);
 		}
 
+		/// <summary>
+		/// Checks whether the first number is less than the second number.
+		/// </summary>
+		/// <param name="a">The first number.</param>
+		/// <param name="b">The second number.</param>
+		/// <returns>The result.</returns>
 		public override bool LessThan(T a, T b)
 		{
 			return this.Calculator.LessThan(a, b);
 		}
 
+		/// <summary>
+		/// Checks whether the first number is less than or equal to the second number.
+		/// </summary>
+		/// <param name="a">The first number.</param>
+		/// <param name="b">The second number.</param>
+		/// <returns>The result.</returns>
 		public override bool LessThanOrEqual(T a, T b)
 		{
 			return this.Calculator.LessThanOrEqual(a, b);
 		}
 
+		/// <summary>
+		/// Calculates the ceiling of the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The ceiling.</returns>
 		public override T Ceiling(T n)
 		{
 			checked
@@ -304,6 +500,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Calculates the floor of the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The floor.</returns>
 		public override T Floor(T n)
 		{
 			checked
@@ -312,6 +513,12 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Raises the number to the specified power.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <param name="power">The power.</param>
+		/// <returns>The number raised to the specified power.</returns>
 		public override T Pow(T n, T power)
 		{
 			checked
@@ -320,6 +527,12 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Calculates the greatest common divisor of the numbers.
+		/// </summary>
+		/// <param name="a">The first number.</param>
+		/// <param name="b">The second number.</param>
+		/// <returns>The greatest common divisor.</returns>
 		public override T Gcd(T a, T b)
 		{
 			checked
@@ -328,6 +541,12 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Calculates the least common multiple of the numbers.
+		/// </summary>
+		/// <param name="a">The first number.</param>
+		/// <param name="b">The second number.</param>
+		/// <returns>The least common multiple.</returns>
 		public override T Lcm(T a, T b)
 		{
 			checked
@@ -336,6 +555,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Calculates the square root of the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The square root.</returns>
 		public override T Sqrt(T n)
 		{
 			checked
@@ -344,6 +568,11 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// Calculates the absolute value of the number.
+		/// </summary>
+		/// <param name="n">The number.</param>
+		/// <returns>The absolute value of the number.</returns>
 		public override T Abs(T n)
 		{
 			checked
@@ -352,16 +581,25 @@ namespace SharpBag.Math.Calculators
 			}
 		}
 
+		/// <summary>
+		/// A one.
+		/// </summary>
 		public override T One
 		{
 			get { return this.Calculator.One; }
 		}
 
+		/// <summary>
+		/// A negative one.
+		/// </summary>
 		public override T NegativeOne
 		{
 			get { return this.Calculator.NegativeOne; }
 		}
 
+		/// <summary>
+		/// A zero.
+		/// </summary>
 		public override T Zero
 		{
 			get { return this.Calculator.Zero; }

@@ -18,7 +18,7 @@ namespace SharpBag.Database
 	/// A class for working with databases.
 	/// </summary>
 	/// <typeparam name="TConn">The type of the connection.</typeparam>
-	public abstract class GenericDB<TConn> where TConn : DbConnection, new()
+	public abstract class GenericDatabase<TConn> where TConn : DbConnection, new()
 	{
 		/// <summary>
 		/// The server to connect to.
@@ -62,7 +62,7 @@ namespace SharpBag.Database
 		/// <param name="schema">The default schema.</param>
 		/// <param name="username">The username used to connect.</param>
 		/// <param name="password">The password used to connect.</param>
-		protected GenericDB(string server, string schema, string username, string password)
+		protected GenericDatabase(string server, string schema, string username, string password)
 		{
 #if DOTNET4
 			Contract.Requires(server != null);

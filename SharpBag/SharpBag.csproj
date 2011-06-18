@@ -91,10 +91,10 @@
     <Compile Include="Comparers\AlphaNumberSettings.cs" />
     <Compile Include="Comparers\AlphaNumberComparer.cs" />
     <Compile Include="ConsoleHelper.cs" />
-    <Compile Include="Database\MSSqlDB.cs" />
-    <Compile Include="Database\GenericDB.cs" />
+    <Compile Include="Database\MicrosoftSqlDatabase.cs" />
+    <Compile Include="Database\GenericDatabase.cs" />
     <Compile Include="Database\DatabaseExtensions.cs" />
-    <Compile Include="Database\MySqlDB.cs" />
+    <Compile Include="Database\MySqlDatabase.cs" />
     <Compile Include="Delegates.cs" />
     <Compile Include="ExpressionUtil.cs" />
     <Compile Include="Games\CardType.cs" />

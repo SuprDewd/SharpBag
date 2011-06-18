@@ -1,5 +1,5 @@
-﻿using System.Data.Common;
-using System.Data.SqlClient;
+﻿using System.Data;
+using System.Data.Common;
 
 #if DOTNET4
 
@@ -8,13 +8,15 @@ using System.Diagnostics.Contracts;
 #endif
 
 using System.Text;
+using MySql.Data.MySqlClient;
+using System;
 
 namespace SharpBag.Database
 {
 	/// <summary>
 	/// A class for working with MySQL databases.
 	/// </summary>
-	public class MSSqlDB : GenericDB<SqlConnection>
+	public class MySqlDatabase : GenericDatabase<MySqlConnection>
 	{
 		/// <summary>
 		/// The constructor.
@@ -23,7 +25,7 @@ namespace SharpBag.Database
 		/// <param name="schema">The default schema.</param>
 		/// <param name="username">The username used to connect.</param>
 		/// <param name="password">The password used to connect.</param>
-		public MSSqlDB(string server, string schema, string username, string password)
+		public MySqlDatabase(string server, string schema, string username, string password)
 			: base(server, schema, username, password)
 		{
 #if DOTNET4
@@ -42,7 +44,23 @@ namespace SharpBag.Database
 		public override string SQLEscape(string s)
 		{
 			// Contract.Requires(s != null);
-			return s.Replace(@"\", @"\\").Replace(@"\'", "'").Replace(@"'", @"\'");
+			return MySqlHelper.EscapeString(s);
+		}
+
+		/// <summary>
+		/// Kills the current thread and then closes the connection.
+		/// </summary>
+		public override void Close()
+		{
+			if (this.Connection.State == ConnectionState.Closed) return;
+
+			try
+			{
+				this.Execute(String.Format("KILL {0};", this.Connection.ServerThread));
+			}
+			catch { }
+
+			this.Connection.Close();
 		}
 
 		/// <summary>
@@ -51,12 +69,12 @@ namespace SharpBag.Database
 		/// <param name="q">The query.</param>
 		/// <param name="c">The connection.</param>
 		/// <returns>The query command.</returns>
-		protected override DbCommand CreateCommand(string q, SqlConnection c)
+		protected override DbCommand CreateCommand(string q, MySqlConnection c)
 		{
-			// Contract.Requires(!String.IsNullOrEmpty(q));
+			// Contract.Requires(!string.IsNullOrEmpty(q));
 			// Contract.Requires(c != null);
 
-			return new SqlCommand(q, c);
+			return new MySqlCommand(q, c);
 		}
 
 		/// <summary>

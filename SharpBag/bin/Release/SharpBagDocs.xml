@@ -1061,6 +1061,11 @@
             <param name="func">The function to execute.</param>
             <returns>The function result.</returns>
         </member>
+        <member name="T:SharpBag.Math.Calculators.DoubleCalculator">
+            <summary>
+            A Double Calculator.
+            </summary>
+        </member>
         <member name="T:SharpBag.Math.Calculators.Calculator`1">
             <summary>
             A generic calculator.
@@ -1397,6 +1402,282 @@
             A zero.
             </summary>
         </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.Add(System.Double,System.Double)">
+            <summary>
+            Adds the specified numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The added numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.Subtract(System.Double,System.Double)">
+            <summary>
+            Subtracts the specified numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The subtracted numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.Multiply(System.Double,System.Double)">
+            <summary>
+            Multiplies the specified numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The multiplied numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.Divide(System.Double,System.Double)">
+            <summary>
+            Divides the specified numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The divided numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.Modulo(System.Double,System.Double)">
+            <summary>
+            Calculates the remainder of the first number divided by the second number.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The remainder of the first number divided by the second number..</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.Negate(System.Double)">
+            <summary>
+            Negates the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The negated number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.Convert(System.Byte)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.ConvertToByte(System.Double)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.Convert(System.Int16)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.ConvertToShort(System.Double)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.Convert(System.UInt16)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.ConvertToUShort(System.Double)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.Convert(System.Int32)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.ConvertToInt(System.Double)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.Convert(System.UInt32)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.ConvertToUInt(System.Double)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.Convert(System.Int64)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.ConvertToLong(System.Double)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.Convert(System.UInt64)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.ConvertToULong(System.Double)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.Convert(System.Single)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.ConvertToFloat(System.Double)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.Convert(System.Double)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.ConvertToDouble(System.Double)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.Convert(System.Decimal)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.ConvertToDecimal(System.Double)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.Convert(System.Numerics.BigInteger)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.ConvertToBigInteger(System.Double)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.Convert(System.String)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.Ceiling(System.Double)">
+            <summary>
+            Calculates the ceiling of the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The ceiling.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.Floor(System.Double)">
+            <summary>
+            Calculates the floor of the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The floor.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.Pow(System.Double,System.Double)">
+            <summary>
+            Raises the number to the specified power.
+            </summary>
+            <param name="n">The number.</param>
+            <param name="power">The power.</param>
+            <returns>The number raised to the specified power.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.Gcd(System.Double,System.Double)">
+            <summary>
+            Calculates the greatest common divisor of the numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The greatest common divisor.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.Lcm(System.Double,System.Double)">
+            <summary>
+            Calculates the least common multiple of the numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The least common multiple.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.Sqrt(System.Double)">
+            <summary>
+            Calculates the square root of the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The square root.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.DoubleCalculator.Compare(System.Double,System.Double)">
+            <summary>
+            Compares the first number to the second number.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="P:SharpBag.Math.Calculators.DoubleCalculator.One">
+            <summary>
+            A one.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Calculators.DoubleCalculator.NegativeOne">
+            <summary>
+            A negative one.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Calculators.DoubleCalculator.Zero">
+            <summary>
+            A zero.
+            </summary>
+        </member>
         <member name="T:SharpBag.Math.BaseConverter">
             <summary>
             Converts numbers between bases.
@@ -1453,13 +1734,18 @@
             IEqualityComparer{T}.GetHashCode(T)
             </summary>
         </member>
-        <member name="T:SharpBag.Database.GenericDB`1">
+        <member name="T:SharpBag.Database.MySqlDatabase">
+            <summary>
+            A class for working with MySQL databases.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Database.GenericDatabase`1">
             <summary>
             A class for working with databases.
             </summary>
             <typeparam name="TConn">The type of the connection.</typeparam>
         </member>
-        <member name="M:SharpBag.Database.GenericDB`1.#ctor(System.String,System.String,System.String,System.String)">
+        <member name="M:SharpBag.Database.GenericDatabase`1.#ctor(System.String,System.String,System.String,System.String)">
             <summary>
             The constructor.
             </summary>
@@ -1468,26 +1754,26 @@
             <param name="username">The username used to connect.</param>
             <param name="password">The password used to connect.</param>
         </member>
-        <member name="M:SharpBag.Database.GenericDB`1.Connect">
+        <member name="M:SharpBag.Database.GenericDatabase`1.Connect">
             <summary>
             Connects, or reconnects, to the database.
             </summary>
         </member>
-        <member name="M:SharpBag.Database.GenericDB`1.Query(System.String)">
+        <member name="M:SharpBag.Database.GenericDatabase`1.Query(System.String)">
             <summary>
             Send a query to the database.
             </summary>
             <param name="q">The query string.</param>
             <returns>A DataTable object with the results from the query.</returns>
         </member>
-        <member name="M:SharpBag.Database.GenericDB`1.QuerySingle(System.String)">
+        <member name="M:SharpBag.Database.GenericDatabase`1.QuerySingle(System.String)">
             <summary>
             Send a query to the database and returns a scalar value.
             </summary>
             <param name="q">The query string.</param>
             <returns>The scalar value.</returns>
         </member>
-        <member name="M:SharpBag.Database.GenericDB`1.QuerySingle``1(System.String)">
+        <member name="M:SharpBag.Database.GenericDatabase`1.QuerySingle``1(System.String)">
             <summary>
             Send a query to the database and returns a scalar value, as the type of T.
             </summary>
@@ -1495,26 +1781,26 @@
             <param name="q">The query string.</param>
             <returns>The scalar value, as the type of T.</returns>
         </member>
-        <member name="M:SharpBag.Database.GenericDB`1.Execute(System.String)">
+        <member name="M:SharpBag.Database.GenericDatabase`1.Execute(System.String)">
             <summary>
             Executes a query on the database and returns how many rows were affected.
             </summary>
             <param name="q">The query to execute.</param>
             <returns>How many rows were affected.</returns>
         </member>
-        <member name="M:SharpBag.Database.GenericDB`1.Close">
+        <member name="M:SharpBag.Database.GenericDatabase`1.Close">
             <summary>
             Closes the connection.
             </summary>
         </member>
-        <member name="M:SharpBag.Database.GenericDB`1.DateTimeToSQL(System.DateTime)">
+        <member name="M:SharpBag.Database.GenericDatabase`1.DateTimeToSQL(System.DateTime)">
             <summary>
             Converts a DateTime object into an SQL compatible string.
             </summary>
             <param name="dt">The DateTime object.</param>
             <returns>An SQL formatted string.</returns>
         </member>
-        <member name="M:SharpBag.Database.GenericDB`1.DataTableToSQL(System.Data.DataTable,System.String)">
+        <member name="M:SharpBag.Database.GenericDatabase`1.DataTableToSQL(System.Data.DataTable,System.String)">
             <summary>
             Generates a SQL insert query for the specified DataTable.
             </summary>
@@ -1522,13 +1808,13 @@
             <param name="schema">The schema to insert into.</param>
             <returns>An SQL string.</returns>
         </member>
-        <member name="M:SharpBag.Database.GenericDB`1.CreateConnectionString">
+        <member name="M:SharpBag.Database.GenericDatabase`1.CreateConnectionString">
             <summary>
             Creates connection string.
             </summary>
             <returns>The connection string.</returns>
         </member>
-        <member name="M:SharpBag.Database.GenericDB`1.CreateCommand(System.String,`0)">
+        <member name="M:SharpBag.Database.GenericDatabase`1.CreateCommand(System.String,`0)">
             <summary>
             Creates a query command.
             </summary>
@@ -1536,47 +1822,181 @@
             <param name="c">The connection.</param>
             <returns>The query command.</returns>
         </member>
-        <member name="M:SharpBag.Database.GenericDB`1.SQLEscape(System.String)">
+        <member name="M:SharpBag.Database.GenericDatabase`1.SQLEscape(System.String)">
             <summary>
             Escapes a string for use in an SQL query.
             </summary>
             <param name="s">The string to escape.</param>
             <returns>The escaped string.</returns>
         </member>
-        <member name="P:SharpBag.Database.GenericDB`1.Server">
+        <member name="P:SharpBag.Database.GenericDatabase`1.Server">
             <summary>
             The server to connect to.
             </summary>
         </member>
-        <member name="P:SharpBag.Database.GenericDB`1.Schema">
+        <member name="P:SharpBag.Database.GenericDatabase`1.Schema">
             <summary>
             The default schema.
             </summary>
         </member>
-        <member name="P:SharpBag.Database.GenericDB`1.Username">
+        <member name="P:SharpBag.Database.GenericDatabase`1.Username">
             <summary>
             The username used to connect.
             </summary>
         </member>
-        <member name="P:SharpBag.Database.GenericDB`1.Password">
+        <member name="P:SharpBag.Database.GenericDatabase`1.Password">
             <summary>
             The password used to connect.
             </summary>
         </member>
-        <member name="P:SharpBag.Database.GenericDB`1.CommandTimeout">
+        <member name="P:SharpBag.Database.GenericDatabase`1.CommandTimeout">
             <summary>
             The time before the connection times out.
             </summary>
         </member>
-        <member name="P:SharpBag.Database.GenericDB`1.State">
+        <member name="P:SharpBag.Database.GenericDatabase`1.State">
             <summary>
             The state of the connection.
             </summary>
         </member>
-        <member name="P:SharpBag.Database.GenericDB`1.Connection">
+        <member name="P:SharpBag.Database.GenericDatabase`1.Connection">
             <summary>
             The connection.
             </summary>
+        </member>
+        <member name="M:SharpBag.Database.MySqlDatabase.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="server">The server to connect to.</param>
+            <param name="schema">The default schema.</param>
+            <param name="username">The username used to connect.</param>
+            <param name="password">The password used to connect.</param>
+        </member>
+        <member name="M:SharpBag.Database.MySqlDatabase.SQLEscape(System.String)">
+            <summary>
+            Escapes a string for use in an SQL query.
+            </summary>
+            <param name="s">The string to escape.</param>
+            <returns>The escaped string.</returns>
+        </member>
+        <member name="M:SharpBag.Database.MySqlDatabase.Close">
+            <summary>
+            Kills the current thread and then closes the connection.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Database.MySqlDatabase.CreateCommand(System.String,MySql.Data.MySqlClient.MySqlConnection)">
+            <summary>
+            Creates a query command.
+            </summary>
+            <param name="q">The query.</param>
+            <param name="c">The connection.</param>
+            <returns>The query command.</returns>
+        </member>
+        <member name="M:SharpBag.Database.MySqlDatabase.CreateConnectionString">
+            <summary>
+            Creates connection string.
+            </summary>
+            <returns>The connection string.</returns>
+        </member>
+        <member name="T:SharpBag.Collections.PriorityQueue`2">
+            <summary>
+            A priority queue.
+            </summary>
+            <typeparam name="T">The type of values in the queue.</typeparam>
+            <typeparam name="C">The type of keys in the queue.</typeparam>
+        </member>
+        <member name="F:SharpBag.Collections.PriorityQueue`2.InternalHeap">
+            <summary>
+            The internal heap.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Collections.PriorityQueue`2.#ctor">
+            <summary>
+            The constructor.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Collections.PriorityQueue`2.#ctor(System.Int32)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="capacity">The initial capacity.</param>
+        </member>
+        <member name="M:SharpBag.Collections.PriorityQueue`2.Enqueue(`0,`1)">
+            <summary>
+            Enqueue the specified item with the specified priority.
+            </summary>
+            <param name="item">The item.</param>
+            <param name="priority">The priority.</param>
+        </member>
+        <member name="M:SharpBag.Collections.PriorityQueue`2.Dequeue(System.Boolean)">
+            <summary>
+            Dequeue the next item from the queue.
+            </summary>
+            <param name="remove">Whether to remove the item.</param>
+            <returns>The next item from the queue.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.PriorityQueue`2.Clear">
+            <summary>
+            Clear the items from the queue.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Collections.PriorityQueue`2.GetEnumerator">
+            <summary>
+            Get an enumerator.
+            </summary>
+            <returns>The enumerator.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.PriorityQueue`2.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Get an enumerator.
+            </summary>
+            <returns>The enumerator.</returns>
+        </member>
+        <member name="P:SharpBag.Collections.PriorityQueue`2.Count">
+            <summary>
+            The number of items in the queue.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Collections.PriorityQueue`2.Capacity">
+            <summary>
+            The maximum number of items in the queue.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Collections.PriorityQueue`2.Node">
+            <summary>
+            A priority queue node.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Collections.PriorityQueue`2.Node.Key">
+            <summary>
+            The key.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Collections.PriorityQueue`2.Node.Value">
+            <summary>
+            The value.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Collections.PriorityQueue`2.Node.Number">
+            <summary>
+            The number.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Collections.PriorityQueue`2.Node.#ctor(`1,`0,System.UInt32)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="key">The key of the node.</param>
+            <param name="value">The value of the node.</param>
+            <param name="number">The number of the node.</param>
+        </member>
+        <member name="M:SharpBag.Collections.PriorityQueue`2.Node.CompareTo(SharpBag.Collections.PriorityQueue{`0,`1}.Node)">
+            <summary>
+            The comparer.
+            </summary>
+            <param name="other">The node to compare to.</param>
+            <returns>The order.</returns>
         </member>
         <member name="T:SharpBag.Math.Constants">
             <summary>
@@ -1588,6 +2008,287 @@
             The golden ratio.
             </summary>
             <remarks>(1 + Sqrt(5)) / 2</remarks>
+        </member>
+        <member name="T:SharpBag.Math.Calculators.BigIntegerCalculator">
+            <summary>
+            A BigInteger calculator.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.Add(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+            <summary>
+            Adds the specified numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The added numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.Subtract(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+            <summary>
+            Subtracts the specified numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The subtracted numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.Multiply(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+            <summary>
+            Multiplies the specified numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The multiplied numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.Divide(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+            <summary>
+            Divides the specified numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The divided numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.Modulo(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+            <summary>
+            Calculates the remainder of the first number divided by the second number.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The remainder of the first number divided by the second number..</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.Negate(System.Numerics.BigInteger)">
+            <summary>
+            Negates the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The negated number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.Convert(System.Byte)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.ConvertToByte(System.Numerics.BigInteger)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.Convert(System.Int16)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.ConvertToShort(System.Numerics.BigInteger)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.Convert(System.UInt16)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.ConvertToUShort(System.Numerics.BigInteger)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.Convert(System.Int32)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.ConvertToInt(System.Numerics.BigInteger)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.Convert(System.UInt32)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.ConvertToUInt(System.Numerics.BigInteger)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.Convert(System.Int64)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.ConvertToLong(System.Numerics.BigInteger)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.Convert(System.UInt64)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.ConvertToULong(System.Numerics.BigInteger)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.Convert(System.Single)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.ConvertToFloat(System.Numerics.BigInteger)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.Convert(System.Double)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.ConvertToDouble(System.Numerics.BigInteger)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.Convert(System.Decimal)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.ConvertToDecimal(System.Numerics.BigInteger)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.Convert(System.Numerics.BigInteger)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.ConvertToBigInteger(System.Numerics.BigInteger)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.Convert(System.String)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.Ceiling(System.Numerics.BigInteger)">
+            <summary>
+            Calculates the ceiling of the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The ceiling.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.Floor(System.Numerics.BigInteger)">
+            <summary>
+            Calculates the floor of the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The floor.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.Pow(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+            <summary>
+            Raises the number to the specified power.
+            </summary>
+            <param name="n">The number.</param>
+            <param name="power">The power.</param>
+            <returns>The number raised to the specified power.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.Gcd(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+            <summary>
+            Calculates the greatest common divisor of the numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The greatest common divisor.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.Lcm(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+            <summary>
+            Calculates the least common multiple of the numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The least common multiple.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.Sqrt(System.Numerics.BigInteger)">
+            <summary>
+            Calculates the square root of the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The square root.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.BigIntegerCalculator.Compare(System.Numerics.BigInteger,System.Numerics.BigInteger)">
+            <summary>
+            Compares the first number to the second number.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="P:SharpBag.Math.Calculators.BigIntegerCalculator.One">
+            <summary>
+            A one.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Calculators.BigIntegerCalculator.NegativeOne">
+            <summary>
+            A negative one.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Calculators.BigIntegerCalculator.Zero">
+            <summary>
+            A zero.
+            </summary>
         </member>
         <member name="T:SharpBag.Comparers.AlphaNumberSettings">
             <summary>
@@ -1974,36 +2675,6 @@
             </summary>
             <typeparam name="T">The type.</typeparam>
         </member>
-        <member name="P:SharpBag.EnumerableEntry.WithInfo`1.Previous">
-            <summary>
-            The previous entry.
-            </summary>
-        </member>
-        <member name="P:SharpBag.EnumerableEntry.WithInfo`1.Value">
-            <summary>
-            The current entry.
-            </summary>
-        </member>
-        <member name="P:SharpBag.EnumerableEntry.WithInfo`1.Next">
-            <summary>
-            The next entry.
-            </summary>
-        </member>
-        <member name="P:SharpBag.EnumerableEntry.WithInfo`1.Index">
-            <summary>
-            The index of the current entry.
-            </summary>
-        </member>
-        <member name="P:SharpBag.EnumerableEntry.WithInfo`1.IsFirst">
-            <summary>
-            Whether the current entry is the first entry.
-            </summary>
-        </member>
-        <member name="P:SharpBag.EnumerableEntry.WithInfo`1.IsLast">
-            <summary>
-            Whether the current entry is the last entry.
-            </summary>
-        </member>
         <member name="T:SharpBag.EnumerableEntry.WithIndex`1">
             <summary>
             An IEnumerable entry with index.
@@ -2018,6 +2689,26 @@
         <member name="P:SharpBag.EnumerableEntry.WithIndex`1.Index">
             <summary>
             The index.
+            </summary>
+        </member>
+        <member name="P:SharpBag.EnumerableEntry.WithInfo`1.Previous">
+            <summary>
+            The previous entry.
+            </summary>
+        </member>
+        <member name="P:SharpBag.EnumerableEntry.WithInfo`1.Next">
+            <summary>
+            The next entry.
+            </summary>
+        </member>
+        <member name="P:SharpBag.EnumerableEntry.WithInfo`1.IsFirst">
+            <summary>
+            Whether the current entry is the first entry.
+            </summary>
+        </member>
+        <member name="P:SharpBag.EnumerableEntry.WithInfo`1.IsLast">
+            <summary>
+            Whether the current entry is the last entry.
             </summary>
         </member>
         <member name="T:SharpBag.Utils">
@@ -2882,6 +3573,287 @@
             </summary>
             <returns>The rows.</returns>
         </member>
+        <member name="T:SharpBag.Math.Calculators.Int64Calculator">
+            <summary>
+            An Int64 Calculator.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.Add(System.Int64,System.Int64)">
+            <summary>
+            Adds the specified numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The added numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.Subtract(System.Int64,System.Int64)">
+            <summary>
+            Subtracts the specified numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The subtracted numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.Multiply(System.Int64,System.Int64)">
+            <summary>
+            Multiplies the specified numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The multiplied numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.Divide(System.Int64,System.Int64)">
+            <summary>
+            Divides the specified numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The divided numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.Modulo(System.Int64,System.Int64)">
+            <summary>
+            Calculates the remainder of the first number divided by the second number.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The remainder of the first number divided by the second number..</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.Negate(System.Int64)">
+            <summary>
+            Negates the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The negated number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.Convert(System.Byte)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.ConvertToByte(System.Int64)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.Convert(System.Int16)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.ConvertToShort(System.Int64)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.Convert(System.UInt16)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.ConvertToUShort(System.Int64)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.Convert(System.Int32)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.ConvertToInt(System.Int64)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.Convert(System.UInt32)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.ConvertToUInt(System.Int64)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.Convert(System.Int64)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.ConvertToLong(System.Int64)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.Convert(System.UInt64)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.ConvertToULong(System.Int64)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.Convert(System.Single)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.ConvertToFloat(System.Int64)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.Convert(System.Double)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.ConvertToDouble(System.Int64)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.Convert(System.Decimal)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.ConvertToDecimal(System.Int64)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.Convert(System.Numerics.BigInteger)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.ConvertToBigInteger(System.Int64)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.Convert(System.String)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.Ceiling(System.Int64)">
+            <summary>
+            Calculates the ceiling of the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The ceiling.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.Floor(System.Int64)">
+            <summary>
+            Calculates the floor of the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The floor.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.Pow(System.Int64,System.Int64)">
+            <summary>
+            Raises the number to the specified power.
+            </summary>
+            <param name="n">The number.</param>
+            <param name="power">The power.</param>
+            <returns>The number raised to the specified power.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.Gcd(System.Int64,System.Int64)">
+            <summary>
+            Calculates the greatest common divisor of the numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The greatest common divisor.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.Lcm(System.Int64,System.Int64)">
+            <summary>
+            Calculates the least common multiple of the numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The least common multiple.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.Sqrt(System.Int64)">
+            <summary>
+            Calculates the square root of the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The square root.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int64Calculator.Compare(System.Int64,System.Int64)">
+            <summary>
+            Compares the first number to the second number.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="P:SharpBag.Math.Calculators.Int64Calculator.One">
+            <summary>
+            A one.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Calculators.Int64Calculator.NegativeOne">
+            <summary>
+            A negative one.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Calculators.Int64Calculator.Zero">
+            <summary>
+            A zero.
+            </summary>
+        </member>
         <member name="T:SharpBag.Math.Calculators.CalculatorFactory">
             <summary>
             A calculator factory.
@@ -3558,6 +4530,41 @@
             <summary>
             Whether to write to the console.
             </summary>
+        </member>
+        <member name="T:SharpBag.Database.MicrosoftSqlDatabase">
+            <summary>
+            A class for working with MySQL databases.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Database.MicrosoftSqlDatabase.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="server">The server to connect to.</param>
+            <param name="schema">The default schema.</param>
+            <param name="username">The username used to connect.</param>
+            <param name="password">The password used to connect.</param>
+        </member>
+        <member name="M:SharpBag.Database.MicrosoftSqlDatabase.SQLEscape(System.String)">
+            <summary>
+            Escapes a string for use in an SQL query.
+            </summary>
+            <param name="s">The string to escape.</param>
+            <returns>The escaped string.</returns>
+        </member>
+        <member name="M:SharpBag.Database.MicrosoftSqlDatabase.CreateCommand(System.String,System.Data.SqlClient.SqlConnection)">
+            <summary>
+            Creates a query command.
+            </summary>
+            <param name="q">The query.</param>
+            <param name="c">The connection.</param>
+            <returns>The query command.</returns>
+        </member>
+        <member name="M:SharpBag.Database.MicrosoftSqlDatabase.CreateConnectionString">
+            <summary>
+            Creates connection string.
+            </summary>
+            <returns>The connection string.</returns>
         </member>
         <member name="T:SharpBag.Collections.BinaryHeap`1">
             <summary>
@@ -5085,7 +6092,6 @@
             A linear spline interpolation.
             </summary>
             <param name="points">The known data points.</param>
-            <param name="calc">The calculator.</param>
             <returns>An interpolation function.</returns>
         </member>
         <member name="M:SharpBag.Math.Interpolation.LinearSpline``1(SharpBag.Math.Point{``0}[],SharpBag.Math.Calculators.Calculator{``0})">
@@ -5165,6 +6171,58 @@
             <summary>
             A king.
             </summary>
+        </member>
+        <member name="T:SharpBag.Collections.MinHeap`1">
+            <summary>
+            A min heap.
+            </summary>
+            <typeparam name="T">The type of items in the heap.</typeparam>
+        </member>
+        <member name="M:SharpBag.Collections.MinHeap`1.#ctor">
+            <summary>
+            The constructor.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Collections.MinHeap`1.#ctor(System.Int32)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="capacity">The capacity.</param>
+        </member>
+        <member name="M:SharpBag.Collections.MinHeap`1.#ctor(`0[])">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="array">An array of items.</param>
+        </member>
+        <member name="M:SharpBag.Collections.MinHeap`1.Compare(System.Int32,System.Int32)">
+            <summary>
+            The item comparer.
+            </summary>
+            <param name="firstIndex">The index of the first item.</param>
+            <param name="secondIndex">The index of the second item.</param>
+            <returns>The order of the items.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.MinHeap`1.Contains(`0)">
+            <summary>
+            Whether the heap contains the item.
+            </summary>
+            <param name="item">The item.</param>
+            <returns>Whether the heap contains the item.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.MinHeap`1.Sort(`0[])">
+            <summary>
+            Heapsort the array.
+            </summary>
+            <param name="array">The array.</param>
+            <returns>The sorted array.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.MinHeap`1.SortDescending(`0[])">
+            <summary>
+            Heapsort the array, in descending order.
+            </summary>
+            <param name="array">The array.</param>
+            <returns>The sorted array.</returns>
         </member>
         <member name="T:SharpBag.Media.MediaExtensions">
             <summary>
@@ -5249,46 +6307,6 @@
             <summary>
             A leaf.
             </summary>
-        </member>
-        <member name="T:SharpBag.Database.MySqlDB">
-            <summary>
-            A class for working with MySQL databases.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Database.MySqlDB.#ctor(System.String,System.String,System.String,System.String)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="server">The server to connect to.</param>
-            <param name="schema">The default schema.</param>
-            <param name="username">The username used to connect.</param>
-            <param name="password">The password used to connect.</param>
-        </member>
-        <member name="M:SharpBag.Database.MySqlDB.SQLEscape(System.String)">
-            <summary>
-            Escapes a string for use in an SQL query.
-            </summary>
-            <param name="s">The string to escape.</param>
-            <returns>The escaped string.</returns>
-        </member>
-        <member name="M:SharpBag.Database.MySqlDB.Close">
-            <summary>
-            Kills the current thread and then closes the connection.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Database.MySqlDB.CreateCommand(System.String,MySql.Data.MySqlClient.MySqlConnection)">
-            <summary>
-            Creates a query command.
-            </summary>
-            <param name="q">The query.</param>
-            <param name="c">The connection.</param>
-            <returns>The query command.</returns>
-        </member>
-        <member name="M:SharpBag.Database.MySqlDB.CreateConnectionString">
-            <summary>
-            Creates connection string.
-            </summary>
-            <returns>The connection string.</returns>
         </member>
         <member name="T:SharpBag.ConsoleHelper">
             <summary>
@@ -5565,7 +6583,7 @@
             <param name="dt">The current instance.</param>
             <returns>An SQL formatted string.</returns>
         </member>
-        <member name="M:SharpBag.Database.DatabaseExtensions.InsertInto``1(System.Data.DataTable,SharpBag.Database.GenericDB{``0})">
+        <member name="M:SharpBag.Database.DatabaseExtensions.InsertInto``1(System.Data.DataTable,SharpBag.Database.GenericDatabase{``0})">
             <summary>
             Inserts the current DataTable instance into the specified database.
             </summary>
@@ -5897,6 +6915,659 @@
         <member name="P:SharpBag.Misc.ProblemAttribute.Start">
             <summary>
             Whether to run the problem on start.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Math.Polynomial`1">
+            <summary>
+            A polynomial.
+            </summary>
+            <typeparam name="T">The type of numbers in the polynomial.</typeparam>
+        </member>
+        <member name="M:SharpBag.Math.Polynomial`1.#ctor">
+            <summary>
+            The constructor.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.Polynomial`1.#ctor(`0[])">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="coefficients">The coefficients.</param>
+        </member>
+        <member name="M:SharpBag.Math.Polynomial`1.Evaluate(`0)">
+            <summary>
+            Evalute the polynomial at the specified x.
+            </summary>
+            <param name="x">The specified x.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Polynomial`1.op_Addition(SharpBag.Math.Polynomial{`0},SharpBag.Math.Polynomial{`0})">
+            <summary>
+            Add the specified polynomials.
+            </summary>
+            <param name="left">The left polynomial.</param>
+            <param name="right">The right polynomial.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Polynomial`1.op_Subtraction(SharpBag.Math.Polynomial{`0},SharpBag.Math.Polynomial{`0})">
+            <summary>
+            Subtract the specified polynomials.
+            </summary>
+            <param name="left">The left polynomial.</param>
+            <param name="right">The right polynomial.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Polynomial`1.op_Multiply(SharpBag.Math.Polynomial{`0},SharpBag.Math.Polynomial{`0})">
+            <summary>
+            Multiply the specified polynomials.
+            </summary>
+            <param name="left">The left polynomial.</param>
+            <param name="right">The right polynomial.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Polynomial`1.op_Implicit(`0)~SharpBag.Math.Polynomial{`0}">
+            <summary>
+            An implicit cast to a polynomial.
+            </summary>
+            <param name="n">The value to cast.</param>
+            <returns>The polynomial.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Polynomial`1.ToString">
+            <summary>
+            Object.ToString()
+            </summary>
+            <returns>The polynomial as a string.</returns>
+        </member>
+        <member name="P:SharpBag.Math.Polynomial`1.Calculator">
+            <summary>
+            The calculator.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Polynomial`1.Degree">
+            <summary>
+            The degree of the polynomial.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Polynomial`1.Item(System.Int32)">
+            <summary>
+            The i-th coefficient.
+            </summary>
+            <param name="i">The i.</param>
+            <returns>The i-th coefficient.</returns>
+        </member>
+        <member name="T:SharpBag.Math.Calculators.Int32Calculator">
+            <summary>
+            An Int32 Calculator.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.Add(System.Int32,System.Int32)">
+            <summary>
+            Adds the specified numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The added numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.Subtract(System.Int32,System.Int32)">
+            <summary>
+            Subtracts the specified numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The subtracted numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.Multiply(System.Int32,System.Int32)">
+            <summary>
+            Multiplies the specified numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The multiplied numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.Divide(System.Int32,System.Int32)">
+            <summary>
+            Divides the specified numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The divided numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.Modulo(System.Int32,System.Int32)">
+            <summary>
+            Calculates the remainder of the first number divided by the second number.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The remainder of the first number divided by the second number..</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.Negate(System.Int32)">
+            <summary>
+            Negates the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The negated number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.Convert(System.Byte)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.ConvertToByte(System.Int32)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.Convert(System.Int16)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.ConvertToShort(System.Int32)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.Convert(System.UInt16)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.ConvertToUShort(System.Int32)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.Convert(System.Int32)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.ConvertToInt(System.Int32)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.Convert(System.UInt32)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.ConvertToUInt(System.Int32)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.Convert(System.Int64)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.ConvertToLong(System.Int32)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.Convert(System.UInt64)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.ConvertToULong(System.Int32)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.Convert(System.Single)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.ConvertToFloat(System.Int32)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.Convert(System.Double)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.ConvertToDouble(System.Int32)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.Convert(System.Decimal)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.ConvertToDecimal(System.Int32)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.Convert(System.Numerics.BigInteger)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.ConvertToBigInteger(System.Int32)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.Convert(System.String)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.Ceiling(System.Int32)">
+            <summary>
+            Calculates the ceiling of the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The ceiling.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.Floor(System.Int32)">
+            <summary>
+            Calculates the floor of the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The floor.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.Pow(System.Int32,System.Int32)">
+            <summary>
+            Raises the number to the specified power.
+            </summary>
+            <param name="n">The number.</param>
+            <param name="power">The power.</param>
+            <returns>The number raised to the specified power.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.Gcd(System.Int32,System.Int32)">
+            <summary>
+            Calculates the greatest common divisor of the numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The greatest common divisor.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.Lcm(System.Int32,System.Int32)">
+            <summary>
+            Calculates the least common multiple of the numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The least common multiple.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.Sqrt(System.Int32)">
+            <summary>
+            Calculates the square root of the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The square root.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.Int32Calculator.Compare(System.Int32,System.Int32)">
+            <summary>
+            Compares the first number to the second number.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="P:SharpBag.Math.Calculators.Int32Calculator.One">
+            <summary>
+            A one.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Calculators.Int32Calculator.NegativeOne">
+            <summary>
+            A negative one.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Calculators.Int32Calculator.Zero">
+            <summary>
+            A zero.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Math.Calculators.FractionCalculator`1">
+            <summary>
+            A Fraction Calculator.
+            </summary>
+            <typeparam name="T">The type of fraction.</typeparam>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.Add(SharpBag.Math.Fraction{`0},SharpBag.Math.Fraction{`0})">
+            <summary>
+            Adds the specified numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The added numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.Subtract(SharpBag.Math.Fraction{`0},SharpBag.Math.Fraction{`0})">
+            <summary>
+            Subtracts the specified numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The subtracted numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.Multiply(SharpBag.Math.Fraction{`0},SharpBag.Math.Fraction{`0})">
+            <summary>
+            Multiplies the specified numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The multiplied numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.Divide(SharpBag.Math.Fraction{`0},SharpBag.Math.Fraction{`0})">
+            <summary>
+            Divides the specified numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The divided numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.Modulo(SharpBag.Math.Fraction{`0},SharpBag.Math.Fraction{`0})">
+            <summary>
+            Calculates the remainder of the first number divided by the second number.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The remainder of the first number divided by the second number..</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.Negate(SharpBag.Math.Fraction{`0})">
+            <summary>
+            Negates the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The negated number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.Convert(System.Byte)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.ConvertToByte(SharpBag.Math.Fraction{`0})">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.Convert(System.Int16)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.ConvertToShort(SharpBag.Math.Fraction{`0})">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.Convert(System.UInt16)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.ConvertToUShort(SharpBag.Math.Fraction{`0})">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.Convert(System.Int32)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.ConvertToInt(SharpBag.Math.Fraction{`0})">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.Convert(System.UInt32)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.ConvertToUInt(SharpBag.Math.Fraction{`0})">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.Convert(System.Int64)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.ConvertToLong(SharpBag.Math.Fraction{`0})">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.Convert(System.UInt64)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.ConvertToULong(SharpBag.Math.Fraction{`0})">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.Convert(System.Single)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.ConvertToFloat(SharpBag.Math.Fraction{`0})">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.Convert(System.Double)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.ConvertToDouble(SharpBag.Math.Fraction{`0})">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.Convert(System.Decimal)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.ConvertToDecimal(SharpBag.Math.Fraction{`0})">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.Convert(System.Numerics.BigInteger)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.ConvertToBigInteger(SharpBag.Math.Fraction{`0})">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.Convert(System.String)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.ConvertToString(SharpBag.Math.Fraction{`0})">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.Ceiling(SharpBag.Math.Fraction{`0})">
+            <summary>
+            Calculates the ceiling of the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The ceiling.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.Floor(SharpBag.Math.Fraction{`0})">
+            <summary>
+            Calculates the floor of the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The floor.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.Pow(SharpBag.Math.Fraction{`0},SharpBag.Math.Fraction{`0})">
+            <summary>
+            Raises the number to the specified power.
+            </summary>
+            <param name="n">The number.</param>
+            <param name="power">The power.</param>
+            <returns>The number raised to the specified power.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.Gcd(SharpBag.Math.Fraction{`0},SharpBag.Math.Fraction{`0})">
+            <summary>
+            Calculates the greatest common divisor of the numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The greatest common divisor.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.Lcm(SharpBag.Math.Fraction{`0},SharpBag.Math.Fraction{`0})">
+            <summary>
+            Calculates the least common multiple of the numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The least common multiple.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.Sqrt(SharpBag.Math.Fraction{`0})">
+            <summary>
+            Calculates the square root of the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The square root.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.FractionCalculator`1.Compare(SharpBag.Math.Fraction{`0},SharpBag.Math.Fraction{`0})">
+            <summary>
+            Compares the first number to the second number.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="P:SharpBag.Math.Calculators.FractionCalculator`1.Calculator">
+            <summary>
+            The Calculator.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Calculators.FractionCalculator`1.One">
+            <summary>
+            A one.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Calculators.FractionCalculator`1.NegativeOne">
+            <summary>
+            A negative one.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Calculators.FractionCalculator`1.Zero">
+            <summary>
+            A zero.
             </summary>
         </member>
         <member name="T:SharpBag.Strings.StringExtensions">
@@ -6264,41 +7935,6 @@
             The random number generator.
             </summary>
         </member>
-        <member name="T:SharpBag.Database.MSSqlDB">
-            <summary>
-            A class for working with MySQL databases.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Database.MSSqlDB.#ctor(System.String,System.String,System.String,System.String)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="server">The server to connect to.</param>
-            <param name="schema">The default schema.</param>
-            <param name="username">The username used to connect.</param>
-            <param name="password">The password used to connect.</param>
-        </member>
-        <member name="M:SharpBag.Database.MSSqlDB.SQLEscape(System.String)">
-            <summary>
-            Escapes a string for use in an SQL query.
-            </summary>
-            <param name="s">The string to escape.</param>
-            <returns>The escaped string.</returns>
-        </member>
-        <member name="M:SharpBag.Database.MSSqlDB.CreateCommand(System.String,System.Data.SqlClient.SqlConnection)">
-            <summary>
-            Creates a query command.
-            </summary>
-            <param name="q">The query.</param>
-            <param name="c">The connection.</param>
-            <returns>The query command.</returns>
-        </member>
-        <member name="M:SharpBag.Database.MSSqlDB.CreateConnectionString">
-            <summary>
-            Creates connection string.
-            </summary>
-            <returns>The connection string.</returns>
-        </member>
         <member name="T:SharpBag.Torrent.BencodeDecoder">
             <summary>
             A class used for decoding Bencoding.
@@ -6569,7 +8205,11 @@
             <param name="key">The key of the value to get or set.</param>
             <returns>The value assosiated with the specified key.</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:SharpBag.Torrent.BencodingException" -->
+        <member name="T:SharpBag.Torrent.BencodingException">
+            <summary>
+            A bencoding exception.
+            </summary>
+        </member>
         <member name="M:SharpBag.Torrent.BencodingException.#ctor">
             <summary>
             Creates a new BencodingException.
@@ -6612,9 +8252,339 @@
             </summary>
             <param name="calculator">The calculator to use.</param>
         </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Add(`0,`0)">
+            <summary>
+            Adds the specified numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The added numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Subtract(`0,`0)">
+            <summary>
+            Subtracts the specified numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The subtracted numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Multiply(`0,`0)">
+            <summary>
+            Multiplies the specified numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The multiplied numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Divide(`0,`0)">
+            <summary>
+            Divides the specified numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The divided numbers.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Modulo(`0,`0)">
+            <summary>
+            Calculates the remainder of the first number divided by the second number.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The remainder of the first number divided by the second number..</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Negate(`0)">
+            <summary>
+            Negates the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The negated number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Convert(System.Byte)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.ConvertToByte(`0)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Convert(System.Int16)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.ConvertToShort(`0)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Convert(System.UInt16)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.ConvertToUShort(`0)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Convert(System.Int32)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.ConvertToInt(`0)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Convert(System.UInt32)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.ConvertToUInt(`0)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Convert(System.Int64)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.ConvertToLong(`0)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Convert(System.UInt64)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.ConvertToULong(`0)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Convert(System.Single)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.ConvertToFloat(`0)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Convert(System.Double)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.ConvertToDouble(`0)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Convert(System.Decimal)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.ConvertToDecimal(`0)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Convert(System.Numerics.BigInteger)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.ConvertToBigInteger(`0)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Convert(System.String)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.ConvertToString(`0)">
+            <summary>
+            Converts the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The converted number.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Compare(`0,`0)">
+            <summary>
+            Compares the first number to the second number.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Equal(`0,`0)">
+            <summary>
+            Checks whether the first number is equal to the second number.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.GreaterThan(`0,`0)">
+            <summary>
+            Checks whether the first number is greater than the second number.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.GreaterThanOrEqual(`0,`0)">
+            <summary>
+            Checks whether the first number is greater than or equal to the second number.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.LessThan(`0,`0)">
+            <summary>
+            Checks whether the first number is less than the second number.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.LessThanOrEqual(`0,`0)">
+            <summary>
+            Checks whether the first number is less than or equal to the second number.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Ceiling(`0)">
+            <summary>
+            Calculates the ceiling of the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The ceiling.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Floor(`0)">
+            <summary>
+            Calculates the floor of the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The floor.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Pow(`0,`0)">
+            <summary>
+            Raises the number to the specified power.
+            </summary>
+            <param name="n">The number.</param>
+            <param name="power">The power.</param>
+            <returns>The number raised to the specified power.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Gcd(`0,`0)">
+            <summary>
+            Calculates the greatest common divisor of the numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The greatest common divisor.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Lcm(`0,`0)">
+            <summary>
+            Calculates the least common multiple of the numbers.
+            </summary>
+            <param name="a">The first number.</param>
+            <param name="b">The second number.</param>
+            <returns>The least common multiple.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Sqrt(`0)">
+            <summary>
+            Calculates the square root of the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The square root.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Calculators.CheckedCalculator`1.Abs(`0)">
+            <summary>
+            Calculates the absolute value of the number.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The absolute value of the number.</returns>
+        </member>
         <member name="P:SharpBag.Math.Calculators.CheckedCalculator`1.Calculator">
             <summary>
             The unchecked calculator.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Calculators.CheckedCalculator`1.One">
+            <summary>
+            A one.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Calculators.CheckedCalculator`1.NegativeOne">
+            <summary>
+            A negative one.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Calculators.CheckedCalculator`1.Zero">
+            <summary>
+            A zero.
             </summary>
         </member>
         <member name="T:SharpBag.Networking.Network">

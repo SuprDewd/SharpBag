@@ -155,7 +155,6 @@ namespace SharpBag.Math
 		/// A linear spline interpolation.
 		/// </summary>
 		/// <param name="points">The known data points.</param>
-		/// <param name="calc">The calculator.</param>
 		/// <returns>An interpolation function.</returns>
 		public static Func<double, double> LinearSpline(Point<double>[] points)
 		{

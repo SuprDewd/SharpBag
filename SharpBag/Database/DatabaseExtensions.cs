@@ -25,7 +25,7 @@ namespace SharpBag.Database
 		/// <param name="dt">The current instance.</param>
 		/// <param name="db">The database to insert into.</param>
 		/// <returns>How many rows were affected.</returns>
-		public static int InsertInto<T>(this DataTable dt, GenericDB<T> db) where T : DbConnection, new()
+		public static int InsertInto<T>(this DataTable dt, GenericDatabase<T> db) where T : DbConnection, new()
 		{
 			return db.Execute(db.DataTableToSQL(dt, db.Schema));
 		}

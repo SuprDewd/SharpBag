@@ -9,7 +9,7 @@
 		/// An IEnumerable entry with extended info.
 		/// </summary>
 		/// <typeparam name="T">The type.</typeparam>
-		public class WithInfo<T>
+		public class WithInfo<T> : WithIndex<T>
 		{
 			/// <summary>
 			/// The previous entry.
@@ -17,19 +17,9 @@
 			public T Previous { get; private set; }
 
 			/// <summary>
-			/// The current entry.
-			/// </summary>
-			public T Value { get; private set; }
-
-			/// <summary>
 			/// The next entry.
 			/// </summary>
 			public T Next { get; private set; }
-
-			/// <summary>
-			/// The index of the current entry.
-			/// </summary>
-			public int Index { get; private set; }
 
 			/// <summary>
 			/// Whether the current entry is the first entry.
@@ -42,9 +32,8 @@
 			public bool IsLast { get; private set; }
 
 			internal WithInfo(T value, int index, bool isFirst, bool isLast, T previous = default(T), T next = default(T))
+				: base(value, index)
 			{
-				this.Value = value;
-				this.Index = index;
 				this.IsFirst = isFirst;
 				this.IsLast = isLast;
 				this.Previous = previous;

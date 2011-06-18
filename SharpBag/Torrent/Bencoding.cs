@@ -519,7 +519,7 @@ namespace SharpBag.Torrent
 		}
 	}
 
-	// <summary>
+	/// <summary>
 	/// A bencoding exception.
 	/// </summary>
 	public class BencodingException : FormatException
