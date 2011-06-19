@@ -176,6 +176,22 @@ namespace SharpBag.Math
 		}
 
 		/// <summary>
+		/// Differentiates the polynomial.
+		/// </summary>
+		/// <returns>The differentiated polynomial.</returns>
+		public Polynomial<T> Differentiate()
+		{
+			T[] coefficients = new T[this.Degree];
+
+			for (int i = 0; i < this.Degree; i++)
+			{
+				coefficients[i] = Calculator.Multiply(this[i + 1], Calculator.Convert(i + 1));
+			}
+
+			return new Polynomial<T>(coefficients);
+		}
+
+		/// <summary>
 		/// Object.ToString()
 		/// </summary>
 		/// <returns>The polynomial as a string.</returns>
@@ -186,7 +202,7 @@ namespace SharpBag.Math
 			{
 				if (Calculator.Equal(this[i], Calculator.Zero)) continue;
 				sb.Append(" + ");
-				sb.Append(this[i].ToString());
+				if (!(i > 0 && Calculator.Equal(this[i], Calculator.One))) sb.Append(this[i].ToString());
 				if (i > 0) sb.Append('x');
 				if (i > 1) sb.Append('^').Append(i);
 			}

@@ -7015,6 +7015,12 @@
             <param name="n">The value to cast.</param>
             <returns>The polynomial.</returns>
         </member>
+        <member name="M:SharpBag.Math.Polynomial`1.Differentiate">
+            <summary>
+            Differentiates the polynomial.
+            </summary>
+            <returns>The differentiated polynomial.</returns>
+        </member>
         <member name="M:SharpBag.Math.Polynomial`1.ToString">
             <summary>
             Object.ToString()
