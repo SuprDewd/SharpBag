@@ -40,7 +40,7 @@ namespace SharpBag.Math
 		/// <param name="xDelta">The x delta.</param>
 		/// <param name="calc">The calculator.</param>
 		/// <returns>The array of points.</returns>
-		public static Point<T>[] CubicSpline<T>(T[] points, T x0, T xDelta, Calculator<T> calc = null)
+		public static Point<T>[] ConvertToPoints<T>(T[] points, T x0, T xDelta, Calculator<T> calc = null)
 		{
 			if (calc == null) calc = CalculatorFactory.GetInstanceFor<T>();
 			Point<T>[] pointArray = new Point<T>[points.Length];
@@ -59,7 +59,7 @@ namespace SharpBag.Math
 		/// </summary>
 		/// <param name="points">The known data points.</param>
 		/// <returns>An interpolation function.</returns>
-		public static Func<double, double> CubicSpline(Point<double>[] points)
+		public static Func<double, double> Cubic(Point<double>[] points)
 		{
 			if (points.Length < 2) return null;
 
@@ -129,7 +129,7 @@ namespace SharpBag.Math
 		/// <param name="points">The known data points.</param>
 		/// <param name="calc">The calculator.</param>
 		/// <returns>An interpolation function.</returns>
-		public static Func<T, T> CubicSpline<T>(Point<T>[] points, Calculator<T> calc = null)
+		public static Func<T, T> Cubic<T>(Point<T>[] points, Calculator<T> calc = null)
 		{
 			if (points.Length < 2) return null;
 			if (calc == null) calc = CalculatorFactory.GetInstanceFor<T>();
@@ -199,7 +199,7 @@ namespace SharpBag.Math
 		/// </summary>
 		/// <param name="points">The known data points.</param>
 		/// <returns>An interpolation function.</returns>
-		public static Func<double, double> LinearSpline(Point<double>[] points)
+		public static Func<double, double> Linear(Point<double>[] points)
 		{
 			if (points.Length < 2) return null;
 			Polynomial<double>[] splines = new Polynomial<double>[points.Length - 1];
@@ -235,7 +235,7 @@ namespace SharpBag.Math
 		/// <param name="points">The known data points.</param>
 		/// <param name="calc">The calculator.</param>
 		/// <returns>An interpolation function.</returns>
-		public static Func<T, T> LinearSpline<T>(Point<T>[] points, Calculator<T> calc = null)
+		public static Func<T, T> Linear<T>(Point<T>[] points, Calculator<T> calc = null)
 		{
 			if (points.Length < 2) return null;
 			if (calc == null) calc = CalculatorFactory.GetInstanceFor<T>();
@@ -355,6 +355,38 @@ namespace SharpBag.Math
 					   calc.Add(calc.Multiply(calc.Multiply(calc.Divide(points[i + 1, j], d), n3), n2),
 					   calc.Add(calc.Multiply(calc.Multiply(calc.Divide(points[i, j + 1], d), n1), n4),
 					   calc.Multiply(calc.Multiply(calc.Divide(points[i + 1, j + 1], d), n3), n4))));
+			};
+		}
+
+		public static Func<double, double, double> Bicubic(double[,] points, double x0, double y0, double xDelta, double yDelta)
+		{
+			if (points.GetLength(0) < 2 || points.GetLength(1) < 2) return null;
+
+			double[][] pointsAlt = new double[points.GetLength(0)][];
+			for (int x = 0; x < points.GetLength(0); x++)
+			{
+				pointsAlt[x] = new double[points.GetLength(1)];
+				for (int y = 0; y < points.GetLength(1); y++)
+				{
+					pointsAlt[x][y] = points[x, y];
+				}
+			}
+
+			Func<double, double>[] splines = new Func<double, double>[points.GetLength(0)];
+			for (int x = 0; x < pointsAlt.Length; x++)
+			{
+				splines[x] = Interpolation.Cubic(Interpolation.ConvertToPoints(pointsAlt[x], x0, xDelta));
+			}
+
+			return (x, y) =>
+			{
+				double[] interpolated = new double[splines.Length];
+				for (int i = 0; i < splines.Length; i++)
+				{
+					interpolated[i] = splines[i](y);
+				}
+
+				return Interpolation.Cubic(Interpolation.ConvertToPoints(interpolated, x0, xDelta))(x);
 			};
 		}
 	}

@@ -6081,7 +6081,7 @@
             <param name="xDelta">The x delta.</param>
             <returns>The array of points.</returns>
         </member>
-        <member name="M:SharpBag.Math.Interpolation.CubicSpline``1(``0[],``0,``0,SharpBag.Math.Calculators.Calculator{``0})">
+        <member name="M:SharpBag.Math.Interpolation.ConvertToPoints``1(``0[],``0,``0,SharpBag.Math.Calculators.Calculator{``0})">
             <summary>
             Convert an array of values to an array of points.
             </summary>
@@ -6092,14 +6092,14 @@
             <param name="calc">The calculator.</param>
             <returns>The array of points.</returns>
         </member>
-        <member name="M:SharpBag.Math.Interpolation.CubicSpline(SharpBag.Math.Point{System.Double}[])">
+        <member name="M:SharpBag.Math.Interpolation.Cubic(SharpBag.Math.Point{System.Double}[])">
             <summary>
             A natural cubic spline interpolation.
             </summary>
             <param name="points">The known data points.</param>
             <returns>An interpolation function.</returns>
         </member>
-        <member name="M:SharpBag.Math.Interpolation.CubicSpline``1(SharpBag.Math.Point{``0}[],SharpBag.Math.Calculators.Calculator{``0})">
+        <member name="M:SharpBag.Math.Interpolation.Cubic``1(SharpBag.Math.Point{``0}[],SharpBag.Math.Calculators.Calculator{``0})">
             <summary>
             A natural cubic spline interpolation.
             </summary>
@@ -6107,14 +6107,14 @@
             <param name="calc">The calculator.</param>
             <returns>An interpolation function.</returns>
         </member>
-        <member name="M:SharpBag.Math.Interpolation.LinearSpline(SharpBag.Math.Point{System.Double}[])">
+        <member name="M:SharpBag.Math.Interpolation.Linear(SharpBag.Math.Point{System.Double}[])">
             <summary>
             A linear spline interpolation.
             </summary>
             <param name="points">The known data points.</param>
             <returns>An interpolation function.</returns>
         </member>
-        <member name="M:SharpBag.Math.Interpolation.LinearSpline``1(SharpBag.Math.Point{``0}[],SharpBag.Math.Calculators.Calculator{``0})">
+        <member name="M:SharpBag.Math.Interpolation.Linear``1(SharpBag.Math.Point{``0}[],SharpBag.Math.Calculators.Calculator{``0})">
             <summary>
             A linear spline interpolation.
             </summary>
