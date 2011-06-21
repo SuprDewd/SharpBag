@@ -375,7 +375,7 @@ namespace SharpBag.Math
 			Func<double, double>[] splines = new Func<double, double>[points.GetLength(0)];
 			for (int x = 0; x < pointsAlt.Length; x++)
 			{
-				splines[x] = Interpolation.Cubic(Interpolation.ConvertToPoints(pointsAlt[x], x0, xDelta));
+				splines[x] = Interpolation.Cubic(Interpolation.ConvertToPoints(pointsAlt[x], y0, yDelta));
 			}
 
 			return (x, y) =>
