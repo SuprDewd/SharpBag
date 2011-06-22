@@ -55,7 +55,7 @@ namespace SharpBag.Math
 		}
 
 		/// <summary>
-		/// A natural cubic spline interpolation.
+		/// A cubic spline interpolation.
 		/// </summary>
 		/// <param name="points">The known data points.</param>
 		/// <returns>An interpolation function.</returns>
@@ -124,7 +124,7 @@ namespace SharpBag.Math
 		}
 
 		/// <summary>
-		/// A natural cubic spline interpolation.
+		/// A cubic spline interpolation.
 		/// </summary>
 		/// <param name="points">The known data points.</param>
 		/// <param name="calc">The calculator.</param>
@@ -267,13 +267,13 @@ namespace SharpBag.Math
 		}
 
 		/// <summary>
-		/// A bilinear interpolation.
+		/// A bilinear spline interpolation.
 		/// </summary>
 		/// <param name="points">The known data points.</param>
-		/// <param name="x0">First X.</param>
-		/// <param name="y0">First Y.</param>
-		/// <param name="xDelta">X delta.</param>
-		/// <param name="yDelta">Y delta.</param>
+		/// <param name="x0">The first X.</param>
+		/// <param name="y0">The first Y.</param>
+		/// <param name="xDelta">The delta X.</param>
+		/// <param name="yDelta">The delta Y.</param>
 		/// <returns>An interpolation function.</returns>
 		public static Func<double, double, double> Bilinear(double[,] points, double x0, double y0, double xDelta, double yDelta)
 		{
@@ -312,14 +312,14 @@ namespace SharpBag.Math
 		}
 
 		/// <summary>
-		/// A bilinear interpolation.
+		/// A bilinear spline interpolation.
 		/// </summary>
 		/// <param name="points">The known data points.</param>
-		/// <param name="x0">First X.</param>
-		/// <param name="y0">First Y.</param>
-		/// <param name="xDelta">X delta.</param>
-		/// <param name="yDelta">Y delta.</param>
-		/// <param name="calc">A calculator.</param>
+		/// <param name="x0">The first X.</param>
+		/// <param name="y0">The first Y.</param>
+		/// <param name="xDelta">The delta X.</param>
+		/// <param name="yDelta">The delta Y.</param>
+		/// <param name="calc">The calculator.</param>
 		/// <returns>An interpolation function.</returns>
 		public static Func<T, T, T> Bilinear<T>(T[,] points, T x0, T y0, T xDelta, T yDelta, Calculator<T> calc = null)
 		{
@@ -358,35 +358,87 @@ namespace SharpBag.Math
 			};
 		}
 
-		public static Func<double, double, double> Bicubic(double[,] points, double x0, double y0, double xDelta, double yDelta)
+		/// <summary>
+		/// A bicubic spline interpolation.
+		/// </summary>
+		/// <param name="points">The known data points.</param>
+		/// <param name="x0">The first X.</param>
+		/// <param name="y0">The first Y.</param>
+		/// <param name="xDelta">The delta X.</param>
+		/// <param name="yDelta">The delta Y.</param>
+		/// <returns>An interpolation function.</returns>
+		public static Func<double, Func<double, double>> Bicubic(double[,] points, double x0, double y0, double xDelta, double yDelta)
 		{
 			if (points.GetLength(0) < 2 || points.GetLength(1) < 2) return null;
 
-			double[][] pointsAlt = new double[points.GetLength(0)][];
-			for (int x = 0; x < points.GetLength(0); x++)
+			double[][] pointsAlt = new double[points.GetLength(1)][];
+			for (int x = 0; x < points.GetLength(1); x++)
 			{
-				pointsAlt[x] = new double[points.GetLength(1)];
-				for (int y = 0; y < points.GetLength(1); y++)
+				pointsAlt[x] = new double[points.GetLength(0)];
+				for (int y = 0; y < points.GetLength(0); y++)
 				{
-					pointsAlt[x][y] = points[x, y];
+					pointsAlt[x][y] = points[y, x];
 				}
 			}
 
-			Func<double, double>[] splines = new Func<double, double>[points.GetLength(0)];
+			Func<double, double>[] splines = new Func<double, double>[points.GetLength(1)];
 			for (int x = 0; x < pointsAlt.Length; x++)
 			{
-				splines[x] = Interpolation.Cubic(Interpolation.ConvertToPoints(pointsAlt[x], y0, yDelta));
+				splines[x] = Interpolation.Cubic(Interpolation.ConvertToPoints(pointsAlt[x], x0, xDelta));
 			}
 
-			return (x, y) =>
+			return x =>
 			{
 				double[] interpolated = new double[splines.Length];
 				for (int i = 0; i < splines.Length; i++)
 				{
-					interpolated[i] = splines[i](y);
+					interpolated[i] = splines[i](x);
 				}
 
-				return Interpolation.Cubic(Interpolation.ConvertToPoints(interpolated, x0, xDelta))(x);
+				return Interpolation.Cubic(Interpolation.ConvertToPoints(interpolated, y0, yDelta));
+			};
+		}
+
+		/// <summary>
+		/// A bicubic spline interpolation.
+		/// </summary>
+		/// <param name="points">The known data points.</param>
+		/// <param name="x0">The first X.</param>
+		/// <param name="y0">The first Y.</param>
+		/// <param name="xDelta">The delta X.</param>
+		/// <param name="yDelta">The delta Y.</param>
+		/// <param name="calc">The calculator.</param>
+		/// <returns>An interpolation function.</returns>
+		public static Func<T, Func<T, T>> Bicubic<T>(T[,] points, T x0, T y0, T xDelta, T yDelta, Calculator<T> calc = null)
+		{
+			if (points.GetLength(0) < 2 || points.GetLength(1) < 2) return null;
+			if (calc == null) calc = CalculatorFactory.GetInstanceFor<T>();
+
+			T[][] pointsAlt = new T[points.GetLength(1)][];
+			for (int x = 0; x < points.GetLength(1); x++)
+			{
+				pointsAlt[x] = new T[points.GetLength(0)];
+				for (int y = 0; y < points.GetLength(0); y++)
+				{
+					pointsAlt[x][y] = points[y, x];
+				}
+			}
+
+			Func<T, T>[] splines = new Func<T, T>[points.GetLength(1)];
+			for (int x = 0; x < pointsAlt.Length; x++)
+			{
+				splines[x] = Interpolation.Cubic<T>(Interpolation.ConvertToPoints(pointsAlt[x], x0, xDelta), calc);
+			}
+
+			return x =>
+			{
+				T[] interpolated = new T[splines.Length];
+				for (int i = 0; i < splines.Length; i++)
+				{
+					interpolated[i] = splines[i](x);
+				}
+
+				return Interpolation.Cubic<T>(Interpolation.ConvertToPoints(interpolated, y0, yDelta), calc);
 			};
 		}
 	}
