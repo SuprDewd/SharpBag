@@ -41,7 +41,7 @@ namespace SharpBag.Math
 		{
 #if DOTNET4
 			Contract.Requires(!String.IsNullOrEmpty(number));
-			Contract.Requires(startBase.IsBetweenOrEqualTo(2, 36));
+			Contract.Requires(startBase >= 2 && startBase <= 36);
 #endif
 			if (startBase == 10) return Convert.ToInt32(number);
 

@@ -6,4 +6,18 @@
 	- Add more unit tests.
 	- K[] Calculator.ArrayOfSize<K>(T).
 	- Cycle detection.
-	- Bilinear Interpolation.
+	- BigFloat.
+	- IsPowerOfTwo, NextPowerOfTwo...
+	- Matrix class.
+	- Complex number class.
+	- Swap.
+	- Binomial coefficients.
+	- Log of factorial.
+	- Double factorial.
+	- Log of double factorial.
+	- Harmonic numbers.
+	- Catalan numbers.
+	- ModPow for int / long.
+	- Integer partitions.
+	- Look for better Miller-Rabin.
+	- Better perfect number sequence. (2^(p - 1) * (2^p - 1))

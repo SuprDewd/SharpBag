@@ -129,7 +129,6 @@
     <Compile Include="Networking\PacketEventArgs.cs" />
     <Compile Include="Networking\PacketEventHandler.cs" />
     <Compile Include="Networking\Ping.cs" />
-    <Compile Include="NullOp.cs" />
     <Compile Include="Operator.cs" />
     <Compile Include="Option.cs" />
     <Compile Include="RandomExtensions.cs" />
@@ -153,7 +152,6 @@
     <Compile Include="Time\TimeUtils.cs" />
     <Compile Include="Torrent\Bencoding.cs" />
     <Compile Include="Utils.cs" />
-    <Compile Include="Media\MediaExtensions.cs" />
     <Compile Include="FunctionalExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -128,7 +128,7 @@ namespace SharpBag.Math
 
 		#endregion Gcd & Lcm
 
-		#region IsPrime overloads
+		#region IsPrime
 
 		/// <summary>
 		/// Checks whether a number is a prime number or not.
@@ -216,7 +216,7 @@ namespace SharpBag.Math
 
 #endif
 
-		#endregion IsPrime overloads
+		#endregion IsPrime
 
 		#region SieveOfEratosthenes
 
@@ -398,7 +398,7 @@ namespace SharpBag.Math
 
 		#endregion SieveOfAtkin
 
-		#region CollatzCount overloads
+		#region CollatzCount
 
 		/// <summary>
 		/// Returns the Collatz count.
@@ -470,7 +470,7 @@ namespace SharpBag.Math
 
 #endif
 
-		#endregion CollatzCount overloads
+		#endregion CollatzCount
 
 		#region SmallPrimes
 

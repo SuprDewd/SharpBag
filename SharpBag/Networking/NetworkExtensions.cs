@@ -18,13 +18,12 @@ namespace SharpBag.Networking
 		/// <returns></returns>
 		public static string Download(this Uri page, Encoding encoding = null)
 		{
-			if (encoding == null) encoding = Encoding.UTF8;
-
 			WebRequest request = HttpWebRequest.Create(page);
 			StringBuilder results = new StringBuilder();
+
 			using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
 			{
-				using (StreamReader sr = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
+				using (StreamReader sr = new StreamReader(response.GetResponseStream(), encoding ?? Encoding.UTF8))
 				{
 					string line;
 
@@ -32,11 +31,7 @@ namespace SharpBag.Networking
 					{
 						results.AppendLine(line);
 					}
-
-					sr.Close();
 				}
-
-				response.Close();
 			}
 
 			return results.ToString();

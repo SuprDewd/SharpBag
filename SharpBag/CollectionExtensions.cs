@@ -6,6 +6,7 @@ using System.Linq;
 
 using System.Diagnostics.Contracts;
 using System.Collections;
+using SharpBag.Collections;
 
 #endif
 
@@ -112,69 +113,6 @@ namespace SharpBag
 		}
 
 		/// <summary>
-		/// Returns a line in the current instance.
-		/// </summary>
-		/// <param name="g">The current instance.</param>
-		/// <param name="x">The first x coordinate.</param>
-		/// <param name="y">The first y coordinate.</param>
-		/// <param name="xDelta">The x delta.</param>
-		/// <param name="yDelta">The y delta.</param>
-		/// <param name="selector">The result selector.</param>
-		/// <returns>The line.</returns>
-		public static IEnumerable<TOut> Line<TIn, TOut>(this TIn[,] g, int x, int y, int xDelta, int yDelta, Func<TIn, TOut> selector)
-		{
-#if DOTNET4
-			Contract.Requires(g != null);
-			Contract.Requires(!(xDelta == 0 && yDelta == 0));
-#endif
-			int xl = g.GetLength(0), yl = g.GetLength(1);
-			while (x >= 0 && y >= 0 && x < xl && y < yl)
-			{
-				yield return selector(g[x, y]);
-				x += xDelta;
-				y += yDelta;
-			}
-		}
-
-		/// <summary>
-		/// Returns the items in the current instance with the specified indexes.
-		/// </summary>
-		/// <typeparam name="T">The type of elements in the current instance.</typeparam>
-		/// <param name="collection">The collection.</param>
-		/// <param name="indices">The indices.</param>
-		/// <returns>The items in the current instance with the specified indexes.</returns>
-		public static IEnumerable<T> Take<T>(this IEnumerable<T> collection, IEnumerable<int> indices)
-		{
-#if DOTNET4
-			Contract.Requires(collection != null);
-			Contract.Requires(indices != null);
-			Contract.Ensures(Contract.Result<IEnumerable<T>>() != null);
-#endif
-			indices = indices.Where(i => i >= 0);
-			if (!indices.Any()) return Enumerable.Empty<T>();
-
-			T[] array = collection.Take(indices.Max() + 1).ToArray();
-
-			return indices.Select(i => array[i]);
-		}
-
-		/// <summary>
-		/// Returns the items in the current instance with the specified indexes.
-		/// </summary>
-		/// <typeparam name="T">The type of elements in the current instance.</typeparam>
-		/// <param name="collection">The collection.</param>
-		/// <param name="indices">The indices.</param>
-		/// <returns>The items in the current instance with the specified indexes.</returns>
-		public static IEnumerable<T> Take<T>(this IEnumerable<T> collection, params int[] indices)
-		{
-#if DOTNET4
-			Contract.Requires(collection != null);
-			Contract.Ensures(Contract.Result<IEnumerable<T>>() != null);
-#endif
-			return collection.Take(indices.AsEnumerable());
-		}
-
-		/// <summary>
 		/// Shuffle the collection.
 		/// </summary>
 		/// <typeparam name="T">The type of items in the current instance.</typeparam>
@@ -247,54 +185,6 @@ namespace SharpBag
 			}
 		}
 
-		/// <summary>
-		/// Returns an empty enumerable if the current instance is null.
-		/// </summary>
-		/// <typeparam name="T">The type of items in the current instance.</typeparam>
-		/// <param name="pSeq">The current instance.</param>
-		/// <returns>An empty enumerable if the current instance is null.</returns>
-		public static IEnumerable<T> EmptyIfNull<T>(this IEnumerable<T> pSeq)
-		{
-#if DOTNET4
-			Contract.Ensures(Contract.Result<IEnumerable<T>>() != null);
-#endif
-			return pSeq ?? Enumerable.Empty<T>();
-		}
-
-		#region IsIn overloads
-
-		/// <summary>
-		/// Whether the current instance is in the specified collection.
-		/// </summary>
-		/// <typeparam name="T">The type of the current instance.</typeparam>
-		/// <param name="item">The current instance.</param>
-		/// <param name="collection">The collection.</param>
-		/// <returns>Whether the current instance is in the specified collection.</returns>
-		public static bool IsIn<T>(this T item, IEnumerable<T> collection)
-		{
-#if DOTNET4
-			Contract.Requires(collection != null);
-#endif
-			return collection.Contains(item);
-		}
-
-		/// <summary>
-		/// Whether the current instance is in the specified collection.
-		/// </summary>
-		/// <typeparam name="T">The type of the current instance.</typeparam>
-		/// <param name="item">The current instance.</param>
-		/// <param name="collection">The collection.</param>
-		/// <returns>Whether the current instance is in the specified collection.</returns>
-		public static bool IsIn<T>(this T item, params T[] collection)
-		{
-#if DOTNET4
-			Contract.Requires(collection != null);
-#endif
-			return collection.Contains(item);
-		}
-
-		#endregion IsIn overloads
-
 		#region Random overloads
 
 		/// <summary>
@@ -334,34 +224,34 @@ namespace SharpBag
 		/// Gets a subarray of the current instance.
 		/// </summary>
 		/// <param name="a">The current instance.</param>
-		/// <param name="x1">X-coordinate 1.</param>
-		/// <param name="y1">Y-coordinate 1.</param>
-		/// <param name="x2">X-coordinate 2.</param>
-		/// <param name="y2">Y-coordinate 2.</param>
+		/// <param name="x0">X-coordinate 1.</param>
+		/// <param name="y0">Y-coordinate 1.</param>
+		/// <param name="x1">X-coordinate 2.</param>
+		/// <param name="y">Y-coordinate 2.</param>
 		/// <returns>The subarray.</returns>
-		public static int[,] Subarray(this int[,] a, int x1, int y1, int x2, int y2)
+		public static T[,] Subarray<T>(this T[,] a, int x0, int y0, int x1, int y1)
 		{
 #if DOTNET4
 			Contract.Requires(a != null);
-			Contract.Requires(x1 <= x2);
-			Contract.Requires(y1 <= y2);
+			Contract.Requires(x0 <= x1);
+			Contract.Requires(y0 <= y1);
+			Contract.Requires(x0 >= 0);
 			Contract.Requires(x1 >= 0);
-			Contract.Requires(x2 >= 0);
+			Contract.Requires(y0 >= 0);
 			Contract.Requires(y1 >= 0);
-			Contract.Requires(y2 >= 0);
+			Contract.Requires(x0 < a.GetLength(0));
 			Contract.Requires(x1 < a.GetLength(0));
-			Contract.Requires(x2 < a.GetLength(0));
+			Contract.Requires(y0 < a.GetLength(1));
 			Contract.Requires(y1 < a.GetLength(1));
-			Contract.Requires(y2 < a.GetLength(1));
-			Contract.Ensures(Contract.Result<int[,]>() != null);
+			Contract.Ensures(Contract.Result<T[,]>() != null);
 #endif
-			int[,] sub = new int[(x2 - x1) + 1, (y2 - y1) + 1];
+			T[,] sub = new T[(x1 - x0) + 1, (y1 - y0) + 1];
 
 			for (int x = 0; x < sub.GetLength(0); x++)
 			{
 				for (int y = 0; y < sub.GetLength(1); y++)
 				{
-					sub[x, y] = a[x1 + x, y1 + y];
+					sub[x, y] = a[x0 + x, y0 + y];
 				}
 			}
 
@@ -398,110 +288,44 @@ namespace SharpBag
 		}
 
 		/// <summary>
-		/// Adds the specified key and value to the dictionary.
-		/// If overwrite is true and the dictionary contains the specified key, the key's value will be overwritten.
-		/// If overwrite is false and the dictionary contains the specified key, an exception won't be thrown.
-		/// </summary>
-		/// <typeparam name="TKey">The type of the keys in the dictionary.</typeparam>
-		/// <typeparam name="TValue">The type of the values in the dictionary.</typeparam>
-		/// <param name="d">The dictionary.</param>
-		/// <param name="key">The key of the element to add.</param>
-		/// <param name="value">The value of the element to add. The value can be null for reference types.</param>
-		/// <param name="overwrite">True if the key's value should be overwritten; otherwise false.</param>
-		public static void Add<TKey, TValue>(this Dictionary<TKey, TValue> d, TKey key, TValue value, bool overwrite)
-		{
-#if DOTNET4
-			Contract.Requires(d != null);
-#endif
-			if (d.ContainsKey(key))
-			{
-				if (overwrite) d[key] = value;
-			}
-			else d.Add(key, value);
-		}
-
-		#region Fill overloads
-
-		/// <summary>
-		/// Fills the current array with the specified value.
-		/// </summary>
-		/// <typeparam name="T">The type of the array.</typeparam>
-		/// <param name="array">The current instance.</param>
-		/// <param name="value">The value to fill the array with.</param>
-		public static void Fill<T>(this T[] array, T value)
-		{
-#if DOTNET4
-			Contract.Requires(array != null);
-#endif
-			for (int i = 0; i < array.Count(); i++) array[i] = value;
-		}
-
-		/// <summary>
-		/// Fills the current array with the specified value.
-		/// </summary>
-		/// <typeparam name="T">The type of the array.</typeparam>
-		/// <param name="array">The current instance.</param>
-		/// <param name="value">The value to fill the array with.</param>
-		public static void Fill<T>(this List<T> array, T value)
-		{
-#if DOTNET4
-			Contract.Requires(array != null);
-#endif
-			for (int i = 0; i < array.Count(); i++) array[i] = value;
-		}
-
-		#endregion Fill overloads
-
-		/// <summary>
 		/// Gets a subarray of an array.
 		/// </summary>
 		/// <typeparam name="T">The type of the enumerable.</typeparam>
-		/// <param name="array">The array.</param>
+		/// <param name="c">The array.</param>
 		/// <param name="start">The first index.</param>
 		/// <param name="end">The last index.</param>
 		/// <returns>A subarray of the array.</returns>
-		public static IEnumerable<T> Range<T>(this IEnumerable<T> array, int start, int end)
+		public static IEnumerable<T> Range<T>(this IEnumerable<T> c, int start, int end)
 		{
 #if DOTNET4
-			Contract.Requires(array != null);
+			Contract.Requires(c != null);
 			Contract.Requires(start <= end);
-			Contract.Requires(start >= 0 && start < array.Count());
-			Contract.Requires(end >= 0 && end < array.Count());
+			Contract.Requires(start >= 0 && start < c.Count());
+			Contract.Requires(end >= 0 && end < c.Count());
 			Contract.Ensures(Contract.Result<IEnumerable<T>>() != null);
 #endif
-			for (int i = start; i <= end; i++) yield return array.ElementAt(i);
+			using (IEnumerator<T> e = c.GetEnumerator())
+			{
+				for (int i = 0; i <= end; i++)
+				{
+					e.MoveNext();
+					if (i > start) yield return e.Current;
+				}
+			}
 		}
 
 		/// <summary>
 		/// Immediately executes the current instance.
 		/// </summary>
 		/// <typeparam name="T">The type of the elements in the enumerable.</typeparam>
-		/// <param name="sequence">The current instance.</param>
-		/// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
-		public static void Execute<T>(this IEnumerable<T> sequence)
+		/// <param name="collection">The current instance.</param>
+		/// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx </remarks>
+		public static void Execute<T>(this IEnumerable<T> collection)
 		{
 #if DOTNET4
-			Contract.Requires(sequence != null);
+			Contract.Requires(collection != null);
 #endif
-			foreach (T item in sequence) { }
-		}
-
-		/// <summary>
-		/// Gets the element in the array located at the specified percent.
-		/// </summary>
-		/// <typeparam name="T">The type of the elements in the array.</typeparam>
-		/// <param name="array">The current instance.</param>
-		/// <param name="percent">The percent.</param>
-		/// <returns>The element in the array located at the specified percent.</returns>
-		/// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
-		public static T GetByPercent<T>(this T[] array, double percent)
-		{
-#if DOTNET4
-			Contract.Requires(array != null);
-			Contract.Requires(array.Length > 0);
-			Contract.Requires(percent >= 0 && percent <= 1);
-#endif
-			return array[Math.MathExtensions.Round((array.Length - 1) * percent)];
+			foreach (T item in collection) { }
 		}
 
 		#region Multidimensional Arrays
@@ -609,16 +433,22 @@ namespace SharpBag
 			Contract.Requires(cols > 0);
 			Contract.Requires(collection.Count() % cols == 0);
 #endif
-			int count = collection.Count(),
+			T[] arr = collection.ToArray();
+			int count = arr.Length,
 				rows = count / cols,
-				i = 0;
+				row = 0,
+				col = 0;
 
 			T[,] outArr = new T[rows, cols];
 
-			foreach (T item in collection)
+			for (int i = 0; i < arr.Length; i++)
 			{
-				outArr[i / cols, i % cols] = item;
-				i++;
+				outArr[row, col] = arr[i];
+				if (++col == cols)
+				{
+					col = 0;
+					row++;
+				}
 			}
 
 			return outArr;
@@ -931,7 +761,7 @@ namespace SharpBag
 #if DOTNET4
 			Contract.Requires(collection != null);
 #endif
-			List<T> c = new List<T>();
+			List<T> c = cache ? new List<T>() : null;
 
 			foreach (T item in collection)
 			{
@@ -944,23 +774,6 @@ namespace SharpBag
 				if (cache) foreach (T item in c) yield return item;
 				else foreach (T item in collection) yield return item;
 			}
-		}
-
-		/// <summary>
-		/// Adds the specified items to the current instance.
-		/// </summary>
-		/// <typeparam name="T">The type of items in the current instance.</typeparam>
-		/// <param name="collection">The current instance.</param>
-		/// <param name="items">The items to add.</param>
-		/// <returns>The current instance and the specified items.</returns>
-		public static IEnumerable<T> Add<T>(this IEnumerable<T> collection, params T[] items)
-		{
-#if DOTNET4
-			Contract.Requires(collection != null);
-			Contract.Requires(items != null);
-#endif
-			foreach (T item in collection) yield return item;
-			foreach (T item in items) yield return item;
 		}
 
 		/// <summary>
@@ -989,12 +802,12 @@ namespace SharpBag
 		/// <typeparam name="TResult">The type to cast to.</typeparam>
 		/// <param name="collection">The current instance.</param>
 		/// <returns>The current instance with the items cast to the specified type.</returns>
-		public static IEnumerable<TResult> CastAll<TResult>(this IEnumerable<object> collection)
+		public static IEnumerable<TResult> CastAll<T, TResult>(this IEnumerable<T> collection)
 		{
 #if DOTNET4
 			Contract.Requires(collection != null);
 #endif
-			foreach (var element in collection) yield return (TResult)element;
+			foreach (var element in collection) yield return (TResult)(object)element;
 		}
 
 		/// <summary>
@@ -1040,66 +853,6 @@ namespace SharpBag
 		public static IEnumerable<T> Flatten<T>(this IEnumerable<IEnumerable<T>> collection)
 		{
 			foreach (IEnumerable<T> coll in collection) foreach (T item in coll) yield return item;
-		}
-
-		/// <summary>
-		/// Performs a linear interpolation of the current instance using the specified average function.
-		/// </summary>
-		/// <typeparam name="T">The type of items in the current instance.</typeparam>
-		/// <param name="collection">The current instance.</param>
-		/// <param name="average">A function that calculates the average of two items.</param>
-		/// <returns>The interpolated collection.</returns>
-		public static IEnumerable<T> InterpolateLinear<T>(this IEnumerable<T> collection, Func<T, T, T> average)
-		{
-			using (IEnumerator<T> en = collection.GetEnumerator())
-			{
-				if (!en.MoveNext()) yield break;
-				T last = en.Current;
-				yield return last;
-
-				while (en.MoveNext())
-				{
-					T cur = en.Current;
-					yield return average(last, cur);
-					yield return cur;
-					last = cur;
-				}
-			}
-		}
-
-		/// <summary>
-		/// Performs a linear interpolation of the current instance using the specified average function.
-		/// </summary>
-		/// <typeparam name="T">The type of items in the current instance.</typeparam>
-		/// <param name="matrix">The current instance.</param>
-		/// <param name="average">A function that calculates the average of two items.</param>
-		/// <returns>The interpolated matrix.</returns>
-		public static T[,] InterpolateLinear<T>(this T[,] matrix, Func<T, T, T> average)
-		{
-			T[,] newMatrix = new T[matrix.GetLength(0) * 2 - 1, matrix.GetLength(1) * 2 - 1];
-
-			for (int row = 0; row < matrix.GetLength(0); row++)
-			{
-				int nextRow = row * 2;
-				newMatrix[nextRow, 0] = matrix[row, 0];
-
-				for (int col = 1; col < matrix.GetLength(1); col++)
-				{
-					int nextCol = col * 2;
-					newMatrix[nextRow, nextCol] = matrix[row, col];
-					newMatrix[nextRow, nextCol - 1] = average(matrix[row, col - 1], matrix[row, col]);
-				}
-			}
-
-			for (int row = 1; row < newMatrix.GetLength(0) - 1; row += 2)
-			{
-				for (int col = 0; col < newMatrix.GetLength(1); col++)
-				{
-					newMatrix[row, col] = average(newMatrix[row - 1, col], newMatrix[row + 1, col]);
-				}
-			}
-
-			return newMatrix;
 		}
 	}
 }

@@ -85,37 +85,6 @@ namespace SharpBag
 		#endregion InvokeIfRequired overloads
 
 		/// <summary>
-		/// Executes the specified action on the current instance.
-		/// </summary>
-		/// <typeparam name="T">The type of the current instance.</typeparam>
-		/// <param name="obj">The current instance.</param>
-		/// <param name="act">An action.</param>
-		public static void With<T>(this T obj, Action<T> act)
-		{
-#if DOTNET4
-			Contract.Requires(act != null);
-#endif
-			act(obj);
-		}
-
-		/// <summary>
-		/// If the current instance is not null, returns the value returned from selector function, else returns the elseValue.
-		/// </summary>
-		/// <typeparam name="TIn">The type of the current instance.</typeparam>
-		/// <typeparam name="TReturn">The type of the return value.</typeparam>
-		/// <param name="obj">The current instance.</param>
-		/// <param name="selector">A selector function.</param>
-		/// <param name="elseValue">The default value to return.</param>
-		/// <returns>If the current instance is not null, returns the value returned from selector function, else returns the elseValue.</returns>
-		public static TReturn NullOr<TIn, TReturn>(this TIn obj, Func<TIn, TReturn> selector, TReturn elseValue = default(TReturn)) where TIn : class
-		{
-#if DOTNET4
-			Contract.Requires(selector != null);
-#endif
-			return obj != null ? selector(obj) : elseValue;
-		}
-
-		/// <summary>
 		/// Whether the current instance is null or empty.
 		/// </summary>
 		/// <typeparam name="T">The type of items in the current instance.</typeparam>
@@ -124,53 +93,6 @@ namespace SharpBag
 		public static bool IsNullOrEmpty<T>(this IEnumerable<T> collection)
 		{
 			return collection == null || !collection.Any();
-		}
-
-		/// <summary>
-		/// Whether the current instance is T.
-		/// </summary>
-		/// <typeparam name="T">The type to check against.</typeparam>
-		/// <param name="item">The current instance.</param>
-		/// <returns>Whether the current instance is T.</returns>
-		public static bool Is<T>(this object item) where T : class
-		{
-			return item is T;
-		}
-
-		/// <summary>
-		/// Whether the current instance is not T.
-		/// </summary>
-		/// <typeparam name="T">The type to check against.</typeparam>
-		/// <param name="item">The current instance.</param>
-		/// <returns>Whether the current instance is not T.</returns>
-		public static bool IsNot<T>(this object item) where T : class
-		{
-			return !(item.Is<T>());
-		}
-
-		/// <summary>
-		/// Returns the current instance as T.
-		/// </summary>
-		/// <typeparam name="T">The type to return the current instance as.</typeparam>
-		/// <param name="item">The current instance.</param>
-		/// <returns>The current instance as T.</returns>
-		public static T CastAs<T>(this object item) where T : class
-		{
-			return item as T;
-		}
-
-		/// <summary>
-		/// Converts an the current instance to a dictionary, with it's properties as the keys.
-		/// </summary>
-		/// <param name="o">The current instance.</param>
-		/// <returns>The current instance as a dictionary.</returns>
-		public static Dictionary<string, object> ToDictionary(this object o)
-		{
-#if DOTNET4
-			Contract.Requires(o != null);
-			Contract.Ensures(Contract.Result<Dictionary<string, object>>() != null);
-#endif
-			return o.GetType().GetProperties().Where(propertyInfo => propertyInfo.GetIndexParameters().Length == 0).ToDictionary(propertyInfo => propertyInfo.Name, propertyInfo => propertyInfo.GetValue(o, null));
 		}
 
 		/// <summary>
@@ -203,7 +125,7 @@ namespace SharpBag
 
 			try
 			{
-				return type.IsEnum && original.Is<string>() ? (TOut)Enum.Parse(type, original.As<string>(), true) : (TOut)Convert.ChangeType(original, type, provider);
+				return type.IsEnum && (original is string) ? (TOut)Enum.Parse(type, original as string, true) : (TOut)Convert.ChangeType(original, type, provider);
 			}
 			catch { return defaultValue; }
 		}
@@ -220,19 +142,6 @@ namespace SharpBag
 			Contract.Requires(type != null);
 #endif
 			return type.IsGenericType && type.GetGenericTypeDefinition().Equals(typeof(Nullable<>));
-		}
-
-		/// <summary>
-		/// If the current instance is true, the specified value is returned, else the specified default value is returned.
-		/// </summary>
-		/// <typeparam name="T">The type of the current instance.</typeparam>
-		/// <param name="obj">The current instance.</param>
-		/// <param name="expression">The value.</param>
-		/// <param name="def">The default value.</param>
-		/// <returns>The specified value is returned, else the specified default value is returned.</returns>
-		public static T Then<T>(this bool expression, T obj, T def = default(T))
-		{
-			return expression ? obj : def;
 		}
 
 		/// <summary>
@@ -305,18 +214,6 @@ namespace SharpBag
 		{
 			MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(s));
 			return ms.GetHashString(hasher);
-		}
-
-		/// <summary>
-		/// Assigns the current instance to the specified variable.
-		/// </summary>
-		/// <typeparam name="T">The type of the current isntance.</typeparam>
-		/// <param name="value">The current instance.</param>
-		/// <param name="to">The variable.</param>
-		/// <returns>The current instance.</returns>
-		public static T AssignTo<T>(this T value, out T to)
-		{
-			return to = value;
 		}
 
 		/// <summary>

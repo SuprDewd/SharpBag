@@ -12,7 +12,7 @@ namespace SharpBag.Math
 	{
 		#region The Golden Ratio
 
-		private static double _GoldenRatio = 1.6180339887498948;
+		private static double _GoldenRatio = 1.618033988749894848204586834365638117720d;
 
 		/// <summary>
 		/// The golden ratio.

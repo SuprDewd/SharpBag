@@ -27,7 +27,7 @@ namespace SharpBag.Math
 		/// <param name="row">The specified row.</param>
 		/// <param name="column">The specified column.</param>
 		/// <returns>The value at the specified row and column.</returns>
-		public static BigInteger GetEntryBig(long row, long column)
+		public static BigInteger GetEntry(long row, long column)
 		{
 			BigInteger current = 1;
 			for (long i = 1; i <= column; i++) current = (current * (row + 1 - i)) / i;

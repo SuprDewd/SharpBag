@@ -18,186 +18,6 @@ namespace SharpBag.Time
 	public static class TimeExtensions
 	{
 		/// <summary>
-		/// Returns a new DateTime with the specified day, month and year.
-		/// </summary>
-		/// <param name="day">A day.</param>
-		/// <param name="year">A year.</param>
-		/// <returns>The new DateTime.</returns>
-		public static DateTime January(this int day, int year)
-		{
-#if DOTNET4
-			Contract.Requires(day.IsBetweenOrEqualTo(1, 31));
-			Contract.Requires(year.IsBetweenOrEqualTo(0, 9999));
-#endif
-			return new DateTime(year, 1, day);
-		}
-
-		/// <summary>
-		/// Returns a new DateTime with the specified day, month and year.
-		/// </summary>
-		/// <param name="day">A day.</param>
-		/// <param name="year">A year.</param>
-		/// <returns>The new DateTime.</returns>
-		public static DateTime February(this int day, int year)
-		{
-#if DOTNET4
-			Contract.Requires(day.IsBetweenOrEqualTo(1, 31));
-			Contract.Requires(year.IsBetweenOrEqualTo(0, 9999));
-#endif
-			return new DateTime(year, 2, day);
-		}
-
-		/// <summary>
-		/// Returns a new DateTime with the specified day, month and year.
-		/// </summary>
-		/// <param name="day">A day.</param>
-		/// <param name="year">A year.</param>
-		/// <returns>The new DateTime.</returns>
-		public static DateTime March(this int day, int year)
-		{
-#if DOTNET4
-			Contract.Requires(day.IsBetweenOrEqualTo(1, 31));
-			Contract.Requires(year.IsBetweenOrEqualTo(0, 9999));
-#endif
-			return new DateTime(year, 3, day);
-		}
-
-		/// <summary>
-		/// Returns a new DateTime with the specified day, month and year.
-		/// </summary>
-		/// <param name="day">A day.</param>
-		/// <param name="year">A year.</param>
-		/// <returns>The new DateTime.</returns>
-		public static DateTime April(this int day, int year)
-		{
-#if DOTNET4
-			Contract.Requires(day.IsBetweenOrEqualTo(1, 31));
-			Contract.Requires(year.IsBetweenOrEqualTo(0, 9999));
-#endif
-			return new DateTime(year, 4, day);
-		}
-
-		/// <summary>
-		/// Returns a new DateTime with the specified day, month and year.
-		/// </summary>
-		/// <param name="day">A day.</param>
-		/// <param name="year">A year.</param>
-		/// <returns>The new DateTime.</returns>
-		public static DateTime May(this int day, int year)
-		{
-#if DOTNET4
-			Contract.Requires(day.IsBetweenOrEqualTo(1, 31));
-			Contract.Requires(year.IsBetweenOrEqualTo(0, 9999));
-#endif
-			return new DateTime(year, 5, day);
-		}
-
-		/// <summary>
-		/// Returns a new DateTime with the specified day, month and year.
-		/// </summary>
-		/// <param name="day">A day.</param>
-		/// <param name="year">A year.</param>
-		/// <returns>The new DateTime.</returns>
-		public static DateTime June(this int day, int year)
-		{
-#if DOTNET4
-			Contract.Requires(day.IsBetweenOrEqualTo(1, 31));
-			Contract.Requires(year.IsBetweenOrEqualTo(0, 9999));
-#endif
-			return new DateTime(year, 6, day);
-		}
-
-		/// <summary>
-		/// Returns a new DateTime with the specified day, month and year.
-		/// </summary>
-		/// <param name="day">A day.</param>
-		/// <param name="year">A year.</param>
-		/// <returns>The new DateTime.</returns>
-		public static DateTime July(this int day, int year)
-		{
-#if DOTNET4
-			Contract.Requires(day.IsBetweenOrEqualTo(1, 31));
-			Contract.Requires(year.IsBetweenOrEqualTo(0, 9999));
-#endif
-			return new DateTime(year, 7, day);
-		}
-
-		/// <summary>
-		/// Returns a new DateTime with the specified day, month and year.
-		/// </summary>
-		/// <param name="day">A day.</param>
-		/// <param name="year">A year.</param>
-		/// <returns>The new DateTime.</returns>
-		public static DateTime August(this int day, int year)
-		{
-#if DOTNET4
-			Contract.Requires(day.IsBetweenOrEqualTo(1, 31));
-			Contract.Requires(year.IsBetweenOrEqualTo(0, 9999));
-#endif
-			return new DateTime(year, 8, day);
-		}
-
-		/// <summary>
-		/// Returns a new DateTime with the specified day, month and year.
-		/// </summary>
-		/// <param name="day">A day.</param>
-		/// <param name="year">A year.</param>
-		/// <returns>The new DateTime.</returns>
-		public static DateTime September(this int day, int year)
-		{
-#if DOTNET4
-			Contract.Requires(day.IsBetweenOrEqualTo(1, 31));
-			Contract.Requires(year.IsBetweenOrEqualTo(0, 9999));
-#endif
-			return new DateTime(year, 9, day);
-		}
-
-		/// <summary>
-		/// Returns a new DateTime with the specified day, month and year.
-		/// </summary>
-		/// <param name="day">A day.</param>
-		/// <param name="year">A year.</param>
-		/// <returns>The new DateTime.</returns>
-		public static DateTime October(this int day, int year)
-		{
-#if DOTNET4
-			Contract.Requires(day.IsBetweenOrEqualTo(1, 31));
-			Contract.Requires(year.IsBetweenOrEqualTo(0, 9999));
-#endif
-			return new DateTime(year, 10, day);
-		}
-
-		/// <summary>
-		/// Returns a new DateTime with the specified day, month and year.
-		/// </summary>
-		/// <param name="day">A day.</param>
-		/// <param name="year">A year.</param>
-		/// <returns>The new DateTime.</returns>
-		public static DateTime November(this int day, int year)
-		{
-#if DOTNET4
-			Contract.Requires(day.IsBetweenOrEqualTo(1, 31));
-			Contract.Requires(year.IsBetweenOrEqualTo(0, 9999));
-#endif
-			return new DateTime(year, 11, day);
-		}
-
-		/// <summary>
-		/// Returns a new DateTime with the specified day, month and year.
-		/// </summary>
-		/// <param name="day">A day.</param>
-		/// <param name="year">A year.</param>
-		/// <returns>The new DateTime.</returns>
-		public static DateTime December(this int day, int year)
-		{
-#if DOTNET4
-			Contract.Requires(day.IsBetweenOrEqualTo(1, 31));
-			Contract.Requires(year.IsBetweenOrEqualTo(0, 9999));
-#endif
-			return new DateTime(year, 12, day);
-		}
-
-		/// <summary>
 		/// Sets the current instance to the specified hour, minute, second and millisecond.
 		/// </summary>
 		/// <param name="datetime">The current instance.</param>
@@ -209,166 +29,15 @@ namespace SharpBag.Time
 		public static DateTime At(this DateTime datetime, int hour, int minute = 0, int second = 0, int millisecond = 0)
 		{
 #if DOTNET4
-			Contract.Requires(hour.IsBetweenOrEqualTo(0, 23));
-			Contract.Requires(minute.IsBetweenOrEqualTo(0, 59));
-			Contract.Requires(second.IsBetweenOrEqualTo(0, 59));
-			Contract.Requires(minute.IsBetweenOrEqualTo(0, 999));
+			Contract.Requires(hour >= 0 && hour <= 23);
+			Contract.Requires(minute >= 0 && hour <= 59);
+			Contract.Requires(second >= 0 && second <= 59);
+			Contract.Requires(millisecond >= 0 && millisecond <= 999);
 #endif
 			return new DateTime(datetime.Year, datetime.Month, datetime.Day, hour, minute, second, millisecond);
 		}
 
-		/// <summary>
-		/// Gets a TimeSpan with current instance as ticks.
-		/// </summary>
-		/// <param name="n">The current instance.</param>
-		/// <returns>The TimeSpan.</returns>
-		public static TimeSpan Ticks(this long n)
-		{
-			return TimeSpan.FromTicks(n);
-		}
-
-		/// <summary>
-		/// Gets a TimeSpan with current instance as milliseconds.
-		/// </summary>
-		/// <param name="n">The current instance.</param>
-		/// <returns>The TimeSpan.</returns>
-		public static TimeSpan Milliseconds(this double n)
-		{
-#if DOTNET4
-			Contract.Requires(!Double.IsNaN(n));
-#endif
-			return TimeSpan.FromMilliseconds(n);
-		}
-
-		/// <summary>
-		/// Gets a TimeSpan with current instance as seconds.
-		/// </summary>
-		/// <param name="n">The current instance.</param>
-		/// <returns>The TimeSpan.</returns>
-		public static TimeSpan Seconds(this double n)
-		{
-#if DOTNET4
-			Contract.Requires(!Double.IsNaN(n));
-#endif
-			return TimeSpan.FromSeconds(n);
-		}
-
-		/// <summary>
-		/// Gets a TimeSpan with current instance as minutes.
-		/// </summary>
-		/// <param name="n">The current instance.</param>
-		/// <returns>The TimeSpan.</returns>
-		public static TimeSpan Minutes(this double n)
-		{
-#if DOTNET4
-			Contract.Requires(!Double.IsNaN(n));
-#endif
-			return TimeSpan.FromMinutes(n);
-		}
-
-		/// <summary>
-		/// Gets a TimeSpan with current instance as hours.
-		/// </summary>
-		/// <param name="n">The current instance.</param>
-		/// <returns>The TimeSpan.</returns>
-		public static TimeSpan Hours(this double n)
-		{
-#if DOTNET4
-			Contract.Requires(!Double.IsNaN(n));
-#endif
-			return TimeSpan.FromHours(n);
-		}
-
-		/// <summary>
-		/// Gets a TimeSpan with current instance as days.
-		/// </summary>
-		/// <param name="n">The current instance.</param>
-		/// <returns>The TimeSpan.</returns>
-		public static TimeSpan Days(this double n)
-		{
-#if DOTNET4
-			Contract.Requires(!Double.IsNaN(n));
-#endif
-			return TimeSpan.FromDays(n);
-		}
-
-		/// <summary>
-		/// Gets a TimeSpan with current instance as weeks.
-		/// </summary>
-		/// <param name="n">The current instance.</param>
-		/// <returns>The TimeSpan.</returns>
-		public static TimeSpan Weeks(this double n)
-		{
-#if DOTNET4
-			Contract.Requires(!Double.IsNaN(n));
-#endif
-			return TimeSpan.FromDays(n * 7);
-		}
-
-		/// <summary>
-		/// Gets a TimeSpan with current instance as milliseconds.
-		/// </summary>
-		/// <param name="n">The current instance.</param>
-		/// <returns>The TimeSpan.</returns>
-		public static TimeSpan Milliseconds(this int n)
-		{
-#if DOTNET4
-			Contract.Requires(!Double.IsNaN(n));
-#endif
-			return TimeSpan.FromMilliseconds(n);
-		}
-
-		/// <summary>
-		/// Gets a TimeSpan with current instance as seconds.
-		/// </summary>
-		/// <param name="n">The current instance.</param>
-		/// <returns>The TimeSpan.</returns>
-		public static TimeSpan Seconds(this int n)
-		{
-			return TimeSpan.FromSeconds(n);
-		}
-
-		/// <summary>
-		/// Gets a TimeSpan with current instance as minutes.
-		/// </summary>
-		/// <param name="n">The current instance.</param>
-		/// <returns>The TimeSpan.</returns>
-		public static TimeSpan Minutes(this int n)
-		{
-			return TimeSpan.FromMinutes(n);
-		}
-
-		/// <summary>
-		/// Gets a TimeSpan with current instance as hours.
-		/// </summary>
-		/// <param name="n">The current instance.</param>
-		/// <returns>The TimeSpan.</returns>
-		public static TimeSpan Hours(this int n)
-		{
-			return TimeSpan.FromHours(n);
-		}
-
-		/// <summary>
-		/// Gets a TimeSpan with current instance as days.
-		/// </summary>
-		/// <param name="n">The current instance.</param>
-		/// <returns>The TimeSpan.</returns>
-		public static TimeSpan Days(this int n)
-		{
-			return TimeSpan.FromDays(n);
-		}
-
-		/// <summary>
-		/// Gets a TimeSpan with current instance as weeks.
-		/// </summary>
-		/// <param name="n">The current instance.</param>
-		/// <returns>The TimeSpan.</returns>
-		public static TimeSpan Weeks(this int n)
-		{
-			return TimeSpan.FromDays(n * 7);
-		}
-
-		#region To overloads
+		#region To
 
 		/// <summary>
 		/// Returns a collection of DateTimes with a one date interval.
@@ -378,7 +47,7 @@ namespace SharpBag.Time
 		/// <returns>A collection of DateTimes with a one date interval.</returns>
 		public static IEnumerable<DateTime> To(this DateTime from, DateTime to)
 		{
-			return from.To(to, 1.Days());
+			return from.To(to, TimeSpan.FromDays(1));
 		}
 
 		/// <summary>
@@ -390,7 +59,7 @@ namespace SharpBag.Time
 		/// <returns>A collection of DateTimes with a one date interval.</returns>
 		public static IEnumerable<DateTime> To(this DateTime from, DateTime to, TimeSpan step)
 		{
-			if (from < to)
+			if (from <= to)
 			{
 				do
 				{
@@ -407,7 +76,6 @@ namespace SharpBag.Time
 					from -= step;
 				} while (from >= to);
 			}
-			else yield return from;
 		}
 
 		/// <summary>
@@ -422,7 +90,7 @@ namespace SharpBag.Time
 #if DOTNET4
 			Contract.Requires(step != null);
 #endif
-			if (from < to)
+			if (from <= to)
 			{
 				do
 				{
@@ -439,20 +107,9 @@ namespace SharpBag.Time
 					from = step(from);
 				} while (from >= to);
 			}
-			else yield return from;
 		}
 
-		#endregion To overloads
-
-		/// <summary>
-		/// Returns the time that has elapsed since the time of the current instance.
-		/// </summary>
-		/// <param name="datetime">The current instance.</param>
-		/// <returns>The time that has elapsed since the time of the current instance.</returns>
-		public static TimeSpan Elapsed(this DateTime datetime)
-		{
-			return DateTime.Now - datetime;
-		}
+		#endregion To
 
 		/// <summary>
 		/// Returns what week of the year, the current instance is on.

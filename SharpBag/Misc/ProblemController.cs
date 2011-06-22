@@ -117,7 +117,7 @@ namespace SharpBag.Misc
 				long exTime = Utils.ExecutionTime(() =>
 					{
 						m.Method.Invoke(this, new object[0]);
-					});
+					}).Milliseconds;
 
 				Console.WriteLine();
 				Console.Write("Time: ");
@@ -145,7 +145,7 @@ namespace SharpBag.Misc
 
 		private void WriteHeader(string header)
 		{
-			var lines = header.Lines();
+			var lines = header.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
 			int length = lines.Select(l => l.Length).Max();
 			string verticalString = new String(VerticalChar, length + 4);
 

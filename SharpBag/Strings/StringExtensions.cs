@@ -165,62 +165,6 @@ namespace SharpBag.Strings
 		}
 
 		/// <summary>
-		/// Returns all the words in the string.
-		/// </summary>
-		/// <param name="s">The current instance.</param>
-		/// <returns>All the words in the string.</returns>
-		/// <exception cref="System.ArgumentNullException"></exception>
-		public static string[] Words(this string s)
-		{
-#if DOTNET4
-			Contract.Requires(s != null);
-#endif
-			return s.Split(new char[] { ' ', '.', ',', '?' }, StringSplitOptions.RemoveEmptyEntries);
-		}
-
-		/// <summary>
-		/// Returns all the lines in the string.
-		/// </summary>
-		/// <param name="s">The current instance.</param>
-		/// <returns>All the lines in the string.</returns>
-		/// <exception cref="System.ArgumentNullException"></exception>
-		public static string[] Lines(this string s)
-		{
-#if DOTNET4
-			Contract.Requires(s != null);
-#endif
-			return s.NoCarriageReturns().Split('\n');
-		}
-
-		/// <summary>
-		/// Takes the string and removes all carriage returns ('\r').
-		/// </summary>
-		/// <param name="s">The current instance.</param>
-		/// <returns>The string without carriage returns ('\r').</returns>
-		/// <exception cref="System.ArgumentNullException"></exception>
-		public static string NoCarriageReturns(this string s)
-		{
-#if DOTNET4
-			Contract.Requires(s != null);
-#endif
-			return s.Replace("\r", "");
-		}
-
-		/// <summary>
-		/// Takes the string, replaces all line breaks with a space, then replaces all double spaces with a space and finally trims the string.
-		/// </summary>
-		/// <param name="s">The current instance.</param>
-		/// <returns>The string in one line, with no double spaces, trimmed.</returns>
-		/// <exception cref="System.ArgumentNullException"></exception>
-		public static string OneLineNoDoubleSpaceTrimmed(this string s)
-		{
-#if DOTNET4
-			Contract.Requires(s != null);
-#endif
-			return s.Trim().NoCarriageReturns().Replace('\n', ' ').ReplaceAll("  ", " ");
-		}
-
-		/// <summary>
 		/// Returns a copy of this System.Char converted to uppercase, using the casing rules of the current culture.
 		/// </summary>
 		/// <param name="c">The current instance.</param>
@@ -239,74 +183,6 @@ namespace SharpBag.Strings
 		{
 			return c.ToString().ToLower()[0];
 		}
-
-		#region Split
-
-		/// <summary>
-		/// Returns a string array that contains the substrings in this string that are delimited by the specified string. A parameter specifies whether to return empty array elements.
-		/// </summary>
-		/// <param name="s">The current instance.</param>
-		/// <param name="separator">A string that delimits the substrings in this string.</param>
-		/// <returns>An array whose elements contain the substrings in this string that are delimited by the separator.</returns>
-		/// <exception cref="System.ArgumentNullException"></exception>
-		public static string[] Split(this string s, string separator)
-		{
-#if DOTNET4
-			Contract.Requires(s != null);
-			Contract.Requires(separator != null);
-#endif
-			return s.Split(separator, StringSplitOptions.None);
-		}
-
-		/// <summary>
-		/// Returns a string array that contains the substrings in this string that are delimited by the specified string. A parameter specifies whether to return empty array elements.
-		/// </summary>
-		/// <param name="s">The current instance.</param>
-		/// <param name="separator">A string that delimits the substrings in this string.</param>
-		/// <param name="options">RemoveEmptyEntries to omit empty array elements from the array returned; or None to include empty array elements in the array returned.</param>
-		/// <returns>An array whose elements contain the substrings in this string that are delimited by the separator.</returns>
-		/// <exception cref="System.ArgumentNullException"></exception>
-		public static string[] Split(this string s, string separator, StringSplitOptions options)
-		{
-#if DOTNET4
-			Contract.Requires(s != null);
-			Contract.Requires(separator != null);
-#endif
-			return s.Split(new string[] { separator }, options);
-		}
-
-		/// <summary>
-		/// Returns a string array that contains the substrings in this string that are delimited by the specified char. A parameter specifies whether to return empty array elements.
-		/// </summary>
-		/// <param name="s">The current instance.</param>
-		/// <param name="separator">A char that delimits the substrings in this string.</param>
-		/// <returns>An array whose elements contain the substrings in this string that are delimited by the separator.</returns>
-		/// <exception cref="System.ArgumentNullException"></exception>
-		public static string[] Split(this string s, char separator)
-		{
-#if DOTNET4
-			Contract.Requires(s != null);
-#endif
-			return s.Split(separator, StringSplitOptions.None);
-		}
-
-		/// <summary>
-		/// Returns a string array that contains the substrings in this string that are delimited by the specified char. A parameter specifies whether to return empty array elements.
-		/// </summary>
-		/// <param name="s">The current instance.</param>
-		/// <param name="separator">A char that delimits the substrings in this string.</param>
-		/// <param name="options">RemoveEmptyEntries to omit empty array elements from the array returned; or None to include empty array elements in the array returned.</param>
-		/// <returns>An array whose elements contain the substrings in this string that are delimited by the separator.</returns>
-		/// <exception cref="System.ArgumentNullException"></exception>
-		public static string[] Split(this string s, char separator, StringSplitOptions options)
-		{
-#if DOTNET4
-			Contract.Requires(s != null);
-#endif
-			return s.Split(new char[] { separator }, options);
-		}
-
-		#endregion Split
 
 		/// <summary>
 		/// Compares the current instance to another string using the specified char array to determine the results.
@@ -383,8 +259,8 @@ namespace SharpBag.Strings
 		{
 			if (!caseSensitive)
 			{
-				s = s.ToLower();
-				t = t.ToLower();
+				s = s.ToUpper();
+				t = t.ToUpper();
 			}
 
 			int n = s.Length;
@@ -467,22 +343,7 @@ namespace SharpBag.Strings
 			Contract.Requires(a != null);
 			Contract.Requires(b != null);
 #endif
-			return a.ToLower().Contains(b.ToLower());
-		}
-
-		/// <summary>
-		/// Whether the current instance is a match to the specified regular expression.
-		/// </summary>
-		/// <param name="s">The current instance.</param>
-		/// <param name="regex">A regular expression.</param>
-		/// <returns></returns>
-		public static bool IsLike(this string s, string regex)
-		{
-#if DOTNET4
-			Contract.Requires(s != null);
-			Contract.Requires(!String.IsNullOrEmpty(regex));
-#endif
-			return Regex.IsMatch(s, String.Format("^{0}$", regex));
+			return a.ToUpper().Contains(b.ToUpper());
 		}
 
 		/// <summary>
@@ -558,16 +419,6 @@ namespace SharpBag.Strings
 			{
 				return Encoding.UTF8.GetString(rsa.Decrypt(Array.ConvertAll(stringToDecrypt.Split('-'), (s => Convert.ToByte(Byte.Parse(s, NumberStyles.HexNumber)))), true));
 			}
-		}
-
-		/// <summary>
-		/// Prepends a zero to the current instance, if it's less than 10.
-		/// </summary>
-		/// <param name="i">The current instance.</param>
-		/// <returns>The current instance as a string.</returns>
-		public static string AddZeroIfLessThan10(this int i)
-		{
-			return i > 9 ? i.ToString() : "0" + i;
 		}
 
 		/// <summary>
