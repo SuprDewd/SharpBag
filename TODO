@@ -15,9 +15,9 @@
 	- Log of factorial.
 	- Double factorial.
 	- Log of double factorial.
-	- Harmonic numbers.
-	- Catalan numbers.
 	- ModPow for int / long.
 	- Integer partitions.
 	- Look for better Miller-Rabin.
 	- Better perfect number sequence. (2^(p - 1) * (2^p - 1))
+	- Extended Euclid.
+	- Remove calculators (use generic base classes instead).
