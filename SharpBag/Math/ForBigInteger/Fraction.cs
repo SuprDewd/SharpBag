@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Text;
 
-namespace SharpBag.Math.Fraction.Int32
+namespace SharpBag.Math.ForBigInteger
 {
 	using System;
 	using System.Numerics;
@@ -11,23 +11,23 @@ namespace SharpBag.Math.Fraction.Int32
 	/// A rational fraction.
 	/// </summary>
 	/// <remarks>http://www.codeproject.com/KB/recipes/fractiion.aspx</remarks>
-	public struct Fraction : Fraction<int>, IComparable<Fraction>, IEquatable<Fraction>, ICloneable
+	public struct Fraction : Fraction<BigInteger>, IComparable<Fraction>, IEquatable<Fraction>, ICloneable
 	{
 		#region Properties
 
-		private int _Numerator;
+		private BigInteger _Numerator;
 
 		/// <summary>
 		/// The numerator.
 		/// </summary>
-		public int Numerator { get { return _Numerator; } private set { _Numerator = value; } }
+		public BigInteger Numerator { get { return _Numerator; } private set { _Numerator = value; } }
 
-		private int _Denominator;
+		private BigInteger _Denominator;
 
 		/// <summary>
 		/// The denominator.
 		/// </summary>
-		public int Denominator { get { return _Denominator; } private set { _Denominator = value; if (this.AutoReduce) this.Reduce(); } }
+		public BigInteger Denominator { get { return _Denominator; } private set { _Denominator = value; if (this.AutoReduce) this.Reduce(); } }
 
 		private static bool _DefaultAutoReduce = true;
 
@@ -94,7 +94,11 @@ namespace SharpBag.Math.Fraction.Int32
 		{
 			get
 			{
-				return new Fraction((int)Math.Ceiling((double)this.Numerator / this.Denominator) * this.Denominator, this.Denominator);
+				BigInteger n = (this.Numerator * 10) / (this.Denominator * 10),
+						   n2 = this.Numerator / this.Denominator;
+				if (n % 10 > 0) n2++;
+
+				return new Fraction(n2 * this.Denominator, this.Denominator);
 			}
 		}
 
@@ -112,7 +116,7 @@ namespace SharpBag.Math.Fraction.Int32
 		/// <summary>
 		/// Returns the partial quotients of the fraction.
 		/// </summary>
-		public IEnumerable<int> PartialQuotients
+		public IEnumerable<BigInteger> PartialQuotients
 		{
 			get
 			{
@@ -121,7 +125,7 @@ namespace SharpBag.Math.Fraction.Int32
 
 				while (fract.Denominator > 1)
 				{
-					int wholes = fract.Numerator / fract.Denominator;
+					BigInteger wholes = fract.Numerator / fract.Denominator;
 					yield return wholes;
 					fract = new Fraction(fract.Denominator, fract.Numerator - (wholes * fract.Denominator));
 				}
@@ -227,12 +231,12 @@ namespace SharpBag.Math.Fraction.Int32
 		/// </summary>
 		/// <param name="s">The number.</param>
 		/// <returns>The partial quotients of the square root of the specified number.</returns>
-		public static IEnumerable<int> PartialQuotientsOfSquareRootOf(int s)
+		public static IEnumerable<BigInteger> PartialQuotientsOfSquareRootOf(BigInteger s)
 		{
-			int m = 0,
-				d = 1,
-				a0 = (int)Math.Sqrt(s),
-				a = a0;
+			BigInteger m = 0,
+			  d = 1,
+			  a0 = s.Sqrt(),
+			  a = a0;
 
 			while (true)
 			{
@@ -252,7 +256,7 @@ namespace SharpBag.Math.Fraction.Int32
 		/// </summary>
 		/// <param name="numerator">The numerator.</param>
 		/// <param name="denominator">The denominator.</param>
-		public Fraction(int numerator, int denominator) : this(numerator, denominator, Fraction.DefaultAutoReduce) { }
+		public Fraction(BigInteger numerator, BigInteger denominator) : this(numerator, denominator, Fraction.DefaultAutoReduce) { }
 
 		/// <summary>
 		/// The constructor.
@@ -260,7 +264,7 @@ namespace SharpBag.Math.Fraction.Int32
 		/// <param name="numerator">The numerator.</param>
 		/// <param name="denominator">The denominator.</param>
 		/// <param name="autoReduce">Whether to automatically reduce the fraction.</param>
-		public Fraction(int numerator, int denominator, bool autoReduce)
+		public Fraction(BigInteger numerator, BigInteger denominator, bool autoReduce)
 		{
 			_Numerator = numerator;
 			_Denominator = denominator;
@@ -273,14 +277,14 @@ namespace SharpBag.Math.Fraction.Int32
 		/// The constructor.
 		/// </summary>
 		/// <param name="wholeNumber">The number of wholes.</param>
-		public Fraction(int wholeNumber) : this(wholeNumber, 1, Fraction.DefaultAutoReduce) { }
+		public Fraction(BigInteger wholeNumber) : this(wholeNumber, 1, Fraction.DefaultAutoReduce) { }
 
 		/// <summary>
 		/// The constructor.
 		/// </summary>
 		/// <param name="wholeNumber">The number of wholes.</param>
 		/// <param name="autoReduce">Whether to automatically reduce the fraction.</param>
-		public Fraction(int wholeNumber, bool autoReduce) : this(wholeNumber, 1, autoReduce) { }
+		public Fraction(BigInteger wholeNumber, bool autoReduce) : this(wholeNumber, 1, autoReduce) { }
 
 		/// <summary>
 		/// The constructor.
@@ -296,7 +300,7 @@ namespace SharpBag.Math.Fraction.Int32
 		/// The constructor.
 		/// </summary>
 		/// <param name="other">Another fraction to copy.</param>
-		public Fraction(Fraction<int> other)
+		public Fraction(Fraction<BigInteger> other)
 		{
 			_Numerator = other.Numerator;
 			_Denominator = other.Denominator;
@@ -308,11 +312,11 @@ namespace SharpBag.Math.Fraction.Int32
 		/// </summary>
 		/// <param name="terms">The partial quotients of the continued fraction.</param>
 		/// <returns>The fraction represented by the partial quotients.</returns>
-		public static Fraction FromPartialQuotients(int[] terms)
+		public static Fraction FromPartialQuotients(BigInteger[] terms)
 		{
 			Fraction fract = new Fraction(terms[terms.Length - 1], 1);
 
-			for (int i = terms.Length - 2; i >= 0; i--)
+			for (long i = terms.Length - 2; i >= 0; i--)
 			{
 				fract = new Fraction((terms[i] * fract.Numerator) + fract.Denominator, fract.Numerator);
 			}
@@ -338,7 +342,7 @@ namespace SharpBag.Math.Fraction.Int32
 				sign = -sign;
 			}
 
-			int fractionNumerator = (int)value;
+			BigInteger fractionNumerator = (BigInteger)value;
 			int maxIterations = 594;
 			double fractionDenominator = 1,
 				previousDenominator = 0,
@@ -350,12 +354,12 @@ namespace SharpBag.Math.Fraction.Int32
 				remainingDigits = 1.0 / (remainingDigits - Math.Floor(remainingDigits));
 				scratch = fractionDenominator;
 				fractionDenominator = (Math.Floor(remainingDigits) * fractionDenominator) + previousDenominator;
-				fractionNumerator = (int)(value * fractionDenominator + 0.5);
+				fractionNumerator = (long)(value * fractionDenominator + 0.5);
 				previousDenominator = scratch;
 				if (maxIterations-- < 0) break;
 			}
 
-			return new Fraction(fractionNumerator * sign, (int)fractionDenominator);
+			return new Fraction(fractionNumerator * sign, (BigInteger)fractionDenominator);
 		}
 
 		/// <summary>
@@ -366,8 +370,8 @@ namespace SharpBag.Math.Fraction.Int32
 		public static Fraction Parse(string fraction)
 		{
 			int slash = fraction.IndexOf('/');
-			if (slash == -1) return new Fraction(Convert.ToInt32(fraction));
-			return new Fraction(Convert.ToInt32(fraction.Substring(0, slash)), Convert.ToInt32(fraction.Substring(slash + 1)));
+			if (slash == -1) return new Fraction(BigInteger.Parse(fraction));
+			return new Fraction(BigInteger.Parse(fraction.Substring(0, slash)), BigInteger.Parse(fraction.Substring(slash + 1)));
 		}
 
 		#endregion Constructors / Factories
@@ -389,7 +393,7 @@ namespace SharpBag.Math.Fraction.Int32
 				return;
 			}
 
-			int gcd = BagMath.Gcd(this.Numerator, this.Denominator);
+			BigInteger gcd = BagMath.Gcd(this.Numerator, this.Denominator);
 			if (gcd <= 1) return;
 			this.Numerator = this.Numerator / gcd;
 			this.Denominator = this.Denominator / gcd;
@@ -473,7 +477,7 @@ namespace SharpBag.Math.Fraction.Int32
 		/// <returns>The fraction raised to the specified power.</returns>
 		public Fraction Pow(int power)
 		{
-			return new Fraction((int)Math.Pow(this.Numerator, power), (int)Math.Pow(this.Denominator, power));
+			return new Fraction(BigInteger.Pow(this.Numerator, power), BigInteger.Pow(this.Denominator, power));
 		}
 
 		/// <summary>
@@ -482,7 +486,7 @@ namespace SharpBag.Math.Fraction.Int32
 		/// <returns>The square root.</returns>
 		public Fraction Sqrt()
 		{
-			return new Fraction((int)Math.Sqrt(this.Numerator * this.Denominator), this.Denominator);
+			return new Fraction((this.Numerator * this.Denominator).Sqrt(), this.Denominator);
 		}
 
 		#endregion Operators
@@ -584,13 +588,13 @@ namespace SharpBag.Math.Fraction.Int32
 		/// Converts the fraction to an Int64 fraction.
 		/// </summary>
 		/// <returns>The converted fraction.</returns>
-		public SharpBag.Math.Fraction.Int64.Fraction AsInt64Fraction() { return new SharpBag.Math.Fraction.Int64.Fraction(this.Numerator, this.Denominator, this.AutoReduce); }
+		public SharpBag.Math.ForInt64.Fraction AsInt64Fraction() { return new SharpBag.Math.ForInt64.Fraction((long)this.Numerator, (long)this.Denominator, this.AutoReduce); }
 
 		/// <summary>
-		/// Converts the fraction to a BigInteger fraction.
+		/// Converts the fraction to an Int32 fraction.
 		/// </summary>
 		/// <returns>The converted fraction.</returns>
-		public SharpBag.Math.Fraction.BigInteger.Fraction AsBigIntegerFraction() { return new SharpBag.Math.Fraction.BigInteger.Fraction(this.Numerator, this.Denominator, this.AutoReduce); }
+		public SharpBag.Math.ForInt32.Fraction AsInt32Fraction() { return new SharpBag.Math.ForInt32.Fraction((int)this.Numerator, (int)this.Denominator, this.AutoReduce); }
 
 		/// <summary>
 		/// An implicit cast operator from an integer to a fraction.
@@ -603,23 +607,23 @@ namespace SharpBag.Math.Fraction.Int32
 		}
 
 		/// <summary>
-		/// An explicit cast operator from an integer to a fraction.
+		/// An implicit cast operator from an integer to a fraction.
 		/// </summary>
 		/// <param name="integer">The integer.</param>
 		/// <returns>The fraction.</returns>
-		public static explicit operator Fraction(long integer)
+		public static implicit operator Fraction(long integer)
 		{
-			return new Fraction((int)integer);
+			return new Fraction(integer);
 		}
 
 		/// <summary>
-		/// An explicit cast operator from an integer to a fraction.
+		/// An implicit cast operator from an integer to a fraction.
 		/// </summary>
 		/// <param name="integer">The integer.</param>
 		/// <returns>The fraction.</returns>
-		public static explicit operator Fraction(BigInteger integer)
+		public static implicit operator Fraction(BigInteger integer)
 		{
-			return new Fraction((int)integer);
+			return new Fraction(integer);
 		}
 
 		/// <summary>
@@ -639,7 +643,7 @@ namespace SharpBag.Math.Fraction.Int32
 		/// <returns>The integer.</returns>
 		public static explicit operator int(Fraction fraction)
 		{
-			return fraction.Numerator / fraction.Denominator;
+			return (int)(fraction.Numerator / fraction.Denominator);
 		}
 
 		/// <summary>
@@ -649,7 +653,7 @@ namespace SharpBag.Math.Fraction.Int32
 		/// <returns>The long integer.</returns>
 		public static explicit operator long(Fraction fraction)
 		{
-			return (long)fraction.Numerator / fraction.Denominator;
+			return (long)(fraction.Numerator / fraction.Denominator);
 		}
 
 		/// <summary>
@@ -669,7 +673,7 @@ namespace SharpBag.Math.Fraction.Int32
 		/// <returns>The double.</returns>
 		public static explicit operator double(Fraction fraction)
 		{
-			return (double)fraction.Numerator / fraction.Denominator;
+			return (double)fraction.Numerator / (double)fraction.Denominator;
 		}
 
 		/// <summary>
@@ -679,7 +683,7 @@ namespace SharpBag.Math.Fraction.Int32
 		/// <returns>The decimal.</returns>
 		public static explicit operator decimal(Fraction fraction)
 		{
-			return (decimal)fraction.Numerator / fraction.Denominator;
+			return (decimal)fraction.Numerator / (decimal)fraction.Denominator;
 		}
 
 		/// <summary>
@@ -689,7 +693,7 @@ namespace SharpBag.Math.Fraction.Int32
 		/// <returns>The float.</returns>
 		public static explicit operator float(Fraction fraction)
 		{
-			return (float)fraction.Numerator / fraction.Denominator;
+			return (float)fraction.Numerator / (float)fraction.Denominator;
 		}
 
 		#endregion Casting
@@ -708,7 +712,7 @@ namespace SharpBag.Math.Fraction.Int32
 		/// <returns>The hash code of the fraction.</returns>
 		public override int GetHashCode()
 		{
-			return this.Numerator ^ this.Denominator;
+			return (int)(this.Numerator ^ this.Denominator);
 		}
 
 		/// <summary>
@@ -750,16 +754,14 @@ namespace SharpBag.Math.Fraction.Int32
 			bool negative = this.Numerator < 0;
 			Fraction fraction = new Fraction(negative ? -this.Numerator : this.Numerator, this.Denominator);
 			Fraction remainder = fraction.Remainder;
-			int wholes = (int)fraction.Wholes;
+			BigInteger wholes = (BigInteger)fraction.Wholes;
 			if (negative) wholes = -wholes;
 			StringBuilder sb = new StringBuilder(wholes.ToString()).Append('.');
 
 			do
 			{
 				remainder = remainder * 10;
-				int remWholes = (int)remainder.Wholes;
-				if (remWholes < 0) throw new OverflowException();
-				sb.Append(remWholes.ToString());
+				sb.Append(((BigInteger)remainder.Wholes).ToString());
 				digits--;
 
 				if (digits == 0) break;

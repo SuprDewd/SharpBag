@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SharpBag.Math.Fraction
+namespace SharpBag.Math
 {
 	/// <summary>
 	/// A rational fraction.

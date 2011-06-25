@@ -1,28 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
-using SharpBag.Math.Calculators;
 
-namespace SharpBag.Math
+namespace SharpBag.Math.ForLong
 {
 	/// <summary>
 	/// A polynomial.
 	/// </summary>
-	/// <typeparam name="T">The type of numbers in the polynomial.</typeparam>
-	public class Polynomial<T>
+	public class Polynomial
 	{
-		static Polynomial()
-		{
-			if (Calculator == null) Calculator = CalculatorFactory.GetInstanceFor<T>();
-		}
-
-		/// <summary>
-		/// The calculator.
-		/// </summary>
-		public static Calculator<T> Calculator { get; set; }
-
-		private T[] Coefficients;
+		private long[] Coefficients;
 
 		/// <summary>
 		/// The degree of the polynomial.
@@ -40,27 +29,27 @@ namespace SharpBag.Math
 		/// </summary>
 		public Polynomial()
 		{
-			this.Coefficients = new T[1];
-			this.Coefficients[0] = Calculator.Zero;
+			this.Coefficients = new long[1];
+			this.Coefficients[0] = 0;
 		}
 
 		/// <summary>
 		/// The constructor.
 		/// </summary>
 		/// <param name="coefficients">The coefficients.</param>
-		public Polynomial(params T[] coefficients)
+		public Polynomial(params long[] coefficients)
 		{
 			int len = coefficients.Length;
-			while (len > 0 && Calculator.Equal(coefficients[len - 1], Calculator.Zero)) len--;
+			while (len > 0 && coefficients[len - 1] == 0) len--;
 
 			if (len == 0)
 			{
-				this.Coefficients = new T[1];
-				this.Coefficients[0] = Calculator.Zero;
+				this.Coefficients = new long[1];
+				this.Coefficients[0] = 0;
 			}
 			else
 			{
-				this.Coefficients = new T[len];
+				this.Coefficients = new long[len];
 				for (int i = 0; i < len; i++) this.Coefficients[i] = coefficients[i];
 			}
 		}
@@ -70,15 +59,15 @@ namespace SharpBag.Math
 		/// </summary>
 		/// <param name="x">The specified x.</param>
 		/// <returns>The result.</returns>
-		public T Evaluate(T x)
+		public long Evaluate(long x)
 		{
-			T sum = Calculator.Zero,
-			  pow = Calculator.One;
+			long sum = 0,
+				   pow = 1;
 
 			for (int i = 0; i <= this.Degree; i++)
 			{
-				if (i != 0) pow = Calculator.Multiply(pow, x);
-				sum = Calculator.Add(sum, Calculator.Multiply(this[i], pow));
+				if (i != 0) pow *= x;
+				sum += this[i] * pow;
 			}
 
 			return sum;
@@ -89,11 +78,11 @@ namespace SharpBag.Math
 		/// </summary>
 		/// <param name="i">The i.</param>
 		/// <returns>The i-th coefficient.</returns>
-		public T this[int i]
+		public long this[int i]
 		{
 			get
 			{
-				if (i >= this.Coefficients.Length) return Calculator.Zero;
+				if (i >= this.Coefficients.Length) return 0;
 				return this.Coefficients[i];
 			}
 			set
@@ -101,10 +90,10 @@ namespace SharpBag.Math
 				if (i >= this.Coefficients.Length)
 				{
 					int old = this.Coefficients.Length;
-					Array.Resize<T>(ref this.Coefficients, i + 1);
+					Array.Resize<long>(ref this.Coefficients, i + 1);
 					for (int j = old; j < i; j++)
 					{
-						this.Coefficients[j] = Calculator.Zero;
+						this.Coefficients[j] = 0;
 					}
 				}
 
@@ -118,13 +107,13 @@ namespace SharpBag.Math
 		/// <param name="left">The left polynomial.</param>
 		/// <param name="right">The right polynomial.</param>
 		/// <returns>The result.</returns>
-		public static Polynomial<T> operator +(Polynomial<T> left, Polynomial<T> right)
+		public static Polynomial operator +(Polynomial left, Polynomial right)
 		{
-			T[] added = new T[left.Coefficients.Length > right.Coefficients.Length ? left.Coefficients.Length : right.Coefficients.Length];
-			for (int i = left.Coefficients.Length; i < added.Length; i++) added[i] = Calculator.Zero;
+			long[] added = new long[left.Coefficients.Length > right.Coefficients.Length ? left.Coefficients.Length : right.Coefficients.Length];
+			for (int i = left.Coefficients.Length; i < added.Length; i++) added[i] = 0;
 			for (int i = 0; i < left.Coefficients.Length; i++) added[i] = left[i];
-			for (int i = 0; i < added.Length; i++) added[i] = Calculator.Add(added[i], right[i]);
-			return new Polynomial<T>(added);
+			for (int i = 0; i < added.Length; i++) added[i] += right[i];
+			return new Polynomial(added);
 		}
 
 		/// <summary>
@@ -133,13 +122,13 @@ namespace SharpBag.Math
 		/// <param name="left">The left polynomial.</param>
 		/// <param name="right">The right polynomial.</param>
 		/// <returns>The result.</returns>
-		public static Polynomial<T> operator -(Polynomial<T> left, Polynomial<T> right)
+		public static Polynomial operator -(Polynomial left, Polynomial right)
 		{
-			T[] subtracted = new T[left.Coefficients.Length > right.Coefficients.Length ? left.Coefficients.Length : right.Coefficients.Length];
-			for (int i = left.Coefficients.Length; i < subtracted.Length; i++) subtracted[i] = Calculator.Zero;
+			long[] subtracted = new long[left.Coefficients.Length > right.Coefficients.Length ? left.Coefficients.Length : right.Coefficients.Length];
+			for (int i = left.Coefficients.Length; i < subtracted.Length; i++) subtracted[i] = 0;
 			for (int i = 0; i < left.Coefficients.Length; i++) subtracted[i] = left[i];
-			for (int i = 0; i < subtracted.Length; i++) subtracted[i] = Calculator.Subtract(subtracted[i], right[i]);
-			return new Polynomial<T>(subtracted);
+			for (int i = 0; i < subtracted.Length; i++) subtracted[i] -= right[i];
+			return new Polynomial(subtracted);
 		}
 
 		/// <summary>
@@ -148,21 +137,21 @@ namespace SharpBag.Math
 		/// <param name="left">The left polynomial.</param>
 		/// <param name="right">The right polynomial.</param>
 		/// <returns>The result.</returns>
-		public static Polynomial<T> operator *(Polynomial<T> left, Polynomial<T> right)
+		public static Polynomial operator *(Polynomial left, Polynomial right)
 		{
 			int newLength = left.Degree + right.Degree + 1;
-			T[] multiplied = new T[newLength];
-			for (int i = 0; i < newLength; i++) multiplied[i] = Calculator.Zero;
+			long[] multiplied = new long[newLength];
+			for (int i = 0; i < newLength; i++) multiplied[i] = 0;
 
 			for (int a = 0; a <= left.Degree; a++)
 			{
 				for (int b = 0; b <= right.Degree; b++)
 				{
-					multiplied[a + b] = Calculator.Add(multiplied[a + b], Calculator.Multiply(left[a], right[b]));
+					multiplied[a + b] += left[a] * right[b];
 				}
 			}
 
-			return new Polynomial<T>(multiplied);
+			return new Polynomial(multiplied);
 		}
 
 		/// <summary>
@@ -170,25 +159,25 @@ namespace SharpBag.Math
 		/// </summary>
 		/// <param name="n">The value to cast.</param>
 		/// <returns>The polynomial.</returns>
-		public static implicit operator Polynomial<T>(T n)
+		public static implicit operator Polynomial(long n)
 		{
-			return new Polynomial<T>(n);
+			return new Polynomial(n);
 		}
 
 		/// <summary>
 		/// Differentiates the polynomial.
 		/// </summary>
 		/// <returns>The differentiated polynomial.</returns>
-		public Polynomial<T> Differentiate()
+		public Polynomial Differentiate()
 		{
-			T[] coefficients = new T[this.Degree];
+			long[] coefficients = new long[this.Degree];
 
 			for (int i = 0; i < this.Degree; i++)
 			{
-				coefficients[i] = Calculator.Multiply(this[i + 1], Calculator.Convert(i + 1));
+				coefficients[i] = this[i + 1] * (i + 1);
 			}
 
-			return new Polynomial<T>(coefficients);
+			return new Polynomial(coefficients);
 		}
 
 		/// <summary>
@@ -200,9 +189,9 @@ namespace SharpBag.Math
 			StringBuilder sb = new StringBuilder();
 			for (int i = this.Degree; i >= 0; i--)
 			{
-				if (Calculator.Equal(this[i], Calculator.Zero)) continue;
+				if (this[i] == 0) continue;
 				sb.Append(" + ");
-				if (!(i > 0 && Calculator.Equal(this[i], Calculator.One))) sb.Append(this[i].ToString());
+				if (!(i > 0 && this[i] == 1)) sb.Append(this[i].ToString());
 				if (i > 0) sb.Append('x');
 				if (i > 1) sb.Append('^').Append(i);
 			}

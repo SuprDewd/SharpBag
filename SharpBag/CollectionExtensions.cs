@@ -227,7 +227,7 @@ namespace SharpBag
 		/// <param name="x0">X-coordinate 1.</param>
 		/// <param name="y0">Y-coordinate 1.</param>
 		/// <param name="x1">X-coordinate 2.</param>
-		/// <param name="y">Y-coordinate 2.</param>
+		/// <param name="y1">Y-coordinate 2.</param>
 		/// <returns>The subarray.</returns>
 		public static T[,] Subarray<T>(this T[,] a, int x0, int y0, int x1, int y1)
 		{
@@ -799,6 +799,7 @@ namespace SharpBag
 		/// <summary>
 		/// Cast all the items in the current instance to the specified type.
 		/// </summary>
+		/// <typeparam name="T">The type to cast from.</typeparam>
 		/// <typeparam name="TResult">The type to cast to.</typeparam>
 		/// <param name="collection">The current instance.</param>
 		/// <returns>The current instance with the items cast to the specified type.</returns>

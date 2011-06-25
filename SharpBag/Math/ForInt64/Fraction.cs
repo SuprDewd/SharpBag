@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using SharpBag.Math;
 
-namespace SharpBag.Math.Fraction.Int64
+namespace SharpBag.Math.ForInt64
 {
 	using System;
 	using System.Numerics;
@@ -584,13 +585,13 @@ namespace SharpBag.Math.Fraction.Int64
 		/// Converts the fraction to an Int32 fraction.
 		/// </summary>
 		/// <returns>The converted fraction.</returns>
-		public SharpBag.Math.Fraction.Int32.Fraction AsInt32Fraction() { return new SharpBag.Math.Fraction.Int32.Fraction((int)this.Numerator, (int)this.Denominator, this.AutoReduce); }
+		public SharpBag.Math.ForInt32.Fraction AsInt32Fraction() { return new SharpBag.Math.ForInt32.Fraction((int)this.Numerator, (int)this.Denominator, this.AutoReduce); }
 
 		/// <summary>
 		/// Converts the fraction to a BigInteger fraction.
 		/// </summary>
 		/// <returns>The converted fraction.</returns>
-		public SharpBag.Math.Fraction.BigInteger.Fraction AsBigIntegerFraction() { return new SharpBag.Math.Fraction.BigInteger.Fraction(this.Numerator, this.Denominator, this.AutoReduce); }
+		public SharpBag.Math.ForBigInteger.Fraction AsBigIntegerFraction() { return new SharpBag.Math.ForBigInteger.Fraction(this.Numerator, this.Denominator, this.AutoReduce); }
 
 		/// <summary>
 		/// An implicit cast operator from an integer to a fraction.
