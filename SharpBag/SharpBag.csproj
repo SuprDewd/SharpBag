@@ -111,7 +111,6 @@
     <Compile Include="Math\Calculators\Int64Calculator.cs" />
     <Compile Include="Math\Calculators\Int32Calculator.cs" />
     <Compile Include="Math\Constants.cs" />
-    <Compile Include="Math\Fraction.cs" />
     <Compile Include="Math\Calculators\Calculator.cs" />
     <Compile Include="Math\Fraction\BigInteger\Fraction.cs" />
     <Compile Include="Math\Fraction\IFraction.cs" />
