@@ -1,23 +1,24 @@
 
  TODO:
 
-	- Add arithmetic overflow checks.
-	- Replace DOTNET4 with USECODECONSTRAINTS (or something built-in with Code Contracts) where applicable.
 	- Add more unit tests.
-	- K[] Calculator.ArrayOfSize<K>(T).
 	- Cycle detection.
-	- BigFloat.
-	- IsPowerOfTwo, NextPowerOfTwo...
+	- IsPowerOfTwo, NextPowerOfTwo, IsSquare, NextSquare...
+	- BigDecimal class.
 	- Matrix class.
 	- Complex number class.
-	- Swap.
-	- Binomial coefficients.
-	- Log of factorial.
-	- Double factorial.
-	- Log of double factorial.
 	- ModPow for int / long.
 	- Integer partitions.
 	- Look for better Miller-Rabin.
 	- Better perfect number sequence. (2^(p - 1) * (2^p - 1))
 	- Extended Euclid.
-	- Remove calculators (use generic base classes instead).
+
+
+ MAYBE:
+
+	- Add arithmetic overflow checks.
+	- Replace DOTNET4 with USECODECONSTRAINTS (or something built-in with Code Contracts) where applicable.
+	- Binomial coefficients.
+	- Log of factorial.
+	- Double factorial.
+	- Log of double factorial.

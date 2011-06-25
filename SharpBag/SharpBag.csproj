@@ -104,20 +104,21 @@
     <Compile Include="Matcher.cs" />
     <Compile Include="Math\BaseConverter.cs" />
     <Compile Include="Math\BigDecimal.cs" />
-    <Compile Include="Math\Calculators\BigIntegerCalculator.cs" />
-    <Compile Include="Math\Calculators\CalculatorFactory.cs" />
-    <Compile Include="Math\Calculators\CheckedCalculator.cs" />
-    <Compile Include="Math\Calculators\DoubleCalculator.cs" />
-    <Compile Include="Math\Calculators\FractionCalculator.cs" />
-    <Compile Include="Math\Calculators\Int64Calculator.cs" />
-    <Compile Include="Math\Calculators\Int32Calculator.cs" />
+    <Compile Include="Math\ForBigInteger\Point.cs" />
     <Compile Include="Math\Constants.cs" />
-    <Compile Include="Math\Fraction.cs" />
-    <Compile Include="Math\Calculators\Calculator.cs" />
+    <Compile Include="Math\ForBigInteger\Fraction.cs" />
+    <Compile Include="Math\ForBigInteger\Polynomial.cs" />
+    <Compile Include="Math\ForInt64\Polynomial.cs" />
+    <Compile Include="Math\ForInt32\Polynomial.cs" />
+    <Compile Include="Math\IFraction.cs" />
+    <Compile Include="Math\ForInt32\Fraction.cs" />
+    <Compile Include="Math\ForInt32\Point.cs" />
+    <Compile Include="Math\ForInt64\Fraction.cs" />
+    <Compile Include="Math\ForInt64\Point.cs" />
     <Compile Include="Math\Interpolation.cs" />
     <Compile Include="Math\PascalsTriangle.cs" />
-    <Compile Include="Math\Point.cs" />
-    <Compile Include="Math\Polynomial.cs" />
+    <Compile Include="Math\ForDouble\Point.cs" />
+    <Compile Include="Math\ForDouble\Polynomial.cs" />
     <Compile Include="Misc\Draw.cs" />
     <Compile Include="Misc\ProblemAttribute.cs" />
     <Compile Include="Misc\ProblemController.cs" />
@@ -154,6 +155,14 @@
     <Compile Include="Torrent\Bencoding.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="FunctionalExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README">
+      <Link>README</Link>
+    </None>
+    <None Include="..\TODO">
+      <Link>TODO</Link>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

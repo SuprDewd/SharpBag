@@ -67,5 +67,18 @@ namespace SharpBag
 		{
 			yield return value;
 		}
+
+		/// <summary>
+		/// Swap the specified variables.
+		/// </summary>
+		/// <typeparam name="T">The type of the variables.</typeparam>
+		/// <param name="a">The first variable.</param>
+		/// <param name="b">The second variable.</param>
+		public static void Swap<T>(ref T a, ref T b)
+		{
+			T temp = a;
+			a = b;
+			b = temp;
+		}
 	}
 }
