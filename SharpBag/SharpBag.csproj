@@ -106,6 +106,7 @@
     <Compile Include="Math\ForBigInteger\Point.cs" />
     <Compile Include="Math\Constants.cs" />
     <Compile Include="Math\ForBigInteger\Fraction.cs" />
+    <Compile Include="Math\ForBigInteger\Polynomial.cs" />
     <Compile Include="Math\ForInt64\Polynomial.cs" />
     <Compile Include="Math\ForInt32\Polynomial.cs" />
     <Compile Include="Math\IFraction.cs" />
@@ -154,7 +155,14 @@
     <Compile Include="Utils.cs" />
     <Compile Include="FunctionalExtensions.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="..\README">
+      <Link>README</Link>
+    </None>
+    <None Include="..\TODO">
+      <Link>TODO</Link>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

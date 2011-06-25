@@ -7,6 +7,8 @@ namespace SharpBag.Math.ForBigInteger
 	using System;
 	using System.Numerics;
 
+#if DOTNET4
+
 	/// <summary>
 	/// A rational fraction.
 	/// </summary>
@@ -774,4 +776,6 @@ namespace SharpBag.Math.ForBigInteger
 
 		#endregion Other
 	}
+
+#endif
 }

@@ -6,6 +6,8 @@ using System.Text;
 
 namespace SharpBag.Math.ForBigInteger
 {
+#if DOTNET4
+
 	/// <summary>
 	/// A point.
 	/// </summary>
@@ -36,4 +38,6 @@ namespace SharpBag.Math.ForBigInteger
 			_Y = y;
 		}
 	}
+
+#endif
 }
