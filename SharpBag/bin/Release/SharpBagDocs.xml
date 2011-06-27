@@ -1123,6 +1123,27 @@
             <param name="s">The number.</param>
             <returns>The partial quotients of the square root of the specified number.</returns>
         </member>
+        <member name="M:SharpBag.Math.ForInt32.Fraction.RecurringCycle(SharpBag.Math.ForInt32.Fraction,System.Int32)">
+            <summary>
+            Finds the recurring cycle of the specified fraction.
+            </summary>
+            <param name="fraction">The specified fraction.</param>
+            <param name="iterations">How many digits of the fraction to check.</param>
+            <returns>The cycle start and cycle length. Null if no cycle was found.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForInt32.Fraction.Pow(SharpBag.Math.ForInt32.Fraction,System.Int32)">
+            <summary>
+            Raises the fraction to the specified power.
+            </summary>
+            <param name="power">The power.</param>
+            <returns>The fraction raised to the specified power.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForInt32.Fraction.Sqrt(SharpBag.Math.ForInt32.Fraction)">
+            <summary>
+            Computes the square root of the fraction.
+            </summary>
+            <returns>The square root.</returns>
+        </member>
         <member name="M:SharpBag.Math.ForInt32.Fraction.#ctor(System.Int32,System.Int32)">
             <summary>
             The constructor.
@@ -1231,19 +1252,6 @@
             <param name="left">The left fraction.</param>
             <param name="right">The right fraction.</param>
             <returns>The left fraction modulo the right fraction.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt32.Fraction.Pow(System.Int32)">
-            <summary>
-            Raises the fraction to the specified power.
-            </summary>
-            <param name="power">The power.</param>
-            <returns>The fraction raised to the specified power.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt32.Fraction.Sqrt">
-            <summary>
-            Computes the square root of the fraction.
-            </summary>
-            <returns>The square root.</returns>
         </member>
         <member name="M:SharpBag.Math.ForInt32.Fraction.op_GreaterThan(SharpBag.Math.ForInt32.Fraction,SharpBag.Math.ForInt32.Fraction)">
             <summary>
@@ -4536,6 +4544,84 @@
             <param name="fill">The fill.</param>
             <returns>The drawn triangle.</returns>
         </member>
+        <member name="T:SharpBag.Math.ForBigInteger.Polynomial">
+            <summary>
+            A polynomial.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.#ctor">
+            <summary>
+            The constructor.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.#ctor(System.Numerics.BigInteger[])">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="coefficients">The coefficients.</param>
+        </member>
+        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.Evaluate(System.Numerics.BigInteger)">
+            <summary>
+            Evalute the polynomial at the specified x.
+            </summary>
+            <param name="x">The specified x.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.op_Addition(SharpBag.Math.ForBigInteger.Polynomial,SharpBag.Math.ForBigInteger.Polynomial)">
+            <summary>
+            Add the specified polynomials.
+            </summary>
+            <param name="left">The left polynomial.</param>
+            <param name="right">The right polynomial.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.op_Subtraction(SharpBag.Math.ForBigInteger.Polynomial,SharpBag.Math.ForBigInteger.Polynomial)">
+            <summary>
+            Subtract the specified polynomials.
+            </summary>
+            <param name="left">The left polynomial.</param>
+            <param name="right">The right polynomial.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.op_Multiply(SharpBag.Math.ForBigInteger.Polynomial,SharpBag.Math.ForBigInteger.Polynomial)">
+            <summary>
+            Multiply the specified polynomials.
+            </summary>
+            <param name="left">The left polynomial.</param>
+            <param name="right">The right polynomial.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.op_Implicit(System.Numerics.BigInteger)~SharpBag.Math.ForBigInteger.Polynomial">
+            <summary>
+            An implicit cast to a polynomial.
+            </summary>
+            <param name="n">The value to cast.</param>
+            <returns>The polynomial.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.Differentiate">
+            <summary>
+            Differentiates the polynomial.
+            </summary>
+            <returns>The differentiated polynomial.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.ToString">
+            <summary>
+            Object.ToString()
+            </summary>
+            <returns>The polynomial as a string.</returns>
+        </member>
+        <member name="P:SharpBag.Math.ForBigInteger.Polynomial.Degree">
+            <summary>
+            The degree of the polynomial.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.ForBigInteger.Polynomial.Item(System.Int32)">
+            <summary>
+            The i-th coefficient.
+            </summary>
+            <param name="i">The i.</param>
+            <returns>The i-th coefficient.</returns>
+        </member>
         <member name="T:SharpBag.Networking.NetworkExtensions">
             <summary>
             Extensions methods for the Network class.
@@ -7251,84 +7337,6 @@
             <summary>
             The default value.
             </summary>
-        </member>
-        <member name="T:SharpBag.Math.ForBigInteger.Polynomial">
-            <summary>
-            A polynomial.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.#ctor">
-            <summary>
-            The constructor.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.#ctor(System.Numerics.BigInteger[])">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="coefficients">The coefficients.</param>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.Evaluate(System.Numerics.BigInteger)">
-            <summary>
-            Evalute the polynomial at the specified x.
-            </summary>
-            <param name="x">The specified x.</param>
-            <returns>The result.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.op_Addition(SharpBag.Math.ForBigInteger.Polynomial,SharpBag.Math.ForBigInteger.Polynomial)">
-            <summary>
-            Add the specified polynomials.
-            </summary>
-            <param name="left">The left polynomial.</param>
-            <param name="right">The right polynomial.</param>
-            <returns>The result.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.op_Subtraction(SharpBag.Math.ForBigInteger.Polynomial,SharpBag.Math.ForBigInteger.Polynomial)">
-            <summary>
-            Subtract the specified polynomials.
-            </summary>
-            <param name="left">The left polynomial.</param>
-            <param name="right">The right polynomial.</param>
-            <returns>The result.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.op_Multiply(SharpBag.Math.ForBigInteger.Polynomial,SharpBag.Math.ForBigInteger.Polynomial)">
-            <summary>
-            Multiply the specified polynomials.
-            </summary>
-            <param name="left">The left polynomial.</param>
-            <param name="right">The right polynomial.</param>
-            <returns>The result.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.op_Implicit(System.Numerics.BigInteger)~SharpBag.Math.ForBigInteger.Polynomial">
-            <summary>
-            An implicit cast to a polynomial.
-            </summary>
-            <param name="n">The value to cast.</param>
-            <returns>The polynomial.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.Differentiate">
-            <summary>
-            Differentiates the polynomial.
-            </summary>
-            <returns>The differentiated polynomial.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.ToString">
-            <summary>
-            Object.ToString()
-            </summary>
-            <returns>The polynomial as a string.</returns>
-        </member>
-        <member name="P:SharpBag.Math.ForBigInteger.Polynomial.Degree">
-            <summary>
-            The degree of the polynomial.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.ForBigInteger.Polynomial.Item(System.Int32)">
-            <summary>
-            The i-th coefficient.
-            </summary>
-            <param name="i">The i.</param>
-            <returns>The i-th coefficient.</returns>
         </member>
     </members>
 </doc>

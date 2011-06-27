@@ -243,6 +243,66 @@ namespace SharpBag.Math.ForInt32
 			}
 		}
 
+		/// <summary>
+		/// Finds the recurring cycle of the specified fraction.
+		/// </summary>
+		/// <param name="fraction">The specified fraction.</param>
+		/// <param name="iterations">How many digits of the fraction to check.</param>
+		/// <returns>The cycle start and cycle length. Null if no cycle was found.</returns>
+		public static Tuple<int, int> RecurringCycle(Fraction fraction, int iterations)
+		{
+			List<Fraction> fractions = new List<Fraction>();
+			fraction = fraction.Remainder;
+			int i = 0;
+
+			while (fraction != 0 && i < iterations)
+			{
+				fraction = fraction * 10;
+				int remWholes = (int)fraction.Wholes;
+				if (remWholes < 0) throw new OverflowException();
+				fraction = new SharpBag.Math.ForInt32.Fraction((fraction.Numerator % fraction.Denominator), fraction.Denominator);
+
+				int index = -1;
+				for (int j = 0; j < fractions.Count; j++)
+				{
+					if (fraction == fractions[j])
+					{
+						index = j;
+						break;
+					}
+				}
+
+				if (index != -1)
+				{
+					return Tuple.Create(index, i - index);
+				}
+
+				fractions.Add(fraction);
+				i++;
+			}
+
+			return null;
+		}
+
+		/// <summary>
+		/// Raises the fraction to the specified power.
+		/// </summary>
+		/// <param name="power">The power.</param>
+		/// <returns>The fraction raised to the specified power.</returns>
+		public static Fraction Pow(Fraction fraction, int power)
+		{
+			return new Fraction((int)Math.Pow(fraction.Numerator, power), (int)Math.Pow(fraction.Denominator, power));
+		}
+
+		/// <summary>
+		/// Computes the square root of the fraction.
+		/// </summary>
+		/// <returns>The square root.</returns>
+		public static Fraction Sqrt(Fraction fraction)
+		{
+			return new Fraction((int)Math.Sqrt(fraction.Numerator * fraction.Denominator), fraction.Denominator);
+		}
+
 		#endregion Static Methods
 
 		#region Constructors / Factories
@@ -464,25 +524,6 @@ namespace SharpBag.Math.ForInt32
 		public static Fraction operator %(Fraction left, Fraction right)
 		{
 			return left - (left / right).Wholes * right;
-		}
-
-		/// <summary>
-		/// Raises the fraction to the specified power.
-		/// </summary>
-		/// <param name="power">The power.</param>
-		/// <returns>The fraction raised to the specified power.</returns>
-		public Fraction Pow(int power)
-		{
-			return new Fraction((int)Math.Pow(this.Numerator, power), (int)Math.Pow(this.Denominator, power));
-		}
-
-		/// <summary>
-		/// Computes the square root of the fraction.
-		/// </summary>
-		/// <returns>The square root.</returns>
-		public Fraction Sqrt()
-		{
-			return new Fraction((int)Math.Sqrt(this.Numerator * this.Denominator), this.Denominator);
 		}
 
 		#endregion Operators
