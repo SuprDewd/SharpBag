@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Numerics;
 using System.Text;
 
 namespace SharpBag.Math
 {
-	// TODO: Think of negative numbers.
 	public struct BigDecimal : IComparable<BigDecimal>, IEquatable<BigDecimal>
 	{
 		#region Properties
@@ -19,7 +19,16 @@ namespace SharpBag.Math
 
 		private int _Precision;
 
-		private int Precision { get { return _Precision; } set { _Precision = value; } }
+		public int Precision
+		{
+			get { return _Precision; }
+			private set
+			{
+				bool fix = value < _Precision;
+				_Precision = value;
+				if (fix) this.FixPrecision();
+			}
+		}
 
 		private BigInteger _Mantissa;
 
@@ -30,6 +39,14 @@ namespace SharpBag.Math
 		private int Exponent { get { return _Exponent; } set { _Exponent = value; } }
 
 		#endregion Properties
+
+		#region Static Instances
+
+		public static readonly BigDecimal PositiveOne = new BigDecimal(1);
+		public static readonly BigDecimal NegativeOne = new BigDecimal(-1);
+		public static readonly BigDecimal Zero = new BigDecimal(0);
+
+		#endregion Static Instances
 
 		#region Constructors / Factories
 
@@ -45,10 +62,32 @@ namespace SharpBag.Math
 
 		public BigDecimal(BigInteger value) : this(value, 0, DefaultPrecision) { }
 
+		public BigDecimal(float value) : this(value, DefaultPrecision) { }
+
+		public BigDecimal(float value, int precision)
+		{
+#if DOTNET4
+			Contract.Requires(precision >= 0);
+#endif
+			string[] srep = value.ToString("R").Split('E');
+			BigDecimal parsed = BigDecimal.Parse(srep[0]);
+
+			_ToStringCache = null;
+			_Mantissa = parsed.Mantissa;
+			_Exponent = srep.Length == 2 ? (parsed.Exponent + Convert.ToInt32(srep[1])) : parsed.Exponent;
+			_Precision = precision;
+
+			this.FixPrecision();
+			this.Normalize();
+		}
+
 		public BigDecimal(double value) : this(value, DefaultPrecision) { }
 
 		public BigDecimal(double value, int precision)
 		{
+#if DOTNET4
+			Contract.Requires(precision >= 0);
+#endif
 			string[] srep = value.ToString("R").Split('E');
 			BigDecimal parsed = BigDecimal.Parse(srep[0]);
 
@@ -67,6 +106,9 @@ namespace SharpBag.Math
 
 		private BigDecimal(BigInteger value, int exponent, int precision)
 		{
+#if DOTNET4
+			Contract.Requires(precision >= 0);
+#endif
 			_ToStringCache = null;
 			_Mantissa = value;
 			_Exponent = exponent;
@@ -79,17 +121,31 @@ namespace SharpBag.Math
 		public static BigDecimal Parse(string value)
 		{
 			BigDecimal parsed = BigDecimal.Parse(value, Int32.MaxValue);
-			if (parsed.Exponent < 0) parsed.Precision = -parsed.Exponent;
+			int precision = parsed.Precision;
+			if (parsed.Exponent < 0) precision = -parsed.Exponent;
+			if (precision < DefaultPrecision) precision = DefaultPrecision;
+			if (precision != parsed.Precision) parsed.Precision = precision;
 			return parsed;
 		}
 
 		public static BigDecimal Parse(string value, int precision)
 		{
+#if DOTNET4
+			Contract.Requires(precision >= 0);
+#endif
+			value = value.Trim();
 			int exp = 0;
 			BigInteger mantissa = 0;
 			bool foundComma = false;
+			int i = 0;
+			bool neg = false;
+			if (value[0] == '-')
+			{
+				neg = true;
+				i++;
+			}
 
-			for (int i = 0; i < value.Length; i++)
+			for (; i < value.Length; i++)
 			{
 				if (value[i] == '.' || value[i] == ',')
 				{
@@ -99,13 +155,12 @@ namespace SharpBag.Math
 				}
 
 				if (!Char.IsDigit(value[i])) throw new FormatException();
-				// if (foundComma && -exp == precision) break;
 				if (foundComma) exp--;
 				mantissa *= 10;
 				mantissa += value[i] - '0';
 			}
 
-			return new BigDecimal(mantissa, exp, precision);
+			return new BigDecimal(neg ? -mantissa : mantissa, exp, precision);
 		}
 
 		#endregion Constructors / Factories
@@ -133,7 +188,7 @@ namespace SharpBag.Math
 			return result;
 		}
 
-		public BigDecimal Add(BigDecimal right)
+		private BigDecimal Add(BigDecimal right)
 		{
 			return this.Add(right, true);
 		}
@@ -149,41 +204,44 @@ namespace SharpBag.Math
 			return result;
 		}
 
-		public BigDecimal Subtract(BigDecimal right)
+		private BigDecimal Subtract(BigDecimal right)
 		{
 			return this.Subtract(right, true);
 		}
 
-		public BigDecimal Negate()
+		private BigDecimal Negate()
 		{
 			return new BigDecimal(-this.Mantissa, this.Exponent, this.Precision);
 		}
 
-		public BigDecimal Multiply(BigDecimal right)
+		private BigDecimal Multiply(BigDecimal right)
 		{
 			int z = this.Exponent + right.Exponent;
 			BigInteger m = this.Mantissa * right.Mantissa;
 			return new BigDecimal(m, z, this.Precision > right.Precision ? this.Precision : right.Precision);
 		}
 
-		public BigDecimal Divide(BigDecimal right)
+		private BigDecimal Divide(BigDecimal right)
 		{
-			int precision = (this.Precision > right.Precision ? this.Precision : right.Precision) + 2;
-			int exponent = this.Exponent - right.Exponent;
+			int precision = (this.Precision > right.Precision ? this.Precision : right.Precision) + 2,
+				exponent = this.Exponent - right.Exponent,
+				j = 2,
+				iterations = 0;
+
+			bool leftPos = this.Mantissa >= 0,
+				 rightPos = right.Mantissa >= 0,
+				 pos = !(leftPos ^ rightPos);
 
 			BigInteger remainder,
 					   lastRemainder = 0, digit,
-					   mantissa = BigInteger.DivRem(this.Mantissa, right.Mantissa, out remainder);
+					   mantissa = BigInteger.DivRem(leftPos ? this.Mantissa : -this.Mantissa, rightPos ? right.Mantissa : -right.Mantissa, out remainder);
 
-			int j = 2;
-
-			int iterations = 0;
 			while (remainder > 0 && iterations < precision)
 			{
 				exponent--;
 				mantissa *= 10;
 				remainder *= 10;
-				mantissa += digit = BigInteger.DivRem(remainder, right.Mantissa, out remainder);
+				mantissa += digit = BigInteger.DivRem(remainder, rightPos ? right.Mantissa : -right.Mantissa, out remainder);
 				if (digit == 0 && lastRemainder * 10 == remainder)
 				{
 					j++;
@@ -194,11 +252,14 @@ namespace SharpBag.Math
 				iterations++;
 			}
 
-			return new BigDecimal(mantissa, exponent, precision - 2);
+			return new BigDecimal(pos ? mantissa : -mantissa, exponent, precision - 2);
 		}
 
 		public static BigDecimal Pow(BigDecimal value, int power)
 		{
+#if DOTNET4
+			Contract.Requires(power >= 0);
+#endif
 			if (power == 0) return new BigDecimal(1, 0, value.Precision);
 			if (power == 1) return new BigDecimal(value, value.Precision);
 			if (power == 2) return value.Multiply(value);
@@ -218,6 +279,7 @@ namespace SharpBag.Math
 
 		public static BigDecimal Log10(BigDecimal value)
 		{
+			if (value < 1) throw new ArgumentOutOfRangeException("value");
 			int a = (int)BigInteger.Log10(value.Mantissa) + value.Exponent;
 			BigDecimal m = value;
 			BigInteger mantissa = a;
@@ -231,7 +293,7 @@ namespace SharpBag.Math
 				digits++;
 			}
 
-			return new BigDecimal(mantissa, -digits, value.Precision);
+			return new BigDecimal(mantissa, -digits, value.Precision).RoundLastDigit();
 		}
 
 		public static BigDecimal Log(BigDecimal value, BigDecimal logBase)
@@ -239,9 +301,9 @@ namespace SharpBag.Math
 			return BigDecimal.Log10(value).Divide(BigDecimal.Log10(logBase));
 		}
 
-		public static BigDecimal Sqrt(BigDecimal value)
+		/*public static BigDecimal Sqrt(BigDecimal value)
 		{
-			if (value.Mantissa < 0) throw new ArgumentException("value is negative", "value");
+			if (value < 0) throw new ArgumentOutOfRangeException("value");
 			BigDecimal sqrt = 0,
 					   temp = new BigDecimal(value);
 			int digits = 0;
@@ -264,11 +326,8 @@ namespace SharpBag.Math
 			}
 
 			sqrt.Exponent -= digits;
-			sqrt.Normalize();
-			int last = (int)(sqrt.Mantissa % 10);
-			if (last >= 5) sqrt.Mantissa += 10 - last;
-			return sqrt;
-		}
+			return sqrt.RoundLastDigit();
+		}*/
 
 		#endregion Operators
 
@@ -336,7 +395,24 @@ namespace SharpBag.Math
 
 		public static implicit operator BigDecimal(BigInteger n) { return new BigDecimal(n); }
 
+		public static implicit operator BigDecimal(float n) { return new BigDecimal(n); }
+
+		public static implicit operator BigDecimal(double n) { return new BigDecimal(n); }
+
 		#endregion Casting
+
+		private BigDecimal RoundLastDigit()
+		{
+			this.Normalize();
+			if (this.Exponent >= 0) return new BigDecimal(this);
+
+			BigInteger mantissa = this.Mantissa;
+			int last = (int)(mantissa % 10);
+			if (last >= 5) mantissa += 10 - last;
+			else mantissa -= last;
+			mantissa /= 10;
+			return new BigDecimal(mantissa, this.Exponent + 1, this.Precision);
+		}
 
 		private void FixPrecision()
 		{
@@ -391,6 +467,14 @@ namespace SharpBag.Math
 		{
 			if (a.Exponent > b.Exponent) a.NormalizeTo(b);
 			else b.NormalizeTo(a);
+		}
+
+		public BigDecimal WithPrecision(int precision)
+		{
+#if DOTNET4
+			Contract.Requires(precision >= 0);
+#endif
+			return new BigDecimal(this, precision);
 		}
 
 		public override int GetHashCode()
