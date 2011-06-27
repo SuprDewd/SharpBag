@@ -174,6 +174,8 @@ namespace SharpBag.Tests
 			Assert.AreEqual(BigDecimal.Parse("-0.527364"), BigDecimal.Parse("123.456", 6) / BigDecimal.Parse("-234.1", 6));
 			Assert.AreEqual(BigDecimal.Parse("0.527364"), BigDecimal.Parse("-123.456", 6) / BigDecimal.Parse("-234.1", 6));
 			Assert.AreEqual(BigDecimal.Parse("1234,25341"), BigDecimal.Parse("15467061,5789088633") / BigDecimal.Parse("12531,51213"));
+
+			Assert.AreEqual(BigDecimal.Parse("0.00015735"), BigDecimal.Parse("1", 8) / BigDecimal.Parse("6355.245562315", 8));
 		}
 
 		[TestMethod]
@@ -192,6 +194,13 @@ namespace SharpBag.Tests
 			Assert.AreEqual(BigDecimal.Parse("2"), BigDecimal.Log10(BigDecimal.Parse("100")));
 			Assert.AreEqual(BigDecimal.Parse("3"), BigDecimal.Log10(BigDecimal.Parse("1000")));
 			Assert.AreEqual(BigDecimal.Parse("1,185981"), BigDecimal.Log10(BigDecimal.Parse("15,34551", 6)));
+
+			Assert.AreEqual(BigDecimal.Parse("0"), BigDecimal.Sqrt(BigDecimal.Parse("0")));
+			Assert.AreEqual(BigDecimal.Parse("0.707106"), BigDecimal.Sqrt(BigDecimal.Parse("0.5", 6)));
+			Assert.AreEqual(BigDecimal.Parse("1"), BigDecimal.Sqrt(BigDecimal.Parse("1")));
+			Assert.AreEqual(BigDecimal.Parse("71.5088"), BigDecimal.Sqrt(BigDecimal.Parse("5113.51315", 4)));
+			Assert.AreEqual(BigDecimal.Parse("3887.46"), BigDecimal.Sqrt(BigDecimal.Parse("15112345", 2)));
+			Assert.AreEqual(BigDecimal.Parse("4"), BigDecimal.Sqrt(BigDecimal.Parse("16")));
 		}
 	}
 }

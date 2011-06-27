@@ -259,14 +259,8 @@ namespace SharpBag.Math
 				mantissa *= 10;
 				remainder *= 10;
 				mantissa += digit = BigInteger.DivRem(remainder, rightPos ? right.Mantissa : -right.Mantissa, out remainder);
-				if (digit == 0 && lastRemainder * 10 == remainder)
-				{
-					j++;
-					if (j == precision) break;
-				}
-				else j = 2;
 				lastRemainder = remainder;
-				iterations++;
+				if (mantissa != 0) iterations++;
 			}
 
 			return new BigDecimal(pos ? mantissa : -mantissa, exponent, precision - 2, false);
@@ -320,15 +314,20 @@ namespace SharpBag.Math
 
 		public static BigDecimal Sqrt(BigDecimal value)
 		{
-			BigDecimal sqrt = BigDecimal.PositiveOne, last;
+#if DOTNET4
+			Contract.Requires(value >= 0);
+#endif
+			if (value.Mantissa == 0) return new BigDecimal(0, 0, value.Precision, true);
+			BigDecimal sqrt = new BigDecimal(1, value.Precision + 1), last, two = new BigDecimal(2, value.Precision + 1);
 
 			do
 			{
 				last = sqrt;
-				sqrt = sqrt - ((sqrt * sqrt) - value) / (2 * sqrt);
+				sqrt = sqrt - ((sqrt * sqrt) - value) / (two * sqrt);
 			}
 			while (sqrt != last);
 
+			sqrt.Precision--;
 			return sqrt;
 		}
 
