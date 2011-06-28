@@ -103,6 +103,7 @@
     <Compile Include="Comparers\LambdaComparer.cs" />
     <Compile Include="Matcher.cs" />
     <Compile Include="Math\BaseConverter.cs" />
+    <Compile Include="Math\BigDecimal.cs" />
     <Compile Include="Math\ForBigInteger\Point.cs" />
     <Compile Include="Math\Constants.cs" />
     <Compile Include="Math\ForBigInteger\Fraction.cs" />

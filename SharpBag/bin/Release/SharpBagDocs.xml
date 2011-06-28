@@ -1123,18 +1123,18 @@
             <param name="s">The number.</param>
             <returns>The partial quotients of the square root of the specified number.</returns>
         </member>
-        <member name="M:SharpBag.Math.ForInt32.Fraction.RecurringCycle(SharpBag.Math.ForInt32.Fraction,System.Int32)">
+        <member name="M:SharpBag.Math.ForInt32.Fraction.RecurringCycle(SharpBag.Math.ForInt32.Fraction)">
             <summary>
             Finds the recurring cycle of the specified fraction.
             </summary>
             <param name="fraction">The specified fraction.</param>
-            <param name="iterations">How many digits of the fraction to check.</param>
             <returns>The cycle start and cycle length. Null if no cycle was found.</returns>
         </member>
         <member name="M:SharpBag.Math.ForInt32.Fraction.Pow(SharpBag.Math.ForInt32.Fraction,System.Int32)">
             <summary>
             Raises the fraction to the specified power.
             </summary>
+            <param name="fraction">The fraction.</param>
             <param name="power">The power.</param>
             <returns>The fraction raised to the specified power.</returns>
         </member>
@@ -1142,6 +1142,7 @@
             <summary>
             Computes the square root of the fraction.
             </summary>
+            <param name="fraction">The fraction.</param>
             <returns>The square root.</returns>
         </member>
         <member name="M:SharpBag.Math.ForInt32.Fraction.#ctor(System.Int32,System.Int32)">
@@ -1352,7 +1353,7 @@
             <summary>
             An explicit cast operator from a floating point number to a fraction.
             </summary>
-            <param name="fraction">The floating point number.</param>
+            <param name="floatingPoint">The floating point number.</param>
             <returns>The fraction.</returns>
         </member>
         <member name="M:SharpBag.Math.ForInt32.Fraction.op_Explicit(SharpBag.Math.ForInt32.Fraction)~System.Int32">
@@ -1565,6 +1566,28 @@
             <param name="s">The number.</param>
             <returns>The partial quotients of the square root of the specified number.</returns>
         </member>
+        <member name="M:SharpBag.Math.ForBigInteger.Fraction.RecurringCycle(SharpBag.Math.ForBigInteger.Fraction)">
+            <summary>
+            Finds the recurring cycle of the specified fraction.
+            </summary>
+            <param name="fraction">The specified fraction.</param>
+            <returns>The cycle start and cycle length. Null if no cycle was found.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForBigInteger.Fraction.Pow(SharpBag.Math.ForBigInteger.Fraction,System.Int32)">
+            <summary>
+            Raises the fraction to the specified power.
+            </summary>
+            <param name="fraction">The fraction.</param>
+            <param name="power">The power.</param>
+            <returns>The fraction raised to the specified power.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForBigInteger.Fraction.Sqrt(SharpBag.Math.ForBigInteger.Fraction)">
+            <summary>
+            Computes the square root of the fraction.
+            </summary>
+            <param name="fraction">The fraction.</param>
+            <returns>The square root.</returns>
+        </member>
         <member name="M:SharpBag.Math.ForBigInteger.Fraction.#ctor(System.Numerics.BigInteger,System.Numerics.BigInteger)">
             <summary>
             The constructor.
@@ -1674,19 +1697,6 @@
             <param name="right">The right fraction.</param>
             <returns>The left fraction modulo the right fraction.</returns>
         </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Fraction.Pow(System.Int32)">
-            <summary>
-            Raises the fraction to the specified power.
-            </summary>
-            <param name="power">The power.</param>
-            <returns>The fraction raised to the specified power.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Fraction.Sqrt">
-            <summary>
-            Computes the square root of the fraction.
-            </summary>
-            <returns>The square root.</returns>
-        </member>
         <member name="M:SharpBag.Math.ForBigInteger.Fraction.op_GreaterThan(SharpBag.Math.ForBigInteger.Fraction,SharpBag.Math.ForBigInteger.Fraction)">
             <summary>
             The greater than operator.
@@ -1786,7 +1796,7 @@
             <summary>
             An explicit cast operator from a floating point number to a fraction.
             </summary>
-            <param name="fraction">The floating point number.</param>
+            <param name="floatingPoint">The floating point number.</param>
             <returns>The fraction.</returns>
         </member>
         <member name="M:SharpBag.Math.ForBigInteger.Fraction.op_Explicit(SharpBag.Math.ForBigInteger.Fraction)~System.Int32">
@@ -6678,6 +6688,28 @@
             <param name="s">The number.</param>
             <returns>The partial quotients of the square root of the specified number.</returns>
         </member>
+        <member name="M:SharpBag.Math.ForInt64.Fraction.RecurringCycle(SharpBag.Math.ForInt64.Fraction)">
+            <summary>
+            Finds the recurring cycle of the specified fraction.
+            </summary>
+            <param name="fraction">The specified fraction.</param>
+            <returns>The cycle start and cycle length. Null if no cycle was found.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForInt64.Fraction.Pow(SharpBag.Math.ForInt64.Fraction,System.Int32)">
+            <summary>
+            Raises the fraction to the specified power.
+            </summary>
+            <param name="fraction">The fraction.</param>
+            <param name="power">The power.</param>
+            <returns>The fraction raised to the specified power.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForInt64.Fraction.Sqrt(SharpBag.Math.ForInt64.Fraction)">
+            <summary>
+            Computes the square root of the fraction.
+            </summary>
+            <param name="fraction">The fraction.</param>
+            <returns>The square root.</returns>
+        </member>
         <member name="M:SharpBag.Math.ForInt64.Fraction.#ctor(System.Int64,System.Int64)">
             <summary>
             The constructor.
@@ -6787,19 +6819,6 @@
             <param name="right">The right fraction.</param>
             <returns>The left fraction modulo the right fraction.</returns>
         </member>
-        <member name="M:SharpBag.Math.ForInt64.Fraction.Pow(System.Int64)">
-            <summary>
-            Raises the fraction to the specified power.
-            </summary>
-            <param name="power">The power.</param>
-            <returns>The fraction raised to the specified power.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt64.Fraction.Sqrt">
-            <summary>
-            Computes the square root of the fraction.
-            </summary>
-            <returns>The square root.</returns>
-        </member>
         <member name="M:SharpBag.Math.ForInt64.Fraction.op_GreaterThan(SharpBag.Math.ForInt64.Fraction,SharpBag.Math.ForInt64.Fraction)">
             <summary>
             The greater than operator.
@@ -6899,7 +6918,7 @@
             <summary>
             An explicit cast operator from a floating point number to a fraction.
             </summary>
-            <param name="fraction">The floating point number.</param>
+            <param name="floatingPoint">The floating point number.</param>
             <returns>The fraction.</returns>
         </member>
         <member name="M:SharpBag.Math.ForInt64.Fraction.op_Explicit(SharpBag.Math.ForInt64.Fraction)~System.Int32">

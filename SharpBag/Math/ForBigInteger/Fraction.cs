@@ -249,6 +249,56 @@ namespace SharpBag.Math.ForBigInteger
 			}
 		}
 
+		/// <summary>
+		/// Finds the recurring cycle of the specified fraction.
+		/// </summary>
+		/// <param name="fraction">The specified fraction.</param>
+		/// <returns>The cycle start and cycle length. Null if no cycle was found.</returns>
+		public static Tuple<int, int> RecurringCycle(Fraction fraction)
+		{
+			BigInteger max = fraction.Denominator;
+			List<Fraction> remainders = new List<Fraction> { fraction };
+			for (int i = 0; i < max; i++)
+			{
+				fraction = new Fraction((fraction.Numerator * 10) % fraction.Denominator, fraction.Denominator);
+				if (fraction.Numerator == 0) return null;
+
+				for (int j = 0; j < i; j++)
+				{
+					if (fraction == remainders[j])
+					{
+						int length = i - j + 1;
+						return Tuple.Create(j, length == 2 && remainders[i] == remainders[i - 1] ? 1 : length);
+					}
+				}
+
+				remainders.Add(fraction);
+			}
+
+			return null;
+		}
+
+		/// <summary>
+		/// Raises the fraction to the specified power.
+		/// </summary>
+		/// <param name="fraction">The fraction.</param>
+		/// <param name="power">The power.</param>
+		/// <returns>The fraction raised to the specified power.</returns>
+		public static Fraction Pow(Fraction fraction, int power)
+		{
+			return new Fraction(BigInteger.Pow(fraction.Numerator, power), BigInteger.Pow(fraction.Denominator, power));
+		}
+
+		/// <summary>
+		/// Computes the square root of the fraction.
+		/// </summary>
+		/// <param name="fraction">The fraction.</param>
+		/// <returns>The square root.</returns>
+		public static Fraction Sqrt(Fraction fraction)
+		{
+			return new Fraction((fraction.Numerator * fraction.Denominator).Sqrt(), fraction.Denominator);
+		}
+
 		#endregion Static Methods
 
 		#region Constructors / Factories
@@ -472,25 +522,6 @@ namespace SharpBag.Math.ForBigInteger
 			return left - (left / right).Wholes * right;
 		}
 
-		/// <summary>
-		/// Raises the fraction to the specified power.
-		/// </summary>
-		/// <param name="power">The power.</param>
-		/// <returns>The fraction raised to the specified power.</returns>
-		public Fraction Pow(int power)
-		{
-			return new Fraction(BigInteger.Pow(this.Numerator, power), BigInteger.Pow(this.Denominator, power));
-		}
-
-		/// <summary>
-		/// Computes the square root of the fraction.
-		/// </summary>
-		/// <returns>The square root.</returns>
-		public Fraction Sqrt()
-		{
-			return new Fraction((this.Numerator * this.Denominator).Sqrt(), this.Denominator);
-		}
-
 		#endregion Operators
 
 		#region Ordering
@@ -631,7 +662,7 @@ namespace SharpBag.Math.ForBigInteger
 		/// <summary>
 		/// An explicit cast operator from a floating point number to a fraction.
 		/// </summary>
-		/// <param name="fraction">The floating point number.</param>
+		/// <param name="floatingPoint">The floating point number.</param>
 		/// <returns>The fraction.</returns>
 		public static explicit operator Fraction(double floatingPoint)
 		{
@@ -771,7 +802,8 @@ namespace SharpBag.Math.ForBigInteger
 			}
 			while (remainder.Numerator != 0);
 
-			return sb.ToString().TrimEnd('0', '.');
+			string ret = sb.ToString().TrimEnd('0', '.');
+			return ret == "" ? "0" : ret;
 		}
 
 		#endregion Other
