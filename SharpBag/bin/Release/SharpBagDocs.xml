@@ -1430,6 +1430,28 @@
             <param name="digits">The maximum number of digits after the comma.</param>
             <returns>The string representation of the fraction.</returns>
         </member>
+        <member name="M:SharpBag.Math.ForInt32.Fraction.ToString(System.String,System.IFormatProvider)">
+            <summary>
+            IFormattable.ToString()
+            </summary>
+            <param name="format">The format.</param>
+            <param name="formatProvider">The format provider.</param>
+            <returns>The formatted string.</returns>
+            <remarks>
+            Format string: type,digits
+            Type is either D or C.
+            D is the same as ToString(digits) where digits is the number of digits.
+            C is is the same as C, but recurring cycles are treated specially.
+            If digits is not present, 10 will be used.
+            </remarks>
+            <example>
+            String.Format("{0}",     new Fraction(123, 999) / 100) == 41/33300
+            String.Format("{0:C}",   new Fraction(123, 999) / 100) == 0,00(123)
+            String.Format("{0:C,2}", new Fraction(123, 999) / 100) == 0,00(123)
+            String.Format("{0:D}",   new Fraction(123, 999) / 100) == 0,0012312312
+            String.Format("{0:D,2}", new Fraction(123, 999) / 100) == 0
+            </example>
+        </member>
         <member name="P:SharpBag.Math.ForInt32.Fraction.Numerator">
             <summary>
             The numerator.
@@ -1872,6 +1894,28 @@
             </summary>
             <param name="digits">The maximum number of digits after the comma.</param>
             <returns>The string representation of the fraction.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForBigInteger.Fraction.ToString(System.String,System.IFormatProvider)">
+            <summary>
+            IFormattable.ToString()
+            </summary>
+            <param name="format">The format.</param>
+            <param name="formatProvider">The format provider.</param>
+            <returns>The formatted string.</returns>
+            <remarks>
+            Format string: type,digits
+            Type is either D or C.
+            D is the same as ToString(digits) where digits is the number of digits.
+            C is is the same as C, but recurring cycles are treated specially.
+            If digits is not present, 10 will be used.
+            </remarks>
+            <example>
+            String.Format("{0}",     new Fraction(123, 999) / 100) == 41/33300
+            String.Format("{0:C}",   new Fraction(123, 999) / 100) == 0,00(123)
+            String.Format("{0:C,2}", new Fraction(123, 999) / 100) == 0,00(123)
+            String.Format("{0:D}",   new Fraction(123, 999) / 100) == 0,0012312312
+            String.Format("{0:D,2}", new Fraction(123, 999) / 100) == 0
+            </example>
         </member>
         <member name="P:SharpBag.Math.ForBigInteger.Fraction.Numerator">
             <summary>
@@ -6994,6 +7038,28 @@
             </summary>
             <param name="digits">The maximum number of digits after the comma.</param>
             <returns>The string representation of the fraction.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForInt64.Fraction.ToString(System.String,System.IFormatProvider)">
+            <summary>
+            IFormattable.ToString()
+            </summary>
+            <param name="format">The format.</param>
+            <param name="formatProvider">The format provider.</param>
+            <returns>The formatted string.</returns>
+            <remarks>
+            Format string: type,digits
+            Type is either D or C.
+            D is the same as ToString(digits) where digits is the number of digits.
+            C is is the same as C, but recurring cycles are treated specially.
+            If digits is not present, 10 will be used.
+            </remarks>
+            <example>
+            String.Format("{0}",     new Fraction(123, 999) / 100) == 41/33300
+            String.Format("{0:C}",   new Fraction(123, 999) / 100) == 0,00(123)
+            String.Format("{0:C,2}", new Fraction(123, 999) / 100) == 0,00(123)
+            String.Format("{0:D}",   new Fraction(123, 999) / 100) == 0,0012312312
+            String.Format("{0:D,2}", new Fraction(123, 999) / 100) == 0
+            </example>
         </member>
         <member name="P:SharpBag.Math.ForInt64.Fraction.Numerator">
             <summary>

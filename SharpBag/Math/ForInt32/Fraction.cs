@@ -11,7 +11,7 @@ namespace SharpBag.Math.ForInt32
 	/// A rational fraction.
 	/// </summary>
 	/// <remarks>http://www.codeproject.com/KB/recipes/fractiion.aspx</remarks>
-	public struct Fraction : Fraction<int>, IComparable<Fraction>, IEquatable<Fraction>, ICloneable
+	public struct Fraction : Fraction<int>, IComparable<Fraction>, IEquatable<Fraction>, ICloneable, IFormattable
 	{
 		#region Properties
 
@@ -783,7 +783,7 @@ namespace SharpBag.Math.ForInt32
 			Fraction remainder = fraction.Remainder;
 			int wholes = (int)fraction.Wholes;
 			if (negative) wholes = -wholes;
-			StringBuilder sb = new StringBuilder(wholes.ToString()).Append('.');
+			StringBuilder sb = new StringBuilder(wholes.ToString()).Append(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator[0]);
 
 			do
 			{
@@ -798,8 +798,48 @@ namespace SharpBag.Math.ForInt32
 			}
 			while (remainder.Numerator != 0);
 
-			string ret = sb.ToString().TrimEnd('0', '.');
+			string ret = sb.ToString().TrimEnd('0', CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator[0]);
 			return ret == "" ? "0" : ret;
+		}
+
+		/// <summary>
+		/// IFormattable.ToString()
+		/// </summary>
+		/// <param name="format">The format.</param>
+		/// <param name="formatProvider">The format provider.</param>
+		/// <returns>The formatted string.</returns>
+		/// <remarks>
+		/// Format string: type,digits
+		/// Type is either D or C.
+		/// D is the same as ToString(digits) where digits is the number of digits.
+		/// C is is the same as C, but recurring cycles are treated specially.
+		/// If digits is not present, 10 will be used.
+		/// </remarks>
+		/// <example>
+		/// String.Format("{0}",     new Fraction(123, 999) / 100) == 41/33300
+		/// String.Format("{0:C}",   new Fraction(123, 999) / 100) == 0,00(123)
+		/// String.Format("{0:C,2}", new Fraction(123, 999) / 100) == 0,00(123)
+		/// String.Format("{0:D}",   new Fraction(123, 999) / 100) == 0,0012312312
+		/// String.Format("{0:D,2}", new Fraction(123, 999) / 100) == 0
+		/// </example>
+		public string ToString(string format, IFormatProvider formatProvider)
+		{
+			string[] parts = format == null ? new string[] { "" } : format.Split(',');
+			int digits = 10;
+			if (parts.Length >= 2 && Int32.TryParse(parts[1].Trim(), out digits)) { }
+			switch (parts[0].Trim())
+			{
+				case "C":
+					Tuple<int, int> cycle = Fraction.RecurringCycle(this);
+					if (cycle == null) return this.ToString(digits);
+					string s = this.ToString(cycle.Item1 + cycle.Item2);
+					int dot = s.IndexOf(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator[0]);
+					int n = cycle.Item1 + cycle.Item2 - s.Length - dot - 1;
+					if (n < 0) s = s.PadRight(-n + s.Length, '0');
+					return s.Substring(0, dot + 1) + s.Substring(dot + 1, cycle.Item1) + "(" + s.Substring(dot + cycle.Item1 + 1, cycle.Item2) + ")";
+				case "D": return this.ToString(digits);
+				default: return this.ToString();
+			}
 		}
 
 		#endregion Other
