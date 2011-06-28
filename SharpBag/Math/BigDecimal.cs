@@ -12,7 +12,7 @@ namespace SharpBag.Math
 
 	public struct BigDecimal : IComparable<BigDecimal>, IEquatable<BigDecimal>
 	{
-	#region Properties
+		#region Properties
 
 		private const int DefaultPrecision = 32;
 
@@ -45,17 +45,17 @@ namespace SharpBag.Math
 
 		private bool Normalized { get { return _Normalized; } set { _Normalized = value; } }
 
-	#endregion Properties
+		#endregion Properties
 
-	#region Static Instances
+		#region Static Instances
 
 		public static readonly BigDecimal PositiveOne = new BigDecimal(1);
 		public static readonly BigDecimal NegativeOne = new BigDecimal(-1);
 		public static readonly BigDecimal Zero = new BigDecimal(0);
 
-	#endregion Static Instances
+		#endregion Static Instances
 
-	#region Constructors / Factories
+		#region Constructors / Factories
 
 		public BigDecimal(int value) : this(value, 0, DefaultPrecision, false) { }
 
@@ -169,9 +169,9 @@ namespace SharpBag.Math
 			return new BigDecimal(neg ? -mantissa : mantissa, exp, precision, false);
 		}
 
-	#endregion Constructors / Factories
+		#endregion Constructors / Factories
 
-	#region Operators
+		#region Operators
 
 		public static BigDecimal operator +(BigDecimal left, BigDecimal right) { return left.Add(right); }
 
@@ -237,7 +237,6 @@ namespace SharpBag.Math
 		{
 			int precision = (this.Precision > right.Precision ? this.Precision : right.Precision) + 2,
 				exponent = this.Exponent - right.Exponent,
-				j = 2,
 				iterations = 0;
 
 			bool leftPos = this.Mantissa >= 0,
@@ -327,9 +326,9 @@ namespace SharpBag.Math
 			return BigDecimal.PositiveOne / value;
 		}
 
-	#endregion Operators
+		#endregion Operators
 
-	#region Ordering
+		#region Ordering
 
 		public static bool operator >(BigDecimal left, BigDecimal right) { return left.CompareTo(right) > 0; }
 
@@ -386,9 +385,9 @@ namespace SharpBag.Math
 			return this.CompareTo(other, true);
 		}
 
-	#endregion Ordering
+		#endregion Ordering
 
-	#region Casting
+		#region Casting
 
 		public static implicit operator BigDecimal(int n) { return new BigDecimal(n); }
 
@@ -400,7 +399,7 @@ namespace SharpBag.Math
 
 		public static implicit operator BigDecimal(double n) { return new BigDecimal(n); }
 
-	#endregion Casting
+		#endregion Casting
 
 		private BigDecimal RoundLastDigit()
 		{

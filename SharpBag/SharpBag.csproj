@@ -153,6 +153,7 @@
     <Compile Include="Strings\StringExtensions.cs" />
     <Compile Include="Time\TimeUtils.cs" />
     <Compile Include="Torrent\Bencoding.cs" />
+    <Compile Include="Tuple.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="FunctionalExtensions.cs" />
   </ItemGroup>

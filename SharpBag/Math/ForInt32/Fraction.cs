@@ -6,6 +6,12 @@ namespace SharpBag.Math.ForInt32
 {
 	using System;
 
+#if DOTNET4
+
+	using System.Numerics;
+
+#endif
+
 	/// <summary>
 	/// A rational fraction.
 	/// </summary>
