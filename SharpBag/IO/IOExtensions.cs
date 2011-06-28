@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.IO;
 using System.Text;
+
+#if DOTNET4
+
+using System.Diagnostics.Contracts;
+
+#endif
 
 namespace SharpBag.IO
 {

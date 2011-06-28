@@ -5,9 +5,14 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SharpBag.Math.ForBigInteger;
 using SharpBag.Math.ForInt32;
 using SharpBag.Math.ForLong;
+
+#if DOTNET4
+
+using SharpBag.Math.ForBigInteger;
+
+#endif
 
 namespace SharpBag.Tests
 {
@@ -375,6 +380,8 @@ namespace SharpBag.Tests
 			Assert.AreEqual(frac.ToString(), "1");
 		}
 
+#if DOTNET4
+
 		[TestMethod]
 		public void FractionBigTest()
 		{
@@ -553,5 +560,7 @@ namespace SharpBag.Tests
 			frac += (Math.ForBigInteger.Fraction)0.5;
 			Assert.AreEqual(frac.ToString(), "1");
 		}
+
+#endif
 	}
 }

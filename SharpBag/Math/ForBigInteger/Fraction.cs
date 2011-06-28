@@ -4,10 +4,10 @@ using System.Text;
 
 namespace SharpBag.Math.ForBigInteger
 {
+#if DOTNET4
+
 	using System;
 	using System.Numerics;
-
-#if DOTNET4
 
 	/// <summary>
 	/// A rational fraction.
@@ -15,7 +15,7 @@ namespace SharpBag.Math.ForBigInteger
 	/// <remarks>http://www.codeproject.com/KB/recipes/fractiion.aspx</remarks>
 	public struct Fraction : Fraction<BigInteger>, IComparable<Fraction>, IEquatable<Fraction>, ICloneable
 	{
-		#region Properties
+	#region Properties
 
 		private BigInteger _Numerator;
 
@@ -136,9 +136,9 @@ namespace SharpBag.Math.ForBigInteger
 			}
 		}
 
-		#endregion Properties
+	#endregion Properties
 
-		#region Static Instances
+	#region Static Instances
 
 		/// <summary>
 		/// A fraction that represents positive one.
@@ -180,9 +180,9 @@ namespace SharpBag.Math.ForBigInteger
 		/// </summary>
 		public static readonly Fraction MinValue = new Fraction(Int32.MinValue, 1);
 
-		#endregion Static Instances
+	#endregion Static Instances
 
-		#region Static Methods
+	#region Static Methods
 
 		/// <summary>
 		/// Determines whether the fraction is NaN.
@@ -299,9 +299,9 @@ namespace SharpBag.Math.ForBigInteger
 			return new Fraction((fraction.Numerator * fraction.Denominator).Sqrt(), fraction.Denominator);
 		}
 
-		#endregion Static Methods
+	#endregion Static Methods
 
-		#region Constructors / Factories
+	#region Constructors / Factories
 
 		/// <summary>
 		/// The constructor.
@@ -426,9 +426,9 @@ namespace SharpBag.Math.ForBigInteger
 			return new Fraction(BigInteger.Parse(fraction.Substring(0, slash)), BigInteger.Parse(fraction.Substring(slash + 1)));
 		}
 
-		#endregion Constructors / Factories
+	#endregion Constructors / Factories
 
-		#region Helpers
+	#region Helpers
 
 		private void Reduce()
 		{
@@ -451,9 +451,9 @@ namespace SharpBag.Math.ForBigInteger
 			this.Denominator = this.Denominator / gcd;
 		}
 
-		#endregion Helpers
+	#endregion Helpers
 
-		#region Operators
+	#region Operators
 
 		/// <summary>
 		/// The addition operator.
@@ -522,9 +522,9 @@ namespace SharpBag.Math.ForBigInteger
 			return left - (left / right).Wholes * right;
 		}
 
-		#endregion Operators
+	#endregion Operators
 
-		#region Ordering
+	#region Ordering
 
 		/// <summary>
 		/// The greater than operator.
@@ -613,9 +613,9 @@ namespace SharpBag.Math.ForBigInteger
 			return (thisReduced.Numerator * otherReduced.Denominator).CompareTo(otherReduced.Numerator * thisReduced.Denominator);
 		}
 
-		#endregion Ordering
+	#endregion Ordering
 
-		#region Casting
+	#region Casting
 
 		/// <summary>
 		/// Converts the fraction to an Int64 fraction.
@@ -729,9 +729,9 @@ namespace SharpBag.Math.ForBigInteger
 			return (float)fraction.Numerator / (float)fraction.Denominator;
 		}
 
-		#endregion Casting
+	#endregion Casting
 
-		#region Other
+	#region Other
 
 		/// <summary>
 		/// Clones the fraction.
@@ -846,7 +846,7 @@ namespace SharpBag.Math.ForBigInteger
 			}
 		}
 
-		#endregion Other
+	#endregion Other
 	}
 
 #endif

@@ -1,7 +1,12 @@
 ﻿using System;
-using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
+
+#if DOTNET4
+
+using System.Diagnostics.Contracts;
+
+#endif
 
 namespace SharpBag.Misc
 {
@@ -48,7 +53,7 @@ namespace SharpBag.Misc
 			Contract.Requires(size >= 0);
 #endif
 			if (size == 0) return "";
-			return String.Join("\n", size.To(1).Select(i => i == size ? new String(border, i) : String.Join("", new string[] { border.ToString(), new String(fill, System.Math.Max(i - 2, 0)), i == 1 ? "" : border.ToString() })));
+			return String.Join("\n", size.To(1).Select(i => i == size ? new String(border, i) : String.Join("", new string[] { border.ToString(), new String(fill, System.Math.Max(i - 2, 0)), i == 1 ? "" : border.ToString() })).ToArray());
 		}
 
 		/// <summary>
@@ -64,7 +69,7 @@ namespace SharpBag.Misc
 			Contract.Requires(size >= 0);
 #endif
 			if (size == 0) return "";
-			return String.Join("\n", size.To(1).Select(i => i == size ? new String(border, i) : String.Join("", new string[] { new String(' ', System.Math.Max(size - i, 0)), border.ToString(), new String(fill, System.Math.Max(i - 2, 0)), i == 1 ? "" : border.ToString() })));
+			return String.Join("\n", size.To(1).Select(i => i == size ? new String(border, i) : String.Join("", new string[] { new String(' ', System.Math.Max(size - i, 0)), border.ToString(), new String(fill, System.Math.Max(i - 2, 0)), i == 1 ? "" : border.ToString() })).ToArray());
 		}
 
 		/// <summary>
@@ -80,7 +85,7 @@ namespace SharpBag.Misc
 			Contract.Requires(size >= 0);
 #endif
 			if (size == 0) return "";
-			return String.Join("\n", 1.To(size).Select(i => i == size ? new String(border, i) : String.Join("", new string[] { new String(' ', System.Math.Max(size - i, 0)), border.ToString(), new String(fill, System.Math.Max(i - 2, 0)), i == 1 ? "" : border.ToString() })));
+			return String.Join("\n", 1.To(size).Select(i => i == size ? new String(border, i) : String.Join("", new string[] { new String(' ', System.Math.Max(size - i, 0)), border.ToString(), new String(fill, System.Math.Max(i - 2, 0)), i == 1 ? "" : border.ToString() })).ToArray());
 		}
 
 		/// <summary>
@@ -96,7 +101,7 @@ namespace SharpBag.Misc
 			Contract.Requires(size >= 0);
 #endif
 			if (size == 0) return "";
-			return String.Join("\n", 1.To(size).Select(i => i == size ? new String(border, i) : String.Join("", new string[] { border.ToString(), new String(fill, System.Math.Max(i - 2, 0)), i == 1 ? "" : border.ToString() })));
+			return String.Join("\n", 1.To(size).Select(i => i == size ? new String(border, i) : String.Join("", new string[] { border.ToString(), new String(fill, System.Math.Max(i - 2, 0)), i == 1 ? "" : border.ToString() })).ToArray());
 		}
 	}
 }

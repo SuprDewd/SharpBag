@@ -8,6 +8,8 @@ using SharpBag.Math;
 
 namespace SharpBag.Tests
 {
+#if DOTNET4
+
 	[TestClass]
 	public class BigDecimalTests
 	{
@@ -203,4 +205,6 @@ namespace SharpBag.Tests
 			Assert.AreEqual(BigDecimal.Parse("4"), BigDecimal.Sqrt(BigDecimal.Parse("16")));
 		}
 	}
+
+#endif
 }

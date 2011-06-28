@@ -129,6 +129,8 @@ namespace SharpBag.Math
 			}
 		}
 
+#if DOTNET4
+
 		/// <summary>
 		/// An endless source of factorial numbers.
 		/// </summary>
@@ -145,6 +147,8 @@ namespace SharpBag.Math
 				}
 			}
 		}
+
+#endif
 
 		#endregion Factorial numbers
 
@@ -391,6 +395,8 @@ namespace SharpBag.Math
 			}
 		}
 
+#if DOTNET4
+
 		/// <summary>
 		/// An endless source of Pythagorean Triplets.
 		/// </summary>
@@ -409,6 +415,8 @@ namespace SharpBag.Math
 				}
 			}
 		}
+
+#endif
 
 		#endregion Pythagorean Triplets
 

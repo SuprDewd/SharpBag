@@ -273,6 +273,8 @@ namespace SharpBag
 			while (e.MoveNext()) yield return e.Current;
 		}
 
+#if DOTNET4
+
 		/// <summary>
 		/// Converts the current instance into an enumerable.
 		/// </summary>
@@ -280,12 +282,13 @@ namespace SharpBag
 		/// <returns>An enumerable.</returns>
 		public static IEnumerable<object> AsEnumerable(this IEnumerator e)
 		{
-#if DOTNET4
 			Contract.Requires(e != null);
 			Contract.Ensures(Contract.Result<IEnumerable<object>>() != null);
-#endif
+
 			while (e.MoveNext()) yield return e.Current;
 		}
+
+#endif
 
 		/// <summary>
 		/// Gets a subarray of an array.

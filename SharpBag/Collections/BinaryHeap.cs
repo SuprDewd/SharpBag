@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
+
+#if DOTNET4
+
+using System.Diagnostics.Contracts;
+
+#endif
 
 namespace SharpBag.Collections
 {

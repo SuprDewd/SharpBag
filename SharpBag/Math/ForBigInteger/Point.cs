@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using System.Text;
 
 namespace SharpBag.Math.ForBigInteger
 {
 #if DOTNET4
+
+	using System.Numerics;
 
 	/// <summary>
 	/// A point.

@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using System;
+﻿using System;
+using System.Collections.Generic;
 
 using S = System;
 
@@ -346,6 +345,8 @@ namespace SharpBag.Math
 
 		#region http://alicebobandmallory.com/articles/2010/01/14/prime-factorization-in-parallel
 
+#if DOTNET4
+
 		/// <summary>
 		/// Performs an Atkin sieve to find primes, in parallel.
 		/// </summary>
@@ -393,6 +394,8 @@ namespace SharpBag.Math
 			for (uint n = (uint)sqrt + 1; n <= max; n++)
 				if (isPrime[n]) yield return n;
 		}
+
+#endif
 
 		#endregion http://alicebobandmallory.com/articles/2010/01/14/prime-factorization-in-parallel
 

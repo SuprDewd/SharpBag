@@ -1067,6 +1067,8 @@ namespace SharpBag.Math
 			return (long)a + b;
 		}
 
+#if DOTNET4
+
 		/// <summary>
 		/// Concatenates the current instance and the specified integer.
 		/// </summary>
@@ -1075,10 +1077,8 @@ namespace SharpBag.Math
 		/// <returns>The concatenated integer.</returns>
 		public static BigInteger Concat(this long a, long b)
 		{
-#if DOTNET4
 			Contract.Requires(a >= 0);
 			Contract.Requires(b >= 0);
-#endif
 			long c = b;
 			while (c > 0)
 			{
@@ -1108,6 +1108,8 @@ namespace SharpBag.Math
 
 			return (BigInteger)a + b;
 		}
+
+#endif
 
 		#endregion Concat
 

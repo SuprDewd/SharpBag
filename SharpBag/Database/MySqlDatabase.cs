@@ -7,6 +7,8 @@ using System.Diagnostics.Contracts;
 
 #endif
 
+#if DOTNET4
+
 using System.Text;
 using MySql.Data.MySqlClient;
 using System;
@@ -87,3 +89,5 @@ namespace SharpBag.Database
 		}
 	}
 }
+
+#endif

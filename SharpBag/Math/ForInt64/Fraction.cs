@@ -6,7 +6,6 @@ using SharpBag.Math;
 namespace SharpBag.Math.ForInt64
 {
 	using System;
-	using System.Numerics;
 
 	/// <summary>
 	/// A rational fraction.
@@ -618,11 +617,15 @@ namespace SharpBag.Math.ForInt64
 		/// <returns>The converted fraction.</returns>
 		public SharpBag.Math.ForInt32.Fraction AsInt32Fraction() { return new SharpBag.Math.ForInt32.Fraction((int)this.Numerator, (int)this.Denominator, this.AutoReduce); }
 
+#if DOTNET4
+
 		/// <summary>
 		/// Converts the fraction to a BigInteger fraction.
 		/// </summary>
 		/// <returns>The converted fraction.</returns>
 		public SharpBag.Math.ForBigInteger.Fraction AsBigIntegerFraction() { return new SharpBag.Math.ForBigInteger.Fraction(this.Numerator, this.Denominator, this.AutoReduce); }
+
+#endif
 
 		/// <summary>
 		/// An implicit cast operator from an integer to a fraction.
@@ -644,6 +647,8 @@ namespace SharpBag.Math.ForInt64
 			return new Fraction(integer);
 		}
 
+#if DOTNET4
+
 		/// <summary>
 		/// An explicit cast operator from an integer to a fraction.
 		/// </summary>
@@ -653,6 +658,8 @@ namespace SharpBag.Math.ForInt64
 		{
 			return new Fraction((long)integer);
 		}
+
+#endif
 
 		/// <summary>
 		/// An explicit cast operator from a floating point number to a fraction.
@@ -684,6 +691,8 @@ namespace SharpBag.Math.ForInt64
 			return (long)fraction.Numerator / fraction.Denominator;
 		}
 
+#if DOTNET4
+
 		/// <summary>
 		/// An explicit cast operator from a fraction to a BigInteger.
 		/// </summary>
@@ -693,6 +702,8 @@ namespace SharpBag.Math.ForInt64
 		{
 			return (BigInteger)fraction.Numerator / fraction.Denominator;
 		}
+
+#endif
 
 		/// <summary>
 		/// An explicit cast operator from a fraction to a double.

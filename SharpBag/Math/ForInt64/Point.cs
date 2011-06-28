@@ -5,8 +5,6 @@ using System.Text;
 
 namespace SharpBag.Math.ForInt64
 {
-	using System.Numerics;
-
 	/// <summary>
 	/// A point.
 	/// </summary>

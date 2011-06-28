@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Linq;
-using System.Numerics;
 using System.Text;
 
 namespace SharpBag.Math
 {
+#if DOTNET4
+
+	using System.Diagnostics.Contracts;
+	using System.Numerics;
+
 	public struct BigDecimal : IComparable<BigDecimal>, IEquatable<BigDecimal>
 	{
-		#region Properties
+	#region Properties
 
 		private const int DefaultPrecision = 32;
 
@@ -42,17 +45,17 @@ namespace SharpBag.Math
 
 		private bool Normalized { get { return _Normalized; } set { _Normalized = value; } }
 
-		#endregion Properties
+	#endregion Properties
 
-		#region Static Instances
+	#region Static Instances
 
 		public static readonly BigDecimal PositiveOne = new BigDecimal(1);
 		public static readonly BigDecimal NegativeOne = new BigDecimal(-1);
 		public static readonly BigDecimal Zero = new BigDecimal(0);
 
-		#endregion Static Instances
+	#endregion Static Instances
 
-		#region Constructors / Factories
+	#region Constructors / Factories
 
 		public BigDecimal(int value) : this(value, 0, DefaultPrecision, false) { }
 
@@ -72,9 +75,7 @@ namespace SharpBag.Math
 
 		private BigDecimal(float value, int precision, bool normalized)
 		{
-#if DOTNET4
 			Contract.Requires(precision >= 0);
-#endif
 			string[] srep = value.ToString("R").Split('E');
 			BigDecimal parsed = BigDecimal.Parse(srep[0]);
 
@@ -94,9 +95,7 @@ namespace SharpBag.Math
 
 		public BigDecimal(double value, int precision, bool normalized)
 		{
-#if DOTNET4
 			Contract.Requires(precision >= 0);
-#endif
 			string[] srep = value.ToString("R").Split('E');
 			BigDecimal parsed = BigDecimal.Parse(srep[0]);
 
@@ -116,9 +115,7 @@ namespace SharpBag.Math
 
 		private BigDecimal(BigInteger value, int exponent, int precision, bool normalized)
 		{
-#if DOTNET4
 			Contract.Requires(precision >= 0);
-#endif
 			_ToStringCache = null;
 			_Mantissa = value;
 			_Exponent = exponent;
@@ -141,9 +138,7 @@ namespace SharpBag.Math
 
 		public static BigDecimal Parse(string value, int precision)
 		{
-#if DOTNET4
 			Contract.Requires(precision >= 0);
-#endif
 			value = value.Trim();
 			int exp = 0;
 			BigInteger mantissa = 0;
@@ -174,9 +169,9 @@ namespace SharpBag.Math
 			return new BigDecimal(neg ? -mantissa : mantissa, exp, precision, false);
 		}
 
-		#endregion Constructors / Factories
+	#endregion Constructors / Factories
 
-		#region Operators
+	#region Operators
 
 		public static BigDecimal operator +(BigDecimal left, BigDecimal right) { return left.Add(right); }
 
@@ -268,9 +263,7 @@ namespace SharpBag.Math
 
 		public static BigDecimal Pow(BigDecimal value, int power)
 		{
-#if DOTNET4
 			Contract.Requires(power >= 0);
-#endif
 			if (power == 0) return new BigDecimal(1, 0, value.Precision, true);
 			if (power == 1) return new BigDecimal(value);
 			if (power == 2) return value.Multiply(value);
@@ -314,9 +307,7 @@ namespace SharpBag.Math
 
 		public static BigDecimal Sqrt(BigDecimal value)
 		{
-#if DOTNET4
 			Contract.Requires(value >= 0);
-#endif
 			if (value.Mantissa == 0) return new BigDecimal(0, 0, value.Precision, true);
 			BigDecimal sqrt = new BigDecimal(1, value.Precision + 1), last, two = new BigDecimal(2, value.Precision + 1);
 
@@ -336,9 +327,9 @@ namespace SharpBag.Math
 			return BigDecimal.PositiveOne / value;
 		}
 
-		#endregion Operators
+	#endregion Operators
 
-		#region Ordering
+	#region Ordering
 
 		public static bool operator >(BigDecimal left, BigDecimal right) { return left.CompareTo(right) > 0; }
 
@@ -395,9 +386,9 @@ namespace SharpBag.Math
 			return this.CompareTo(other, true);
 		}
 
-		#endregion Ordering
+	#endregion Ordering
 
-		#region Casting
+	#region Casting
 
 		public static implicit operator BigDecimal(int n) { return new BigDecimal(n); }
 
@@ -409,7 +400,7 @@ namespace SharpBag.Math
 
 		public static implicit operator BigDecimal(double n) { return new BigDecimal(n); }
 
-		#endregion Casting
+	#endregion Casting
 
 		private BigDecimal RoundLastDigit()
 		{
@@ -471,9 +462,7 @@ namespace SharpBag.Math
 
 		public BigDecimal WithPrecision(int precision)
 		{
-#if DOTNET4
 			Contract.Requires(precision >= 0);
-#endif
 			return new BigDecimal(this, precision);
 		}
 
@@ -517,4 +506,6 @@ namespace SharpBag.Math
 			return _ToStringCache = res;
 		}
 	}
+
+#endif
 }
