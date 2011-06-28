@@ -177,6 +177,323 @@
             The Y coordinate.
             </summary>
         </member>
+        <member name="T:SharpBag.Math.BigDecimal">
+            <summary>
+            An arbitrary big decimal.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Math.BigDecimal.PositiveOne">
+            <summary>
+            A positive one.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Math.BigDecimal.NegativeOne">
+            <summary>
+            A negative one.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Math.BigDecimal.Zero">
+            <summary>
+            A zero.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.#ctor(System.Int32)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="value">The value of the decimal.</param>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.#ctor(System.Int32,System.Int32)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="value">The value of the decimal.</param>
+            <param name="precision">The maximum amount of digits after the decimal point.</param>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.#ctor(System.Int64)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="value">The value of the decimal.</param>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.#ctor(System.Int64,System.Int32)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="value">The value of the decimal.</param>
+            <param name="precision">The maximum amount of digits after the decimal point.</param>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.#ctor(System.Numerics.BigInteger,System.Int32)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="value">The value of the decimal.</param>
+            <param name="precision">The maximum amount of digits after the decimal point.</param>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.#ctor(System.Numerics.BigInteger)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="value">The value of the decimal.</param>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.#ctor(System.Single)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="value">The value of the decimal.</param>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.#ctor(System.Single,System.Int32)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="value">The value of the decimal.</param>
+            <param name="precision">The maximum amount of digits after the decimal point.</param>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.#ctor(System.Double)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="value">The value of the decimal.</param>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.#ctor(System.Double,System.Int32)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="value">The value of the decimal.</param>
+            <param name="precision">The maximum amount of digits after the decimal point.</param>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.#ctor(SharpBag.Math.BigDecimal)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="value">The value of the decimal.</param>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.#ctor(SharpBag.Math.BigDecimal,System.Int32)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="value">The value of the decimal.</param>
+            <param name="precision">The maximum amount of digits after the decimal point.</param>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.Parse(System.String)">
+            <summary>
+            Parse the specified string.
+            </summary>
+            <param name="value">The specified string.</param>
+            <returns>The BigDecimal represented by the string.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.Parse(System.String,System.Int32)">
+            <summary>
+            Parse the specified string.
+            </summary>
+            <param name="value">The specified string.</param>
+            <param name="precision">The maximum amount of digits after the decimal point.</param>
+            <returns>The BigDecimal represented by the string.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.op_Addition(SharpBag.Math.BigDecimal,SharpBag.Math.BigDecimal)">
+            <summary>
+            The + operator.
+            </summary>
+            <param name="left">The left BigDecimal.</param>
+            <param name="right">The right BigDecimal.</param>
+            <returns>Left + Right</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.op_Subtraction(SharpBag.Math.BigDecimal,SharpBag.Math.BigDecimal)">
+            <summary>
+            The - operator.
+            </summary>
+            <param name="left">The left BigDecimal.</param>
+            <param name="right">The right BigDecimal.</param>
+            <returns>Left - Right</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.op_Multiply(SharpBag.Math.BigDecimal,SharpBag.Math.BigDecimal)">
+            <summary>
+            The * operator.
+            </summary>
+            <param name="left">The left BigDecimal.</param>
+            <param name="right">The right BigDecimal.</param>
+            <returns>Left * Right</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.op_Division(SharpBag.Math.BigDecimal,SharpBag.Math.BigDecimal)">
+            <summary>
+            The / operator.
+            </summary>
+            <param name="left">The left BigDecimal.</param>
+            <param name="right">The right BigDecimal.</param>
+            <returns>Left / Right</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.op_UnaryNegation(SharpBag.Math.BigDecimal)">
+            <summary>
+            The - operator.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>-Left</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.Pow(SharpBag.Math.BigDecimal,System.Int32)">
+            <summary>
+            Raise the BigDecimal to the specified power.
+            </summary>
+            <param name="value">The BigDecimal.</param>
+            <param name="power">The power.</param>
+            <returns>The BigDecimal raised to the specified power.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.Log10(SharpBag.Math.BigDecimal)">
+            <summary>
+            The base-10 logarithm of the BigDecimal.
+            </summary>
+            <param name="value">The BigDecimal.</param>
+            <returns>The base-10 logarithm of the BigDecimal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.Log(SharpBag.Math.BigDecimal,SharpBag.Math.BigDecimal)">
+            <summary>
+            The logarithm of the BigDecimal in the specified base.
+            </summary>
+            <param name="value">The BigDecimal.</param>
+            <param name="logBase">The specified base.</param>
+            <returns>The logarithm of the BigDecimal in the specified base.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.Sqrt(SharpBag.Math.BigDecimal)">
+            <summary>
+            The square root of the BigDecimal.
+            </summary>
+            <param name="value">The BigDecimal.</param>
+            <returns>The square root.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.Reciprocal(SharpBag.Math.BigDecimal)">
+            <summary>
+            The reciprocal of the BigDecimal.
+            </summary>
+            <param name="value">The BigDecimal.</param>
+            <returns>The reciprocal of the BigDecimal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.op_GreaterThan(SharpBag.Math.BigDecimal,SharpBag.Math.BigDecimal)">
+            <summary>
+            The > operator.
+            </summary>
+            <param name="left">The left BigDecimal.</param>
+            <param name="right">The right BigDecimal.</param>
+            <returns>True if Left > Right</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.op_GreaterThanOrEqual(SharpBag.Math.BigDecimal,SharpBag.Math.BigDecimal)">
+            <summary>
+            The >= operator.
+            </summary>
+            <param name="left">The left BigDecimal.</param>
+            <param name="right">The right BigDecimal.</param>
+            <returns>True if Left >= Right</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.op_LessThan(SharpBag.Math.BigDecimal,SharpBag.Math.BigDecimal)">
+            <summary>
+            The &lt; operator.
+            </summary>
+            <param name="left">The left BigDecimal.</param>
+            <param name="right">The right BigDecimal.</param>
+            <returns>True if Left %lt; Right</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.op_LessThanOrEqual(SharpBag.Math.BigDecimal,SharpBag.Math.BigDecimal)">
+            <summary>
+            The &lt;= operator.
+            </summary>
+            <param name="left">The left BigDecimal.</param>
+            <param name="right">The right BigDecimal.</param>
+            <returns>True if Left %lt;= Right</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.op_Equality(SharpBag.Math.BigDecimal,SharpBag.Math.BigDecimal)">
+            <summary>
+            The == operator.
+            </summary>
+            <param name="left">The left BigDecimal.</param>
+            <param name="right">The right BigDecimal.</param>
+            <returns>True if Left == Right</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.op_Inequality(SharpBag.Math.BigDecimal,SharpBag.Math.BigDecimal)">
+            <summary>
+            The != operator.
+            </summary>
+            <param name="left">The left BigDecimal.</param>
+            <param name="right">The right BigDecimal.</param>
+            <returns>True if Left != Right</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.Equals(SharpBag.Math.BigDecimal)">
+            <summary>
+            IEquatable.Equals()
+            </summary>
+            <param name="other">Another BigDecimal.</param>
+            <returns>Wheter this is equal to the other BigDecimal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.Equals(System.Object)">
+            <summary>
+            Object.Equals()
+            </summary>
+            <param name="obj">Another BigDecimal.</param>
+            <returns>Wheter this is equal to the other BigDecimal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.CompareTo(SharpBag.Math.BigDecimal)">
+            <summary>
+            IComparable.CompareTo()
+            </summary>
+            <param name="other">Another BigDecimal.</param>
+            <returns>The order of the BigDecimals.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.op_Implicit(System.Int32)~SharpBag.Math.BigDecimal">
+            <summary>
+            A casting operator.
+            </summary>
+            <param name="n">A value.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.op_Implicit(System.Int64)~SharpBag.Math.BigDecimal">
+            <summary>
+            A casting operator.
+            </summary>
+            <param name="n">A value.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.op_Implicit(System.Numerics.BigInteger)~SharpBag.Math.BigDecimal">
+            <summary>
+            A casting operator.
+            </summary>
+            <param name="n">A value.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.op_Implicit(System.Single)~SharpBag.Math.BigDecimal">
+            <summary>
+            A casting operator.
+            </summary>
+            <param name="n">A value.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.op_Implicit(System.Double)~SharpBag.Math.BigDecimal">
+            <summary>
+            A casting operator.
+            </summary>
+            <param name="n">A value.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.WithPrecision(System.Int32)">
+            <summary>
+            Returns a BigDecimal with the specified precision.
+            </summary>
+            <param name="precision">The precision.</param>
+            <returns>A BigDecimal with the specified precision.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.GetHashCode">
+            <summary>
+            Object.GetHashCode();
+            </summary>
+            <returns>The hash code of the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.ToString">
+            <summary>
+            Object.ToString()
+            </summary>
+            <returns>The string representation of the BigDecimal.</returns>
+        </member>
+        <member name="P:SharpBag.Math.BigDecimal.Precision">
+            <summary>
+            The maximum amount of digits after the decimal point.
+            </summary>
+        </member>
         <member name="T:SharpBag.Combinatorics.Variations`1">
              <summary>
              Variations defines a meta-collection, typically a list of lists, of all possible

@@ -10,6 +10,9 @@ namespace SharpBag.Math
 	using System.Diagnostics.Contracts;
 	using System.Numerics;
 
+	/// <summary>
+	/// An arbitrary big decimal.
+	/// </summary>
 	public struct BigDecimal : IComparable<BigDecimal>, IEquatable<BigDecimal>
 	{
 		#region Properties
@@ -22,6 +25,9 @@ namespace SharpBag.Math
 
 		private int _Precision;
 
+		/// <summary>
+		/// The maximum amount of digits after the decimal point.
+		/// </summary>
 		public int Precision
 		{
 			get { return _Precision; }
@@ -49,28 +55,75 @@ namespace SharpBag.Math
 
 		#region Static Instances
 
+		/// <summary>
+		/// A positive one.
+		/// </summary>
 		public static readonly BigDecimal PositiveOne = new BigDecimal(1);
+
+		/// <summary>
+		/// A negative one.
+		/// </summary>
 		public static readonly BigDecimal NegativeOne = new BigDecimal(-1);
+
+		/// <summary>
+		/// A zero.
+		/// </summary>
 		public static readonly BigDecimal Zero = new BigDecimal(0);
 
 		#endregion Static Instances
 
 		#region Constructors / Factories
 
+		/// <summary>
+		/// The constructor.
+		/// </summary>
+		/// <param name="value">The value of the decimal.</param>
 		public BigDecimal(int value) : this(value, 0, DefaultPrecision, false) { }
 
+		/// <summary>
+		/// The constructor.
+		/// </summary>
+		/// <param name="value">The value of the decimal.</param>
+		/// <param name="precision">The maximum amount of digits after the decimal point.</param>
 		public BigDecimal(int value, int precision) : this(value, 0, precision, false) { }
 
+		/// <summary>
+		/// The constructor.
+		/// </summary>
+		/// <param name="value">The value of the decimal.</param>
 		public BigDecimal(long value) : this(value, 0, DefaultPrecision, false) { }
 
+		/// <summary>
+		/// The constructor.
+		/// </summary>
+		/// <param name="value">The value of the decimal.</param>
+		/// <param name="precision">The maximum amount of digits after the decimal point.</param>
 		public BigDecimal(long value, int precision) : this(value, 0, precision, false) { }
 
+		/// <summary>
+		/// The constructor.
+		/// </summary>
+		/// <param name="value">The value of the decimal.</param>
+		/// <param name="precision">The maximum amount of digits after the decimal point.</param>
 		public BigDecimal(BigInteger value, int precision) : this(value, 0, precision, false) { }
 
+		/// <summary>
+		/// The constructor.
+		/// </summary>
+		/// <param name="value">The value of the decimal.</param>
 		public BigDecimal(BigInteger value) : this(value, 0, DefaultPrecision, false) { }
 
+		/// <summary>
+		/// The constructor.
+		/// </summary>
+		/// <param name="value">The value of the decimal.</param>
 		public BigDecimal(float value) : this(value, DefaultPrecision) { }
 
+		/// <summary>
+		/// The constructor.
+		/// </summary>
+		/// <param name="value">The value of the decimal.</param>
+		/// <param name="precision">The maximum amount of digits after the decimal point.</param>
 		public BigDecimal(float value, int precision) : this(value, DefaultPrecision, false) { }
 
 		private BigDecimal(float value, int precision, bool normalized)
@@ -89,11 +142,20 @@ namespace SharpBag.Math
 			this.Normalize();
 		}
 
+		/// <summary>
+		/// The constructor.
+		/// </summary>
+		/// <param name="value">The value of the decimal.</param>
 		public BigDecimal(double value) : this(value, DefaultPrecision) { }
 
+		/// <summary>
+		/// The constructor.
+		/// </summary>
+		/// <param name="value">The value of the decimal.</param>
+		/// <param name="precision">The maximum amount of digits after the decimal point.</param>
 		public BigDecimal(double value, int precision) : this(value, precision, false) { }
 
-		public BigDecimal(double value, int precision, bool normalized)
+		private BigDecimal(double value, int precision, bool normalized)
 		{
 			Contract.Requires(precision >= 0);
 			string[] srep = value.ToString("R").Split('E');
@@ -109,8 +171,17 @@ namespace SharpBag.Math
 			this.Normalize();
 		}
 
+		/// <summary>
+		/// The constructor.
+		/// </summary>
+		/// <param name="value">The value of the decimal.</param>
 		public BigDecimal(BigDecimal value) : this(value.Mantissa, value.Exponent, value.Precision, value.Normalized) { }
 
+		/// <summary>
+		/// The constructor.
+		/// </summary>
+		/// <param name="value">The value of the decimal.</param>
+		/// <param name="precision">The maximum amount of digits after the decimal point.</param>
 		public BigDecimal(BigDecimal value, int precision) : this(value.Mantissa, value.Exponent, precision, value.Normalized) { }
 
 		private BigDecimal(BigInteger value, int exponent, int precision, bool normalized)
@@ -126,6 +197,11 @@ namespace SharpBag.Math
 			this.Normalize();
 		}
 
+		/// <summary>
+		/// Parse the specified string.
+		/// </summary>
+		/// <param name="value">The specified string.</param>
+		/// <returns>The BigDecimal represented by the string.</returns>
 		public static BigDecimal Parse(string value)
 		{
 			BigDecimal parsed = BigDecimal.Parse(value, Int32.MaxValue);
@@ -136,6 +212,12 @@ namespace SharpBag.Math
 			return parsed;
 		}
 
+		/// <summary>
+		/// Parse the specified string.
+		/// </summary>
+		/// <param name="value">The specified string.</param>
+		/// <param name="precision">The maximum amount of digits after the decimal point.</param>
+		/// <returns>The BigDecimal represented by the string.</returns>
 		public static BigDecimal Parse(string value, int precision)
 		{
 			Contract.Requires(precision >= 0);
@@ -173,14 +255,43 @@ namespace SharpBag.Math
 
 		#region Operators
 
+		/// <summary>
+		/// The + operator.
+		/// </summary>
+		/// <param name="left">The left BigDecimal.</param>
+		/// <param name="right">The right BigDecimal.</param>
+		/// <returns>Left + Right</returns>
 		public static BigDecimal operator +(BigDecimal left, BigDecimal right) { return left.Add(right); }
 
+		/// <summary>
+		/// The - operator.
+		/// </summary>
+		/// <param name="left">The left BigDecimal.</param>
+		/// <param name="right">The right BigDecimal.</param>
+		/// <returns>Left - Right</returns>
 		public static BigDecimal operator -(BigDecimal left, BigDecimal right) { return left.Subtract(right); }
 
+		/// <summary>
+		/// The * operator.
+		/// </summary>
+		/// <param name="left">The left BigDecimal.</param>
+		/// <param name="right">The right BigDecimal.</param>
+		/// <returns>Left * Right</returns>
 		public static BigDecimal operator *(BigDecimal left, BigDecimal right) { return left.Multiply(right); }
 
+		/// <summary>
+		/// The / operator.
+		/// </summary>
+		/// <param name="left">The left BigDecimal.</param>
+		/// <param name="right">The right BigDecimal.</param>
+		/// <returns>Left / Right</returns>
 		public static BigDecimal operator /(BigDecimal left, BigDecimal right) { return left.Divide(right); }
 
+		/// <summary>
+		/// The - operator.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <returns>-Left</returns>
 		public static BigDecimal operator -(BigDecimal value) { return value.Negate(); }
 
 		private BigDecimal Add(BigDecimal right, bool normalize)
@@ -260,6 +371,12 @@ namespace SharpBag.Math
 			return new BigDecimal(pos ? mantissa : -mantissa, exponent, precision - 2, false);
 		}
 
+		/// <summary>
+		/// Raise the BigDecimal to the specified power.
+		/// </summary>
+		/// <param name="value">The BigDecimal.</param>
+		/// <param name="power">The power.</param>
+		/// <returns>The BigDecimal raised to the specified power.</returns>
 		public static BigDecimal Pow(BigDecimal value, int power)
 		{
 			Contract.Requires(power >= 0);
@@ -280,6 +397,11 @@ namespace SharpBag.Math
 			}
 		}
 
+		/// <summary>
+		/// The base-10 logarithm of the BigDecimal.
+		/// </summary>
+		/// <param name="value">The BigDecimal.</param>
+		/// <returns>The base-10 logarithm of the BigDecimal.</returns>
 		public static BigDecimal Log10(BigDecimal value)
 		{
 			if (value < 1) throw new ArgumentOutOfRangeException("value");
@@ -299,11 +421,22 @@ namespace SharpBag.Math
 			return new BigDecimal(mantissa, -digits, value.Precision, false).RoundLastDigit();
 		}
 
+		/// <summary>
+		/// The logarithm of the BigDecimal in the specified base.
+		/// </summary>
+		/// <param name="value">The BigDecimal.</param>
+		/// <param name="logBase">The specified base.</param>
+		/// <returns>The logarithm of the BigDecimal in the specified base.</returns>
 		public static BigDecimal Log(BigDecimal value, BigDecimal logBase)
 		{
 			return BigDecimal.Log10(value).Divide(BigDecimal.Log10(logBase));
 		}
 
+		/// <summary>
+		/// The square root of the BigDecimal.
+		/// </summary>
+		/// <param name="value">The BigDecimal.</param>
+		/// <returns>The square root.</returns>
 		public static BigDecimal Sqrt(BigDecimal value)
 		{
 			Contract.Requires(value >= 0);
@@ -321,6 +454,11 @@ namespace SharpBag.Math
 			return sqrt;
 		}
 
+		/// <summary>
+		/// The reciprocal of the BigDecimal.
+		/// </summary>
+		/// <param name="value">The BigDecimal.</param>
+		/// <returns>The reciprocal of the BigDecimal.</returns>
 		public static BigDecimal Reciprocal(BigDecimal value)
 		{
 			return BigDecimal.PositiveOne / value;
@@ -330,16 +468,52 @@ namespace SharpBag.Math
 
 		#region Ordering
 
+		/// <summary>
+		/// The > operator.
+		/// </summary>
+		/// <param name="left">The left BigDecimal.</param>
+		/// <param name="right">The right BigDecimal.</param>
+		/// <returns>True if Left > Right</returns>
 		public static bool operator >(BigDecimal left, BigDecimal right) { return left.CompareTo(right) > 0; }
 
+		/// <summary>
+		/// The >= operator.
+		/// </summary>
+		/// <param name="left">The left BigDecimal.</param>
+		/// <param name="right">The right BigDecimal.</param>
+		/// <returns>True if Left >= Right</returns>
 		public static bool operator >=(BigDecimal left, BigDecimal right) { return left.CompareTo(right) >= 0; }
 
+		/// <summary>
+		/// The &lt; operator.
+		/// </summary>
+		/// <param name="left">The left BigDecimal.</param>
+		/// <param name="right">The right BigDecimal.</param>
+		/// <returns>True if Left %lt; Right</returns>
 		public static bool operator <(BigDecimal left, BigDecimal right) { return left.CompareTo(right) < 0; }
 
+		/// <summary>
+		/// The &lt;= operator.
+		/// </summary>
+		/// <param name="left">The left BigDecimal.</param>
+		/// <param name="right">The right BigDecimal.</param>
+		/// <returns>True if Left %lt;= Right</returns>
 		public static bool operator <=(BigDecimal left, BigDecimal right) { return left.CompareTo(right) <= 0; }
 
+		/// <summary>
+		/// The == operator.
+		/// </summary>
+		/// <param name="left">The left BigDecimal.</param>
+		/// <param name="right">The right BigDecimal.</param>
+		/// <returns>True if Left == Right</returns>
 		public static bool operator ==(BigDecimal left, BigDecimal right) { return left.Equals(right); }
 
+		/// <summary>
+		/// The != operator.
+		/// </summary>
+		/// <param name="left">The left BigDecimal.</param>
+		/// <param name="right">The right BigDecimal.</param>
+		/// <returns>True if Left != Right</returns>
 		public static bool operator !=(BigDecimal left, BigDecimal right) { return !left.Equals(right); }
 
 		private bool Equals(BigDecimal other, bool normalize)
@@ -356,11 +530,21 @@ namespace SharpBag.Math
 			return eq;
 		}
 
+		/// <summary>
+		/// IEquatable.Equals()
+		/// </summary>
+		/// <param name="other">Another BigDecimal.</param>
+		/// <returns>Wheter this is equal to the other BigDecimal.</returns>
 		public bool Equals(BigDecimal other)
 		{
 			return this.Equals(other, true);
 		}
 
+		/// <summary>
+		/// Object.Equals()
+		/// </summary>
+		/// <param name="obj">Another BigDecimal.</param>
+		/// <returns>Wheter this is equal to the other BigDecimal.</returns>
 		public override bool Equals(object obj)
 		{
 			return obj.GetType() == typeof(BigDecimal) && this.Equals((BigDecimal)obj);
@@ -380,6 +564,11 @@ namespace SharpBag.Math
 			return cmp;
 		}
 
+		/// <summary>
+		/// IComparable.CompareTo()
+		/// </summary>
+		/// <param name="other">Another BigDecimal.</param>
+		/// <returns>The order of the BigDecimals.</returns>
 		public int CompareTo(BigDecimal other)
 		{
 			return this.CompareTo(other, true);
@@ -389,14 +578,39 @@ namespace SharpBag.Math
 
 		#region Casting
 
+		/// <summary>
+		/// A casting operator.
+		/// </summary>
+		/// <param name="n">A value.</param>
+		/// <returns>The result.</returns>
 		public static implicit operator BigDecimal(int n) { return new BigDecimal(n); }
 
+		/// <summary>
+		/// A casting operator.
+		/// </summary>
+		/// <param name="n">A value.</param>
+		/// <returns>The result.</returns>
 		public static implicit operator BigDecimal(long n) { return new BigDecimal(n); }
 
+		/// <summary>
+		/// A casting operator.
+		/// </summary>
+		/// <param name="n">A value.</param>
+		/// <returns>The result.</returns>
 		public static implicit operator BigDecimal(BigInteger n) { return new BigDecimal(n); }
 
+		/// <summary>
+		/// A casting operator.
+		/// </summary>
+		/// <param name="n">A value.</param>
+		/// <returns>The result.</returns>
 		public static implicit operator BigDecimal(float n) { return new BigDecimal(n); }
 
+		/// <summary>
+		/// A casting operator.
+		/// </summary>
+		/// <param name="n">A value.</param>
+		/// <returns>The result.</returns>
 		public static implicit operator BigDecimal(double n) { return new BigDecimal(n); }
 
 		#endregion Casting
@@ -459,19 +673,32 @@ namespace SharpBag.Math
 			else b.NormalizeTo(a);
 		}
 
+		/// <summary>
+		/// Returns a BigDecimal with the specified precision.
+		/// </summary>
+		/// <param name="precision">The precision.</param>
+		/// <returns>A BigDecimal with the specified precision.</returns>
 		public BigDecimal WithPrecision(int precision)
 		{
 			Contract.Requires(precision >= 0);
 			return new BigDecimal(this, precision);
 		}
 
+		/// <summary>
+		/// Object.GetHashCode();
+		/// </summary>
+		/// <returns>The hash code of the current instance.</returns>
 		public override int GetHashCode()
 		{
-			return this.Mantissa.GetHashCode() ^ this.Exponent;
+			return this.Mantissa.GetHashCode() ^ this.Exponent.GetHashCode();
 		}
 
 		private string _ToStringCache;
 
+		/// <summary>
+		/// Object.ToString()
+		/// </summary>
+		/// <returns>The string representation of the BigDecimal.</returns>
 		public override string ToString()
 		{
 			if (_ToStringCache != null) return _ToStringCache;
