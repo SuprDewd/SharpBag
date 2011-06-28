@@ -2,20 +2,21 @@
  TODO:
 
 	- Add more unit tests.
-	- Cycle detection.
 	- IsPowerOfTwo, NextPowerOfTwo, IsSquare, NextSquare...
-	- BigDecimal class.
-	- Matrix class.
-	- Complex number class.
+	- Finish BigDecimal class.
 	- ModPow for int / long.
 	- Integer partitions.
-	- Look for better Miller-Rabin.
 	- Better perfect number sequence. (2^(p - 1) * (2^p - 1))
 	- Extended Euclid.
+	- Better DivisorSum (use primes).
 
 
  MAYBE:
-
+ 
+	- Look for better Miller-Rabin primality test.
+	- Cycle detection.
+	- Matrix class.
+	- Complex number class.
 	- Add arithmetic overflow checks.
 	- Replace DOTNET4 with USECODECONSTRAINTS (or something built-in with Code Contracts) where applicable.
 	- Binomial coefficients.
