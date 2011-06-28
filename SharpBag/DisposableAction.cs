@@ -13,7 +13,7 @@ namespace SharpBag
 	/// <summary>
 	/// Makes an action disposable.
 	/// </summary>
-	public class ActionDisposable : IDisposable
+	public class DisposableAction : IDisposable
 	{
 		private readonly Action DisposeAction;
 
@@ -21,7 +21,7 @@ namespace SharpBag
 		/// The constructor.
 		/// </summary>
 		/// <param name="action">The action to execute when the current instance is disposed.</param>
-		public ActionDisposable(Action action)
+		public DisposableAction(Action action)
 		{
 #if DOTNET4
 			Contract.Requires(action != null);

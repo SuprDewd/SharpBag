@@ -5987,22 +5987,6 @@
             <param name="array">The array.</param>
             <returns>The sorted array.</returns>
         </member>
-        <member name="T:SharpBag.ActionDisposable">
-            <summary>
-            Makes an action disposable.
-            </summary>
-        </member>
-        <member name="M:SharpBag.ActionDisposable.#ctor(System.Action)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="action">The action to execute when the current instance is disposed.</param>
-        </member>
-        <member name="M:SharpBag.ActionDisposable.Dispose">
-            <summary>
-            The disposer which executes the dispose action.
-            </summary>
-        </member>
         <member name="T:SharpBag.Networking.PacketEventArgs">
             <summary>
             Packet-event arguments.
@@ -7421,6 +7405,22 @@
         <member name="P:SharpBag.Matcher`2.DefaultValue">
             <summary>
             The default value.
+            </summary>
+        </member>
+        <member name="T:SharpBag.DisposableAction">
+            <summary>
+            Makes an action disposable.
+            </summary>
+        </member>
+        <member name="M:SharpBag.DisposableAction.#ctor(System.Action)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="action">The action to execute when the current instance is disposed.</param>
+        </member>
+        <member name="M:SharpBag.DisposableAction.Dispose">
+            <summary>
+            The disposer which executes the dispose action.
             </summary>
         </member>
     </members>
