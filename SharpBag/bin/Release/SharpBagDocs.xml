@@ -223,18 +223,18 @@
             <param name="value">The value of the decimal.</param>
             <param name="precision">The maximum amount of digits after the decimal point.</param>
         </member>
+        <member name="M:SharpBag.Math.BigDecimal.#ctor(System.Numerics.BigInteger)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="value">The value of the decimal.</param>
+        </member>
         <member name="M:SharpBag.Math.BigDecimal.#ctor(System.Numerics.BigInteger,System.Int32)">
             <summary>
             The constructor.
             </summary>
             <param name="value">The value of the decimal.</param>
             <param name="precision">The maximum amount of digits after the decimal point.</param>
-        </member>
-        <member name="M:SharpBag.Math.BigDecimal.#ctor(System.Numerics.BigInteger)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="value">The value of the decimal.</param>
         </member>
         <member name="M:SharpBag.Math.BigDecimal.#ctor(System.Single)">
             <summary>
@@ -2636,7 +2636,7 @@
             Mathematical constants.
             </summary>
         </member>
-        <member name="P:SharpBag.Math.Constants.GoldenRatio">
+        <member name="P:SharpBag.Math.Constants.TheGoldenRatio">
             <summary>
             The golden ratio.
             </summary>

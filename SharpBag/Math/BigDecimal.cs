@@ -19,6 +19,8 @@ namespace SharpBag.Math
 
 		private const int DefaultPrecision = 32;
 
+		private const int ExtraPrecision = 20;
+
 		private const int Radix = 10;
 
 		private const int RadixPow2 = 100;
@@ -51,6 +53,10 @@ namespace SharpBag.Math
 
 		private bool Normalized { get { return _Normalized; } set { _Normalized = value; } }
 
+		private bool _UsingDefaultPrecision;
+
+		public bool UsingDefaultPrecision { get { return _UsingDefaultPrecision; } set { _UsingDefaultPrecision = value; } }
+
 		#endregion Properties
 
 		#region Static Instances
@@ -78,55 +84,61 @@ namespace SharpBag.Math
 		/// The constructor.
 		/// </summary>
 		/// <param name="value">The value of the decimal.</param>
-		public BigDecimal(int value) : this(value, 0, DefaultPrecision, false) { }
+		public BigDecimal(int value) : this(value, DefaultPrecision, true) { }
 
 		/// <summary>
 		/// The constructor.
 		/// </summary>
 		/// <param name="value">The value of the decimal.</param>
 		/// <param name="precision">The maximum amount of digits after the decimal point.</param>
-		public BigDecimal(int value, int precision) : this(value, 0, precision, false) { }
+		public BigDecimal(int value, int precision) : this(value, precision, false) { }
+
+		private BigDecimal(int value, int precision, bool defaultPrecision) : this(value, 0, precision, false, defaultPrecision) { }
 
 		/// <summary>
 		/// The constructor.
 		/// </summary>
 		/// <param name="value">The value of the decimal.</param>
-		public BigDecimal(long value) : this(value, 0, DefaultPrecision, false) { }
-
-		/// <summary>
-		/// The constructor.
-		/// </summary>
-		/// <param name="value">The value of the decimal.</param>
-		/// <param name="precision">The maximum amount of digits after the decimal point.</param>
-		public BigDecimal(long value, int precision) : this(value, 0, precision, false) { }
+		public BigDecimal(long value) : this(value, DefaultPrecision, true) { }
 
 		/// <summary>
 		/// The constructor.
 		/// </summary>
 		/// <param name="value">The value of the decimal.</param>
 		/// <param name="precision">The maximum amount of digits after the decimal point.</param>
-		public BigDecimal(BigInteger value, int precision) : this(value, 0, precision, false) { }
+		public BigDecimal(long value, int precision) : this(value, precision, false) { }
+
+		private BigDecimal(long value, int precision, bool defaultPrecision) : this(value, 0, precision, false, defaultPrecision) { }
 
 		/// <summary>
 		/// The constructor.
 		/// </summary>
 		/// <param name="value">The value of the decimal.</param>
-		public BigDecimal(BigInteger value) : this(value, 0, DefaultPrecision, false) { }
-
-		/// <summary>
-		/// The constructor.
-		/// </summary>
-		/// <param name="value">The value of the decimal.</param>
-		public BigDecimal(float value) : this(value, DefaultPrecision) { }
+		public BigDecimal(BigInteger value) : this(value, DefaultPrecision, true) { }
 
 		/// <summary>
 		/// The constructor.
 		/// </summary>
 		/// <param name="value">The value of the decimal.</param>
 		/// <param name="precision">The maximum amount of digits after the decimal point.</param>
-		public BigDecimal(float value, int precision) : this(value, DefaultPrecision, false) { }
+		public BigDecimal(BigInteger value, int precision) : this(value, precision, false) { }
 
-		private BigDecimal(float value, int precision, bool normalized)
+		private BigDecimal(BigInteger value, int precision, bool defaultPrecision) : this(value, 0, precision, false, defaultPrecision) { }
+
+		/// <summary>
+		/// The constructor.
+		/// </summary>
+		/// <param name="value">The value of the decimal.</param>
+		public BigDecimal(float value) : this(value, DefaultPrecision, false, true) { }
+
+		/// <summary>
+		/// The constructor.
+		/// </summary>
+		/// <param name="value">The value of the decimal.</param>
+		/// <param name="precision">The maximum amount of digits after the decimal point.</param>
+		public BigDecimal(float value, int precision) : this(value, precision, false, false) { }
+
+		private BigDecimal(float value, int precision, bool normalized, bool defaultPrecision)
 		{
 			Contract.Requires(precision >= 0);
 			string[] srep = value.ToString("R").Split('E');
@@ -137,6 +149,7 @@ namespace SharpBag.Math
 			_Exponent = srep.Length == 2 ? (parsed.Exponent + Convert.ToInt32(srep[1])) : parsed.Exponent;
 			_Precision = precision;
 			_Normalized = normalized;
+			_UsingDefaultPrecision = defaultPrecision;
 
 			this.FixPrecision();
 			this.Normalize();
@@ -146,16 +159,16 @@ namespace SharpBag.Math
 		/// The constructor.
 		/// </summary>
 		/// <param name="value">The value of the decimal.</param>
-		public BigDecimal(double value) : this(value, DefaultPrecision) { }
+		public BigDecimal(double value) : this(value, DefaultPrecision, false, true) { }
 
 		/// <summary>
 		/// The constructor.
 		/// </summary>
 		/// <param name="value">The value of the decimal.</param>
 		/// <param name="precision">The maximum amount of digits after the decimal point.</param>
-		public BigDecimal(double value, int precision) : this(value, precision, false) { }
+		public BigDecimal(double value, int precision) : this(value, precision, false, false) { }
 
-		private BigDecimal(double value, int precision, bool normalized)
+		private BigDecimal(double value, int precision, bool normalized, bool defaultPrecision)
 		{
 			Contract.Requires(precision >= 0);
 			string[] srep = value.ToString("R").Split('E');
@@ -166,6 +179,7 @@ namespace SharpBag.Math
 			_Exponent = srep.Length == 2 ? (parsed.Exponent + Convert.ToInt32(srep[1])) : parsed.Exponent;
 			_Precision = precision;
 			_Normalized = normalized;
+			_UsingDefaultPrecision = defaultPrecision;
 
 			this.FixPrecision();
 			this.Normalize();
@@ -175,16 +189,16 @@ namespace SharpBag.Math
 		/// The constructor.
 		/// </summary>
 		/// <param name="value">The value of the decimal.</param>
-		public BigDecimal(BigDecimal value) : this(value.Mantissa, value.Exponent, value.Precision, value.Normalized) { }
+		public BigDecimal(BigDecimal value) : this(value.Mantissa, value.Exponent, value.Precision, value.Normalized, value.UsingDefaultPrecision) { }
 
 		/// <summary>
 		/// The constructor.
 		/// </summary>
 		/// <param name="value">The value of the decimal.</param>
 		/// <param name="precision">The maximum amount of digits after the decimal point.</param>
-		public BigDecimal(BigDecimal value, int precision) : this(value.Mantissa, value.Exponent, precision, value.Normalized) { }
+		public BigDecimal(BigDecimal value, int precision) : this(value.Mantissa, value.Exponent, precision, value.Normalized, false) { }
 
-		private BigDecimal(BigInteger value, int exponent, int precision, bool normalized)
+		private BigDecimal(BigInteger value, int exponent, int precision, bool normalized, bool defaultPrecision)
 		{
 			Contract.Requires(precision >= 0);
 			_ToStringCache = null;
@@ -192,6 +206,7 @@ namespace SharpBag.Math
 			_Exponent = exponent;
 			_Precision = precision;
 			_Normalized = normalized;
+			_UsingDefaultPrecision = defaultPrecision;
 
 			this.FixPrecision();
 			this.Normalize();
@@ -204,12 +219,56 @@ namespace SharpBag.Math
 		/// <returns>The BigDecimal represented by the string.</returns>
 		public static BigDecimal Parse(string value)
 		{
-			BigDecimal parsed = BigDecimal.Parse(value, Int32.MaxValue);
+			/*BigDecimal parsed = BigDecimal.Parse(value, Int32.MaxValue);
 			int precision = parsed.Precision;
 			precision = -parsed.Exponent;
+			bool defaultPrecision = true;
 			if (precision < DefaultPrecision) precision = DefaultPrecision;
-			if (precision != parsed.Precision) parsed.Precision = precision;
-			return parsed;
+			if (precision != parsed.Precision)
+			{
+				parsed.Precision = precision;
+				defaultPrecision = false;
+			}
+
+			parsed.UsingDefaultPrecision = defaultPrecision;
+			return parsed;*/
+
+			value = value.Trim();
+			int exp = 0;
+			BigInteger mantissa = 0;
+			bool foundComma = false;
+			int i = 0;
+			bool neg = false;
+			if (value[0] == '-')
+			{
+				neg = true;
+				i++;
+			}
+
+			for (; i < value.Length; i++)
+			{
+				if (value[i] == '.' || value[i] == ',')
+				{
+					if (foundComma) throw new FormatException();
+					foundComma = true;
+					continue;
+				}
+
+				if (!Char.IsDigit(value[i])) throw new FormatException();
+				if (foundComma) exp--;
+				mantissa *= 10;
+				mantissa += value[i] - '0';
+			}
+
+			bool defaultP = false;
+			int precision = -exp;
+			if (precision < DefaultPrecision)
+			{
+				precision = DefaultPrecision;
+				defaultP = true;
+			}
+
+			return new BigDecimal(neg ? -mantissa : mantissa, exp, precision, false, defaultP);
 		}
 
 		/// <summary>
@@ -248,7 +307,7 @@ namespace SharpBag.Math
 				mantissa += value[i] - '0';
 			}
 
-			return new BigDecimal(neg ? -mantissa : mantissa, exp, precision, false);
+			return new BigDecimal(neg ? -mantissa : mantissa, exp, precision, false, false);
 		}
 
 		#endregion Constructors / Factories
@@ -297,7 +356,7 @@ namespace SharpBag.Math
 		private BigDecimal Add(BigDecimal right, bool normalize)
 		{
 			BigDecimal.Normalize(ref this, ref right);
-			BigDecimal result = new BigDecimal(this.Mantissa + right.Mantissa, this.Exponent, this.Precision > right.Precision ? this.Precision : right.Precision, false);
+			BigDecimal result = new BigDecimal(this.Mantissa + right.Mantissa, this.Exponent, BigDecimal.PrecisionFor(ref this, ref right), false, this.UsingDefaultPrecision != right.UsingDefaultPrecision || this.UsingDefaultPrecision);
 
 			if (normalize)
 			{
@@ -316,7 +375,7 @@ namespace SharpBag.Math
 		private BigDecimal Subtract(BigDecimal right, bool normalize)
 		{
 			BigDecimal.Normalize(ref this, ref right);
-			BigDecimal result = new BigDecimal(this.Mantissa - right.Mantissa, this.Exponent, this.Precision > right.Precision ? this.Precision : right.Precision, false);
+			BigDecimal result = new BigDecimal(this.Mantissa - right.Mantissa, this.Exponent, BigDecimal.PrecisionFor(ref this, ref right), false, this.UsingDefaultPrecision != right.UsingDefaultPrecision || this.UsingDefaultPrecision);
 
 			if (normalize)
 			{
@@ -334,19 +393,19 @@ namespace SharpBag.Math
 
 		private BigDecimal Negate()
 		{
-			return new BigDecimal(-this.Mantissa, this.Exponent, this.Precision, this.Normalized);
+			return new BigDecimal(-this.Mantissa, this.Exponent, this.Precision, this.Normalized, this.UsingDefaultPrecision);
 		}
 
 		private BigDecimal Multiply(BigDecimal right)
 		{
 			int z = this.Exponent + right.Exponent;
 			BigInteger m = this.Mantissa * right.Mantissa;
-			return new BigDecimal(m, z, this.Precision > right.Precision ? this.Precision : right.Precision, false);
+			return new BigDecimal(m, z, BigDecimal.PrecisionFor(ref this, ref right), false, this.UsingDefaultPrecision != right.UsingDefaultPrecision || this.UsingDefaultPrecision);
 		}
 
 		private BigDecimal Divide(BigDecimal right)
 		{
-			int precision = (this.Precision > right.Precision ? this.Precision : right.Precision) + 2,
+			int precision = BigDecimal.PrecisionFor(ref this, ref right) + BigDecimal.ExtraPrecision + 2,
 				exponent = this.Exponent - right.Exponent,
 				iterations = 0;
 
@@ -368,7 +427,7 @@ namespace SharpBag.Math
 				if (mantissa != 0) iterations++;
 			}
 
-			return new BigDecimal(pos ? mantissa : -mantissa, exponent, precision - 2, false);
+			return new BigDecimal(pos ? mantissa : -mantissa, exponent, precision - BigDecimal.ExtraPrecision - 2, false, this.UsingDefaultPrecision != right.UsingDefaultPrecision || this.UsingDefaultPrecision);
 		}
 
 		/// <summary>
@@ -379,22 +438,30 @@ namespace SharpBag.Math
 		/// <returns>The BigDecimal raised to the specified power.</returns>
 		public static BigDecimal Pow(BigDecimal value, int power)
 		{
-			Contract.Requires(power >= 0);
-			if (power == 0) return new BigDecimal(1, 0, value.Precision, true);
+			if (power < 0) return BigDecimal.Reciprocal(BigDecimal.Pow(value, -power));
+			if (power == 0) return new BigDecimal(1, 0, value.Precision, true, value.UsingDefaultPrecision);
 			if (power == 1) return new BigDecimal(value);
-			if (power == 2) return value.Multiply(value);
-			if (power == 3) return value.Multiply(value).Multiply(value);
+			if (power == 2) return value * value;
+			if (power == 3) return value * value * value;
 
 			if (power % 2 == 0)
 			{
 				BigDecimal temp = BigDecimal.Pow(value, power / 2);
-				return temp.Multiply(temp);
+				return temp * temp;
 			}
 			else
 			{
 				BigDecimal temp = BigDecimal.Pow(value, (power - 1) / 2);
-				return temp.Multiply(temp).Multiply(value);
+				return temp * temp * value;
 			}
+		}
+
+		public static BigDecimal Pow(BigDecimal value, BigDecimal power)
+		{
+			if (power < 0) return BigDecimal.Reciprocal(BigDecimal.Pow(value, -power));
+			if (power == 0) return new BigDecimal(1, 0, value.Precision, true, value.UsingDefaultPrecision);
+			if (power == 1) return new BigDecimal(value);
+			return BigDecimal.Exp(BigDecimal.Ln(value) * power);
 		}
 
 		/// <summary>
@@ -408,17 +475,24 @@ namespace SharpBag.Math
 			int a = (int)BigInteger.Log10(value.Mantissa) + value.Exponent;
 			BigDecimal m = value;
 			BigInteger mantissa = a;
-			int digits = 0;
+			int digits = 0,
+				precision = value.Precision + BigDecimal.ExtraPrecision;
 
-			while (digits < value.Precision)
+			while (digits < precision)
 			{
-				m = BigDecimal.Pow(new BigDecimal(m, value.Precision).Divide(BigInteger.Pow(10, a)), 10);
+				// m = BigDecimal.Pow(new BigDecimal(m, value.Precision).Divide(BigInteger.Pow(10, a)), 10);
+				m = BigDecimal.Pow(m / BigInteger.Pow(10, a), 10);
 				a = (int)BigInteger.Log10(m.Mantissa) + m.Exponent;
 				mantissa = mantissa * 10 + a;
 				digits++;
 			}
 
-			return new BigDecimal(mantissa, -digits, value.Precision, false).RoundLastDigit();
+			return new BigDecimal(mantissa, -digits, value.Precision, false, value.UsingDefaultPrecision) /*.RoundLastDigit()*/;
+		}
+
+		public static BigDecimal Ln(BigDecimal value)
+		{
+			return BigDecimal.Log10(value) / Constants.Log10EBig(value.Precision);
 		}
 
 		/// <summary>
@@ -429,7 +503,8 @@ namespace SharpBag.Math
 		/// <returns>The logarithm of the BigDecimal in the specified base.</returns>
 		public static BigDecimal Log(BigDecimal value, BigDecimal logBase)
 		{
-			return BigDecimal.Log10(value).Divide(BigDecimal.Log10(logBase));
+			int precision = BigDecimal.PrecisionFor(ref value, ref logBase);
+			return BigDecimal.Log10(value.WithPrecision(precision)) / BigDecimal.Log10(logBase.WithPrecision(precision));
 		}
 
 		/// <summary>
@@ -440,7 +515,7 @@ namespace SharpBag.Math
 		public static BigDecimal Sqrt(BigDecimal value)
 		{
 			Contract.Requires(value >= 0);
-			if (value.Mantissa == 0) return new BigDecimal(0, 0, value.Precision, true);
+			if (value.Mantissa == 0) return new BigDecimal(0, 0, value.Precision, true, value.UsingDefaultPrecision);
 			BigDecimal sqrt = new BigDecimal(1, value.Precision + 1), last, two = new BigDecimal(2, value.Precision + 1);
 
 			do
@@ -450,8 +525,7 @@ namespace SharpBag.Math
 			}
 			while (sqrt != last);
 
-			sqrt.Precision--;
-			return sqrt;
+			return sqrt.WithPrecision(value.Precision);
 		}
 
 		/// <summary>
@@ -462,6 +536,24 @@ namespace SharpBag.Math
 		public static BigDecimal Reciprocal(BigDecimal value)
 		{
 			return BigDecimal.PositiveOne / value;
+		}
+
+		public static BigDecimal Exp(BigDecimal value)
+		{
+			BigDecimal result = value.WithPrecision(value.Precision + 4) + BigDecimal.PositiveOne,
+					   lastResult, factorial = BigDecimal.PositiveOne;
+
+			int n = 2;
+
+			do
+			{
+				lastResult = result;
+				factorial = factorial * n;
+				result = result + BigDecimal.Pow(value, n) / factorial;
+				n++;
+			} while (result != lastResult);
+
+			return result.WithPrecision(value.Precision);
 		}
 
 		#endregion Operators
@@ -519,7 +611,7 @@ namespace SharpBag.Math
 		private bool Equals(BigDecimal other, bool normalize)
 		{
 			BigDecimal.Normalize(ref this, ref other);
-			bool eq = this.Mantissa.Equals(other.Mantissa);
+			bool eq = this.WithoutExtraPrecision().Mantissa.Equals(other.WithoutExtraPrecision().Mantissa);
 
 			if (normalize)
 			{
@@ -553,7 +645,7 @@ namespace SharpBag.Math
 		private int CompareTo(BigDecimal other, bool normalize)
 		{
 			BigDecimal.Normalize(ref this, ref other);
-			int cmp = this.Mantissa.CompareTo(other.Mantissa);
+			int cmp = this.WithoutExtraPrecision().Mantissa.CompareTo(other.WithoutExtraPrecision().Mantissa);
 
 			if (normalize)
 			{
@@ -617,22 +709,41 @@ namespace SharpBag.Math
 
 		private BigDecimal RoundLastDigit()
 		{
-			this.Normalize();
-			if (this.Exponent >= 0 || this.Mantissa % 10 != 9) return new BigDecimal(this);
-			return new BigDecimal(this.Mantissa + 1, this.Exponent, this.Precision, false);
+			return this;
+			// this.Normalize();
+			// if (this.Exponent >= 0 || this.Mantissa % 10 != 9) return new BigDecimal(this);
+			// return new BigDecimal(this.Mantissa + 1, this.Exponent, this.Precision, false);
 		}
 
 		private void FixPrecision()
 		{
 			if (this.Exponent < 0)
 			{
-				int n = -this.Exponent - this.Precision;
+				int n = -this.Exponent - this.Precision - BigDecimal.ExtraPrecision;
 				if (n > 0)
 				{
 					this.Mantissa /= BigInteger.Pow(10, n);
 					this.Exponent += n;
 				}
 			}
+		}
+
+		private BigDecimal WithoutExtraPrecision()
+		{
+			BigInteger mantissa = this.Mantissa;
+			int exponent = this.Exponent;
+
+			if (exponent < 0)
+			{
+				int n = -exponent - this.Precision;
+				if (n > 0)
+				{
+					mantissa /= BigInteger.Pow(10, n);
+					exponent += n;
+				}
+			}
+
+			return new BigDecimal(mantissa, exponent, this.Precision, false, this.UsingDefaultPrecision);
 		}
 
 		private void Normalize()
@@ -673,6 +784,12 @@ namespace SharpBag.Math
 			else b.NormalizeTo(a);
 		}
 
+		private static int PrecisionFor(ref BigDecimal a, ref BigDecimal b)
+		{
+			if (a.UsingDefaultPrecision == b.UsingDefaultPrecision) return a.Precision > b.Precision ? a.Precision : b.Precision;
+			else return a.UsingDefaultPrecision ? b.Precision : a.Precision;
+		}
+
 		/// <summary>
 		/// Returns a BigDecimal with the specified precision.
 		/// </summary>
@@ -702,10 +819,12 @@ namespace SharpBag.Math
 		public override string ToString()
 		{
 			if (_ToStringCache != null) return _ToStringCache;
-			bool positive = this.Mantissa >= 0;
-			StringBuilder sb = new StringBuilder((positive ? this.Mantissa : -this.Mantissa).ToString());
 
-			int exp = this.Exponent,
+			BigDecimal withoutExtra = this.WithoutExtraPrecision();
+			bool positive = withoutExtra.Mantissa >= 0;
+			StringBuilder sb = new StringBuilder((positive ? withoutExtra.Mantissa : -withoutExtra.Mantissa).ToString());
+
+			int exp = withoutExtra.Exponent,
 				index = sb.Length + exp;
 
 			if (index > sb.Length)
