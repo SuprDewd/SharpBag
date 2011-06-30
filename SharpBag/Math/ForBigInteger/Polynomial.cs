@@ -7,6 +7,7 @@ namespace SharpBag.Math.ForBigInteger
 {
 #if DOTNET4
 
+	using System.Diagnostics.Contracts;
 	using System.Numerics;
 
 	/// <summary>
@@ -251,10 +252,10 @@ namespace SharpBag.Math.ForBigInteger
 		}
 
 		/// <summary>
-		/// Differentiates the polynomial.
+		/// Finds the derivative of the polynomial.
 		/// </summary>
-		/// <returns>The differentiated polynomial.</returns>
-		public Polynomial Differentiate()
+		/// <returns>The derivative of the polynomial.</returns>
+		public Polynomial Derivative()
 		{
 			BigInteger[] coefficients = new BigInteger[this.Degree];
 
@@ -264,6 +265,25 @@ namespace SharpBag.Math.ForBigInteger
 			}
 
 			return new Polynomial(coefficients);
+		}
+
+		/// <summary>
+		/// Finds the i-th derivative of the polynomial.
+		/// </summary>
+		/// <param name="i">The i.</param>
+		/// <returns>The i-th derivative of the polynomial.</returns>
+		public Polynomial Derivative(int i)
+		{
+#if DOTNET4
+			Contract.Requires(i >= 0);
+#endif
+			Polynomial derivative = this;
+			for (int j = 0; j < i; j++)
+			{
+				derivative = derivative.Derivative();
+			}
+
+			return derivative;
 		}
 
 		/// <summary>

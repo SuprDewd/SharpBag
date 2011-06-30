@@ -401,6 +401,8 @@ namespace SharpBag.Math
 
 		#endregion Casting
 
+		#region Other
+
 		private BigDecimal RoundLastDigit()
 		{
 			this.Normalize();
@@ -504,6 +506,8 @@ namespace SharpBag.Math
 			if (res[res.Length - 1] == '.') res = res.Substring(0, res.Length - 1);
 			return _ToStringCache = res;
 		}
+
+		#endregion Other
 	}
 
 #endif

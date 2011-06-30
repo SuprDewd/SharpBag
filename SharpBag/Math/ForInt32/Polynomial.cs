@@ -6,6 +6,7 @@ using System.Text;
 #if DOTNET4
 
 using System.Numerics;
+using System.Diagnostics.Contracts;
 
 #endif
 
@@ -253,10 +254,10 @@ namespace SharpBag.Math.ForInt32
 		}
 
 		/// <summary>
-		/// Differentiates the polynomial.
+		/// Finds the derivative of the polynomial.
 		/// </summary>
-		/// <returns>The differentiated polynomial.</returns>
-		public Polynomial Differentiate()
+		/// <returns>The derivative of the polynomial.</returns>
+		public Polynomial Derivative()
 		{
 			int[] coefficients = new int[this.Degree];
 
@@ -266,6 +267,25 @@ namespace SharpBag.Math.ForInt32
 			}
 
 			return new Polynomial(coefficients);
+		}
+
+		/// <summary>
+		/// Finds the i-th derivative of the polynomial.
+		/// </summary>
+		/// <param name="i">The i.</param>
+		/// <returns>The i-th derivative of the polynomial.</returns>
+		public Polynomial Derivative(int i)
+		{
+#if DOTNET4
+			Contract.Requires(i >= 0);
+#endif
+			Polynomial derivative = this;
+			for (int j = 0; j < i; j++)
+			{
+				derivative = derivative.Derivative();
+			}
+
+			return derivative;
 		}
 
 		/// <summary>

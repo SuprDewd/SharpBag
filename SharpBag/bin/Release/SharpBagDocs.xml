@@ -3134,11 +3134,18 @@
             <param name="n">The value to cast.</param>
             <returns>The polynomial.</returns>
         </member>
-        <member name="M:SharpBag.Math.ForLong.Polynomial.Differentiate">
+        <member name="M:SharpBag.Math.ForLong.Polynomial.Derivative">
             <summary>
-            Differentiates the polynomial.
+            Finds the derivative of the polynomial.
             </summary>
-            <returns>The differentiated polynomial.</returns>
+            <returns>The derivative of the polynomial.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForLong.Polynomial.Derivative(System.Int32)">
+            <summary>
+            Finds the i-th derivative of the polynomial.
+            </summary>
+            <param name="i">The i.</param>
+            <returns>The i-th derivative of the polynomial.</returns>
         </member>
         <member name="M:SharpBag.Math.ForLong.Polynomial.ToString">
             <summary>
@@ -4716,11 +4723,18 @@
             <param name="n">The value to cast.</param>
             <returns>The polynomial.</returns>
         </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.Differentiate">
+        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.Derivative">
             <summary>
-            Differentiates the polynomial.
+            Finds the derivative of the polynomial.
             </summary>
-            <returns>The differentiated polynomial.</returns>
+            <returns>The derivative of the polynomial.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.Derivative(System.Int32)">
+            <summary>
+            Finds the i-th derivative of the polynomial.
+            </summary>
+            <param name="i">The i.</param>
+            <returns>The i-th derivative of the polynomial.</returns>
         </member>
         <member name="M:SharpBag.Math.ForBigInteger.Polynomial.ToString">
             <summary>
@@ -5784,11 +5798,18 @@
             <param name="n">The value to cast.</param>
             <returns>The polynomial.</returns>
         </member>
-        <member name="M:SharpBag.Math.ForInt32.Polynomial.Differentiate">
+        <member name="M:SharpBag.Math.ForInt32.Polynomial.Derivative">
             <summary>
-            Differentiates the polynomial.
+            Finds the derivative of the polynomial.
             </summary>
-            <returns>The differentiated polynomial.</returns>
+            <returns>The derivative of the polynomial.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForInt32.Polynomial.Derivative(System.Int32)">
+            <summary>
+            Finds the i-th derivative of the polynomial.
+            </summary>
+            <param name="i">The i.</param>
+            <returns>The i-th derivative of the polynomial.</returns>
         </member>
         <member name="M:SharpBag.Math.ForInt32.Polynomial.ToString">
             <summary>
@@ -7346,11 +7367,18 @@
             <param name="n">The value to cast.</param>
             <returns>The polynomial.</returns>
         </member>
-        <member name="M:SharpBag.Math.ForDouble.Polynomial.Differentiate">
+        <member name="M:SharpBag.Math.ForDouble.Polynomial.Derivative">
             <summary>
-            Differentiates the polynomial.
+            Finds the derivative of the polynomial.
             </summary>
-            <returns>The differentiated polynomial.</returns>
+            <returns>The derivative of the polynomial.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Polynomial.Derivative(System.Int32)">
+            <summary>
+            Finds the i-th derivative of the polynomial.
+            </summary>
+            <param name="i">The i.</param>
+            <returns>The i-th derivative of the polynomial.</returns>
         </member>
         <member name="M:SharpBag.Math.ForDouble.Polynomial.ToString">
             <summary>
