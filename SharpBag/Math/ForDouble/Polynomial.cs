@@ -127,6 +127,11 @@ namespace SharpBag.Math.ForDouble
 			return new Polynomial(subtracted);
 		}
 
+		/// <summary>
+		/// Negate the specified polynomial.
+		/// </summary>
+		/// <param name="value">The polynomial.</param>
+		/// <returns>The negated polynomial.</returns>
 		public static Polynomial operator -(Polynomial value)
 		{
 			double[] negated = new double[value.Coefficients.Length];

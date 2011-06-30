@@ -66,16 +66,13 @@ namespace SharpBag.Math.ForInt32
 		/// <returns>The result.</returns>
 		public int Evaluate(int x)
 		{
-			int sum = 0,
-				   pow = 1;
-
-			for (int i = 0; i <= this.Degree; i++)
+			int result = 0;
+			for (int i = this.Degree; i >= 0; i--)
 			{
-				if (i != 0) pow *= x;
-				sum += this[i] * pow;
+				result = result * x + this[i];
 			}
 
-			return sum;
+			return result;
 		}
 
 		/// <summary>
@@ -137,6 +134,18 @@ namespace SharpBag.Math.ForInt32
 		}
 
 		/// <summary>
+		/// Negate the specified polynomial.
+		/// </summary>
+		/// <param name="value">The polynomial.</param>
+		/// <returns>The negated polynomial.</returns>
+		public static Polynomial operator -(Polynomial value)
+		{
+			int[] negated = new int[value.Coefficients.Length];
+			for (int i = 0; i < value.Coefficients.Length; i++) negated[i] = -value[i];
+			return new Polynomial(negated);
+		}
+
+		/// <summary>
 		/// Multiply the specified polynomials.
 		/// </summary>
 		/// <param name="left">The left polynomial.</param>
@@ -157,6 +166,80 @@ namespace SharpBag.Math.ForInt32
 			}
 
 			return new Polynomial(multiplied);
+		}
+
+		/// <summary>
+		/// Divide the specified polynomials.
+		/// </summary>
+		/// <param name="left">The left polynomial.</param>
+		/// <param name="right">The right polynomial.</param>
+		/// <returns>The result.</returns>
+		public static Polynomial operator /(Polynomial left, Polynomial right)
+		{
+			if (left.Degree >= right.Degree)
+			{
+				Polynomial q = new Polynomial(0);
+
+				while (left.Degree >= right.Degree)
+				{
+					Polynomial d = right * OfDegree(left.Degree - right.Degree, 1);
+					q[left.Degree - right.Degree] = left[left.Degree] / d[d.Degree];
+					d = d * q[left.Degree - right.Degree];
+					left = left - d;
+
+					if (left.Degree == 0 && right.Degree == 0) return new Polynomial(0);
+				}
+
+				return q;
+			}
+			else
+			{
+				return new Polynomial(0);
+			}
+		}
+
+		/// <summary>
+		/// Divide the specified polynomials.
+		/// </summary>
+		/// <param name="left">The left polynomial.</param>
+		/// <param name="right">The right polynomial.</param>
+		/// <param name="remainder">The remainder.</param>
+		/// <returns>The result.</returns>
+		public static Polynomial DivRem(Polynomial left, Polynomial right, out Polynomial remainder)
+		{
+			if (left.Degree >= right.Degree)
+			{
+				Polynomial q = new Polynomial(0);
+
+				while (left.Degree >= right.Degree)
+				{
+					Polynomial d = right * Polynomial.OfDegree(left.Degree - right.Degree, 1);
+					q[left.Degree - right.Degree] = left[left.Degree] / d[d.Degree];
+					d = d * q[left.Degree - right.Degree];
+					left = left - d;
+
+					if (left.Degree == 0 && right.Degree == 0)
+					{
+						remainder = left;
+						return new Polynomial(0);
+					}
+				}
+
+				remainder = left;
+				return q;
+			}
+			else
+			{
+				remainder = left;
+				return new Polynomial(0);
+			}
+		}
+
+		private static Polynomial OfDegree(int degree, int coefficient)
+		{
+			int[] c = new int[degree + 1];
+			c[degree] = coefficient;
+			return new Polynomial(c);
 		}
 
 		/// <summary>
