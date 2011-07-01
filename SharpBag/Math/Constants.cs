@@ -37,7 +37,8 @@ namespace SharpBag.Math
 		{
 			if (_TheGoldenRatioReciprocalBig.Precision < precision)
 			{
-				_TheGoldenRatioReciprocalBig = TheGoldenRatioBig(precision) - 1;
+				Constants.TheGoldenRatioBig(precision);
+				_TheGoldenRatioReciprocalBig = _TheGoldenRatioBig - 1;
 			}
 
 			return _TheGoldenRatioReciprocalBig.WithPrecision(precision);
@@ -64,7 +65,8 @@ namespace SharpBag.Math
 		{
 			if (_Log10EBig.Precision < precision)
 			{
-				_Log10EBig = BigDecimal.Log10(Constants.EBig(precision + 10));
+				Constants.EBig(precision);
+				_Log10EBig = BigDecimal.Log10(_EBig.WithPrecision(precision + 10));
 			}
 
 			return _Log10EBig.WithPrecision(precision);
@@ -113,16 +115,20 @@ namespace SharpBag.Math
 		#region Pi
 
 		private static BigDecimal _PiBig = BigDecimal.Parse("3.14159265358979323846264338327950288419716939937511");
+		private static BigDecimal _TwoPiBig = BigDecimal.Parse("6.28318530717958647692528676655900576839433879875021");
+		private static BigDecimal _PiDivTwoBig = BigDecimal.Parse("1.57079632679489661923132169163975144209858469968755");
 
 		public static BigDecimal PiBig(int precision)
 		{
 			if (_PiBig.Precision < precision)
 			{
+				Constants.Sqrt2Big(precision);
+
 				BigDecimal one = BigDecimal.PositiveOne.WithPrecision(precision + 10),
 						   two = new BigDecimal(2, precision + 10),
 						   four = new BigDecimal(4, precision + 10),
 						   lastA = one,
-						   lastB = one / Constants.Sqrt2Big(precision + 10),
+						   lastB = one / _Sqrt2Big.WithPrecision(precision + 10),
 						   lastT = one / four,
 						   lastP = one;
 
@@ -148,6 +154,28 @@ namespace SharpBag.Math
 			}
 
 			return _PiBig.WithPrecision(precision);
+		}
+
+		public static BigDecimal TwoPiBig(int precision)
+		{
+			if (_TwoPiBig.Precision < precision)
+			{
+				Constants.PiBig(precision);
+				_TwoPiBig = 2 * _PiBig;
+			}
+
+			return _TwoPiBig.WithPrecision(precision);
+		}
+
+		public static BigDecimal PiDivTwoBig(int precision)
+		{
+			if (_PiDivTwoBig.Precision < precision)
+			{
+				Constants.PiBig(precision);
+				_PiDivTwoBig = BigDecimal.Parse("0.5") * _PiBig;
+			}
+
+			return _PiDivTwoBig.WithPrecision(precision);
 		}
 
 		#endregion Pi
