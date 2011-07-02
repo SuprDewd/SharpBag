@@ -64,12 +64,12 @@ namespace SharpBag.Math
 		/// <summary>
 		/// A positive one.
 		/// </summary>
-		public static readonly BigDecimal PositiveOne = new BigDecimal(1);
+		public static readonly BigDecimal One = new BigDecimal(1);
 
 		/// <summary>
 		/// A negative one.
 		/// </summary>
-		public static readonly BigDecimal NegativeOne = new BigDecimal(-1);
+		public static readonly BigDecimal MinusOne = new BigDecimal(-1);
 
 		/// <summary>
 		/// A zero.
@@ -535,13 +535,13 @@ namespace SharpBag.Math
 		/// <returns>The reciprocal of the BigDecimal.</returns>
 		public static BigDecimal Reciprocal(BigDecimal value)
 		{
-			return BigDecimal.PositiveOne / value;
+			return BigDecimal.One / value;
 		}
 
 		public static BigDecimal Exp(BigDecimal value)
 		{
-			BigDecimal result = value.WithPrecision(value.Precision + 4) + BigDecimal.PositiveOne,
-					   lastResult, factorial = BigDecimal.PositiveOne;
+			BigDecimal result = value.WithPrecision(value.Precision + 4) + BigDecimal.One,
+					   lastResult, factorial = BigDecimal.One;
 
 			int n = 2;
 
@@ -744,6 +744,15 @@ namespace SharpBag.Math
 			}
 
 			return new BigDecimal(mantissa, exponent, this.Precision, false, this.UsingDefaultPrecision);
+		}
+
+		private void Expand()
+		{
+			if (this.Exponent > 0)
+			{
+				this.Mantissa *= BigInteger.Pow(10, this.Exponent);
+				this.Exponent = 0;
+			}
 		}
 
 		private void Normalize()

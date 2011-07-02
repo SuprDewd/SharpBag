@@ -182,12 +182,12 @@
             An arbitrary big decimal.
             </summary>
         </member>
-        <member name="F:SharpBag.Math.BigDecimal.PositiveOne">
+        <member name="F:SharpBag.Math.BigDecimal.One">
             <summary>
             A positive one.
             </summary>
         </member>
-        <member name="F:SharpBag.Math.BigDecimal.NegativeOne">
+        <member name="F:SharpBag.Math.BigDecimal.MinusOne">
             <summary>
             A negative one.
             </summary>

@@ -27,7 +27,7 @@ namespace SharpBag.Math
 		{
 			if (_TheGoldenRatioBig.Precision < precision)
 			{
-				_TheGoldenRatioBig = (BigDecimal.PositiveOne + BigDecimal.Sqrt(new BigDecimal(5, precision + 10))) / 2;
+				_TheGoldenRatioBig = (BigDecimal.One + BigDecimal.Sqrt(new BigDecimal(5, precision + 10))) / 2;
 			}
 
 			return _TheGoldenRatioBig.WithPrecision(precision);
@@ -55,7 +55,7 @@ namespace SharpBag.Math
 		{
 			if (_EBig.Precision < precision)
 			{
-				_EBig = BigDecimal.Exp(BigDecimal.PositiveOne.WithPrecision(precision + 10));
+				_EBig = BigDecimal.Exp(BigDecimal.One.WithPrecision(precision + 10));
 			}
 
 			return _EBig.WithPrecision(precision);
@@ -124,7 +124,7 @@ namespace SharpBag.Math
 			{
 				Constants.Sqrt2Big(precision);
 
-				BigDecimal one = BigDecimal.PositiveOne.WithPrecision(precision + 10),
+				BigDecimal one = BigDecimal.One.WithPrecision(precision + 10),
 						   two = new BigDecimal(2, precision + 10),
 						   four = new BigDecimal(4, precision + 10),
 						   lastA = one,
