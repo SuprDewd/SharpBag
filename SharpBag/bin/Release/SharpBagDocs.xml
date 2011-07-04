@@ -155,28 +155,6 @@
             A structure that is used when pinging the other side.
             </summary>
         </member>
-        <member name="T:SharpBag.Math.ForDouble.Point">
-            <summary>
-            A point.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.ForDouble.Point.#ctor(System.Double,System.Double)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="x">The X coordinate.</param>
-            <param name="y">The Y coordinate.</param>
-        </member>
-        <member name="P:SharpBag.Math.ForDouble.Point.X">
-            <summary>
-            The X coordinate.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.ForDouble.Point.Y">
-            <summary>
-            The Y coordinate.
-            </summary>
-        </member>
         <member name="T:SharpBag.Combinatorics.Variations`1">
              <summary>
              Variations defines a meta-collection, typically a list of lists, of all possible
@@ -1988,28 +1966,6 @@
             Returns the partial quotients of the fraction.
             </summary>
         </member>
-        <member name="T:SharpBag.Math.ForBigInteger.Point">
-            <summary>
-            A point.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Point.#ctor(System.Numerics.BigInteger,System.Numerics.BigInteger)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="x">The X coordinate.</param>
-            <param name="y">The Y coordinate.</param>
-        </member>
-        <member name="P:SharpBag.Math.ForBigInteger.Point.X">
-            <summary>
-            The X coordinate.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.ForBigInteger.Point.Y">
-            <summary>
-            The Y coordinate.
-            </summary>
-        </member>
         <member name="T:SharpBag.Math.BaseConverter">
             <summary>
             Converts numbers between bases.
@@ -2340,6 +2296,12 @@
             The golden ratio.
             </summary>
             <remarks>(1 + Sqrt(5)) / 2</remarks>
+        </member>
+        <member name="P:SharpBag.Math.Constants.TwoPi">
+            <summary>
+            Two Pi.
+            </summary>
+            <remarks>2 * Pi</remarks>
         </member>
         <member name="T:SharpBag.Comparers.AlphaNumberSettings">
             <summary>
@@ -3033,28 +2995,6 @@
             Calculates the rows of Pascal's triangle.
             </summary>
             <returns>The rows.</returns>
-        </member>
-        <member name="T:SharpBag.Math.ForInt32.Point">
-            <summary>
-            A point.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.ForInt32.Point.#ctor(System.Int32,System.Int32)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="x">The X coordinate.</param>
-            <param name="y">The Y coordinate.</param>
-        </member>
-        <member name="P:SharpBag.Math.ForInt32.Point.X">
-            <summary>
-            The X coordinate.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.ForInt32.Point.Y">
-            <summary>
-            The Y coordinate.
-            </summary>
         </member>
         <member name="T:SharpBag.Math.ForLong.Polynomial">
             <summary>
@@ -5227,14 +5167,14 @@
             <param name="xDelta">The x delta.</param>
             <returns>The array of points.</returns>
         </member>
-        <member name="M:SharpBag.Math.Interpolation.Cubic(SharpBag.Math.ForDouble.Point[])">
+        <member name="M:SharpBag.Math.Interpolation.Cubic(SharpBag.Math.Geometry.Point[])">
             <summary>
             A cubic spline interpolation.
             </summary>
             <param name="points">The known data points.</param>
             <returns>An interpolation function.</returns>
         </member>
-        <member name="M:SharpBag.Math.Interpolation.Linear(SharpBag.Math.ForDouble.Point[])">
+        <member name="M:SharpBag.Math.Interpolation.Linear(SharpBag.Math.Geometry.Point[])">
             <summary>
             A linear spline interpolation.
             </summary>
@@ -7398,28 +7338,6 @@
             <param name="i">The i.</param>
             <returns>The i-th coefficient.</returns>
         </member>
-        <member name="T:SharpBag.Math.ForInt64.Point">
-            <summary>
-            A point.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.ForInt64.Point.#ctor(System.Int64,System.Int64)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="x">The X coordinate.</param>
-            <param name="y">The Y coordinate.</param>
-        </member>
-        <member name="P:SharpBag.Math.ForInt64.Point.X">
-            <summary>
-            The X coordinate.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.ForInt64.Point.Y">
-            <summary>
-            The Y coordinate.
-            </summary>
-        </member>
         <member name="T:SharpBag.Matcher`2">
             <summary>
             A class for object matching.
@@ -7545,6 +7463,28 @@
         <member name="P:SharpBag.Matcher`2.DefaultValue">
             <summary>
             The default value.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Math.Geometry.Point">
+            <summary>
+            A point.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Point.#ctor(System.Double,System.Double)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="x">The X coordinate.</param>
+            <param name="y">The Y coordinate.</param>
+        </member>
+        <member name="P:SharpBag.Math.Geometry.Point.X">
+            <summary>
+            The X coordinate.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Geometry.Point.Y">
+            <summary>
+            The Y coordinate.
             </summary>
         </member>
     </members>
