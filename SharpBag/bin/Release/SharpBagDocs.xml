@@ -2800,6 +2800,56 @@
             <param name="a">The first variable.</param>
             <param name="b">The second variable.</param>
         </member>
+        <member name="M:SharpBag.Utils.Sort``1(``0@,``0@)">
+            <summary>
+            Sort a few variables.
+            </summary>
+            <typeparam name="T">The type of the variables.</typeparam>
+            <param name="value1">A variable.</param>
+            <param name="value2">A variable.</param>
+        </member>
+        <member name="M:SharpBag.Utils.Sort``1(``0@,``0@,``0@)">
+            <summary>
+            Sort a few variables.
+            </summary>
+            <typeparam name="T">The type of the variables.</typeparam>
+            <param name="value1">A variable.</param>
+            <param name="value2">A variable.</param>
+            <param name="value3">A variable.</param>
+        </member>
+        <member name="M:SharpBag.Utils.Sort``1(``0@,``0@,``0@,``0@)">
+            <summary>
+            Sort a few variables.
+            </summary>
+            <typeparam name="T">The type of the variables.</typeparam>
+            <param name="value1">A variable.</param>
+            <param name="value2">A variable.</param>
+            <param name="value3">A variable.</param>
+            <param name="value4">A variable.</param>
+        </member>
+        <member name="M:SharpBag.Utils.Sort``1(``0@,``0@,``0@,``0@,``0@)">
+            <summary>
+            Sort a few variables.
+            </summary>
+            <typeparam name="T">The type of the variables.</typeparam>
+            <param name="value1">A variable.</param>
+            <param name="value2">A variable.</param>
+            <param name="value3">A variable.</param>
+            <param name="value4">A variable.</param>
+            <param name="value5">A variable.</param>
+        </member>
+        <member name="M:SharpBag.Utils.Sort``1(``0@,``0@,``0@,``0@,``0@,``0@)">
+            <summary>
+            Sort a few variables.
+            </summary>
+            <typeparam name="T">The type of the variables.</typeparam>
+            <param name="value1">A variable.</param>
+            <param name="value2">A variable.</param>
+            <param name="value3">A variable.</param>
+            <param name="value4">A variable.</param>
+            <param name="value5">A variable.</param>
+            <param name="value6">A variable.</param>
+        </member>
         <member name="T:SharpBag.Networking.ConnectionPacket">
             <summary>
             A packet.

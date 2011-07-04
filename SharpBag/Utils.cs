@@ -80,5 +80,88 @@ namespace SharpBag
 			a = b;
 			b = temp;
 		}
+
+		#region Sort
+
+		/// <summary>
+		/// Sort a few variables.
+		/// </summary>
+		/// <typeparam name="T">The type of the variables.</typeparam>
+		/// <param name="value1">A variable.</param>
+		/// <param name="value2">A variable.</param>
+		public static void Sort<T>(ref T value1, ref T value2) where T : IComparable<T>
+		{
+			if (value1.CompareTo(value2) > 0) Utils.Swap(ref value1, ref value2);
+		}
+
+		/// <summary>
+		/// Sort a few variables.
+		/// </summary>
+		/// <typeparam name="T">The type of the variables.</typeparam>
+		/// <param name="value1">A variable.</param>
+		/// <param name="value2">A variable.</param>
+		/// <param name="value3">A variable.</param>
+		public static void Sort<T>(ref T value1, ref T value2, ref T value3) where T : IComparable<T>
+		{
+			if (value1.CompareTo(value2) > 0) Utils.Swap(ref value1, ref value2);
+			if (value1.CompareTo(value3) > 0) Utils.Swap(ref value1, ref value3);
+			Utils.Sort(ref value2, ref value3);
+		}
+
+		/// <summary>
+		/// Sort a few variables.
+		/// </summary>
+		/// <typeparam name="T">The type of the variables.</typeparam>
+		/// <param name="value1">A variable.</param>
+		/// <param name="value2">A variable.</param>
+		/// <param name="value3">A variable.</param>
+		/// <param name="value4">A variable.</param>
+		public static void Sort<T>(ref T value1, ref T value2, ref T value3, ref T value4) where T : IComparable<T>
+		{
+			if (value1.CompareTo(value2) > 0) Utils.Swap(ref value1, ref value2);
+			if (value1.CompareTo(value3) > 0) Utils.Swap(ref value1, ref value3);
+			if (value1.CompareTo(value4) > 0) Utils.Swap(ref value1, ref value4);
+			Utils.Sort(ref value2, ref value3, ref value4);
+		}
+
+		/// <summary>
+		/// Sort a few variables.
+		/// </summary>
+		/// <typeparam name="T">The type of the variables.</typeparam>
+		/// <param name="value1">A variable.</param>
+		/// <param name="value2">A variable.</param>
+		/// <param name="value3">A variable.</param>
+		/// <param name="value4">A variable.</param>
+		/// <param name="value5">A variable.</param>
+		public static void Sort<T>(ref T value1, ref T value2, ref T value3, ref T value4, ref T value5) where T : IComparable<T>
+		{
+			if (value1.CompareTo(value2) > 0) Utils.Swap(ref value1, ref value2);
+			if (value1.CompareTo(value3) > 0) Utils.Swap(ref value1, ref value3);
+			if (value1.CompareTo(value4) > 0) Utils.Swap(ref value1, ref value4);
+			if (value1.CompareTo(value5) > 0) Utils.Swap(ref value1, ref value5);
+			Utils.Sort(ref value2, ref value3, ref value4, ref value5);
+		}
+
+		/// <summary>
+		/// Sort a few variables.
+		/// </summary>
+		/// <typeparam name="T">The type of the variables.</typeparam>
+		/// <param name="value1">A variable.</param>
+		/// <param name="value2">A variable.</param>
+		/// <param name="value3">A variable.</param>
+		/// <param name="value4">A variable.</param>
+		/// <param name="value5">A variable.</param>
+		/// <param name="value6">A variable.</param>
+		public static void Sort<T>(ref T value1, ref T value2, ref T value3, ref T value4, ref T value5, ref T value6) where T : IComparable<T>
+		{
+			if (value1.CompareTo(value2) > 0) Utils.Swap(ref value1, ref value2);
+			if (value1.CompareTo(value3) > 0) Utils.Swap(ref value1, ref value3);
+			if (value1.CompareTo(value4) > 0) Utils.Swap(ref value1, ref value4);
+			if (value1.CompareTo(value5) > 0) Utils.Swap(ref value1, ref value5);
+			if (value1.CompareTo(value6) > 0) Utils.Swap(ref value1, ref value6);
+			Utils.Sort(ref value2, ref value3, ref value4, ref value5, ref value6);
+		}
+
+		#endregion Sort
 	}
 }
