@@ -10,7 +10,7 @@ namespace SharpBag.Math.Geometry
 	/// <summary>
 	/// A point.
 	/// </summary>
-	public struct Point : IEquatable<Point>
+	public struct Point : IEquatable<Point>, IComparable<Point>
 	{
 		#region Properties
 
@@ -87,6 +87,12 @@ namespace SharpBag.Math.Geometry
 		#endregion Casts
 
 		#region Other
+
+		public int CompareTo(Point other)
+		{
+			if (this.X != other.X) return this.X.CompareTo(other.X);
+			return this.Y.CompareTo(other.Y);
+		}
 
 		public bool Equals(Point other)
 		{

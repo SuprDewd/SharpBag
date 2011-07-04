@@ -5948,6 +5948,28 @@
             An event that is fired when the TcpClient disconnects.
             </summary>
         </member>
+        <member name="T:SharpBag.Math.Geometry.Point">
+            <summary>
+            A point.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Point.#ctor(System.Double,System.Double)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="x">The X coordinate.</param>
+            <param name="y">The Y coordinate.</param>
+        </member>
+        <member name="P:SharpBag.Math.Geometry.Point.X">
+            <summary>
+            The X coordinate.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Geometry.Point.Y">
+            <summary>
+            The Y coordinate.
+            </summary>
+        </member>
         <member name="T:SharpBag.Comparers.AlphaNumberComparer">
             <summary>
             A comparer that compares a string containing numbers.
@@ -7463,28 +7485,6 @@
         <member name="P:SharpBag.Matcher`2.DefaultValue">
             <summary>
             The default value.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Math.Geometry.Point">
-            <summary>
-            A point.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.Geometry.Point.#ctor(System.Double,System.Double)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="x">The X coordinate.</param>
-            <param name="y">The Y coordinate.</param>
-        </member>
-        <member name="P:SharpBag.Math.Geometry.Point.X">
-            <summary>
-            The X coordinate.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.Geometry.Point.Y">
-            <summary>
-            The Y coordinate.
             </summary>
         </member>
     </members>

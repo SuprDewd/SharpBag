@@ -23,7 +23,7 @@ namespace SharpBag.Math.Geometry
 			get
 			{
 				double a = 0;
-				for (int i = 0; i < this.PointCount - 1; i++) a += this[i].X * this[i + 1].Y - this[i + 1].X * this[i].Y;
+				for (int i = 0; i < this.PointCount; i++) a += this[i].X * this[(i + 1) % this.PointCount].Y - this[(i + 1) % this.PointCount].X * this[i].Y;
 				return Math.Abs(a * 0.5);
 			}
 		}
@@ -46,7 +46,8 @@ namespace SharpBag.Math.Geometry
 
 		public SimplePolygon(params Point[] points)
 		{
-			Contract.Requires(points.Length >= 3);
+			Contract.Requires(SimplePolygon.IsSimplePolygon(points));
+			// Contract.Requires(points.Length >= 3);
 			// TODO: make sure polygon is simple
 			_Points = points;
 		}
@@ -54,6 +55,25 @@ namespace SharpBag.Math.Geometry
 		#endregion Constructors
 
 		#region Methods
+
+		[Pure]
+		public static bool IsSimplePolygon(Point[] points)
+		{
+			if (points.Length < 3) return false;
+
+			for (int i = 0; i < points.Length - 1; i++)
+			{
+				LineSegment line = new LineSegment(points[i], points[i + 1]);
+
+				for (int j = i + 1; j < points.Length; j++)
+				{
+					IntersectionType intersection = new LineSegment(points[j], points[(j + 1) % points.Length]).Intersects(line);
+					if (intersection == IntersectionType.Intersected) return false;
+				}
+			}
+
+			return true;
+		}
 
 		public bool Contains(Point point)
 		{

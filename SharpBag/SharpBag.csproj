@@ -111,6 +111,7 @@
     <Compile Include="Math\ForInt32\Polynomial.cs" />
     <Compile Include="Math\Geometry\Circle.cs" />
     <Compile Include="Math\Geometry\GeometryFactory.cs" />
+    <Compile Include="Math\Geometry\IntersectionType.cs" />
     <Compile Include="Math\Geometry\IPolygon.cs" />
     <Compile Include="Math\Geometry\LineSegment.cs" />
     <Compile Include="Math\Geometry\SimplePolygon.cs" />

@@ -22,6 +22,10 @@ namespace SharpBag.Math.Geometry
 
 		public double Slope { get { return this.From.SlopeTo(this.To); } }
 
+		public bool IsHorizontal { get { return this.From.Y == this.To.Y; } }
+
+		public bool IsVertical { get { return this.From.X == this.To.X; } }
+
 		#endregion Properties
 
 		#region Constructors
@@ -36,16 +40,27 @@ namespace SharpBag.Math.Geometry
 
 		#region Methods
 
-		public bool Intersects(LineSegment other)
+		public IntersectionType Intersects(LineSegment other)
 		{
 			// TODO: Fix...
-			double thisSlope = this.Slope,
+			/*double thisSlope = this.Slope,
 				   thisYIntercept = thisSlope * -this.From.X,
 				   otherSlope = other.Slope,
 				   otherYIntercept = otherSlope * -other.From.X,
 				   x = -(thisYIntercept - otherYIntercept) / (thisSlope - otherSlope);
 
-			return x * thisSlope + thisYIntercept == x * otherSlope + otherYIntercept;
+			return x * thisSlope + thisYIntercept == x * otherSlope + otherYIntercept;*/
+
+			int a = this.CompareTo(other.From);
+			if (a == 0) return IntersectionType.Joined;
+			int b = this.CompareTo(other.To);
+			if (b == 0) return IntersectionType.Joined;
+			int c = other.CompareTo(this.From);
+			if (c == 0) return IntersectionType.Joined;
+			int d = other.CompareTo(this.To);
+			if (d == 0) return IntersectionType.Joined;
+
+			return (a != b && c != d) ? IntersectionType.Intersected : IntersectionType.NotIntersected;
 		}
 
 		public bool Contains(Point other)
@@ -66,9 +81,19 @@ namespace SharpBag.Math.Geometry
 			return true;
 		}
 
+		public LineSegment Reverse()
+		{
+			return new LineSegment(this.To, this.From);
+		}
+
 		#endregion Methods
 
 		#region Other
+
+		public int CompareTo(Point point)
+		{
+			return ((this.To.X - this.From.X) * (point.Y - this.From.Y) - (this.To.Y - this.From.Y) * (point.X - this.From.X)).CompareTo(0);
+		}
 
 		public bool Equals(LineSegment other)
 		{
