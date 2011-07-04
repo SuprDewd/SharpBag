@@ -19,9 +19,15 @@ namespace SharpBag.Math.Geometry
 
 		#region Methods
 
+		ContainmentType Containment(Point point);
+
 		bool Contains(Point point);
 
+		ContainmentType Containment(IPolygon polygon);
+
 		bool Contains(IPolygon polygon);
+
+		IntersectionType Intersection(IPolygon polygon);
 
 		bool Intersects(IPolygon polygon);
 

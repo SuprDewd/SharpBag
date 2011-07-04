@@ -75,48 +75,80 @@ namespace SharpBag.Math.Geometry
 			return true;
 		}
 
-		public bool Contains(Point point)
+		public bool Contains(Point point) { return (this.Containment(point) & ContainmentType.Contained) != 0; }
+
+		public ContainmentType Containment(Point point)
 		{
-			bool c = false;
+			bool c = false, ex = false;
 			for (int i = 0, j = this.PointCount - 1; i < this.PointCount; j = i++)
 			{
 				if (((this[i].Y > point.Y) != (this[j].Y > point.Y)) && (point.X < (this[j].X - this[i].X) * (point.Y - this[i].Y) / (this[j].Y - this[i].Y) + this[i].X))
 				{
 					c = !c;
+					ex = ex || this[i].Equals(point);
 				}
 			}
 
-			return c;
+			if (c) return ex ? ContainmentType.Joined : ContainmentType.Contained;
+			else return ContainmentType.NotContained;
 		}
 
-		public bool Contains(IPolygon polygon)
+		public bool Contains(IPolygon polygon) { return (this.Containment(polygon) & ContainmentType.Contained) != 0; }
+
+		public ContainmentType Containment(IPolygon polygon)
 		{
 			SimplePolygon cur = this;
-			return !this.Points.Any(p => polygon.Contains(p)) &&
-					polygon.Points.All(p => cur.Contains(p));
-		}
+			bool ex = false;
 
-		public bool Intersects(IPolygon polygon)
-		{
-			bool inside = false, outside = false;
+			foreach (Point p in this.Points)
+			{
+				ContainmentType c = polygon.Containment(p);
+				if (c == ContainmentType.Contained) return ContainmentType.NotContained;
+				ex = ex || c == ContainmentType.Joined;
+			}
+
 			foreach (Point p in polygon.Points)
 			{
-				if (this.Contains(p)) inside = true;
+				ContainmentType c = this.Containment(p);
+				if (c == ContainmentType.NotContained) return ContainmentType.NotContained;
+				ex = ex || c == ContainmentType.Joined;
+			}
+
+			/*return !this.Points.Any(p => polygon.Contains(p)) &&
+					polygon.Points.All(p => cur.Contains(p));*/
+
+			return ex ? ContainmentType.Joined : ContainmentType.Contained;
+		}
+
+		public bool Intersects(IPolygon polygon) { return (this.Intersection(polygon) & IntersectionType.Intersected) != 0; }
+
+		public IntersectionType Intersection(IPolygon polygon)
+		{
+			bool inside = false, outside = false;
+			bool ex = true;
+			foreach (Point p in polygon.Points)
+			{
+				ContainmentType c = this.Containment(p);
+				if (c == ContainmentType.Contained || c == ContainmentType.Joined) inside = true;
 				else outside = true;
 
-				if (inside && outside) return true;
+				if (c != ContainmentType.Joined) ex = false;
+				if (inside && outside) return ex ? IntersectionType.Joined : IntersectionType.Intersected;
 			}
 
 			inside = outside = false;
+			ex = true;
 			foreach (Point p in this.Points)
 			{
-				if (polygon.Contains(p)) inside = true;
+				ContainmentType c = polygon.Containment(p);
+				if (c == ContainmentType.Contained || c == ContainmentType.Joined) inside = true;
 				else outside = true;
 
-				if (inside && outside) return true;
+				if (c != ContainmentType.Joined) ex = false;
+				if (inside && outside) return ex ? IntersectionType.Joined : IntersectionType.Intersected;
 			}
 
-			return false;
+			return ex ? IntersectionType.Joined : IntersectionType.NotIntersected;
 		}
 
 		#endregion Methods

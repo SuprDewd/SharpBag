@@ -7,7 +7,7 @@ namespace SharpBag.Math.Geometry
 {
 	using System;
 
-	public struct Triangle : IPolygon, IEquatable<Triangle>
+	/*public struct Triangle : IPolygon, IEquatable<Triangle>
 	{
 		#region Properties
 
@@ -64,14 +64,14 @@ namespace SharpBag.Math.Geometry
 
 		#region Methods
 
-		public bool Contains(Point point)
+		public ContainmentType Contains(Point point)
 		{
 			double myArea = this.Area,
 				   area1 = new Triangle(this.A, this.B, point).Area,
 				   area2 = new Triangle(this.A, this.C, point).Area,
 				   area3 = new Triangle(this.B, this.C, point).Area;
 
-			return myArea == area1 + area2 + area3;
+			return (myArea == area1 + area2 + area3) ? ContainmentType.Contained : ContainmentType.NotContained;
 		}
 
 		public bool Contains(IPolygon polygon)
@@ -144,5 +144,5 @@ namespace SharpBag.Math.Geometry
 		}
 
 		#endregion Other
-	}
+	}*/
 }
