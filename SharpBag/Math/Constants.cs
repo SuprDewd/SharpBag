@@ -21,5 +21,17 @@ namespace SharpBag.Math
 		public static double GoldenRatio { get { return _GoldenRatio; } }
 
 		#endregion The Golden Ratio
+
+		#region Pi
+
+		private static double _TwoPi = 6.283185307179586476925286766559005768394d;
+
+		/// <summary>
+		/// Two Pi.
+		/// </summary>
+		/// <remarks>2 * Pi</remarks>
+		public static double TwoPi { get { return _TwoPi; } }
+
+		#endregion Pi
 	}
 }

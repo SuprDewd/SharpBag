@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SharpBag.Math.ForDouble;
+using SharpBag.Math.Geometry;
 
 namespace SharpBag.Math
 {
