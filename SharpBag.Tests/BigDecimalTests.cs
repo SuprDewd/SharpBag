@@ -201,7 +201,7 @@ namespace SharpBag.Tests
 			Assert.AreEqual(BigDecimal.Parse("0.707106"), BigDecimal.Sqrt(BigDecimal.Parse("0.5", 6)));
 			Assert.AreEqual(BigDecimal.Parse("1"), BigDecimal.Sqrt(BigDecimal.Parse("1")));
 			Assert.AreEqual(BigDecimal.Parse("71.5088"), BigDecimal.Sqrt(BigDecimal.Parse("5113.51315", 4)));
-			Assert.AreEqual(BigDecimal.Parse("3887.46"), BigDecimal.Sqrt(BigDecimal.Parse("15112345", 2)));
+			Assert.AreEqual(BigDecimal.Parse("3887.45"), BigDecimal.Sqrt(BigDecimal.Parse("15112345", 2)));
 			Assert.AreEqual(BigDecimal.Parse("4"), BigDecimal.Sqrt(BigDecimal.Parse("16")));
 		}
 	}
