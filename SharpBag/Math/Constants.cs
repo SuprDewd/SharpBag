@@ -23,6 +23,12 @@ namespace SharpBag.Math
 		private static BigDecimal _TheGoldenRatioBig = BigDecimal.Parse("1.61803398874989484820458683436563811772030917980576");
 		private static BigDecimal _TheGoldenRatioReciprocalBig = BigDecimal.Parse("0.61803398874989484820458683436563811772030917980576");
 
+		/// <summary>
+		/// The golden ratio.
+		/// </summary>
+		/// <param name="precision">The precision.</param>
+		/// <returns>The golden ratio.</returns>
+		/// <remarks>(1 + Sqrt(5)) / 2</remarks>
 		public static BigDecimal TheGoldenRatioBig(int precision)
 		{
 			if (_TheGoldenRatioBig.Precision < precision)
@@ -33,6 +39,12 @@ namespace SharpBag.Math
 			return _TheGoldenRatioBig.WithPrecision(precision);
 		}
 
+		/// <summary>
+		/// The reciprocal of the golden ratio.
+		/// </summary>
+		/// <param name="precision">The precision.</param>
+		/// <returns>The reciprocal of the golden ratio.</returns>
+		/// <remarks>1 / ((1 + Sqrt(5)) / 2) or (1 + Sqrt(5)) / 2 - 1</remarks>
 		public static BigDecimal TheGoldenRatioReciprocalBig(int precision)
 		{
 			if (_TheGoldenRatioReciprocalBig.Precision < precision)
@@ -51,6 +63,11 @@ namespace SharpBag.Math
 		private static BigDecimal _EBig = BigDecimal.Parse("2.71828182845904523536028747135266249775724709369996");
 		private static BigDecimal _Log10EBig = BigDecimal.Parse("0.43429448190325182765112891891660508229439700580367");
 
+		/// <summary>
+		/// The mathematical constant e.
+		/// </summary>
+		/// <param name="precision">The precision.</param>
+		/// <returns>The mathematical constant e.</returns>
 		public static BigDecimal EBig(int precision)
 		{
 			if (_EBig.Precision < precision)
@@ -61,6 +78,11 @@ namespace SharpBag.Math
 			return _EBig.WithPrecision(precision);
 		}
 
+		/// <summary>
+		/// The base-10 logarithm of the mathematical constant e.
+		/// </summary>
+		/// <param name="precision">The precision.</param>
+		/// <returns>The base-10 logarithm of the mathematical constant e.</returns>
 		public static BigDecimal Log10EBig(int precision)
 		{
 			if (_Log10EBig.Precision < precision)
@@ -80,6 +102,11 @@ namespace SharpBag.Math
 		private static BigDecimal _Sqrt3Big = BigDecimal.Parse("1.73205080756887729352744634150587236694280525381038");
 		private static BigDecimal _Sqrt5Big = BigDecimal.Parse("2.23606797749978969640917366873127623544061835961153");
 
+		/// <summary>
+		/// The square root of 2.
+		/// </summary>
+		/// <param name="precision">The precision.</param>
+		/// <returns>The square root of 2.</returns>
 		public static BigDecimal Sqrt2Big(int precision)
 		{
 			if (_Sqrt2Big.Precision < precision)
@@ -90,6 +117,11 @@ namespace SharpBag.Math
 			return _Sqrt2Big.WithPrecision(precision);
 		}
 
+		/// <summary>
+		/// The square root of 3.
+		/// </summary>
+		/// <param name="precision">The precision.</param>
+		/// <returns>The square root of 3.</returns>
 		public static BigDecimal Sqrt3Big(int precision)
 		{
 			if (_Sqrt3Big.Precision < precision)
@@ -100,6 +132,11 @@ namespace SharpBag.Math
 			return _Sqrt3Big.WithPrecision(precision);
 		}
 
+		/// <summary>
+		/// The square root of 5.
+		/// </summary>
+		/// <param name="precision">The precision.</param>
+		/// <returns>The square root of 5.</returns>
 		public static BigDecimal Sqrt5Big(int precision)
 		{
 			if (_Sqrt5Big.Precision < precision)
@@ -125,6 +162,11 @@ namespace SharpBag.Math
 		/// <remarks>2 * Pi</remarks>
 		public static double TwoPi { get { return _TwoPi; } }
 
+		/// <summary>
+		/// The mathematical constant Pi.
+		/// </summary>
+		/// <param name="precision">The precision.</param>
+		/// <returns>The mathematical constant Pi.</returns>
 		public static BigDecimal PiBig(int precision)
 		{
 			if (_PiBig.Precision < precision)
@@ -163,6 +205,11 @@ namespace SharpBag.Math
 			return _PiBig.WithPrecision(precision);
 		}
 
+		/// <summary>
+		/// 2 * Pi
+		/// </summary>
+		/// <param name="precision">The precision.</param>
+		/// <returns>2 * Pi</returns>
 		public static BigDecimal TwoPiBig(int precision)
 		{
 			if (_TwoPiBig.Precision < precision)
@@ -174,6 +221,11 @@ namespace SharpBag.Math
 			return _TwoPiBig.WithPrecision(precision);
 		}
 
+		/// <summary>
+		/// Pi / 2
+		/// </summary>
+		/// <param name="precision">The precision.</param>
+		/// <returns>Pi / 2</returns>
 		public static BigDecimal PiDivTwoBig(int precision)
 		{
 			if (_PiDivTwoBig.Precision < precision)

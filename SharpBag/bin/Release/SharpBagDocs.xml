@@ -315,12 +315,27 @@
             <param name="power">The power.</param>
             <returns>The BigDecimal raised to the specified power.</returns>
         </member>
+        <member name="M:SharpBag.Math.BigDecimal.Pow(SharpBag.Math.BigDecimal,SharpBag.Math.BigDecimal)">
+            <summary>
+            Raise the BigDecimal to the specified power.
+            </summary>
+            <param name="value">The BigDecimal.</param>
+            <param name="power">The power.</param>
+            <returns>The BigDecimal raised to the specified power.</returns>
+        </member>
         <member name="M:SharpBag.Math.BigDecimal.Log10(SharpBag.Math.BigDecimal)">
             <summary>
             The base-10 logarithm of the BigDecimal.
             </summary>
             <param name="value">The BigDecimal.</param>
             <returns>The base-10 logarithm of the BigDecimal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.Ln(SharpBag.Math.BigDecimal)">
+            <summary>
+            Calculates the natural logarithm of the value.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>The natural logarithm.</returns>
         </member>
         <member name="M:SharpBag.Math.BigDecimal.Log(SharpBag.Math.BigDecimal,SharpBag.Math.BigDecimal)">
             <summary>
@@ -343,6 +358,13 @@
             </summary>
             <param name="value">The BigDecimal.</param>
             <returns>The reciprocal of the BigDecimal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.Exp(SharpBag.Math.BigDecimal)">
+            <summary>
+            Calculates the exponential function of the BigDecimal.
+            </summary>
+            <param name="value">The BigDecimal.</param>
+            <returns>e ^ x</returns>
         </member>
         <member name="M:SharpBag.Math.BigDecimal.op_GreaterThan(SharpBag.Math.BigDecimal,SharpBag.Math.BigDecimal)">
             <summary>
@@ -1172,6 +1194,27 @@
             <summary>
             Whether the first value is less than or equal to the second value.
             </summary>
+        </member>
+        <member name="T:SharpBag.Math.Geometry.GeometryFactory">
+            <summary>
+            A factory for geometric figures.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.GeometryFactory.Rectangle(SharpBag.Math.Geometry.Point,SharpBag.Math.Geometry.Point)">
+            <summary>
+            Creates a rectangle between the specified points.
+            </summary>
+            <param name="a">The first point.</param>
+            <param name="b">The second point.</param>
+            <returns>A rectangle.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.GeometryFactory.Square(SharpBag.Math.Geometry.Point,System.Double)">
+            <summary>
+            Creates a square with the specified center and side lengths.
+            </summary>
+            <param name="center">The center.</param>
+            <param name="sideLength">The length of the sides.</param>
+            <returns>A square.</returns>
         </member>
         <member name="T:SharpBag.DisposableAction">
             <summary>
@@ -2608,6 +2651,78 @@
             Mathematical constants.
             </summary>
         </member>
+        <member name="M:SharpBag.Math.Constants.TheGoldenRatioBig(System.Int32)">
+            <summary>
+            The golden ratio.
+            </summary>
+            <param name="precision">The precision.</param>
+            <returns>The golden ratio.</returns>
+            <remarks>(1 + Sqrt(5)) / 2</remarks>
+        </member>
+        <member name="M:SharpBag.Math.Constants.TheGoldenRatioReciprocalBig(System.Int32)">
+            <summary>
+            The reciprocal of the golden ratio.
+            </summary>
+            <param name="precision">The precision.</param>
+            <returns>The reciprocal of the golden ratio.</returns>
+            <remarks>1 / ((1 + Sqrt(5)) / 2) or (1 + Sqrt(5)) / 2 - 1</remarks>
+        </member>
+        <member name="M:SharpBag.Math.Constants.EBig(System.Int32)">
+            <summary>
+            The mathematical constant e.
+            </summary>
+            <param name="precision">The precision.</param>
+            <returns>The mathematical constant e.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Constants.Log10EBig(System.Int32)">
+            <summary>
+            The base-10 logarithm of the mathematical constant e.
+            </summary>
+            <param name="precision">The precision.</param>
+            <returns>The base-10 logarithm of the mathematical constant e.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Constants.Sqrt2Big(System.Int32)">
+            <summary>
+            The square root of 2.
+            </summary>
+            <param name="precision">The precision.</param>
+            <returns>The square root of 2.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Constants.Sqrt3Big(System.Int32)">
+            <summary>
+            The square root of 3.
+            </summary>
+            <param name="precision">The precision.</param>
+            <returns>The square root of 3.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Constants.Sqrt5Big(System.Int32)">
+            <summary>
+            The square root of 5.
+            </summary>
+            <param name="precision">The precision.</param>
+            <returns>The square root of 5.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Constants.PiBig(System.Int32)">
+            <summary>
+            The mathematical constant Pi.
+            </summary>
+            <param name="precision">The precision.</param>
+            <returns>The mathematical constant Pi.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Constants.TwoPiBig(System.Int32)">
+            <summary>
+            2 * Pi
+            </summary>
+            <param name="precision">The precision.</param>
+            <returns>2 * Pi</returns>
+        </member>
+        <member name="M:SharpBag.Math.Constants.PiDivTwoBig(System.Int32)">
+            <summary>
+            Pi / 2
+            </summary>
+            <param name="precision">The precision.</param>
+            <returns>Pi / 2</returns>
+        </member>
         <member name="P:SharpBag.Math.Constants.TheGoldenRatio">
             <summary>
             The golden ratio.
@@ -3041,6 +3156,26 @@
             Whether the current entry is the last entry.
             </summary>
         </member>
+        <member name="T:SharpBag.Math.Geometry.IntersectionType">
+            <summary>
+            An type of intersection.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Math.Geometry.IntersectionType.NotIntersected">
+            <summary>
+            Something is not intersected.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Math.Geometry.IntersectionType.Joined">
+            <summary>
+            Something is joined.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Math.Geometry.IntersectionType.Intersected">
+            <summary>
+            Something is intersected.
+            </summary>
+        </member>
         <member name="T:SharpBag.Utils">
             <summary>
             A static class with utility methods.
@@ -3362,6 +3497,200 @@
             Calculates the rows of Pascal's triangle.
             </summary>
             <returns>The rows.</returns>
+        </member>
+        <member name="T:SharpBag.Math.Geometry.SimplePolygon">
+            <summary>
+            A simple polygon.
+            </summary>
+            <remarks>A simple polygon is a polygon with no self-intersections.</remarks>
+        </member>
+        <member name="T:SharpBag.Math.Geometry.IPolygon">
+            <summary>
+            A polygon.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.IPolygon.Containment(SharpBag.Math.Geometry.Point)">
+            <summary>
+            Determines how the polygon contains the specified point.
+            </summary>
+            <param name="point">The specified point.</param>
+            <returns>How the polygon contains the specified point.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.IPolygon.Contains(SharpBag.Math.Geometry.Point)">
+            <summary>
+            Determines whether the polygon contains the specified point.
+            </summary>
+            <param name="point">The point.</param>
+            <returns>Whether the polygon contains the specified point.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.IPolygon.Containment(SharpBag.Math.Geometry.IPolygon)">
+            <summary>
+            Determines how the polygon contains the specified polygon.
+            </summary>
+            <param name="polygon">The specified polygon.</param>
+            <returns>How the polygon contains the specified polygon.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.IPolygon.Contains(SharpBag.Math.Geometry.IPolygon)">
+            <summary>
+            Determines whether the polygon contains the specified polygon.
+            </summary>
+            <param name="polygon">The polygon.</param>
+            <returns>Whether the polygon contains the specified polygon.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.IPolygon.Intersection(SharpBag.Math.Geometry.IPolygon)">
+            <summary>
+            Determines how the polygon intersects the specified polygon.
+            </summary>
+            <param name="polygon">The polygon.</param>
+            <returns>How the polygon intersects the specified polygon.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.IPolygon.Intersects(SharpBag.Math.Geometry.IPolygon)">
+            <summary>
+            Determines whether the polygon intersects the specified polygon.
+            </summary>
+            <param name="polygon">The polygon.</param>
+            <returns>Whether the polygon intersects the specified polygon.</returns>
+        </member>
+        <member name="P:SharpBag.Math.Geometry.IPolygon.Points">
+            <summary>
+            The points in the polygon.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Geometry.IPolygon.Circumference">
+            <summary>
+            The circumference of the polygon.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Geometry.IPolygon.Area">
+            <summary>
+            The area of the polygon.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.SimplePolygon.#ctor(SharpBag.Math.Geometry.Point[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Math.Geometry.SimplePolygon"/> struct.
+            </summary>
+            <param name="points">The points.</param>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.SimplePolygon.IsSimplePolygon(SharpBag.Math.Geometry.Point[])">
+            <summary>
+            Determines whether the specified points represent a simple polygon.
+            </summary>
+            <param name="points">The points.</param>
+            <returns>
+              <c>true</c> if the specified points represent a simple polygon; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.SimplePolygon.Contains(SharpBag.Math.Geometry.Point)">
+            <summary>
+            Determines whether the polygon contains the specified point.
+            </summary>
+            <param name="point">The point.</param>
+            <returns>
+            Whether the polygon contains the specified point.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.SimplePolygon.Containment(SharpBag.Math.Geometry.Point)">
+            <summary>
+            Determines how the polygon contains the specified point.
+            </summary>
+            <param name="point">The specified point.</param>
+            <returns>
+            How the polygon contains the specified point.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.SimplePolygon.Contains(SharpBag.Math.Geometry.IPolygon)">
+            <summary>
+            Determines whether the polygon contains the specified polygon.
+            </summary>
+            <param name="polygon">The polygon.</param>
+            <returns>
+            Whether the polygon contains the specified polygon.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.SimplePolygon.Containment(SharpBag.Math.Geometry.IPolygon)">
+            <summary>
+            Determines how the polygon contains the specified polygon.
+            </summary>
+            <param name="polygon">The specified polygon.</param>
+            <returns>
+            How the polygon contains the specified polygon.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.SimplePolygon.Intersects(SharpBag.Math.Geometry.IPolygon)">
+            <summary>
+            Determines whether the polygon intersects the specified polygon.
+            </summary>
+            <param name="polygon">The polygon.</param>
+            <returns>
+            Whether the polygon intersects the specified polygon.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.SimplePolygon.Intersection(SharpBag.Math.Geometry.IPolygon)">
+            <summary>
+            Determines how the polygon intersects the specified polygon.
+            </summary>
+            <param name="polygon">The polygon.</param>
+            <returns>
+            How the polygon intersects the specified polygon.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.SimplePolygon.Equals(SharpBag.Math.Geometry.SimplePolygon)">
+            <summary>
+            Determines whether the current instance is equal to the specified polygon.
+            </summary>
+            <param name="other">The specified polygon.</param>
+            <returns>Whether the current instance is equal to the specified polygon.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.SimplePolygon.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to this instance.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object"/> to compare with this instance.</param>
+            <returns>
+              <c>true</c> if the specified <see cref="T:System.Object"/> is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.SimplePolygon.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.SimplePolygon.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents this instance.
+            </returns>
+        </member>
+        <member name="P:SharpBag.Math.Geometry.SimplePolygon.PointCount">
+            <summary>
+            Gets the point count.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Geometry.SimplePolygon.Points">
+            <summary>
+            Gets the points.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Geometry.SimplePolygon.Area">
+            <summary>
+            Gets the area.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Geometry.SimplePolygon.Circumference">
+            <summary>
+            Gets the circumference.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Geometry.SimplePolygon.Item(System.Int32)">
+            <summary>
+            Gets the <see cref="T:SharpBag.Math.Geometry.Point"/> at the specified index.
+            </summary>
         </member>
         <member name="T:SharpBag.Math.ForLong.Polynomial">
             <summary>
@@ -4128,6 +4457,105 @@
         <member name="P:SharpBag.Misc.ProblemController.Output">
             <summary>
             Whether to write to the console.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Math.Geometry.Circle">
+            <summary>
+            A circle.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Circle.#ctor(SharpBag.Math.Geometry.Point,System.Double)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="center">The center of the circle.</param>
+            <param name="radius">The radius of the circle.</param>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Circle.#ctor(SharpBag.Math.Geometry.LineSegment)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="radiusLine">A line through the radius.</param>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Circle.Contains(SharpBag.Math.Geometry.Point)">
+            <summary>
+            Whether the circle contains the specified point.
+            </summary>
+            <param name="point">The specified point.</param>
+            <returns>Whether the circle contains the specified point.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Circle.Contains(SharpBag.Math.Geometry.Circle)">
+            <summary>
+            Whether the circle contains the specified circle.
+            </summary>
+            <param name="circle">The specified circle.</param>
+            <returns>Whether the circle contains the specified circle.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Circle.Intersects(SharpBag.Math.Geometry.Circle)">
+            <summary>
+            Whether the circle intersects the specified circle.
+            </summary>
+            <param name="circle">The specified circle.</param>
+            <returns>Whether the circle intersects the specifiied circle.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Circle.Contains(SharpBag.Math.Geometry.IPolygon)">
+            <summary>
+            Whether the circle contains the specified polygon.
+            </summary>
+            <param name="polygon">The specified polygon.</param>
+            <returns>Whether the circle contains the specified polygon.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Circle.Intersects(SharpBag.Math.Geometry.IPolygon)">
+            <summary>
+            Whether the circle intersects the specified polygon.
+            </summary>
+            <param name="polygon">The specified polygon.</param>
+            <returns>Whether the circle intersects the specified polygon.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Circle.Equals(SharpBag.Math.Geometry.Circle)">
+            <summary>
+            IComparable.Equals()
+            </summary>
+            <param name="other">The other circle.</param>
+            <returns>Whether the current instance equals the specified circle.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Circle.Equals(System.Object)">
+            <summary>
+            Object.Equals()
+            </summary>
+            <param name="obj">The other circle.</param>
+            <returns>Whether the current instance equals the specified circle.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Circle.GetHashCode">
+            <summary>
+            Object.GetHashCode()
+            </summary>
+            <returns>The hash code of the current instance.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Circle.ToString">
+            <summary>
+            Object.ToString()
+            </summary>
+            <returns>The string representation of the current instance.</returns>
+        </member>
+        <member name="P:SharpBag.Math.Geometry.Circle.Center">
+            <summary>
+            The center of the circle.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Geometry.Circle.Radius">
+            <summary>
+            The radius of the circle.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Geometry.Circle.Circumference">
+            <summary>
+            The circumference of the circle.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Geometry.Circle.Area">
+            <summary>
+            The area of the circle.
             </summary>
         </member>
         <member name="T:SharpBag.Database.MicrosoftSqlDatabase">
@@ -5739,6 +6167,105 @@
             Whether to run the problem on start.
             </summary>
         </member>
+        <member name="T:SharpBag.Math.Geometry.LineSegment">
+            <summary>
+            A line segment.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.LineSegment.#ctor(SharpBag.Math.Geometry.Point,SharpBag.Math.Geometry.Point)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Math.Geometry.LineSegment"/> struct.
+            </summary>
+            <param name="from">The starting point.</param>
+            <param name="to">The end point.</param>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.LineSegment.Intersects(SharpBag.Math.Geometry.LineSegment)">
+            <summary>
+            Determines how the line segment intersects the specified line segment.
+            </summary>
+            <param name="other">The other line segment.</param>
+            <returns>How the line segment intersects the specified line segment.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.LineSegment.Contains(SharpBag.Math.Geometry.Point)">
+            <summary>
+            Determines whether the line segment contains the specified point.
+            </summary>
+            <param name="other">The specified point.</param>
+            <returns>Whether the line segment contains the specified point.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.LineSegment.Reverse">
+            <summary>
+            Returns a reversed line segment.
+            </summary>
+            <returns>The reversed line segment.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.LineSegment.CompareTo(SharpBag.Math.Geometry.Point)">
+            <summary>
+            Compare the line segment to the specified point.
+            </summary>
+            <param name="point">The specified point.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.LineSegment.Equals(SharpBag.Math.Geometry.LineSegment)">
+            <summary>
+            Whether the line segment is equal to the specified line segment.
+            </summary>
+            <param name="other">The specified line segment.</param>
+            <returns>Whether the line segment is equal to the specified line segment.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.LineSegment.Equals(System.Object)">
+            <summary>
+            Whether the line segment is equal to the specified line segment.
+            </summary>
+            <param name="obj">The specified line segment.</param>
+            <returns>Whether the line segment is equal to the specified line segment.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.LineSegment.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.LineSegment.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents this instance.
+            </returns>
+        </member>
+        <member name="P:SharpBag.Math.Geometry.LineSegment.From">
+            <summary>
+            The starting point of the line segment.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Geometry.LineSegment.To">
+            <summary>
+            The ending point of the line segment.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Geometry.LineSegment.Length">
+            <summary>
+            The length of the line segment.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Geometry.LineSegment.Slope">
+            <summary>
+            The slope of the line segment.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Geometry.LineSegment.IsHorizontal">
+            <summary>
+            Whether the line segment is horizontal.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.Geometry.LineSegment.IsVertical">
+            <summary>
+            Whether the line segment is vertical.
+            </summary>
+        </member>
         <member name="T:SharpBag.Games.CardType">
             <summary>
             An enumeration containing types of cards.
@@ -6327,6 +6854,150 @@
             <param name="x">The X coordinate.</param>
             <param name="y">The Y coordinate.</param>
         </member>
+        <member name="M:SharpBag.Math.Geometry.Point.op_Addition(SharpBag.Math.Geometry.Point,SharpBag.Math.Geometry.Point)">
+            <summary>
+            Implements the operator +.
+            </summary>
+            <param name="a">Point a.</param>
+            <param name="b">Point b.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Point.op_Subtraction(SharpBag.Math.Geometry.Point,SharpBag.Math.Geometry.Point)">
+            <summary>
+            Implements the operator -.
+            </summary>
+            <param name="a">Point a.</param>
+            <param name="b">Point b.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Point.op_Multiply(SharpBag.Math.Geometry.Point,SharpBag.Math.Geometry.Point)">
+            <summary>
+            Implements the operator *.
+            </summary>
+            <param name="a">Point a.</param>
+            <param name="b">Point b.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Point.op_Division(SharpBag.Math.Geometry.Point,SharpBag.Math.Geometry.Point)">
+            <summary>
+            Implements the operator /.
+            </summary>
+            <param name="a">Point a.</param>
+            <param name="b">Point b.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Point.DotProduct(SharpBag.Math.Geometry.Point,SharpBag.Math.Geometry.Point)">
+            <summary>
+            Calculates the dot product.
+            </summary>
+            <param name="a">Point a.</param>
+            <param name="b">Point b.</param>
+            <returns>The dot product.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Point.op_Equality(SharpBag.Math.Geometry.Point,SharpBag.Math.Geometry.Point)">
+            <summary>
+            Implements the operator ==.
+            </summary>
+            <param name="a">Point a.</param>
+            <param name="b">Point b.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Point.op_Inequality(SharpBag.Math.Geometry.Point,SharpBag.Math.Geometry.Point)">
+            <summary>
+            Implements the operator !=.
+            </summary>
+            <param name="a">Point a.</param>
+            <param name="b">Point b.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Point.DistanceTo(SharpBag.Math.Geometry.Point)">
+            <summary>
+            Calculates the distance from the current instance to the specified point.
+            </summary>
+            <param name="other">The specified point.</param>
+            <returns>The distance.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Point.SlopeTo(SharpBag.Math.Geometry.Point)">
+            <summary>
+            Calculates the slope from the current instance to the specified point.
+            </summary>
+            <param name="other">The specified point.</param>
+            <returns>The slope.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Point.op_Implicit(System.Double)~SharpBag.Math.Geometry.Point">
+            <summary>
+            Performs an implicit conversion from <see cref="T:System.Double"/> to <see cref="T:SharpBag.Math.Geometry.Point"/>.
+            </summary>
+            <param name="d">The double.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Point.op_Implicit(SharpBag.Math.Geometry.Point)~System.Drawing.PointF">
+            <summary>
+            Performs an implicit conversion from <see cref="T:SharpBag.Math.Geometry.Point"/> to <see cref="T:System.Drawing.PointF"/>.
+            </summary>
+            <param name="p">The point.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Point.op_Implicit(System.Drawing.PointF)~SharpBag.Math.Geometry.Point">
+            <summary>
+            Performs an implicit conversion from <see cref="T:System.Drawing.PointF"/> to <see cref="T:SharpBag.Math.Geometry.Point"/>.
+            </summary>
+            <param name="p">The point.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Point.CompareTo(SharpBag.Math.Geometry.Point)">
+            <summary>
+            Compares the point to the specified point.
+            </summary>
+            <param name="other">The specified point.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Point.Equals(SharpBag.Math.Geometry.Point)">
+            <summary>
+            Determines whether the point is equal to the specified point.
+            </summary>
+            <param name="other">The specified point.</param>
+            <returns>Whether the point is equal to the specified point.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Point.Equals(System.Object)">
+            <summary>
+            Determines whether the point is equal to the specified point.
+            </summary>
+            <param name="obj">The specified point.</param>
+            <returns>Whether the point is equal to the specified point.</returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Point.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.Geometry.Point.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents this instance.
+            </returns>
+        </member>
         <member name="P:SharpBag.Math.Geometry.Point.X">
             <summary>
             The X coordinate.
@@ -6732,6 +7403,26 @@
         <member name="E:SharpBag.Networking.Host.OnClientConnected">
             <summary>
             An event that is fired when a client connects.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Math.Geometry.ContainmentType">
+            <summary>
+            A type of containment.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Math.Geometry.ContainmentType.NotContained">
+            <summary>
+            Something is not contained.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Math.Geometry.ContainmentType.Joined">
+            <summary>
+            Something is joined.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Math.Geometry.ContainmentType.Contained">
+            <summary>
+            Something is contained.
             </summary>
         </member>
         <member name="T:SharpBag.Games.Dice">

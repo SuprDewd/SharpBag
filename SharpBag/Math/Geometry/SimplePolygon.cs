@@ -8,16 +8,29 @@ namespace SharpBag.Math.Geometry
 {
 	using System;
 
+	/// <summary>
+	/// A simple polygon.
+	/// </summary>
+	/// <remarks>A simple polygon is a polygon with no self-intersections.</remarks>
 	public struct SimplePolygon : IPolygon, IEquatable<SimplePolygon>
 	{
 		#region Properties
 
 		private Point[] _Points;
 
+		/// <summary>
+		/// Gets the point count.
+		/// </summary>
 		public int PointCount { get { return _Points.Length; } }
 
+		/// <summary>
+		/// Gets the points.
+		/// </summary>
 		public IEnumerable<Point> Points { get { return _Points; } }
 
+		/// <summary>
+		/// Gets the area.
+		/// </summary>
 		public double Area
 		{
 			get
@@ -28,6 +41,9 @@ namespace SharpBag.Math.Geometry
 			}
 		}
 
+		/// <summary>
+		/// Gets the circumference.
+		/// </summary>
 		public double Circumference
 		{
 			get
@@ -38,17 +54,22 @@ namespace SharpBag.Math.Geometry
 			}
 		}
 
+		/// <summary>
+		/// Gets the <see cref="SharpBag.Math.Geometry.Point"/> at the specified index.
+		/// </summary>
 		public Point this[int i] { get { return this._Points[i]; } }
 
 		#endregion Properties
 
 		#region Constructors
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="SimplePolygon"/> struct.
+		/// </summary>
+		/// <param name="points">The points.</param>
 		public SimplePolygon(params Point[] points)
 		{
 			Contract.Requires(SimplePolygon.IsSimplePolygon(points));
-			// Contract.Requires(points.Length >= 3);
-			// TODO: make sure polygon is simple
 			_Points = points;
 		}
 
@@ -56,6 +77,13 @@ namespace SharpBag.Math.Geometry
 
 		#region Methods
 
+		/// <summary>
+		/// Determines whether the specified points represent a simple polygon.
+		/// </summary>
+		/// <param name="points">The points.</param>
+		/// <returns>
+		///   <c>true</c> if the specified points represent a simple polygon; otherwise, <c>false</c>.
+		/// </returns>
 		[Pure]
 		public static bool IsSimplePolygon(Point[] points)
 		{
@@ -75,8 +103,22 @@ namespace SharpBag.Math.Geometry
 			return true;
 		}
 
+		/// <summary>
+		/// Determines whether the polygon contains the specified point.
+		/// </summary>
+		/// <param name="point">The point.</param>
+		/// <returns>
+		/// Whether the polygon contains the specified point.
+		/// </returns>
 		public bool Contains(Point point) { return (this.Containment(point) & ContainmentType.Contained) != 0; }
 
+		/// <summary>
+		/// Determines how the polygon contains the specified point.
+		/// </summary>
+		/// <param name="point">The specified point.</param>
+		/// <returns>
+		/// How the polygon contains the specified point.
+		/// </returns>
 		public ContainmentType Containment(Point point)
 		{
 			bool c = false, ex = false;
@@ -93,8 +135,22 @@ namespace SharpBag.Math.Geometry
 			else return ContainmentType.NotContained;
 		}
 
+		/// <summary>
+		/// Determines whether the polygon contains the specified polygon.
+		/// </summary>
+		/// <param name="polygon">The polygon.</param>
+		/// <returns>
+		/// Whether the polygon contains the specified polygon.
+		/// </returns>
 		public bool Contains(IPolygon polygon) { return (this.Containment(polygon) & ContainmentType.Contained) != 0; }
 
+		/// <summary>
+		/// Determines how the polygon contains the specified polygon.
+		/// </summary>
+		/// <param name="polygon">The specified polygon.</param>
+		/// <returns>
+		/// How the polygon contains the specified polygon.
+		/// </returns>
 		public ContainmentType Containment(IPolygon polygon)
 		{
 			SimplePolygon cur = this;
@@ -114,14 +170,25 @@ namespace SharpBag.Math.Geometry
 				ex = ex || c == ContainmentType.Joined;
 			}
 
-			/*return !this.Points.Any(p => polygon.Contains(p)) &&
-					polygon.Points.All(p => cur.Contains(p));*/
-
 			return ex ? ContainmentType.Joined : ContainmentType.Contained;
 		}
 
+		/// <summary>
+		/// Determines whether the polygon intersects the specified polygon.
+		/// </summary>
+		/// <param name="polygon">The polygon.</param>
+		/// <returns>
+		/// Whether the polygon intersects the specified polygon.
+		/// </returns>
 		public bool Intersects(IPolygon polygon) { return (this.Intersection(polygon) & IntersectionType.Intersected) != 0; }
 
+		/// <summary>
+		/// Determines how the polygon intersects the specified polygon.
+		/// </summary>
+		/// <param name="polygon">The polygon.</param>
+		/// <returns>
+		/// How the polygon intersects the specified polygon.
+		/// </returns>
 		public IntersectionType Intersection(IPolygon polygon)
 		{
 			bool inside = false, outside = false;
@@ -155,6 +222,11 @@ namespace SharpBag.Math.Geometry
 
 		#region Other
 
+		/// <summary>
+		/// Determines whether the current instance is equal to the specified polygon.
+		/// </summary>
+		/// <param name="other">The specified polygon.</param>
+		/// <returns>Whether the current instance is equal to the specified polygon.</returns>
 		public bool Equals(SimplePolygon other)
 		{
 			if (this.PointCount != other.PointCount) return false;
@@ -173,11 +245,24 @@ namespace SharpBag.Math.Geometry
 			return i == this.PointCount;
 		}
 
+		/// <summary>
+		/// Determines whether the specified <see cref="System.Object"/> is equal to this instance.
+		/// </summary>
+		/// <param name="obj">The <see cref="System.Object"/> to compare with this instance.</param>
+		/// <returns>
+		///   <c>true</c> if the specified <see cref="System.Object"/> is equal to this instance; otherwise, <c>false</c>.
+		/// </returns>
 		public override bool Equals(object obj)
 		{
 			return obj.GetType() == typeof(SimplePolygon) && this.Equals((SimplePolygon)obj);
 		}
 
+		/// <summary>
+		/// Returns a hash code for this instance.
+		/// </summary>
+		/// <returns>
+		/// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+		/// </returns>
 		public override int GetHashCode()
 		{
 			int hash = 0;
@@ -185,6 +270,12 @@ namespace SharpBag.Math.Geometry
 			return hash;
 		}
 
+		/// <summary>
+		/// Returns a <see cref="System.String"/> that represents this instance.
+		/// </summary>
+		/// <returns>
+		/// A <see cref="System.String"/> that represents this instance.
+		/// </returns>
 		public override string ToString()
 		{
 			StringBuilder sb = new StringBuilder(this[0].ToString());

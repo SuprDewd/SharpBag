@@ -55,7 +55,7 @@ namespace SharpBag.Math
 
 		private bool _UsingDefaultPrecision;
 
-		public bool UsingDefaultPrecision { get { return _UsingDefaultPrecision; } set { _UsingDefaultPrecision = value; } }
+		private bool UsingDefaultPrecision { get { return _UsingDefaultPrecision; } set { _UsingDefaultPrecision = value; } }
 
 		#endregion Properties
 
@@ -456,6 +456,12 @@ namespace SharpBag.Math
 			}
 		}
 
+		/// <summary>
+		/// Raise the BigDecimal to the specified power.
+		/// </summary>
+		/// <param name="value">The BigDecimal.</param>
+		/// <param name="power">The power.</param>
+		/// <returns>The BigDecimal raised to the specified power.</returns>
 		public static BigDecimal Pow(BigDecimal value, BigDecimal power)
 		{
 			if (power < 0) return BigDecimal.Reciprocal(BigDecimal.Pow(value, -power));
@@ -490,6 +496,11 @@ namespace SharpBag.Math
 			return new BigDecimal(mantissa, -digits, value.Precision, false, value.UsingDefaultPrecision) /*.RoundLastDigit()*/;
 		}
 
+		/// <summary>
+		/// Calculates the natural logarithm of the value.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <returns>The natural logarithm.</returns>
 		public static BigDecimal Ln(BigDecimal value)
 		{
 			return BigDecimal.Log10(value) / Constants.Log10EBig(value.Precision);
@@ -538,6 +549,11 @@ namespace SharpBag.Math
 			return BigDecimal.One / value;
 		}
 
+		/// <summary>
+		/// Calculates the exponential function of the BigDecimal.
+		/// </summary>
+		/// <param name="value">The BigDecimal.</param>
+		/// <returns>e ^ x</returns>
 		public static BigDecimal Exp(BigDecimal value)
 		{
 			BigDecimal result = value.WithPrecision(value.Precision + 4) + BigDecimal.One,
