@@ -8545,5 +8545,114 @@
             The default value.
             </summary>
         </member>
+        <member name="T:SharpBag.Math.ForComplex.Polynomial">
+            <summary>
+            A polynomial.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.ForComplex.Polynomial.#ctor">
+            <summary>
+            The constructor.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.ForComplex.Polynomial.#ctor(System.Numerics.Complex[])">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="coefficients">The coefficients.</param>
+        </member>
+        <member name="M:SharpBag.Math.ForComplex.Polynomial.Evaluate(System.Numerics.Complex)">
+            <summary>
+            Evalute the polynomial at the specified x.
+            </summary>
+            <param name="x">The specified x.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForComplex.Polynomial.op_Addition(SharpBag.Math.ForComplex.Polynomial,SharpBag.Math.ForComplex.Polynomial)">
+            <summary>
+            Add the specified polynomials.
+            </summary>
+            <param name="left">The left polynomial.</param>
+            <param name="right">The right polynomial.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForComplex.Polynomial.op_Subtraction(SharpBag.Math.ForComplex.Polynomial,SharpBag.Math.ForComplex.Polynomial)">
+            <summary>
+            Subtract the specified polynomials.
+            </summary>
+            <param name="left">The left polynomial.</param>
+            <param name="right">The right polynomial.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForComplex.Polynomial.op_UnaryNegation(SharpBag.Math.ForComplex.Polynomial)">
+            <summary>
+            Negate the specified polynomial.
+            </summary>
+            <param name="value">The polynomial.</param>
+            <returns>The negated polynomial.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForComplex.Polynomial.op_Multiply(SharpBag.Math.ForComplex.Polynomial,SharpBag.Math.ForComplex.Polynomial)">
+            <summary>
+            Multiply the specified polynomials.
+            </summary>
+            <param name="left">The left polynomial.</param>
+            <param name="right">The right polynomial.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForComplex.Polynomial.op_Division(SharpBag.Math.ForComplex.Polynomial,SharpBag.Math.ForComplex.Polynomial)">
+            <summary>
+            Divide the specified polynomials.
+            </summary>
+            <param name="left">The left polynomial.</param>
+            <param name="right">The right polynomial.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForComplex.Polynomial.DivRem(SharpBag.Math.ForComplex.Polynomial,SharpBag.Math.ForComplex.Polynomial,SharpBag.Math.ForComplex.Polynomial@)">
+            <summary>
+            Divide the specified polynomials.
+            </summary>
+            <param name="left">The left polynomial.</param>
+            <param name="right">The right polynomial.</param>
+            <param name="remainder">The remainder.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForComplex.Polynomial.op_Implicit(System.Numerics.Complex)~SharpBag.Math.ForComplex.Polynomial">
+            <summary>
+            An implicit cast to a polynomial.
+            </summary>
+            <param name="n">The value to cast.</param>
+            <returns>The polynomial.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForComplex.Polynomial.Derivative">
+            <summary>
+            Finds the derivative of the polynomial.
+            </summary>
+            <returns>The derivative of the polynomial.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForComplex.Polynomial.Derivative(System.Int32)">
+            <summary>
+            Finds the i-th derivative of the polynomial.
+            </summary>
+            <param name="i">The i.</param>
+            <returns>The i-th derivative of the polynomial.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForComplex.Polynomial.ToString">
+            <summary>
+            Object.ToString()
+            </summary>
+            <returns>The polynomial as a string.</returns>
+        </member>
+        <member name="P:SharpBag.Math.ForComplex.Polynomial.Degree">
+            <summary>
+            The degree of the polynomial.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.ForComplex.Polynomial.Item(System.Int32)">
+            <summary>
+            The i-th coefficient.
+            </summary>
+            <param name="i">The i.</param>
+            <returns>The i-th coefficient.</returns>
+        </member>
     </members>
 </doc>
