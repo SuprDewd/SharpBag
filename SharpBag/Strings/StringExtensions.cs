@@ -10,6 +10,7 @@ using System.Threading;
 #if DOTNET4
 
 using System.Diagnostics.Contracts;
+using System.Numerics;
 
 #endif
 
@@ -479,5 +480,31 @@ namespace SharpBag.Strings
 			charArray[i] = c;
 			return new String(charArray);
 		}
+
+#if DOTNET4
+
+		/// <summary>
+		/// Returns a string representation of a Complex number.
+		/// </summary>
+		/// <param name="c">The Complex number.</param>
+		/// <returns>A string representation of the Complex number.</returns>
+		public static string ToComplexString(this Complex c)
+		{
+			if (c.Real == 0)
+			{
+				if (c.Imaginary == 1) return "i";
+				if (c.Imaginary == 0) return "0";
+				return c.Imaginary + "i";
+			}
+			else
+			{
+				if (c.Imaginary == 1) return c.Real + " + i";
+				if (c.Imaginary > 0) return String.Concat(c.Real, " + ", c.Imaginary, "i");
+				if (c.Imaginary < 0) return String.Concat(c.Real, " - ", -c.Imaginary, "i");
+				return c.Real.ToString();
+			}
+		}
+
+#endif
 	}
 }

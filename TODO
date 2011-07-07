@@ -1,7 +1,6 @@
 
  TODO:
 
-	- Finish documentation.
 	- Finish BigDecimal class.
 	- Unit tests for Geometry classes.
 	- IsPowerOfTwo, NextPowerOfTwo, IsSquare, NextSquare...

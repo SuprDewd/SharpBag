@@ -105,9 +105,15 @@
     <Compile Include="Math\BaseConverter.cs" />
     <Compile Include="Math\BigDecimal.cs" />
     <Compile Include="Math\Constants.cs" />
+    <Compile Include="Math\ForFraction\ForInt64\Matrix.cs" />
+    <Compile Include="Math\ForFraction\ForInt64\Vector.cs" />
+    <Compile Include="Math\ForFraction\ForBigInteger\Matrix.cs" />
+    <Compile Include="Math\ForFraction\ForBigInteger\Vector.cs" />
     <Compile Include="Math\ForBigInteger\Fraction.cs" />
     <Compile Include="Math\ForBigInteger\Polynomial.cs" />
     <Compile Include="Math\ForComplex\Polynomial.cs" />
+    <Compile Include="Math\ForFraction\ForInt32\Matrix.cs" />
+    <Compile Include="Math\ForFraction\ForInt32\Vector.cs" />
     <Compile Include="Math\ForInt64\Polynomial.cs" />
     <Compile Include="Math\ForInt32\Polynomial.cs" />
     <Compile Include="Math\Geometry\Circle.cs" />
@@ -121,10 +127,14 @@
     <Compile Include="Math\IFraction.cs" />
     <Compile Include="Math\ForInt32\Fraction.cs" />
     <Compile Include="Math\ForInt64\Fraction.cs" />
+    <Compile Include="Math\MatrixBase.cs" />
     <Compile Include="Math\Interpolation.cs" />
+    <Compile Include="Math\ForComplex\Matrix.cs" />
+    <Compile Include="Math\VectorBase.cs" />
     <Compile Include="Math\PascalsTriangle.cs" />
     <Compile Include="Math\Geometry\Point.cs" />
     <Compile Include="Math\ForDouble\Polynomial.cs" />
+    <Compile Include="Math\ForComplex\Vector.cs" />
     <Compile Include="Misc\Draw.cs" />
     <Compile Include="Misc\ProblemAttribute.cs" />
     <Compile Include="Misc\ProblemController.cs" />
@@ -171,6 +181,7 @@
       <Link>TODO</Link>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
