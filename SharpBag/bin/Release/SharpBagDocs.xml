@@ -8557,6 +8557,13 @@
             A vector.
             </summary>
         </member>
+        <member name="T:SharpBag.Math.VectorBase`2">
+            <summary>
+            A vector base class.
+            </summary>
+            <typeparam name="T">The type of elements in the vector.</typeparam>
+            <typeparam name="V">The child class.</typeparam>
+        </member>
         <member name="T:SharpBag.Math.ForComplex.Matrix">
             <summary>
             A matrix.

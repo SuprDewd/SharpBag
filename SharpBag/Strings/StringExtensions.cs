@@ -499,8 +499,8 @@ namespace SharpBag.Strings
 			else
 			{
 				if (c.Imaginary == 1) return c.Real + " + i";
-				if (c.Imaginary > 0) return c.Real + " + " + c.Imaginary + "i";
-				if (c.Imaginary < 0) return c.Real + " - " + -c.Imaginary + "i";
+				if (c.Imaginary > 0) return String.Concat(c.Real, " + ", c.Imaginary, "i");
+				if (c.Imaginary < 0) return String.Concat(c.Real, " - ", -c.Imaginary, "i");
 				return c.Real.ToString();
 			}
 		}

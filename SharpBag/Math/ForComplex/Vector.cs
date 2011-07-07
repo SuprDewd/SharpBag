@@ -13,15 +13,11 @@ namespace SharpBag.Math.ForComplex
 	/// <summary>
 	/// A vector.
 	/// </summary>
-	public class Vector : IEnumerable<Complex>, ICloneable, IEquatable<Vector>
+	public class Vector : VectorBase<Complex, Vector>
 	{
 		#region Properties
 
-		private Complex[] Elements;
-
-		public int Dimension { get; private set; }
-
-		public Complex Length
+		public override Complex Length
 		{
 			get
 			{
@@ -31,25 +27,25 @@ namespace SharpBag.Math.ForComplex
 			}
 		}
 
-		public Complex this[int i] { get { return this.Elements[i]; } set { this.Elements[i] = value; } }
+		public override Vector Reverse
+		{
+			get
+			{
+				Vector result = new Vector(this.Dimension);
+				VectorBase<Complex, Vector>.InternalReverse(result, this);
+				return result;
+			}
+		}
 
 		#endregion Properties
 
 		#region Constructors
 
-		public Vector(int dimension)
-		{
-			this.Dimension = dimension;
-			this.Elements = new Complex[dimension];
-		}
+		public Vector(int dimension) : base(dimension) { }
 
-		public Vector(Complex[] elements)
-			: this(elements.Length)
-		{
-			for (int i = 0; i < elements.Length; i++) this[i] = elements[i];
-		}
+		public Vector(Complex[] elements) : base(elements) { }
 
-		public Vector(Vector other) : this(other.Elements) { }
+		public Vector(Vector other) : base(other.Elements) { }
 
 		#endregion Constructors
 
@@ -121,14 +117,14 @@ namespace SharpBag.Math.ForComplex
 		public Matrix ToColumnMatrix()
 		{
 			Matrix result = new Matrix(this.Dimension, 1);
-			for (int i = 0; i < this.Dimension; i++) result[i, 0] = this[i];
+			VectorBase<Complex, Vector>.InternalToColumnMatrix(result, this);
 			return result;
 		}
 
 		public Matrix ToRowMatrix()
 		{
 			Matrix result = new Matrix(1, this.Dimension);
-			for (int i = 0; i < this.Dimension; i++) result[0, i] = this[i];
+			VectorBase<Complex, Vector>.InternalToRowMatrix(result, this);
 			return result;
 		}
 
@@ -136,45 +132,13 @@ namespace SharpBag.Math.ForComplex
 
 		#region Comparing / Ordering
 
-		public bool Equals(Vector other)
-		{
-			if (this.Dimension != other.Dimension) return false;
-			for (int i = 0; i < this.Dimension; i++) if (!this[i].Equals(other[i])) return false;
-			return true;
-		}
-
-		public override bool Equals(object obj)
-		{
-			return obj is Vector && this.Equals(obj as Vector);
-		}
+		public override bool Equals(Vector other) { return VectorBase<Complex, Vector>.InternalEquals(this, other); }
 
 		#endregion Comparing / Ordering
 
 		#region Other
 
-		public IEnumerator<Complex> GetEnumerator()
-		{
-			for (int i = 0; i < this.Dimension; i++)
-			{
-				yield return this[i];
-			}
-		}
-
-		System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-		{
-			return this.GetEnumerator();
-		}
-
-		public Vector Copy() { return new Vector(this); }
-
-		public object Clone() { return this.Copy(); }
-
-		public override int GetHashCode()
-		{
-			int hash = 0;
-			for (int i = 0; i < this.Dimension; i++) hash ^= this[i].GetHashCode();
-			return hash;
-		}
+		public override Vector Copy() { return new Vector(this); }
 
 		public override string ToString()
 		{

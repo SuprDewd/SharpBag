@@ -120,8 +120,10 @@
     <Compile Include="Math\IFraction.cs" />
     <Compile Include="Math\ForInt32\Fraction.cs" />
     <Compile Include="Math\ForInt64\Fraction.cs" />
+    <Compile Include="Math\MatrixBase.cs" />
     <Compile Include="Math\Interpolation.cs" />
     <Compile Include="Math\ForComplex\Matrix.cs" />
+    <Compile Include="Math\VectorBase.cs" />
     <Compile Include="Math\PascalsTriangle.cs" />
     <Compile Include="Math\Geometry\Point.cs" />
     <Compile Include="Math\ForDouble\Polynomial.cs" />

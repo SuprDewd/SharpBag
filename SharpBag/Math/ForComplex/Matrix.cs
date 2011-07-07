@@ -14,7 +14,7 @@ namespace SharpBag.Math.ForComplex
 	/// A matrix.
 	/// </summary>
 	/// <remarks>http://www.codeproject.com/KB/recipes/matrix.aspx</remarks>
-	public class Matrix : IEquatable<Matrix>, ICloneable
+	public class Matrix : MatrixBase<Complex, Matrix>
 	{
 		#region Accessors
 
@@ -85,29 +85,18 @@ namespace SharpBag.Math.ForComplex
 
 		#region Properties
 
-		private Complex[,] Elements;
-
-		private bool DeterminantCached = false;
-		private Complex DeterminantCache;
-
-		public int RowCount { get; private set; }
-
-		public int ColumnCount { get; private set; }
-
 		public RowAccessor Rows { get; private set; }
 
 		public ColumnAccessor Columns { get; private set; }
 
-		public Complex this[int row, int column] { get { return this.Elements[row, column]; } set { this.Elements[row, column] = value; } }
-
-		public Complex Determinant
+		public override Complex Determinant
 		{
 			get
 			{
-				Contract.Requires(this.IsSquare);
-				Contract.Requires(this.RowCount > 0);
+				if (!this.IsSquare) throw new Exception("Only square matrices have determinants");
 
 				if (this.DeterminantCached) return this.DeterminantCache;
+				if (this.RowCount == 0) return 0;
 				if (this.RowCount == 1) return this[0, 0];
 				if (this.RowCount == 2) return -this[0, 1] * this[1, 0] + this[0, 0] * this[1, 1];
 				if (this.RowCount == 3) return -this[0, 2] * this[1, 1] * this[2, 0] + this[0, 1] * this[1, 2] * this[2, 0] + this[0, 2] * this[1, 0] * this[2, 1] - this[0, 0] * this[1, 2] * this[2, 1] - this[0, 1] * this[1, 0] * this[2, 2] + this[0, 0] * this[1, 1] * this[2, 2];
@@ -126,32 +115,17 @@ namespace SharpBag.Math.ForComplex
 			}
 		}
 
-		public Matrix Transpose
+		public override Matrix Transpose
 		{
 			get
 			{
 				Matrix result = new Matrix(this.ColumnCount, this.RowCount);
-				for (int row = 0; row < this.RowCount; row++)
-				{
-					for (int col = 0; col < this.ColumnCount; col++)
-					{
-						result[col, row] = this[row, col];
-					}
-				}
-
+				MatrixBase<Complex, Matrix>.InternalTranspose(result, this);
 				return result;
 			}
 		}
 
-		public bool IsSquare { get { return this.RowCount == this.ColumnCount; } }
-
-		public bool IsRowVector { get { return this.RowCount == 1; } }
-
-		public bool IsColumnVector { get { return this.ColumnCount == 1; } }
-
-		public bool IsVector { get { return this.IsRowVector || this.IsColumnVector; } }
-
-		public bool IsDiagonal
+		public override bool IsDiagonal
 		{
 			get
 			{
@@ -169,7 +143,7 @@ namespace SharpBag.Math.ForComplex
 			}
 		}
 
-		public bool IsIdentity
+		public override bool IsIdentity
 		{
 			get
 			{
@@ -179,25 +153,7 @@ namespace SharpBag.Math.ForComplex
 			}
 		}
 
-		public bool IsSymmetric
-		{
-			get
-			{
-				if (!this.IsSquare) return false;
-
-				for (int row = 0; row < this.RowCount; row++)
-				{
-					for (int col = 0; col < this.ColumnCount; col++)
-					{
-						if (this[row, col] != this[col, row]) return false;
-					}
-				}
-
-				return true;
-			}
-		}
-
-		public bool IsUpperTriangular
+		public override bool IsUpperTriangular
 		{
 			get
 			{
@@ -215,7 +171,7 @@ namespace SharpBag.Math.ForComplex
 			}
 		}
 
-		public bool IsStrictlyUpperTriangular
+		public override bool IsStrictlyUpperTriangular
 		{
 			get
 			{
@@ -233,7 +189,7 @@ namespace SharpBag.Math.ForComplex
 			}
 		}
 
-		public bool IsLowerTriangular
+		public override bool IsLowerTriangular
 		{
 			get
 			{
@@ -251,7 +207,7 @@ namespace SharpBag.Math.ForComplex
 			}
 		}
 
-		public bool IsStrictlyLowerTriangular
+		public override bool IsStrictlyLowerTriangular
 		{
 			get
 			{
@@ -269,57 +225,31 @@ namespace SharpBag.Math.ForComplex
 			}
 		}
 
-		public bool IsTriangular { get { return this.IsUpperTriangular || this.IsLowerTriangular; } }
+		public override bool IsSingular { get { return this.Determinant == 0; } }
 
-		public bool IsStrictlyTriangular { get { return this.IsStrictlyLowerTriangular || this.IsStrictlyUpperTriangular; } }
-
-		public bool IsSingular { get { return this.Determinant == 0; } }
-
-		public bool IsInvertible { get { return this.Determinant != 0; } }
+		public override bool IsInvertible { get { return this.Determinant != 0; } }
 
 		#endregion Properties
 
 		#region Constructors / Factories
 
-		private Matrix()
-		{
-			this.Rows = new RowAccessor(this);
-			this.Columns = new ColumnAccessor(this);
-		}
+		public Matrix(int rows, int columns) : base(rows, columns) { }
 
-		public Matrix(int rows, int columns)
-			: this()
-		{
-			this.RowCount = rows;
-			this.ColumnCount = columns;
-			this.Elements = new Complex[this.RowCount, this.ColumnCount];
-		}
+		public Matrix(Complex[,] elements) : base(elements) { }
 
-		public Matrix(Complex[,] elements)
-			: this(elements.GetLength(0), elements.GetLength(1))
-		{
-			for (int row = 0; row < this.RowCount; row++)
-			{
-				for (int col = 0; col < this.ColumnCount; col++)
-				{
-					this.Elements[row, col] = elements[row, col];
-				}
-			}
-		}
-
-		public Matrix(Matrix other) : this(other.Elements) { }
+		public Matrix(Matrix other) : base(other.Elements) { }
 
 		public static Matrix Identity(int size)
 		{
 			Matrix result = new Matrix(size, size);
-			for (int i = 0; i < size; i++) result[i, i] = 1;
+			MatrixBase<Complex, Matrix>.InternalIdentity(result, size, 1);
 			return result;
 		}
 
 		public static Matrix Diagonal(params Complex[] diagonals)
 		{
 			Matrix result = new Matrix(diagonals.Length, diagonals.Length);
-			for (int i = 0; i < diagonals.Length; i++) result[i, i] = diagonals[i];
+			MatrixBase<Complex, Matrix>.InternalDiagonal(result, diagonals);
 			return result;
 		}
 
@@ -418,22 +348,9 @@ namespace SharpBag.Math.ForComplex
 			Contract.Requires(matrix.RowCount > 0 && matrix.ColumnCount > 0);
 			Contract.Requires(row >= 0 && row < matrix.RowCount);
 			Contract.Requires(column >= 0 && column < matrix.ColumnCount);
+
 			Matrix result = new Matrix(matrix.RowCount - 1, matrix.ColumnCount - 1);
-
-			int newRow = 0;
-			for (int i = 0; i < matrix.RowCount; i++)
-			{
-				if (i == row) continue;
-				int newColumn = 0;
-				for (int j = 0; j < matrix.ColumnCount; j++)
-				{
-					if (j == column) continue;
-					result[newRow, newColumn++] = matrix[i, j];
-				}
-
-				newRow++;
-			}
-
+			MatrixBase<Complex, Matrix>.InternalMinor(result, matrix, row, column);
 			return result;
 		}
 
@@ -446,12 +363,7 @@ namespace SharpBag.Math.ForComplex
 				{
 					for (int j = i + 1; j < result.RowCount; j++)
 					{
-						if (result[j, i] != 0)
-						{
-							Vector temp = result.Rows[i];
-							result.Rows[i] = result.Rows[j];
-							result.Rows[j] = result.Rows[i];
-						}
+						if (result[j, i] != 0) MatrixBase<Complex, Matrix>.SwapRows(result, i, j);
 					}
 				}
 
@@ -460,16 +372,11 @@ namespace SharpBag.Math.ForComplex
 				{
 					for (int j = i + 1; j < result.RowCount; j++)
 					{
-						if (result[j, i] == 1)
-						{
-							Vector temp = result.Rows[i];
-							result.Rows[i] = result.Rows[j];
-							result.Rows[j] = result.Rows[i];
-						}
+						if (result[j, i] == 1) MatrixBase<Complex, Matrix>.SwapRows(result, i, j);
 					}
 				}
-				result.Rows[i] *= 1 / result[i, i];
 
+				result.Rows[i] *= 1 / result[i, i];
 				for (int j = i + 1; j < result.RowCount; j++)
 				{
 					result.Rows[j] += result.Rows[i] * -result[j, i];
@@ -488,12 +395,7 @@ namespace SharpBag.Math.ForComplex
 				{
 					for (int j = i + 1; j < result.RowCount; j++)
 					{
-						if (result[j, i] != 0)
-						{
-							Vector temp = result.Rows[i];
-							result.Rows[i] = result.Rows[j];
-							result.Rows[j] = temp;
-						}
+						if (result[j, i] != 0) MatrixBase<Complex, Matrix>.SwapRows(result, i, j);
 					}
 				}
 
@@ -502,17 +404,11 @@ namespace SharpBag.Math.ForComplex
 				{
 					for (int j = i + 1; j < result.RowCount; j++)
 					{
-						if (result[j, i] == 1)
-						{
-							Vector temp = result.Rows[i];
-							result.Rows[i] = result.Rows[j];
-							result.Rows[j] = result.Rows[i];
-						}
+						if (result[j, i] == 1) MatrixBase<Complex, Matrix>.SwapRows(result, i, j);
 					}
 				}
 
 				result.Rows[i] *= 1 / result[i, i];
-
 				for (int j = i + 1; j < result.RowCount; j++)
 				{
 					result.Rows[j] += result.Rows[i] * -result[j, i];
@@ -550,38 +446,20 @@ namespace SharpBag.Math.ForComplex
 			return (1 / matrix.Determinant) * Matrix.Adjoint(matrix);
 		}
 
-		public static Matrix Negate(Matrix matrix)
-		{
-			return -1 * matrix;
-		}
+		public static Matrix Negate(Matrix matrix) { return -1 * matrix; }
 
 		public static Matrix Augment(Matrix left, Matrix right)
 		{
 			Contract.Requires(left.RowCount == right.RowCount);
 			Matrix result = new Matrix(left.RowCount, left.ColumnCount + right.ColumnCount);
-			int col = 0;
-
-			for (int cCol = 0; cCol < left.ColumnCount; cCol++)
-			{
-				for (int row = 0; row < left.RowCount; row++)
-				{
-					result[row, col] = left[row, cCol];
-				}
-
-				col++;
-			}
-
-			for (int cCol = 0; cCol < right.ColumnCount; cCol++)
-			{
-				for (int row = 0; row < right.RowCount; row++)
-				{
-					result[row, col] = right[row, cCol];
-				}
-
-				col++;
-			}
-
+			MatrixBase<Complex, Matrix>.InternalAugment(result, left, right);
 			return result;
+		}
+
+		protected override void CreateAccessors()
+		{
+			this.Rows = new RowAccessor(this);
+			this.Columns = new ColumnAccessor(this);
 		}
 
 		#endregion Methods
@@ -603,46 +481,13 @@ namespace SharpBag.Math.ForComplex
 
 		#region Comparing / Ordering
 
-		public bool Equals(Matrix other)
-		{
-			if (this.RowCount != other.RowCount || this.ColumnCount != other.ColumnCount) return false;
-			for (int row = 0; row < this.RowCount; row++)
-			{
-				for (int col = 0; col < this.ColumnCount; col++)
-				{
-					if (!this[row, col].Equals(other[row, col])) return false;
-				}
-			}
-
-			return true;
-		}
-
-		public override bool Equals(object obj)
-		{
-			return obj is Matrix && this.Equals(obj as Matrix);
-		}
+		public override bool Equals(Matrix other) { return MatrixBase<Complex, Matrix>.InternalEquals(this, other); }
 
 		#endregion Comparing / Ordering
 
 		#region Other
 
-		public Matrix Copy() { return new Matrix(this); }
-
-		public object Clone() { return this.Copy(); }
-
-		public override int GetHashCode()
-		{
-			int hash = 0;
-			for (int row = 0; row < this.RowCount; row++)
-			{
-				for (int col = 0; col < this.ColumnCount; col++)
-				{
-					hash ^= this[row, col].GetHashCode();
-				}
-			}
-
-			return hash;
-		}
+		public override Matrix Copy() { return new Matrix(this); }
 
 		public override string ToString()
 		{
