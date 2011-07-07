@@ -1,13 +1,20 @@
-﻿using System;
+﻿#if DOTNET4
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using SharpBag.Strings;
 
-namespace SharpBag.Math
+namespace SharpBag.Math.ForComplex
 {
-	public class Matrix
+	/// <summary>
+	/// A matrix.
+	/// </summary>
+	/// <remarks>http://www.codeproject.com/KB/recipes/matrix.aspx</remarks>
+	public class Matrix : IEquatable<Matrix>, ICloneable
 	{
 		#region Accessors
 
@@ -33,13 +40,13 @@ namespace SharpBag.Math
 				get
 				{
 					Vector v = new Vector(this.InternalMatrix.ColumnCount);
-					for (int col = 0; col < v.Length; col++) v[col] = this.InternalMatrix[row, col];
+					for (int col = 0; col < v.Dimension; col++) v[col] = this.InternalMatrix[row, col];
 					return v;
 				}
 				set
 				{
-					Contract.Requires(value.Length == this.InternalMatrix.ColumnCount);
-					for (int col = 0; col < value.Length; col++) this.InternalMatrix[row, col] = value[col];
+					if (value.Dimension != this.InternalMatrix.ColumnCount) throw new ArgumentException("Incorrect Vector length");
+					for (int col = 0; col < value.Dimension; col++) this.InternalMatrix[row, col] = value[col];
 				}
 			}
 
@@ -58,13 +65,13 @@ namespace SharpBag.Math
 				get
 				{
 					Vector v = new Vector(this.InternalMatrix.RowCount);
-					for (int row = 0; row < v.Length; row++) v[row] = this.InternalMatrix[row, column];
+					for (int row = 0; row < v.Dimension; row++) v[row] = this.InternalMatrix[row, column];
 					return v;
 				}
 				set
 				{
-					Contract.Requires(value.Length == this.InternalMatrix.RowCount);
-					for (int row = 0; row < value.Length; row++) this.InternalMatrix[row, column] = value[row];
+					if (value.Dimension != this.InternalMatrix.RowCount) throw new ArgumentException("Incorrect Vector length");
+					for (int row = 0; row < value.Dimension; row++) this.InternalMatrix[row, column] = value[row];
 				}
 			}
 
@@ -80,6 +87,9 @@ namespace SharpBag.Math
 
 		private Complex[,] Elements;
 
+		private bool DeterminantCached = false;
+		private Complex DeterminantCache;
+
 		public int RowCount { get; private set; }
 
 		public int ColumnCount { get; private set; }
@@ -87,6 +97,34 @@ namespace SharpBag.Math
 		public RowAccessor Rows { get; private set; }
 
 		public ColumnAccessor Columns { get; private set; }
+
+		public Complex this[int row, int column] { get { return this.Elements[row, column]; } set { this.Elements[row, column] = value; } }
+
+		public Complex Determinant
+		{
+			get
+			{
+				Contract.Requires(this.IsSquare);
+				Contract.Requires(this.RowCount > 0);
+
+				if (this.DeterminantCached) return this.DeterminantCache;
+				if (this.RowCount == 1) return this[0, 0];
+				if (this.RowCount == 2) return -this[0, 1] * this[1, 0] + this[0, 0] * this[1, 1];
+				if (this.RowCount == 3) return -this[0, 2] * this[1, 1] * this[2, 0] + this[0, 1] * this[1, 2] * this[2, 0] + this[0, 2] * this[1, 0] * this[2, 1] - this[0, 0] * this[1, 2] * this[2, 1] - this[0, 1] * this[1, 0] * this[2, 2] + this[0, 0] * this[1, 1] * this[2, 2];
+
+				Complex det = 0;
+				bool negate = false;
+				for (int j = 0; j < this.ColumnCount; j++)
+				{
+					Complex minorDet = Matrix.Minor(this, 0, j).Determinant;
+					det += this[0, j] * (negate ? -minorDet : minorDet);
+					negate = !negate;
+				}
+
+				this.DeterminantCached = true;
+				return this.DeterminantCache = det;
+			}
+		}
 
 		public Matrix Transpose
 		{
@@ -235,9 +273,15 @@ namespace SharpBag.Math
 
 		public bool IsStrictlyTriangular { get { return this.IsStrictlyLowerTriangular || this.IsStrictlyUpperTriangular; } }
 
+		public bool IsSingular { get { return this.Determinant == 0; } }
+
+		public bool IsInvertible { get { return this.Determinant != 0; } }
+
 		#endregion Properties
 
-		public Matrix()
+		#region Constructors / Factories
+
+		private Matrix()
 		{
 			this.Rows = new RowAccessor(this);
 			this.Columns = new ColumnAccessor(this);
@@ -279,15 +323,27 @@ namespace SharpBag.Math
 			return result;
 		}
 
+		#endregion Constructors / Factories
+
+		#region Operators
+
 		public static Matrix operator +(Matrix left, Matrix right) { return Matrix.Add(left, right); }
 
 		public static Matrix operator -(Matrix left, Matrix right) { return Matrix.Subtract(left, right); }
+
+		public static Matrix operator -(Matrix matrix) { return Matrix.Negate(matrix); }
 
 		public static Matrix operator *(Matrix left, Matrix right) { return Matrix.Multiply(left, right); }
 
 		public static Matrix operator *(Matrix left, Complex right) { return Matrix.Multiply(left, right); }
 
 		public static Matrix operator *(Complex left, Matrix right) { return Matrix.Multiply(left, right); }
+
+		public static Matrix operator |(Matrix left, Matrix right) { return Matrix.Augment(left, right); }
+
+		#endregion Operators
+
+		#region Methods
 
 		public static Matrix Add(Matrix left, Matrix right)
 		{
@@ -330,8 +386,6 @@ namespace SharpBag.Math
 			{
 				for (int col = 0; col < right.ColumnCount; col++)
 				{
-					// result[row, col] = Vector.DotProduct(left.Rows[row], right.Columns[col]);
-
 					for (int i = 0; i < left.ColumnCount; i++)
 					{
 						result[row, col] += left[row, i] * right[i, col];
@@ -359,29 +413,235 @@ namespace SharpBag.Math
 
 		public static Matrix Multiply(Complex left, Matrix right) { return Matrix.Multiply(right, left); }
 
-		public Complex this[int row, int column] { get { return this.Elements[row, column]; } set { this.Elements[row, column] = value; } }
+		public static Matrix Minor(Matrix matrix, int row, int column)
+		{
+			Contract.Requires(matrix.RowCount > 0 && matrix.ColumnCount > 0);
+			Contract.Requires(row >= 0 && row < matrix.RowCount);
+			Contract.Requires(column >= 0 && column < matrix.ColumnCount);
+			Matrix result = new Matrix(matrix.RowCount - 1, matrix.ColumnCount - 1);
+
+			int newRow = 0;
+			for (int i = 0; i < matrix.RowCount; i++)
+			{
+				if (i == row) continue;
+				int newColumn = 0;
+				for (int j = 0; j < matrix.ColumnCount; j++)
+				{
+					if (j == column) continue;
+					result[newRow, newColumn++] = matrix[i, j];
+				}
+
+				newRow++;
+			}
+
+			return result;
+		}
+
+		public static Matrix EchelonForm(Matrix matrix)
+		{
+			Matrix result = matrix.Copy();
+			for (int i = 0; i < matrix.RowCount; i++)
+			{
+				if (result[i, i] == 0)
+				{
+					for (int j = i + 1; j < result.RowCount; j++)
+					{
+						if (result[j, i] != 0)
+						{
+							Vector temp = result.Rows[i];
+							result.Rows[i] = result.Rows[j];
+							result.Rows[j] = result.Rows[i];
+						}
+					}
+				}
+
+				if (result[i, i] == 0) continue;
+				if (result[i, i] != 1)
+				{
+					for (int j = i + 1; j < result.RowCount; j++)
+					{
+						if (result[j, i] == 1)
+						{
+							Vector temp = result.Rows[i];
+							result.Rows[i] = result.Rows[j];
+							result.Rows[j] = result.Rows[i];
+						}
+					}
+				}
+				result.Rows[i] *= 1 / result[i, i];
+
+				for (int j = i + 1; j < result.RowCount; j++)
+				{
+					result.Rows[j] += result.Rows[i] * -result[j, i];
+				}
+			}
+
+			return result;
+		}
+
+		public static Matrix ReducedEchelonForm(Matrix matrix)
+		{
+			Matrix result = matrix.Copy();
+			for (int i = 0; i < matrix.RowCount; i++)
+			{
+				if (result[i, i] == 0)
+				{
+					for (int j = i + 1; j < result.RowCount; j++)
+					{
+						if (result[j, i] != 0)
+						{
+							Vector temp = result.Rows[i];
+							result.Rows[i] = result.Rows[j];
+							result.Rows[j] = temp;
+						}
+					}
+				}
+
+				if (result[i, i] == 0) continue;
+				if (result[i, i] != 1)
+				{
+					for (int j = i + 1; j < result.RowCount; j++)
+					{
+						if (result[j, i] == 1)
+						{
+							Vector temp = result.Rows[i];
+							result.Rows[i] = result.Rows[j];
+							result.Rows[j] = result.Rows[i];
+						}
+					}
+				}
+
+				result.Rows[i] *= 1 / result[i, i];
+
+				for (int j = i + 1; j < result.RowCount; j++)
+				{
+					result.Rows[j] += result.Rows[i] * -result[j, i];
+				}
+
+				for (int j = i - 1; j >= 0; j--)
+				{
+					result.Rows[j] += result.Rows[i] * -result[j, i];
+				}
+			}
+
+			return result;
+		}
+
+		public static Matrix Adjoint(Matrix matrix)
+		{
+			Contract.Requires(matrix.IsSquare);
+			Matrix result = new Matrix(matrix.RowCount, matrix.ColumnCount);
+
+			for (int i = 0; i < matrix.RowCount; i++)
+			{
+				for (int j = 0; j < matrix.ColumnCount; j++)
+				{
+					result[i, j] = Complex.Pow(-1, i + j) * Matrix.Minor(matrix, i, j).Determinant;
+				}
+			}
+
+			return result.Transpose;
+		}
+
+		public static Matrix Inverse(Matrix matrix)
+		{
+			Contract.Requires(matrix.IsSquare);
+			Contract.Requires(matrix.Determinant != 0);
+			return (1 / matrix.Determinant) * Matrix.Adjoint(matrix);
+		}
+
+		public static Matrix Negate(Matrix matrix)
+		{
+			return -1 * matrix;
+		}
+
+		public static Matrix Augment(Matrix left, Matrix right)
+		{
+			Contract.Requires(left.RowCount == right.RowCount);
+			Matrix result = new Matrix(left.RowCount, left.ColumnCount + right.ColumnCount);
+			int col = 0;
+
+			for (int cCol = 0; cCol < left.ColumnCount; cCol++)
+			{
+				for (int row = 0; row < left.RowCount; row++)
+				{
+					result[row, col] = left[row, cCol];
+				}
+
+				col++;
+			}
+
+			for (int cCol = 0; cCol < right.ColumnCount; cCol++)
+			{
+				for (int row = 0; row < right.RowCount; row++)
+				{
+					result[row, col] = right[row, cCol];
+				}
+
+				col++;
+			}
+
+			return result;
+		}
+
+		#endregion Methods
+
+		#region Casting
 
 		public static implicit operator Matrix(Complex[,] elements) { return new Matrix(elements); }
 
 		public static implicit operator Complex[,](Matrix matrix) { return matrix.Elements; }
 
+		public static explicit operator Vector(Matrix matrix)
+		{
+			Contract.Requires(matrix.IsVector);
+			if (matrix.IsColumnVector) return matrix.Columns[0];
+			else return matrix.Rows[0];
+		}
+
+		#endregion Casting
+
+		#region Comparing / Ordering
+
+		public bool Equals(Matrix other)
+		{
+			if (this.RowCount != other.RowCount || this.ColumnCount != other.ColumnCount) return false;
+			for (int row = 0; row < this.RowCount; row++)
+			{
+				for (int col = 0; col < this.ColumnCount; col++)
+				{
+					if (!this[row, col].Equals(other[row, col])) return false;
+				}
+			}
+
+			return true;
+		}
+
+		public override bool Equals(object obj)
+		{
+			return obj is Matrix && this.Equals(obj as Matrix);
+		}
+
+		#endregion Comparing / Ordering
+
+		#region Other
+
 		public Matrix Copy() { return new Matrix(this); }
 
-		internal static void ComplexToString(StringBuilder sb, Complex c)
+		public object Clone() { return this.Copy(); }
+
+		public override int GetHashCode()
 		{
-			if (c.Real == 0)
+			int hash = 0;
+			for (int row = 0; row < this.RowCount; row++)
 			{
-				if (c.Imaginary == 1) sb.Append('i');
-				else if (c.Imaginary == 0) sb.Append('0');
-				else sb.Append(c.Imaginary).Append('i');
+				for (int col = 0; col < this.ColumnCount; col++)
+				{
+					hash ^= this[row, col].GetHashCode();
+				}
 			}
-			else
-			{
-				if (c.Imaginary == 1) sb.Append(c.Real).Append(" + i");
-				else if (c.Imaginary > 0) sb.Append(c.Real).Append(" + ").Append(c.Imaginary).Append("i");
-				else if (c.Imaginary < 0) sb.Append(c.Real).Append(" - ").Append(-c.Imaginary).Append("i");
-				else sb.Append(c.Real);
-			}
+
+			return hash;
 		}
 
 		public override string ToString()
@@ -395,7 +655,7 @@ namespace SharpBag.Math
 				for (int col = 0; col < this.ColumnCount; col++)
 				{
 					if (col != 0) sb.Append('\t');
-					ComplexToString(sb, this[row, col]);
+					sb.Append(this[row, col].ToComplexString());
 				}
 
 				sb.Append(" ]");
@@ -405,5 +665,9 @@ namespace SharpBag.Math
 
 			return sb.Append(']').ToString();
 		}
+
+		#endregion Other
 	}
 }
+
+#endif

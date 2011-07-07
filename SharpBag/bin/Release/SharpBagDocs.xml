@@ -7349,6 +7349,13 @@
             <param name="c">The character to replace with.</param>
             <returns>The new string.</returns>
         </member>
+        <member name="M:SharpBag.Strings.StringExtensions.ToComplexString(System.Numerics.Complex)">
+            <summary>
+            Returns a string representation of a Complex number.
+            </summary>
+            <param name="c">The Complex number.</param>
+            <returns>A string representation of the Complex number.</returns>
+        </member>
         <member name="T:SharpBag.Networking.Host">
             <summary>
             A network host.
@@ -8544,6 +8551,17 @@
             <summary>
             The default value.
             </summary>
+        </member>
+        <member name="T:SharpBag.Math.ForComplex.Vector">
+            <summary>
+            A vector.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Math.ForComplex.Matrix">
+            <summary>
+            A matrix.
+            </summary>
+            <remarks>http://www.codeproject.com/KB/recipes/matrix.aspx</remarks>
         </member>
     </members>
 </doc>
