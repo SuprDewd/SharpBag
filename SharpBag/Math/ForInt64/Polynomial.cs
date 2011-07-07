@@ -9,7 +9,7 @@ using System.Diagnostics.Contracts;
 
 #endif
 
-namespace SharpBag.Math.ForLong
+namespace SharpBag.Math.ForInt64
 {
 	/// <summary>
 	/// A polynomial.

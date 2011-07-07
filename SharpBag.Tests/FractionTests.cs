@@ -6,7 +6,7 @@ using System.Numerics;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SharpBag.Math.ForInt32;
-using SharpBag.Math.ForLong;
+using SharpBag.Math.ForInt64;
 
 #if DOTNET4
 
