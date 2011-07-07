@@ -121,9 +121,11 @@
     <Compile Include="Math\ForInt32\Fraction.cs" />
     <Compile Include="Math\ForInt64\Fraction.cs" />
     <Compile Include="Math\Interpolation.cs" />
+    <Compile Include="Math\Matrix.cs" />
     <Compile Include="Math\PascalsTriangle.cs" />
     <Compile Include="Math\Geometry\Point.cs" />
     <Compile Include="Math\ForDouble\Polynomial.cs" />
+    <Compile Include="Math\Vector.cs" />
     <Compile Include="Misc\Draw.cs" />
     <Compile Include="Misc\ProblemAttribute.cs" />
     <Compile Include="Misc\ProblemController.cs" />
