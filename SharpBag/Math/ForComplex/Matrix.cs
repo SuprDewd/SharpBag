@@ -18,23 +18,56 @@ namespace SharpBag.Math.ForComplex
 	{
 		#region Accessors
 
+		/// <summary>
+		/// An accessor.
+		/// </summary>
 		public abstract class Accessor : IEnumerable<Vector>
 		{
+			/// <summary>
+			/// Gets the internal matrix.
+			/// </summary>
 			public Matrix InternalMatrix { get; private set; }
 
+			/// <summary>
+			/// Initializes a new instance of the <see cref="Accessor"/> class.
+			/// </summary>
+			/// <param name="internalMatrix">The internal matrix.</param>
 			internal Accessor(Matrix internalMatrix) { this.InternalMatrix = internalMatrix; }
 
+			/// <summary>
+			/// Gets or sets the <see cref="SharpBag.Math.ForComplex.Vector"/> at the specified index.
+			/// </summary>
 			public abstract Vector this[int row] { get; set; }
 
+			/// <summary>
+			/// Gets the enumerator.
+			/// </summary>
+			/// <returns>The enumerator.</returns>
 			public abstract IEnumerator<Vector> GetEnumerator();
 
+			/// <summary>
+			/// Returns an enumerator that iterates through a collection.
+			/// </summary>
+			/// <returns>
+			/// An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
+			/// </returns>
 			System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { return this.GetEnumerator(); }
 		}
 
+		/// <summary>
+		/// A row acccessor.
+		/// </summary>
 		public class RowAccessor : Accessor
 		{
+			/// <summary>
+			/// Initializes a new instance of the <see cref="RowAccessor"/> class.
+			/// </summary>
+			/// <param name="internalMatrix">The internal matrix.</param>
 			internal RowAccessor(Matrix internalMatrix) : base(internalMatrix) { }
 
+			/// <summary>
+			/// Gets or sets the <see cref="SharpBag.Math.ForComplex.Vector"/> at the specified index.
+			/// </summary>
 			public override Vector this[int row]
 			{
 				get
@@ -50,16 +83,32 @@ namespace SharpBag.Math.ForComplex
 				}
 			}
 
+			/// <summary>
+			/// Gets the enumerator.
+			/// </summary>
+			/// <returns>
+			/// The enumerator.
+			/// </returns>
 			public override IEnumerator<Vector> GetEnumerator()
 			{
 				for (int row = 0; row < this.InternalMatrix.RowCount; row++) yield return this[row];
 			}
 		}
 
+		/// <summary>
+		/// A column accessor.
+		/// </summary>
 		public class ColumnAccessor : Accessor
 		{
+			/// <summary>
+			/// Initializes a new instance of the <see cref="ColumnAccessor"/> class.
+			/// </summary>
+			/// <param name="internalMatrix">The internal matrix.</param>
 			internal ColumnAccessor(Matrix internalMatrix) : base(internalMatrix) { }
 
+			/// <summary>
+			/// Gets or sets the <see cref="SharpBag.Math.ForComplex.Vector"/> at the specified index.
+			/// </summary>
 			public override Vector this[int column]
 			{
 				get
@@ -75,6 +124,12 @@ namespace SharpBag.Math.ForComplex
 				}
 			}
 
+			/// <summary>
+			/// Gets the enumerator.
+			/// </summary>
+			/// <returns>
+			/// The enumerator.
+			/// </returns>
 			public override IEnumerator<Vector> GetEnumerator()
 			{
 				for (int col = 0; col < this.InternalMatrix.ColumnCount; col++) yield return this[col];
@@ -85,10 +140,19 @@ namespace SharpBag.Math.ForComplex
 
 		#region Properties
 
+		/// <summary>
+		/// Gets the rows.
+		/// </summary>
 		public RowAccessor Rows { get; private set; }
 
+		/// <summary>
+		/// Gets the columns.
+		/// </summary>
 		public ColumnAccessor Columns { get; private set; }
 
+		/// <summary>
+		/// Gets the determinant.
+		/// </summary>
 		public override Complex Determinant
 		{
 			get
@@ -115,6 +179,9 @@ namespace SharpBag.Math.ForComplex
 			}
 		}
 
+		/// <summary>
+		/// Gets the transpose.
+		/// </summary>
 		public override Matrix Transpose
 		{
 			get
@@ -125,6 +192,12 @@ namespace SharpBag.Math.ForComplex
 			}
 		}
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is diagonal.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is diagonal.
+		/// </value>
 		public override bool IsDiagonal
 		{
 			get
@@ -143,6 +216,12 @@ namespace SharpBag.Math.ForComplex
 			}
 		}
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is an identity.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is an identity.
+		/// </value>
 		public override bool IsIdentity
 		{
 			get
@@ -153,6 +232,12 @@ namespace SharpBag.Math.ForComplex
 			}
 		}
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is upper triangular.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is upper triangular.
+		/// </value>
 		public override bool IsUpperTriangular
 		{
 			get
@@ -171,6 +256,12 @@ namespace SharpBag.Math.ForComplex
 			}
 		}
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is strictly upper triangular.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is strictly upper triangular.
+		/// </value>
 		public override bool IsStrictlyUpperTriangular
 		{
 			get
@@ -189,6 +280,12 @@ namespace SharpBag.Math.ForComplex
 			}
 		}
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is lower triangular.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is lower triangular.
+		/// </value>
 		public override bool IsLowerTriangular
 		{
 			get
@@ -207,6 +304,12 @@ namespace SharpBag.Math.ForComplex
 			}
 		}
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is strictly lower triangular.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is strictly lower triangular.
+		/// </value>
 		public override bool IsStrictlyLowerTriangular
 		{
 			get
@@ -225,20 +328,50 @@ namespace SharpBag.Math.ForComplex
 			}
 		}
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is singular.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is singular.
+		/// </value>
 		public override bool IsSingular { get { return this.Determinant == 0; } }
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is invertible.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is invertible.
+		/// </value>
 		public override bool IsInvertible { get { return this.Determinant != 0; } }
 
 		#endregion Properties
 
 		#region Constructors / Factories
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Matrix"/> class.
+		/// </summary>
+		/// <param name="rows">The number of rows.</param>
+		/// <param name="columns">The number of columns.</param>
 		public Matrix(int rows, int columns) : base(rows, columns) { }
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Matrix"/> class.
+		/// </summary>
+		/// <param name="elements">The elements.</param>
 		public Matrix(Complex[,] elements) : base(elements) { }
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Matrix"/> class.
+		/// </summary>
+		/// <param name="other">Another instance to copy.</param>
 		public Matrix(Matrix other) : base(other.Elements) { }
 
+		/// <summary>
+		/// Creates an identity matrix of the specified size.
+		/// </summary>
+		/// <param name="size">The size.</param>
+		/// <returns>The identity matrix.</returns>
 		public static Matrix Identity(int size)
 		{
 			Matrix result = new Matrix(size, size);
@@ -246,6 +379,11 @@ namespace SharpBag.Math.ForComplex
 			return result;
 		}
 
+		/// <summary>
+		/// Creates a diagonal matrix with the specified diagonals.
+		/// </summary>
+		/// <param name="diagonals">The diagonals.</param>
+		/// <returns>The diagonal matrix.</returns>
 		public static Matrix Diagonal(params Complex[] diagonals)
 		{
 			Matrix result = new Matrix(diagonals.Length, diagonals.Length);
@@ -257,24 +395,85 @@ namespace SharpBag.Math.ForComplex
 
 		#region Operators
 
+		/// <summary>
+		/// Implements the operator +.
+		/// </summary>
+		/// <param name="left">The left matrix.</param>
+		/// <param name="right">The right matrix.</param>
+		/// <returns>
+		/// The result of the operator.
+		/// </returns>
 		public static Matrix operator +(Matrix left, Matrix right) { return Matrix.Add(left, right); }
 
+		/// <summary>
+		/// Implements the operator -.
+		/// </summary>
+		/// <param name="left">The left matrix.</param>
+		/// <param name="right">The right matrix.</param>
+		/// <returns>
+		/// The result of the operator.
+		/// </returns>
 		public static Matrix operator -(Matrix left, Matrix right) { return Matrix.Subtract(left, right); }
 
+		/// <summary>
+		/// Implements the operator -.
+		/// </summary>
+		/// <param name="matrix">The matrix.</param>
+		/// <returns>
+		/// The result of the operator.
+		/// </returns>
 		public static Matrix operator -(Matrix matrix) { return Matrix.Negate(matrix); }
 
+		/// <summary>
+		/// Implements the operator *.
+		/// </summary>
+		/// <param name="left">The left matrix.</param>
+		/// <param name="right">The right matrix.</param>
+		/// <returns>
+		/// The result of the operator.
+		/// </returns>
 		public static Matrix operator *(Matrix left, Matrix right) { return Matrix.Multiply(left, right); }
 
+		/// <summary>
+		/// Implements the operator *.
+		/// </summary>
+		/// <param name="left">The left matrix.</param>
+		/// <param name="right">The right number.</param>
+		/// <returns>
+		/// The result of the operator.
+		/// </returns>
 		public static Matrix operator *(Matrix left, Complex right) { return Matrix.Multiply(left, right); }
 
+		/// <summary>
+		/// Implements the operator *.
+		/// </summary>
+		/// <param name="left">The left number.</param>
+		/// <param name="right">The right matrix.</param>
+		/// <returns>
+		/// The result of the operator.
+		/// </returns>
 		public static Matrix operator *(Complex left, Matrix right) { return Matrix.Multiply(left, right); }
 
+		/// <summary>
+		/// Implements the operator |.
+		/// </summary>
+		/// <param name="left">The left.</param>
+		/// <param name="right">The right.</param>
+		/// <returns>
+		/// The result of the operator.
+		/// </returns>
 		public static Matrix operator |(Matrix left, Matrix right) { return Matrix.Augment(left, right); }
 
 		#endregion Operators
 
 		#region Methods
 
+		/// <summary>
+		/// Adds the specified matrices.
+		/// </summary>
+		/// <param name="left">The left matrix.</param>
+		/// <param name="right">The right matrix.</param>
+		/// <returns>The result.</returns>
 		public static Matrix Add(Matrix left, Matrix right)
 		{
 			Contract.Requires(left.RowCount == right.RowCount && left.ColumnCount == right.ColumnCount);
@@ -291,6 +490,12 @@ namespace SharpBag.Math.ForComplex
 			return result;
 		}
 
+		/// <summary>
+		/// Subtracts the specified matrices.
+		/// </summary>
+		/// <param name="left">The left matrix.</param>
+		/// <param name="right">The right matrix.</param>
+		/// <returns>The result.</returns>
 		public static Matrix Subtract(Matrix left, Matrix right)
 		{
 			Contract.Requires(left.RowCount == right.RowCount && left.ColumnCount == right.ColumnCount);
@@ -307,6 +512,12 @@ namespace SharpBag.Math.ForComplex
 			return result;
 		}
 
+		/// <summary>
+		/// Multiplies the specified matrices.
+		/// </summary>
+		/// <param name="left">The left matrix.</param>
+		/// <param name="right">The right matrix.</param>
+		/// <returns>The result.</returns>
 		public static Matrix Multiply(Matrix left, Matrix right)
 		{
 			Contract.Requires(left.ColumnCount == right.RowCount);
@@ -326,6 +537,12 @@ namespace SharpBag.Math.ForComplex
 			return result;
 		}
 
+		/// <summary>
+		/// Multiplies the specified elements.
+		/// </summary>
+		/// <param name="left">The left matrix.</param>
+		/// <param name="right">The right number.</param>
+		/// <returns>The result.</returns>
 		public static Matrix Multiply(Matrix left, Complex right)
 		{
 			Matrix result = new Matrix(left);
@@ -341,8 +558,21 @@ namespace SharpBag.Math.ForComplex
 			return result;
 		}
 
+		/// <summary>
+		/// Multiplies the specified elements.
+		/// </summary>
+		/// <param name="left">The left number.</param>
+		/// <param name="right">The right matrix.</param>
+		/// <returns></returns>
 		public static Matrix Multiply(Complex left, Matrix right) { return Matrix.Multiply(right, left); }
 
+		/// <summary>
+		/// Returns the specified minor of the matrix.
+		/// </summary>
+		/// <param name="matrix">The matrix.</param>
+		/// <param name="row">The row.</param>
+		/// <param name="column">The column.</param>
+		/// <returns>The specified minor of the matrix.</returns>
 		public static Matrix Minor(Matrix matrix, int row, int column)
 		{
 			Contract.Requires(matrix.RowCount > 0 && matrix.ColumnCount > 0);
@@ -354,6 +584,11 @@ namespace SharpBag.Math.ForComplex
 			return result;
 		}
 
+		/// <summary>
+		/// Calculates the echelon form of the matrix.
+		/// </summary>
+		/// <param name="matrix">The matrix.</param>
+		/// <returns>The echelon form of the matrix.</returns>
 		public static Matrix EchelonForm(Matrix matrix)
 		{
 			Matrix result = matrix.Copy();
@@ -386,6 +621,11 @@ namespace SharpBag.Math.ForComplex
 			return result;
 		}
 
+		/// <summary>
+		/// Calculates the reduced echelon form of the matrix.
+		/// </summary>
+		/// <param name="matrix">The matrix.</param>
+		/// <returns>The reduced echelon form of the matrix.</returns>
 		public static Matrix ReducedEchelonForm(Matrix matrix)
 		{
 			Matrix result = matrix.Copy();
@@ -423,6 +663,11 @@ namespace SharpBag.Math.ForComplex
 			return result;
 		}
 
+		/// <summary>
+		/// Calculates the adjoint of the matrix.
+		/// </summary>
+		/// <param name="matrix">The matrix.</param>
+		/// <returns>The adjoint.</returns>
 		public static Matrix Adjoint(Matrix matrix)
 		{
 			Contract.Requires(matrix.IsSquare);
@@ -439,6 +684,11 @@ namespace SharpBag.Math.ForComplex
 			return result.Transpose;
 		}
 
+		/// <summary>
+		/// Calculates the inverse of the matrix.
+		/// </summary>
+		/// <param name="matrix">The matrix.</param>
+		/// <returns>The inverse.</returns>
 		public static Matrix Inverse(Matrix matrix)
 		{
 			Contract.Requires(matrix.IsSquare);
@@ -446,8 +696,19 @@ namespace SharpBag.Math.ForComplex
 			return (1 / matrix.Determinant) * Matrix.Adjoint(matrix);
 		}
 
+		/// <summary>
+		/// Negates the specified matrix.
+		/// </summary>
+		/// <param name="matrix">The matrix.</param>
+		/// <returns>The negated matrix.</returns>
 		public static Matrix Negate(Matrix matrix) { return -1 * matrix; }
 
+		/// <summary>
+		/// Augments the specified matrices.
+		/// </summary>
+		/// <param name="left">The left matrix.</param>
+		/// <param name="right">The right matrix.</param>
+		/// <returns>The augmented matrix.</returns>
 		public static Matrix Augment(Matrix left, Matrix right)
 		{
 			Contract.Requires(left.RowCount == right.RowCount);
@@ -456,6 +717,9 @@ namespace SharpBag.Math.ForComplex
 			return result;
 		}
 
+		/// <summary>
+		/// Creates the accessors.
+		/// </summary>
 		protected override void CreateAccessors()
 		{
 			this.Rows = new RowAccessor(this);
@@ -466,10 +730,31 @@ namespace SharpBag.Math.ForComplex
 
 		#region Casting
 
+		/// <summary>
+		/// Performs an implicit conversion from an array of numbers to <see cref="SharpBag.Math.ForComplex.Matrix"/>.
+		/// </summary>
+		/// <param name="elements">The elements.</param>
+		/// <returns>
+		/// The result of the conversion.
+		/// </returns>
 		public static implicit operator Matrix(Complex[,] elements) { return new Matrix(elements); }
 
+		/// <summary>
+		/// Performs an implicit conversion from <see cref="SharpBag.Math.ForComplex.Matrix"/> to an array of numbers.
+		/// </summary>
+		/// <param name="matrix">The matrix.</param>
+		/// <returns>
+		/// The result of the conversion.
+		/// </returns>
 		public static implicit operator Complex[,](Matrix matrix) { return matrix.Elements; }
 
+		/// <summary>
+		/// Performs an explicit conversion from <see cref="SharpBag.Math.ForComplex.Matrix"/> to <see cref="SharpBag.Math.ForComplex.Vector"/>.
+		/// </summary>
+		/// <param name="matrix">The matrix.</param>
+		/// <returns>
+		/// The result of the conversion.
+		/// </returns>
 		public static explicit operator Vector(Matrix matrix)
 		{
 			Contract.Requires(matrix.IsVector);
@@ -481,14 +766,29 @@ namespace SharpBag.Math.ForComplex
 
 		#region Comparing / Ordering
 
+		/// <summary>
+		/// Whether the current instance is equal to the specified matrix.
+		/// </summary>
+		/// <param name="other">The specified matrix.</param>
+		/// <returns>Whether the current instance is equal to the specified matrix.</returns>
 		public override bool Equals(Matrix other) { return MatrixBase<Complex, Matrix>.InternalEquals(this, other); }
 
 		#endregion Comparing / Ordering
 
 		#region Other
 
+		/// <summary>
+		/// Copies this instance.
+		/// </summary>
+		/// <returns>The copy.</returns>
 		public override Matrix Copy() { return new Matrix(this); }
 
+		/// <summary>
+		/// Returns a <see cref="System.String"/> that represents this instance.
+		/// </summary>
+		/// <returns>
+		/// A <see cref="System.String"/> that represents this instance.
+		/// </returns>
 		public override string ToString()
 		{
 			StringBuilder sb = new StringBuilder().Append('[').AppendLine();

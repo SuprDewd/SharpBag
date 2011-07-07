@@ -5,47 +5,155 @@ using System.Text;
 
 namespace SharpBag.Math
 {
+	/// <summary>
+	/// A matrix base class.
+	/// </summary>
+	/// <typeparam name="T">The type of elements.</typeparam>
+	/// <typeparam name="M">The child class.</typeparam>
 	public abstract class MatrixBase<T, M> : IEquatable<M>, ICloneable
 	{
+		/// <summary>
+		/// Gets the elements.
+		/// </summary>
 		protected T[,] Elements { get; private set; }
 
+		/// <summary>
+		/// Whether the determinant is cached.
+		/// </summary>
 		protected bool DeterminantCached = false;
+
+		/// <summary>
+		/// The cached determinant.
+		/// </summary>
 		protected T DeterminantCache;
 
+		/// <summary>
+		/// Gets the row count.
+		/// </summary>
 		public int RowCount { get; private set; }
 
+		/// <summary>
+		/// Gets the column count.
+		/// </summary>
 		public int ColumnCount { get; private set; }
 
+		/// <summary>
+		/// Gets or sets the element at the specified row and column.
+		/// </summary>
 		public T this[int row, int column] { get { return this.Elements[row, column]; } set { this.Elements[row, column] = value; } }
 
+		/// <summary>
+		/// Gets the determinant.
+		/// </summary>
 		public abstract T Determinant { get; }
 
+		/// <summary>
+		/// Gets the transpose.
+		/// </summary>
 		public abstract M Transpose { get; }
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is square.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is square.
+		/// </value>
 		public bool IsSquare { get { return this.RowCount == this.ColumnCount; } }
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is a row vector.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is a row vector.
+		/// </value>
 		public bool IsRowVector { get { return this.RowCount == 1; } }
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is a column vector.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is a column vector.
+		/// </value>
 		public bool IsColumnVector { get { return this.ColumnCount == 1; } }
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is a vector.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is a vector.
+		/// </value>
 		public bool IsVector { get { return this.IsRowVector || this.IsColumnVector; } }
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is diagonal.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is diagonal.
+		/// </value>
 		public abstract bool IsDiagonal { get; }
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is an identity.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is an identity.
+		/// </value>
 		public abstract bool IsIdentity { get; }
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is upper triangular.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is upper triangular.
+		/// </value>
 		public abstract bool IsUpperTriangular { get; }
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is strictly upper triangular.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is strictly upper triangular.
+		/// </value>
 		public abstract bool IsStrictlyUpperTriangular { get; }
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is lower triangular.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is lower triangular.
+		/// </value>
 		public abstract bool IsLowerTriangular { get; }
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is strictly lower triangular.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is strictly lower triangular.
+		/// </value>
 		public abstract bool IsStrictlyLowerTriangular { get; }
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is singular.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is singular.
+		/// </value>
 		public abstract bool IsSingular { get; }
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is invertible.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is invertible.
+		/// </value>
 		public abstract bool IsInvertible { get; }
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is symmetric.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is symmetric.
+		/// </value>
 		public virtual bool IsSymmetric
 		{
 			get
@@ -64,10 +172,27 @@ namespace SharpBag.Math
 			}
 		}
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is triangular.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is triangular.
+		/// </value>
 		public bool IsTriangular { get { return this.IsUpperTriangular || this.IsLowerTriangular; } }
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is strictly triangular.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is strictly triangular.
+		/// </value>
 		public bool IsStrictlyTriangular { get { return this.IsStrictlyLowerTriangular || this.IsStrictlyUpperTriangular; } }
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="MatrixBase&lt;T, M&gt;"/> class.
+		/// </summary>
+		/// <param name="rows">The number of rows.</param>
+		/// <param name="columns">The number of columns.</param>
 		public MatrixBase(int rows, int columns)
 		{
 			this.RowCount = rows;
@@ -76,6 +201,10 @@ namespace SharpBag.Math
 			this.CreateAccessors();
 		}
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="MatrixBase&lt;T, M&gt;"/> class.
+		/// </summary>
+		/// <param name="elements">The elements.</param>
 		public MatrixBase(T[,] elements)
 			: this(elements.GetLength(0), elements.GetLength(1))
 		{
@@ -165,6 +294,12 @@ namespace SharpBag.Math
 			return true;
 		}
 
+		/// <summary>
+		/// Returns a hash code for this instance.
+		/// </summary>
+		/// <returns>
+		/// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+		/// </returns>
 		public override int GetHashCode()
 		{
 			int hash = 0;
@@ -179,7 +314,13 @@ namespace SharpBag.Math
 			return hash;
 		}
 
-		public static void SwapRows(MatrixBase<T, M> result, int i, int j)
+		/// <summary>
+		/// Swaps the rows.
+		/// </summary>
+		/// <param name="result">The result.</param>
+		/// <param name="i">The i.</param>
+		/// <param name="j">The j.</param>
+		internal static void SwapRows(MatrixBase<T, M> result, int i, int j)
 		{
 			for (int k = 0; k < result.ColumnCount; k++)
 			{
@@ -189,14 +330,41 @@ namespace SharpBag.Math
 			}
 		}
 
+		/// <summary>
+		/// Creates the accessors.
+		/// </summary>
 		protected abstract void CreateAccessors();
 
+		/// <summary>
+		/// Copies this instance.
+		/// </summary>
+		/// <returns>The copy.</returns>
 		public abstract M Copy();
 
+		/// <summary>
+		/// Creates a new object that is a copy of the current instance.
+		/// </summary>
+		/// <returns>
+		/// A new object that is a copy of this instance.
+		/// </returns>
 		public object Clone() { return this.Copy(); }
 
+		/// <summary>
+		/// Determines whether the specified matrix is equal to this instance.
+		/// </summary>
+		/// <param name="other">The matrix to compare with this instance.</param>
+		/// <returns>
+		///   <c>true</c> if the specified matrix is equal to this instance; otherwise, <c>false</c>.
+		/// </returns>
 		public abstract bool Equals(M other);
 
+		/// <summary>
+		/// Determines whether the specified <see cref="System.Object"/> is equal to this instance.
+		/// </summary>
+		/// <param name="obj">The <see cref="System.Object"/> to compare with this instance.</param>
+		/// <returns>
+		///   <c>true</c> if the specified <see cref="System.Object"/> is equal to this instance; otherwise, <c>false</c>.
+		/// </returns>
 		public override bool Equals(object obj) { return obj.GetType() == typeof(M) && this.Equals((M)obj); }
 	}
 }
