@@ -1628,12 +1628,12 @@
             <param name="matrix">The matrix.</param>
             <returns>The reduced echelon form of the matrix.</returns>
         </member>
-        <member name="M:SharpBag.Math.ForFraction.ForInt32.Matrix.Adjoint(SharpBag.Math.ForFraction.ForInt32.Matrix)">
+        <member name="M:SharpBag.Math.ForFraction.ForInt32.Matrix.Adjugate(SharpBag.Math.ForFraction.ForInt32.Matrix)">
             <summary>
-            Calculates the adjoint of the matrix.
+            Calculates the adjugate of the matrix.
             </summary>
             <param name="matrix">The matrix.</param>
-            <returns>The adjoint.</returns>
+            <returns>The adjugate.</returns>
         </member>
         <member name="M:SharpBag.Math.ForFraction.ForInt32.Matrix.Inverse(SharpBag.Math.ForFraction.ForInt32.Matrix)">
             <summary>
@@ -3562,12 +3562,12 @@
             <param name="matrix">The matrix.</param>
             <returns>The reduced echelon form of the matrix.</returns>
         </member>
-        <member name="M:SharpBag.Math.ForFraction.ForBigInteger.Matrix.Adjoint(SharpBag.Math.ForFraction.ForBigInteger.Matrix)">
+        <member name="M:SharpBag.Math.ForFraction.ForBigInteger.Matrix.Adjugate(SharpBag.Math.ForFraction.ForBigInteger.Matrix)">
             <summary>
-            Calculates the adjoint of the matrix.
+            Calculates the adjugate of the matrix.
             </summary>
             <param name="matrix">The matrix.</param>
-            <returns>The adjoint.</returns>
+            <returns>The adjugate.</returns>
         </member>
         <member name="M:SharpBag.Math.ForFraction.ForBigInteger.Matrix.Inverse(SharpBag.Math.ForFraction.ForBigInteger.Matrix)">
             <summary>
@@ -4935,12 +4935,12 @@
             <param name="matrix">The matrix.</param>
             <returns>The reduced echelon form of the matrix.</returns>
         </member>
-        <member name="M:SharpBag.Math.ForFraction.ForInt64.Matrix.Adjoint(SharpBag.Math.ForFraction.ForInt64.Matrix)">
+        <member name="M:SharpBag.Math.ForFraction.ForInt64.Matrix.Adjugate(SharpBag.Math.ForFraction.ForInt64.Matrix)">
             <summary>
-            Calculates the adjoint of the matrix.
+            Calculates the adjugate of the matrix.
             </summary>
             <param name="matrix">The matrix.</param>
-            <returns>The adjoint.</returns>
+            <returns>The adjugate.</returns>
         </member>
         <member name="M:SharpBag.Math.ForFraction.ForInt64.Matrix.Inverse(SharpBag.Math.ForFraction.ForInt64.Matrix)">
             <summary>
@@ -5705,6 +5705,426 @@
             </summary>
             <param name="i">The i.</param>
             <returns>The i-th coefficient.</returns>
+        </member>
+        <member name="T:SharpBag.Math.ForDouble.Matrix">
+            <summary>
+            A matrix.
+            </summary>
+            <remarks>http://www.codeproject.com/KB/recipes/matrix.aspx</remarks>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Math.ForDouble.Matrix"/> class.
+            </summary>
+            <param name="rows">The number of rows.</param>
+            <param name="columns">The number of columns.</param>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.#ctor(System.Double[0:,0:])">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Math.ForDouble.Matrix"/> class.
+            </summary>
+            <param name="elements">The elements.</param>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.#ctor(SharpBag.Math.ForDouble.Matrix)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Math.ForDouble.Matrix"/> class.
+            </summary>
+            <param name="other">Another instance to copy.</param>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.Identity(System.Int32)">
+            <summary>
+            Creates an identity matrix of the specified size.
+            </summary>
+            <param name="size">The size.</param>
+            <returns>The identity matrix.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.Diagonal(System.Double[])">
+            <summary>
+            Creates a diagonal matrix with the specified diagonals.
+            </summary>
+            <param name="diagonals">The diagonals.</param>
+            <returns>The diagonal matrix.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.op_Addition(SharpBag.Math.ForDouble.Matrix,SharpBag.Math.ForDouble.Matrix)">
+            <summary>
+            Implements the operator +.
+            </summary>
+            <param name="left">The left matrix.</param>
+            <param name="right">The right matrix.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.op_Subtraction(SharpBag.Math.ForDouble.Matrix,SharpBag.Math.ForDouble.Matrix)">
+            <summary>
+            Implements the operator -.
+            </summary>
+            <param name="left">The left matrix.</param>
+            <param name="right">The right matrix.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.op_UnaryNegation(SharpBag.Math.ForDouble.Matrix)">
+            <summary>
+            Implements the operator -.
+            </summary>
+            <param name="matrix">The matrix.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.op_Multiply(SharpBag.Math.ForDouble.Matrix,SharpBag.Math.ForDouble.Matrix)">
+            <summary>
+            Implements the operator *.
+            </summary>
+            <param name="left">The left matrix.</param>
+            <param name="right">The right matrix.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.op_Multiply(SharpBag.Math.ForDouble.Matrix,System.Double)">
+            <summary>
+            Implements the operator *.
+            </summary>
+            <param name="left">The left matrix.</param>
+            <param name="right">The right number.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.op_Multiply(System.Double,SharpBag.Math.ForDouble.Matrix)">
+            <summary>
+            Implements the operator *.
+            </summary>
+            <param name="left">The left number.</param>
+            <param name="right">The right matrix.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.op_BitwiseOr(SharpBag.Math.ForDouble.Matrix,SharpBag.Math.ForDouble.Matrix)">
+            <summary>
+            Implements the operator |.
+            </summary>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.Add(SharpBag.Math.ForDouble.Matrix,SharpBag.Math.ForDouble.Matrix)">
+            <summary>
+            Adds the specified matrices.
+            </summary>
+            <param name="left">The left matrix.</param>
+            <param name="right">The right matrix.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.Subtract(SharpBag.Math.ForDouble.Matrix,SharpBag.Math.ForDouble.Matrix)">
+            <summary>
+            Subtracts the specified matrices.
+            </summary>
+            <param name="left">The left matrix.</param>
+            <param name="right">The right matrix.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.Multiply(SharpBag.Math.ForDouble.Matrix,SharpBag.Math.ForDouble.Matrix)">
+            <summary>
+            Multiplies the specified matrices.
+            </summary>
+            <param name="left">The left matrix.</param>
+            <param name="right">The right matrix.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.Multiply(SharpBag.Math.ForDouble.Matrix,System.Double)">
+            <summary>
+            Multiplies the specified elements.
+            </summary>
+            <param name="left">The left matrix.</param>
+            <param name="right">The right number.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.Multiply(System.Double,SharpBag.Math.ForDouble.Matrix)">
+            <summary>
+            Multiplies the specified elements.
+            </summary>
+            <param name="left">The left number.</param>
+            <param name="right">The right matrix.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.Minor(SharpBag.Math.ForDouble.Matrix,System.Int32,System.Int32)">
+            <summary>
+            Returns the specified minor of the matrix.
+            </summary>
+            <param name="matrix">The matrix.</param>
+            <param name="row">The row.</param>
+            <param name="column">The column.</param>
+            <returns>The specified minor of the matrix.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.EchelonForm(SharpBag.Math.ForDouble.Matrix)">
+            <summary>
+            Calculates the echelon form of the matrix.
+            </summary>
+            <param name="matrix">The matrix.</param>
+            <returns>The echelon form of the matrix.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.ReducedEchelonForm(SharpBag.Math.ForDouble.Matrix)">
+            <summary>
+            Calculates the reduced echelon form of the matrix.
+            </summary>
+            <param name="matrix">The matrix.</param>
+            <returns>The reduced echelon form of the matrix.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.Adjugate(SharpBag.Math.ForDouble.Matrix)">
+            <summary>
+            Calculates the adjugate of the matrix.
+            </summary>
+            <param name="matrix">The matrix.</param>
+            <returns>The adjugate.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.Inverse(SharpBag.Math.ForDouble.Matrix)">
+            <summary>
+            Calculates the inverse of the matrix.
+            </summary>
+            <param name="matrix">The matrix.</param>
+            <returns>The inverse.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.Negate(SharpBag.Math.ForDouble.Matrix)">
+            <summary>
+            Negates the specified matrix.
+            </summary>
+            <param name="matrix">The matrix.</param>
+            <returns>The negated matrix.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.Augment(SharpBag.Math.ForDouble.Matrix,SharpBag.Math.ForDouble.Matrix)">
+            <summary>
+            Augments the specified matrices.
+            </summary>
+            <param name="left">The left matrix.</param>
+            <param name="right">The right matrix.</param>
+            <returns>The augmented matrix.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.CreateAccessors">
+            <summary>
+            Creates the accessors.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.op_Implicit(System.Double[0:,0:])~SharpBag.Math.ForDouble.Matrix">
+            <summary>
+            Performs an implicit conversion from an array of numbers to <see cref="T:SharpBag.Math.ForDouble.Matrix"/>.
+            </summary>
+            <param name="elements">The elements.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.op_Implicit(SharpBag.Math.ForDouble.Matrix)~System.Double[0:,0:]">
+            <summary>
+            Performs an implicit conversion from <see cref="T:SharpBag.Math.ForDouble.Matrix"/> to an array of numbers.
+            </summary>
+            <param name="matrix">The matrix.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.op_Explicit(SharpBag.Math.ForDouble.Matrix)~SharpBag.Math.ForDouble.Vector">
+            <summary>
+            Performs an explicit conversion from <see cref="T:SharpBag.Math.ForDouble.Matrix"/> to <see cref="T:SharpBag.Math.ForDouble.Vector"/>.
+            </summary>
+            <param name="matrix">The matrix.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.Equals(SharpBag.Math.ForDouble.Matrix)">
+            <summary>
+            Whether the current instance is equal to the specified matrix.
+            </summary>
+            <param name="other">The specified matrix.</param>
+            <returns>Whether the current instance is equal to the specified matrix.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.Copy">
+            <summary>
+            Copies this instance.
+            </summary>
+            <returns>The copy.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents this instance.
+            </returns>
+        </member>
+        <member name="P:SharpBag.Math.ForDouble.Matrix.Rows">
+            <summary>
+            Gets the rows.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.ForDouble.Matrix.Columns">
+            <summary>
+            Gets the columns.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.ForDouble.Matrix.Determinant">
+            <summary>
+            Gets the determinant.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.ForDouble.Matrix.Transpose">
+            <summary>
+            Gets the transpose.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.ForDouble.Matrix.IsDiagonal">
+            <summary>
+            Gets a value indicating whether this instance is diagonal.
+            </summary>
+            <value>
+            Whether this instance is diagonal.
+            </value>
+        </member>
+        <member name="P:SharpBag.Math.ForDouble.Matrix.IsIdentity">
+            <summary>
+            Gets a value indicating whether this instance is an identity.
+            </summary>
+            <value>
+            Whether this instance is an identity.
+            </value>
+        </member>
+        <member name="P:SharpBag.Math.ForDouble.Matrix.IsUpperTriangular">
+            <summary>
+            Gets a value indicating whether this instance is upper triangular.
+            </summary>
+            <value>
+            Whether this instance is upper triangular.
+            </value>
+        </member>
+        <member name="P:SharpBag.Math.ForDouble.Matrix.IsStrictlyUpperTriangular">
+            <summary>
+            Gets a value indicating whether this instance is strictly upper triangular.
+            </summary>
+            <value>
+            Whether this instance is strictly upper triangular.
+            </value>
+        </member>
+        <member name="P:SharpBag.Math.ForDouble.Matrix.IsLowerTriangular">
+            <summary>
+            Gets a value indicating whether this instance is lower triangular.
+            </summary>
+            <value>
+            Whether this instance is lower triangular.
+            </value>
+        </member>
+        <member name="P:SharpBag.Math.ForDouble.Matrix.IsStrictlyLowerTriangular">
+            <summary>
+            Gets a value indicating whether this instance is strictly lower triangular.
+            </summary>
+            <value>
+            Whether this instance is strictly lower triangular.
+            </value>
+        </member>
+        <member name="P:SharpBag.Math.ForDouble.Matrix.IsSingular">
+            <summary>
+            Gets a value indicating whether this instance is singular.
+            </summary>
+            <value>
+            Whether this instance is singular.
+            </value>
+        </member>
+        <member name="P:SharpBag.Math.ForDouble.Matrix.IsInvertible">
+            <summary>
+            Gets a value indicating whether this instance is invertible.
+            </summary>
+            <value>
+            Whether this instance is invertible.
+            </value>
+        </member>
+        <member name="T:SharpBag.Math.ForDouble.Matrix.Accessor">
+            <summary>
+            An accessor.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.Accessor.#ctor(SharpBag.Math.ForDouble.Matrix)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Math.ForDouble.Matrix.Accessor"/> class.
+            </summary>
+            <param name="internalMatrix">The internal matrix.</param>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.Accessor.GetEnumerator">
+            <summary>
+            Gets the enumerator.
+            </summary>
+            <returns>The enumerator.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.Accessor.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="P:SharpBag.Math.ForDouble.Matrix.Accessor.InternalMatrix">
+            <summary>
+            Gets the internal matrix.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.ForDouble.Matrix.Accessor.Item(System.Int32)">
+            <summary>
+            Gets or sets the <see cref="T:SharpBag.Math.ForDouble.Vector"/> at the specified index.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Math.ForDouble.Matrix.RowAccessor">
+            <summary>
+            A row acccessor.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.RowAccessor.#ctor(SharpBag.Math.ForDouble.Matrix)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Math.ForDouble.Matrix.RowAccessor"/> class.
+            </summary>
+            <param name="internalMatrix">The internal matrix.</param>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.RowAccessor.GetEnumerator">
+            <summary>
+            Gets the enumerator.
+            </summary>
+            <returns>
+            The enumerator.
+            </returns>
+        </member>
+        <member name="P:SharpBag.Math.ForDouble.Matrix.RowAccessor.Item(System.Int32)">
+            <summary>
+            Gets or sets the <see cref="T:SharpBag.Math.ForDouble.Vector"/> at the specified index.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Math.ForDouble.Matrix.ColumnAccessor">
+            <summary>
+            A column accessor.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.ColumnAccessor.#ctor(SharpBag.Math.ForDouble.Matrix)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Math.ForDouble.Matrix.ColumnAccessor"/> class.
+            </summary>
+            <param name="internalMatrix">The internal matrix.</param>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.ColumnAccessor.GetEnumerator">
+            <summary>
+            Gets the enumerator.
+            </summary>
+            <returns>
+            The enumerator.
+            </returns>
+        </member>
+        <member name="P:SharpBag.Math.ForDouble.Matrix.ColumnAccessor.Item(System.Int32)">
+            <summary>
+            Gets or sets the <see cref="T:SharpBag.Math.ForDouble.Vector"/> at the specified index.
+            </summary>
         </member>
         <member name="T:SharpBag.Combinatorics.SmallPrimeUtility">
             <summary>
@@ -8820,12 +9240,12 @@
             <param name="matrix">The matrix.</param>
             <returns>The reduced echelon form of the matrix.</returns>
         </member>
-        <member name="M:SharpBag.Math.ForComplex.Matrix.Adjoint(SharpBag.Math.ForComplex.Matrix)">
+        <member name="M:SharpBag.Math.ForComplex.Matrix.Adjugate(SharpBag.Math.ForComplex.Matrix)">
             <summary>
-            Calculates the adjoint of the matrix.
+            Calculates the adjugate of the matrix.
             </summary>
             <param name="matrix">The matrix.</param>
-            <returns>The adjoint.</returns>
+            <returns>The adjugate.</returns>
         </member>
         <member name="M:SharpBag.Math.ForComplex.Matrix.Inverse(SharpBag.Math.ForComplex.Matrix)">
             <summary>
@@ -10325,6 +10745,196 @@
         <member name="F:SharpBag.Math.Geometry.ContainmentType.Contained">
             <summary>
             Something is contained.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Math.ForDouble.Vector">
+            <summary>
+            A vector.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Vector.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Math.ForDouble.Vector"/> class.
+            </summary>
+            <param name="dimension">The dimension.</param>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Vector.#ctor(System.Double[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Math.ForDouble.Vector"/> class.
+            </summary>
+            <param name="elements">The elements.</param>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Vector.#ctor(SharpBag.Math.ForDouble.Vector)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Math.ForDouble.Vector"/> class.
+            </summary>
+            <param name="other">Another vector to copy.</param>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Vector.op_Implicit(System.Double[])~SharpBag.Math.ForDouble.Vector">
+            <summary>
+            Performs an implicit conversion from an array of numbers to <see cref="T:SharpBag.Math.ForDouble.Vector"/>.
+            </summary>
+            <param name="elements">The elements.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Vector.op_Implicit(SharpBag.Math.ForDouble.Vector)~System.Double[]">
+            <summary>
+            Performs an implicit conversion from <see cref="T:SharpBag.Math.ForDouble.Vector"/> to an array of numbers.
+            </summary>
+            <param name="vector">The vector.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Vector.op_Addition(SharpBag.Math.ForDouble.Vector,SharpBag.Math.ForDouble.Vector)">
+            <summary>
+            Implements the operator +.
+            </summary>
+            <param name="left">The left vector.</param>
+            <param name="right">The right vector.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Vector.op_Subtraction(SharpBag.Math.ForDouble.Vector,SharpBag.Math.ForDouble.Vector)">
+            <summary>
+            Implements the operator -.
+            </summary>
+            <param name="left">The left vector.</param>
+            <param name="right">The right vector.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Vector.op_UnaryNegation(SharpBag.Math.ForDouble.Vector)">
+            <summary>
+            Implements the operator -.
+            </summary>
+            <param name="vector">The vector.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Vector.op_Multiply(SharpBag.Math.ForDouble.Vector,System.Double)">
+            <summary>
+            Implements the operator *.
+            </summary>
+            <param name="left">The left vector.</param>
+            <param name="right">The right number.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Vector.op_Multiply(System.Double,SharpBag.Math.ForDouble.Vector)">
+            <summary>
+            Implements the operator *.
+            </summary>
+            <param name="left">The left number.</param>
+            <param name="right">The right vector.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Vector.Add(SharpBag.Math.ForDouble.Vector,SharpBag.Math.ForDouble.Vector)">
+            <summary>
+            Adds the specified vectors.
+            </summary>
+            <param name="left">The left vector.</param>
+            <param name="right">The right vector.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Vector.Subtract(SharpBag.Math.ForDouble.Vector,SharpBag.Math.ForDouble.Vector)">
+            <summary>
+            Subtracts the specified vectors.
+            </summary>
+            <param name="left">The left vector.</param>
+            <param name="right">The right vector.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Vector.Multiply(SharpBag.Math.ForDouble.Vector,System.Double)">
+            <summary>
+            Multiplies the specified elements.
+            </summary>
+            <param name="left">The left vector.</param>
+            <param name="right">The right number.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Vector.Multiply(System.Double,SharpBag.Math.ForDouble.Vector)">
+            <summary>
+            Multiplies the specified elements.
+            </summary>
+            <param name="left">The left number.</param>
+            <param name="right">The right vector.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Vector.Negate(SharpBag.Math.ForDouble.Vector)">
+            <summary>
+            Negates the specified vector.
+            </summary>
+            <param name="vector">The vector.</param>
+            <returns>The negated vector.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Vector.DotProduct(SharpBag.Math.ForDouble.Vector,SharpBag.Math.ForDouble.Vector)">
+            <summary>
+            Calculates the dot product.
+            </summary>
+            <param name="left">The left vector.</param>
+            <param name="right">The right vector.</param>
+            <returns>The dot product.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Vector.CrossProduct(SharpBag.Math.ForDouble.Vector,SharpBag.Math.ForDouble.Vector)">
+            <summary>
+            Calculates the cross product.
+            </summary>
+            <param name="left">The left vector.</param>
+            <param name="right">The right vector.</param>
+            <returns>The cross product.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Vector.ToColumnMatrix">
+            <summary>
+            Converts the vector to a column matrix.
+            </summary>
+            <returns>The column matrix.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Vector.ToRowMatrix">
+            <summary>
+            Converts the vector to a row matrix.
+            </summary>
+            <returns>The row matrix.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Vector.Equals(SharpBag.Math.ForDouble.Vector)">
+            <summary>
+            Determines whether the specified vector is equal to this instance.
+            </summary>
+            <param name="other">The vector to compare with this instance.</param>
+            <returns>
+              <c>true</c> if the specified vector is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Vector.Copy">
+            <summary>
+            Copies this instance.
+            </summary>
+            <returns>The copy.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Vector.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents this instance.
+            </returns>
+        </member>
+        <member name="P:SharpBag.Math.ForDouble.Vector.Length">
+            <summary>
+            Gets the length.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Math.ForDouble.Vector.Reverse">
+            <summary>
+            Gets the reverse.
             </summary>
         </member>
         <member name="T:SharpBag.Games.Dice">

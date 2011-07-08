@@ -1,21 +1,19 @@
-﻿#if DOTNET4
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
-using System.Numerics;
 using System.Text;
 using SharpBag.Strings;
-using Fraction = SharpBag.Math.ForInt64.Fraction;
 
-namespace SharpBag.Math.ForFraction.ForInt64
+namespace SharpBag.Math.ForDouble
 {
+	using System;
+
 	/// <summary>
 	/// A matrix.
 	/// </summary>
 	/// <remarks>http://www.codeproject.com/KB/recipes/matrix.aspx</remarks>
-	public class Matrix : MatrixBase<Fraction, Matrix>
+	public class Matrix : MatrixBase<double, Matrix>
 	{
 		#region Accessors
 
@@ -36,7 +34,7 @@ namespace SharpBag.Math.ForFraction.ForInt64
 			internal Accessor(Matrix internalMatrix) { this.InternalMatrix = internalMatrix; }
 
 			/// <summary>
-			/// Gets or sets the <see cref="SharpBag.Math.ForFraction.ForInt64.Vector"/> at the specified index.
+			/// Gets or sets the <see cref="SharpBag.Math.ForDouble.Vector"/> at the specified index.
 			/// </summary>
 			public abstract Vector this[int row] { get; set; }
 
@@ -67,7 +65,7 @@ namespace SharpBag.Math.ForFraction.ForInt64
 			internal RowAccessor(Matrix internalMatrix) : base(internalMatrix) { }
 
 			/// <summary>
-			/// Gets or sets the <see cref="SharpBag.Math.ForFraction.ForInt64.Vector"/> at the specified index.
+			/// Gets or sets the <see cref="SharpBag.Math.ForDouble.Vector"/> at the specified index.
 			/// </summary>
 			public override Vector this[int row]
 			{
@@ -108,7 +106,7 @@ namespace SharpBag.Math.ForFraction.ForInt64
 			internal ColumnAccessor(Matrix internalMatrix) : base(internalMatrix) { }
 
 			/// <summary>
-			/// Gets or sets the <see cref="SharpBag.Math.ForFraction.ForInt64.Vector"/> at the specified index.
+			/// Gets or sets the <see cref="SharpBag.Math.ForDouble.Vector"/> at the specified index.
 			/// </summary>
 			public override Vector this[int column]
 			{
@@ -154,7 +152,7 @@ namespace SharpBag.Math.ForFraction.ForInt64
 		/// <summary>
 		/// Gets the determinant.
 		/// </summary>
-		public override Fraction Determinant
+		public override double Determinant
 		{
 			get
 			{
@@ -166,11 +164,11 @@ namespace SharpBag.Math.ForFraction.ForInt64
 				if (this.RowCount == 2) return -this[0, 1] * this[1, 0] + this[0, 0] * this[1, 1];
 				if (this.RowCount == 3) return -this[0, 2] * this[1, 1] * this[2, 0] + this[0, 1] * this[1, 2] * this[2, 0] + this[0, 2] * this[1, 0] * this[2, 1] - this[0, 0] * this[1, 2] * this[2, 1] - this[0, 1] * this[1, 0] * this[2, 2] + this[0, 0] * this[1, 1] * this[2, 2];
 
-				Fraction det = 0;
+				double det = 0;
 				bool negate = false;
 				for (int j = 0; j < this.ColumnCount; j++)
 				{
-					Fraction minorDet = Matrix.Minor(this, 0, j).Determinant;
+					double minorDet = Matrix.Minor(this, 0, j).Determinant;
 					det += this[0, j] * (negate ? -minorDet : minorDet);
 					negate = !negate;
 				}
@@ -188,7 +186,7 @@ namespace SharpBag.Math.ForFraction.ForInt64
 			get
 			{
 				Matrix result = new Matrix(this.ColumnCount, this.RowCount);
-				MatrixBase<Fraction, Matrix>.InternalTranspose(result, this);
+				MatrixBase<double, Matrix>.InternalTranspose(result, this);
 				return result;
 			}
 		}
@@ -354,13 +352,13 @@ namespace SharpBag.Math.ForFraction.ForInt64
 		/// </summary>
 		/// <param name="rows">The number of rows.</param>
 		/// <param name="columns">The number of columns.</param>
-		public Matrix(int rows, int columns) : base(rows, columns, Fraction.Zero) { }
+		public Matrix(int rows, int columns) : base(rows, columns) { }
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Matrix"/> class.
 		/// </summary>
 		/// <param name="elements">The elements.</param>
-		public Matrix(Fraction[,] elements) : base(elements) { }
+		public Matrix(double[,] elements) : base(elements) { }
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Matrix"/> class.
@@ -376,7 +374,7 @@ namespace SharpBag.Math.ForFraction.ForInt64
 		public static Matrix Identity(int size)
 		{
 			Matrix result = new Matrix(size, size);
-			MatrixBase<Fraction, Matrix>.InternalIdentity(result, size, 1);
+			MatrixBase<double, Matrix>.InternalIdentity(result, size, 1);
 			return result;
 		}
 
@@ -385,10 +383,10 @@ namespace SharpBag.Math.ForFraction.ForInt64
 		/// </summary>
 		/// <param name="diagonals">The diagonals.</param>
 		/// <returns>The diagonal matrix.</returns>
-		public static Matrix Diagonal(params Fraction[] diagonals)
+		public static Matrix Diagonal(params double[] diagonals)
 		{
 			Matrix result = new Matrix(diagonals.Length, diagonals.Length);
-			MatrixBase<Fraction, Matrix>.InternalDiagonal(result, diagonals);
+			MatrixBase<double, Matrix>.InternalDiagonal(result, diagonals);
 			return result;
 		}
 
@@ -443,7 +441,7 @@ namespace SharpBag.Math.ForFraction.ForInt64
 		/// <returns>
 		/// The result of the operator.
 		/// </returns>
-		public static Matrix operator *(Matrix left, Fraction right) { return Matrix.Multiply(left, right); }
+		public static Matrix operator *(Matrix left, double right) { return Matrix.Multiply(left, right); }
 
 		/// <summary>
 		/// Implements the operator *.
@@ -453,7 +451,7 @@ namespace SharpBag.Math.ForFraction.ForInt64
 		/// <returns>
 		/// The result of the operator.
 		/// </returns>
-		public static Matrix operator *(Fraction left, Matrix right) { return Matrix.Multiply(left, right); }
+		public static Matrix operator *(double left, Matrix right) { return Matrix.Multiply(left, right); }
 
 		/// <summary>
 		/// Implements the operator |.
@@ -544,7 +542,7 @@ namespace SharpBag.Math.ForFraction.ForInt64
 		/// <param name="left">The left matrix.</param>
 		/// <param name="right">The right number.</param>
 		/// <returns>The result.</returns>
-		public static Matrix Multiply(Matrix left, Fraction right)
+		public static Matrix Multiply(Matrix left, double right)
 		{
 			Matrix result = new Matrix(left);
 
@@ -565,7 +563,7 @@ namespace SharpBag.Math.ForFraction.ForInt64
 		/// <param name="left">The left number.</param>
 		/// <param name="right">The right matrix.</param>
 		/// <returns></returns>
-		public static Matrix Multiply(Fraction left, Matrix right) { return Matrix.Multiply(right, left); }
+		public static Matrix Multiply(double left, Matrix right) { return Matrix.Multiply(right, left); }
 
 		/// <summary>
 		/// Returns the specified minor of the matrix.
@@ -581,7 +579,7 @@ namespace SharpBag.Math.ForFraction.ForInt64
 			Contract.Requires(column >= 0 && column < matrix.ColumnCount);
 
 			Matrix result = new Matrix(matrix.RowCount - 1, matrix.ColumnCount - 1);
-			MatrixBase<Fraction, Matrix>.InternalMinor(result, matrix, row, column);
+			MatrixBase<double, Matrix>.InternalMinor(result, matrix, row, column);
 			return result;
 		}
 
@@ -599,7 +597,7 @@ namespace SharpBag.Math.ForFraction.ForInt64
 				{
 					for (int j = i + 1; j < result.RowCount; j++)
 					{
-						if (result[j, i] != 0) MatrixBase<Fraction, Matrix>.SwapRows(result, i, j);
+						if (result[j, i] != 0) MatrixBase<double, Matrix>.SwapRows(result, i, j);
 					}
 				}
 
@@ -608,7 +606,7 @@ namespace SharpBag.Math.ForFraction.ForInt64
 				{
 					for (int j = i + 1; j < result.RowCount; j++)
 					{
-						if (result[j, i] == 1) MatrixBase<Fraction, Matrix>.SwapRows(result, i, j);
+						if (result[j, i] == 1) MatrixBase<double, Matrix>.SwapRows(result, i, j);
 					}
 				}
 
@@ -636,7 +634,7 @@ namespace SharpBag.Math.ForFraction.ForInt64
 				{
 					for (int j = i + 1; j < result.RowCount; j++)
 					{
-						if (result[j, i] != 0) MatrixBase<Fraction, Matrix>.SwapRows(result, i, j);
+						if (result[j, i] != 0) MatrixBase<double, Matrix>.SwapRows(result, i, j);
 					}
 				}
 
@@ -645,7 +643,7 @@ namespace SharpBag.Math.ForFraction.ForInt64
 				{
 					for (int j = i + 1; j < result.RowCount; j++)
 					{
-						if (result[j, i] == 1) MatrixBase<Fraction, Matrix>.SwapRows(result, i, j);
+						if (result[j, i] == 1) MatrixBase<double, Matrix>.SwapRows(result, i, j);
 					}
 				}
 
@@ -678,7 +676,7 @@ namespace SharpBag.Math.ForFraction.ForInt64
 			{
 				for (int j = 0; j < matrix.ColumnCount; j++)
 				{
-					result[i, j] = Fraction.Pow(-1, i + j) * Matrix.Minor(matrix, i, j).Determinant;
+					result[i, j] = Math.Pow(-1, i + j) * Matrix.Minor(matrix, i, j).Determinant;
 				}
 			}
 
@@ -714,7 +712,7 @@ namespace SharpBag.Math.ForFraction.ForInt64
 		{
 			Contract.Requires(left.RowCount == right.RowCount);
 			Matrix result = new Matrix(left.RowCount, left.ColumnCount + right.ColumnCount);
-			MatrixBase<Fraction, Matrix>.InternalAugment(result, left, right);
+			MatrixBase<double, Matrix>.InternalAugment(result, left, right);
 			return result;
 		}
 
@@ -732,25 +730,25 @@ namespace SharpBag.Math.ForFraction.ForInt64
 		#region Casting
 
 		/// <summary>
-		/// Performs an implicit conversion from an array of numbers to <see cref="SharpBag.Math.ForFraction.ForInt64.Matrix"/>.
+		/// Performs an implicit conversion from an array of numbers to <see cref="SharpBag.Math.ForDouble.Matrix"/>.
 		/// </summary>
 		/// <param name="elements">The elements.</param>
 		/// <returns>
 		/// The result of the conversion.
 		/// </returns>
-		public static implicit operator Matrix(Fraction[,] elements) { return new Matrix(elements); }
+		public static implicit operator Matrix(double[,] elements) { return new Matrix(elements); }
 
 		/// <summary>
-		/// Performs an implicit conversion from <see cref="SharpBag.Math.ForFraction.ForInt64.Matrix"/> to an array of numbers.
+		/// Performs an implicit conversion from <see cref="SharpBag.Math.ForDouble.Matrix"/> to an array of numbers.
 		/// </summary>
 		/// <param name="matrix">The matrix.</param>
 		/// <returns>
 		/// The result of the conversion.
 		/// </returns>
-		public static implicit operator Fraction[,](Matrix matrix) { return matrix.Elements; }
+		public static implicit operator double[,](Matrix matrix) { return matrix.Elements; }
 
 		/// <summary>
-		/// Performs an explicit conversion from <see cref="SharpBag.Math.ForFraction.ForInt64.Matrix"/> to <see cref="SharpBag.Math.ForFraction.ForInt64.Vector"/>.
+		/// Performs an explicit conversion from <see cref="SharpBag.Math.ForDouble.Matrix"/> to <see cref="SharpBag.Math.ForDouble.Vector"/>.
 		/// </summary>
 		/// <param name="matrix">The matrix.</param>
 		/// <returns>
@@ -772,7 +770,7 @@ namespace SharpBag.Math.ForFraction.ForInt64
 		/// </summary>
 		/// <param name="other">The specified matrix.</param>
 		/// <returns>Whether the current instance is equal to the specified matrix.</returns>
-		public override bool Equals(Matrix other) { return MatrixBase<Fraction, Matrix>.InternalEquals(this, other); }
+		public override bool Equals(Matrix other) { return MatrixBase<double, Matrix>.InternalEquals(this, other); }
 
 		#endregion Comparing / Ordering
 
@@ -815,5 +813,3 @@ namespace SharpBag.Math.ForFraction.ForInt64
 		#endregion Other
 	}
 }
-
-#endif
