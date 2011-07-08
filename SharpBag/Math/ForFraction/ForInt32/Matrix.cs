@@ -665,11 +665,11 @@ namespace SharpBag.Math.ForFraction.ForInt32
 		}
 
 		/// <summary>
-		/// Calculates the adjoint of the matrix.
+		/// Calculates the adjugate of the matrix.
 		/// </summary>
 		/// <param name="matrix">The matrix.</param>
-		/// <returns>The adjoint.</returns>
-		public static Matrix Adjoint(Matrix matrix)
+		/// <returns>The adjugate.</returns>
+		public static Matrix Adjugate(Matrix matrix)
 		{
 			Contract.Requires(matrix.IsSquare);
 			Matrix result = new Matrix(matrix.RowCount, matrix.ColumnCount);
@@ -694,7 +694,7 @@ namespace SharpBag.Math.ForFraction.ForInt32
 		{
 			Contract.Requires(matrix.IsSquare);
 			Contract.Requires(matrix.Determinant != 0);
-			return (1 / matrix.Determinant) * Matrix.Adjoint(matrix);
+			return (1 / matrix.Determinant) * Matrix.Adjugate(matrix);
 		}
 
 		/// <summary>
