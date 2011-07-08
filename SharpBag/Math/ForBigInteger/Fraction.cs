@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿#if DOTNET4
+
+using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
 namespace SharpBag.Math.ForBigInteger
 {
-#if DOTNET4
-
 	using System;
 	using System.Numerics;
 
@@ -848,6 +848,6 @@ namespace SharpBag.Math.ForBigInteger
 
 		#endregion Other
 	}
+}
 
 #endif
-}

@@ -1,12 +1,12 @@
-﻿using System;
+﻿#if DOTNET4
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace SharpBag.Math.ForBigInteger
 {
-#if DOTNET4
-
 	using System.Diagnostics.Contracts;
 	using System.Numerics;
 
@@ -305,6 +305,6 @@ namespace SharpBag.Math.ForBigInteger
 			return sb.ToString().TrimStart(' ', '+');
 		}
 	}
+}
 
 #endif
-}
