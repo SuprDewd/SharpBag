@@ -51,12 +51,15 @@ namespace SharpBag.Games
 		}
 
 		/// <summary>
-		/// Throw the dice.
+		/// Roll the dice.
 		/// </summary>
 		/// <returns>The number on the top of the dice.</returns>
-		public virtual int Throw()
+		public virtual int Roll()
 		{
-			return this.Rand.Next(1, this.Sides + 1);
+			lock (this.Rand)
+			{
+				return this.Rand.Next(1, this.Sides + 1);
+			}
 		}
 	}
 }

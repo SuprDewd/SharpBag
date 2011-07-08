@@ -10330,9 +10330,9 @@
             <param name="rand">The random number generator.</param>
             <param name="sides">The number of sides on the dice.</param>
         </member>
-        <member name="M:SharpBag.Games.Dice.Throw">
+        <member name="M:SharpBag.Games.Dice.Roll">
             <summary>
-            Throw the dice.
+            Roll the dice.
             </summary>
             <returns>The number on the top of the dice.</returns>
         </member>
