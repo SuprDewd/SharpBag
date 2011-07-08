@@ -6,6 +6,7 @@ using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using SharpBag.Strings;
 
 namespace SharpBag.Math.ForComplex
 {
@@ -286,6 +287,24 @@ namespace SharpBag.Math.ForComplex
 		}
 
 		/// <summary>
+		/// Finds the indefinite integral of the polynomial.
+		/// </summary>
+		/// <param name="c">The constant.</param>
+		/// <returns>The indefinite integral.</returns>
+		public Polynomial IndefiniteIntegral(Complex c)
+		{
+			Complex[] coefficients = new Complex[this.Degree + 2];
+			coefficients[0] = c;
+
+			for (int i = 0; i <= this.Degree; i++)
+			{
+				coefficients[i + 1] = this[i] / (i + 1);
+			}
+
+			return new Polynomial(coefficients);
+		}
+
+		/// <summary>
 		/// Object.ToString()
 		/// </summary>
 		/// <returns>The polynomial as a string.</returns>
@@ -296,7 +315,13 @@ namespace SharpBag.Math.ForComplex
 			{
 				if (this[i] == 0) continue;
 				sb.Append(" + ");
-				if (!(i > 0 && this[i] == 1)) sb.Append(this[i].ToString());
+				if (!(i > 0 && this[i] == 1))
+				{
+					if (this[i].Imaginary != 0) sb.Append('(');
+					sb.Append(this[i].ToComplexString());
+					if (this[i].Imaginary != 0) sb.Append(')');
+				}
+
 				if (i > 0) sb.Append('x');
 				if (i > 1) sb.Append('^').Append(i);
 			}
