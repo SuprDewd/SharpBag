@@ -1246,6 +1246,14 @@
             <param name="rows">The number of rows.</param>
             <param name="columns">The number of columns.</param>
         </member>
+        <member name="M:SharpBag.Math.MatrixBase`2.#ctor(System.Int32,System.Int32,`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Math.MatrixBase`2"/> class.
+            </summary>
+            <param name="rows">The number of rows.</param>
+            <param name="columns">The number of columns.</param>
+            <param name="def">The default value.</param>
+        </member>
         <member name="M:SharpBag.Math.MatrixBase`2.#ctor(`0[0:,0:])">
             <summary>
             Initializes a new instance of the <see cref="T:SharpBag.Math.MatrixBase`2"/> class.
@@ -2038,6 +2046,13 @@
             Initializes a new instance of the <see cref="T:SharpBag.Math.VectorBase`2"/> class.
             </summary>
             <param name="dimension">The dimension.</param>
+        </member>
+        <member name="M:SharpBag.Math.VectorBase`2.#ctor(System.Int32,`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Math.VectorBase`2"/> class.
+            </summary>
+            <param name="dimension">The dimension.</param>
+            <param name="def">The default value.</param>
         </member>
         <member name="M:SharpBag.Math.VectorBase`2.#ctor(`0[])">
             <summary>

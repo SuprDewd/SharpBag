@@ -354,7 +354,7 @@ namespace SharpBag.Math.ForFraction.ForInt64
 		/// </summary>
 		/// <param name="rows">The number of rows.</param>
 		/// <param name="columns">The number of columns.</param>
-		public Matrix(int rows, int columns) : base(rows, columns) { }
+		public Matrix(int rows, int columns) : base(rows, columns, Fraction.Zero) { }
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Matrix"/> class.

@@ -52,7 +52,7 @@ namespace SharpBag.Math.ForFraction.ForInt64
 		/// Initializes a new instance of the <see cref="Vector"/> class.
 		/// </summary>
 		/// <param name="dimension">The dimension.</param>
-		public Vector(int dimension) : base(dimension) { }
+		public Vector(int dimension) : base(dimension, Fraction.Zero) { }
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Vector"/> class.

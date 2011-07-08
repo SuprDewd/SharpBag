@@ -50,6 +50,20 @@ namespace SharpBag.Math
 		/// <summary>
 		/// Initializes a new instance of the <see cref="VectorBase&lt;T, V&gt;"/> class.
 		/// </summary>
+		/// <param name="dimension">The dimension.</param>
+		/// <param name="def">The default value.</param>
+		public VectorBase(int dimension, T def)
+			: this(dimension)
+		{
+			for (int i = 0; i < this.Dimension; i++)
+			{
+				this.Elements[i] = def;
+			}
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="VectorBase&lt;T, V&gt;"/> class.
+		/// </summary>
 		/// <param name="elements">The elements.</param>
 		public VectorBase(T[] elements)
 			: this(elements.Length)

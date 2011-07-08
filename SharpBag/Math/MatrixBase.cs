@@ -204,6 +204,24 @@ namespace SharpBag.Math
 		/// <summary>
 		/// Initializes a new instance of the <see cref="MatrixBase&lt;T, M&gt;"/> class.
 		/// </summary>
+		/// <param name="rows">The number of rows.</param>
+		/// <param name="columns">The number of columns.</param>
+		/// <param name="def">The default value.</param>
+		public MatrixBase(int rows, int columns, T def)
+			: this(rows, columns)
+		{
+			for (int i = 0; i < rows; i++)
+			{
+				for (int j = 0; j < columns; j++)
+				{
+					this[i, j] = def;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="MatrixBase&lt;T, M&gt;"/> class.
+		/// </summary>
 		/// <param name="elements">The elements.</param>
 		public MatrixBase(T[,] elements)
 			: this(elements.GetLength(0), elements.GetLength(1))
