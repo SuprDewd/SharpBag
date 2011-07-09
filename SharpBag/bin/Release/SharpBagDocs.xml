@@ -12057,5 +12057,131 @@
             The default value.
             </summary>
         </member>
+        <member name="T:SharpBag.Collections.TernarySearchTree`1">
+            <summary>
+            A ternary search tree.
+            </summary>
+            <typeparam name="T">The type of items in the tree.</typeparam>
+        </member>
+        <member name="M:SharpBag.Collections.TernarySearchTree`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Collections.TernarySearchTree`1"/> class.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Collections.TernarySearchTree`1.Add(`0[])">
+            <summary>
+            Adds the specified sequence.
+            </summary>
+            <param name="sequence">The sequence.</param>
+            <returns>Whether the sequence was new.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.TernarySearchTree`1.Contains(`0[])">
+            <summary>
+            Determines whether the current instance contains the specified sequence.
+            </summary>
+            <param name="sequence">The sequence.</param>
+            <returns>
+              <c>true</c> if the current instance contains the specified sequence; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Collections.TernarySearchTree`1.StartingWith(`0[])">
+            <summary>
+            Gets all the sequences starting with the specified elements.
+            </summary>
+            <param name="sequence">The sequence of starting elements.</param>
+            <returns>The sequences starting with the specified elements.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.TernarySearchTree`1.GetEnumerator">
+            <summary>
+            Gets the enumerator.
+            </summary>
+            <returns>The enumerator.</returns>
+        </member>
+        <member name="P:SharpBag.Collections.TernarySearchTree`1.Count">
+            <summary>
+            Gets the item count.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Collections.TernarySearchTree`1.Items">
+            <summary>
+            Gets the items.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Collections.TernaryStringSearchTree">
+            <summary>
+            A ternary string-search tree.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Collections.TernaryStringSearchTree.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Collections.TernaryStringSearchTree"/> class.
+            </summary>
+            <param name="caseSensitive">Whether the search tree is case sensitive.</param>
+        </member>
+        <member name="M:SharpBag.Collections.TernaryStringSearchTree.Add(System.String)">
+            <summary>
+            Adds the specified sequence.
+            </summary>
+            <param name="sequence">The sequence.</param>
+            <returns>Whether the sequence was new.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.TernaryStringSearchTree.Add(System.Char[])">
+            <summary>
+            Adds the specified sequence.
+            </summary>
+            <param name="sequence">The sequence.</param>
+            <returns>Whether the sequence was new.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.TernaryStringSearchTree.Contains(System.String)">
+            <summary>
+            Determines whether the current instance contains the specified sequence.
+            </summary>
+            <param name="sequence">The sequence.</param>
+            <returns>
+              <c>true</c> if the current instance contains the specified sequence; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Collections.TernaryStringSearchTree.Contains(System.Char[])">
+            <summary>
+            Determines whether the current instance contains the specified sequence.
+            </summary>
+            <param name="sequence">The sequence.</param>
+            <returns>
+              <c>true</c> if the current instance contains the specified sequence; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Collections.TernaryStringSearchTree.StartingWith(System.String)">
+            <summary>
+            Gets all the sequences starting with the specified sequence.
+            </summary>
+            <param name="sequence">The sequence of starting elements.</param>
+            <returns>The sequences starting with the specified sequence.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.TernaryStringSearchTree.StartingWith(System.Char[])">
+            <summary>
+            Gets all the sequences starting with the specified sequence.
+            </summary>
+            <param name="sequence">The sequence of starting elements.</param>
+            <returns>The sequences starting with the specified sequence.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.TernaryStringSearchTree.GetEnumerator">
+            <summary>
+            Gets the enumerator.
+            </summary>
+            <returns>The enumerator.</returns>
+        </member>
+        <member name="P:SharpBag.Collections.TernaryStringSearchTree.CaseSensitive">
+            <summary>
+            Gets a value indicating whether the search tree is case sensitive.
+            </summary>
+            <value>
+            Whether the search tree is case sensitive.
+            </value>
+        </member>
+        <member name="P:SharpBag.Collections.TernaryStringSearchTree.Items">
+            <summary>
+            Gets the items.
+            </summary>
+        </member>
     </members>
 </doc>

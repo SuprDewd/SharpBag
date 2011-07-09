@@ -75,6 +75,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\TernarySearchTree.cs" />
+    <Compile Include="Collections\TernaryStringSearchTree.cs" />
     <Compile Include="DisposableAction.cs" />
     <Compile Include="CollectionExtensions.cs" />
     <Compile Include="Collections\BinaryHeap.cs" />
