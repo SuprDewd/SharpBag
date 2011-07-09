@@ -172,7 +172,7 @@ namespace SharpBag.Strings
 		/// <returns>A copy of this System.Char converted to uppercase.</returns>
 		public static char ToUpper(this char c)
 		{
-			return c.ToString().ToUpper()[0];
+			return Char.ToUpper(c);
 		}
 
 		/// <summary>
@@ -182,7 +182,7 @@ namespace SharpBag.Strings
 		/// <returns>A copy of this System.Char converted to lowercase.</returns>
 		public static char ToLower(this char c)
 		{
-			return c.ToString().ToLower()[0];
+			return Char.ToLower(c);
 		}
 
 		/// <summary>
