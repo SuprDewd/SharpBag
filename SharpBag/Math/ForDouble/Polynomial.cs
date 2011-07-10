@@ -288,6 +288,60 @@ namespace SharpBag.Math.ForDouble
 		}
 
 		/// <summary>
+		/// Determines whether the Polynomials are equal.
+		/// </summary>
+		/// <param name="left">The left Polynomial.</param>
+		/// <param name="right">The right Polynomial.</param>
+		/// <returns>Whether the Polynomials are equal.</returns>
+		public static bool operator ==(Polynomial left, Polynomial right) { return left.Equals(right); }
+
+		/// <summary>
+		/// Determines whether the Polynomials are not equal.
+		/// </summary>
+		/// <param name="left">The left Polynomial.</param>
+		/// <param name="right">The right Polynomial.</param>
+		/// <returns>Whether the Polynomials are not equal.</returns>
+		public static bool operator !=(Polynomial left, Polynomial right) { return !left.Equals(right); }
+
+		/// <summary>
+		/// Determines whether the Polynomials are equal.
+		/// </summary>
+		/// <param name="other">The other Polynomial.</param>
+		/// <returns>Whether the Polynomials are equal.</returns>
+		public bool Equals(Polynomial other)
+		{
+			if (this.Degree != other.Degree) return false;
+
+			for (int i = 0; i < this.Coefficients.Length; i++)
+			{
+				if (!this.Coefficients[i].Equals(other.Coefficients[i])) return false;
+			}
+
+			return true;
+		}
+
+		/// <summary>
+		/// Determines whether the Polynomials are equal.
+		/// </summary>
+		/// <param name="obj">The other Polynomial.</param>
+		/// <returns>Whether the Polynomials are equal.</returns>
+		public override bool Equals(object obj)
+		{
+			return obj.GetType() == typeof(Polynomial) && this.Equals((Polynomial)obj);
+		}
+
+		/// <summary>
+		/// Returns a hash code for this instance.
+		/// </summary>
+		/// <returns>
+		/// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+		/// </returns>
+		public override int GetHashCode()
+		{
+			return Utils.Hash(this.Coefficients);
+		}
+
+		/// <summary>
 		/// Object.ToString()
 		/// </summary>
 		/// <returns>The polynomial as a string.</returns>

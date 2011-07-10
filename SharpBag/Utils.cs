@@ -6,6 +6,7 @@ using System.IO;
 #if DOTNET4
 
 using System.Diagnostics.Contracts;
+using System.Collections;
 
 #endif
 
@@ -163,5 +164,81 @@ namespace SharpBag
 		}
 
 		#endregion Sort
+
+		#region Hash
+
+		/// <summary>
+		/// Hashes the specified items.
+		/// </summary>
+		/// <param name="items">The items.</param>
+		/// <returns>The hash.</returns>
+		public static int Hash(params object[] items)
+		{
+			if (items.Length == 0) return 0;
+			int hash = 23;
+			for (int i = 0; i < items.Length; i++) hash = hash * 31 + items[i].GetHashCode();
+			return hash;
+		}
+
+		/// <summary>
+		/// Hashes the specified items.
+		/// </summary>
+		/// <param name="items">The items.</param>
+		/// <returns>The hash.</returns>
+		public static int Hash(IEnumerable<object> items)
+		{
+			int hash = 23;
+			bool any = false;
+
+			foreach (var item in items)
+			{
+				any = true;
+				hash = hash * 31 + item.GetHashCode();
+			}
+
+			return any ? hash : 0;
+		}
+
+		/// <summary>
+		/// Hashes the specified items.
+		/// </summary>
+		/// <param name="items">The items.</param>
+		/// <returns>The hash.</returns>
+		public static int Hash(IEnumerable items)
+		{
+			int hash = 23;
+			bool any = false;
+
+			foreach (var item in items)
+			{
+				any = true;
+				hash = hash * 31 + item.GetHashCode();
+			}
+
+			return any ? hash : 0;
+		}
+
+		/// <summary>
+		/// Hashes the specified items.
+		/// </summary>
+		/// <param name="items">The items.</param>
+		/// <returns>The hash.</returns>
+		public static int Hash(object[,] items)
+		{
+			if (items.GetLength(0) == 0 || items.GetLength(1) == 0) return 0;
+
+			int hash = 23;
+			for (int i = 0; i < items.GetLength(0); i++)
+			{
+				for (int j = 0; j < items.GetLength(1); j++)
+				{
+					hash = hash * 31 + items[i, j].GetHashCode();
+				}
+			}
+
+			return hash;
+		}
+
+		#endregion Hash
 	}
 }

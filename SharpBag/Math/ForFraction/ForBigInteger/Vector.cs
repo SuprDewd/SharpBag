@@ -262,6 +262,15 @@ namespace SharpBag.Math.ForFraction.ForBigInteger
 		/// </returns>
 		public override bool Equals(Vector other) { return VectorBase<Fraction, Vector>.InternalEquals(this, other); }
 
+		/// <summary>
+		/// Determines whether the specified vector is equal to this instance.
+		/// </summary>
+		/// <param name="obj">The vector to compare with this instance.</param>
+		/// <returns>
+		///   <c>true</c> if the specified vector is equal to this instance; otherwise, <c>false</c>.
+		/// </returns>
+		public override bool Equals(object obj) { return obj.GetType() == typeof(Vector) && this.Equals((Vector)obj); }
+
 		#endregion Comparing / Ordering
 
 		#region Other
@@ -271,6 +280,17 @@ namespace SharpBag.Math.ForFraction.ForBigInteger
 		/// </summary>
 		/// <returns>The copy.</returns>
 		public override Vector Copy() { return new Vector(this); }
+
+		/// <summary>
+		/// Returns a hash code for this instance.
+		/// </summary>
+		/// <returns>
+		/// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+		/// </returns>
+		public override int GetHashCode()
+		{
+			return Utils.Hash(this.Elements);
+		}
 
 		/// <summary>
 		/// Returns a <see cref="System.String"/> that represents this instance.

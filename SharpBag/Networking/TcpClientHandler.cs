@@ -278,12 +278,6 @@ namespace SharpBag.Networking
 			}
 		}
 
-		/// <see cref="Object.GetHashCode()"/>
-		public override int GetHashCode()
-		{
-			return base.GetHashCode();
-		}
-
 		/// <see cref="IDisposable.Dispose()"/>
 		public void Dispose()
 		{

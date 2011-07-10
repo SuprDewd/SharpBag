@@ -166,7 +166,7 @@ namespace SharpBag.Math.Geometry
 		/// <returns>The hash code of the current instance.</returns>
 		public override int GetHashCode()
 		{
-			return this.Radius.GetHashCode() ^ this.Center.GetHashCode();
+			return Utils.Hash(this.Radius, this.Center);
 		}
 
 		/// <summary>

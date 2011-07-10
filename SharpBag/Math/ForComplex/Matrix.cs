@@ -773,6 +773,16 @@ namespace SharpBag.Math.ForComplex
 		/// <returns>Whether the current instance is equal to the specified matrix.</returns>
 		public override bool Equals(Matrix other) { return MatrixBase<Complex, Matrix>.InternalEquals(this, other); }
 
+		/// <summary>
+		/// Whether the current instance is equal to the specified matrix.
+		/// </summary>
+		/// <param name="obj">The specified matrix.</param>
+		/// <returns>Whether the current instance is equal to the specified matrix.</returns>
+		public override bool Equals(object obj)
+		{
+			return obj.GetType() == typeof(Matrix) && this.Equals((Matrix)obj);
+		}
+
 		#endregion Comparing / Ordering
 
 		#region Other
@@ -782,6 +792,17 @@ namespace SharpBag.Math.ForComplex
 		/// </summary>
 		/// <returns>The copy.</returns>
 		public override Matrix Copy() { return new Matrix(this); }
+
+		/// <summary>
+		/// Returns a hash code for this instance.
+		/// </summary>
+		/// <returns>
+		/// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+		/// </returns>
+		public override int GetHashCode()
+		{
+			return Utils.Hash(this.Elements);
+		}
 
 		/// <summary>
 		/// Returns a <see cref="System.String"/> that represents this instance.

@@ -157,9 +157,7 @@ namespace SharpBag.Math
 		/// </returns>
 		public override int GetHashCode()
 		{
-			int hash = 0;
-			for (int i = 0; i < this.Dimension; i++) hash ^= this[i].GetHashCode();
-			return hash;
+			return Utils.Hash(this.Elements);
 		}
 	}
 }

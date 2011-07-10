@@ -758,6 +758,132 @@
             The current variation.
             </summary>
         </member>
+        <member name="T:SharpBag.Collections.TernaryStringSearchTree">
+            <summary>
+            A ternary string-search tree.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Collections.TernarySearchTree`1">
+            <summary>
+            A ternary search tree.
+            </summary>
+            <typeparam name="T">The type of items in the tree.</typeparam>
+        </member>
+        <member name="M:SharpBag.Collections.TernarySearchTree`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Collections.TernarySearchTree`1"/> class.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Collections.TernarySearchTree`1.Add(`0[])">
+            <summary>
+            Adds the specified sequence.
+            </summary>
+            <param name="sequence">The sequence.</param>
+            <returns>Whether the sequence was new.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.TernarySearchTree`1.Contains(`0[])">
+            <summary>
+            Determines whether the current instance contains the specified sequence.
+            </summary>
+            <param name="sequence">The sequence.</param>
+            <returns>
+              <c>true</c> if the current instance contains the specified sequence; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Collections.TernarySearchTree`1.StartingWith(`0[])">
+            <summary>
+            Gets all the sequences starting with the specified elements.
+            </summary>
+            <param name="sequence">The sequence of starting elements.</param>
+            <returns>The sequences starting with the specified elements.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.TernarySearchTree`1.GetEnumerator">
+            <summary>
+            Gets the enumerator.
+            </summary>
+            <returns>The enumerator.</returns>
+        </member>
+        <member name="P:SharpBag.Collections.TernarySearchTree`1.Count">
+            <summary>
+            Gets the item count.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Collections.TernarySearchTree`1.Items">
+            <summary>
+            Gets the items.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Collections.TernaryStringSearchTree.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Collections.TernaryStringSearchTree"/> class.
+            </summary>
+            <param name="caseSensitive">Whether the search tree is case sensitive.</param>
+        </member>
+        <member name="M:SharpBag.Collections.TernaryStringSearchTree.Add(System.String)">
+            <summary>
+            Adds the specified sequence.
+            </summary>
+            <param name="sequence">The sequence.</param>
+            <returns>Whether the sequence was new.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.TernaryStringSearchTree.Add(System.Char[])">
+            <summary>
+            Adds the specified sequence.
+            </summary>
+            <param name="sequence">The sequence.</param>
+            <returns>Whether the sequence was new.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.TernaryStringSearchTree.Contains(System.String)">
+            <summary>
+            Determines whether the current instance contains the specified sequence.
+            </summary>
+            <param name="sequence">The sequence.</param>
+            <returns>
+              <c>true</c> if the current instance contains the specified sequence; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Collections.TernaryStringSearchTree.Contains(System.Char[])">
+            <summary>
+            Determines whether the current instance contains the specified sequence.
+            </summary>
+            <param name="sequence">The sequence.</param>
+            <returns>
+              <c>true</c> if the current instance contains the specified sequence; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Collections.TernaryStringSearchTree.StartingWith(System.String)">
+            <summary>
+            Gets all the sequences starting with the specified sequence.
+            </summary>
+            <param name="sequence">The sequence of starting elements.</param>
+            <returns>The sequences starting with the specified sequence.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.TernaryStringSearchTree.StartingWith(System.Char[])">
+            <summary>
+            Gets all the sequences starting with the specified sequence.
+            </summary>
+            <param name="sequence">The sequence of starting elements.</param>
+            <returns>The sequences starting with the specified sequence.</returns>
+        </member>
+        <member name="M:SharpBag.Collections.TernaryStringSearchTree.GetEnumerator">
+            <summary>
+            Gets the enumerator.
+            </summary>
+            <returns>The enumerator.</returns>
+        </member>
+        <member name="P:SharpBag.Collections.TernaryStringSearchTree.CaseSensitive">
+            <summary>
+            Gets a value indicating whether the search tree is case sensitive.
+            </summary>
+            <value>
+            Whether the search tree is case sensitive.
+            </value>
+        </member>
+        <member name="P:SharpBag.Collections.TernaryStringSearchTree.Items">
+            <summary>
+            Gets the items.
+            </summary>
+        </member>
         <member name="T:SharpBag.Logging.InteractiveConsole">
             <summary>
             A class used for managing the console window, so that the program can both read from the console and write into the console at the samt time.
@@ -1696,11 +1822,26 @@
             <param name="other">The specified matrix.</param>
             <returns>Whether the current instance is equal to the specified matrix.</returns>
         </member>
+        <member name="M:SharpBag.Math.ForFraction.ForInt32.Matrix.Equals(System.Object)">
+            <summary>
+            Whether the current instance is equal to the specified matrix.
+            </summary>
+            <param name="obj">The specified matrix.</param>
+            <returns>Whether the current instance is equal to the specified matrix.</returns>
+        </member>
         <member name="M:SharpBag.Math.ForFraction.ForInt32.Matrix.Copy">
             <summary>
             Copies this instance.
             </summary>
             <returns>The copy.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForFraction.ForInt32.Matrix.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
         </member>
         <member name="M:SharpBag.Math.ForFraction.ForInt32.Matrix.ToString">
             <summary>
@@ -2300,11 +2441,28 @@
               <c>true</c> if the specified vector is equal to this instance; otherwise, <c>false</c>.
             </returns>
         </member>
+        <member name="M:SharpBag.Math.ForComplex.Vector.Equals(System.Object)">
+            <summary>
+            Determines whether the specified vector is equal to this instance.
+            </summary>
+            <param name="obj">The vector to compare with this instance.</param>
+            <returns>
+              <c>true</c> if the specified vector is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
         <member name="M:SharpBag.Math.ForComplex.Vector.Copy">
             <summary>
             Copies this instance.
             </summary>
             <returns>The copy.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForComplex.Vector.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
         </member>
         <member name="M:SharpBag.Math.ForComplex.Vector.ToString">
             <summary>
@@ -2907,6 +3065,44 @@
             </summary>
             <param name="i">The i.</param>
             <returns>The i-th derivative of the polynomial.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForComplex.Polynomial.op_Equality(SharpBag.Math.ForComplex.Polynomial,SharpBag.Math.ForComplex.Polynomial)">
+            <summary>
+            Determines whether the Polynomials are equal.
+            </summary>
+            <param name="left">The left Polynomial.</param>
+            <param name="right">The right Polynomial.</param>
+            <returns>Whether the Polynomials are equal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForComplex.Polynomial.op_Inequality(SharpBag.Math.ForComplex.Polynomial,SharpBag.Math.ForComplex.Polynomial)">
+            <summary>
+            Determines whether the Polynomials are not equal.
+            </summary>
+            <param name="left">The left Polynomial.</param>
+            <param name="right">The right Polynomial.</param>
+            <returns>Whether the Polynomials are not equal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForComplex.Polynomial.Equals(SharpBag.Math.ForComplex.Polynomial)">
+            <summary>
+            Determines whether the Polynomials are equal.
+            </summary>
+            <param name="other">The other Polynomial.</param>
+            <returns>Whether the Polynomials are equal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForComplex.Polynomial.Equals(System.Object)">
+            <summary>
+            Determines whether the Polynomials are equal.
+            </summary>
+            <param name="obj">The other Polynomial.</param>
+            <returns>Whether the Polynomials are equal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForComplex.Polynomial.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
         </member>
         <member name="M:SharpBag.Math.ForComplex.Polynomial.ToString">
             <summary>
@@ -3630,11 +3826,26 @@
             <param name="other">The specified matrix.</param>
             <returns>Whether the current instance is equal to the specified matrix.</returns>
         </member>
+        <member name="M:SharpBag.Math.ForFraction.ForBigInteger.Matrix.Equals(System.Object)">
+            <summary>
+            Whether the current instance is equal to the specified matrix.
+            </summary>
+            <param name="obj">The specified matrix.</param>
+            <returns>Whether the current instance is equal to the specified matrix.</returns>
+        </member>
         <member name="M:SharpBag.Math.ForFraction.ForBigInteger.Matrix.Copy">
             <summary>
             Copies this instance.
             </summary>
             <returns>The copy.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForFraction.ForBigInteger.Matrix.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
         </member>
         <member name="M:SharpBag.Math.ForFraction.ForBigInteger.Matrix.ToString">
             <summary>
@@ -4749,6 +4960,34 @@
             <param name="value5">A variable.</param>
             <param name="value6">A variable.</param>
         </member>
+        <member name="M:SharpBag.Utils.Hash(System.Object[])">
+            <summary>
+            Hashes the specified items.
+            </summary>
+            <param name="items">The items.</param>
+            <returns>The hash.</returns>
+        </member>
+        <member name="M:SharpBag.Utils.Hash(System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            Hashes the specified items.
+            </summary>
+            <param name="items">The items.</param>
+            <returns>The hash.</returns>
+        </member>
+        <member name="M:SharpBag.Utils.Hash(System.Collections.IEnumerable)">
+            <summary>
+            Hashes the specified items.
+            </summary>
+            <param name="items">The items.</param>
+            <returns>The hash.</returns>
+        </member>
+        <member name="M:SharpBag.Utils.Hash(System.Object[0:,0:])">
+            <summary>
+            Hashes the specified items.
+            </summary>
+            <param name="items">The items.</param>
+            <returns>The hash.</returns>
+        </member>
         <member name="T:SharpBag.Networking.ConnectionPacket">
             <summary>
             A packet.
@@ -5003,11 +5242,26 @@
             <param name="other">The specified matrix.</param>
             <returns>Whether the current instance is equal to the specified matrix.</returns>
         </member>
+        <member name="M:SharpBag.Math.ForFraction.ForInt64.Matrix.Equals(System.Object)">
+            <summary>
+            Whether the current instance is equal to the specified matrix.
+            </summary>
+            <param name="obj">The specified matrix.</param>
+            <returns>Whether the current instance is equal to the specified matrix.</returns>
+        </member>
         <member name="M:SharpBag.Math.ForFraction.ForInt64.Matrix.Copy">
             <summary>
             Copies this instance.
             </summary>
             <returns>The copy.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForFraction.ForInt64.Matrix.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
         </member>
         <member name="M:SharpBag.Math.ForFraction.ForInt64.Matrix.ToString">
             <summary>
@@ -5688,6 +5942,44 @@
             <param name="i">The i.</param>
             <returns>The i-th derivative of the polynomial.</returns>
         </member>
+        <member name="M:SharpBag.Math.ForInt64.Polynomial.op_Equality(SharpBag.Math.ForInt64.Polynomial,SharpBag.Math.ForInt64.Polynomial)">
+            <summary>
+            Determines whether the Polynomials are equal.
+            </summary>
+            <param name="left">The left Polynomial.</param>
+            <param name="right">The right Polynomial.</param>
+            <returns>Whether the Polynomials are equal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForInt64.Polynomial.op_Inequality(SharpBag.Math.ForInt64.Polynomial,SharpBag.Math.ForInt64.Polynomial)">
+            <summary>
+            Determines whether the Polynomials are not equal.
+            </summary>
+            <param name="left">The left Polynomial.</param>
+            <param name="right">The right Polynomial.</param>
+            <returns>Whether the Polynomials are not equal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForInt64.Polynomial.Equals(SharpBag.Math.ForInt64.Polynomial)">
+            <summary>
+            Determines whether the Polynomials are equal.
+            </summary>
+            <param name="other">The other Polynomial.</param>
+            <returns>Whether the Polynomials are equal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForInt64.Polynomial.Equals(System.Object)">
+            <summary>
+            Determines whether the Polynomials are equal.
+            </summary>
+            <param name="obj">The other Polynomial.</param>
+            <returns>Whether the Polynomials are equal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForInt64.Polynomial.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
+        </member>
         <member name="M:SharpBag.Math.ForInt64.Polynomial.ToString">
             <summary>
             Object.ToString()
@@ -5945,11 +6237,26 @@
             <param name="other">The specified matrix.</param>
             <returns>Whether the current instance is equal to the specified matrix.</returns>
         </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.Equals(System.Object)">
+            <summary>
+            Whether the current instance is equal to the specified matrix.
+            </summary>
+            <param name="obj">The specified matrix.</param>
+            <returns>Whether the current instance is equal to the specified matrix.</returns>
+        </member>
         <member name="M:SharpBag.Math.ForDouble.Matrix.Copy">
             <summary>
             Copies this instance.
             </summary>
             <returns>The copy.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Matrix.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
         </member>
         <member name="M:SharpBag.Math.ForDouble.Matrix.ToString">
             <summary>
@@ -7796,6 +8103,44 @@
             <param name="i">The i.</param>
             <returns>The i-th derivative of the polynomial.</returns>
         </member>
+        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.op_Equality(SharpBag.Math.ForBigInteger.Polynomial,SharpBag.Math.ForBigInteger.Polynomial)">
+            <summary>
+            Determines whether the Polynomials are equal.
+            </summary>
+            <param name="left">The left Polynomial.</param>
+            <param name="right">The right Polynomial.</param>
+            <returns>Whether the Polynomials are equal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.op_Inequality(SharpBag.Math.ForBigInteger.Polynomial,SharpBag.Math.ForBigInteger.Polynomial)">
+            <summary>
+            Determines whether the Polynomials are not equal.
+            </summary>
+            <param name="left">The left Polynomial.</param>
+            <param name="right">The right Polynomial.</param>
+            <returns>Whether the Polynomials are not equal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.Equals(SharpBag.Math.ForBigInteger.Polynomial)">
+            <summary>
+            Determines whether the Polynomials are equal.
+            </summary>
+            <param name="other">The other Polynomial.</param>
+            <returns>Whether the Polynomials are equal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.Equals(System.Object)">
+            <summary>
+            Determines whether the Polynomials are equal.
+            </summary>
+            <param name="obj">The other Polynomial.</param>
+            <returns>Whether the Polynomials are equal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
+        </member>
         <member name="M:SharpBag.Math.ForBigInteger.Polynomial.ToString">
             <summary>
             Object.ToString()
@@ -8757,11 +9102,28 @@
               <c>true</c> if the specified vector is equal to this instance; otherwise, <c>false</c>.
             </returns>
         </member>
+        <member name="M:SharpBag.Math.ForFraction.ForInt32.Vector.Equals(System.Object)">
+            <summary>
+            Determines whether the specified vector is equal to this instance.
+            </summary>
+            <param name="obj">The vector to compare with this instance.</param>
+            <returns>
+              <c>true</c> if the specified vector is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
         <member name="M:SharpBag.Math.ForFraction.ForInt32.Vector.Copy">
             <summary>
             Copies this instance.
             </summary>
             <returns>The copy.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForFraction.ForInt32.Vector.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
         </member>
         <member name="M:SharpBag.Math.ForFraction.ForInt32.Vector.ToString">
             <summary>
@@ -9308,11 +9670,26 @@
             <param name="other">The specified matrix.</param>
             <returns>Whether the current instance is equal to the specified matrix.</returns>
         </member>
+        <member name="M:SharpBag.Math.ForComplex.Matrix.Equals(System.Object)">
+            <summary>
+            Whether the current instance is equal to the specified matrix.
+            </summary>
+            <param name="obj">The specified matrix.</param>
+            <returns>Whether the current instance is equal to the specified matrix.</returns>
+        </member>
         <member name="M:SharpBag.Math.ForComplex.Matrix.Copy">
             <summary>
             Copies this instance.
             </summary>
             <returns>The copy.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForComplex.Matrix.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
         </member>
         <member name="M:SharpBag.Math.ForComplex.Matrix.ToString">
             <summary>
@@ -9580,6 +9957,44 @@
             <param name="i">The i.</param>
             <returns>The i-th derivative of the polynomial.</returns>
         </member>
+        <member name="M:SharpBag.Math.ForInt32.Polynomial.op_Equality(SharpBag.Math.ForInt32.Polynomial,SharpBag.Math.ForInt32.Polynomial)">
+            <summary>
+            Determines whether the Polynomials are equal.
+            </summary>
+            <param name="left">The left Polynomial.</param>
+            <param name="right">The right Polynomial.</param>
+            <returns>Whether the Polynomials are equal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForInt32.Polynomial.op_Inequality(SharpBag.Math.ForInt32.Polynomial,SharpBag.Math.ForInt32.Polynomial)">
+            <summary>
+            Determines whether the Polynomials are not equal.
+            </summary>
+            <param name="left">The left Polynomial.</param>
+            <param name="right">The right Polynomial.</param>
+            <returns>Whether the Polynomials are not equal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForInt32.Polynomial.Equals(SharpBag.Math.ForInt32.Polynomial)">
+            <summary>
+            Determines whether the Polynomials are equal.
+            </summary>
+            <param name="other">The other Polynomial.</param>
+            <returns>Whether the Polynomials are equal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForInt32.Polynomial.Equals(System.Object)">
+            <summary>
+            Determines whether the Polynomials are equal.
+            </summary>
+            <param name="obj">The other Polynomial.</param>
+            <returns>Whether the Polynomials are equal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForInt32.Polynomial.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
+        </member>
         <member name="M:SharpBag.Math.ForInt32.Polynomial.ToString">
             <summary>
             Object.ToString()
@@ -9764,11 +10179,28 @@
               <c>true</c> if the specified vector is equal to this instance; otherwise, <c>false</c>.
             </returns>
         </member>
+        <member name="M:SharpBag.Math.ForFraction.ForBigInteger.Vector.Equals(System.Object)">
+            <summary>
+            Determines whether the specified vector is equal to this instance.
+            </summary>
+            <param name="obj">The vector to compare with this instance.</param>
+            <returns>
+              <c>true</c> if the specified vector is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
         <member name="M:SharpBag.Math.ForFraction.ForBigInteger.Vector.Copy">
             <summary>
             Copies this instance.
             </summary>
             <returns>The copy.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForFraction.ForBigInteger.Vector.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
         </member>
         <member name="M:SharpBag.Math.ForFraction.ForBigInteger.Vector.ToString">
             <summary>
@@ -9900,9 +10332,6 @@
             <summary>
             Object.Equals(object)
             </summary>
-        </member>
-        <member name="M:SharpBag.Networking.TcpClientHandler.GetHashCode">
-            <see cref="M:System.Object.GetHashCode"/>
         </member>
         <member name="M:SharpBag.Networking.TcpClientHandler.Dispose">
             <see cref="M:System.IDisposable.Dispose"/>
@@ -10450,11 +10879,28 @@
               <c>true</c> if the specified vector is equal to this instance; otherwise, <c>false</c>.
             </returns>
         </member>
+        <member name="M:SharpBag.Math.ForFraction.ForInt64.Vector.Equals(System.Object)">
+            <summary>
+            Determines whether the specified vector is equal to this instance.
+            </summary>
+            <param name="obj">The vector to compare with this instance.</param>
+            <returns>
+              <c>true</c> if the specified vector is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
         <member name="M:SharpBag.Math.ForFraction.ForInt64.Vector.Copy">
             <summary>
             Copies this instance.
             </summary>
             <returns>The copy.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForFraction.ForInt64.Vector.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
         </member>
         <member name="M:SharpBag.Math.ForFraction.ForInt64.Vector.ToString">
             <summary>
@@ -10913,11 +11359,28 @@
               <c>true</c> if the specified vector is equal to this instance; otherwise, <c>false</c>.
             </returns>
         </member>
+        <member name="M:SharpBag.Math.ForDouble.Vector.Equals(System.Object)">
+            <summary>
+            Determines whether the specified vector is equal to this instance.
+            </summary>
+            <param name="obj">The vector to compare with this instance.</param>
+            <returns>
+              <c>true</c> if the specified vector is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
         <member name="M:SharpBag.Math.ForDouble.Vector.Copy">
             <summary>
             Copies this instance.
             </summary>
             <returns>The copy.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Vector.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
         </member>
         <member name="M:SharpBag.Math.ForDouble.Vector.ToString">
             <summary>
@@ -11912,6 +12375,44 @@
             <param name="i">The i.</param>
             <returns>The i-th derivative of the polynomial.</returns>
         </member>
+        <member name="M:SharpBag.Math.ForDouble.Polynomial.op_Equality(SharpBag.Math.ForDouble.Polynomial,SharpBag.Math.ForDouble.Polynomial)">
+            <summary>
+            Determines whether the Polynomials are equal.
+            </summary>
+            <param name="left">The left Polynomial.</param>
+            <param name="right">The right Polynomial.</param>
+            <returns>Whether the Polynomials are equal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Polynomial.op_Inequality(SharpBag.Math.ForDouble.Polynomial,SharpBag.Math.ForDouble.Polynomial)">
+            <summary>
+            Determines whether the Polynomials are not equal.
+            </summary>
+            <param name="left">The left Polynomial.</param>
+            <param name="right">The right Polynomial.</param>
+            <returns>Whether the Polynomials are not equal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Polynomial.Equals(SharpBag.Math.ForDouble.Polynomial)">
+            <summary>
+            Determines whether the Polynomials are equal.
+            </summary>
+            <param name="other">The other Polynomial.</param>
+            <returns>Whether the Polynomials are equal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Polynomial.Equals(System.Object)">
+            <summary>
+            Determines whether the Polynomials are equal.
+            </summary>
+            <param name="obj">The other Polynomial.</param>
+            <returns>Whether the Polynomials are equal.</returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Polynomial.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
+        </member>
         <member name="M:SharpBag.Math.ForDouble.Polynomial.ToString">
             <summary>
             Object.ToString()
@@ -12055,132 +12556,6 @@
         <member name="P:SharpBag.Matcher`2.DefaultValue">
             <summary>
             The default value.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Collections.TernarySearchTree`1">
-            <summary>
-            A ternary search tree.
-            </summary>
-            <typeparam name="T">The type of items in the tree.</typeparam>
-        </member>
-        <member name="M:SharpBag.Collections.TernarySearchTree`1.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:SharpBag.Collections.TernarySearchTree`1"/> class.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Collections.TernarySearchTree`1.Add(`0[])">
-            <summary>
-            Adds the specified sequence.
-            </summary>
-            <param name="sequence">The sequence.</param>
-            <returns>Whether the sequence was new.</returns>
-        </member>
-        <member name="M:SharpBag.Collections.TernarySearchTree`1.Contains(`0[])">
-            <summary>
-            Determines whether the current instance contains the specified sequence.
-            </summary>
-            <param name="sequence">The sequence.</param>
-            <returns>
-              <c>true</c> if the current instance contains the specified sequence; otherwise, <c>false</c>.
-            </returns>
-        </member>
-        <member name="M:SharpBag.Collections.TernarySearchTree`1.StartingWith(`0[])">
-            <summary>
-            Gets all the sequences starting with the specified elements.
-            </summary>
-            <param name="sequence">The sequence of starting elements.</param>
-            <returns>The sequences starting with the specified elements.</returns>
-        </member>
-        <member name="M:SharpBag.Collections.TernarySearchTree`1.GetEnumerator">
-            <summary>
-            Gets the enumerator.
-            </summary>
-            <returns>The enumerator.</returns>
-        </member>
-        <member name="P:SharpBag.Collections.TernarySearchTree`1.Count">
-            <summary>
-            Gets the item count.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Collections.TernarySearchTree`1.Items">
-            <summary>
-            Gets the items.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Collections.TernaryStringSearchTree">
-            <summary>
-            A ternary string-search tree.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Collections.TernaryStringSearchTree.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the <see cref="T:SharpBag.Collections.TernaryStringSearchTree"/> class.
-            </summary>
-            <param name="caseSensitive">Whether the search tree is case sensitive.</param>
-        </member>
-        <member name="M:SharpBag.Collections.TernaryStringSearchTree.Add(System.String)">
-            <summary>
-            Adds the specified sequence.
-            </summary>
-            <param name="sequence">The sequence.</param>
-            <returns>Whether the sequence was new.</returns>
-        </member>
-        <member name="M:SharpBag.Collections.TernaryStringSearchTree.Add(System.Char[])">
-            <summary>
-            Adds the specified sequence.
-            </summary>
-            <param name="sequence">The sequence.</param>
-            <returns>Whether the sequence was new.</returns>
-        </member>
-        <member name="M:SharpBag.Collections.TernaryStringSearchTree.Contains(System.String)">
-            <summary>
-            Determines whether the current instance contains the specified sequence.
-            </summary>
-            <param name="sequence">The sequence.</param>
-            <returns>
-              <c>true</c> if the current instance contains the specified sequence; otherwise, <c>false</c>.
-            </returns>
-        </member>
-        <member name="M:SharpBag.Collections.TernaryStringSearchTree.Contains(System.Char[])">
-            <summary>
-            Determines whether the current instance contains the specified sequence.
-            </summary>
-            <param name="sequence">The sequence.</param>
-            <returns>
-              <c>true</c> if the current instance contains the specified sequence; otherwise, <c>false</c>.
-            </returns>
-        </member>
-        <member name="M:SharpBag.Collections.TernaryStringSearchTree.StartingWith(System.String)">
-            <summary>
-            Gets all the sequences starting with the specified sequence.
-            </summary>
-            <param name="sequence">The sequence of starting elements.</param>
-            <returns>The sequences starting with the specified sequence.</returns>
-        </member>
-        <member name="M:SharpBag.Collections.TernaryStringSearchTree.StartingWith(System.Char[])">
-            <summary>
-            Gets all the sequences starting with the specified sequence.
-            </summary>
-            <param name="sequence">The sequence of starting elements.</param>
-            <returns>The sequences starting with the specified sequence.</returns>
-        </member>
-        <member name="M:SharpBag.Collections.TernaryStringSearchTree.GetEnumerator">
-            <summary>
-            Gets the enumerator.
-            </summary>
-            <returns>The enumerator.</returns>
-        </member>
-        <member name="P:SharpBag.Collections.TernaryStringSearchTree.CaseSensitive">
-            <summary>
-            Gets a value indicating whether the search tree is case sensitive.
-            </summary>
-            <value>
-            Whether the search tree is case sensitive.
-            </value>
-        </member>
-        <member name="P:SharpBag.Collections.TernaryStringSearchTree.Items">
-            <summary>
-            Gets the items.
             </summary>
         </member>
     </members>

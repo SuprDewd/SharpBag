@@ -160,7 +160,7 @@ namespace SharpBag.Math.Geometry
 		/// </returns>
 		public override int GetHashCode()
 		{
-			return this.From.GetHashCode() ^ this.To.GetHashCode();
+			return Utils.Hash(this.From, this.To);
 		}
 
 		/// <summary>

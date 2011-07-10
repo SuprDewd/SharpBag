@@ -265,9 +265,7 @@ namespace SharpBag.Math.Geometry
 		/// </returns>
 		public override int GetHashCode()
 		{
-			int hash = 0;
-			for (int i = 0; i < this.PointCount; i++) hash ^= this[i].GetHashCode();
-			return hash;
+			return Utils.Hash(this._Points);
 		}
 
 		/// <summary>

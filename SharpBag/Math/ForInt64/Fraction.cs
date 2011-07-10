@@ -757,7 +757,7 @@ namespace SharpBag.Math.ForInt64
 		/// <returns>The hash code of the fraction.</returns>
 		public override int GetHashCode()
 		{
-			return (int)(this.Numerator ^ this.Denominator);
+			return Utils.Hash(this.Numerator, this.Denominator);
 		}
 
 		/// <summary>

@@ -834,7 +834,7 @@ namespace SharpBag.Math
 		/// <returns>The hash code of the current instance.</returns>
 		public override int GetHashCode()
 		{
-			return this.Mantissa.GetHashCode() ^ this.Exponent.GetHashCode();
+			return Utils.Hash(this.Mantissa, this.Exponent);
 		}
 
 		private string _ToStringCache;

@@ -135,7 +135,7 @@ namespace SharpBag.Math.Geometry
 
 		public override int GetHashCode()
 		{
-			return this.A.GetHashCode() ^ this.B.GetHashCode() ^ this.C.GetHashCode();
+			return Utils.Hash(this.A, this.B, this.C);
 		}
 
 		public override string ToString()

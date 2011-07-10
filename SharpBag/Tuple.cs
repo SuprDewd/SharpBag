@@ -46,7 +46,7 @@ namespace System
 		/// <returns>The hash code of the tuple.</returns>
 		public override int GetHashCode()
 		{
-			return this.Item1.GetHashCode() * 2;
+			return Utils.Hash(this.Item1);
 		}
 
 		/// <summary>
@@ -110,8 +110,7 @@ namespace System
 		/// <returns>The hash code of the tuple.</returns>
 		public override int GetHashCode()
 		{
-			return this.Item1.GetHashCode() ^
-				   this.Item2.GetHashCode();
+			return Utils.Hash(this.Item1, this.Item2);
 		}
 
 		/// <summary>
@@ -185,9 +184,7 @@ namespace System
 		/// <returns>The hash code of the tuple.</returns>
 		public override int GetHashCode()
 		{
-			return this.Item1.GetHashCode() ^
-				   this.Item2.GetHashCode() ^
-				   this.Item3.GetHashCode();
+			return Utils.Hash(this.Item1, this.Item2, this.Item3);
 		}
 
 		/// <summary>
@@ -269,10 +266,7 @@ namespace System
 		/// <returns>The hash code of the tuple.</returns>
 		public override int GetHashCode()
 		{
-			return this.Item1.GetHashCode() ^
-				   this.Item2.GetHashCode() ^
-				   this.Item3.GetHashCode() ^
-				   this.Item4.GetHashCode();
+			return Utils.Hash(this.Item1, this.Item2, this.Item3, this.Item4);
 		}
 
 		/// <summary>
@@ -362,11 +356,7 @@ namespace System
 		/// <returns>The hash code of the tuple.</returns>
 		public override int GetHashCode()
 		{
-			return this.Item1.GetHashCode() ^
-				   this.Item2.GetHashCode() ^
-				   this.Item3.GetHashCode() ^
-				   this.Item4.GetHashCode() ^
-				   this.Item5.GetHashCode();
+			return Utils.Hash(this.Item1, this.Item2, this.Item3, this.Item4, this.Item5);
 		}
 
 		/// <summary>
@@ -464,12 +454,7 @@ namespace System
 		/// <returns>The hash code of the tuple.</returns>
 		public override int GetHashCode()
 		{
-			return this.Item1.GetHashCode() ^
-				   this.Item2.GetHashCode() ^
-				   this.Item3.GetHashCode() ^
-				   this.Item4.GetHashCode() ^
-				   this.Item5.GetHashCode() ^
-				   this.Item6.GetHashCode();
+			return Utils.Hash(this.Item1, this.Item2, this.Item3, this.Item4, this.Item5, this.Item6);
 		}
 
 		/// <summary>
@@ -575,13 +560,7 @@ namespace System
 		/// <returns>The hash code of the tuple.</returns>
 		public override int GetHashCode()
 		{
-			return this.Item1.GetHashCode() ^
-				   this.Item2.GetHashCode() ^
-				   this.Item3.GetHashCode() ^
-				   this.Item4.GetHashCode() ^
-				   this.Item5.GetHashCode() ^
-				   this.Item6.GetHashCode() ^
-				   this.Item7.GetHashCode();
+			return Utils.Hash(this.Item1, this.Item2, this.Item3, this.Item4, this.Item5, this.Item6, this.Item7);
 		}
 
 		/// <summary>
@@ -695,14 +674,7 @@ namespace System
 		/// <returns>The hash code of the tuple.</returns>
 		public override int GetHashCode()
 		{
-			return this.Item1.GetHashCode() ^
-				   this.Item2.GetHashCode() ^
-				   this.Item3.GetHashCode() ^
-				   this.Item4.GetHashCode() ^
-				   this.Item5.GetHashCode() ^
-				   this.Item6.GetHashCode() ^
-				   this.Item7.GetHashCode() ^
-				   this.Item8.GetHashCode();
+			return Utils.Hash(this.Item1, this.Item2, this.Item3, this.Item4, this.Item5, this.Item6, this.Item7, this.Item8);
 		}
 
 		/// <summary>
@@ -824,15 +796,7 @@ namespace System
 		/// <returns>The hash code of the tuple.</returns>
 		public override int GetHashCode()
 		{
-			return this.Item1.GetHashCode() ^
-				   this.Item2.GetHashCode() ^
-				   this.Item3.GetHashCode() ^
-				   this.Item4.GetHashCode() ^
-				   this.Item5.GetHashCode() ^
-				   this.Item6.GetHashCode() ^
-				   this.Item7.GetHashCode() ^
-				   this.Item8.GetHashCode() ^
-				   this.Rest.GetHashCode();
+			return Utils.Hash(this.Item1, this.Item2, this.Item3, this.Item4, this.Item5, this.Item6, this.Item7, this.Item8, this.Rest);
 		}
 
 		/// <summary>

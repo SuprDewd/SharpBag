@@ -320,16 +320,7 @@ namespace SharpBag.Math
 		/// </returns>
 		public override int GetHashCode()
 		{
-			int hash = 0;
-			for (int row = 0; row < this.RowCount; row++)
-			{
-				for (int col = 0; col < this.ColumnCount; col++)
-				{
-					hash ^= this[row, col].GetHashCode();
-				}
-			}
-
-			return hash;
+			return Utils.Hash(this.Elements);
 		}
 
 		/// <summary>
