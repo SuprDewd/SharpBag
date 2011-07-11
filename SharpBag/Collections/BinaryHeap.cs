@@ -50,6 +50,9 @@ namespace SharpBag.Collections
 		/// <param name="capacity">The maximum number of items that can be stored in the heap.</param>
 		public BinaryHeap(int capacity)
 		{
+#if DOTNET4
+			Contract.Requires(capacity > 0);
+#endif
 			this.Count = 0;
 			this.Capacity = capacity;
 			this.InternalArray = new T[this.Capacity];
@@ -100,24 +103,16 @@ namespace SharpBag.Collections
 				int parent = this.Parent(i);
 				int cmp = this.Compare(parent, i);
 
-				if (cmp < 0)
-				{
-					do
-					{
-						T temp = this.InternalArray[i];
-						this.InternalArray[i] = this.InternalArray[parent];
-						this.InternalArray[parent] = temp;
-						i = parent;
-						if (i == 0) break;
-						parent = this.Parent(i);
-						cmp = this.Compare(parent, i);
-					} while (cmp < 0);
-				}
-				else if (cmp > 0)
-				{
-					this.MaintainHeap(i);
-				}
+				if (cmp < 0) this.BubbleUp(i);
+				else if (cmp > 0) this.MaintainHeap(i);
 			}
+		}
+
+		protected void Swap(int i, int j)
+		{
+			T temp = this.InternalArray[i];
+			this.InternalArray[i] = this.InternalArray[j];
+			this.InternalArray[j] = temp;
 		}
 
 		/// <summary>
@@ -145,14 +140,10 @@ namespace SharpBag.Collections
 					}
 				}
 
-				if (max != i)
-				{
-					T temp = this.InternalArray[i];
-					this.InternalArray[i] = this.InternalArray[max];
-					this.InternalArray[max] = temp;
-					i = max;
-				}
-				else break;
+				if (max == i) break;
+
+				this.Swap(i, max);
+				i = max;
 			}
 		}
 
@@ -178,6 +169,20 @@ namespace SharpBag.Collections
 			return ret;
 		}
 
+		private void BubbleUp(int i)
+		{
+			if (i == 0) return;
+			int parent = this.Parent(i);
+
+			while (this.Compare(i, parent) > 0)
+			{
+				this.Swap(i, parent);
+				i = parent;
+				if (i == 0) return;
+				parent = this.Parent(i);
+			}
+		}
+
 		/// <summary>
 		/// Push an item into the heap.
 		/// </summary>
@@ -191,18 +196,11 @@ namespace SharpBag.Collections
 				Array.Resize<T>(ref this.InternalArray, this.Capacity);
 			}
 
-			int i = this.Count, parent = this.Parent(i);
+			int i = this.Count;
 			this.InternalArray[i] = item;
 			this.Count++;
 
-			while (this.Compare(i, parent) > 0)
-			{
-				T temp = this.InternalArray[i];
-				this.InternalArray[i] = this.InternalArray[parent];
-				this.InternalArray[parent] = temp;
-				i = parent;
-				parent = this.Parent(i);
-			}
+			this.BubbleUp(i);
 		}
 
 		/// <summary>
@@ -256,7 +254,7 @@ namespace SharpBag.Collections
 		/// <returns>The parent.</returns>
 		protected int Parent(int i)
 		{
-			return i >> 1;
+			return (i - 1) >> 1;
 		}
 
 		#endregion Traversing

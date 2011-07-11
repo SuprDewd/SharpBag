@@ -82,6 +82,66 @@ namespace SharpBag.Tests.Collections
 			Assert.AreEqual<int>(20, heap.Capacity);
 		}
 
+		private class HardCoreAddRemoveTest : IComparable<HardCoreAddRemoveTest>
+		{
+			public int Value { get; set; }
+
+			public HardCoreAddRemoveTest(int value)
+			{
+				this.Value = value;
+			}
+
+			public int CompareTo(HardCoreAddRemoveTest other)
+			{
+				return this.Value.CompareTo(other.Value);
+			}
+
+			public override bool Equals(object obj)
+			{
+				return Object.ReferenceEquals(this, obj);
+			}
+
+			public override int GetHashCode()
+			{
+				return base.GetHashCode();
+			}
+		}
+
+		[TestMethod]
+		public void HardCoreAddRemove()
+		{
+			MinHeap<HardCoreAddRemoveTest> heap = new MinHeap<HardCoreAddRemoveTest>();
+			HashSet<HardCoreAddRemoveTest> set = new HashSet<HardCoreAddRemoveTest>();
+
+			const int count = 1000;
+			Random rand = new Random();
+
+			for (int i = 0; i < count; i++)
+			{
+				HardCoreAddRemoveTest instance = new HardCoreAddRemoveTest(rand.Next(0, Int32.MaxValue));
+				heap.Push(instance);
+				set.Add(instance);
+
+				Assert.AreSame(set.Min(), heap.Peek());
+			}
+
+			while (set.Count > 0)
+			{
+				HardCoreAddRemoveTest next = heap.Pop(),
+									  min = set.Min(),
+									  r = set.Random(rand);
+
+				set.Remove(min);
+				Assert.AreEqual(heap.Count, set.Count);
+				Assert.AreSame(min, next);
+
+				r.Value = rand.Next(0, Int32.MaxValue);
+				heap.Invalidate(r);
+			}
+
+			Assert.AreEqual(0, heap.Count);
+		}
+
 		[TestMethod]
 		public void Sort()
 		{
