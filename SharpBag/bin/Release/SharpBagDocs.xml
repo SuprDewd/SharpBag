@@ -7253,6 +7253,12 @@
             </summary>
             <param name="array">An array of items.</param>
         </member>
+        <member name="M:SharpBag.Collections.BinaryHeap`1.Invalidate(`0)">
+            <summary>
+            Invalidates the position of the specified item.
+            </summary>
+            <param name="item">The item.</param>
+        </member>
         <member name="M:SharpBag.Collections.BinaryHeap`1.MaintainHeap(System.Int32)">
             <summary>
             Maintain the heap.

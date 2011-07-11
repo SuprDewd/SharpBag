@@ -75,6 +75,52 @@ namespace SharpBag.Collections
 		#region Data Structuring
 
 		/// <summary>
+		/// Invalidates the position of the specified item.
+		/// </summary>
+		/// <param name="item">The item.</param>
+		public void Invalidate(T item)
+		{
+			bool found = false;
+			int i = 0;
+
+			for (; i < this.Count; i++)
+			{
+				if (Object.ReferenceEquals(item, this.InternalArray[i]))
+				{
+					found = true;
+					break;
+				}
+			}
+
+			if (!found) return;
+
+			if (i == 0) this.MaintainHeap(0);
+			else
+			{
+				int parent = this.Parent(i);
+				int cmp = this.Compare(parent, i);
+
+				if (cmp < 0)
+				{
+					do
+					{
+						T temp = this.InternalArray[i];
+						this.InternalArray[i] = this.InternalArray[parent];
+						this.InternalArray[parent] = temp;
+						i = parent;
+						if (i == 0) break;
+						parent = this.Parent(i);
+						cmp = this.Compare(parent, i);
+					} while (cmp < 0);
+				}
+				else if (cmp > 0)
+				{
+					this.MaintainHeap(i);
+				}
+			}
+		}
+
+		/// <summary>
 		/// Maintain the heap.
 		/// </summary>
 		/// <param name="i">The highest item to maintain.</param>
