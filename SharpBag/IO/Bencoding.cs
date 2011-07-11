@@ -3,73 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SharpBag.Torrent
+namespace SharpBag.IO
 {
 	/// <summary>
 	/// A class used for decoding Bencoding.
 	/// </summary>
-	public class BencodeDecoder
+	public static class BencodeDecoder
 	{
-		/// <summary>
-		/// The main constructor.
-		/// </summary>
-		/// <param name="s">The bencoded string to decode.</param>
-		private BencodeDecoder(string s)
-		{
-			this.BencodedString = s;
-		}
-
-		/// <summary>
-		/// Where the reader will start reading next.
-		/// </summary>
-		private int Index { get; set; }
-
-		/// <summary>
-		/// The bencoded string.
-		/// </summary>
-		private string BencodedString { get; set; }
-
-		/// <summary>
-		/// Decodes the specified string.
-		/// </summary>
-		/// <param name="s">The specified string.</param>
-		/// <returns>An array of the root elements.</returns>
-		public static BElement[] Decode(string s)
-		{
-			return new BencodeDecoder(s).Decode();
-		}
-
 		/// <summary>
 		/// Decodes the string.
 		/// </summary>
+		/// <param name="bencodedString">The bencoded string.</param>
 		/// <returns>An array of root elements.</returns>
-		public BElement[] Decode()
+		public static BElement[] Decode(string bencodedString)
 		{
-			this.Index = 0;
+			int index = 0;
 
 			try
 			{
-				if (this.BencodedString == null) return null;
+				if (bencodedString == null) return null;
 
 				List<BElement> rootElements = new List<BElement>();
-				while (this.BencodedString.Length > this.Index)
+				while (bencodedString.Length > index)
 				{
-					rootElements.Add(this.ReadElement());
+					rootElements.Add(ReadElement(ref bencodedString, ref index));
 				}
 
 				return rootElements.ToArray();
 			}
 			catch (BencodingException) { throw; }
-			catch (Exception e) { throw this.Error(e); }
+			catch (Exception e) { throw Error(e); }
 		}
 
-		/// <summary>
-		/// Reads and element.
-		/// </summary>
-		/// <returns>The element that was read.</returns>
-		private BElement ReadElement()
+		private static BElement ReadElement(ref string bencodedString, ref int index)
 		{
-			switch (this.BencodedString[this.Index])
+			switch (bencodedString[index])
 			{
 				case '0':
 				case '1':
@@ -80,128 +48,102 @@ namespace SharpBag.Torrent
 				case '6':
 				case '7':
 				case '8':
-				case '9': return this.ReadString();
-				case 'i': return this.ReadInteger();
-				case 'l': return this.ReadList();
-				case 'd': return this.ReadDictionary();
-				default: throw this.Error();
+				case '9': return ReadString(ref bencodedString, ref index);
+				case 'i': return ReadInteger(ref bencodedString, ref index);
+				case 'l': return ReadList(ref bencodedString, ref index);
+				case 'd': return ReadDictionary(ref bencodedString, ref index);
+				default: throw Error();
 			}
 		}
 
-		/// <summary>
-		/// Reads a dictionary.
-		/// </summary>
-		/// <returns>The dictionary that was read.</returns>
-		private BDictionary ReadDictionary()
+		private static BDictionary ReadDictionary(ref string bencodedString, ref int index)
 		{
-			this.Index++;
+			index++;
 			BDictionary dict = new BDictionary();
 
 			try
 			{
-				while (this.BencodedString[this.Index] != 'e')
+				while (bencodedString[index] != 'e')
 				{
-					BString K = this.ReadString();
-					BElement V = this.ReadElement();
+					BString K = ReadString(ref bencodedString, ref index);
+					BElement V = ReadElement(ref bencodedString, ref index);
 					dict.Add(K, V);
 				}
 			}
 			catch (BencodingException) { throw; }
-			catch (Exception e) { throw this.Error(e); }
+			catch (Exception e) { throw Error(e); }
 
-			this.Index++;
+			index++;
 			return dict;
 		}
 
-		/// <summary>
-		/// Reads a list.
-		/// </summary>
-		/// <returns>The list that was read.</returns>
-		private BList ReadList()
+		private static BList ReadList(ref string bencodedString, ref int index)
 		{
-			this.Index++;
+			index++;
 			BList lst = new BList();
 
 			try
 			{
-				while (this.BencodedString[this.Index] != 'e')
+				while (bencodedString[index] != 'e')
 				{
-					lst.Add(this.ReadElement());
+					lst.Add(ReadElement(ref bencodedString, ref index));
 				}
 			}
 			catch (BencodingException) { throw; }
-			catch (Exception e) { throw this.Error(e); }
+			catch (Exception e) { throw Error(e); }
 
-			this.Index++;
+			index++;
 			return lst;
 		}
 
-		/// <summary>
-		/// Reads an integer.
-		/// </summary>
-		/// <returns>The integer that was read.</returns>
-		private BInteger ReadInteger()
+		private static BInteger ReadInteger(ref string bencodedString, ref int index)
 		{
-			this.Index++;
+			index++;
 
-			int end = this.BencodedString.IndexOf('e', this.Index);
-			if (end == -1) throw this.Error();
+			int end = bencodedString.IndexOf('e', index);
+			if (end == -1) throw Error();
 
 			long integer;
 
 			try
 			{
-				integer = Convert.ToInt64(this.BencodedString.Substring(this.Index, end - this.Index));
-				this.Index = end + 1;
+				integer = Convert.ToInt64(bencodedString.Substring(index, end - index));
+				index = end + 1;
 			}
-			catch (Exception e) { throw this.Error(e); }
+			catch (Exception e) { throw Error(e); }
 
 			return new BInteger(integer);
 		}
 
-		/// <summary>
-		/// Reads a string.
-		/// </summary>
-		/// <returns>The string that was read.</returns>
-		private BString ReadString()
+		private static BString ReadString(ref string bencodedString, ref int index)
 		{
-			int length;
-			int semicolon;
+			int length, colon;
 
 			try
 			{
-				semicolon = this.BencodedString.IndexOf(':', this.Index);
-				if (semicolon == -1) throw this.Error();
-				length = Convert.ToInt32(this.BencodedString.Substring(this.Index, semicolon - Index));
+				colon = bencodedString.IndexOf(':', index);
+				if (colon == -1) throw Error();
+				length = Convert.ToInt32(bencodedString.Substring(index, colon - index));
 			}
-			catch (Exception e) { throw this.Error(e); }
+			catch (Exception e) { throw Error(e); }
 
-			this.Index = semicolon + 1;
-			int tmpIndex = this.Index;
-			this.Index += length;
+			index = colon + 1;
+			int tmpIndex = index;
+			index += length;
 
 			try
 			{
-				return new BString(this.BencodedString.Substring(tmpIndex, length));
+				return new BString(bencodedString.Substring(tmpIndex, length));
 			}
-			catch (Exception e) { throw this.Error(e); }
+			catch (Exception e) { throw Error(e); }
 		}
 
-		/// <summary>
-		/// Generates an error.
-		/// </summary>
-		/// <param name="e">The inner exception.</param>
-		/// <returns>An exception that can then be thrown.</returns>
-		private Exception Error(Exception e)
+		private static Exception Error(Exception e)
 		{
 			return new BencodingException("Bencoded string invalid.", e);
 		}
 
-		/// <summary>
-		/// Generates an error.
-		/// </summary>
-		/// <returns>An exception that can then be thrown.</returns>
-		private Exception Error()
+		private static Exception Error()
 		{
 			return new BencodingException("Bencoded string invalid.");
 		}
