@@ -8,12 +8,12 @@ using System.Diagnostics.Contracts;
 
 #endif
 
-namespace SharpBag.Misc
+namespace SharpBag.Media.Drawing.Ascii
 {
 	/// <summary>
-	/// A class for drawing shapes.
+	/// A class for drawing shapes in ASCII.
 	/// </summary>
-	public static class Draw
+	public static class DrawAscii
 	{
 		/// <summary>
 		/// Draw a square.

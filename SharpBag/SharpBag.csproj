@@ -139,7 +139,8 @@
     <Compile Include="Math\Geometry\Point.cs" />
     <Compile Include="Math\ForDouble\Polynomial.cs" />
     <Compile Include="Math\ForComplex\Vector.cs" />
-    <Compile Include="Misc\Draw.cs" />
+    <Compile Include="Media\Drawing\ColorScheme.cs" />
+    <Compile Include="Media\Drawing\Ascii\Draw.cs" />
     <Compile Include="Misc\ProblemAttribute.cs" />
     <Compile Include="Misc\ProblemController.cs" />
     <Compile Include="Misc\ProblemMetadata.cs" />

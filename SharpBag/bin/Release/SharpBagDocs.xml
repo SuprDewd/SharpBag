@@ -4988,6 +4988,246 @@
             <param name="items">The items.</param>
             <returns>The hash.</returns>
         </member>
+        <member name="T:SharpBag.IO.BencodeDecoder">
+            <summary>
+            A class used for decoding Bencoding.
+            </summary>
+        </member>
+        <member name="M:SharpBag.IO.BencodeDecoder.Decode(System.String)">
+            <summary>
+            Decodes the string.
+            </summary>
+            <param name="bencodedString">The bencoded string.</param>
+            <returns>An array of root elements.</returns>
+        </member>
+        <member name="T:SharpBag.IO.BElement">
+            <summary>
+            An interface for bencoded elements.
+            </summary>
+        </member>
+        <member name="M:SharpBag.IO.BElement.ToBencodedString">
+            <summary>
+            Generates the bencoded equivalent of the element.
+            </summary>
+            <returns>The bencoded equivalent of the element.</returns>
+        </member>
+        <member name="M:SharpBag.IO.BElement.ToBencodedString(System.Text.StringBuilder)">
+            <summary>
+            Generates the bencoded equivalent of the element.
+            </summary>
+            <param name="u">The StringBuilder to append to.</param>
+            <returns>The bencoded equivalent of the element.</returns>
+        </member>
+        <member name="T:SharpBag.IO.BInteger">
+            <summary>
+            A bencode integer.
+            </summary>
+        </member>
+        <member name="M:SharpBag.IO.BInteger.op_Implicit(System.Int32)~SharpBag.IO.BInteger">
+            <summary>
+            Allows you to set an integer to a BInteger.
+            </summary>
+            <param name="i">The integer.</param>
+            <returns>The BInteger.</returns>
+        </member>
+        <member name="M:SharpBag.IO.BInteger.#ctor(System.Int64)">
+            <summary>
+            The main constructor.
+            </summary>
+            <param name="value">The value of the bencoded integer.</param>
+        </member>
+        <member name="M:SharpBag.IO.BInteger.ToBencodedString">
+            <summary>
+            Generates the bencoded equivalent of the integer.
+            </summary>
+            <returns>The bencoded equivalent of the integer.</returns>
+        </member>
+        <member name="M:SharpBag.IO.BInteger.ToBencodedString(System.Text.StringBuilder)">
+            <summary>
+            Generates the bencoded equivalent of the integer.
+            </summary>
+            <returns>The bencoded equivalent of the integer.</returns>
+        </member>
+        <member name="M:SharpBag.IO.BInteger.GetHashCode">
+            <see cref="M:System.Object.GetHashCode"/>
+        </member>
+        <member name="M:SharpBag.IO.BInteger.Equals(System.Object)">
+            <summary>
+            Int32.Equals(object)
+            </summary>
+        </member>
+        <member name="M:SharpBag.IO.BInteger.ToString">
+            <see cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:SharpBag.IO.BInteger.CompareTo(SharpBag.IO.BInteger)">
+            <see cref="M:System.IComparable.CompareTo(System.Object)"/>
+        </member>
+        <member name="P:SharpBag.IO.BInteger.Value">
+            <summary>
+            The value of the bencoded integer.
+            </summary>
+        </member>
+        <member name="T:SharpBag.IO.BString">
+            <summary>
+            A bencode string.
+            </summary>
+        </member>
+        <member name="M:SharpBag.IO.BString.op_Implicit(System.String)~SharpBag.IO.BString">
+            <summary>
+            Allows you to set a string to a BString.
+            </summary>
+            <param name="s">The string.</param>
+            <returns>The BString.</returns>
+        </member>
+        <member name="M:SharpBag.IO.BString.#ctor(System.String)">
+            <summary>
+            The main constructor.
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:SharpBag.IO.BString.ToBencodedString">
+            <summary>
+            Generates the bencoded equivalent of the string.
+            </summary>
+            <returns>The bencoded equivalent of the string.</returns>
+        </member>
+        <member name="M:SharpBag.IO.BString.ToBencodedString(System.Text.StringBuilder)">
+            <summary>
+            Generates the bencoded equivalent of the string.
+            </summary>
+            <param name="u">The StringBuilder to append to.</param>
+            <returns>The bencoded equivalent of the string.</returns>
+        </member>
+        <member name="M:SharpBag.IO.BString.GetHashCode">
+            <see cref="M:System.Object.GetHashCode"/>
+        </member>
+        <member name="M:SharpBag.IO.BString.Equals(System.Object)">
+            <summary>
+            String.Equals(object)
+            </summary>
+        </member>
+        <member name="M:SharpBag.IO.BString.ToString">
+            <see cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:SharpBag.IO.BString.CompareTo(SharpBag.IO.BString)">
+            <see cref="M:System.IComparable.CompareTo(System.Object)"/>
+        </member>
+        <member name="P:SharpBag.IO.BString.Value">
+            <summary>
+            The value of the bencoded integer.
+            </summary>
+        </member>
+        <member name="T:SharpBag.IO.BList">
+            <summary>
+            A bencode list.
+            </summary>
+        </member>
+        <member name="M:SharpBag.IO.BList.ToBencodedString">
+            <summary>
+            Generates the bencoded equivalent of the list.
+            </summary>
+            <returns>The bencoded equivalent of the list.</returns>
+        </member>
+        <member name="M:SharpBag.IO.BList.ToBencodedString(System.Text.StringBuilder)">
+            <summary>
+            Generates the bencoded equivalent of the list.
+            </summary>
+            <param name="u">The StringBuilder to append to.</param>
+            <returns>The bencoded equivalent of the list.</returns>
+        </member>
+        <member name="M:SharpBag.IO.BList.Add(System.String)">
+            <summary>
+            Adds the specified value to the list.
+            </summary>
+            <param name="value">The specified value.</param>
+        </member>
+        <member name="M:SharpBag.IO.BList.Add(System.Int32)">
+            <summary>
+            Adds the specified value to the list.
+            </summary>
+            <param name="value">The specified value.</param>
+        </member>
+        <member name="T:SharpBag.IO.BDictionary">
+            <summary>
+            A bencode dictionary.
+            </summary>
+        </member>
+        <member name="M:SharpBag.IO.BDictionary.ToBencodedString">
+            <summary>
+            Generates the bencoded equivalent of the dictionary.
+            </summary>
+            <returns>The bencoded equivalent of the dictionary.</returns>
+        </member>
+        <member name="M:SharpBag.IO.BDictionary.ToBencodedString(System.Text.StringBuilder)">
+            <summary>
+            Generates the bencoded equivalent of the dictionary.
+            </summary>
+            <param name="u">The StringBuilder to append to.</param>
+            <returns>The bencoded equivalent of the dictionary.</returns>
+        </member>
+        <member name="M:SharpBag.IO.BDictionary.Add(System.String,SharpBag.IO.BElement)">
+            <summary>
+            Adds the specified key-value pair to the dictionary.
+            </summary>
+            <param name="key">The specified key.</param>
+            <param name="value">The specified value.</param>
+        </member>
+        <member name="M:SharpBag.IO.BDictionary.Add(System.String,System.String)">
+            <summary>
+            Adds the specified key-value pair to the dictionary.
+            </summary>
+            <param name="key">The specified key.</param>
+            <param name="value">The specified value.</param>
+        </member>
+        <member name="M:SharpBag.IO.BDictionary.Add(System.String,System.Int32)">
+            <summary>
+            Adds the specified key-value pair to the dictionary.
+            </summary>
+            <param name="key">The specified key.</param>
+            <param name="value">The specified value.</param>
+        </member>
+        <member name="P:SharpBag.IO.BDictionary.Item(System.String)">
+            <summary>
+            Gets or sets the value assosiated with the specified key.
+            </summary>
+            <param name="key">The key of the value to get or set.</param>
+            <returns>The value assosiated with the specified key.</returns>
+        </member>
+        <member name="T:SharpBag.IO.BencodingException">
+            <summary>
+            A bencoding exception.
+            </summary>
+        </member>
+        <member name="M:SharpBag.IO.BencodingException.#ctor">
+            <summary>
+            Creates a new BencodingException.
+            </summary>
+        </member>
+        <member name="M:SharpBag.IO.BencodingException.#ctor(System.String)">
+            <summary>
+            Creates a new BencodingException.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:SharpBag.IO.BencodingException.#ctor(System.String,System.Exception)">
+            <summary>
+            Creates a new BencodingException.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="inner">The inner exception.</param>
+        </member>
+        <member name="T:SharpBag.IO.BencodingExtensions">
+            <summary>
+            A class with extension methods for use with Bencoding.
+            </summary>
+        </member>
+        <member name="M:SharpBag.IO.BencodingExtensions.BDecode(System.String)">
+            <summary>
+            Decode the current instance.
+            </summary>
+            <param name="s">The current instance.</param>
+            <returns>The root elements of the decoded string.</returns>
+        </member>
         <member name="T:SharpBag.Networking.ConnectionPacket">
             <summary>
             A packet.
@@ -7966,57 +8206,6 @@
             </summary>
             <param name="random">The current instance.</param>
             <returns>A random TimeSpan.</returns>
-        </member>
-        <member name="T:SharpBag.Misc.Draw">
-            <summary>
-            A class for drawing shapes.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Misc.Draw.Square(System.Int32,System.Int32,System.Char,System.Char)">
-            <summary>
-            Draw a square.
-            </summary>
-            <param name="rows">The number of rows.</param>
-            <param name="cols">The number of columns.</param>
-            <param name="border">The border.</param>
-            <param name="fill">The fill.</param>
-            <returns>The drawn square.</returns>
-        </member>
-        <member name="M:SharpBag.Misc.Draw.TriangleTL(System.Int32,System.Char,System.Char)">
-            <summary>
-            Draw a triangle.
-            </summary>
-            <param name="size">The size.</param>
-            <param name="border">The border.</param>
-            <param name="fill">The fill.</param>
-            <returns>The drawn triangle.</returns>
-        </member>
-        <member name="M:SharpBag.Misc.Draw.TriangleTR(System.Int32,System.Char,System.Char)">
-            <summary>
-            Draw a triangle.
-            </summary>
-            <param name="size">The size.</param>
-            <param name="border">The border.</param>
-            <param name="fill">The fill.</param>
-            <returns>The drawn triangle.</returns>
-        </member>
-        <member name="M:SharpBag.Misc.Draw.TriangleBR(System.Int32,System.Char,System.Char)">
-            <summary>
-            Draw a triangle.
-            </summary>
-            <param name="size">The size.</param>
-            <param name="border">The border.</param>
-            <param name="fill">The fill.</param>
-            <returns>The drawn triangle.</returns>
-        </member>
-        <member name="M:SharpBag.Misc.Draw.TriangleBL(System.Int32,System.Char,System.Char)">
-            <summary>
-            Draw a triangle.
-            </summary>
-            <param name="size">The size.</param>
-            <param name="border">The border.</param>
-            <param name="fill">The fill.</param>
-            <returns>The drawn triangle.</returns>
         </member>
         <member name="T:SharpBag.Math.ForBigInteger.Polynomial">
             <summary>
@@ -12259,245 +12448,121 @@
             The default value.
             </summary>
         </member>
-        <member name="T:SharpBag.IO.BencodeDecoder">
+        <member name="T:SharpBag.Media.Drawing.ColorScheme">
             <summary>
-            A class used for decoding Bencoding.
+            A color scheme.
             </summary>
         </member>
-        <member name="M:SharpBag.IO.BencodeDecoder.Decode(System.String)">
+        <member name="M:SharpBag.Media.Drawing.ColorScheme.#ctor(System.Collections.Generic.IEnumerable{SharpBag.Media.Drawing.ColorScheme.Stop})">
             <summary>
-            Decodes the string.
+            Initializes a new instance of the <see cref="T:SharpBag.Media.Drawing.ColorScheme"/> class.
             </summary>
-            <param name="bencodedString">The bencoded string.</param>
-            <returns>An array of root elements.</returns>
+            <param name="colorStops">The color stops.</param>
         </member>
-        <member name="T:SharpBag.IO.BElement">
+        <member name="M:SharpBag.Media.Drawing.ColorScheme.LinearColorFor(System.Double,System.Double,System.Double)">
             <summary>
-            An interface for bencoded elements.
+            Gets the color for the specified value, using linear interpolation.
             </summary>
+            <param name="value">The value.</param>
+            <param name="from">The starting value of the scheme.</param>
+            <param name="to">The ending value of the scheme.</param>
+            <returns>The color.</returns>
         </member>
-        <member name="M:SharpBag.IO.BElement.ToBencodedString">
+        <member name="M:SharpBag.Media.Drawing.ColorScheme.LinearColorFor(System.Double)">
             <summary>
-            Generates the bencoded equivalent of the element.
+            Gets the color for the specified value, using linear interpolation.
             </summary>
-            <returns>The bencoded equivalent of the element.</returns>
+            <param name="value">The value.</param>
+            <returns>The color.</returns>
         </member>
-        <member name="M:SharpBag.IO.BElement.ToBencodedString(System.Text.StringBuilder)">
+        <member name="M:SharpBag.Media.Drawing.ColorScheme.CubicColorFor(System.Double,System.Double,System.Double)">
             <summary>
-            Generates the bencoded equivalent of the element.
+            Gets the color for the specified value, using cubic interpolation.
             </summary>
-            <param name="u">The StringBuilder to append to.</param>
-            <returns>The bencoded equivalent of the element.</returns>
+            <param name="value">The value.</param>
+            <param name="from">The starting value of the scheme.</param>
+            <param name="to">The ending value of the scheme.</param>
+            <returns>The color.</returns>
         </member>
-        <member name="T:SharpBag.IO.BInteger">
+        <member name="M:SharpBag.Media.Drawing.ColorScheme.CubicColorFor(System.Double)">
             <summary>
-            A bencode integer.
+            Gets the color for the specified value, using linear interpolation.
             </summary>
+            <param name="value">The value.</param>
+            <returns>The color.</returns>
         </member>
-        <member name="M:SharpBag.IO.BInteger.op_Implicit(System.Int32)~SharpBag.IO.BInteger">
+        <member name="T:SharpBag.Media.Drawing.ColorScheme.Stop">
             <summary>
-            Allows you to set an integer to a BInteger.
-            </summary>
-            <param name="i">The integer.</param>
-            <returns>The BInteger.</returns>
-        </member>
-        <member name="M:SharpBag.IO.BInteger.#ctor(System.Int64)">
-            <summary>
-            The main constructor.
-            </summary>
-            <param name="value">The value of the bencoded integer.</param>
-        </member>
-        <member name="M:SharpBag.IO.BInteger.ToBencodedString">
-            <summary>
-            Generates the bencoded equivalent of the integer.
-            </summary>
-            <returns>The bencoded equivalent of the integer.</returns>
-        </member>
-        <member name="M:SharpBag.IO.BInteger.ToBencodedString(System.Text.StringBuilder)">
-            <summary>
-            Generates the bencoded equivalent of the integer.
-            </summary>
-            <returns>The bencoded equivalent of the integer.</returns>
-        </member>
-        <member name="M:SharpBag.IO.BInteger.GetHashCode">
-            <see cref="M:System.Object.GetHashCode"/>
-        </member>
-        <member name="M:SharpBag.IO.BInteger.Equals(System.Object)">
-            <summary>
-            Int32.Equals(object)
+            A color stop.
             </summary>
         </member>
-        <member name="M:SharpBag.IO.BInteger.ToString">
-            <see cref="M:System.Object.ToString"/>
-        </member>
-        <member name="M:SharpBag.IO.BInteger.CompareTo(SharpBag.IO.BInteger)">
-            <see cref="M:System.IComparable.CompareTo(System.Object)"/>
-        </member>
-        <member name="P:SharpBag.IO.BInteger.Value">
+        <member name="M:SharpBag.Media.Drawing.ColorScheme.Stop.#ctor(System.Double,System.Drawing.Color)">
             <summary>
-            The value of the bencoded integer.
+            Initializes a new instance of the <see cref="T:SharpBag.Media.Drawing.ColorScheme.Stop"/> class.
+            </summary>
+            <param name="at">The position to stop at.</param>
+            <param name="color">The color.</param>
+        </member>
+        <member name="P:SharpBag.Media.Drawing.ColorScheme.Stop.At">
+            <summary>
+            The position to stop at.
             </summary>
         </member>
-        <member name="T:SharpBag.IO.BString">
+        <member name="P:SharpBag.Media.Drawing.ColorScheme.Stop.Color">
             <summary>
-            A bencode string.
+            Gets the color.
             </summary>
         </member>
-        <member name="M:SharpBag.IO.BString.op_Implicit(System.String)~SharpBag.IO.BString">
+        <member name="T:SharpBag.Media.Drawing.Ascii.DrawAscii">
             <summary>
-            Allows you to set a string to a BString.
-            </summary>
-            <param name="s">The string.</param>
-            <returns>The BString.</returns>
-        </member>
-        <member name="M:SharpBag.IO.BString.#ctor(System.String)">
-            <summary>
-            The main constructor.
-            </summary>
-            <param name="value"></param>
-        </member>
-        <member name="M:SharpBag.IO.BString.ToBencodedString">
-            <summary>
-            Generates the bencoded equivalent of the string.
-            </summary>
-            <returns>The bencoded equivalent of the string.</returns>
-        </member>
-        <member name="M:SharpBag.IO.BString.ToBencodedString(System.Text.StringBuilder)">
-            <summary>
-            Generates the bencoded equivalent of the string.
-            </summary>
-            <param name="u">The StringBuilder to append to.</param>
-            <returns>The bencoded equivalent of the string.</returns>
-        </member>
-        <member name="M:SharpBag.IO.BString.GetHashCode">
-            <see cref="M:System.Object.GetHashCode"/>
-        </member>
-        <member name="M:SharpBag.IO.BString.Equals(System.Object)">
-            <summary>
-            String.Equals(object)
+            A class for drawing shapes in ASCII.
             </summary>
         </member>
-        <member name="M:SharpBag.IO.BString.ToString">
-            <see cref="M:System.Object.ToString"/>
-        </member>
-        <member name="M:SharpBag.IO.BString.CompareTo(SharpBag.IO.BString)">
-            <see cref="M:System.IComparable.CompareTo(System.Object)"/>
-        </member>
-        <member name="P:SharpBag.IO.BString.Value">
+        <member name="M:SharpBag.Media.Drawing.Ascii.DrawAscii.Square(System.Int32,System.Int32,System.Char,System.Char)">
             <summary>
-            The value of the bencoded integer.
+            Draw a square.
             </summary>
+            <param name="rows">The number of rows.</param>
+            <param name="cols">The number of columns.</param>
+            <param name="border">The border.</param>
+            <param name="fill">The fill.</param>
+            <returns>The drawn square.</returns>
         </member>
-        <member name="T:SharpBag.IO.BList">
+        <member name="M:SharpBag.Media.Drawing.Ascii.DrawAscii.TriangleTL(System.Int32,System.Char,System.Char)">
             <summary>
-            A bencode list.
+            Draw a triangle.
             </summary>
+            <param name="size">The size.</param>
+            <param name="border">The border.</param>
+            <param name="fill">The fill.</param>
+            <returns>The drawn triangle.</returns>
         </member>
-        <member name="M:SharpBag.IO.BList.ToBencodedString">
+        <member name="M:SharpBag.Media.Drawing.Ascii.DrawAscii.TriangleTR(System.Int32,System.Char,System.Char)">
             <summary>
-            Generates the bencoded equivalent of the list.
+            Draw a triangle.
             </summary>
-            <returns>The bencoded equivalent of the list.</returns>
+            <param name="size">The size.</param>
+            <param name="border">The border.</param>
+            <param name="fill">The fill.</param>
+            <returns>The drawn triangle.</returns>
         </member>
-        <member name="M:SharpBag.IO.BList.ToBencodedString(System.Text.StringBuilder)">
+        <member name="M:SharpBag.Media.Drawing.Ascii.DrawAscii.TriangleBR(System.Int32,System.Char,System.Char)">
             <summary>
-            Generates the bencoded equivalent of the list.
+            Draw a triangle.
             </summary>
-            <param name="u">The StringBuilder to append to.</param>
-            <returns>The bencoded equivalent of the list.</returns>
+            <param name="size">The size.</param>
+            <param name="border">The border.</param>
+            <param name="fill">The fill.</param>
+            <returns>The drawn triangle.</returns>
         </member>
-        <member name="M:SharpBag.IO.BList.Add(System.String)">
+        <member name="M:SharpBag.Media.Drawing.Ascii.DrawAscii.TriangleBL(System.Int32,System.Char,System.Char)">
             <summary>
-            Adds the specified value to the list.
+            Draw a triangle.
             </summary>
-            <param name="value">The specified value.</param>
-        </member>
-        <member name="M:SharpBag.IO.BList.Add(System.Int32)">
-            <summary>
-            Adds the specified value to the list.
-            </summary>
-            <param name="value">The specified value.</param>
-        </member>
-        <member name="T:SharpBag.IO.BDictionary">
-            <summary>
-            A bencode dictionary.
-            </summary>
-        </member>
-        <member name="M:SharpBag.IO.BDictionary.ToBencodedString">
-            <summary>
-            Generates the bencoded equivalent of the dictionary.
-            </summary>
-            <returns>The bencoded equivalent of the dictionary.</returns>
-        </member>
-        <member name="M:SharpBag.IO.BDictionary.ToBencodedString(System.Text.StringBuilder)">
-            <summary>
-            Generates the bencoded equivalent of the dictionary.
-            </summary>
-            <param name="u">The StringBuilder to append to.</param>
-            <returns>The bencoded equivalent of the dictionary.</returns>
-        </member>
-        <member name="M:SharpBag.IO.BDictionary.Add(System.String,SharpBag.IO.BElement)">
-            <summary>
-            Adds the specified key-value pair to the dictionary.
-            </summary>
-            <param name="key">The specified key.</param>
-            <param name="value">The specified value.</param>
-        </member>
-        <member name="M:SharpBag.IO.BDictionary.Add(System.String,System.String)">
-            <summary>
-            Adds the specified key-value pair to the dictionary.
-            </summary>
-            <param name="key">The specified key.</param>
-            <param name="value">The specified value.</param>
-        </member>
-        <member name="M:SharpBag.IO.BDictionary.Add(System.String,System.Int32)">
-            <summary>
-            Adds the specified key-value pair to the dictionary.
-            </summary>
-            <param name="key">The specified key.</param>
-            <param name="value">The specified value.</param>
-        </member>
-        <member name="P:SharpBag.IO.BDictionary.Item(System.String)">
-            <summary>
-            Gets or sets the value assosiated with the specified key.
-            </summary>
-            <param name="key">The key of the value to get or set.</param>
-            <returns>The value assosiated with the specified key.</returns>
-        </member>
-        <member name="T:SharpBag.IO.BencodingException">
-            <summary>
-            A bencoding exception.
-            </summary>
-        </member>
-        <member name="M:SharpBag.IO.BencodingException.#ctor">
-            <summary>
-            Creates a new BencodingException.
-            </summary>
-        </member>
-        <member name="M:SharpBag.IO.BencodingException.#ctor(System.String)">
-            <summary>
-            Creates a new BencodingException.
-            </summary>
-            <param name="message">The message.</param>
-        </member>
-        <member name="M:SharpBag.IO.BencodingException.#ctor(System.String,System.Exception)">
-            <summary>
-            Creates a new BencodingException.
-            </summary>
-            <param name="message">The message.</param>
-            <param name="inner">The inner exception.</param>
-        </member>
-        <member name="T:SharpBag.IO.BencodingExtensions">
-            <summary>
-            A class with extension methods for use with Bencoding.
-            </summary>
-        </member>
-        <member name="M:SharpBag.IO.BencodingExtensions.BDecode(System.String)">
-            <summary>
-            Decode the current instance.
-            </summary>
-            <param name="s">The current instance.</param>
-            <returns>The root elements of the decoded string.</returns>
+            <param name="size">The size.</param>
+            <param name="border">The border.</param>
+            <param name="fill">The fill.</param>
+            <returns>The drawn triangle.</returns>
         </member>
     </members>
 </doc>
