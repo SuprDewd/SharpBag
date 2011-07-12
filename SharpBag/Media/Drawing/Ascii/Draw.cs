@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
+using SharpBag.Strings;
 
 #if DOTNET4
 
@@ -40,6 +41,11 @@ namespace SharpBag.Media.Drawing.Ascii
 			return sb.ToString();
 		}
 
+		private static string ReverseLines(string s)
+		{
+			return String.Join("\n", s.Split('\n').Select(i => i.Reverse()));
+		}
+
 		/// <summary>
 		/// Draw a triangle.
 		/// </summary>
@@ -52,8 +58,7 @@ namespace SharpBag.Media.Drawing.Ascii
 #if DOTNET4
 			Contract.Requires(size >= 0);
 #endif
-			if (size == 0) return "";
-			return String.Join("\n", size.To(1).Select(i => i == size ? new String(border, i) : String.Join("", new string[] { border.ToString(), new String(fill, System.Math.Max(i - 2, 0)), i == 1 ? "" : border.ToString() })).ToArray());
+			return DrawAscii.ReverseLines(DrawAscii.TriangleTR(size, border, fill));
 		}
 
 		/// <summary>
@@ -100,8 +105,7 @@ namespace SharpBag.Media.Drawing.Ascii
 #if DOTNET4
 			Contract.Requires(size >= 0);
 #endif
-			if (size == 0) return "";
-			return String.Join("\n", 1.To(size).Select(i => i == size ? new String(border, i) : String.Join("", new string[] { border.ToString(), new String(fill, System.Math.Max(i - 2, 0)), i == 1 ? "" : border.ToString() })).ToArray());
+			return DrawAscii.ReverseLines(DrawAscii.TriangleBR(size, border, fill));
 		}
 	}
 }
