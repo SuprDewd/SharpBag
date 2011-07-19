@@ -99,14 +99,15 @@ namespace SharpBag.Networking
 			{
 				if (this._IsConnected)
 				{
-					if (packet.Service == -1)
+					this.DeliverPacket(packet);
+
+					/*if (packet.Service == -1)
 					{
-						this.Connection.ID = (int)packet.Data;
+						this.Connection.ID = packet.DataReader.ReadInt32();
 					}
 					else
 					{
-						this.DeliverPacket(packet);
-					}
+					}*/
 				}
 			}
 		}

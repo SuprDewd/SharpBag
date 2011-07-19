@@ -148,9 +148,9 @@
     <Compile Include="Networking\NetworkClientServiceHandler.cs" />
     <Compile Include="Networking\INetworkServerService.cs" />
     <Compile Include="Networking\NetworkClient.cs" />
-    <Compile Include="Networking\NetworkPacket.cs" />
     <Compile Include="Networking\NetworkServer.cs" />
     <Compile Include="Networking\NetworkServerServiceHandler.cs" />
+    <Compile Include="Networking\NetworkPacket.cs" />
     <Compile Include="Networking\TcpNetworkConnection.cs" />
     <Compile Include="Operator.cs" />
     <Compile Include="Option.cs" />

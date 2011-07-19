@@ -81,7 +81,7 @@ namespace SharpBag.Networking
 				{
 					try
 					{
-						byte[] bytes = packet.SerializeWithLength();
+						byte[] bytes = packet.Serialize(true);
 						SocketError e;
 						this.Socket.BeginSend(bytes, 0, bytes.Length, SocketFlags.None, out e, this.EndSend, null);
 						if (e != SocketError.Success) this.Error(e);
@@ -193,7 +193,7 @@ namespace SharpBag.Networking
 							byte[] bytes = (byte[])result.AsyncState;
 							if (bytes != null && bytes.Length > 0)
 							{
-								if (this.OnPacketReceived != null) this.OnPacketReceived(this, NetworkPacket.Deserialize(bytes, 0));
+								if (this.OnPacketReceived != null) this.OnPacketReceived(this, NetworkPacket.Deserialize(bytes));
 								this.BeginReceive();
 							}
 							else this.Disconnect();
