@@ -121,11 +121,13 @@ namespace SharpBag.Networking
 				{
 					if (packet.AllButTargets)
 					{
-						foreach (var connection in this.Connections)
+						var connections = this.Connections.ToArray();
+
+						for (int i = 0; i < connections.Length; i++)
 						{
-							if (packet.Targets == null || !packet.Targets.Contains(connection.Key))
+							if (packet.Targets == null || !packet.Targets.Contains(connections[i].Key))
 							{
-								connection.Value.Send(packet);
+								connections[i].Value.Send(packet);
 							}
 						}
 					}
