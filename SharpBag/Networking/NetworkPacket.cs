@@ -21,7 +21,7 @@ namespace SharpBag.Networking
 
 		public BinaryWriter DataWriter { get; private set; }
 
-		public MemoryStream Stream;
+		private MemoryStream Stream;
 
 		public long Position { get { return this.Stream.Position; } set { this.Stream.Position = value; } }
 
@@ -43,8 +43,10 @@ namespace SharpBag.Networking
 
 		public byte[] Serialize(bool prependLength = true)
 		{
-			int targetCount = this.Targets == null ? 0 : this.Targets.Length;
-			int packetSize = 4 * (targetCount + 3) + 1 + (int)this.Stream.Length;
+			long beforePosition = this.Stream.Position;
+			this.Stream.Position = 0;
+			int targetCount = this.Targets == null ? 0 : this.Targets.Length,
+				packetSize = 4 * (targetCount + 3) + 1 + (int)this.Stream.Length;
 			MemoryStream mem = new MemoryStream(packetSize);
 
 			if (prependLength) mem.Write(BitConverter.GetBytes(packetSize), 0, 4);
@@ -62,6 +64,7 @@ namespace SharpBag.Networking
 
 			mem.Write(BitConverter.GetBytes(this.AllButTargets), 0, 1);
 			this.Stream.WriteTo(mem);
+			this.Stream.Position = beforePosition;
 
 			return mem.ToArray();
 		}

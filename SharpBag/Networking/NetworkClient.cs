@@ -21,6 +21,8 @@ namespace SharpBag.Networking
 
 		public bool IsConnected { get { return this._IsConnected; } }
 
+		public int ID { get { return this.Connection.ID; } }
+
 		public EndPoint LocalEndPoint { get { return this.Connection.LocalEndPoint; } }
 
 		public EndPoint RemoteEndPoint { get { return this.Connection.RemoteEndPoint; } }
@@ -100,14 +102,6 @@ namespace SharpBag.Networking
 				if (this._IsConnected)
 				{
 					this.DeliverPacket(packet);
-
-					/*if (packet.Service == -1)
-					{
-						this.Connection.ID = packet.DataReader.ReadInt32();
-					}
-					else
-					{
-					}*/
 				}
 			}
 		}
