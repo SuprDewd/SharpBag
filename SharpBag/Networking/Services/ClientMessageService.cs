@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 
@@ -32,6 +33,7 @@ namespace SharpBag.Networking.Services
 
 		public void SendMessage(string message, int[] targets)
 		{
+			Contract.Requires(targets != null);
 			NetworkPacket packet = new NetworkPacket();
 			packet.AllButTargets = false;
 			packet.Targets = targets;

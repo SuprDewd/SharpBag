@@ -11,21 +11,24 @@ namespace SharpBag.Networking
 
 		protected NetworkClient Client { get; private set; }
 
-		private Queue<NetworkPacket> OutgoingPackets = new Queue<NetworkPacket>();
+		private Queue<Tuple<NetworkPacket, int>> OutgoingPackets = new Queue<Tuple<NetworkPacket, int>>();
 
 		public void Open(int id, NetworkClient client)
 		{
 			this.ID = id;
 			this.Client = client;
 			this.Client.OnConnect += new Action<NetworkClient>(Client_OnConnect);
+			if (this.Client.IsConnected) this.Client_OnConnect(this.Client);
 			this.Open();
 		}
 
 		private void Client_OnConnect(NetworkClient obj)
 		{
-			while (this.OutgoingPackets.Count > 0)
+			int count = this.OutgoingPackets.Count;
+			for (int i = 0; i < count; i++)
 			{
-				this.Client.Send(this.OutgoingPackets.Dequeue());
+				var next = this.OutgoingPackets.Dequeue();
+				this.Send(next.Item1, next.Item2 == Int32.MinValue ? this.ID : next.Item2);
 			}
 		}
 
@@ -33,19 +36,18 @@ namespace SharpBag.Networking
 
 		public virtual void Close(int id, NetworkClient client) { }
 
-		protected void Send(NetworkPacket packet) { this.Send(packet, this.ID); }
+		protected void Send(NetworkPacket packet) { this.Send(packet, Int32.MinValue); }
 
 		protected void Send(NetworkPacket packet, int serviceID)
 		{
-			packet.Service = serviceID;
-
-			if (this.Client.IsConnected)
+			if (this.Client != null && this.Client.IsConnected)
 			{
+				packet.Service = serviceID == Int32.MinValue ? this.ID : serviceID;
 				this.Client.Send(packet);
 			}
 			else
 			{
-				this.OutgoingPackets.Enqueue(packet);
+				this.OutgoingPackets.Enqueue(new Tuple<NetworkPacket, int>(packet, serviceID));
 			}
 		}
 

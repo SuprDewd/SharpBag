@@ -11,21 +11,24 @@ namespace SharpBag.Networking
 
 		protected NetworkServer Server { get; private set; }
 
-		private Queue<NetworkPacket> OutgoingPackets = new Queue<NetworkPacket>();
+		private Queue<Tuple<NetworkPacket, int>> OutgoingPackets = new Queue<Tuple<NetworkPacket, int>>();
 
 		public void Open(int id, NetworkServer server)
 		{
 			this.ID = id;
 			this.Server = server;
 			this.Server.OnOpen += new Action<NetworkServer>(Server_OnOpen);
+			if (this.Server.IsOpen) this.Server_OnOpen(this.Server);
 			this.Open();
 		}
 
 		private void Server_OnOpen(NetworkServer obj)
 		{
-			while (this.OutgoingPackets.Count > 0)
+			int count = this.OutgoingPackets.Count;
+			for (int i = 0; i < count; i++)
 			{
-				this.Server.Send(this.OutgoingPackets.Dequeue());
+				var next = this.OutgoingPackets.Dequeue();
+				this.Send(next.Item1, next.Item2);
 			}
 		}
 
@@ -33,19 +36,18 @@ namespace SharpBag.Networking
 
 		public virtual void Close(int id, NetworkServer server) { }
 
-		protected void Send(NetworkPacket packet) { this.Send(packet, this.ID); }
+		protected void Send(NetworkPacket packet) { this.Send(packet, Int32.MinValue); }
 
 		protected void Send(NetworkPacket packet, int serviceID)
 		{
-			packet.Service = serviceID;
-
-			if (this.Server.IsOpen)
+			if (this.Server != null && this.Server.IsOpen)
 			{
+				packet.Service = serviceID == Int32.MinValue ? this.ID : serviceID;
 				this.Server.Send(packet);
 			}
 			else
 			{
-				this.OutgoingPackets.Enqueue(packet);
+				this.OutgoingPackets.Enqueue(new Tuple<NetworkPacket, int>(packet, serviceID));
 			}
 		}
 

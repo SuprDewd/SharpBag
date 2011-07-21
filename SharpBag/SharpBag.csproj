@@ -152,7 +152,9 @@
     <Compile Include="Networking\NetworkServerServiceHandler.cs" />
     <Compile Include="Networking\NetworkPacket.cs" />
     <Compile Include="Networking\Services\ClientMessageService.cs" />
+    <Compile Include="Networking\Services\ClientNameService.cs" />
     <Compile Include="Networking\Services\ServerMessageService.cs" />
+    <Compile Include="Networking\Services\ServerNameService.cs" />
     <Compile Include="Networking\TcpNetworkConnection.cs" />
     <Compile Include="Operator.cs" />
     <Compile Include="Option.cs" />
