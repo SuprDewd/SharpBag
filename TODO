@@ -1,7 +1,7 @@
 
  TODO:
 
-	- Finish BigDecimal class.
+	- Serialization.
 	- Unit tests for Geometry classes.
 	- IsPowerOfTwo, NextPowerOfTwo, IsSquare, NextSquare...
 	- Better DivisorSum (use primes).
@@ -16,6 +16,5 @@
  
 	- Look for better Miller-Rabin primality test.
 	- Cycle detection.
-	- Matrix class.
 	- Add arithmetic overflow checks.
 	- Better Contract mechanism, must work for .Net 4 / .Net 3.5.
