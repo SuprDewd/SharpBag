@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SharpBag.Math
 {
-#if DOTNET4
+	// #if DOTNET4
 
 	using System.Diagnostics.Contracts;
 	using System.Numerics;
@@ -569,7 +569,25 @@ namespace SharpBag.Math
 				n++;
 			} while (result != lastResult);
 
-			return result.WithPrecision(value.Precision);
+			result = result.WithPrecision(value.Precision);
+			result._UsingDefaultPrecision = value._UsingDefaultPrecision;
+			return BigDecimal.Round(result, value.Precision + 1);
+		}
+
+		public static BigDecimal Round(BigDecimal value, int digits = 0)
+		{
+			Contract.Requires(digits >= 0);
+			if (digits >= value.Precision + BigDecimal.ExtraPrecision) return value;
+			value = new BigDecimal(value.Mantissa, value.Exponent, digits + 1, false, false).WithoutExtraPrecision();
+
+			if (-value.Exponent >= value.Precision)
+			{
+				int last = (int)(value.Mantissa % 10);
+				if (last >= 5) value.Mantissa += 10 - last;
+				else if (last >= 1) value.Mantissa -= last;
+			}
+
+			return new BigDecimal(value.Mantissa, value.Exponent, value.Precision, false, value._UsingDefaultPrecision);
 		}
 
 		#endregion Operators
@@ -658,20 +676,6 @@ namespace SharpBag.Math
 			return obj.GetType() == typeof(BigDecimal) && this.Equals((BigDecimal)obj);
 		}
 
-		private int CompareTo(BigDecimal other, bool normalize)
-		{
-			BigDecimal.Normalize(ref this, ref other);
-			int cmp = this.WithoutExtraPrecision().Mantissa.CompareTo(other.WithoutExtraPrecision().Mantissa);
-
-			if (normalize)
-			{
-				this.Normalize();
-				other.Normalize();
-			}
-
-			return cmp;
-		}
-
 		/// <summary>
 		/// IComparable.CompareTo()
 		/// </summary>
@@ -679,7 +683,11 @@ namespace SharpBag.Math
 		/// <returns>The order of the BigDecimals.</returns>
 		public int CompareTo(BigDecimal other)
 		{
-			return this.CompareTo(other, true);
+			BigDecimal left = this.WithoutExtraPrecision(),
+					   right = other.WithoutExtraPrecision();
+
+			BigDecimal.Normalize(ref left, ref right);
+			return left.Mantissa.CompareTo(right.Mantissa);
 		}
 
 		#endregion Ordering
@@ -724,14 +732,6 @@ namespace SharpBag.Math
 		#endregion Casting
 
 		#region Other
-
-		private BigDecimal RoundLastDigit()
-		{
-			return this;
-			// this.Normalize();
-			// if (this.Exponent >= 0 || this.Mantissa % 10 != 9) return new BigDecimal(this);
-			// return new BigDecimal(this.Mantissa + 1, this.Exponent, this.Precision, false);
-		}
 
 		private void FixPrecision()
 		{
@@ -881,5 +881,5 @@ namespace SharpBag.Math
 		#endregion Other
 	}
 
-#endif
+	// #endif
 }
