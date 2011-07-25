@@ -574,6 +574,12 @@ namespace SharpBag.Math
 			return BigDecimal.Round(result, value.Precision + 1);
 		}
 
+		/// <summary>
+		/// Rounds the BigDecimal.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <param name="digits">The amount of digits to keep.</param>
+		/// <returns>The rounded value.</returns>
 		public static BigDecimal Round(BigDecimal value, int digits = 0)
 		{
 			Contract.Requires(digits >= 0);

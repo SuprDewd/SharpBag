@@ -417,6 +417,14 @@
             <param name="value">The BigDecimal.</param>
             <returns>e ^ x</returns>
         </member>
+        <member name="M:SharpBag.Math.BigDecimal.Round(SharpBag.Math.BigDecimal,System.Int32)">
+            <summary>
+            Rounds the BigDecimal.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="digits">The amount of digits to keep.</param>
+            <returns>The rounded value.</returns>
+        </member>
         <member name="M:SharpBag.Math.BigDecimal.op_GreaterThan(SharpBag.Math.BigDecimal,SharpBag.Math.BigDecimal)">
             <summary>
             The > operator.
@@ -4752,71 +4760,6 @@
             Inner class that wraps an IComparer around a type T when it is IComparable
             </summary>
         </member>
-        <member name="T:SharpBag.Networking.TcpServer">
-            <summary>
-            A class that manages a multithreaded Tcp server.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Networking.TcpServer.Create(System.Collections.Generic.IEnumerable{System.Int32},System.Int32)">
-            <summary>
-            Creates a TcpServer.
-            </summary>
-            <param name="ports">A collection of ports. The first free port in the collection will be used.</param>
-            <param name="checkInterval">The interval to check for new connections.</param>
-            <returns>A new TcpServer instance.</returns>
-        </member>
-        <member name="M:SharpBag.Networking.TcpServer.#ctor(System.Net.Sockets.TcpListener,System.Int32,System.Int32,System.Boolean)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="listener">The TcpListener.</param>
-            <param name="checkInterval">The interval to check for incoming clients.</param>
-            <param name="receiveTimeout">The time, in milliseconds, before a timeout occurs when reading data from a client.</param>
-            <param name="start">Whether to start the server.</param>
-        </member>
-        <member name="M:SharpBag.Networking.TcpServer.Start">
-            <summary>
-            Opens the TcpListener, starts the listening thread and starts listening for incoming clients.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Networking.TcpServer.Stop">
-            <summary>
-            Stops listening for incoming clients, stops the listening thread and closes the TcpListener.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Networking.TcpServer.Listen">
-            <summary>
-            Listen for incoming clients.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Networking.TcpServer.Dispose">
-            <see cref="M:System.IDisposable.Dispose"/>
-        </member>
-        <member name="P:SharpBag.Networking.TcpServer.Thread">
-            <summary>
-            The thread to listen for incoming clients.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Networking.TcpServer.Listener">
-            <summary>
-            The TcpListener.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Networking.TcpServer.Listening">
-            <summary>
-            Whether the server is listening for incoming clients.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Networking.TcpServer.CheckInterval">
-            <summary>
-            The interval, in milliseconds, to check for incoming clients.
-            </summary>
-        </member>
-        <member name="E:SharpBag.Networking.TcpServer.ClientReceived">
-            <summary>
-            An event that is fired when a client is received.
-            </summary>
-        </member>
         <member name="T:SharpBag.Games.Card">
             <summary>
             A class representing a Card in a Card Game.
@@ -7409,6 +7352,13 @@
             Invalidates the position of the specified item.
             </summary>
             <param name="item">The item.</param>
+        </member>
+        <member name="M:SharpBag.Collections.BinaryHeap`1.Swap(System.Int32,System.Int32)">
+            <summary>
+            Swap the values at the specified indices.
+            </summary>
+            <param name="i">The first index.</param>
+            <param name="j">The second index.</param>
         </member>
         <member name="M:SharpBag.Collections.BinaryHeap`1.MaintainHeap(System.Int32)">
             <summary>
@@ -10180,128 +10130,6 @@
             <param name="size">The size of each variation.</param>
             <param name="distinct">Whether the items should be distinct.</param>
             <returns>All the variations of the current instance.</returns>
-        </member>
-        <member name="T:SharpBag.Networking.TcpClientHandler">
-            <summary>
-            A class that handles TcpClients.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Networking.TcpClientHandler.#ctor(System.Net.Sockets.TcpClient,System.Text.Encoding,System.Int32,System.Int32,System.Boolean)">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="client">The TcpClient.</param>
-            <param name="encoding">The encoding to use.</param>
-            <param name="checkInterval">The interval to check for messages.</param>
-            <param name="receiveTimeout">The time, in milliseconds, before a timeout occurs when reading data from the server.</param>
-            <param name="start">Whether to start the handler.</param>
-        </member>
-        <member name="M:SharpBag.Networking.TcpClientHandler.Start(System.Int32)">
-            <summary>
-            Opens the TcpListener, starts the listening thread and starts listening for messages.
-            </summary>
-            <param name="ping">The interval, in milliseconds, to ping the client. If it's a negative integer, no pings are sent.</param>
-        </member>
-        <member name="M:SharpBag.Networking.TcpClientHandler.SendMessage(System.String)">
-            <summary>
-            Sends a message.
-            </summary>
-            <param name="s">The message to send.</param>
-            <returns>Whether the message was sent.</returns>
-        </member>
-        <member name="M:SharpBag.Networking.TcpClientHandler.Stop">
-            <summary>
-            Stops listening for messages, stops the listening thread and closes the TcpClient.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Networking.TcpClientHandler.Listen">
-            <summary>
-            Listen to messages.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Networking.TcpClientHandler.op_Equality(SharpBag.Networking.TcpClientHandler,SharpBag.Networking.TcpClientHandler)">
-            <summary>
-            Checks whether a is equal to b.
-            </summary>
-            <param name="a">A.</param>
-            <param name="b">B.</param>
-            <returns>Whether a is equal to b.</returns>
-        </member>
-        <member name="M:SharpBag.Networking.TcpClientHandler.op_Inequality(SharpBag.Networking.TcpClientHandler,SharpBag.Networking.TcpClientHandler)">
-            <summary>
-            Checks whether a is not equal to b.
-            </summary>
-            <param name="a">A.</param>
-            <param name="b">B.</param>
-            <returns>Whether a is not equal to b.</returns>
-        </member>
-        <member name="M:SharpBag.Networking.TcpClientHandler.Equals(System.Object)">
-            <summary>
-            Object.Equals(object)
-            </summary>
-        </member>
-        <member name="M:SharpBag.Networking.TcpClientHandler.Dispose">
-            <see cref="M:System.IDisposable.Dispose"/>
-        </member>
-        <member name="P:SharpBag.Networking.TcpClientHandler.Thread">
-            <summary>
-            The listening thread.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Networking.TcpClientHandler.BaseStream">
-            <summary>
-            The stream.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Networking.TcpClientHandler.Reader">
-            <summary>
-            The stream reader.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Networking.TcpClientHandler.Writer">
-            <summary>
-            The stream writer.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Networking.TcpClientHandler.Encoding">
-            <summary>
-            The encoding to use when reading from the client.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Networking.TcpClientHandler.Client">
-            <summary>
-            The client.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Networking.TcpClientHandler.Listening">
-            <summary>
-            Whether the handler is listening for messages.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Networking.TcpClientHandler.CheckInterval">
-            <summary>
-            The interval, in milliseconds, to check for messages.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Networking.TcpClientHandler.PingThread">
-            <summary>
-            The ping thread.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Networking.TcpClientHandler.PingInterval">
-            <summary>
-            The ping interval.
-            </summary>
-        </member>
-        <member name="E:SharpBag.Networking.TcpClientHandler.MessageReceived">
-            <summary>
-            An event that is fired when a message is received.
-            </summary>
-        </member>
-        <member name="E:SharpBag.Networking.TcpClientHandler.Disconnected">
-            <summary>
-            An event that is fired when the TcpClient disconnects.
-            </summary>
         </member>
         <member name="T:SharpBag.Math.Geometry.Point">
             <summary>

@@ -108,6 +108,11 @@ namespace SharpBag.Collections
 			}
 		}
 
+		/// <summary>
+		/// Swap the values at the specified indices.
+		/// </summary>
+		/// <param name="i">The first index.</param>
+		/// <param name="j">The second index.</param>
 		protected void Swap(int i, int j)
 		{
 			T temp = this.InternalArray[i];

@@ -166,8 +166,6 @@
     <Compile Include="Math\Sequences.cs" />
     <Compile Include="Networking\Network.cs" />
     <Compile Include="Networking\NetworkExtensions.cs" />
-    <Compile Include="Networking\TcpClientHandler.cs" />
-    <Compile Include="Networking\TcpServer.cs" />
     <Compile Include="Strings\StringExtensions.cs" />
     <Compile Include="Time\TimeUtils.cs" />
     <Compile Include="IO\Bencoding.cs" />
