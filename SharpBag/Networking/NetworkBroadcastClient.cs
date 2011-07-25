@@ -15,6 +15,7 @@ namespace SharpBag.Networking
 
 		private object ConnectionLock = new object();
 		private Socket ListenSocket;
+		private volatile int LocalPort;
 		private volatile bool _IsOpen;
 
 		public bool IsOpen { get { return this._IsOpen; } }
@@ -26,7 +27,7 @@ namespace SharpBag.Networking
 			public byte[] Data { get; set; }
 		}
 
-		public void Open(int remotePort)
+		public void Open()
 		{
 			lock (this.ConnectionLock)
 			{
@@ -35,24 +36,12 @@ namespace SharpBag.Networking
 					try
 					{
 						this._IsOpen = true;
-						int localPort = 30000.To(0xFFFF).First(Network.IsPortFree);
+						this.LocalPort = 30000.To(0xFFFF).First(Network.IsPortFree);
 						this.ListenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-						this.ListenSocket.Bind(new IPEndPoint(IPAddress.Any, localPort));
+						this.ListenSocket.Bind(new IPEndPoint(IPAddress.Any, this.LocalPort));
 						this.ListenSocket.Listen(100);
 						this.BeginAccept();
 						this.OnOpen(this);
-
-						Socket broadcast = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-						broadcast.Connect(IPAddress.Broadcast, remotePort);
-
-						foreach (IPAddress address in Network.LocalIPAddresses.Where(i => i.AddressFamily == AddressFamily.InterNetwork))
-						{
-							try
-							{
-								broadcast.Send(NetworkBroadcastServer.Serialize(new IPEndPoint(address, localPort)));
-							}
-							catch { }
-						}
 					}
 					catch (SocketException e)
 					{
@@ -78,6 +67,32 @@ namespace SharpBag.Networking
 
 					this.ListenSocket = null;
 					this.OnClose(this);
+				}
+			}
+		}
+
+		public void Broadcast(int remotePort)
+		{
+			this.Broadcast(IPAddress.Broadcast, remotePort);
+		}
+
+		public void Broadcast(IPAddress address, int remotePort)
+		{
+			lock (this.ConnectionLock)
+			{
+				if (this._IsOpen)
+				{
+					Socket broadcast = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+					broadcast.Connect(IPAddress.Broadcast, remotePort);
+
+					foreach (IPAddress myAddress in Network.LocalIPAddresses.Where(i => i.AddressFamily == AddressFamily.InterNetwork))
+					{
+						try
+						{
+							broadcast.Send(NetworkBroadcastServer.Serialize(new IPEndPoint(myAddress, this.LocalPort)));
+						}
+						catch { }
+					}
 				}
 			}
 		}
