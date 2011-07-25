@@ -149,6 +149,8 @@
     <Compile Include="Networking\ConnectionPacket.cs" />
     <Compile Include="Networking\Host.cs" />
     <Compile Include="Networking\IConnection.cs" />
+    <Compile Include="Networking\NetworkBroadcastClient.cs" />
+    <Compile Include="Networking\NetworkBroadcastServer.cs" />
     <Compile Include="Networking\PacketEventArgs.cs" />
     <Compile Include="Networking\PacketEventHandler.cs" />
     <Compile Include="Networking\Ping.cs" />

@@ -155,6 +155,57 @@
             A structure that is used when pinging the other side.
             </summary>
         </member>
+        <member name="T:SharpBag.Media.Drawing.Ascii.DrawAscii">
+            <summary>
+            A class for drawing shapes in ASCII.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Media.Drawing.Ascii.DrawAscii.Square(System.Int32,System.Int32,System.Char,System.Char)">
+            <summary>
+            Draw a square.
+            </summary>
+            <param name="rows">The number of rows.</param>
+            <param name="cols">The number of columns.</param>
+            <param name="border">The border.</param>
+            <param name="fill">The fill.</param>
+            <returns>The drawn square.</returns>
+        </member>
+        <member name="M:SharpBag.Media.Drawing.Ascii.DrawAscii.TriangleTL(System.Int32,System.Char,System.Char)">
+            <summary>
+            Draw a triangle.
+            </summary>
+            <param name="size">The size.</param>
+            <param name="border">The border.</param>
+            <param name="fill">The fill.</param>
+            <returns>The drawn triangle.</returns>
+        </member>
+        <member name="M:SharpBag.Media.Drawing.Ascii.DrawAscii.TriangleTR(System.Int32,System.Char,System.Char)">
+            <summary>
+            Draw a triangle.
+            </summary>
+            <param name="size">The size.</param>
+            <param name="border">The border.</param>
+            <param name="fill">The fill.</param>
+            <returns>The drawn triangle.</returns>
+        </member>
+        <member name="M:SharpBag.Media.Drawing.Ascii.DrawAscii.TriangleBR(System.Int32,System.Char,System.Char)">
+            <summary>
+            Draw a triangle.
+            </summary>
+            <param name="size">The size.</param>
+            <param name="border">The border.</param>
+            <param name="fill">The fill.</param>
+            <returns>The drawn triangle.</returns>
+        </member>
+        <member name="M:SharpBag.Media.Drawing.Ascii.DrawAscii.TriangleBL(System.Int32,System.Char,System.Char)">
+            <summary>
+            Draw a triangle.
+            </summary>
+            <param name="size">The size.</param>
+            <param name="border">The border.</param>
+            <param name="fill">The fill.</param>
+            <returns>The drawn triangle.</returns>
+        </member>
         <member name="T:SharpBag.Math.BigDecimal">
             <summary>
             An arbitrary big decimal.
@@ -8207,6 +8258,71 @@
             <param name="random">The current instance.</param>
             <returns>A random TimeSpan.</returns>
         </member>
+        <member name="T:SharpBag.Media.Drawing.ColorScheme">
+            <summary>
+            A color scheme.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Media.Drawing.ColorScheme.#ctor(System.Collections.Generic.IEnumerable{SharpBag.Media.Drawing.ColorScheme.Stop})">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Media.Drawing.ColorScheme"/> class.
+            </summary>
+            <param name="colorStops">The color stops.</param>
+        </member>
+        <member name="M:SharpBag.Media.Drawing.ColorScheme.LinearColorFor(System.Double,System.Double,System.Double)">
+            <summary>
+            Gets the color for the specified value, using linear interpolation.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="from">The starting value of the scheme.</param>
+            <param name="to">The ending value of the scheme.</param>
+            <returns>The color.</returns>
+        </member>
+        <member name="M:SharpBag.Media.Drawing.ColorScheme.LinearColorFor(System.Double)">
+            <summary>
+            Gets the color for the specified value, using linear interpolation.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>The color.</returns>
+        </member>
+        <member name="M:SharpBag.Media.Drawing.ColorScheme.CubicColorFor(System.Double,System.Double,System.Double)">
+            <summary>
+            Gets the color for the specified value, using cubic interpolation.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="from">The starting value of the scheme.</param>
+            <param name="to">The ending value of the scheme.</param>
+            <returns>The color.</returns>
+        </member>
+        <member name="M:SharpBag.Media.Drawing.ColorScheme.CubicColorFor(System.Double)">
+            <summary>
+            Gets the color for the specified value, using linear interpolation.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>The color.</returns>
+        </member>
+        <member name="T:SharpBag.Media.Drawing.ColorScheme.Stop">
+            <summary>
+            A color stop.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Media.Drawing.ColorScheme.Stop.#ctor(System.Double,System.Drawing.Color)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Media.Drawing.ColorScheme.Stop"/> class.
+            </summary>
+            <param name="at">The position to stop at.</param>
+            <param name="color">The color.</param>
+        </member>
+        <member name="P:SharpBag.Media.Drawing.ColorScheme.Stop.At">
+            <summary>
+            The position to stop at.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Media.Drawing.ColorScheme.Stop.Color">
+            <summary>
+            Gets the color.
+            </summary>
+        </member>
         <member name="T:SharpBag.Math.ForBigInteger.Polynomial">
             <summary>
             A polynomial.
@@ -12447,122 +12563,6 @@
             <summary>
             The default value.
             </summary>
-        </member>
-        <member name="T:SharpBag.Media.Drawing.ColorScheme">
-            <summary>
-            A color scheme.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Media.Drawing.ColorScheme.#ctor(System.Collections.Generic.IEnumerable{SharpBag.Media.Drawing.ColorScheme.Stop})">
-            <summary>
-            Initializes a new instance of the <see cref="T:SharpBag.Media.Drawing.ColorScheme"/> class.
-            </summary>
-            <param name="colorStops">The color stops.</param>
-        </member>
-        <member name="M:SharpBag.Media.Drawing.ColorScheme.LinearColorFor(System.Double,System.Double,System.Double)">
-            <summary>
-            Gets the color for the specified value, using linear interpolation.
-            </summary>
-            <param name="value">The value.</param>
-            <param name="from">The starting value of the scheme.</param>
-            <param name="to">The ending value of the scheme.</param>
-            <returns>The color.</returns>
-        </member>
-        <member name="M:SharpBag.Media.Drawing.ColorScheme.LinearColorFor(System.Double)">
-            <summary>
-            Gets the color for the specified value, using linear interpolation.
-            </summary>
-            <param name="value">The value.</param>
-            <returns>The color.</returns>
-        </member>
-        <member name="M:SharpBag.Media.Drawing.ColorScheme.CubicColorFor(System.Double,System.Double,System.Double)">
-            <summary>
-            Gets the color for the specified value, using cubic interpolation.
-            </summary>
-            <param name="value">The value.</param>
-            <param name="from">The starting value of the scheme.</param>
-            <param name="to">The ending value of the scheme.</param>
-            <returns>The color.</returns>
-        </member>
-        <member name="M:SharpBag.Media.Drawing.ColorScheme.CubicColorFor(System.Double)">
-            <summary>
-            Gets the color for the specified value, using linear interpolation.
-            </summary>
-            <param name="value">The value.</param>
-            <returns>The color.</returns>
-        </member>
-        <member name="T:SharpBag.Media.Drawing.ColorScheme.Stop">
-            <summary>
-            A color stop.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Media.Drawing.ColorScheme.Stop.#ctor(System.Double,System.Drawing.Color)">
-            <summary>
-            Initializes a new instance of the <see cref="T:SharpBag.Media.Drawing.ColorScheme.Stop"/> class.
-            </summary>
-            <param name="at">The position to stop at.</param>
-            <param name="color">The color.</param>
-        </member>
-        <member name="P:SharpBag.Media.Drawing.ColorScheme.Stop.At">
-            <summary>
-            The position to stop at.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Media.Drawing.ColorScheme.Stop.Color">
-            <summary>
-            Gets the color.
-            </summary>
-        </member>
-        <member name="T:SharpBag.Media.Drawing.Ascii.DrawAscii">
-            <summary>
-            A class for drawing shapes in ASCII.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Media.Drawing.Ascii.DrawAscii.Square(System.Int32,System.Int32,System.Char,System.Char)">
-            <summary>
-            Draw a square.
-            </summary>
-            <param name="rows">The number of rows.</param>
-            <param name="cols">The number of columns.</param>
-            <param name="border">The border.</param>
-            <param name="fill">The fill.</param>
-            <returns>The drawn square.</returns>
-        </member>
-        <member name="M:SharpBag.Media.Drawing.Ascii.DrawAscii.TriangleTL(System.Int32,System.Char,System.Char)">
-            <summary>
-            Draw a triangle.
-            </summary>
-            <param name="size">The size.</param>
-            <param name="border">The border.</param>
-            <param name="fill">The fill.</param>
-            <returns>The drawn triangle.</returns>
-        </member>
-        <member name="M:SharpBag.Media.Drawing.Ascii.DrawAscii.TriangleTR(System.Int32,System.Char,System.Char)">
-            <summary>
-            Draw a triangle.
-            </summary>
-            <param name="size">The size.</param>
-            <param name="border">The border.</param>
-            <param name="fill">The fill.</param>
-            <returns>The drawn triangle.</returns>
-        </member>
-        <member name="M:SharpBag.Media.Drawing.Ascii.DrawAscii.TriangleBR(System.Int32,System.Char,System.Char)">
-            <summary>
-            Draw a triangle.
-            </summary>
-            <param name="size">The size.</param>
-            <param name="border">The border.</param>
-            <param name="fill">The fill.</param>
-            <returns>The drawn triangle.</returns>
-        </member>
-        <member name="M:SharpBag.Media.Drawing.Ascii.DrawAscii.TriangleBL(System.Int32,System.Char,System.Char)">
-            <summary>
-            Draw a triangle.
-            </summary>
-            <param name="size">The size.</param>
-            <param name="border">The border.</param>
-            <param name="fill">The fill.</param>
-            <returns>The drawn triangle.</returns>
         </member>
     </members>
 </doc>
