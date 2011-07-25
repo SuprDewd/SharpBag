@@ -342,6 +342,24 @@ namespace SharpBag.Math.ForDouble
 		}
 
 		/// <summary>
+		/// Finds the indefinite integral of the polynomial.
+		/// </summary>
+		/// <param name="c">The constant.</param>
+		/// <returns>The indefinite integral.</returns>
+		public Polynomial IndefiniteIntegral(double c)
+		{
+			double[] coefficients = new double[this.Degree + 2];
+			coefficients[0] = c;
+
+			for (int i = 0; i <= this.Degree; i++)
+			{
+				coefficients[i + 1] = this[i] / (i + 1);
+			}
+
+			return new Polynomial(coefficients);
+		}
+
+		/// <summary>
 		/// Object.ToString()
 		/// </summary>
 		/// <returns>The polynomial as a string.</returns>

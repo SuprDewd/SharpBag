@@ -114,12 +114,9 @@
     <Compile Include="Math\ForFraction\ForBigInteger\Matrix.cs" />
     <Compile Include="Math\ForFraction\ForBigInteger\Vector.cs" />
     <Compile Include="Math\ForBigInteger\Fraction.cs" />
-    <Compile Include="Math\ForBigInteger\Polynomial.cs" />
     <Compile Include="Math\ForComplex\Polynomial.cs" />
     <Compile Include="Math\ForFraction\ForInt32\Matrix.cs" />
     <Compile Include="Math\ForFraction\ForInt32\Vector.cs" />
-    <Compile Include="Math\ForInt64\Polynomial.cs" />
-    <Compile Include="Math\ForInt32\Polynomial.cs" />
     <Compile Include="Math\Geometry\Circle.cs" />
     <Compile Include="Math\Geometry\ContainmentType.cs" />
     <Compile Include="Math\Geometry\GeometryFactory.cs" />

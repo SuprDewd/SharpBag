@@ -3155,6 +3155,13 @@
             A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
             </returns>
         </member>
+        <member name="M:SharpBag.Math.ForComplex.Polynomial.IndefiniteIntegral(System.Numerics.Complex)">
+            <summary>
+            Finds the indefinite integral of the polynomial.
+            </summary>
+            <param name="c">The constant.</param>
+            <returns>The indefinite integral.</returns>
+        </member>
         <member name="M:SharpBag.Math.ForComplex.Polynomial.ToString">
             <summary>
             Object.ToString()
@@ -6142,153 +6149,6 @@
             Gets the <see cref="T:SharpBag.Math.Geometry.Point"/> at the specified index.
             </summary>
         </member>
-        <member name="T:SharpBag.Math.ForInt64.Polynomial">
-            <summary>
-            A polynomial.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.ForInt64.Polynomial.#ctor">
-            <summary>
-            The constructor.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.ForInt64.Polynomial.#ctor(System.Int64[])">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="coefficients">The coefficients.</param>
-        </member>
-        <member name="M:SharpBag.Math.ForInt64.Polynomial.Evaluate(System.Int64)">
-            <summary>
-            Evalute the polynomial at the specified x.
-            </summary>
-            <param name="x">The specified x.</param>
-            <returns>The result.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt64.Polynomial.op_Addition(SharpBag.Math.ForInt64.Polynomial,SharpBag.Math.ForInt64.Polynomial)">
-            <summary>
-            Add the specified polynomials.
-            </summary>
-            <param name="left">The left polynomial.</param>
-            <param name="right">The right polynomial.</param>
-            <returns>The result.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt64.Polynomial.op_Subtraction(SharpBag.Math.ForInt64.Polynomial,SharpBag.Math.ForInt64.Polynomial)">
-            <summary>
-            Subtract the specified polynomials.
-            </summary>
-            <param name="left">The left polynomial.</param>
-            <param name="right">The right polynomial.</param>
-            <returns>The result.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt64.Polynomial.op_UnaryNegation(SharpBag.Math.ForInt64.Polynomial)">
-            <summary>
-            Negate the specified polynomial.
-            </summary>
-            <param name="value">The polynomial.</param>
-            <returns>The negated polynomial.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt64.Polynomial.op_Multiply(SharpBag.Math.ForInt64.Polynomial,SharpBag.Math.ForInt64.Polynomial)">
-            <summary>
-            Multiply the specified polynomials.
-            </summary>
-            <param name="left">The left polynomial.</param>
-            <param name="right">The right polynomial.</param>
-            <returns>The result.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt64.Polynomial.op_Division(SharpBag.Math.ForInt64.Polynomial,SharpBag.Math.ForInt64.Polynomial)">
-            <summary>
-            Divide the specified polynomials.
-            </summary>
-            <param name="left">The left polynomial.</param>
-            <param name="right">The right polynomial.</param>
-            <returns>The result.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt64.Polynomial.DivRem(SharpBag.Math.ForInt64.Polynomial,SharpBag.Math.ForInt64.Polynomial,SharpBag.Math.ForInt64.Polynomial@)">
-            <summary>
-            Divide the specified polynomials.
-            </summary>
-            <param name="left">The left polynomial.</param>
-            <param name="right">The right polynomial.</param>
-            <param name="remainder">The remainder.</param>
-            <returns>The result.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt64.Polynomial.op_Implicit(System.Int64)~SharpBag.Math.ForInt64.Polynomial">
-            <summary>
-            An implicit cast to a polynomial.
-            </summary>
-            <param name="n">The value to cast.</param>
-            <returns>The polynomial.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt64.Polynomial.Derivative">
-            <summary>
-            Finds the derivative of the polynomial.
-            </summary>
-            <returns>The derivative of the polynomial.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt64.Polynomial.Derivative(System.Int32)">
-            <summary>
-            Finds the i-th derivative of the polynomial.
-            </summary>
-            <param name="i">The i.</param>
-            <returns>The i-th derivative of the polynomial.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt64.Polynomial.op_Equality(SharpBag.Math.ForInt64.Polynomial,SharpBag.Math.ForInt64.Polynomial)">
-            <summary>
-            Determines whether the Polynomials are equal.
-            </summary>
-            <param name="left">The left Polynomial.</param>
-            <param name="right">The right Polynomial.</param>
-            <returns>Whether the Polynomials are equal.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt64.Polynomial.op_Inequality(SharpBag.Math.ForInt64.Polynomial,SharpBag.Math.ForInt64.Polynomial)">
-            <summary>
-            Determines whether the Polynomials are not equal.
-            </summary>
-            <param name="left">The left Polynomial.</param>
-            <param name="right">The right Polynomial.</param>
-            <returns>Whether the Polynomials are not equal.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt64.Polynomial.Equals(SharpBag.Math.ForInt64.Polynomial)">
-            <summary>
-            Determines whether the Polynomials are equal.
-            </summary>
-            <param name="other">The other Polynomial.</param>
-            <returns>Whether the Polynomials are equal.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt64.Polynomial.Equals(System.Object)">
-            <summary>
-            Determines whether the Polynomials are equal.
-            </summary>
-            <param name="obj">The other Polynomial.</param>
-            <returns>Whether the Polynomials are equal.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt64.Polynomial.GetHashCode">
-            <summary>
-            Returns a hash code for this instance.
-            </summary>
-            <returns>
-            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
-            </returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt64.Polynomial.ToString">
-            <summary>
-            Object.ToString()
-            </summary>
-            <returns>The polynomial as a string.</returns>
-        </member>
-        <member name="P:SharpBag.Math.ForInt64.Polynomial.Degree">
-            <summary>
-            The degree of the polynomial.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.ForInt64.Polynomial.Item(System.Int32)">
-            <summary>
-            The i-th coefficient.
-            </summary>
-            <param name="i">The i.</param>
-            <returns>The i-th coefficient.</returns>
-        </member>
         <member name="T:SharpBag.Math.ForDouble.Matrix">
             <summary>
             A matrix.
@@ -8353,153 +8213,6 @@
             Gets the color.
             </summary>
         </member>
-        <member name="T:SharpBag.Math.ForBigInteger.Polynomial">
-            <summary>
-            A polynomial.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.#ctor">
-            <summary>
-            The constructor.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.#ctor(System.Numerics.BigInteger[])">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="coefficients">The coefficients.</param>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.Evaluate(System.Numerics.BigInteger)">
-            <summary>
-            Evalute the polynomial at the specified x.
-            </summary>
-            <param name="x">The specified x.</param>
-            <returns>The result.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.op_Addition(SharpBag.Math.ForBigInteger.Polynomial,SharpBag.Math.ForBigInteger.Polynomial)">
-            <summary>
-            Add the specified polynomials.
-            </summary>
-            <param name="left">The left polynomial.</param>
-            <param name="right">The right polynomial.</param>
-            <returns>The result.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.op_Subtraction(SharpBag.Math.ForBigInteger.Polynomial,SharpBag.Math.ForBigInteger.Polynomial)">
-            <summary>
-            Subtract the specified polynomials.
-            </summary>
-            <param name="left">The left polynomial.</param>
-            <param name="right">The right polynomial.</param>
-            <returns>The result.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.op_UnaryNegation(SharpBag.Math.ForBigInteger.Polynomial)">
-            <summary>
-            Negate the specified polynomial.
-            </summary>
-            <param name="value">The polynomial.</param>
-            <returns>The negated polynomial.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.op_Multiply(SharpBag.Math.ForBigInteger.Polynomial,SharpBag.Math.ForBigInteger.Polynomial)">
-            <summary>
-            Multiply the specified polynomials.
-            </summary>
-            <param name="left">The left polynomial.</param>
-            <param name="right">The right polynomial.</param>
-            <returns>The result.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.op_Division(SharpBag.Math.ForBigInteger.Polynomial,SharpBag.Math.ForBigInteger.Polynomial)">
-            <summary>
-            Divide the specified polynomials.
-            </summary>
-            <param name="left">The left polynomial.</param>
-            <param name="right">The right polynomial.</param>
-            <returns>The result.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.DivRem(SharpBag.Math.ForBigInteger.Polynomial,SharpBag.Math.ForBigInteger.Polynomial,SharpBag.Math.ForBigInteger.Polynomial@)">
-            <summary>
-            Divide the specified polynomials.
-            </summary>
-            <param name="left">The left polynomial.</param>
-            <param name="right">The right polynomial.</param>
-            <param name="remainder">The remainder.</param>
-            <returns>The result.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.op_Implicit(System.Numerics.BigInteger)~SharpBag.Math.ForBigInteger.Polynomial">
-            <summary>
-            An implicit cast to a polynomial.
-            </summary>
-            <param name="n">The value to cast.</param>
-            <returns>The polynomial.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.Derivative">
-            <summary>
-            Finds the derivative of the polynomial.
-            </summary>
-            <returns>The derivative of the polynomial.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.Derivative(System.Int32)">
-            <summary>
-            Finds the i-th derivative of the polynomial.
-            </summary>
-            <param name="i">The i.</param>
-            <returns>The i-th derivative of the polynomial.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.op_Equality(SharpBag.Math.ForBigInteger.Polynomial,SharpBag.Math.ForBigInteger.Polynomial)">
-            <summary>
-            Determines whether the Polynomials are equal.
-            </summary>
-            <param name="left">The left Polynomial.</param>
-            <param name="right">The right Polynomial.</param>
-            <returns>Whether the Polynomials are equal.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.op_Inequality(SharpBag.Math.ForBigInteger.Polynomial,SharpBag.Math.ForBigInteger.Polynomial)">
-            <summary>
-            Determines whether the Polynomials are not equal.
-            </summary>
-            <param name="left">The left Polynomial.</param>
-            <param name="right">The right Polynomial.</param>
-            <returns>Whether the Polynomials are not equal.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.Equals(SharpBag.Math.ForBigInteger.Polynomial)">
-            <summary>
-            Determines whether the Polynomials are equal.
-            </summary>
-            <param name="other">The other Polynomial.</param>
-            <returns>Whether the Polynomials are equal.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.Equals(System.Object)">
-            <summary>
-            Determines whether the Polynomials are equal.
-            </summary>
-            <param name="obj">The other Polynomial.</param>
-            <returns>Whether the Polynomials are equal.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.GetHashCode">
-            <summary>
-            Returns a hash code for this instance.
-            </summary>
-            <returns>
-            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
-            </returns>
-        </member>
-        <member name="M:SharpBag.Math.ForBigInteger.Polynomial.ToString">
-            <summary>
-            Object.ToString()
-            </summary>
-            <returns>The polynomial as a string.</returns>
-        </member>
-        <member name="P:SharpBag.Math.ForBigInteger.Polynomial.Degree">
-            <summary>
-            The degree of the polynomial.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.ForBigInteger.Polynomial.Item(System.Int32)">
-            <summary>
-            The i-th coefficient.
-            </summary>
-            <param name="i">The i.</param>
-            <returns>The i-th coefficient.</returns>
-        </member>
         <member name="T:SharpBag.Networking.NetworkExtensions">
             <summary>
             Extensions methods for the Network class.
@@ -10206,153 +9919,6 @@
             <summary>
             Gets or sets the <see cref="T:SharpBag.Math.ForComplex.Vector"/> at the specified index.
             </summary>
-        </member>
-        <member name="T:SharpBag.Math.ForInt32.Polynomial">
-            <summary>
-            A polynomial.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.ForInt32.Polynomial.#ctor">
-            <summary>
-            The constructor.
-            </summary>
-        </member>
-        <member name="M:SharpBag.Math.ForInt32.Polynomial.#ctor(System.Int32[])">
-            <summary>
-            The constructor.
-            </summary>
-            <param name="coefficients">The coefficients.</param>
-        </member>
-        <member name="M:SharpBag.Math.ForInt32.Polynomial.Evaluate(System.Int32)">
-            <summary>
-            Evalute the polynomial at the specified x.
-            </summary>
-            <param name="x">The specified x.</param>
-            <returns>The result.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt32.Polynomial.op_Addition(SharpBag.Math.ForInt32.Polynomial,SharpBag.Math.ForInt32.Polynomial)">
-            <summary>
-            Add the specified polynomials.
-            </summary>
-            <param name="left">The left polynomial.</param>
-            <param name="right">The right polynomial.</param>
-            <returns>The result.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt32.Polynomial.op_Subtraction(SharpBag.Math.ForInt32.Polynomial,SharpBag.Math.ForInt32.Polynomial)">
-            <summary>
-            Subtract the specified polynomials.
-            </summary>
-            <param name="left">The left polynomial.</param>
-            <param name="right">The right polynomial.</param>
-            <returns>The result.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt32.Polynomial.op_UnaryNegation(SharpBag.Math.ForInt32.Polynomial)">
-            <summary>
-            Negate the specified polynomial.
-            </summary>
-            <param name="value">The polynomial.</param>
-            <returns>The negated polynomial.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt32.Polynomial.op_Multiply(SharpBag.Math.ForInt32.Polynomial,SharpBag.Math.ForInt32.Polynomial)">
-            <summary>
-            Multiply the specified polynomials.
-            </summary>
-            <param name="left">The left polynomial.</param>
-            <param name="right">The right polynomial.</param>
-            <returns>The result.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt32.Polynomial.op_Division(SharpBag.Math.ForInt32.Polynomial,SharpBag.Math.ForInt32.Polynomial)">
-            <summary>
-            Divide the specified polynomials.
-            </summary>
-            <param name="left">The left polynomial.</param>
-            <param name="right">The right polynomial.</param>
-            <returns>The result.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt32.Polynomial.DivRem(SharpBag.Math.ForInt32.Polynomial,SharpBag.Math.ForInt32.Polynomial,SharpBag.Math.ForInt32.Polynomial@)">
-            <summary>
-            Divide the specified polynomials.
-            </summary>
-            <param name="left">The left polynomial.</param>
-            <param name="right">The right polynomial.</param>
-            <param name="remainder">The remainder.</param>
-            <returns>The result.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt32.Polynomial.op_Implicit(System.Int32)~SharpBag.Math.ForInt32.Polynomial">
-            <summary>
-            An implicit cast to a polynomial.
-            </summary>
-            <param name="n">The value to cast.</param>
-            <returns>The polynomial.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt32.Polynomial.Derivative">
-            <summary>
-            Finds the derivative of the polynomial.
-            </summary>
-            <returns>The derivative of the polynomial.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt32.Polynomial.Derivative(System.Int32)">
-            <summary>
-            Finds the i-th derivative of the polynomial.
-            </summary>
-            <param name="i">The i.</param>
-            <returns>The i-th derivative of the polynomial.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt32.Polynomial.op_Equality(SharpBag.Math.ForInt32.Polynomial,SharpBag.Math.ForInt32.Polynomial)">
-            <summary>
-            Determines whether the Polynomials are equal.
-            </summary>
-            <param name="left">The left Polynomial.</param>
-            <param name="right">The right Polynomial.</param>
-            <returns>Whether the Polynomials are equal.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt32.Polynomial.op_Inequality(SharpBag.Math.ForInt32.Polynomial,SharpBag.Math.ForInt32.Polynomial)">
-            <summary>
-            Determines whether the Polynomials are not equal.
-            </summary>
-            <param name="left">The left Polynomial.</param>
-            <param name="right">The right Polynomial.</param>
-            <returns>Whether the Polynomials are not equal.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt32.Polynomial.Equals(SharpBag.Math.ForInt32.Polynomial)">
-            <summary>
-            Determines whether the Polynomials are equal.
-            </summary>
-            <param name="other">The other Polynomial.</param>
-            <returns>Whether the Polynomials are equal.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt32.Polynomial.Equals(System.Object)">
-            <summary>
-            Determines whether the Polynomials are equal.
-            </summary>
-            <param name="obj">The other Polynomial.</param>
-            <returns>Whether the Polynomials are equal.</returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt32.Polynomial.GetHashCode">
-            <summary>
-            Returns a hash code for this instance.
-            </summary>
-            <returns>
-            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
-            </returns>
-        </member>
-        <member name="M:SharpBag.Math.ForInt32.Polynomial.ToString">
-            <summary>
-            Object.ToString()
-            </summary>
-            <returns>The polynomial as a string.</returns>
-        </member>
-        <member name="P:SharpBag.Math.ForInt32.Polynomial.Degree">
-            <summary>
-            The degree of the polynomial.
-            </summary>
-        </member>
-        <member name="P:SharpBag.Math.ForInt32.Polynomial.Item(System.Int32)">
-            <summary>
-            The i-th coefficient.
-            </summary>
-            <param name="i">The i.</param>
-            <returns>The i-th coefficient.</returns>
         </member>
         <member name="T:SharpBag.Math.ForFraction.ForBigInteger.Vector">
             <summary>
@@ -12448,6 +12014,13 @@
             <returns>
             A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
             </returns>
+        </member>
+        <member name="M:SharpBag.Math.ForDouble.Polynomial.IndefiniteIntegral(System.Double)">
+            <summary>
+            Finds the indefinite integral of the polynomial.
+            </summary>
+            <param name="c">The constant.</param>
+            <returns>The indefinite integral.</returns>
         </member>
         <member name="M:SharpBag.Math.ForDouble.Polynomial.ToString">
             <summary>
