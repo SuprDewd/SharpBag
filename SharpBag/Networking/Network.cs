@@ -25,11 +25,15 @@ namespace SharpBag.Networking
 		/// <summary>
 		/// Returns the local machines IP addresses.
 		/// </summary>
+		/// <remarks>Includes loopback addresses.</remarks>
 		public static IEnumerable<IPAddress> LocalIPAddresses
 		{
 			get
 			{
-				return Dns.GetHostAddresses(Dns.GetHostName());
+				return from inter in NetworkInterface.GetAllNetworkInterfaces()
+					   where inter.OperationalStatus == OperationalStatus.Up
+					   from addr in inter.GetIPProperties().UnicastAddresses
+					   select addr.Address;
 			}
 		}
 	}

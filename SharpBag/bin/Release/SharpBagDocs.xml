@@ -12226,6 +12226,7 @@
             <summary>
             Returns the local machines IP addresses.
             </summary>
+            <remarks>Includes loopback addresses.</remarks>
         </member>
         <member name="T:SharpBag.IO.IOExtensions">
             <summary>
