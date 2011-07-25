@@ -858,5 +858,48 @@ namespace SharpBag
 		{
 			foreach (IEnumerable<T> coll in collection) foreach (T item in coll) yield return item;
 		}
+
+		#region HasIndex
+
+		/// <summary>
+		/// Whether the current instance has the specified index.
+		/// </summary>
+		/// <typeparam name="T">The type of items in the current instance.</typeparam>
+		/// <param name="array">The current instance.</param>
+		/// <param name="i">The index.</param>
+		/// <returns>Whether the current instance has the specified index.</returns>
+		public static bool HasIndex<T>(this T[] array, int i)
+		{
+			return i >= 0 && i < array.Length;
+		}
+
+		/// <summary>
+		/// Whether the current instance has the specified index.
+		/// </summary>
+		/// <typeparam name="T">The type of items in the current instance.</typeparam>
+		/// <param name="array">The current instance.</param>
+		/// <param name="i">The index.</param>
+		/// <param name="j">The index.</param>
+		/// <returns>Whether the current instance has the specified index.</returns>
+		public static bool HasIndex<T>(this T[,] array, int i, int j)
+		{
+			return i >= 0 && j >= 0 && i < array.GetLength(0) && j < array.GetLength(1);
+		}
+
+		/// <summary>
+		/// Whether the current instance has the specified index.
+		/// </summary>
+		/// <typeparam name="T">The type of items in the current instance.</typeparam>
+		/// <param name="array">The current instance.</param>
+		/// <param name="i">The index.</param>
+		/// <param name="j">The index.</param>
+		/// <param name="k">The index.</param>
+		/// <returns>Whether the current instance has the specified index.</returns>
+		public static bool HasIndex<T>(this T[,] array, int i, int j, int k)
+		{
+			return i >= 0 && j >= 0 && k >= 0 && i < array.GetLength(0) && j < array.GetLength(1) && k < array.GetLength(2);
+		}
+
+		#endregion HasIndex
 	}
 }

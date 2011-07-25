@@ -7958,6 +7958,36 @@
             <param name="collection">The current instance.</param>
             <returns>All the items in all the collections in the current instance.</returns>
         </member>
+        <member name="M:SharpBag.CollectionExtensions.HasIndex``1(``0[],System.Int32)">
+            <summary>
+            Whether the current instance has the specified index.
+            </summary>
+            <typeparam name="T">The type of items in the current instance.</typeparam>
+            <param name="array">The current instance.</param>
+            <param name="i">The index.</param>
+            <returns>Whether the current instance has the specified index.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.HasIndex``1(``0[0:,0:],System.Int32,System.Int32)">
+            <summary>
+            Whether the current instance has the specified index.
+            </summary>
+            <typeparam name="T">The type of items in the current instance.</typeparam>
+            <param name="array">The current instance.</param>
+            <param name="i">The index.</param>
+            <param name="j">The index.</param>
+            <returns>Whether the current instance has the specified index.</returns>
+        </member>
+        <member name="M:SharpBag.CollectionExtensions.HasIndex``1(``0[0:,0:],System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Whether the current instance has the specified index.
+            </summary>
+            <typeparam name="T">The type of items in the current instance.</typeparam>
+            <param name="array">The current instance.</param>
+            <param name="i">The index.</param>
+            <param name="j">The index.</param>
+            <param name="k">The index.</param>
+            <returns>Whether the current instance has the specified index.</returns>
+        </member>
         <member name="T:SharpBag.Time.TimeUtils">
             <summary>
             A static class with utilites regarding dates and time.
