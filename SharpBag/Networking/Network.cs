@@ -18,18 +18,21 @@ namespace SharpBag.Networking
 		public static bool IsPortFree(int port)
 		{
 			if (port < 0 || port > 0xFFFF) return false;
-
 			return !IPGlobalProperties.GetIPGlobalProperties().GetActiveTcpConnections().Where(i => i.LocalEndPoint.Port == port).Any();
 		}
 
 		/// <summary>
 		/// Returns the local machines IP addresses.
 		/// </summary>
+		/// <remarks>Includes loopback addresses.</remarks>
 		public static IEnumerable<IPAddress> LocalIPAddresses
 		{
 			get
 			{
-				return Dns.GetHostAddresses(Dns.GetHostName());
+				return from inter in NetworkInterface.GetAllNetworkInterfaces()
+					   where inter.OperationalStatus == OperationalStatus.Up
+					   from addr in inter.GetIPProperties().UnicastAddresses
+					   select addr.Address;
 			}
 		}
 	}
