@@ -7,10 +7,25 @@ using System.Text;
 
 namespace SharpBag.Networking
 {
+	/// <summary>
+	/// A broadcast client.
+	/// Useful for server discovery.
+	/// </summary>
 	public class NetworkBroadcastClient
 	{
+		/// <summary>
+		/// Occurs when data is received.
+		/// </summary>
 		public event Action<byte[], NetworkBroadcastClient> OnDataReceived;
+
+		/// <summary>
+		/// Occurs when the client is opened.
+		/// </summary>
 		public event Action<NetworkBroadcastClient> OnOpen;
+
+		/// <summary>
+		/// Occurs when the client is closed.
+		/// </summary>
 		public event Action<NetworkBroadcastClient> OnClose;
 
 		private object ConnectionLock = new object();
@@ -18,6 +33,12 @@ namespace SharpBag.Networking
 		private volatile int LocalPort;
 		private volatile bool _IsOpen;
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is open.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is open.
+		/// </value>
 		public bool IsOpen { get { return this._IsOpen; } }
 
 		private class ClientInfo
@@ -27,6 +48,9 @@ namespace SharpBag.Networking
 			public byte[] Data { get; set; }
 		}
 
+		/// <summary>
+		/// Opens this instance.
+		/// </summary>
 		public void Open()
 		{
 			lock (this.ConnectionLock)
@@ -41,7 +65,7 @@ namespace SharpBag.Networking
 						this.ListenSocket.Bind(new IPEndPoint(IPAddress.Any, this.LocalPort));
 						this.ListenSocket.Listen(100);
 						this.BeginAccept();
-						this.OnOpen(this);
+						if (this.OnOpen != null) this.OnOpen(this);
 					}
 					catch (SocketException e)
 					{
@@ -51,6 +75,9 @@ namespace SharpBag.Networking
 			}
 		}
 
+		/// <summary>
+		/// Closes this instance.
+		/// </summary>
 		public void Close()
 		{
 			lock (this.ConnectionLock)
@@ -66,16 +93,25 @@ namespace SharpBag.Networking
 					catch { }
 
 					this.ListenSocket = null;
-					this.OnClose(this);
+					if (this.OnClose != null) this.OnClose(this);
 				}
 			}
 		}
 
+		/// <summary>
+		/// Broadcasts to the specified remote port.
+		/// </summary>
+		/// <param name="remotePort">The remote port.</param>
 		public void Broadcast(int remotePort)
 		{
 			this.Broadcast(IPAddress.Broadcast, remotePort);
 		}
 
+		/// <summary>
+		/// Broadcasts to the specified port on the specified address.
+		/// </summary>
+		/// <param name="address">The address.</param>
+		/// <param name="remotePort">The remote port.</param>
 		public void Broadcast(IPAddress address, int remotePort)
 		{
 			lock (this.ConnectionLock)
@@ -94,6 +130,7 @@ namespace SharpBag.Networking
 						catch { }
 					}
 				}
+				else throw new InvalidOperationException("Broadcast client must be open before broadcasting");
 			}
 		}
 
@@ -184,7 +221,7 @@ namespace SharpBag.Networking
 
 					if (e == SocketError.Success)
 					{
-						this.OnDataReceived(client.Data, this);
+						if (this.OnDataReceived != null) this.OnDataReceived(client.Data, this);
 
 						try
 						{

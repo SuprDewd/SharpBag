@@ -8929,6 +8929,58 @@
             <param name="n">The current instance.</param>
             <returns>The square root of the current instance.</returns>
         </member>
+        <member name="T:SharpBag.Networking.NetworkBroadcastClient">
+            <summary>
+            A broadcast client.
+            Useful for server discovery.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkBroadcastClient.Open">
+            <summary>
+            Opens this instance.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkBroadcastClient.Close">
+            <summary>
+            Closes this instance.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkBroadcastClient.Broadcast(System.Int32)">
+            <summary>
+            Broadcasts to the specified remote port.
+            </summary>
+            <param name="remotePort">The remote port.</param>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkBroadcastClient.Broadcast(System.Net.IPAddress,System.Int32)">
+            <summary>
+            Broadcasts to the specified port on the specified address.
+            </summary>
+            <param name="address">The address.</param>
+            <param name="remotePort">The remote port.</param>
+        </member>
+        <member name="E:SharpBag.Networking.NetworkBroadcastClient.OnDataReceived">
+            <summary>
+            Occurs when data is received.
+            </summary>
+        </member>
+        <member name="E:SharpBag.Networking.NetworkBroadcastClient.OnOpen">
+            <summary>
+            Occurs when the client is opened.
+            </summary>
+        </member>
+        <member name="E:SharpBag.Networking.NetworkBroadcastClient.OnClose">
+            <summary>
+            Occurs when the client is closed.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Networking.NetworkBroadcastClient.IsOpen">
+            <summary>
+            Gets a value indicating whether this instance is open.
+            </summary>
+            <value>
+            Whether this instance is open.
+            </value>
+        </member>
         <member name="T:SharpBag.Math.Interpolation">
             <summary>
             Methods for interpolation.
@@ -10706,6 +10758,69 @@
             <summary>
             An event that is fired when the TcpClient disconnects.
             </summary>
+        </member>
+        <member name="T:SharpBag.Networking.NetworkBroadcastServer">
+            <summary>
+            A broadcast server.
+            Useful for server discovery.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkBroadcastServer.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Networking.NetworkBroadcastServer"/> class.
+            </summary>
+            <param name="data">The data to broadcast.</param>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkBroadcastServer.Open(System.Int32)">
+            <summary>
+            Opens this instance on the specified port.
+            </summary>
+            <param name="port">The port.</param>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkBroadcastServer.Close">
+            <summary>
+            Closes this instance.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkBroadcastServer.Serialize(System.Net.IPEndPoint)">
+            <summary>
+            Serializes the specified end point.
+            </summary>
+            <param name="endPoint">The end point.</param>
+            <returns>The buffer.</returns>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkBroadcastServer.Deserialize(System.Byte[])">
+            <summary>
+            Deserializes the specified buffer.
+            </summary>
+            <param name="buffer">The buffer.</param>
+            <returns>The end point.</returns>
+        </member>
+        <member name="E:SharpBag.Networking.NetworkBroadcastServer.OnOpen">
+            <summary>
+            Occurs when the server is opened.
+            </summary>
+        </member>
+        <member name="E:SharpBag.Networking.NetworkBroadcastServer.OnClose">
+            <summary>
+            Occurs when the server is closed.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Networking.NetworkBroadcastServer.Data">
+            <summary>
+            Gets or sets the data to broadcast.
+            </summary>
+            <value>
+            The data to broadcast.
+            </value>
+        </member>
+        <member name="P:SharpBag.Networking.NetworkBroadcastServer.IsOpen">
+            <summary>
+            Gets a value indicating whether this instance is open.
+            </summary>
+            <value>
+            Whether this instance is open.
+            </value>
         </member>
         <member name="T:SharpBag.Math.Geometry.Point">
             <summary>

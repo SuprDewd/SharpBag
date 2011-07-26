@@ -7,24 +7,57 @@ using System.Text;
 
 namespace SharpBag.Networking
 {
+	/// <summary>
+	/// A broadcast server.
+	/// Useful for server discovery.
+	/// </summary>
 	public class NetworkBroadcastServer
 	{
+		/// <summary>
+		/// Occurs when the server is opened.
+		/// </summary>
 		public event Action<NetworkBroadcastServer> OnOpen;
+
+		/// <summary>
+		/// Occurs when the server is closed.
+		/// </summary>
 		public event Action<NetworkBroadcastServer> OnClose;
 
 		private Socket ListenSocket;
 		private volatile bool _IsOpen;
 		private object ConnectionLock = new object();
 
-		public byte[] Data { get; set; }
+		private byte[] _Data;
 
+		/// <summary>
+		/// Gets or sets the data to broadcast.
+		/// </summary>
+		/// <value>
+		/// The data to broadcast.
+		/// </value>
+		public byte[] Data { get { return this._Data; } set { lock (this.ConnectionLock) { this._Data = value; } } }
+
+		/// <summary>
+		/// Gets a value indicating whether this instance is open.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is open.
+		/// </value>
 		public bool IsOpen { get { return _IsOpen; } }
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="NetworkBroadcastServer"/> class.
+		/// </summary>
+		/// <param name="data">The data to broadcast.</param>
 		public NetworkBroadcastServer(byte[] data)
 		{
 			this.Data = data;
 		}
 
+		/// <summary>
+		/// Opens this instance on the specified port.
+		/// </summary>
+		/// <param name="port">The port.</param>
 		public void Open(int port)
 		{
 			lock (this.ConnectionLock)
@@ -37,7 +70,7 @@ namespace SharpBag.Networking
 						this.ListenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
 						this.ListenSocket.Bind(new IPEndPoint(IPAddress.Any, port));
 						this.BeginReceive();
-						this.OnOpen(this);
+						if (this.OnOpen != null) this.OnOpen(this);
 					}
 					catch (SocketException e)
 					{
@@ -96,6 +129,9 @@ namespace SharpBag.Networking
 			socket.BeginSend(this.Data, 0, this.Data.Length, SocketFlags.None, null, null);
 		}
 
+		/// <summary>
+		/// Closes this instance.
+		/// </summary>
 		public void Close()
 		{
 			lock (this.ConnectionLock)
@@ -111,7 +147,7 @@ namespace SharpBag.Networking
 					catch { }
 
 					this.ListenSocket = null;
-					this.OnClose(this);
+					if (this.OnClose != null) this.OnClose(this);
 				}
 			}
 		}
@@ -124,6 +160,11 @@ namespace SharpBag.Networking
 			}
 		}
 
+		/// <summary>
+		/// Serializes the specified end point.
+		/// </summary>
+		/// <param name="endPoint">The end point.</param>
+		/// <returns>The buffer.</returns>
 		internal static byte[] Serialize(IPEndPoint endPoint)
 		{
 			byte[] buffer = new byte[6];
@@ -132,6 +173,11 @@ namespace SharpBag.Networking
 			return buffer;
 		}
 
+		/// <summary>
+		/// Deserializes the specified buffer.
+		/// </summary>
+		/// <param name="buffer">The buffer.</param>
+		/// <returns>The end point.</returns>
 		internal static IPEndPoint Deserialize(byte[] buffer)
 		{
 			byte[] ip = new byte[4];
