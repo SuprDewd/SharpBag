@@ -8200,13 +8200,13 @@
             Extensions methods for the Network class.
             </summary>
         </member>
-        <member name="M:SharpBag.Networking.NetworkExtensions.Download(System.Uri,System.Text.Encoding)">
+        <member name="M:SharpBag.Networking.NetworkExtensions.DownloadHttp(System.Uri,System.Text.Encoding)">
             <summary>
             Downloads the source of the specified location and returns it as a string.
             </summary>
             <param name="page">The location.</param>
             <param name="encoding">The encoding to use.</param>
-            <returns></returns>
+            <returns>The source</returns>
         </member>
         <member name="T:SharpBag.Math.MathExtensions">
             <summary>

@@ -52,6 +52,18 @@ namespace SharpBag.Networking
 			this.Settings = settings == null ? new ServerSettings() : settings;
 		}
 
+		public void Open(int port)
+		{
+			lock (this.ConnectionLock)
+			{
+				if (!this._IsOpen)
+				{
+					this.Open(new IPEndPoint(IPAddress.Any, port));
+				}
+				else throw new InvalidOperationException("Server is already open");
+			}
+		}
+
 		public void Open(IPAddress address, int port)
 		{
 			lock (this.ConnectionLock)
@@ -60,6 +72,7 @@ namespace SharpBag.Networking
 				{
 					this.Open(new IPEndPoint(address, port));
 				}
+				else throw new InvalidOperationException("Server is already open");
 			}
 		}
 
@@ -77,6 +90,7 @@ namespace SharpBag.Networking
 					if (this.OnOpen != null) this.OnOpen(this);
 					this.BeginAcceptConnection();
 				}
+				else throw new InvalidOperationException("Server is already open");
 			}
 		}
 
@@ -110,6 +124,7 @@ namespace SharpBag.Networking
 					if (this.OnClose != null) this.OnClose(this);
 					base.CloseAllServices(this);
 				}
+				else throw new InvalidOperationException("Server is already closed");
 			}
 		}
 
@@ -133,16 +148,20 @@ namespace SharpBag.Networking
 					}
 					else
 					{
-						foreach (var id in packet.Targets)
+						if (packet.Targets != null)
 						{
-							TcpNetworkConnection conn;
-							if (this.Connections.TryGetValue(id, out conn))
+							foreach (var id in packet.Targets)
 							{
-								conn.Send(packet);
+								TcpNetworkConnection conn;
+								if (this.Connections.TryGetValue(id, out conn))
+								{
+									conn.Send(packet);
+								}
 							}
 						}
 					}
 				}
+				else throw new InvalidOperationException("Server must be open");
 			}
 		}
 

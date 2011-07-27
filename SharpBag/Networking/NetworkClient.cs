@@ -39,6 +39,7 @@ namespace SharpBag.Networking
 					socket.Connect(remoteEndPoint);
 					this.Connect(socket);
 				}
+				else throw new InvalidOperationException("Client was already connected");
 			}
 		}
 
@@ -52,6 +53,7 @@ namespace SharpBag.Networking
 					socket.Connect(address, port);
 					this.Connect(socket);
 				}
+				else throw new InvalidOperationException("Client was already connected");
 			}
 		}
 
@@ -65,6 +67,7 @@ namespace SharpBag.Networking
 					socket.Connect(host, port);
 					this.Connect(socket);
 				}
+				else throw new InvalidOperationException("Client was already connected");
 			}
 		}
 
@@ -77,7 +80,7 @@ namespace SharpBag.Networking
 			if (e == SocketError.Success)
 			{
 				int id = BitConverter.ToInt32(rawid, 0);
-				if (id == 0) throw new Exception("Server denied connection.");
+				if (id == 0) throw new Exception("Server denied connection");
 				else
 				{
 					this.Connection = new TcpNetworkConnection(id, socket, ref this.ConnectionLock);
@@ -91,7 +94,7 @@ namespace SharpBag.Networking
 			}
 			else
 			{
-				throw new Exception("Could not receive connection ID.");
+				throw new Exception("Could not receive connection ID");
 			}
 		}
 
@@ -134,6 +137,7 @@ namespace SharpBag.Networking
 						base.CloseAllServices(this);
 					}
 				}
+				else throw new InvalidOperationException("Client was already disconnected");
 			}
 		}
 
@@ -146,6 +150,7 @@ namespace SharpBag.Networking
 					packet.Sender = this.Connection.ID;
 					this.Connection.Send(packet);
 				}
+				else throw new InvalidOperationException("Client must be connected");
 			}
 		}
 
