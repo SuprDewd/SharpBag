@@ -7,22 +7,61 @@ using System.Text;
 
 namespace SharpBag.Networking
 {
+	/// <summary>
+	/// A network packet.
+	/// </summary>
 	public class NetworkPacket
 	{
+		/// <summary>
+		/// Gets or sets the service this packet belongs to.
+		/// </summary>
+		/// <value>
+		/// The service.
+		/// </value>
 		public int Service { get; set; }
 
+		/// <summary>
+		/// Gets or sets the sender of this packet.
+		/// </summary>
+		/// <value>
+		/// The sender.
+		/// </value>
 		public int Sender { get; set; }
 
+		/// <summary>
+		/// Gets or sets the targets.
+		/// </summary>
+		/// <value>
+		/// The targets.
+		/// </value>
 		public int[] Targets { get; set; }
 
+		/// <summary>
+		/// Gets or sets a value indicating whether the packet should be sent to everyone, except the specified targets.
+		/// </summary>
+		/// <value>
+		/// Whether the packet should be sent to everyone, except the specified targets.
+		/// </value>
 		public bool AllButTargets { get; set; }
 
+		/// <summary>
+		/// Gets the data reader.
+		/// </summary>
 		public BinaryReader DataReader { get; private set; }
 
+		/// <summary>
+		/// Gets the data writer.
+		/// </summary>
 		public BinaryWriter DataWriter { get; private set; }
 
 		private MemoryStream Stream;
 
+		/// <summary>
+		/// Gets or sets the position of the datastream.
+		/// </summary>
+		/// <value>
+		/// The position of the datastream.
+		/// </value>
 		public long Position { get { return this.Stream.Position; } set { this.Stream.Position = value; } }
 
 		private NetworkPacket(MemoryStream stream)
@@ -39,8 +78,16 @@ namespace SharpBag.Networking
 			this.Stream.Position = 0;
 		}
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="NetworkPacket"/> class.
+		/// </summary>
 		public NetworkPacket() : this(new MemoryStream()) { }
 
+		/// <summary>
+		/// Serializes the packet.
+		/// </summary>
+		/// <param name="prependLength">if set to <c>true</c> the length of the packet will be prepended.</param>
+		/// <returns>The serialized packet.</returns>
 		public byte[] Serialize(bool prependLength = true)
 		{
 			long beforePosition = this.Stream.Position;
@@ -69,6 +116,11 @@ namespace SharpBag.Networking
 			return mem.ToArray();
 		}
 
+		/// <summary>
+		/// Deserializes the serialized packet.
+		/// </summary>
+		/// <param name="bytes">The serialized packet.</param>
+		/// <returns>The packet.</returns>
 		public static NetworkPacket Deserialize(byte[] bytes)
 		{
 			int service = BitConverter.ToInt32(bytes, 0),
@@ -99,133 +151,24 @@ namespace SharpBag.Networking
 			};
 		}
 
+		/// <summary>
+		/// Serializes and writes the data to the datastream.
+		/// </summary>
+		/// <typeparam name="T">The type of data.</typeparam>
+		/// <param name="data">The data.</param>
 		public void WriteData<T>(T data)
 		{
 			new BinaryFormatter().Serialize(this.Stream, data);
 		}
 
+		/// <summary>
+		/// Reads and deserializes the data from the datastream.
+		/// </summary>
+		/// <typeparam name="T">The type of data to read.</typeparam>
+		/// <returns>The deserialized data.</returns>
 		public T ReadData<T>()
 		{
 			return (T)new BinaryFormatter().Deserialize(this.Stream);
 		}
-
-		/*#region Writing
-
-		public void Write(byte[] bytes, int offset, int count)
-		{
-			this.Stream.Write(bytes, offset, count);
-		}
-
-		public void Write(char[] chars, int offset, int count)
-		{
-			this.Write(chars, offset, count, Encoding.UTF8);
-		}
-
-		public void Write(char[] chars, int offset, int count, Encoding encoding)
-		{
-			this.Write(encoding.GetBytes(chars, offset, count));
-		}
-
-		public void Write(bool value)
-		{
-			this.Write(BitConverter.GetBytes(value));
-		}
-
-		public void Write(byte value)
-		{
-			this.Stream.WriteByte(value);
-		}
-
-		public void Write(byte[] value)
-		{
-			this.Stream.Write(value, 0, value.Length);
-		}
-
-		public void Write(char value)
-		{
-			this.Write(BitConverter.GetBytes(value));
-		}
-
-		public void Write(char[] value)
-		{
-			this.Write(value, Encoding.UTF8);
-		}
-
-		public void Write(char[] value, Encoding encoding)
-		{
-			this.Write(encoding.GetBytes(value));
-		}
-
-		public void Write(double value)
-		{
-			this.Write(BitConverter.GetBytes(value));
-		}
-
-		public void Write(ushort value)
-		{
-			this.Write(BitConverter.GetBytes(value));
-		}
-
-		public void Write(uint value)
-		{
-			this.Write(BitConverter.GetBytes(value));
-		}
-
-		public void Write(ulong value)
-		{
-			this.Write(BitConverter.GetBytes(value));
-		}
-
-		public void Write(short value)
-		{
-			this.Write(BitConverter.GetBytes(value));
-		}
-
-		public void Write(int value)
-		{
-			this.Write(BitConverter.GetBytes(value));
-		}
-
-		public void Write(long value)
-		{
-			this.Write(BitConverter.GetBytes(value));
-		}
-
-		public void Write(sbyte value)
-		{
-			this.Write(BitConverter.GetBytes(value));
-		}
-
-		public void Write(Single value)
-		{
-			this.Write(BitConverter.GetBytes(value));
-		}
-
-		public void Write(string value)
-		{
-			this.Write(value, Encoding.UTF8);
-		}
-
-		public void Write(string value, Encoding encoding)
-		{
-			this.Write(encoding.GetBytes(value));
-		}
-
-		#endregion Writing
-
-		#region Reading
-
-		public void Read(byte[] buffer, int offset, int count)
-		{
-			this.Stream.Read(buffer, offset, count);
-		}
-
-		public bool ReadBoolean()
-		{
-			BinaryReader br = new BinaryReader()
-			return BitConverter.ToBoolean(this, )
-		}
-
-		#endregion Reading*/
 	}
 }

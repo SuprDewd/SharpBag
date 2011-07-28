@@ -7,24 +7,54 @@ using System.Text;
 
 namespace SharpBag.Networking
 {
+	/// <summary>
+	/// A network server.
+	/// </summary>
 	public class NetworkServer : NetworkServerServiceHandler
 	{
+		/// <summary>
+		/// Settings for a network server.
+		/// </summary>
 		public class ServerSettings
 		{
 			private int _MaxConnectionCount = 16;
 			private int _ConnectionBacklog = 10;
 
+			/// <summary>
+			/// Gets or sets the maximum amount of simultaneous connections.
+			/// </summary>
+			/// <value>
+			/// The maximum amount of simultaneous connections.
+			/// </value>
 			public int MaxConnectionCount { get { return this._MaxConnectionCount; } set { this._MaxConnectionCount = value; } }
 
+			/// <summary>
+			/// Gets or sets the connection backlog.
+			/// </summary>
+			/// <value>
+			/// The connection backlog.
+			/// </value>
 			public int ConnectionBacklog { get { return this._ConnectionBacklog; } set { this._ConnectionBacklog = value; } }
 		}
 
+		/// <summary>
+		/// Occurs when the server is closed.
+		/// </summary>
 		public event Action<NetworkServer> OnClose;
 
+		/// <summary>
+		/// Occurs when the server is opened.
+		/// </summary>
 		public event Action<NetworkServer> OnOpen;
 
+		/// <summary>
+		/// Occurs when a connection connects to the server.
+		/// </summary>
 		public event Action<NetworkServer, TcpNetworkConnection> OnConnectionConnected;
 
+		/// <summary>
+		/// Occurs when a connection disconnects from the server.
+		/// </summary>
 		public event Action<NetworkServer, TcpNetworkConnection> OnConnectionDisconnected;
 
 		private object ConnectionLock = new object();
@@ -35,23 +65,46 @@ namespace SharpBag.Networking
 
 		private volatile int ConnectionIDCounter = 1;
 
+		/// <summary>
+		/// Gets the server settings.
+		/// </summary>
 		public ServerSettings Settings { get; private set; }
 
 		private volatile bool _IsOpen;
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is open.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is open.
+		/// </value>
 		public bool IsOpen { get { return this._IsOpen; } }
 
+		/// <summary>
+		/// Gets the local end point of the server.
+		/// </summary>
 		public EndPoint LocalEndPoint { get { return this.Socket == null ? null : this.Socket.LocalEndPoint; } }
 
 		private volatile int _ConnectionCount;
 
+		/// <summary>
+		/// Gets the number of connected connections.
+		/// </summary>
 		public int ConnectionCount { get { return this._ConnectionCount; } }
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="NetworkServer"/> class.
+		/// </summary>
+		/// <param name="settings">The server settings.</param>
 		public NetworkServer(ServerSettings settings = null)
 		{
 			this.Settings = settings == null ? new ServerSettings() : settings;
 		}
 
+		/// <summary>
+		/// Opens the server at the specified port.
+		/// </summary>
+		/// <param name="port">The port.</param>
 		public void Open(int port)
 		{
 			lock (this.ConnectionLock)
@@ -64,6 +117,11 @@ namespace SharpBag.Networking
 			}
 		}
 
+		/// <summary>
+		/// Opens the server at the specified address and port.
+		/// </summary>
+		/// <param name="address">The address.</param>
+		/// <param name="port">The port.</param>
 		public void Open(IPAddress address, int port)
 		{
 			lock (this.ConnectionLock)
@@ -76,6 +134,10 @@ namespace SharpBag.Networking
 			}
 		}
 
+		/// <summary>
+		/// Opens the server at the specified local end point.
+		/// </summary>
+		/// <param name="localEndPoint">The local end point.</param>
 		public void Open(EndPoint localEndPoint)
 		{
 			lock (this.ConnectionLock)
@@ -83,7 +145,7 @@ namespace SharpBag.Networking
 				if (!this._IsOpen)
 				{
 					this.Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-					base.OpenAllServices(this);
+					base.StartAllServices(this);
 					this.Socket.Bind(localEndPoint);
 					this.Socket.Listen(this.Settings.ConnectionBacklog);
 					this._IsOpen = true;
@@ -94,6 +156,9 @@ namespace SharpBag.Networking
 			}
 		}
 
+		/// <summary>
+		/// Closes this instance.
+		/// </summary>
 		public void Close()
 		{
 			lock (this.ConnectionLock)
@@ -122,12 +187,16 @@ namespace SharpBag.Networking
 					this.Connections.Clear();
 					this._ConnectionCount = 0;
 					if (this.OnClose != null) this.OnClose(this);
-					base.CloseAllServices(this);
+					base.StopAllServices(this);
 				}
 				else throw new InvalidOperationException("Server is already closed");
 			}
 		}
 
+		/// <summary>
+		/// Sends the specified packet.
+		/// </summary>
+		/// <param name="packet">The packet.</param>
 		public void Send(NetworkPacket packet)
 		{
 			lock (this.ConnectionLock)
@@ -258,6 +327,11 @@ namespace SharpBag.Networking
 
 		#region Service handler
 
+		/// <summary>
+		/// Gets the service with the specified id.
+		/// </summary>
+		/// <param name="id">The id.</param>
+		/// <returns>The service with the specified id.</returns>
 		public override INetworkServerService GetService(int id)
 		{
 			lock (this.ConnectionLock)
@@ -266,6 +340,11 @@ namespace SharpBag.Networking
 			}
 		}
 
+		/// <summary>
+		/// Registers the service.
+		/// </summary>
+		/// <param name="id">The id of the service.</param>
+		/// <param name="service">The service.</param>
 		public override void RegisterService(int id, INetworkServerService service)
 		{
 			lock (this.ConnectionLock)
@@ -274,6 +353,10 @@ namespace SharpBag.Networking
 			}
 		}
 
+		/// <summary>
+		/// Unregisters the service with the specified id.
+		/// </summary>
+		/// <param name="id">The id.</param>
 		public override void UnregisterService(int id)
 		{
 			lock (this.ConnectionLock)

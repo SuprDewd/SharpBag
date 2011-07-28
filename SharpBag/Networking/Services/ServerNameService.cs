@@ -5,18 +5,36 @@ using System.Text;
 
 namespace SharpBag.Networking.Services
 {
+	/// <summary>
+	/// A server name service.
+	/// </summary>
 	public class ServerNameService : INetworkServerService, IEnumerable<KeyValuePair<int, string>>
 	{
+		/// <summary>
+		/// Occurs when a name is announced.
+		/// </summary>
 		public event Action<string, int> OnNameAnnounced;
 
+		/// <summary>
+		/// Occurs when a name is changed.
+		/// </summary>
 		public event Action<string, string, int> OnNameChanged;
 
+		/// <summary>
+		/// Occurs when a name left.
+		/// </summary>
 		public event Action<string, int> OnNameLeft;
 
 		private Dictionary<int, string> Names;
 
 		private string _Name;
 
+		/// <summary>
+		/// Gets or sets the name of the server.
+		/// </summary>
+		/// <value>
+		/// The name.
+		/// </value>
 		public string Name
 		{
 			get
@@ -31,11 +49,17 @@ namespace SharpBag.Networking.Services
 			}
 		}
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="ServerNameService"/> class.
+		/// </summary>
 		public ServerNameService()
 		{
 			this.Names = new Dictionary<int, string>();
 		}
 
+		/// <summary>
+		/// Gets the name with the specified id.
+		/// </summary>
 		public string this[int id]
 		{
 			get
@@ -46,7 +70,10 @@ namespace SharpBag.Networking.Services
 			}
 		}
 
-		public override void Open()
+		/// <summary>
+		/// Starts this instance.
+		/// </summary>
+		public override void Start()
 		{
 			this.Server.OnConnectionConnected += new Action<NetworkServer, TcpNetworkConnection>(Server_OnConnectionConnected);
 			this.Server.OnConnectionDisconnected += new Action<NetworkServer, TcpNetworkConnection>(Server_OnConnectionDisconnected);
@@ -77,6 +104,10 @@ namespace SharpBag.Networking.Services
 			}
 		}
 
+		/// <summary>
+		/// Receive the specified packet.
+		/// </summary>
+		/// <param name="packet">The packet.</param>
 		public override void Receive(NetworkPacket packet)
 		{
 			string oldName = null, newName = packet.DataReader.ReadString();
@@ -120,6 +151,10 @@ namespace SharpBag.Networking.Services
 			this.Send(packet);
 		}
 
+		/// <summary>
+		/// Gets the enumerator.
+		/// </summary>
+		/// <returns>The enumerator.</returns>
 		public IEnumerator<KeyValuePair<int, string>> GetEnumerator()
 		{
 			foreach (var item in this.Names)
@@ -128,6 +163,12 @@ namespace SharpBag.Networking.Services
 			}
 		}
 
+		/// <summary>
+		/// Returns an enumerator that iterates through a collection.
+		/// </summary>
+		/// <returns>
+		/// An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
+		/// </returns>
 		System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
 		{
 			return this.GetEnumerator();

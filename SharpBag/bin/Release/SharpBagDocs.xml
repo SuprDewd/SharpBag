@@ -150,6 +150,54 @@
             <typeparam name="T">The type of the Option.</typeparam>
             <returns>The new Some Option.</returns>
         </member>
+        <member name="T:SharpBag.Networking.NetworkClientServiceHandler">
+            <summary>
+            A network client service handler.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Networking.NetworkClientServiceHandler.Services">
+            <summary>
+            The services.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkClientServiceHandler.RegisterService(System.Int32,SharpBag.Networking.INetworkClientService)">
+            <summary>
+            Registers the service.
+            </summary>
+            <param name="id">The id of the service.</param>
+            <param name="service">The service.</param>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkClientServiceHandler.UnregisterService(System.Int32)">
+            <summary>
+            Unregisters the service with the specified id.
+            </summary>
+            <param name="id">The id.</param>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkClientServiceHandler.GetService(System.Int32)">
+            <summary>
+            Gets the service with the specified id.
+            </summary>
+            <param name="id">The id.</param>
+            <returns>The service with the specified id.</returns>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkClientServiceHandler.DeliverPacket(SharpBag.Networking.NetworkPacket)">
+            <summary>
+            Delivers the packet.
+            </summary>
+            <param name="packet">The packet.</param>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkClientServiceHandler.StartAllServices(SharpBag.Networking.NetworkClient)">
+            <summary>
+            Starts all services.
+            </summary>
+            <param name="client">The client.</param>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkClientServiceHandler.StopAllServices(SharpBag.Networking.NetworkClient)">
+            <summary>
+            Stops all services.
+            </summary>
+            <param name="client">The client.</param>
+        </member>
         <member name="T:SharpBag.Media.Drawing.Ascii.DrawAscii">
             <summary>
             A class for drawing shapes in ASCII.
@@ -1367,6 +1415,95 @@
             Whether the first value is less than or equal to the second value.
             </summary>
         </member>
+        <member name="T:SharpBag.Networking.NetworkClient">
+            <summary>
+            A network client.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkClient.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Networking.NetworkClient"/> class.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkClient.Connect(System.Net.EndPoint)">
+            <summary>
+            Connects the client to the specified remote end point.
+            </summary>
+            <param name="remoteEndPoint">The remote end point.</param>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkClient.Connect(System.Net.IPAddress,System.Int32)">
+            <summary>
+            Connects the client to the specified address and port.
+            </summary>
+            <param name="address">The address.</param>
+            <param name="port">The port.</param>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkClient.Connect(System.String,System.Int32)">
+            <summary>
+            Connects the client to the specified host and port.
+            </summary>
+            <param name="host">The host.</param>
+            <param name="port">The port.</param>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkClient.Disconnect">
+            <summary>
+            Disconnects this instance.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkClient.Send(SharpBag.Networking.NetworkPacket)">
+            <summary>
+            Sends the specified packet.
+            </summary>
+            <param name="packet">The packet.</param>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkClient.GetService(System.Int32)">
+            <summary>
+            Gets the service with the specified id.
+            </summary>
+            <param name="id">The id.</param>
+            <returns>The service with the specified id.</returns>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkClient.RegisterService(System.Int32,SharpBag.Networking.INetworkClientService)">
+            <summary>
+            Registers the service.
+            </summary>
+            <param name="id">The id of the service.</param>
+            <param name="service">The service.</param>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkClient.UnregisterService(System.Int32)">
+            <summary>
+            Unregisters the service with the specified id.
+            </summary>
+            <param name="id">The id.</param>
+        </member>
+        <member name="E:SharpBag.Networking.NetworkClient.OnConnect">
+            <summary>
+            Occurs when the client connects.
+            </summary>
+        </member>
+        <member name="E:SharpBag.Networking.NetworkClient.OnDisconnect">
+            <summary>
+            Occurs when the client disconnects.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Networking.NetworkClient.Connection">
+            <summary>
+            Gets the underlying connection.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Networking.NetworkClient.IsConnected">
+            <summary>
+            Gets a value indicating whether this instance is connected.
+            </summary>
+            <value>
+            Whether this instance is connected.
+            </value>
+        </member>
+        <member name="P:SharpBag.Networking.NetworkClient.ID">
+            <summary>
+            Gets the ID of the client.
+            </summary>
+        </member>
         <member name="T:SharpBag.Math.Geometry.GeometryFactory">
             <summary>
             A factory for geometric figures.
@@ -2215,6 +2352,116 @@
             <param name="variable">The current instance.</param>
             <param name="func">The function to execute.</param>
             <returns>The function result.</returns>
+        </member>
+        <member name="T:SharpBag.Networking.Services.ClientNameService">
+            <summary>
+            A client name service.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Networking.INetworkClientService">
+            <summary>
+            A network client service.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.INetworkClientService.Start">
+            <summary>
+            Starts this instance.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.INetworkClientService.Stop">
+            <summary>
+            Stops this instance.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.INetworkClientService.Send(SharpBag.Networking.NetworkPacket)">
+            <summary>
+            Send the specified packet.
+            </summary>
+            <param name="packet">The packet.</param>
+        </member>
+        <member name="M:SharpBag.Networking.INetworkClientService.Send(SharpBag.Networking.NetworkPacket,System.Int32)">
+            <summary>
+            Send the specified packet.
+            </summary>
+            <param name="packet">The packet.</param>
+            <param name="serviceID">The service ID.</param>
+        </member>
+        <member name="M:SharpBag.Networking.INetworkClientService.Receive(SharpBag.Networking.NetworkPacket)">
+            <summary>
+            Receive the specified packet.
+            </summary>
+            <param name="packet">The packet.</param>
+        </member>
+        <member name="P:SharpBag.Networking.INetworkClientService.ID">
+            <summary>
+            The ID of the service.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Networking.INetworkClientService.ClientSetter">
+            <summary>
+            An internal setter for the client.
+            </summary>
+            <value>
+            The client.
+            </value>
+        </member>
+        <member name="P:SharpBag.Networking.INetworkClientService.Client">
+            <summary>
+            Gets the network client.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.Services.ClientNameService.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Networking.Services.ClientNameService"/> class.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.Services.ClientNameService.Receive(SharpBag.Networking.NetworkPacket)">
+            <summary>
+            Receive the specified packet.
+            </summary>
+            <param name="packet">The packet.</param>
+        </member>
+        <member name="M:SharpBag.Networking.Services.ClientNameService.GetEnumerator">
+            <summary>
+            Gets the enumerator.
+            </summary>
+            <returns>The enumerator.</returns>
+        </member>
+        <member name="M:SharpBag.Networking.Services.ClientNameService.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="E:SharpBag.Networking.Services.ClientNameService.OnNameAnnounced">
+            <summary>
+            Occurs when a name is announced.
+            </summary>
+        </member>
+        <member name="E:SharpBag.Networking.Services.ClientNameService.OnNameChanged">
+            <summary>
+            Occurs when a name is changed.
+            </summary>
+        </member>
+        <member name="E:SharpBag.Networking.Services.ClientNameService.OnNameLeft">
+            <summary>
+            Occurs when a name left.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Networking.Services.ClientNameService.Name">
+            <summary>
+            Gets or sets the name of the client.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="P:SharpBag.Networking.Services.ClientNameService.Item(System.Int32)">
+            <summary>
+            Gets the name with the specified id.
+            </summary>
         </member>
         <member name="T:SharpBag.Math.ForComplex.Vector">
             <summary>
@@ -5209,6 +5456,229 @@
             <param name="s">The current instance.</param>
             <returns>The root elements of the decoded string.</returns>
         </member>
+        <member name="T:SharpBag.Networking.Services.ClientMessageService">
+            <summary>
+            A client message service.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.Services.ClientMessageService.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Networking.Services.ClientMessageService"/> class.
+            </summary>
+            <param name="resendToSender">if set to <c>true</c> messages will be resent to the sender.</param>
+        </member>
+        <member name="M:SharpBag.Networking.Services.ClientMessageService.SendMessage(System.String)">
+            <summary>
+            Sends the message.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:SharpBag.Networking.Services.ClientMessageService.SendMessage(System.String,System.Int32)">
+            <summary>
+            Sends the message to the specified target.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="target">The target.</param>
+        </member>
+        <member name="M:SharpBag.Networking.Services.ClientMessageService.SendMessage(System.String,System.Int32[])">
+            <summary>
+            Sends the message to the specified targets.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="targets">The targets.</param>
+        </member>
+        <member name="M:SharpBag.Networking.Services.ClientMessageService.Receive(SharpBag.Networking.NetworkPacket)">
+            <summary>
+            Receive the specified packet.
+            </summary>
+            <param name="packet">The packet.</param>
+        </member>
+        <member name="E:SharpBag.Networking.Services.ClientMessageService.OnMessageReceived">
+            <summary>
+            Occurs when a message is received.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Networking.Services.ClientMessageService.ResendToSender">
+            <summary>
+            Gets or sets a value indicating whether messages should be resent to the sender.
+            </summary>
+            <value>
+            Whether the message should be resent to the sender.
+            </value>
+        </member>
+        <member name="T:SharpBag.Networking.NetworkServerServiceHandler">
+            <summary>
+            A network server service handler.
+            </summary>
+        </member>
+        <member name="F:SharpBag.Networking.NetworkServerServiceHandler.Services">
+            <summary>
+            The services.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkServerServiceHandler.RegisterService(System.Int32,SharpBag.Networking.INetworkServerService)">
+            <summary>
+            Registers the service.
+            </summary>
+            <param name="id">The id of the service.</param>
+            <param name="service">The service.</param>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkServerServiceHandler.UnregisterService(System.Int32)">
+            <summary>
+            Unregisters the service with the specified id.
+            </summary>
+            <param name="id">The id.</param>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkServerServiceHandler.GetService(System.Int32)">
+            <summary>
+            Gets the service with the specified id.
+            </summary>
+            <param name="id">The id.</param>
+            <returns>The service with the specified id.</returns>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkServerServiceHandler.StartAllServices(SharpBag.Networking.NetworkServer)">
+            <summary>
+            Starts all services.
+            </summary>
+            <param name="server">The server.</param>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkServerServiceHandler.StopAllServices(SharpBag.Networking.NetworkServer)">
+            <summary>
+            Stops all services.
+            </summary>
+            <param name="server">The server.</param>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkServerServiceHandler.DeliverPacket(SharpBag.Networking.NetworkPacket)">
+            <summary>
+            Delivers the packet.
+            </summary>
+            <param name="packet">The packet.</param>
+        </member>
+        <member name="T:SharpBag.Networking.NetworkServer">
+            <summary>
+            A network server.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkServer.#ctor(SharpBag.Networking.NetworkServer.ServerSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Networking.NetworkServer"/> class.
+            </summary>
+            <param name="settings">The server settings.</param>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkServer.Open(System.Int32)">
+            <summary>
+            Opens the server at the specified port.
+            </summary>
+            <param name="port">The port.</param>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkServer.Open(System.Net.IPAddress,System.Int32)">
+            <summary>
+            Opens the server at the specified address and port.
+            </summary>
+            <param name="address">The address.</param>
+            <param name="port">The port.</param>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkServer.Open(System.Net.EndPoint)">
+            <summary>
+            Opens the server at the specified local end point.
+            </summary>
+            <param name="localEndPoint">The local end point.</param>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkServer.Close">
+            <summary>
+            Closes this instance.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkServer.Send(SharpBag.Networking.NetworkPacket)">
+            <summary>
+            Sends the specified packet.
+            </summary>
+            <param name="packet">The packet.</param>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkServer.GetService(System.Int32)">
+            <summary>
+            Gets the service with the specified id.
+            </summary>
+            <param name="id">The id.</param>
+            <returns>The service with the specified id.</returns>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkServer.RegisterService(System.Int32,SharpBag.Networking.INetworkServerService)">
+            <summary>
+            Registers the service.
+            </summary>
+            <param name="id">The id of the service.</param>
+            <param name="service">The service.</param>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkServer.UnregisterService(System.Int32)">
+            <summary>
+            Unregisters the service with the specified id.
+            </summary>
+            <param name="id">The id.</param>
+        </member>
+        <member name="E:SharpBag.Networking.NetworkServer.OnClose">
+            <summary>
+            Occurs when the server is closed.
+            </summary>
+        </member>
+        <member name="E:SharpBag.Networking.NetworkServer.OnOpen">
+            <summary>
+            Occurs when the server is opened.
+            </summary>
+        </member>
+        <member name="E:SharpBag.Networking.NetworkServer.OnConnectionConnected">
+            <summary>
+            Occurs when a connection connects to the server.
+            </summary>
+        </member>
+        <member name="E:SharpBag.Networking.NetworkServer.OnConnectionDisconnected">
+            <summary>
+            Occurs when a connection disconnects from the server.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Networking.NetworkServer.Settings">
+            <summary>
+            Gets the server settings.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Networking.NetworkServer.IsOpen">
+            <summary>
+            Gets a value indicating whether this instance is open.
+            </summary>
+            <value>
+            Whether this instance is open.
+            </value>
+        </member>
+        <member name="P:SharpBag.Networking.NetworkServer.LocalEndPoint">
+            <summary>
+            Gets the local end point of the server.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Networking.NetworkServer.ConnectionCount">
+            <summary>
+            Gets the number of connected connections.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Networking.NetworkServer.ServerSettings">
+            <summary>
+            Settings for a network server.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Networking.NetworkServer.ServerSettings.MaxConnectionCount">
+            <summary>
+            Gets or sets the maximum amount of simultaneous connections.
+            </summary>
+            <value>
+            The maximum amount of simultaneous connections.
+            </value>
+        </member>
+        <member name="P:SharpBag.Networking.NetworkServer.ServerSettings.ConnectionBacklog">
+            <summary>
+            Gets or sets the connection backlog.
+            </summary>
+            <value>
+            The connection backlog.
+            </value>
+        </member>
         <member name="T:SharpBag.Math.ForFraction.ForInt64.Matrix">
             <summary>
             A matrix.
@@ -5823,6 +6293,94 @@
             </summary>
             <param name="datetime">The current instance.</param>
             <returns>What week of the year, the current instance is on.</returns>
+        </member>
+        <member name="T:SharpBag.Networking.NetworkPacket">
+            <summary>
+            A network packet.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkPacket.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Networking.NetworkPacket"/> class.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkPacket.Serialize(System.Boolean)">
+            <summary>
+            Serializes the packet.
+            </summary>
+            <param name="prependLength">if set to <c>true</c> the length of the packet will be prepended.</param>
+            <returns>The serialized packet.</returns>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkPacket.Deserialize(System.Byte[])">
+            <summary>
+            Deserializes the serialized packet.
+            </summary>
+            <param name="bytes">The serialized packet.</param>
+            <returns>The packet.</returns>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkPacket.WriteData``1(``0)">
+            <summary>
+            Serializes and writes the data to the datastream.
+            </summary>
+            <typeparam name="T">The type of data.</typeparam>
+            <param name="data">The data.</param>
+        </member>
+        <member name="M:SharpBag.Networking.NetworkPacket.ReadData``1">
+            <summary>
+            Reads and deserializes the data from the datastream.
+            </summary>
+            <typeparam name="T">The type of data to read.</typeparam>
+            <returns>The deserialized data.</returns>
+        </member>
+        <member name="P:SharpBag.Networking.NetworkPacket.Service">
+            <summary>
+            Gets or sets the service this packet belongs to.
+            </summary>
+            <value>
+            The service.
+            </value>
+        </member>
+        <member name="P:SharpBag.Networking.NetworkPacket.Sender">
+            <summary>
+            Gets or sets the sender of this packet.
+            </summary>
+            <value>
+            The sender.
+            </value>
+        </member>
+        <member name="P:SharpBag.Networking.NetworkPacket.Targets">
+            <summary>
+            Gets or sets the targets.
+            </summary>
+            <value>
+            The targets.
+            </value>
+        </member>
+        <member name="P:SharpBag.Networking.NetworkPacket.AllButTargets">
+            <summary>
+            Gets or sets a value indicating whether the packet should be sent to everyone, except the specified targets.
+            </summary>
+            <value>
+            Whether the packet should be sent to everyone, except the specified targets.
+            </value>
+        </member>
+        <member name="P:SharpBag.Networking.NetworkPacket.DataReader">
+            <summary>
+            Gets the data reader.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Networking.NetworkPacket.DataWriter">
+            <summary>
+            Gets the data writer.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Networking.NetworkPacket.Position">
+            <summary>
+            Gets or sets the position of the datastream.
+            </summary>
+            <value>
+            The position of the datastream.
+            </value>
         </member>
         <member name="T:SharpBag.Math.PascalsTriangle">
             <summary>
@@ -8826,6 +9384,80 @@
             <param name="array">The array.</param>
             <returns>The sorted array.</returns>
         </member>
+        <member name="T:SharpBag.Networking.Services.ServerMessageService">
+            <summary>
+            A server message service.
+            </summary>
+        </member>
+        <member name="T:SharpBag.Networking.INetworkServerService">
+            <summary>
+            A network server service.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.INetworkServerService.Start">
+            <summary>
+            Starts this instance.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.INetworkServerService.Stop">
+            <summary>
+            Stops this instance.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.INetworkServerService.Send(SharpBag.Networking.NetworkPacket)">
+            <summary>
+            Send the specified packet.
+            </summary>
+            <param name="packet">The packet.</param>
+        </member>
+        <member name="M:SharpBag.Networking.INetworkServerService.Send(SharpBag.Networking.NetworkPacket,System.Int32)">
+            <summary>
+            Send the specified packet.
+            </summary>
+            <param name="packet">The packet.</param>
+            <param name="serviceID">The service ID.</param>
+        </member>
+        <member name="M:SharpBag.Networking.INetworkServerService.Receive(SharpBag.Networking.NetworkPacket)">
+            <summary>
+            Receive the specified packet.
+            </summary>
+            <param name="packet">The packet.</param>
+        </member>
+        <member name="P:SharpBag.Networking.INetworkServerService.ID">
+            <summary>
+            Gets the ID of the service.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Networking.INetworkServerService.ServerSetter">
+            <summary>
+            An internal setter for the server.
+            </summary>
+            <value>
+            The server.
+            </value>
+        </member>
+        <member name="P:SharpBag.Networking.INetworkServerService.Server">
+            <summary>
+            Gets the network server.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.Services.ServerMessageService.SendMessage(System.String)">
+            <summary>
+            Sends the message.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:SharpBag.Networking.Services.ServerMessageService.Receive(SharpBag.Networking.NetworkPacket)">
+            <summary>
+            Receive the specified packet.
+            </summary>
+            <param name="packet">The packet.</param>
+        </member>
+        <member name="E:SharpBag.Networking.Services.ServerMessageService.OnMessageReceived">
+            <summary>
+            Occurs when a message is received.
+            </summary>
+        </member>
         <member name="T:SharpBag.Misc.ProblemMetadata">
             <summary>
             A problem.
@@ -9465,6 +10097,75 @@
         <member name="P:SharpBag.Combinatorics.Combinations`1.Enumerator.System#Collections#IEnumerator#Current">
             <summary>
             The current combination
+            </summary>
+        </member>
+        <member name="T:SharpBag.Networking.TcpNetworkConnection">
+            <summary>
+            A TCP network connection.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.TcpNetworkConnection.#ctor(System.Net.Sockets.Socket,System.Object@)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Networking.TcpNetworkConnection"/> class.
+            </summary>
+            <param name="socket">The socket.</param>
+            <param name="connectionLock">The connection lock.</param>
+        </member>
+        <member name="M:SharpBag.Networking.TcpNetworkConnection.#ctor(System.Int32,System.Net.Sockets.Socket,System.Object@)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Networking.TcpNetworkConnection"/> class.
+            </summary>
+            <param name="id">The id.</param>
+            <param name="socket">The socket.</param>
+            <param name="connectionLock">The connection lock.</param>
+        </member>
+        <member name="M:SharpBag.Networking.TcpNetworkConnection.Connect">
+            <summary>
+            Connects this instance.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.TcpNetworkConnection.Disconnect">
+            <summary>
+            Disconnects this instance.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.TcpNetworkConnection.Send(SharpBag.Networking.NetworkPacket)">
+            <summary>
+            Sends the specified packet.
+            </summary>
+            <param name="packet">The packet.</param>
+        </member>
+        <member name="E:SharpBag.Networking.TcpNetworkConnection.OnDisconnect">
+            <summary>
+            Occurs when the connection disconnects.
+            </summary>
+        </member>
+        <member name="E:SharpBag.Networking.TcpNetworkConnection.OnPacketReceived">
+            <summary>
+            Occurs when a packet is received.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Networking.TcpNetworkConnection.ID">
+            <summary>
+            Gets the ID of the connection.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Networking.TcpNetworkConnection.IsConnected">
+            <summary>
+            Gets a value indicating whether this instance is connected.
+            </summary>
+            <value>
+            Whether this instance is connected.
+            </value>
+        </member>
+        <member name="P:SharpBag.Networking.TcpNetworkConnection.LocalEndPoint">
+            <summary>
+            Gets the local end point of the connection.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Networking.TcpNetworkConnection.RemoteEndPoint">
+            <summary>
+            Gets the remote end point of the connection.
             </summary>
         </member>
         <member name="T:SharpBag.Math.ForComplex.Matrix">
@@ -11814,6 +12515,69 @@
             <typeparam name="T">The type of the object.</typeparam>
             <param name="obj">The current instance.</param>
             <param name="fileName">The file to serialize to.</param>
+        </member>
+        <member name="T:SharpBag.Networking.Services.ServerNameService">
+            <summary>
+            A server name service.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.Services.ServerNameService.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBag.Networking.Services.ServerNameService"/> class.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.Services.ServerNameService.Start">
+            <summary>
+            Starts this instance.
+            </summary>
+        </member>
+        <member name="M:SharpBag.Networking.Services.ServerNameService.Receive(SharpBag.Networking.NetworkPacket)">
+            <summary>
+            Receive the specified packet.
+            </summary>
+            <param name="packet">The packet.</param>
+        </member>
+        <member name="M:SharpBag.Networking.Services.ServerNameService.GetEnumerator">
+            <summary>
+            Gets the enumerator.
+            </summary>
+            <returns>The enumerator.</returns>
+        </member>
+        <member name="M:SharpBag.Networking.Services.ServerNameService.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="E:SharpBag.Networking.Services.ServerNameService.OnNameAnnounced">
+            <summary>
+            Occurs when a name is announced.
+            </summary>
+        </member>
+        <member name="E:SharpBag.Networking.Services.ServerNameService.OnNameChanged">
+            <summary>
+            Occurs when a name is changed.
+            </summary>
+        </member>
+        <member name="E:SharpBag.Networking.Services.ServerNameService.OnNameLeft">
+            <summary>
+            Occurs when a name left.
+            </summary>
+        </member>
+        <member name="P:SharpBag.Networking.Services.ServerNameService.Name">
+            <summary>
+            Gets or sets the name of the server.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="P:SharpBag.Networking.Services.ServerNameService.Item(System.Int32)">
+            <summary>
+            Gets the name with the specified id.
+            </summary>
         </member>
         <member name="T:SharpBag.Math.ForDouble.Polynomial">
             <summary>

@@ -9,30 +9,65 @@ using System.Text;
 
 namespace SharpBag.Networking
 {
+	/// <summary>
+	/// A TCP network connection.
+	/// </summary>
 	public class TcpNetworkConnection
 	{
+		/// <summary>
+		/// Occurs when the connection disconnects.
+		/// </summary>
 		public event Action<TcpNetworkConnection> OnDisconnect;
 
+		/// <summary>
+		/// Occurs when a packet is received.
+		/// </summary>
 		public event Action<TcpNetworkConnection, NetworkPacket> OnPacketReceived;
 
+		/// <summary>
+		/// Gets the ID of the connection.
+		/// </summary>
 		public int ID { get; internal set; }
 
 		private volatile bool _IsConnected;
 
 		private volatile bool _IsReceiving;
 
+		/// <summary>
+		/// Gets a value indicating whether this instance is connected.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is connected.
+		/// </value>
 		public bool IsConnected { get { return this._IsConnected; } }
 
+		/// <summary>
+		/// Gets the local end point of the connection.
+		/// </summary>
 		public EndPoint LocalEndPoint { get { return this.Socket == null ? null : this.Socket.LocalEndPoint; } }
 
+		/// <summary>
+		/// Gets the remote end point of the connection.
+		/// </summary>
 		public EndPoint RemoteEndPoint { get { return this.Socket == null ? null : this.Socket.RemoteEndPoint; } }
 
 		private Socket Socket;
 
 		private object ConnectionLock;
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="TcpNetworkConnection"/> class.
+		/// </summary>
+		/// <param name="socket">The socket.</param>
+		/// <param name="connectionLock">The connection lock.</param>
 		internal TcpNetworkConnection(Socket socket, ref object connectionLock) : this(0, socket, ref connectionLock) { }
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="TcpNetworkConnection"/> class.
+		/// </summary>
+		/// <param name="id">The id.</param>
+		/// <param name="socket">The socket.</param>
+		/// <param name="connectionLock">The connection lock.</param>
 		internal TcpNetworkConnection(int id, Socket socket, ref object connectionLock)
 		{
 			Contract.Requires(socket.Connected);
@@ -42,6 +77,9 @@ namespace SharpBag.Networking
 			this.ConnectionLock = connectionLock;
 		}
 
+		/// <summary>
+		/// Connects this instance.
+		/// </summary>
 		public void Connect()
 		{
 			lock (this.ConnectionLock)
@@ -51,9 +89,13 @@ namespace SharpBag.Networking
 					this._IsReceiving = true;
 					this.BeginReceive();
 				}
+				else throw new InvalidOperationException("Connection is already connected");
 			}
 		}
 
+		/// <summary>
+		/// Disconnects this instance.
+		/// </summary>
 		public void Disconnect()
 		{
 			lock (this.ConnectionLock)
@@ -70,9 +112,14 @@ namespace SharpBag.Networking
 					this._IsConnected = false;
 					this.OnDisconnect(this);
 				}
+				else throw new InvalidOperationException("Connection is already disconnected");
 			}
 		}
 
+		/// <summary>
+		/// Sends the specified packet.
+		/// </summary>
+		/// <param name="packet">The packet.</param>
 		public void Send(NetworkPacket packet)
 		{
 			lock (this.ConnectionLock)
@@ -91,6 +138,7 @@ namespace SharpBag.Networking
 						this.Error(e.SocketErrorCode);
 					}
 				}
+				else throw new InvalidOperationException("Connection is not connected");
 			}
 		}
 
