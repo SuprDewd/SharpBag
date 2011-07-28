@@ -18,7 +18,7 @@ namespace SharpBag.Networking
 		public static bool IsPortFree(int port)
 		{
 			if (port < 0 || port > 0xFFFF) return false;
-			return !IPGlobalProperties.GetIPGlobalProperties().GetActiveTcpConnections().Where(i => i.LocalEndPoint.Port == port).Any();
+			return !IPGlobalProperties.GetIPGlobalProperties().GetActiveTcpConnections().Any(i => i.LocalEndPoint.Port == port);
 		}
 
 		/// <summary>

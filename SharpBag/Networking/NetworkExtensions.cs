@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -15,9 +16,10 @@ namespace SharpBag.Networking
 		/// </summary>
 		/// <param name="page">The location.</param>
 		/// <param name="encoding">The encoding to use.</param>
-		/// <returns></returns>
-		public static string Download(this Uri page, Encoding encoding = null)
+		/// <returns>The source</returns>
+		public static string DownloadHttp(this Uri page, Encoding encoding = null)
 		{
+			Contract.Requires(page.Scheme == "http" || page.Scheme == "https");
 			WebRequest request = HttpWebRequest.Create(page);
 			StringBuilder results = new StringBuilder();
 
