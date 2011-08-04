@@ -334,6 +334,19 @@
             <param name="value">The value of the decimal.</param>
             <param name="precision">The maximum amount of digits after the decimal point.</param>
         </member>
+        <member name="M:SharpBag.Math.BigDecimal.#ctor(System.Decimal)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="value">The value of the decimal.</param>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.#ctor(System.Decimal,System.Int32)">
+            <summary>
+            The constructor.
+            </summary>
+            <param name="value">The value of the decimal.</param>
+            <param name="precision">The maximum amount of digits after the decimal point.</param>
+        </member>
         <member name="M:SharpBag.Math.BigDecimal.#ctor(SharpBag.Math.BigDecimal)">
             <summary>
             The constructor.
@@ -571,6 +584,67 @@
             </summary>
             <param name="n">A value.</param>
             <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.op_Implicit(System.Decimal)~SharpBag.Math.BigDecimal">
+            <summary>
+            A casting operator.
+            </summary>
+            <param name="n">A value.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.op_Explicit(SharpBag.Math.BigDecimal)~System.Numerics.BigInteger">
+            <summary>
+            Performs an explicit conversion from <see cref="T:SharpBag.Math.BigDecimal"/> to <see cref="T:System.Numerics.BigInteger"/>.
+            </summary>
+            <param name="n">The value.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.op_Explicit(SharpBag.Math.BigDecimal)~System.Int32">
+            <summary>
+            Performs an explicit conversion from <see cref="T:SharpBag.Math.BigDecimal"/> to <see cref="T:System.Int32"/>.
+            </summary>
+            <param name="n">The value.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.op_Explicit(SharpBag.Math.BigDecimal)~System.Int64">
+            <summary>
+            Performs an explicit conversion from <see cref="T:SharpBag.Math.BigDecimal"/> to <see cref="T:System.Int64"/>.
+            </summary>
+            <param name="n">The value.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.op_Explicit(SharpBag.Math.BigDecimal)~System.Decimal">
+            <summary>
+            Performs an explicit conversion from <see cref="T:SharpBag.Math.BigDecimal"/> to <see cref="T:System.Decimal"/>.
+            </summary>
+            <param name="n">The value.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.op_Explicit(SharpBag.Math.BigDecimal)~System.Double">
+            <summary>
+            Performs an explicit conversion from <see cref="T:SharpBag.Math.BigDecimal"/> to <see cref="T:System.Double"/>.
+            </summary>
+            <param name="n">The value.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.op_Explicit(SharpBag.Math.BigDecimal)~System.Single">
+            <summary>
+            Performs an explicit conversion from <see cref="T:SharpBag.Math.BigDecimal"/> to <see cref="T:System.Single"/>.
+            </summary>
+            <param name="n">The value.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
         </member>
         <member name="M:SharpBag.Math.BigDecimal.WithPrecision(System.Int32)">
             <summary>

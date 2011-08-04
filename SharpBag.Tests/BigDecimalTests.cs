@@ -24,56 +24,68 @@ namespace SharpBag.Tests
 			Assert.AreEqual(a, new BigDecimal((int)123));
 			Assert.AreEqual(a, new BigDecimal((long)123));
 			Assert.AreEqual(a, new BigDecimal((BigInteger)123));
+			Assert.AreEqual(a, new BigDecimal((decimal)123));
 			Assert.AreEqual(a, new BigDecimal((double)123));
 			Assert.AreEqual(a, new BigDecimal((float)123));
 
 			Assert.AreEqual(a, new BigDecimal((int)123, 0));
 			Assert.AreEqual(a, new BigDecimal((long)123, 0));
 			Assert.AreEqual(a, new BigDecimal((BigInteger)123, 0));
+			Assert.AreEqual(a, new BigDecimal((decimal)123, 0));
 			Assert.AreEqual(a, new BigDecimal((double)123, 0));
 			Assert.AreEqual(a, new BigDecimal((float)123, 0));
 
 			Assert.AreEqual(a, (BigDecimal)((int)123));
 			Assert.AreEqual(a, (BigDecimal)((long)123));
 			Assert.AreEqual(a, (BigDecimal)((BigInteger)123));
+			Assert.AreEqual(a, (BigDecimal)((decimal)123));
 			Assert.AreEqual(a, (BigDecimal)((double)123));
 			Assert.AreEqual(a, (BigDecimal)((float)123));
 
 			Assert.AreEqual(b, new BigDecimal((float)123.456));
 			Assert.AreEqual(b, new BigDecimal((double)123.456));
+			Assert.AreEqual(b, new BigDecimal((decimal)123.456));
 
 			Assert.AreEqual(b, new BigDecimal((float)123.456, 3));
 			Assert.AreEqual(b, new BigDecimal((double)123.456, 3));
+			Assert.AreEqual(b, new BigDecimal((decimal)123.456, 3));
 
 			Assert.AreEqual(b, (BigDecimal)((float)123.456));
 			Assert.AreEqual(b, (BigDecimal)((double)123.456));
+			Assert.AreEqual(b, (BigDecimal)((decimal)123.456));
 
 			Assert.AreEqual(c, new BigDecimal((int)(-123)));
 			Assert.AreEqual(c, new BigDecimal((long)(-123)));
 			Assert.AreEqual(c, new BigDecimal((BigInteger)(-123)));
+			Assert.AreEqual(c, new BigDecimal((decimal)(-123)));
 			Assert.AreEqual(c, new BigDecimal((double)(-123)));
 			Assert.AreEqual(c, new BigDecimal((float)(-123)));
 
 			Assert.AreEqual(c, new BigDecimal((int)(-123), 0));
 			Assert.AreEqual(c, new BigDecimal((long)(-123), 0));
 			Assert.AreEqual(c, new BigDecimal((BigInteger)(-123), 0));
+			Assert.AreEqual(c, new BigDecimal((decimal)(-123), 0));
 			Assert.AreEqual(c, new BigDecimal((double)(-123), 0));
 			Assert.AreEqual(c, new BigDecimal((float)(-123), 0));
 
 			Assert.AreEqual(c, (BigDecimal)((int)(-123)));
 			Assert.AreEqual(c, (BigDecimal)((long)(-123)));
 			Assert.AreEqual(c, (BigDecimal)((BigInteger)(-123)));
+			Assert.AreEqual(c, (BigDecimal)((decimal)(-123)));
 			Assert.AreEqual(c, (BigDecimal)((double)(-123)));
 			Assert.AreEqual(c, (BigDecimal)((float)(-123)));
 
 			Assert.AreEqual(d, new BigDecimal((float)(-123.456)));
 			Assert.AreEqual(d, new BigDecimal((double)(-123.456)));
+			Assert.AreEqual(d, new BigDecimal((decimal)(-123.456)));
 
 			Assert.AreEqual(d, new BigDecimal((float)(-123.456), 3));
 			Assert.AreEqual(d, new BigDecimal((double)(-123.456), 3));
+			Assert.AreEqual(d, new BigDecimal((decimal)(-123.456), 3));
 
 			Assert.AreEqual(d, (BigDecimal)((float)(-123.456)));
 			Assert.AreEqual(d, (BigDecimal)((double)(-123.456)));
+			Assert.AreEqual(d, (BigDecimal)((decimal)(-123.456)));
 		}
 
 		[TestMethod]

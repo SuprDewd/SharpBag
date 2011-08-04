@@ -5,9 +5,10 @@ using System.Text;
 
 namespace SharpBag.Math
 {
-	// #if DOTNET4
+	//#if DOTNET4
 
 	using System.Diagnostics.Contracts;
+	using System.Globalization;
 	using System.Numerics;
 
 	/// <summary>
@@ -189,6 +190,36 @@ namespace SharpBag.Math
 		/// The constructor.
 		/// </summary>
 		/// <param name="value">The value of the decimal.</param>
+		public BigDecimal(decimal value) : this(value, DefaultPrecision, false, true) { }
+
+		/// <summary>
+		/// The constructor.
+		/// </summary>
+		/// <param name="value">The value of the decimal.</param>
+		/// <param name="precision">The maximum amount of digits after the decimal point.</param>
+		public BigDecimal(decimal value, int precision) : this(value, precision, false, false) { }
+
+		private BigDecimal(decimal value, int precision, bool normalized, bool defaultPrecision)
+		{
+			Contract.Requires(precision >= 0);
+			string[] srep = value.ToString().Split('E');
+			BigDecimal parsed = BigDecimal.Parse(srep[0]);
+
+			_ToStringCache = null;
+			_Mantissa = parsed.Mantissa;
+			_Exponent = srep.Length == 2 ? (parsed.Exponent + Convert.ToInt32(srep[1])) : parsed.Exponent;
+			_Precision = precision;
+			_Normalized = normalized;
+			_UsingDefaultPrecision = defaultPrecision;
+
+			this.FixPrecision();
+			this.Normalize();
+		}
+
+		/// <summary>
+		/// The constructor.
+		/// </summary>
+		/// <param name="value">The value of the decimal.</param>
 		public BigDecimal(BigDecimal value) : this(value.Mantissa, value.Exponent, value.Precision, value.Normalized, value.UsingDefaultPrecision) { }
 
 		/// <summary>
@@ -219,27 +250,13 @@ namespace SharpBag.Math
 		/// <returns>The BigDecimal represented by the string.</returns>
 		public static BigDecimal Parse(string value)
 		{
-			/*BigDecimal parsed = BigDecimal.Parse(value, Int32.MaxValue);
-			int precision = parsed.Precision;
-			precision = -parsed.Exponent;
-			bool defaultPrecision = true;
-			if (precision < DefaultPrecision) precision = DefaultPrecision;
-			if (precision != parsed.Precision)
-			{
-				parsed.Precision = precision;
-				defaultPrecision = false;
-			}
-
-			parsed.UsingDefaultPrecision = defaultPrecision;
-			return parsed;*/
-
 			value = value.Trim();
 			int exp = 0;
 			BigInteger mantissa = 0;
 			bool foundComma = false;
 			int i = 0;
 			bool neg = false;
-			if (value[0] == '-')
+			if (value[0] == CultureInfo.CurrentCulture.NumberFormat.NegativeSign[0])
 			{
 				neg = true;
 				i++;
@@ -286,7 +303,7 @@ namespace SharpBag.Math
 			bool foundComma = false;
 			int i = 0;
 			bool neg = false;
-			if (value[0] == '-')
+			if (value[0] == CultureInfo.CurrentCulture.NumberFormat.NegativeSign[0])
 			{
 				neg = true;
 				i++;
@@ -584,6 +601,7 @@ namespace SharpBag.Math
 		{
 			Contract.Requires(digits >= 0);
 			if (digits >= value.Precision + BigDecimal.ExtraPrecision) return value;
+			int prec = value.Precision;
 			value = new BigDecimal(value.Mantissa, value.Exponent, digits + 1, false, false).WithoutExtraPrecision();
 
 			if (-value.Exponent >= value.Precision)
@@ -593,7 +611,7 @@ namespace SharpBag.Math
 				else if (last >= 1) value.Mantissa -= last;
 			}
 
-			return new BigDecimal(value.Mantissa, value.Exponent, value.Precision, false, value._UsingDefaultPrecision);
+			return new BigDecimal(value.Mantissa, value.Exponent, prec, false, value._UsingDefaultPrecision);
 		}
 
 		#endregion Operators
@@ -735,6 +753,113 @@ namespace SharpBag.Math
 		/// <returns>The result.</returns>
 		public static implicit operator BigDecimal(double n) { return new BigDecimal(n); }
 
+		/// <summary>
+		/// A casting operator.
+		/// </summary>
+		/// <param name="n">A value.</param>
+		/// <returns>The result.</returns>
+		public static implicit operator BigDecimal(decimal n) { return new BigDecimal(n); }
+
+		/// <summary>
+		/// Performs an explicit conversion from <see cref="SharpBag.Math.BigDecimal"/> to <see cref="System.Numerics.BigInteger"/>.
+		/// </summary>
+		/// <param name="n">The value.</param>
+		/// <returns>
+		/// The result of the conversion.
+		/// </returns>
+		public static explicit operator BigInteger(BigDecimal n)
+		{
+			n = BigDecimal.Round(n, 0);
+			return n.Mantissa * BigInteger.Pow(BigDecimal.Radix, n.Exponent);
+		}
+
+		/// <summary>
+		/// Performs an explicit conversion from <see cref="SharpBag.Math.BigDecimal"/> to <see cref="System.Int32"/>.
+		/// </summary>
+		/// <param name="n">The value.</param>
+		/// <returns>
+		/// The result of the conversion.
+		/// </returns>
+		public static explicit operator int(BigDecimal n) { return (int)(BigInteger)n; }
+
+		/// <summary>
+		/// Performs an explicit conversion from <see cref="SharpBag.Math.BigDecimal"/> to <see cref="System.Int64"/>.
+		/// </summary>
+		/// <param name="n">The value.</param>
+		/// <returns>
+		/// The result of the conversion.
+		/// </returns>
+		public static explicit operator long(BigDecimal n) { return (long)(BigInteger)n; }
+
+		/// <summary>
+		/// Performs an explicit conversion from <see cref="SharpBag.Math.BigDecimal"/> to <see cref="System.Decimal"/>.
+		/// </summary>
+		/// <param name="n">The value.</param>
+		/// <returns>
+		/// The result of the conversion.
+		/// </returns>
+		public static explicit operator decimal(BigDecimal n)
+		{
+			string s = n.ToString();
+			decimal res = 0, mod = 1;
+			bool found = false;
+
+			for (int i = 0; i < s.Length; i++)
+			{
+				if (found) res += (s[i] - '0') * (mod /= 10);
+				else if (s[i] == ',' || s[i] == '.') found = true;
+				else res = res * 10 + (s[i] - '0');
+			}
+
+			return res;
+		}
+
+		/// <summary>
+		/// Performs an explicit conversion from <see cref="SharpBag.Math.BigDecimal"/> to <see cref="System.Double"/>.
+		/// </summary>
+		/// <param name="n">The value.</param>
+		/// <returns>
+		/// The result of the conversion.
+		/// </returns>
+		public static explicit operator double(BigDecimal n)
+		{
+			string s = n.ToString();
+			double res = 0, mod = 1;
+			bool found = false;
+
+			for (int i = 0; i < s.Length; i++)
+			{
+				if (found) res += (s[i] - '0') * (mod /= 10);
+				else if (s[i] == ',' || s[i] == '.') found = true;
+				else res = res * 10 + (s[i] - '0');
+			}
+
+			return res;
+		}
+
+		/// <summary>
+		/// Performs an explicit conversion from <see cref="SharpBag.Math.BigDecimal"/> to <see cref="System.Single"/>.
+		/// </summary>
+		/// <param name="n">The value.</param>
+		/// <returns>
+		/// The result of the conversion.
+		/// </returns>
+		public static explicit operator float(BigDecimal n)
+		{
+			string s = n.ToString();
+			float res = 0, mod = 1;
+			bool found = false;
+
+			for (int i = 0; i < s.Length; i++)
+			{
+				if (found) res += (s[i] - '0') * (mod /= 10);
+				else if (s[i] == ',' || s[i] == '.') found = true;
+				else res = res * 10 + (s[i] - '0');
+			}
+
+			return res;
+		}
+
 		#endregion Casting
 
 		#region Other
@@ -796,6 +921,10 @@ namespace SharpBag.Math
 						this.Exponent++;
 						this.Mantissa /= Radix;
 					}
+				}
+				else
+				{
+					this.Exponent = 0;
 				}
 
 				this.Normalized = true;
@@ -877,7 +1006,7 @@ namespace SharpBag.Math
 				comma = true;
 			}
 
-			if (!positive) sb.Insert(0, '-');
+			if (!positive) sb.Insert(0, CultureInfo.CurrentCulture.NumberFormat.NegativeSign);
 			string res = sb.ToString();
 			if (comma) res = res.TrimEnd('0');
 			if (res[res.Length - 1] == '.') res = res.Substring(0, res.Length - 1);
@@ -887,5 +1016,5 @@ namespace SharpBag.Math
 		#endregion Other
 	}
 
-	// #endif
+	//#endif
 }
