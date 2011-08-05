@@ -155,12 +155,19 @@ namespace SharpBag.Math
 		private static BigDecimal _TwoPiBig = BigDecimal.Parse("6.28318530717958647692528676655900576839433879875021");
 		private static BigDecimal _PiDivTwoBig = BigDecimal.Parse("1.57079632679489661923132169163975144209858469968755");
 		private static double _TwoPi = 6.283185307179586476925286766559005768394d;
+		private static double _PiDivTwo = 1.57079632679489661923132169163975144209858469968755;
 
 		/// <summary>
 		/// Two Pi.
 		/// </summary>
 		/// <remarks>2 * Pi</remarks>
 		public static double TwoPi { get { return _TwoPi; } }
+
+		/// <summary>
+		/// Pi divided by two.
+		/// </summary>
+		/// <remarks>Pi / 2</remarks>
+		public static double PiDivTwo { get { return _PiDivTwo; } }
 
 		/// <summary>
 		/// The mathematical constant Pi.

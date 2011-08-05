@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SharpBag.Math
 {
-	//#if DOTNET4
+#if DOTNET4
 
 	using System.Diagnostics.Contracts;
 	using System.Globalization;
@@ -1016,5 +1016,5 @@ namespace SharpBag.Math
 		#endregion Other
 	}
 
-	//#endif
+#endif
 }

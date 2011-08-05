@@ -4813,6 +4813,12 @@
             </summary>
             <remarks>2 * Pi</remarks>
         </member>
+        <member name="P:SharpBag.Math.Constants.PiDivTwo">
+            <summary>
+            Pi divided by 2.
+            </summary>
+            <remarks>Pi / 2</remarks>
+        </member>
         <member name="T:SharpBag.Comparers.AlphaNumberSettings">
             <summary>
             Settings for the AlphaNumberComparer.
