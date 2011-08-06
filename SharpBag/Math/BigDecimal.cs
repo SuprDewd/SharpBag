@@ -370,9 +370,19 @@ namespace SharpBag.Math
 		/// <returns>-Left</returns>
 		public static BigDecimal operator -(BigDecimal value) { return value.Negate(); }
 
+		/// <summary>
+		/// Implements the operator %.
+		/// </summary>
+		/// <param name="left">The left number.</param>
+		/// <param name="right">The right number.</param>
+		/// <returns>
+		/// The result of the operator.
+		/// </returns>
+		public static BigDecimal operator %(BigDecimal left, BigDecimal right) { return BigDecimal.Remainder(left, right); }
+
 		private BigDecimal Add(BigDecimal right, bool normalize)
 		{
-			BigDecimal.Normalize(ref this, ref right);
+			BigDecimal.Align(ref this, ref right);
 			BigDecimal result = new BigDecimal(this.Mantissa + right.Mantissa, this.Exponent, BigDecimal.PrecisionFor(ref this, ref right), false, this.UsingDefaultPrecision != right.UsingDefaultPrecision || this.UsingDefaultPrecision);
 
 			if (normalize)
@@ -391,7 +401,7 @@ namespace SharpBag.Math
 
 		private BigDecimal Subtract(BigDecimal right, bool normalize)
 		{
-			BigDecimal.Normalize(ref this, ref right);
+			BigDecimal.Align(ref this, ref right);
 			BigDecimal result = new BigDecimal(this.Mantissa - right.Mantissa, this.Exponent, BigDecimal.PrecisionFor(ref this, ref right), false, this.UsingDefaultPrecision != right.UsingDefaultPrecision || this.UsingDefaultPrecision);
 
 			if (normalize)
@@ -448,6 +458,52 @@ namespace SharpBag.Math
 		}
 
 		/// <summary>
+		/// Computes the absolute value of the value.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <returns>The absolute value.</returns>
+		public static BigDecimal Abs(BigDecimal value)
+		{
+			return new BigDecimal(BigInteger.Abs(value.Mantissa), value.Exponent, value.Precision, value.Normalized, value.UsingDefaultPrecision);
+		}
+
+		/// <summary>
+		/// Computes the left number divided by the right number and the remainder of that divison.
+		/// </summary>
+		/// <param name="left">The left number.</param>
+		/// <param name="right">The right number.</param>
+		/// <param name="remainder">The remainder.</param>
+		/// <returns>The result of the division.</returns>
+		public static BigDecimal DivRem(BigDecimal left, BigDecimal right, out BigDecimal remainder)
+		{
+			BigDecimal.Align(ref left, ref right);
+			int precision = BigDecimal.PrecisionFor(ref left, ref right);
+
+			bool leftPos = left.Mantissa >= 0,
+				 rightPos = right.Mantissa >= 0,
+				 pos = !(leftPos ^ rightPos);
+
+			BigInteger curRemainder,
+					   mantissa = BigInteger.DivRem(leftPos ? left.Mantissa : -left.Mantissa, rightPos ? right.Mantissa : -right.Mantissa, out curRemainder);
+
+			remainder = new BigDecimal(leftPos ? curRemainder : -curRemainder, left.Exponent, precision, false, false);
+			return new BigDecimal(pos ? mantissa : -mantissa, 0, precision, false, false);
+		}
+
+		/// <summary>
+		/// Computes the remainder of the division of the two numbers.
+		/// </summary>
+		/// <param name="left">The left number.</param>
+		/// <param name="right">The right number.</param>
+		/// <returns>The remainder.</returns>
+		public static BigDecimal Remainder(BigDecimal left, BigDecimal right)
+		{
+			BigDecimal rem;
+			BigDecimal.DivRem(left, right, out rem);
+			return rem;
+		}
+
+		/// <summary>
 		/// Raise the BigDecimal to the specified power.
 		/// </summary>
 		/// <param name="value">The BigDecimal.</param>
@@ -484,7 +540,7 @@ namespace SharpBag.Math
 			if (power < 0) return BigDecimal.Reciprocal(BigDecimal.Pow(value, -power));
 			if (power == 0) return new BigDecimal(1, 0, value.Precision, true, value.UsingDefaultPrecision);
 			if (power == 1) return new BigDecimal(value);
-			return BigDecimal.Exp(BigDecimal.Ln(value) * power);
+			return BigDecimal.Exp(BigDecimal.Log(value) * power);
 		}
 
 		/// <summary>
@@ -503,14 +559,13 @@ namespace SharpBag.Math
 
 			while (digits < precision)
 			{
-				// m = BigDecimal.Pow(new BigDecimal(m, value.Precision).Divide(BigInteger.Pow(10, a)), 10);
 				m = BigDecimal.Pow(m / BigInteger.Pow(10, a), 10);
 				a = (int)BigInteger.Log10(m.Mantissa) + m.Exponent;
 				mantissa = mantissa * 10 + a;
 				digits++;
 			}
 
-			return new BigDecimal(mantissa, -digits, value.Precision, false, value.UsingDefaultPrecision) /*.RoundLastDigit()*/;
+			return new BigDecimal(mantissa, -digits, value.Precision, false, value.UsingDefaultPrecision);
 		}
 
 		/// <summary>
@@ -518,7 +573,7 @@ namespace SharpBag.Math
 		/// </summary>
 		/// <param name="value">The value.</param>
 		/// <returns>The natural logarithm.</returns>
-		public static BigDecimal Ln(BigDecimal value)
+		public static BigDecimal Log(BigDecimal value)
 		{
 			return BigDecimal.Log10(value) / Constants.Log10EBig(value.Precision);
 		}
@@ -589,6 +644,89 @@ namespace SharpBag.Math
 			result = result.WithPrecision(value.Precision);
 			result._UsingDefaultPrecision = value._UsingDefaultPrecision;
 			return BigDecimal.Round(result, value.Precision + 1);
+		}
+
+		/// <summary>
+		/// Computes the sine of the specified value.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <returns>The sine of the specified value.</returns>
+		public static BigDecimal Sin(BigDecimal value)
+		{
+			BigDecimal result = value,
+					   result2 = result * result,
+					   lastResult,
+					   it = BigDecimal.One.WithPrecision(value.Precision),
+					   fact = BigDecimal.One.WithPrecision(value.Precision),
+					   pow = value;
+
+			bool alt = false;
+
+			do
+			{
+				lastResult = result;
+				pow *= result2;
+				fact *= (it + 1) * (it + 2);
+
+				if (alt) result += pow / fact;
+				else result -= pow / fact;
+				alt = !alt;
+				it += 2;
+			}
+			while (result != lastResult);
+
+			if (BigDecimal.Abs(result) > 1) throw new ArgumentOutOfRangeException("value must be between -2pi and 2pi");
+			return result;
+		}
+
+		/// <summary>
+		/// Computes the cosine of the specified value.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <returns>The cosine of the specified value.</returns>
+		public static BigDecimal Cos(BigDecimal value)
+		{
+			BigDecimal result = BigDecimal.One.WithPrecision(value.Precision),
+					   result2 = value * value,
+					   lastResult,
+					   it = BigDecimal.Zero.WithPrecision(value.Precision),
+					   fact = BigDecimal.One.WithPrecision(value.Precision),
+					   pow = result;
+
+			bool alt = false;
+
+			do
+			{
+				lastResult = result;
+				pow *= result2;
+				fact *= (it + 1) * (it + 2);
+
+				if (alt) result += pow / fact;
+				else result -= pow / fact;
+				alt = !alt;
+				it += 2;
+			}
+			while (result != lastResult);
+
+			if (BigDecimal.Abs(result) > 1) throw new ArgumentOutOfRangeException("value must be between -2pi and 2pi");
+			return result;
+		}
+
+		/// <summary>
+		/// Computes the tangent of the specified value.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <returns>The tangent of the specified value.</returns>
+		public static BigDecimal Tan(BigDecimal value)
+		{
+			try
+			{
+				return BigDecimal.Sin(value) / BigDecimal.Cos(value);
+			}
+			catch (ArgumentOutOfRangeException)
+			{
+				throw;
+			}
 		}
 
 		/// <summary>
@@ -668,7 +806,7 @@ namespace SharpBag.Math
 
 		private bool Equals(BigDecimal other, bool normalize)
 		{
-			BigDecimal.Normalize(ref this, ref other);
+			BigDecimal.Align(ref this, ref other);
 			bool eq = this.WithoutExtraPrecision().Mantissa.Equals(other.WithoutExtraPrecision().Mantissa);
 
 			if (normalize)
@@ -710,7 +848,7 @@ namespace SharpBag.Math
 			BigDecimal left = this.WithoutExtraPrecision(),
 					   right = other.WithoutExtraPrecision();
 
-			BigDecimal.Normalize(ref left, ref right);
+			BigDecimal.Align(ref left, ref right);
 			return left.Mantissa.CompareTo(right.Mantissa);
 		}
 
@@ -931,7 +1069,7 @@ namespace SharpBag.Math
 			}
 		}
 
-		private void NormalizeTo(BigDecimal other)
+		private void AlignWith(BigDecimal other)
 		{
 			if (this.Exponent > other.Exponent)
 			{
@@ -940,10 +1078,10 @@ namespace SharpBag.Math
 			}
 		}
 
-		private static void Normalize(ref BigDecimal a, ref BigDecimal b)
+		private static void Align(ref BigDecimal a, ref BigDecimal b)
 		{
-			if (a.Exponent > b.Exponent) a.NormalizeTo(b);
-			else b.NormalizeTo(a);
+			if (a.Exponent > b.Exponent) a.AlignWith(b);
+			else b.AlignWith(a);
 		}
 
 		private static int PrecisionFor(ref BigDecimal a, ref BigDecimal b)

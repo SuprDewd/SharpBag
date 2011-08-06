@@ -414,6 +414,40 @@
             <param name="value">The value.</param>
             <returns>-Left</returns>
         </member>
+        <member name="M:SharpBag.Math.BigDecimal.op_Modulus(SharpBag.Math.BigDecimal,SharpBag.Math.BigDecimal)">
+            <summary>
+            Implements the operator %.
+            </summary>
+            <param name="left">The left number.</param>
+            <param name="right">The right number.</param>
+            <returns>
+            The result of the operator.
+            </returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.Abs(SharpBag.Math.BigDecimal)">
+            <summary>
+            Computes the absolute value of the value.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>The absolute value.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.DivRem(SharpBag.Math.BigDecimal,SharpBag.Math.BigDecimal,SharpBag.Math.BigDecimal@)">
+            <summary>
+            Computes the left number divided by the right number and the remainder of that divison.
+            </summary>
+            <param name="left">The left number.</param>
+            <param name="right">The right number.</param>
+            <param name="remainder">The remainder.</param>
+            <returns>The result of the division.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.Remainder(SharpBag.Math.BigDecimal,SharpBag.Math.BigDecimal)">
+            <summary>
+            Computes the remainder of the division of the two numbers.
+            </summary>
+            <param name="left">The left number.</param>
+            <param name="right">The right number.</param>
+            <returns>The remainder.</returns>
+        </member>
         <member name="M:SharpBag.Math.BigDecimal.Pow(SharpBag.Math.BigDecimal,System.Int32)">
             <summary>
             Raise the BigDecimal to the specified power.
@@ -437,7 +471,7 @@
             <param name="value">The BigDecimal.</param>
             <returns>The base-10 logarithm of the BigDecimal.</returns>
         </member>
-        <member name="M:SharpBag.Math.BigDecimal.Ln(SharpBag.Math.BigDecimal)">
+        <member name="M:SharpBag.Math.BigDecimal.Log(SharpBag.Math.BigDecimal)">
             <summary>
             Calculates the natural logarithm of the value.
             </summary>
@@ -472,6 +506,27 @@
             </summary>
             <param name="value">The BigDecimal.</param>
             <returns>e ^ x</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.Sin(SharpBag.Math.BigDecimal)">
+            <summary>
+            Computes the sine of the specified value.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>The sine of the specified value.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.Cos(SharpBag.Math.BigDecimal)">
+            <summary>
+            Computes the cosine of the specified value.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>The cosine of the specified value.</returns>
+        </member>
+        <member name="M:SharpBag.Math.BigDecimal.Tan(SharpBag.Math.BigDecimal)">
+            <summary>
+            Computes the tangent of the specified value.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>The tangent of the specified value.</returns>
         </member>
         <member name="M:SharpBag.Math.BigDecimal.Round(SharpBag.Math.BigDecimal,System.Int32)">
             <summary>
@@ -4815,7 +4870,7 @@
         </member>
         <member name="P:SharpBag.Math.Constants.PiDivTwo">
             <summary>
-            Pi divided by 2.
+            Pi divided by two.
             </summary>
             <remarks>Pi / 2</remarks>
         </member>
