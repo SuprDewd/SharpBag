@@ -141,9 +141,12 @@
     <Compile Include="Misc\ProblemAttribute.cs" />
     <Compile Include="Misc\ProblemController.cs" />
     <Compile Include="Misc\ProblemMetadata.cs" />
-    <Compile Include="Networking\INetworkClientService.cs" />
+    <Compile Include="Networking\Serialization\DefaultNetworkSerializer.cs" />
+    <Compile Include="Networking\Serialization\EncryptedNetworkSerializer.cs" />
+    <Compile Include="Networking\Services\INetworkClientService.cs" />
+    <Compile Include="Networking\Serialization\INetworkSerializer.cs" />
     <Compile Include="Networking\NetworkClientServiceHandler.cs" />
-    <Compile Include="Networking\INetworkServerService.cs" />
+    <Compile Include="Networking\Services\INetworkServerService.cs" />
     <Compile Include="Networking\NetworkClient.cs" />
     <Compile Include="Networking\NetworkServer.cs" />
     <Compile Include="Networking\NetworkServerServiceHandler.cs" />

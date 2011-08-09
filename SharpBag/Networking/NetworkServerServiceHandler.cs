@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
+using SharpBag.Networking.Services;
 
 namespace SharpBag.Networking
 {

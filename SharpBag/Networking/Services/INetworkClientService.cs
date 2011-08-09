@@ -3,43 +3,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SharpBag.Networking
+namespace SharpBag.Networking.Services
 {
 	/// <summary>
-	/// A network server service.
+	/// A network client service.
 	/// </summary>
-	public abstract class INetworkServerService
+	public abstract class INetworkClientService
 	{
 		/// <summary>
-		/// Gets the ID of the service.
+		/// The ID of the service.
 		/// </summary>
 		public int ID { get; internal set; }
 
 		/// <summary>
-		/// An internal setter for the server.
+		/// An internal setter for the client.
 		/// </summary>
 		/// <value>
-		/// The server.
+		/// The client.
 		/// </value>
-		internal NetworkServer ServerSetter
+		internal NetworkClient ClientSetter
 		{
 			set
 			{
-				this._Server = value;
-				if (this._Server != null)
+				this._Client = value;
+				if (this._Client != null)
 				{
-					this._Server.OnOpen += o => this.ServerOpened();
-					if (this._Server.IsOpen) this.ServerOpened();
+					this._Client.OnConnect += c => this.ClientConnected();
+					if (this._Client.IsConnected) this.ClientConnected();
 				}
 			}
 		}
 
 		/// <summary>
-		/// Gets the network server.
+		/// Gets the network client.
 		/// </summary>
-		protected NetworkServer Server { get { return this._Server; } }
+		protected NetworkClient Client { get { return this._Client; } }
 
-		private NetworkServer _Server;
+		private NetworkClient _Client;
 		private Queue<Tuple<NetworkPacket, int>> OutgoingPackets = new Queue<Tuple<NetworkPacket, int>>();
 
 		/// <summary>
@@ -52,13 +52,13 @@ namespace SharpBag.Networking
 		/// </summary>
 		public virtual void Stop() { }
 
-		private void ServerOpened()
+		private void ClientConnected()
 		{
 			int count = this.OutgoingPackets.Count;
-			for (int i = 0; i < count && this._Server.IsOpen; i++)
+			for (int i = 0; i < count && this.Client.IsConnected; i++)
 			{
 				var next = this.OutgoingPackets.Dequeue();
-				this.Send(next.Item1, next.Item2);
+				this.Send(next.Item1, next.Item2 == Int32.MinValue ? this.ID : next.Item2);
 			}
 		}
 
@@ -75,10 +75,10 @@ namespace SharpBag.Networking
 		/// <param name="serviceID">The service ID.</param>
 		protected void Send(NetworkPacket packet, int serviceID)
 		{
-			if (this.Server != null && this.Server.IsOpen)
+			if (this.Client != null && this.Client.IsConnected)
 			{
 				packet.Service = serviceID == Int32.MinValue ? this.ID : serviceID;
-				this.Server.Send(packet);
+				this.Client.Send(packet);
 			}
 			else
 			{

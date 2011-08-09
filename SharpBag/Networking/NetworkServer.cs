@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using SharpBag.Networking.Serialization;
+using SharpBag.Networking.Services;
 
 namespace SharpBag.Networking
 {
@@ -19,6 +21,7 @@ namespace SharpBag.Networking
 		{
 			private int _MaxConnectionCount = 16;
 			private int _ConnectionBacklog = 10;
+			private INetworkSerializer _Serializer = new DefaultNetworkSerializer();
 
 			/// <summary>
 			/// Gets or sets the maximum amount of simultaneous connections.
@@ -35,6 +38,14 @@ namespace SharpBag.Networking
 			/// The connection backlog.
 			/// </value>
 			public int ConnectionBacklog { get { return this._ConnectionBacklog; } set { this._ConnectionBacklog = value; } }
+
+			/// <summary>
+			/// Gets or sets the serializer.
+			/// </summary>
+			/// <value>
+			/// The serializer.
+			/// </value>
+			public INetworkSerializer Serializer { get { return this._Serializer; } set { this._Serializer = value; } }
 		}
 
 		/// <summary>
@@ -98,7 +109,7 @@ namespace SharpBag.Networking
 		/// <param name="settings">The server settings.</param>
 		public NetworkServer(ServerSettings settings = null)
 		{
-			this.Settings = settings == null ? new ServerSettings() : settings;
+			this.Settings = settings ?? new ServerSettings();
 		}
 
 		/// <summary>
@@ -211,7 +222,7 @@ namespace SharpBag.Networking
 						{
 							if (packet.Targets == null || !packet.Targets.Contains(connections[i].Key))
 							{
-								connections[i].Value.Send(packet);
+								connections[i].Value.Send(this.Settings.Serializer.Serialize(packet));
 							}
 						}
 					}
@@ -224,7 +235,7 @@ namespace SharpBag.Networking
 								TcpNetworkConnection conn;
 								if (this.Connections.TryGetValue(id, out conn))
 								{
-									conn.Send(packet);
+									conn.Send(this.Settings.Serializer.Serialize(packet));
 								}
 							}
 						}
@@ -273,7 +284,7 @@ namespace SharpBag.Networking
 							{
 								TcpNetworkConnection connection = new TcpNetworkConnection(id, socket, ref this.ConnectionLock);
 								connection.OnDisconnect += new Action<TcpNetworkConnection>(ConnectionDisconnected);
-								connection.OnPacketReceived += new Action<TcpNetworkConnection, NetworkPacket>(PacketReceived);
+								connection.OnPacketReceived += new Action<TcpNetworkConnection, byte[]>(PacketReceived);
 								connection.Connect();
 								this.Connections.Add(id, connection);
 								this._ConnectionCount++;
@@ -300,11 +311,11 @@ namespace SharpBag.Networking
 			}
 		}
 
-		private void PacketReceived(TcpNetworkConnection connection, NetworkPacket packet)
+		private void PacketReceived(TcpNetworkConnection connection, byte[] packet)
 		{
 			lock (this.ConnectionLock)
 			{
-				this.DeliverPacket(packet);
+				this.DeliverPacket(this.Settings.Serializer.Deserialize(packet));
 			}
 		}
 

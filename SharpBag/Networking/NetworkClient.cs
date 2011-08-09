@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using SharpBag.Networking.Serialization;
+using SharpBag.Networking.Services;
 
 namespace SharpBag.Networking
 {
@@ -12,6 +14,22 @@ namespace SharpBag.Networking
 	/// </summary>
 	public class NetworkClient : NetworkClientServiceHandler
 	{
+		/// <summary>
+		/// Settings for a network client.
+		/// </summary>
+		public class ClientSettings
+		{
+			private INetworkSerializer _Serializer = new DefaultNetworkSerializer();
+
+			/// <summary>
+			/// Gets or sets the serializer.
+			/// </summary>
+			/// <value>
+			/// The serializer.
+			/// </value>
+			public INetworkSerializer Serializer { get { return _Serializer; } set { _Serializer = value; } }
+		}
+
 		/// <summary>
 		/// Occurs when the client connects.
 		/// </summary>
@@ -45,9 +63,20 @@ namespace SharpBag.Networking
 		public int ID { get { return this.Connection.ID; } }
 
 		/// <summary>
+		/// Gets or sets the client settings.
+		/// </summary>
+		/// <value>
+		/// The client settings.
+		/// </value>
+		public ClientSettings Settings { get; set; }
+
+		/// <summary>
 		/// Initializes a new instance of the <see cref="NetworkClient"/> class.
 		/// </summary>
-		public NetworkClient() { }
+		public NetworkClient(ClientSettings settings = null)
+		{
+			this.Settings = settings ?? new ClientSettings();
+		}
 
 		/// <summary>
 		/// Connects the client to the specified remote end point.
@@ -119,7 +148,7 @@ namespace SharpBag.Networking
 				{
 					this.Connection = new TcpNetworkConnection(id, socket, ref this.ConnectionLock);
 					this.Connection.OnDisconnect += new Action<TcpNetworkConnection>(ConnectionDisconnected);
-					this.Connection.OnPacketReceived += new Action<TcpNetworkConnection, NetworkPacket>(PacketReceived);
+					this.Connection.OnPacketReceived += new Action<TcpNetworkConnection, byte[]>(PacketReceived);
 					this.Connection.Connect();
 					this._IsConnected = true;
 					if (this.OnConnect != null) this.OnConnect(this);
@@ -132,13 +161,13 @@ namespace SharpBag.Networking
 			}
 		}
 
-		private void PacketReceived(TcpNetworkConnection conn, NetworkPacket packet)
+		private void PacketReceived(TcpNetworkConnection conn, byte[] packet)
 		{
 			lock (this.ConnectionLock)
 			{
 				if (this._IsConnected)
 				{
-					this.DeliverPacket(packet);
+					this.DeliverPacket(this.Settings.Serializer.Deserialize(packet));
 				}
 			}
 		}
@@ -189,7 +218,7 @@ namespace SharpBag.Networking
 				if (this._IsConnected)
 				{
 					packet.Sender = this.Connection.ID;
-					this.Connection.Send(packet);
+					this.Connection.Send(this.Settings.Serializer.Serialize(packet));
 				}
 				else throw new InvalidOperationException("Client must be connected");
 			}

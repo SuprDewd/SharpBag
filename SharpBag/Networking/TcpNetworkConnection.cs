@@ -22,7 +22,7 @@ namespace SharpBag.Networking
 		/// <summary>
 		/// Occurs when a packet is received.
 		/// </summary>
-		public event Action<TcpNetworkConnection, NetworkPacket> OnPacketReceived;
+		public event Action<TcpNetworkConnection, byte[]> OnPacketReceived;
 
 		/// <summary>
 		/// Gets the ID of the connection.
@@ -120,7 +120,7 @@ namespace SharpBag.Networking
 		/// Sends the specified packet.
 		/// </summary>
 		/// <param name="packet">The packet.</param>
-		public void Send(NetworkPacket packet)
+		public void Send(byte[] packet)
 		{
 			lock (this.ConnectionLock)
 			{
@@ -128,7 +128,10 @@ namespace SharpBag.Networking
 				{
 					try
 					{
-						byte[] bytes = packet.Serialize(true);
+						byte[] bytes = new byte[packet.Length + 4];
+						Buffer.BlockCopy(BitConverter.GetBytes(packet.Length), 0, bytes, 0, 4);
+						Buffer.BlockCopy(packet, 0, bytes, 4, packet.Length);
+
 						SocketError e;
 						this.Socket.BeginSend(bytes, 0, bytes.Length, SocketFlags.None, out e, this.EndSend, null);
 						if (e != SocketError.Success) this.Error(e);
@@ -241,7 +244,7 @@ namespace SharpBag.Networking
 							byte[] bytes = (byte[])result.AsyncState;
 							if (bytes != null && bytes.Length > 0)
 							{
-								if (this.OnPacketReceived != null) this.OnPacketReceived(this, NetworkPacket.Deserialize(bytes));
+								if (this.OnPacketReceived != null) this.OnPacketReceived(this, bytes);
 								this.BeginReceive();
 							}
 							else this.Disconnect();

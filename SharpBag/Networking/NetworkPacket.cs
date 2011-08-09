@@ -86,9 +86,8 @@ namespace SharpBag.Networking
 		/// <summary>
 		/// Serializes the packet.
 		/// </summary>
-		/// <param name="prependLength">if set to <c>true</c> the length of the packet will be prepended.</param>
 		/// <returns>The serialized packet.</returns>
-		public byte[] Serialize(bool prependLength = true)
+		public byte[] Serialize()
 		{
 			long beforePosition = this.Stream.Position;
 			this.Stream.Position = 0;
@@ -96,7 +95,7 @@ namespace SharpBag.Networking
 				packetSize = 4 * (targetCount + 3) + 1 + (int)this.Stream.Length;
 			MemoryStream mem = new MemoryStream(packetSize);
 
-			if (prependLength) mem.Write(BitConverter.GetBytes(packetSize), 0, 4);
+			// if (prependLength) mem.Write(BitConverter.GetBytes(packetSize), 0, 4);
 			mem.Write(BitConverter.GetBytes(this.Service), 0, 4);
 			mem.Write(BitConverter.GetBytes(this.Sender), 0, 4);
 			mem.Write(BitConverter.GetBytes(targetCount), 0, 4);
