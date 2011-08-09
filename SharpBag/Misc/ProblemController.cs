@@ -114,10 +114,10 @@ namespace SharpBag.Misc
 
 			if ((m.Time.HasValue && m.Time.Value) || (!m.Time.HasValue && this.TimeAll) || time)
 			{
-				long exTime = Utils.ExecutionTime(() =>
+				long exTime = (long)Utils.ExecutionTime(() =>
 					{
 						m.Method.Invoke(this, new object[0]);
-					}).Milliseconds;
+					}).TotalMilliseconds;
 
 				Console.WriteLine();
 				Console.Write("Time: ");
