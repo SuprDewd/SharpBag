@@ -12699,5 +12699,36 @@
             The default value.
             </summary>
         </member>
+        <member name="T:SharpBag.SimpleGrid">
+            <summary>
+            A simple grid.
+            </summary>
+        </member>
+        <member name="F:SharpBag.SimpleGrid.RowsProperty">
+            <summary>
+            Row property.
+            </summary>
+        </member>
+        <member name="F:SharpBag.SimpleGrid.ColumnsProperty">
+            <summary>
+            Column property.
+            </summary>
+        </member>
+        <member name="P:SharpBag.SimpleGrid.Rows">
+            <summary>
+            Gets or sets the rows.
+            </summary>
+            <value>
+            The rows.
+            </value>
+        </member>
+        <member name="P:SharpBag.SimpleGrid.Columns">
+            <summary>
+            Gets or sets the columns.
+            </summary>
+            <value>
+            The columns.
+            </value>
+        </member>
     </members>
 </doc>
