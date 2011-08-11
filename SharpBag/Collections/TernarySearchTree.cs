@@ -11,11 +11,13 @@ namespace SharpBag.Collections
 	/// A ternary search tree.
 	/// </summary>
 	/// <typeparam name="T">The type of items in the tree.</typeparam>
-	public class TernarySearchTree<T> : IEnumerable<T[]> where T : IComparable<T>
+	public class TernarySearchTree<T, V> : IEnumerable<KeyValuePair<T[], V>> where T : IComparable<T>
 	{
 		private class Node
 		{
-			public T Value { get; private set; }
+			public T Key { get; private set; }
+
+			public V Value { get; set; }
 
 			public bool IsEnd { get; set; }
 
@@ -25,15 +27,15 @@ namespace SharpBag.Collections
 
 			public Node Right { get; set; }
 
-			public Node(T value)
+			public Node(T key)
 			{
-				this.Value = value;
+				this.Key = key;
 				this.IsEnd = false;
 			}
 
 			public Node GetNextFor(T value)
 			{
-				return this.GetNextFor(this.Value.CompareTo(value));
+				return this.GetNextFor(this.Key.CompareTo(value));
 			}
 
 			public Node GetNextFor(int cmp)
@@ -45,7 +47,7 @@ namespace SharpBag.Collections
 
 			public void Add(Node node)
 			{
-				this.Add(node, this.Value.CompareTo(node.Value));
+				this.Add(node, this.Key.CompareTo(node.Key));
 			}
 
 			public void Add(Node node, int cmp)
@@ -64,7 +66,7 @@ namespace SharpBag.Collections
 		/// <summary>
 		/// Gets the items.
 		/// </summary>
-		public IEnumerable<T[]> Items
+		public IEnumerable<KeyValuePair<T[], V>> Items
 		{
 			get
 			{
@@ -85,31 +87,32 @@ namespace SharpBag.Collections
 		/// <summary>
 		/// Adds the specified sequence.
 		/// </summary>
-		/// <param name="sequence">The sequence.</param>
+		/// <param name="key">The key.</param>
+		/// <param name="value">The value.</param>
 		/// <returns>Whether the sequence was new.</returns>
-		public virtual bool Add(T[] sequence)
+		public virtual bool Add(T[] key, V value)
 		{
-			Contract.Requires(sequence.Length > 0);
+			Contract.Requires(key.Length > 0);
 			bool isNew = false;
 
 			if (this.Root == null)
 			{
-				this.Root = new Node(sequence[0]);
+				this.Root = new Node(key[0]);
 				isNew = true;
 			}
 
 			Node cur = this.Root;
-			for (int i = 0; i < sequence.Length; i++)
+			for (int i = 0; i < key.Length; i++)
 			{
-				int cmp = cur.Value.CompareTo(sequence[i]);
+				int cmp = cur.Key.CompareTo(key[i]);
 
 				if (cmp == 0)
 				{
-					if (i < sequence.Length - 1)
+					if (i < key.Length - 1)
 					{
 						if (cur.Below == null)
 						{
-							cur.Below = new Node(sequence[i + 1]);
+							cur.Below = new Node(key[i + 1]);
 							isNew = true;
 						}
 
@@ -120,7 +123,7 @@ namespace SharpBag.Collections
 				{
 					if (cur.Left == null)
 					{
-						cur.Left = new Node(sequence[i]);
+						cur.Left = new Node(key[i]);
 						isNew = true;
 					}
 
@@ -131,7 +134,7 @@ namespace SharpBag.Collections
 				{
 					if (cur.Right == null)
 					{
-						cur.Right = new Node(sequence[i]);
+						cur.Right = new Node(key[i]);
 						isNew = true;
 					}
 
@@ -139,10 +142,11 @@ namespace SharpBag.Collections
 					i--;
 				}
 
-				if (i + 1 == sequence.Length)
+				if (i + 1 == key.Length)
 				{
 					if (!cur.IsEnd) isNew = true;
 					cur.IsEnd = true;
+					cur.Value = value;
 				}
 			}
 
@@ -165,7 +169,7 @@ namespace SharpBag.Collections
 			Node cur = this.Root;
 			for (int i = 0; i < sequence.Length; i++)
 			{
-				int cmp = cur.Value.CompareTo(sequence[i]);
+				int cmp = cur.Key.CompareTo(sequence[i]);
 				if (i == sequence.Length - 1 && cmp == 0) return cur.IsEnd;
 				cur = cur.GetNextFor(cmp);
 				if (cmp != 0) i--;
@@ -180,7 +184,7 @@ namespace SharpBag.Collections
 		/// </summary>
 		/// <param name="sequence">The sequence of starting elements.</param>
 		/// <returns>The sequences starting with the specified elements.</returns>
-		public virtual IEnumerable<T[]> StartingWith(T[] sequence)
+		public virtual IEnumerable<KeyValuePair<T[], V>> StartingWith(T[] sequence)
 		{
 			Contract.Requires(sequence.Length > 0);
 			if (this.Root == null) yield break;
@@ -188,34 +192,34 @@ namespace SharpBag.Collections
 			Node cur = this.Root;
 			for (int i = 0; i < sequence.Length; i++)
 			{
-				int cmp = cur.Value.CompareTo(sequence[i]);
+				int cmp = cur.Key.CompareTo(sequence[i]);
 				if (i == sequence.Length - 1 && cmp == 0) break;
 				cur = cur.GetNextFor(cmp);
 				if (cmp != 0) i--;
 				if (cur == null) yield break;
 			}
 
-			if (cur.IsEnd) yield return sequence;
-			if (cur.Below != null) foreach (T[] seq in this.StartingWith(sequence, cur.Below)) yield return seq;
+			if (cur.IsEnd) yield return new KeyValuePair<T[], V>(sequence, cur.Value);
+			if (cur.Below != null) foreach (KeyValuePair<T[], V> seq in this.StartingWith(sequence, cur.Below)) yield return seq;
 		}
 
-		private IEnumerable<T[]> StartingWith(T[] sequence, Node cur)
+		private IEnumerable<KeyValuePair<T[], V>> StartingWith(T[] sequence, Node cur)
 		{
 			T[] seq = new T[sequence.Length + 1];
 			Array.Copy(sequence, seq, sequence.Length);
-			seq[sequence.Length] = cur.Value;
+			seq[sequence.Length] = cur.Key;
 
-			if (cur.IsEnd) yield return seq;
-			if (cur.Left != null) foreach (T[] s in this.StartingWith(sequence, cur.Left)) yield return s;
-			if (cur.Below != null) foreach (T[] s in this.StartingWith(seq, cur.Below)) yield return s;
-			if (cur.Right != null) foreach (T[] s in this.StartingWith(sequence, cur.Right)) yield return s;
+			if (cur.IsEnd) yield return new KeyValuePair<T[], V>(seq, cur.Value);
+			if (cur.Left != null) foreach (KeyValuePair<T[], V> s in this.StartingWith(sequence, cur.Left)) yield return s;
+			if (cur.Below != null) foreach (KeyValuePair<T[], V> s in this.StartingWith(seq, cur.Below)) yield return s;
+			if (cur.Right != null) foreach (KeyValuePair<T[], V> s in this.StartingWith(sequence, cur.Right)) yield return s;
 		}
 
 		/// <summary>
 		/// Gets the enumerator.
 		/// </summary>
 		/// <returns>The enumerator.</returns>
-		public IEnumerator<T[]> GetEnumerator()
+		public IEnumerator<KeyValuePair<T[], V>> GetEnumerator()
 		{
 			foreach (var item in this.Items)
 			{

@@ -9,7 +9,7 @@ namespace SharpBag.Collections
 	/// <summary>
 	/// A ternary string-search tree.
 	/// </summary>
-	public class TernaryStringSearchTree : TernarySearchTree<char>, IEnumerable<string>
+	public class TernaryStringSearchTree<V> : TernarySearchTree<char, V>, IEnumerable<KeyValuePair<string, V>>
 	{
 		/// <summary>
 		/// Gets a value indicating whether the search tree is case sensitive.
@@ -22,13 +22,13 @@ namespace SharpBag.Collections
 		/// <summary>
 		/// Gets the items.
 		/// </summary>
-		public new IEnumerable<string> Items
+		public new IEnumerable<KeyValuePair<string, V>> Items
 		{
 			get
 			{
 				foreach (var item in base.Items)
 				{
-					yield return new String(item);
+					yield return new KeyValuePair<string, V>(new String(item.Key), item.Value);
 				}
 			}
 		}
@@ -50,74 +50,76 @@ namespace SharpBag.Collections
 		}
 
 		/// <summary>
-		/// Adds the specified sequence.
+		/// Adds the specified key and value.
 		/// </summary>
-		/// <param name="sequence">The sequence.</param>
-		/// <returns>Whether the sequence was new.</returns>
-		public bool Add(string sequence)
+		/// <param name="key">The key.</param>
+		/// <param name="value">The value.</param>
+		/// <returns>Whether the key was new.</returns>
+		public bool Add(string key, V value)
 		{
-			return base.Add(this.CaseSensitive ? sequence.ToCharArray() : this.ToUpper(sequence.ToCharArray()));
+			return this.Add(key.ToCharArray(), value);
 		}
 
 		/// <summary>
-		/// Adds the specified sequence.
+		/// Adds the specified key and value.
 		/// </summary>
-		/// <param name="sequence">The sequence.</param>
-		/// <returns>Whether the sequence was new.</returns>
-		public override bool Add(char[] sequence)
+		/// <param name="key">The key.</param>
+		/// <param name="value">The value.</param>
+		/// <returns>Whether the key was new.</returns>
+		public override bool Add(char[] key, V value)
 		{
-			return base.Add(this.CaseSensitive ? sequence : this.ToUpper(sequence));
-		}
-
-		/// <summary>
-		/// Determines whether the current instance contains the specified sequence.
-		/// </summary>
-		/// <param name="sequence">The sequence.</param>
-		/// <returns>
-		///   <c>true</c> if the current instance contains the specified sequence; otherwise, <c>false</c>.
-		/// </returns>
-		public bool Contains(string sequence)
-		{
-			return base.Contains(this.CaseSensitive ? sequence.ToCharArray() : this.ToUpper(sequence.ToCharArray()));
+			return base.Add(this.CaseSensitive ? key : this.ToUpper(key), value);
 		}
 
 		/// <summary>
 		/// Determines whether the current instance contains the specified sequence.
 		/// </summary>
-		/// <param name="sequence">The sequence.</param>
+		/// <param name="key">The key.</param>
 		/// <returns>
 		///   <c>true</c> if the current instance contains the specified sequence; otherwise, <c>false</c>.
 		/// </returns>
-		public override bool Contains(char[] sequence)
+		public bool Contains(string key)
 		{
-			return base.Contains(this.CaseSensitive ? sequence : this.ToUpper(sequence));
+			return this.Contains(key.ToCharArray());
+		}
+
+		/// <summary>
+		/// Determines whether the current instance contains the specified sequence.
+		/// </summary>
+		/// <param name="key">The key.</param>
+		/// <returns>
+		///   <c>true</c> if the current instance contains the specified sequence; otherwise, <c>false</c>.
+		/// </returns>
+		public override bool Contains(char[] key)
+		{
+			return base.Contains(this.CaseSensitive ? key : this.ToUpper(key));
 		}
 
 		/// <summary>
 		/// Gets all the sequences starting with the specified sequence.
 		/// </summary>
-		/// <param name="sequence">The sequence of starting elements.</param>
+		/// <param name="key">The sequence of starting elements.</param>
 		/// <returns>The sequences starting with the specified sequence.</returns>
-		public IEnumerable<string> StartingWith(string sequence)
+		public IEnumerable<KeyValuePair<string, V>> StartingWith(string key)
 		{
-			return base.StartingWith(this.CaseSensitive ? sequence.ToCharArray() : this.ToUpper(sequence.ToCharArray())).Select(i => new String(i));
+			return this.StartingWith(key.ToCharArray());
 		}
 
 		/// <summary>
 		/// Gets all the sequences starting with the specified sequence.
 		/// </summary>
-		/// <param name="sequence">The sequence of starting elements.</param>
+		/// <param name="key">The sequence of starting elements.</param>
 		/// <returns>The sequences starting with the specified sequence.</returns>
-		public new IEnumerable<string> StartingWith(char[] sequence)
+		public new IEnumerable<KeyValuePair<string, V>> StartingWith(char[] key)
 		{
-			return base.StartingWith(this.CaseSensitive ? sequence : this.ToUpper(sequence)).Select(i => new String(i));
+			return base.StartingWith(this.CaseSensitive ? key : this.ToUpper(key)).Select(i => new KeyValuePair<string, V>(new String(i.Key), i.Value));
 		}
 
 		/// <summary>
 		/// Gets the enumerator.
 		/// </summary>
 		/// <returns>The enumerator.</returns>
-		public new IEnumerator<string> GetEnumerator()
+		public new IEnumerator<KeyValuePair<string, V>> GetEnumerator()
 		{
 			foreach (var item in this.Items)
 			{
