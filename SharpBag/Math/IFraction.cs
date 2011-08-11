@@ -27,6 +27,11 @@ namespace SharpBag.Math
 		bool AutoReduce { get; }
 
 		/// <summary>
+		/// Whether the fraction is reduced.
+		/// </summary>
+		bool IsReduced { get; }
+
+		/// <summary>
 		/// Object.ToString()
 		/// </summary>
 		/// <param name="digits">The maximum number of digits after the comma.</param>

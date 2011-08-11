@@ -23,26 +23,36 @@ namespace SharpBag.Math.ForInt64
 
 		private long _Numerator;
 
+		private long _Denominator;
+
+		private bool _AutoReduce;
+
+		private bool _IsReduced;
+
+		private static bool _DefaultAutoReduce = true;
+
 		/// <summary>
 		/// The numerator.
 		/// </summary>
 		public long Numerator { get { return _Numerator; } private set { _Numerator = value; } }
-
-		private long _Denominator;
 
 		/// <summary>
 		/// The denominator.
 		/// </summary>
 		public long Denominator { get { return _Denominator; } private set { _Denominator = value; if (this.AutoReduce) this.Reduce(); } }
 
-		private static bool _DefaultAutoReduce = true;
-
 		/// <summary>
 		/// The default value of auto-reduce.
 		/// </summary>
 		public static bool DefaultAutoReduce { get { return _DefaultAutoReduce; } set { _DefaultAutoReduce = value; } }
 
-		private bool _AutoReduce;
+		/// <summary>
+		/// Gets or sets a value indicating whether this instance is reduced.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is reduced.
+		/// </value>
+		public bool IsReduced { get { return _IsReduced; } set { _IsReduced = value; } }
 
 		/// <summary>
 		/// Whether to automatically reduce the fraction.
@@ -321,6 +331,7 @@ namespace SharpBag.Math.ForInt64
 			_Numerator = numerator;
 			_Denominator = denominator;
 			_AutoReduce = autoReduce;
+			_IsReduced = false;
 
 			if (autoReduce) this.Reduce();
 		}
@@ -357,6 +368,7 @@ namespace SharpBag.Math.ForInt64
 			_Numerator = other.Numerator;
 			_Denominator = other.Denominator;
 			_AutoReduce = other.AutoReduce;
+			_IsReduced = other.IsReduced;
 		}
 
 		/// <summary>
@@ -432,6 +444,8 @@ namespace SharpBag.Math.ForInt64
 
 		private void Reduce()
 		{
+			if (this.IsReduced) return;
+
 			if (this.Denominator < 0)
 			{
 				this.Numerator = -this.Numerator;
@@ -449,6 +463,7 @@ namespace SharpBag.Math.ForInt64
 			if (gcd <= 1) return;
 			this.Numerator = this.Numerator / gcd;
 			this.Denominator = this.Denominator / gcd;
+			this.IsReduced = true;
 		}
 
 		#endregion Helpers

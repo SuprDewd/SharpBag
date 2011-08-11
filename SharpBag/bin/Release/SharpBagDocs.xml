@@ -2970,6 +2970,11 @@
             Whether to automatically reduce the fraction.
             </summary>
         </member>
+        <member name="P:SharpBag.Math.Fraction`1.IsReduced">
+            <summary>
+            Whether the fraction is reduced.
+            </summary>
+        </member>
         <member name="F:SharpBag.Math.ForInt32.Fraction.PositiveOne">
             <summary>
             A fraction that represents positive one.
@@ -3393,6 +3398,14 @@
             <summary>
             Whether to automatically reduce the fraction.
             </summary>
+        </member>
+        <member name="P:SharpBag.Math.ForInt32.Fraction.IsReduced">
+            <summary>
+            Gets or sets a value indicating whether this instance is reduced.
+            </summary>
+            <value>
+            Whether this instance is reduced.
+            </value>
         </member>
         <member name="P:SharpBag.Math.ForInt32.Fraction.Reciprocal">
             <summary>
@@ -4012,6 +4025,14 @@
             <summary>
             Whether to automatically reduce the fraction.
             </summary>
+        </member>
+        <member name="P:SharpBag.Math.ForBigInteger.Fraction.IsReduced">
+            <summary>
+            Gets or sets a value indicating whether this instance is reduced.
+            </summary>
+            <value>
+            Whether this instance is reduced.
+            </value>
         </member>
         <member name="P:SharpBag.Math.ForBigInteger.Fraction.Reciprocal">
             <summary>
@@ -12267,6 +12288,14 @@
             <summary>
             The default value of auto-reduce.
             </summary>
+        </member>
+        <member name="P:SharpBag.Math.ForInt64.Fraction.IsReduced">
+            <summary>
+            Gets or sets a value indicating whether this instance is reduced.
+            </summary>
+            <value>
+            Whether this instance is reduced.
+            </value>
         </member>
         <member name="P:SharpBag.Math.ForInt64.Fraction.AutoReduce">
             <summary>

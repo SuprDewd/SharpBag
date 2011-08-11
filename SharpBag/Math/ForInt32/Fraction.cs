@@ -22,31 +22,41 @@ namespace SharpBag.Math.ForInt32
 
 		private int _Numerator;
 
+		private int _Denominator;
+
+		private bool _AutoReduce;
+
+		private bool _IsReduced;
+
+		private static bool _DefaultAutoReduce = true;
+
 		/// <summary>
 		/// The numerator.
 		/// </summary>
 		public int Numerator { get { return _Numerator; } private set { _Numerator = value; } }
-
-		private int _Denominator;
 
 		/// <summary>
 		/// The denominator.
 		/// </summary>
 		public int Denominator { get { return _Denominator; } private set { _Denominator = value; if (this.AutoReduce) this.Reduce(); } }
 
-		private static bool _DefaultAutoReduce = true;
-
 		/// <summary>
 		/// The default value of auto-reduce.
 		/// </summary>
 		public static bool DefaultAutoReduce { get { return _DefaultAutoReduce; } set { _DefaultAutoReduce = value; } }
 
-		private bool _AutoReduce;
-
 		/// <summary>
 		/// Whether to automatically reduce the fraction.
 		/// </summary>
 		public bool AutoReduce { get { return _AutoReduce; } set { _AutoReduce = value; if (value) this.Reduce(); } }
+
+		/// <summary>
+		/// Gets or sets a value indicating whether this instance is reduced.
+		/// </summary>
+		/// <value>
+		/// Whether this instance is reduced.
+		/// </value>
+		public bool IsReduced { get { return _IsReduced; } set { _IsReduced = value; } }
 
 		/// <summary>
 		/// Returns the reciprocal of the fraction.
@@ -320,6 +330,7 @@ namespace SharpBag.Math.ForInt32
 			_Numerator = numerator;
 			_Denominator = denominator;
 			_AutoReduce = autoReduce;
+			_IsReduced = false;
 
 			if (autoReduce) this.Reduce();
 		}
@@ -356,6 +367,7 @@ namespace SharpBag.Math.ForInt32
 			_Numerator = other.Numerator;
 			_Denominator = other.Denominator;
 			_AutoReduce = other.AutoReduce;
+			_IsReduced = other.IsReduced;
 		}
 
 		/// <summary>
@@ -431,6 +443,8 @@ namespace SharpBag.Math.ForInt32
 
 		private void Reduce()
 		{
+			if (this.IsReduced) return;
+
 			if (this.Denominator < 0)
 			{
 				this.Numerator = -this.Numerator;
@@ -448,6 +462,7 @@ namespace SharpBag.Math.ForInt32
 			if (gcd <= 1) return;
 			this.Numerator = this.Numerator / gcd;
 			this.Denominator = this.Denominator / gcd;
+			this.IsReduced = true;
 		}
 
 		#endregion Helpers
