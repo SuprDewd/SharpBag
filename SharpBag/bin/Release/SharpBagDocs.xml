@@ -8277,15 +8277,6 @@
             <param name="size">The size of each group.</param>
             <returns>The current instance split into groups.</returns>
         </member>
-        <member name="M:SharpBag.CollectionExtensions.CastAll``2(System.Collections.Generic.IEnumerable{``0})">
-            <summary>
-            Cast all the items in the current instance to the specified type.
-            </summary>
-            <typeparam name="T">The type to cast from.</typeparam>
-            <typeparam name="TResult">The type to cast to.</typeparam>
-            <param name="collection">The current instance.</param>
-            <returns>The current instance with the items cast to the specified type.</returns>
-        </member>
         <member name="M:SharpBag.CollectionExtensions.GroupNeighbours``1(System.Collections.Generic.IEnumerable{``0},System.Func{System.Collections.Generic.IEnumerable{``0},``0,System.Boolean})">
             <summary>
             Groups neighbours in the current instance according to the specified predicate.

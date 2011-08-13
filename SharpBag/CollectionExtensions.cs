@@ -792,26 +792,22 @@ namespace SharpBag
 			Contract.Requires(collection != null);
 			Contract.Requires(size > 0);
 #endif
-			while (collection.Any())
+			T[] buffer = new T[size];
+			using (IEnumerator<T> enumerator = collection.GetEnumerator())
 			{
-				yield return collection.Take(size);
-				collection = collection.Skip(size);
-			}
-		}
+				int i = 0;
 
-		/// <summary>
-		/// Cast all the items in the current instance to the specified type.
-		/// </summary>
-		/// <typeparam name="T">The type to cast from.</typeparam>
-		/// <typeparam name="TResult">The type to cast to.</typeparam>
-		/// <param name="collection">The current instance.</param>
-		/// <returns>The current instance with the items cast to the specified type.</returns>
-		public static IEnumerable<TResult> CastAll<T, TResult>(this IEnumerable<T> collection)
-		{
-#if DOTNET4
-			Contract.Requires(collection != null);
-#endif
-			foreach (var element in collection) yield return (TResult)(object)element;
+				while (true)
+				{
+					for (i = 0; i < size && enumerator.MoveNext(); i++)
+					{
+						buffer[i] = enumerator.Current;
+					}
+
+					if (i == 0) break;
+					yield return buffer.Take(i);
+				}
+			}
 		}
 
 		/// <summary>
