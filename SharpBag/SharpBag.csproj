@@ -100,7 +100,6 @@
     <Compile Include="Database\GenericDatabase.cs" />
     <Compile Include="Database\DatabaseExtensions.cs" />
     <Compile Include="Database\MySqlDatabase.cs" />
-    <Compile Include="Delegates.cs" />
     <Compile Include="ExpressionUtil.cs" />
     <Compile Include="Games\CardType.cs" />
     <Compile Include="Games\CardValue.cs" />
@@ -180,7 +179,6 @@
     <Compile Include="Strings\StringExtensions.cs" />
     <Compile Include="Time\TimeUtils.cs" />
     <Compile Include="IO\Bencoding.cs" />
-    <Compile Include="Tuple.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="FunctionalExtensions.cs" />
   </ItemGroup>

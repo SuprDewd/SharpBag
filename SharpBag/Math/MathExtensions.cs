@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using SharpBag.Strings;
 
-#if DOTNET4
+
 
 using System.Diagnostics.Contracts;
 using System.Numerics;
 
-#endif
+
 
 namespace SharpBag.Math
 {
@@ -43,7 +43,7 @@ namespace SharpBag.Math
 				yield return current;
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// Generates numbers that range from the value of the current instance to positive infinity.
@@ -67,7 +67,7 @@ namespace SharpBag.Math
 				yield return current;
 		}
 
-#endif
+
 
 		#endregion ToInfinity
 
@@ -109,7 +109,7 @@ namespace SharpBag.Math
 			}
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// The divisors of the current instance.
@@ -129,7 +129,7 @@ namespace SharpBag.Math
 			}
 		}
 
-#endif
+
 
 		#endregion Divisors
 
@@ -142,9 +142,9 @@ namespace SharpBag.Math
 		/// <returns>The number of divisors of the current instance.</returns>
 		public static int DivisorCount(this int n)
 		{
-#if DOTNET4
+
 			Contract.Requires(n >= 0);
-#endif
+
 			int count = 2, sqrt = (int)System.Math.Sqrt(n);
 			for (int i = 2; i <= sqrt; i++) if (n % i == 0) count += 2;
 			return sqrt * sqrt == n ? count - 1 : count;
@@ -159,10 +159,10 @@ namespace SharpBag.Math
 		/// <remarks>The largest prime needed is p * p > n.</remarks>
 		public static int DivisorCount(this int n, IEnumerable<int> primes)
 		{
-#if DOTNET4
+
 			Contract.Requires(n >= 0);
 			Contract.Requires(primes != null);
-#endif
+
 			if (n <= 1) return 1;
 			int count = 1;
 
@@ -195,9 +195,9 @@ namespace SharpBag.Math
 		/// <returns>The number of divisors of the current instance.</returns>
 		public static long DivisorCount(this long n)
 		{
-#if DOTNET4
+
 			Contract.Requires(n >= 0);
-#endif
+
 			long count = 2, sqrt = (long)System.Math.Sqrt(n);
 			for (long i = 2; i <= sqrt; i++) if (n % i == 0) count += 2;
 			return sqrt * sqrt == n ? count - 1 : count;
@@ -212,10 +212,10 @@ namespace SharpBag.Math
 		/// <remarks>The largest prime needed is p * p > n.</remarks>
 		public static long DivisorCount(this long n, IEnumerable<long> primes)
 		{
-#if DOTNET4
+
 			Contract.Requires(n >= 0);
 			Contract.Requires(primes != null);
-#endif
+
 			if (n <= 1) return 1;
 			long count = 1;
 
@@ -241,7 +241,7 @@ namespace SharpBag.Math
 			return count;
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// Returns the number of divisors of the current instance.
@@ -297,7 +297,7 @@ namespace SharpBag.Math
 			return count;
 		}
 
-#endif
+
 
 		#endregion DivisorCount
 
@@ -310,9 +310,9 @@ namespace SharpBag.Math
 		/// <returns>The sum of the divisors of the current instance.</returns>
 		public static int DivisorSum(this int n)
 		{
-#if DOTNET4
+
 			Contract.Requires(n >= 0);
-#endif
+
 			int sum = 1, p = 2;
 
 			while (p * p <= n && n > 1)
@@ -346,9 +346,9 @@ namespace SharpBag.Math
 		/// <returns>The sum of the divisors of the current instance.</returns>
 		public static long DivisorSum(this long n)
 		{
-#if DOTNET4
+
 			Contract.Requires(n >= 0);
-#endif
+
 			long sum = 1, p = 2;
 
 			while (p * p <= n && n > 1)
@@ -375,7 +375,7 @@ namespace SharpBag.Math
 			return sum;
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// Calculates the sum of the divisors of the current instance.
@@ -384,9 +384,9 @@ namespace SharpBag.Math
 		/// <returns>The sum of the divisors of the current instance.</returns>
 		public static BigInteger DivisorSum(this BigInteger n)
 		{
-#if DOTNET4
+
 			Contract.Requires(n >= 0);
-#endif
+
 			BigInteger sum = 1, p = 2;
 
 			while (p * p <= n && n > 1)
@@ -413,7 +413,7 @@ namespace SharpBag.Math
 			return sum;
 		}
 
-#endif
+
 
 		#endregion DivisorSum
 
@@ -467,7 +467,7 @@ namespace SharpBag.Math
 			}
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// The proper divisors of the current instance.
@@ -489,7 +489,7 @@ namespace SharpBag.Math
 			}
 		}
 
-#endif
+
 
 		#endregion ProperDivisors
 
@@ -504,9 +504,9 @@ namespace SharpBag.Math
 		/// <returns>The prime factors of the current instance.</returns>
 		public static IEnumerable<int> PrimeFactors(this int i)
 		{
-#if DOTNET4
+
 			Contract.Requires(i >= 0);
-#endif
+
 			int divisor = 2;
 
 			while (divisor <= i)
@@ -528,9 +528,9 @@ namespace SharpBag.Math
 		/// <returns>The prime factors of the current instance.</returns>
 		public static IEnumerable<int> PrimeFactors(this int i, IEnumerable<int> primes)
 		{
-#if DOTNET4
+
 			Contract.Requires(i >= 0);
-#endif
+
 			if (i <= 1) yield break;
 
 			foreach (int prime in primes.TakeWhile(p => p <= i))
@@ -552,9 +552,9 @@ namespace SharpBag.Math
 		/// <returns>The prime factors of the current instance.</returns>
 		public static IEnumerable<long> PrimeFactors(this long i)
 		{
-#if DOTNET4
+
 			Contract.Requires(i >= 0);
-#endif
+
 			long divisor = 2;
 
 			while (divisor <= i)
@@ -576,9 +576,9 @@ namespace SharpBag.Math
 		/// <returns>The prime factors of the current instance.</returns>
 		public static IEnumerable<long> PrimeFactors(this long i, IEnumerable<long> primes)
 		{
-#if DOTNET4
+
 			Contract.Requires(i >= 0);
-#endif
+
 			if (i <= 1) yield break;
 
 			foreach (long prime in primes.TakeWhile(p => p <= i))
@@ -593,7 +593,7 @@ namespace SharpBag.Math
 			}
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// Calculates the prime factors of the current instance.
@@ -602,9 +602,9 @@ namespace SharpBag.Math
 		/// <returns>The prime factors of the current instance.</returns>
 		public static IEnumerable<BigInteger> PrimeFactors(this BigInteger i)
 		{
-#if DOTNET4
+
 			Contract.Requires(i >= 0);
-#endif
+
 			BigInteger divisor = 2;
 
 			while (divisor <= i)
@@ -626,9 +626,9 @@ namespace SharpBag.Math
 		/// <returns>The prime factors of the current instance.</returns>
 		public static IEnumerable<BigInteger> PrimeFactors(this BigInteger i, IEnumerable<BigInteger> primes)
 		{
-#if DOTNET4
+
 			Contract.Requires(i >= 0);
-#endif
+
 			if (i <= 1) yield break;
 
 			foreach (BigInteger prime in primes.TakeWhile(p => p <= i))
@@ -643,7 +643,7 @@ namespace SharpBag.Math
 			}
 		}
 
-#endif
+
 
 		#endregion Momerath - http://www.dreamincode.net/code/snippet5562.htm
 
@@ -703,7 +703,7 @@ namespace SharpBag.Math
 				}
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// Returns the digits of the current instance.
@@ -731,7 +731,7 @@ namespace SharpBag.Math
 				}
 		}
 
-#endif
+
 
 		#endregion Digits
 
@@ -766,7 +766,7 @@ namespace SharpBag.Math
 			return rev;
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// Reverses the current instance.
@@ -826,7 +826,7 @@ namespace SharpBag.Math
 			return rev;
 		}
 
-#endif
+
 
 		#endregion Reverse
 
@@ -878,7 +878,7 @@ namespace SharpBag.Math
 			return (n & 1) == 0;
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// Whether the current instance is even.
@@ -890,7 +890,7 @@ namespace SharpBag.Math
 			return (n & 1) == 0;
 		}
 
-#endif
+
 
 		#endregion IsEven
 
@@ -916,7 +916,7 @@ namespace SharpBag.Math
 			return (n & 1) == 1;
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// Whether the current instance is even.
@@ -928,7 +928,7 @@ namespace SharpBag.Math
 			return (n & 1) == 1;
 		}
 
-#endif
+
 
 		#endregion IsOdd
 
@@ -956,7 +956,7 @@ namespace SharpBag.Math
 			return BagMath.IsPrime(n, checkCache);
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// Whether the current instance is prime.
@@ -969,7 +969,7 @@ namespace SharpBag.Math
 			return BagMath.IsPrime(n, checkCache);
 		}
 
-#endif
+
 
 		#endregion IsPrime
 
@@ -984,9 +984,9 @@ namespace SharpBag.Math
 		/// <returns>Whether the current instance is pandigital.</returns>
 		public static bool IsPandigital(this int n)
 		{
-#if DOTNET4
+
 			Contract.Requires(n >= 0);
-#endif
+
 			int digits = 0, count = 0, tmp;
 
 			for (; n > 0; n /= 10, ++count)
@@ -1004,9 +1004,9 @@ namespace SharpBag.Math
 		/// <returns>Whether the current instance is pandigital.</returns>
 		public static bool IsPandigital(this long n)
 		{
-#if DOTNET4
+
 			Contract.Requires(n >= 0);
-#endif
+
 			int digits = 0, count = 0, tmp;
 
 			for (; n > 0; n /= 10, ++count)
@@ -1017,7 +1017,7 @@ namespace SharpBag.Math
 			return digits == (1L << count) - 1;
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// Returns whether the current instance is pandigital.
@@ -1037,7 +1037,7 @@ namespace SharpBag.Math
 			return digits == (1L << count) - 1;
 		}
 
-#endif
+
 
 		#endregion Andras Vass - http://stackoverflow.com/questions/2484892/fastest-algorithm-to-check-if-a-number-is-pandigital
 
@@ -1053,10 +1053,10 @@ namespace SharpBag.Math
 		/// <returns>The concatenated integer.</returns>
 		public static long Concat(this int a, int b)
 		{
-#if DOTNET4
+
 			Contract.Requires(a >= 0);
 			Contract.Requires(b >= 0);
-#endif
+
 			int c = b;
 			while (c > 0)
 			{
@@ -1067,7 +1067,7 @@ namespace SharpBag.Math
 			return (long)a + b;
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// Concatenates the current instance and the specified integer.
@@ -1109,7 +1109,7 @@ namespace SharpBag.Math
 			return (BigInteger)a + b;
 		}
 
-#endif
+
 
 		#endregion Concat
 
@@ -1117,7 +1117,7 @@ namespace SharpBag.Math
 
 		#region http://www.docjar.com/html/api/java/math/Primality.java.html
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// Whether the current instance is probably prime.
@@ -1160,7 +1160,7 @@ namespace SharpBag.Math
 			return true;
 		}
 
-#endif
+
 
 		#endregion http://www.docjar.com/html/api/java/math/Primality.java.html
 
@@ -1175,9 +1175,9 @@ namespace SharpBag.Math
 		/// <returns>How many bits are in the current instance.</returns>
 		public static int BitLength(this int n)
 		{
-#if DOTNET4
+
 			Contract.Requires(n >= 0);
-#endif
+
 			if (n == 0) return 1;
 			return (int)System.Math.Log(n, 2) + 1;
 		}
@@ -1189,14 +1189,14 @@ namespace SharpBag.Math
 		/// <returns>How many bits are in the current instance.</returns>
 		public static int BitLength(this long n)
 		{
-#if DOTNET4
+
 			Contract.Requires(n >= 0);
-#endif
+
 			if (n == 0) return 1;
 			return (int)System.Math.Log(n, 2) + 1;
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// Returns how many bits are in the current instance.
@@ -1210,13 +1210,13 @@ namespace SharpBag.Math
 			return (int)BigInteger.Log(n, 2) + 1;
 		}
 
-#endif
+
 
 		#endregion BitLength
 
 		#region Sqrt
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// Calculates the square root of the current instance.
@@ -1250,7 +1250,7 @@ namespace SharpBag.Math
 			return root;
 		}
 
-#endif
+
 
 		#endregion Sqrt
 	}

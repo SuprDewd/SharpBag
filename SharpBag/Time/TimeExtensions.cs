@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-#if DOTNET4
+
 
 using System.Diagnostics.Contracts;
 
-#endif
+
 
 using System.Globalization;
 using SharpBag.Math;
@@ -28,12 +28,12 @@ namespace SharpBag.Time
 		/// <returns>The new DateTime.</returns>
 		public static DateTime At(this DateTime datetime, int hour, int minute = 0, int second = 0, int millisecond = 0)
 		{
-#if DOTNET4
+
 			Contract.Requires(hour >= 0 && hour <= 23);
 			Contract.Requires(minute >= 0 && hour <= 59);
 			Contract.Requires(second >= 0 && second <= 59);
 			Contract.Requires(millisecond >= 0 && millisecond <= 999);
-#endif
+
 			return new DateTime(datetime.Year, datetime.Month, datetime.Day, hour, minute, second, millisecond);
 		}
 
@@ -87,9 +87,9 @@ namespace SharpBag.Time
 		/// <returns>A collection of DateTimes with a one date interval.</returns>
 		public static IEnumerable<DateTime> To(this DateTime from, DateTime to, Func<DateTime, DateTime> step)
 		{
-#if DOTNET4
+
 			Contract.Requires(step != null);
-#endif
+
 			if (from <= to)
 			{
 				do

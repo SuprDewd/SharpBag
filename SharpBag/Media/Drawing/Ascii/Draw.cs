@@ -3,11 +3,11 @@ using System.Linq;
 using System.Text;
 using SharpBag.Strings;
 
-#if DOTNET4
+
 
 using System.Diagnostics.Contracts;
 
-#endif
+
 
 namespace SharpBag.Media.Drawing.Ascii
 {
@@ -55,9 +55,9 @@ namespace SharpBag.Media.Drawing.Ascii
 		/// <returns>The drawn triangle.</returns>
 		public static string TriangleTL(int size, char border = '#', char fill = ' ')
 		{
-#if DOTNET4
+
 			Contract.Requires(size >= 0);
-#endif
+
 			return DrawAscii.ReverseLines(DrawAscii.TriangleTR(size, border, fill));
 		}
 
@@ -70,9 +70,9 @@ namespace SharpBag.Media.Drawing.Ascii
 		/// <returns>The drawn triangle.</returns>
 		public static string TriangleTR(int size, char border = '#', char fill = ' ')
 		{
-#if DOTNET4
+
 			Contract.Requires(size >= 0);
-#endif
+
 			if (size == 0) return "";
 			return String.Join("\n", size.To(1).Select(i => i == size ? new String(border, i) : String.Join("", new string[] { new String(' ', System.Math.Max(size - i, 0)), border.ToString(), new String(fill, System.Math.Max(i - 2, 0)), i == 1 ? "" : border.ToString() })).ToArray());
 		}
@@ -86,9 +86,9 @@ namespace SharpBag.Media.Drawing.Ascii
 		/// <returns>The drawn triangle.</returns>
 		public static string TriangleBR(int size, char border = '#', char fill = ' ')
 		{
-#if DOTNET4
+
 			Contract.Requires(size >= 0);
-#endif
+
 			if (size == 0) return "";
 			return String.Join("\n", 1.To(size).Select(i => i == size ? new String(border, i) : String.Join("", new string[] { new String(' ', System.Math.Max(size - i, 0)), border.ToString(), new String(fill, System.Math.Max(i - 2, 0)), i == 1 ? "" : border.ToString() })).ToArray());
 		}
@@ -102,9 +102,9 @@ namespace SharpBag.Media.Drawing.Ascii
 		/// <returns>The drawn triangle.</returns>
 		public static string TriangleBL(int size, char border = '#', char fill = ' ')
 		{
-#if DOTNET4
+
 			Contract.Requires(size >= 0);
-#endif
+
 			return DrawAscii.ReverseLines(DrawAscii.TriangleBR(size, border, fill));
 		}
 	}

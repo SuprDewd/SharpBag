@@ -32,7 +32,7 @@ namespace SharpBag.Tests
 			Assert.AreEqual(new long[] { 1, 2, 4, 5, 10, 20, 25, 50 }.ToStringPretty(), 100L.ProperDivisors().OrderBy(i => i).ToStringPretty());
 		}
 
-#if DOTNET4
+
 
 		[TestMethod]
 		public void ProperDivisorsBig()
@@ -44,7 +44,7 @@ namespace SharpBag.Tests
 			Assert.AreEqual(new BigInteger[] { 1, 2, 4, 5, 10, 20, 25, 50 }.ToStringPretty(), new BigInteger(100).ProperDivisors().OrderBy(i => i).ToStringPretty());
 		}
 
-#endif
+
 
 		[TestMethod]
 		public void Divisors()
@@ -66,7 +66,7 @@ namespace SharpBag.Tests
 			Assert.AreEqual(new long[] { 1, 2, 4, 5, 10, 20, 25, 50, 100 }.ToStringPretty(), 100L.Divisors().OrderBy(i => i).ToStringPretty());
 		}
 
-#if DOTNET4
+
 
 		[TestMethod]
 		public void DivisorsBig()
@@ -78,6 +78,6 @@ namespace SharpBag.Tests
 			Assert.AreEqual(new BigInteger[] { 1, 2, 4, 5, 10, 20, 25, 50, 100 }.ToStringPretty(), new BigInteger(100).Divisors().OrderBy(i => i).ToStringPretty());
 		}
 
-#endif
+
 	}
 }

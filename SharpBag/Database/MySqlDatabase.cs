@@ -1,13 +1,13 @@
 ﻿using System.Data;
 using System.Data.Common;
 
-#if DOTNET4
+
 
 using System.Diagnostics.Contracts;
 
-#endif
 
-#if DOTNET4
+
+
 
 using System.Text;
 using MySql.Data.MySqlClient;
@@ -30,12 +30,12 @@ namespace SharpBag.Database
 		public MySqlDatabase(string server, string schema, string username, string password)
 			: base(server, schema, username, password)
 		{
-#if DOTNET4
+
 			Contract.Requires(server != null);
 			Contract.Requires(schema != null);
 			Contract.Requires(username != null);
 			Contract.Requires(password != null);
-#endif
+
 		}
 
 		/// <summary>
@@ -90,4 +90,4 @@ namespace SharpBag.Database
 	}
 }
 
-#endif
+

@@ -8,11 +8,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SharpBag.Math.ForInt32;
 using SharpBag.Math.ForInt64;
 
-#if DOTNET4
+
 
 using SharpBag.Math.ForBigInteger;
 
-#endif
+
 
 namespace SharpBag.Tests
 {
@@ -380,7 +380,7 @@ namespace SharpBag.Tests
 			Assert.AreEqual(frac.ToString(), "1");
 		}
 
-#if DOTNET4
+
 
 		[TestMethod]
 		public void FractionBigTest()
@@ -561,6 +561,6 @@ namespace SharpBag.Tests
 			Assert.AreEqual(frac.ToString(), "1");
 		}
 
-#endif
+
 	}
 }

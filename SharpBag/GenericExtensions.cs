@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-#if DOTNET4
+
 
 using System.Diagnostics.Contracts;
 
-#endif
+
 
 using System.Globalization;
 using System.Linq;
@@ -30,9 +30,9 @@ namespace SharpBag
 		/// <param name="action">The action.</param>
 		public static void IfNotNull<T>(this T obj, Action<T> action) where T : class
 		{
-#if DOTNET4
+
 			Contract.Requires(action != null);
-#endif
+
 			if (obj != null) action(obj);
 		}
 
@@ -44,9 +44,9 @@ namespace SharpBag
 		/// <param name="action">The action.</param>
 		public static void IfNotNull<T>(this T obj, Action action) where T : class
 		{
-#if DOTNET4
+
 			Contract.Requires(action != null);
-#endif
+
 			if (obj != null) action();
 		}
 
@@ -59,10 +59,10 @@ namespace SharpBag
 		/// <param name="methodcall">The method to call.</param>
 		public static void InvokeIfRequired(this DispatcherObject control, Action methodcall)
 		{
-#if DOTNET4
+
 			Contract.Requires(control != null);
 			Contract.Requires(methodcall != null);
-#endif
+
 			control.InvokeIfRequired(methodcall, DispatcherPriority.Normal);
 		}
 
@@ -74,10 +74,10 @@ namespace SharpBag
 		/// <param name="priorityForCall">The thread priority.</param>
 		public static void InvokeIfRequired(this DispatcherObject control, Action methodcall, DispatcherPriority priorityForCall)
 		{
-#if DOTNET4
+
 			Contract.Requires(control != null);
 			Contract.Requires(methodcall != null);
-#endif
+
 			if (control.Dispatcher.Thread != Thread.CurrentThread) control.Dispatcher.Invoke(priorityForCall, methodcall);
 			else methodcall();
 		}
@@ -117,9 +117,9 @@ namespace SharpBag
 		/// <returns>The converted value.</returns>
 		public static TOut As<TOut>(this object original, IFormatProvider provider, TOut defaultValue = default(TOut))
 		{
-#if DOTNET4
+
 			Contract.Requires(provider != null);
-#endif
+
 			Type type = typeof(TOut);
 			if (type.IsNullableType()) type = Nullable.GetUnderlyingType(type);
 
@@ -138,9 +138,9 @@ namespace SharpBag
 		/// <remarks>Use <see cref="Nullable.GetUnderlyingType"/> to access the underlying type.</remarks>
 		public static bool IsNullableType(this Type type)
 		{
-#if DOTNET4
+
 			Contract.Requires(type != null);
-#endif
+
 			return type.IsGenericType && type.GetGenericTypeDefinition().Equals(typeof(Nullable<>));
 		}
 

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 
-#if DOTNET4
+
 
 using System.Numerics;
 using System.Diagnostics.Contracts;
 
-#endif
+
 
 namespace SharpBag.Math
 {
@@ -64,7 +64,7 @@ namespace SharpBag.Math
 			}
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// An endless source of fibonacci numbers.
@@ -89,7 +89,7 @@ namespace SharpBag.Math
 			}
 		}
 
-#endif
+
 
 		#endregion Fibonacci numbers
 
@@ -129,7 +129,7 @@ namespace SharpBag.Math
 			}
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// An endless source of factorial numbers.
@@ -148,7 +148,7 @@ namespace SharpBag.Math
 			}
 		}
 
-#endif
+
 
 		#endregion Factorial numbers
 
@@ -190,7 +190,7 @@ namespace SharpBag.Math
 			}
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// An endless source of prime numbers.
@@ -210,7 +210,7 @@ namespace SharpBag.Math
 			}
 		}
 
-#endif
+
 
 		#endregion Prime numbers
 
@@ -242,7 +242,7 @@ namespace SharpBag.Math
 			}
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// An endless source of perfect numbers.
@@ -257,7 +257,7 @@ namespace SharpBag.Math
 			}
 		}
 
-#endif
+
 
 		#endregion Perfect numbers
 
@@ -289,7 +289,7 @@ namespace SharpBag.Math
 			}
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// An endless source of deficient numbers.
@@ -304,7 +304,7 @@ namespace SharpBag.Math
 			}
 		}
 
-#endif
+
 
 		#endregion Deficient numbers
 
@@ -336,7 +336,7 @@ namespace SharpBag.Math
 			}
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// An endless source of abundant number.
@@ -351,7 +351,7 @@ namespace SharpBag.Math
 			}
 		}
 
-#endif
+
 
 		#endregion Abundant number
 
@@ -395,7 +395,7 @@ namespace SharpBag.Math
 			}
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// An endless source of Pythagorean Triplets.
@@ -416,7 +416,7 @@ namespace SharpBag.Math
 			}
 		}
 
-#endif
+
 
 		#endregion Pythagorean Triplets
 
@@ -429,9 +429,9 @@ namespace SharpBag.Math
 		/// <returns>The numbers.</returns>
 		public static IEnumerable<int> FigurateNumbers(int n)
 		{
-#if DOTNET4
+
 			Contract.Requires(n >= 0);
-#endif
+
 			int cur = 0;
 
 			for (int i = 1; ; i += n)
@@ -448,9 +448,9 @@ namespace SharpBag.Math
 		/// <returns>The numbers.</returns>
 		public static IEnumerable<long> FigurateNumbers(long n)
 		{
-#if DOTNET4
+
 			Contract.Requires(n >= 0);
-#endif
+
 			long cur = 0;
 
 			for (long i = 1; ; i += n)
@@ -460,7 +460,7 @@ namespace SharpBag.Math
 			}
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// Numbers which are n-figurate.
@@ -479,7 +479,7 @@ namespace SharpBag.Math
 			}
 		}
 
-#endif
+
 
 		#endregion Figurate Numbers
 	}

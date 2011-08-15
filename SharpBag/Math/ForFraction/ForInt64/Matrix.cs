@@ -1,4 +1,4 @@
-﻿#if DOTNET4
+﻿
 
 using System;
 using System.Collections.Generic;
@@ -837,4 +837,4 @@ namespace SharpBag.Math.ForFraction.ForInt64
 	}
 }
 
-#endif
+

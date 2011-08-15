@@ -6,11 +6,11 @@ using System.Drawing;
 using SharpBag.Math;
 using Point = SharpBag.Math.Geometry.Point;
 
-#if DOTNET4
+
 
 using System.Diagnostics.Contracts;
 
-#endif
+
 
 namespace SharpBag.Media.Drawing
 {
@@ -43,10 +43,10 @@ namespace SharpBag.Media.Drawing
 			/// <param name="color">The color.</param>
 			public Stop(double at, Color color)
 			{
-#if DOTNET4
+
 				Contract.Requires(at >= 0);
 				Contract.Requires(at <= 1);
-#endif
+
 				this.At = at;
 				this.Color = color;
 			}

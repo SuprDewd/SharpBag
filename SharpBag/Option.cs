@@ -1,8 +1,8 @@
-﻿#if DOTNET4
+﻿
 
 using System.Diagnostics.Contracts;
 
-#endif
+
 
 namespace SharpBag
 {
@@ -40,9 +40,9 @@ namespace SharpBag
 		{
 			get
 			{
-#if DOTNET4
+
 				Contract.Requires(this._HasValue);
-#endif
+
 				return this._Value;
 			}
 		}

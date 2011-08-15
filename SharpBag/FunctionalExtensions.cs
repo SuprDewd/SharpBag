@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-#if DOTNET4
+
 
 using System.Numerics;
 using System.Diagnostics.Contracts;
 
-#endif
+
 
 namespace SharpBag
 {
@@ -26,11 +26,11 @@ namespace SharpBag
 		/// <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
 		public static IEnumerable<T> Iter<T>(this IEnumerable<T> source, Action<T> action)
 		{
-#if DOTNET4
+
 			Contract.Requires(source != null);
 			Contract.Requires(action != null);
 			Contract.Ensures(Contract.Result<IEnumerable<T>>() != null);
-#endif
+
 			foreach (T elem in source)
 			{
 				action(elem);
@@ -47,10 +47,10 @@ namespace SharpBag
 		/// <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
 		public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
 		{
-#if DOTNET4
+
 			Contract.Requires(source != null);
 			Contract.Requires(action != null);
-#endif
+
 			foreach (T elem in source) action(elem);
 		}
 
@@ -66,11 +66,11 @@ namespace SharpBag
 		/// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
 		public static IEnumerable<int> To(this int start, int end, int step = 1)
 		{
-#if DOTNET4
+
 			Contract.Requires(step > 0);
 			Contract.Ensures(Contract.Result<IEnumerable<int>>() != null);
 			Contract.Ensures(Contract.Result<IEnumerable<int>>().Any());
-#endif
+
 			if (start < end) for (int i = start; i <= end; i += step) yield return i;
 			else if (start > end) for (int i = start; i >= end; i -= step) yield return i;
 			else yield return end;
@@ -86,11 +86,11 @@ namespace SharpBag
 		/// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
 		public static IEnumerable<int> To(this int start, int end, Func<int, int> step)
 		{
-#if DOTNET4
+
 			Contract.Requires(step != null);
 			Contract.Ensures(Contract.Result<IEnumerable<int>>() != null);
 			Contract.Ensures(Contract.Result<IEnumerable<int>>().Any());
-#endif
+
 			if (start < end) for (int i = start; i <= end; i = step(i)) yield return i;
 			else if (start > end) for (int i = start; i >= end; i = step(i)) yield return i;
 			else yield return end;
@@ -106,11 +106,11 @@ namespace SharpBag
 		/// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
 		public static IEnumerable<long> To(this long start, long end, long step = 1)
 		{
-#if DOTNET4
+
 			Contract.Requires(step > 0);
 			Contract.Ensures(Contract.Result<IEnumerable<long>>() != null);
 			Contract.Ensures(Contract.Result<IEnumerable<long>>().Any());
-#endif
+
 
 			if (start < end) for (long i = start; i <= end; i += step) yield return i;
 			else if (start > end) for (long i = start; i >= end; i -= step) yield return i;
@@ -127,18 +127,18 @@ namespace SharpBag
 		/// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
 		public static IEnumerable<long> To(this long start, long end, Func<long, long> step)
 		{
-#if DOTNET4
+
 			Contract.Requires(step != null);
 			Contract.Ensures(Contract.Result<IEnumerable<long>>() != null);
 			Contract.Ensures(Contract.Result<IEnumerable<long>>().Any());
-#endif
+
 
 			if (start < end) for (long i = start; i <= end; i = step(i)) yield return i;
 			else if (start > end) for (long i = start; i >= end; i = step(i)) yield return i;
 			else yield return end;
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// Generates numbers that range from the value of the current instance to the value of end.
@@ -190,7 +190,7 @@ namespace SharpBag
 			else yield return end;
 		}
 
-#endif
+
 
 		/// <summary>
 		/// Generates chars that range from the current instance to end.
@@ -202,11 +202,11 @@ namespace SharpBag
 		/// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
 		public static IEnumerable<char> To(this char start, char end, int step = 1)
 		{
-#if DOTNET4
+
 			Contract.Requires(step > 0);
 			Contract.Ensures(Contract.Result<IEnumerable<char>>() != null);
 			Contract.Ensures(Contract.Result<IEnumerable<char>>().Any());
-#endif
+
 			if (start < end) for (int i = start; i <= end; i += step) yield return (char)i;
 			else if (start > end) for (int i = start; i >= end; i -= step) yield return (char)i;
 			else yield return end;
@@ -222,11 +222,11 @@ namespace SharpBag
 		/// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
 		public static IEnumerable<char> To(this char start, char end, Func<int, int> step)
 		{
-#if DOTNET4
+
 			Contract.Requires(step != null);
 			Contract.Ensures(Contract.Result<IEnumerable<char>>() != null);
 			Contract.Ensures(Contract.Result<IEnumerable<char>>().Any());
-#endif
+
 			if (start < end) for (int i = start; i <= end; i = step(i)) yield return (char)i;
 			else if (start > end) for (int i = start; i >= end; i = step(i)) yield return (char)i;
 			else yield return end;
@@ -244,11 +244,11 @@ namespace SharpBag
 		/// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx</remarks>
 		public static IEnumerable<T> Times<T>(this int i, Func<T> f)
 		{
-#if DOTNET4
+
 			Contract.Requires(i >= 0);
 			Contract.Requires(f != null);
 			Contract.Ensures(Contract.Result<IEnumerable<T>>() != null);
-#endif
+
 
 			for (int j = 0; j < i; j++) yield return f();
 		}
@@ -260,9 +260,9 @@ namespace SharpBag
 		/// <param name="memo">The memo.</param>
 		public static Func<TIn, TOut> Memoize<TIn, TOut>(this Func<TIn, TOut> func, IDictionary<TIn, TOut> memo = null)
 		{
-#if DOTNET4
+
 			Contract.Requires(func != null);
-#endif
+
 			if (memo == null) memo = new Dictionary<TIn, TOut>();
 			return i =>
 			{
@@ -280,9 +280,9 @@ namespace SharpBag
 		/// <param name="memo">The memo.</param>
 		public static Func<TIn, TOut> Memoize<TIn, TOut>(this Func<Func<TIn, TOut>, TIn, TOut> func, IDictionary<TIn, TOut> memo = null)
 		{
-#if DOTNET4
+
 			Contract.Requires(func != null);
-#endif
+
 			if (memo == null) memo = new Dictionary<TIn, TOut>();
 			Func<TIn, TOut> recFunc = null;
 			recFunc = i =>
@@ -354,9 +354,9 @@ namespace SharpBag
 		/// <returns>The unfolded values.</returns>
 		public static IEnumerable<T> Unfold<T>(this Func<int, Option<T>> f)
 		{
-#if DOTNET4
+
 			Contract.Requires(f != null);
-#endif
+
 			int index = 0;
 			Option<T> res = f(index++);
 
@@ -375,9 +375,9 @@ namespace SharpBag
 		/// <returns>The unfolded values.</returns>
 		public static IEnumerable<T> Unfold<T>(this Func<Option<T>> f)
 		{
-#if DOTNET4
+
 			Contract.Requires(f != null);
-#endif
+
 			Option<T> res = f();
 
 			while (res != null && res.IsSome)
@@ -397,9 +397,9 @@ namespace SharpBag
 		/// <returns>The unfolded values.</returns>
 		public static IEnumerable<T> Unfold<T>(this Func<T, Option<T>> f, T seed, Func<T, T> step = null)
 		{
-#if DOTNET4
+
 			Contract.Requires(f != null);
-#endif
+
 			if (step == null) step = s => s;
 			Option<T> res = f(seed);
 
@@ -419,9 +419,9 @@ namespace SharpBag
 		/// <returns>The unfolded values.</returns>
 		public static IEnumerable<T> Unfold<T>(this Func<int, T> f)
 		{
-#if DOTNET4
+
 			Contract.Requires(f != null);
-#endif
+
 			int index = 0;
 			while (true) yield return f(index++);
 		}
@@ -434,9 +434,9 @@ namespace SharpBag
 		/// <returns>The unfolded values.</returns>
 		public static IEnumerable<T> Unfold<T>(this Func<T> f)
 		{
-#if DOTNET4
+
 			Contract.Requires(f != null);
-#endif
+
 			while (true) yield return f();
 		}
 
@@ -450,9 +450,9 @@ namespace SharpBag
 		/// <returns>The unfolded values.</returns>
 		public static IEnumerable<T> Unfold<T>(this Func<T, T> f, T seed, Func<T, T> step = null)
 		{
-#if DOTNET4
+
 			Contract.Requires(f != null);
-#endif
+
 			if (step == null) step = s => s;
 
 			while (true)
@@ -473,11 +473,11 @@ namespace SharpBag
 		/// <returns>The unfolded values.</returns>
 		public static IEnumerable<T> Unfold<T, T2>(this Func<T2, Option<T>> f, Func<T2> open, Action<T2> close)
 		{
-#if DOTNET4
+
 			Contract.Requires(f != null);
 			Contract.Requires(open != null);
 			Contract.Requires(close != null);
-#endif
+
 			T2 o = open();
 
 			try
@@ -506,10 +506,10 @@ namespace SharpBag
 		/// <returns>The unfolded values.</returns>
 		public static IEnumerable<T> Unfold<T, T2>(this Func<T2, Option<T>> f, Func<T2> open) where T2 : IDisposable
 		{
-#if DOTNET4
+
 			Contract.Requires(f != null);
 			Contract.Requires(open != null);
-#endif
+
 			T2 o = open();
 
 			using (o)
@@ -549,10 +549,10 @@ namespace SharpBag
 		/// <returns>The aggregates.</returns>
 		public static IEnumerable<TAccumulate> LazilyAggregate<T, TAccumulate>(this IEnumerable<T> sequence, TAccumulate seed, Func<TAccumulate, T, TAccumulate> aggregator)
 		{
-#if DOTNET4
+
 			Contract.Requires(sequence != null);
 			Contract.Requires(aggregator != null);
-#endif
+
 			yield return seed;
 			foreach (T item in sequence) yield return seed = aggregator(seed, item);
 		}
@@ -567,10 +567,10 @@ namespace SharpBag
 		/// <returns>The aggregates.</returns>
 		public static IEnumerable<TAccumulate> LazilyAggregate<T, TAccumulate>(this IEnumerable<T> sequence, Func<TAccumulate, T, TAccumulate> aggregator)
 		{
-#if DOTNET4
+
 			Contract.Requires(sequence != null);
 			Contract.Requires(aggregator != null);
-#endif
+
 			return sequence.LazilyAggregate(default(TAccumulate), aggregator);
 		}
 

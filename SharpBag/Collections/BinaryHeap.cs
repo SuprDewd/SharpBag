@@ -1,309 +1,303 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 
-#if DOTNET4
-
-using System.Diagnostics.Contracts;
-
-#endif
-
 namespace SharpBag.Collections
 {
-	/// <summary>
-	/// A binary heap.
-	/// </summary>
-	/// <typeparam name="T">The type of items in the heap.</typeparam>
-	public abstract class BinaryHeap<T>
-	{
-		#region Fields
+    /// <summary>
+    /// A binary heap.
+    /// </summary>
+    /// <typeparam name="T">The type of items in the heap.</typeparam>
+    public abstract class BinaryHeap<T>
+    {
+        #region Fields
 
-		/// <summary>
-		/// The number of items in the heap.
-		/// </summary>
-		public int Count { get; protected set; }
+        /// <summary>
+        /// The number of items in the heap.
+        /// </summary>
+        public int Count { get; protected set; }
 
-		/// <summary>
-		/// The maximum number of items that can be stored in the heap.
-		/// </summary>
-		public int Capacity { get; protected set; }
+        /// <summary>
+        /// The maximum number of items that can be stored in the heap.
+        /// </summary>
+        public int Capacity { get; protected set; }
 
-		/// <summary>
-		/// The internal array.
-		/// </summary>
-		protected T[] InternalArray;
+        /// <summary>
+        /// The internal array.
+        /// </summary>
+        protected T[] InternalArray;
 
-		#endregion Fields
+        #endregion Fields
 
-		#region Constructors
+        #region Constructors
 
-		/// <summary>
-		/// The constructor.
-		/// </summary>
-		public BinaryHeap() : this(16) { }
+        /// <summary>
+        /// The constructor.
+        /// </summary>
+        public BinaryHeap() : this(16) { }
 
-		/// <summary>
-		/// The constructor.
-		/// </summary>
-		/// <param name="capacity">The maximum number of items that can be stored in the heap.</param>
-		public BinaryHeap(int capacity)
-		{
-#if DOTNET4
-			Contract.Requires(capacity > 0);
-#endif
-			this.Count = 0;
-			this.Capacity = capacity;
-			this.InternalArray = new T[this.Capacity];
-		}
+        /// <summary>
+        /// The constructor.
+        /// </summary>
+        /// <param name="capacity">The maximum number of items that can be stored in the heap.</param>
+        public BinaryHeap(int capacity)
+        {
+            Contract.Requires(capacity > 0);
 
-		/// <summary>
-		/// The constructor.
-		/// </summary>
-		/// <param name="array">An array of items.</param>
-		public BinaryHeap(T[] array)
-		{
-			this.InternalArray = array;
-			this.Count = this.Capacity = array.Length;
+            this.Count = 0;
+            this.Capacity = capacity;
+            this.InternalArray = new T[this.Capacity];
+        }
 
-			for (int i = this.Count / 2; i >= 0; i--)
-			{
-				this.MaintainHeap(i);
-			}
-		}
+        /// <summary>
+        /// The constructor.
+        /// </summary>
+        /// <param name="array">An array of items.</param>
+        public BinaryHeap(T[] array)
+        {
+            this.InternalArray = array;
+            this.Count = this.Capacity = array.Length;
 
-		#endregion Constructors
+            for (int i = this.Count / 2; i >= 0; i--)
+            {
+                this.MaintainHeap(i);
+            }
+        }
 
-		#region Data Structuring
+        #endregion Constructors
 
-		/// <summary>
-		/// Invalidates the position of the specified item.
-		/// </summary>
-		/// <param name="item">The item.</param>
-		public void Invalidate(T item)
-		{
-			bool found = false;
-			int i = 0;
+        #region Data Structuring
 
-			for (; i < this.Count; i++)
-			{
-				if (Object.ReferenceEquals(item, this.InternalArray[i]))
-				{
-					found = true;
-					break;
-				}
-			}
+        /// <summary>
+        /// Invalidates the position of the specified item.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        public void Invalidate(T item)
+        {
+            bool found = false;
+            int i = 0;
 
-			if (!found) return;
+            for (; i < this.Count; i++)
+            {
+                if (Object.ReferenceEquals(item, this.InternalArray[i]))
+                {
+                    found = true;
+                    break;
+                }
+            }
 
-			if (i == 0) this.MaintainHeap(0);
-			else
-			{
-				int parent = this.Parent(i);
-				int cmp = this.Compare(parent, i);
+            if (!found) return;
 
-				if (cmp < 0) this.BubbleUp(i);
-				else if (cmp > 0) this.MaintainHeap(i);
-			}
-		}
+            if (i == 0) this.MaintainHeap(0);
+            else
+            {
+                int parent = this.Parent(i);
+                int cmp = this.Compare(parent, i);
 
-		/// <summary>
-		/// Swap the values at the specified indices.
-		/// </summary>
-		/// <param name="i">The first index.</param>
-		/// <param name="j">The second index.</param>
-		protected void Swap(int i, int j)
-		{
-			T temp = this.InternalArray[i];
-			this.InternalArray[i] = this.InternalArray[j];
-			this.InternalArray[j] = temp;
-		}
+                if (cmp < 0) this.BubbleUp(i);
+                else if (cmp > 0) this.MaintainHeap(i);
+            }
+        }
 
-		/// <summary>
-		/// Maintain the heap.
-		/// </summary>
-		/// <param name="i">The highest item to maintain.</param>
-		protected void MaintainHeap(int i)
-		{
-			while (true)
-			{
-				int max = i,
-				left = this.Left(i),
-				right = this.Right(i);
+        /// <summary>
+        /// Swap the values at the specified indices.
+        /// </summary>
+        /// <param name="i">The first index.</param>
+        /// <param name="j">The second index.</param>
+        protected void Swap(int i, int j)
+        {
+            T temp = this.InternalArray[i];
+            this.InternalArray[i] = this.InternalArray[j];
+            this.InternalArray[j] = temp;
+        }
 
-				if (left < this.Count)
-				{
-					if (this.Compare(max, left) < 0)
-					{
-						max = left;
-					}
+        /// <summary>
+        /// Maintain the heap.
+        /// </summary>
+        /// <param name="i">The highest item to maintain.</param>
+        protected void MaintainHeap(int i)
+        {
+            while (true)
+            {
+                int max = i,
+                left = this.Left(i),
+                right = this.Right(i);
 
-					if (right < this.Count && this.Compare(max, right) < 0)
-					{
-						max = right;
-					}
-				}
+                if (left < this.Count)
+                {
+                    if (this.Compare(max, left) < 0)
+                    {
+                        max = left;
+                    }
 
-				if (max == i) break;
+                    if (right < this.Count && this.Compare(max, right) < 0)
+                    {
+                        max = right;
+                    }
+                }
 
-				this.Swap(i, max);
-				i = max;
-			}
-		}
+                if (max == i) break;
 
-		/// <summary>
-		/// Peek at the next item in the heap.
-		/// </summary>
-		/// <returns>The item.</returns>
-		public T Peek()
-		{
-			return this.InternalArray[0];
-		}
+                this.Swap(i, max);
+                i = max;
+            }
+        }
 
-		/// <summary>
-		/// Pop the next item from the heap.
-		/// </summary>
-		/// <returns>The item.</returns>
-		public T Pop()
-		{
-			T ret = this.InternalArray[0];
-			this.Count--;
-			this.InternalArray[0] = this.InternalArray[this.Count];
-			this.MaintainHeap(0);
-			return ret;
-		}
+        /// <summary>
+        /// Peek at the next item in the heap.
+        /// </summary>
+        /// <returns>The item.</returns>
+        public T Peek()
+        {
+            return this.InternalArray[0];
+        }
 
-		private void BubbleUp(int i)
-		{
-			if (i == 0) return;
-			int parent = this.Parent(i);
+        /// <summary>
+        /// Pop the next item from the heap.
+        /// </summary>
+        /// <returns>The item.</returns>
+        public T Pop()
+        {
+            T ret = this.InternalArray[0];
+            this.Count--;
+            this.InternalArray[0] = this.InternalArray[this.Count];
+            this.MaintainHeap(0);
+            return ret;
+        }
 
-			while (this.Compare(i, parent) > 0)
-			{
-				this.Swap(i, parent);
-				i = parent;
-				if (i == 0) return;
-				parent = this.Parent(i);
-			}
-		}
+        private void BubbleUp(int i)
+        {
+            if (i == 0) return;
+            int parent = this.Parent(i);
 
-		/// <summary>
-		/// Push an item into the heap.
-		/// </summary>
-		/// <param name="item">The item.</param>
-		public void Push(T item)
-		{
-			if (this.Count == this.Capacity)
-			{
-				if (this.Capacity < 1) this.Capacity = 1;
-				else this.Capacity <<= 1;
-				Array.Resize<T>(ref this.InternalArray, this.Capacity);
-			}
+            while (this.Compare(i, parent) > 0)
+            {
+                this.Swap(i, parent);
+                i = parent;
+                if (i == 0) return;
+                parent = this.Parent(i);
+            }
+        }
 
-			int i = this.Count;
-			this.InternalArray[i] = item;
-			this.Count++;
+        /// <summary>
+        /// Push an item into the heap.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        public void Push(T item)
+        {
+            if (this.Count == this.Capacity)
+            {
+                if (this.Capacity < 1) this.Capacity = 1;
+                else this.Capacity <<= 1;
+                Array.Resize<T>(ref this.InternalArray, this.Capacity);
+            }
 
-			this.BubbleUp(i);
-		}
+            int i = this.Count;
+            this.InternalArray[i] = item;
+            this.Count++;
 
-		/// <summary>
-		/// Clears the heap.
-		/// </summary>
-		public void Clear()
-		{
-			this.Count = 0;
-		}
+            this.BubbleUp(i);
+        }
 
-		#endregion Data Structuring
+        /// <summary>
+        /// Clears the heap.
+        /// </summary>
+        public void Clear()
+        {
+            this.Count = 0;
+        }
 
-		#region Ordering
+        #endregion Data Structuring
 
-		/// <summary>
-		/// The item comparer.
-		/// </summary>
-		/// <param name="firstIndex">The index of the first item.</param>
-		/// <param name="secondIndex">The index of the second item.</param>
-		/// <returns>The order of the items.</returns>
-		protected abstract int Compare(int firstIndex, int secondIndex);
+        #region Ordering
 
-		#endregion Ordering
+        /// <summary>
+        /// The item comparer.
+        /// </summary>
+        /// <param name="firstIndex">The index of the first item.</param>
+        /// <param name="secondIndex">The index of the second item.</param>
+        /// <returns>The order of the items.</returns>
+        protected abstract int Compare(int firstIndex, int secondIndex);
 
-		#region Traversing
+        #endregion Ordering
 
-		/// <summary>
-		/// Gets the left child of the specified index.
-		/// </summary>
-		/// <param name="i">The specified index.</param>
-		/// <returns>The left child.</returns>
-		protected int Left(int i)
-		{
-			return ((i + 1) << 1) - 1;
-		}
+        #region Traversing
 
-		/// <summary>
-		/// Gets the right child of the specified index.
-		/// </summary>
-		/// <param name="i">The specified index.</param>
-		/// <returns>The right child.</returns>
-		protected int Right(int i)
-		{
-			return (i + 1) << 1;
-		}
+        /// <summary>
+        /// Gets the left child of the specified index.
+        /// </summary>
+        /// <param name="i">The specified index.</param>
+        /// <returns>The left child.</returns>
+        protected int Left(int i)
+        {
+            return ((i + 1) << 1) - 1;
+        }
 
-		/// <summary>
-		/// Gets the parent of the specified index.
-		/// </summary>
-		/// <param name="i">The specified index.</param>
-		/// <returns>The parent.</returns>
-		protected int Parent(int i)
-		{
-			return (i - 1) >> 1;
-		}
+        /// <summary>
+        /// Gets the right child of the specified index.
+        /// </summary>
+        /// <param name="i">The specified index.</param>
+        /// <returns>The right child.</returns>
+        protected int Right(int i)
+        {
+            return (i + 1) << 1;
+        }
 
-		#endregion Traversing
+        /// <summary>
+        /// Gets the parent of the specified index.
+        /// </summary>
+        /// <param name="i">The specified index.</param>
+        /// <returns>The parent.</returns>
+        protected int Parent(int i)
+        {
+            return (i - 1) >> 1;
+        }
 
-		#region Heapsort
+        #endregion Traversing
 
-		/// <summary>
-		/// The internal heap sort.
-		/// </summary>
-		/// <returns>The sorted items.</returns>
-		protected IEnumerable<T> InternalSort()
-		{
-			while (this.Count > 0)
-			{
-				yield return this.InternalArray[0];
-				this.Count--;
-				if (this.Count > 0)
-				{
-					this.InternalArray[0] = this.InternalArray[this.Count];
-					this.MaintainHeap(0);
-				}
-			}
-		}
+        #region Heapsort
 
-		/// <summary>
-		/// The reverse internal heap sort.
-		/// </summary>
-		/// <returns>The reverse sorted items.</returns>
-		protected IEnumerable<T> InternalSortReversed()
-		{
-			int count = this.Count;
+        /// <summary>
+        /// The internal heap sort.
+        /// </summary>
+        /// <returns>The sorted items.</returns>
+        protected IEnumerable<T> InternalSort()
+        {
+            while (this.Count > 0)
+            {
+                yield return this.InternalArray[0];
+                this.Count--;
+                if (this.Count > 0)
+                {
+                    this.InternalArray[0] = this.InternalArray[this.Count];
+                    this.MaintainHeap(0);
+                }
+            }
+        }
 
-			while (this.Count > 1)
-			{
-				this.Count--;
-				T temp = this.InternalArray[0];
-				this.InternalArray[0] = this.InternalArray[this.Count];
-				this.InternalArray[this.Count] = temp;
-				this.MaintainHeap(0);
-			}
+        /// <summary>
+        /// The reverse internal heap sort.
+        /// </summary>
+        /// <returns>The reverse sorted items.</returns>
+        protected IEnumerable<T> InternalSortReversed()
+        {
+            int count = this.Count;
 
-			for (int i = 0; i < count; i++) yield return this.InternalArray[i];
-		}
+            while (this.Count > 1)
+            {
+                this.Count--;
+                T temp = this.InternalArray[0];
+                this.InternalArray[0] = this.InternalArray[this.Count];
+                this.InternalArray[this.Count] = temp;
+                this.MaintainHeap(0);
+            }
 
-		#endregion Heapsort
-	}
+            for (int i = 0; i < count; i++) yield return this.InternalArray[i];
+        }
+
+        #endregion Heapsort
+    }
 }

@@ -1,10 +1,10 @@
 using System;
 
-#if DOTNET4
+
 
 using System.Diagnostics.Contracts;
 
-#endif
+
 
 namespace SharpBag.Games
 {
@@ -30,9 +30,9 @@ namespace SharpBag.Games
 		public Dice(int sides = 6)
 			: this(new Random(), sides)
 		{
-#if DOTNET4
+
 			Contract.Requires(sides > 0);
-#endif
+
 		}
 
 		/// <summary>
@@ -42,10 +42,10 @@ namespace SharpBag.Games
 		/// <param name="sides">The number of sides on the dice.</param>
 		public Dice(Random rand, int sides = 6)
 		{
-#if DOTNET4
+
 			Contract.Requires(rand != null);
 			Contract.Requires(sides > 0);
-#endif
+
 			this.Sides = sides;
 			this.Rand = rand;
 		}

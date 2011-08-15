@@ -7,12 +7,12 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 
-#if DOTNET4
+
 
 using System.Diagnostics.Contracts;
 using System.Numerics;
 
-#endif
+
 
 namespace SharpBag.Strings
 {
@@ -28,9 +28,9 @@ namespace SharpBag.Strings
 		/// <returns>The current string instance reversed.</returns>
 		public static string Reverse(this string s)
 		{
-#if DOTNET4
+
 			Contract.Requires(s != null);
-#endif
+
 			char[] array = s.ToCharArray();
 			Array.Reverse(array);
 			return new String(array);
@@ -43,9 +43,9 @@ namespace SharpBag.Strings
 		/// <returns>The current string instance reversed.</returns>
 		public static string ReverseXor(this string s)
 		{
-#if DOTNET4
+
 			Contract.Requires(s != null);
-#endif
+
 			char[] charArray = s.ToCharArray();
 			int len = s.Length - 1;
 
@@ -70,12 +70,12 @@ namespace SharpBag.Strings
 		/// <returns>The current instance as a pretty string.</returns>
 		public static string ToStringPretty<T>(this IEnumerable<T> source, string before = "", string delimiter = ", ", string after = "")
 		{
-#if DOTNET4
+
 			Contract.Requires(source != null);
 			Contract.Requires(before != null);
 			Contract.Requires(delimiter != null);
 			Contract.Requires(after != null);
-#endif
+
 			StringBuilder result = new StringBuilder();
 			result.Append(before);
 
@@ -99,9 +99,9 @@ namespace SharpBag.Strings
 		/// <returns>The current instance with title case.</returns>
 		public static string ToTitleCase(this string text)
 		{
-#if DOTNET4
+
 			Contract.Requires(text != null);
-#endif
+
 			CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;
 			TextInfo textInfo = cultureInfo.TextInfo;
 			return textInfo.ToTitleCase(text.ToLower());
@@ -114,9 +114,9 @@ namespace SharpBag.Strings
 		/// <returns>The words.</returns>
 		public static string Wordify(this string s)
 		{
-#if DOTNET4
+
 			Contract.Requires(s != null);
-#endif
+
 			return !Regex.IsMatch(s, "[a-z]") ? s : string.Join(" ", Regex.Split(s, @"(?<!^)(?=[A-Z])"));
 		}
 
@@ -127,9 +127,9 @@ namespace SharpBag.Strings
 		/// <returns>The capitalized string.</returns>
 		public static string Capitalize(this string word)
 		{
-#if DOTNET4
+
 			Contract.Requires(word != null);
-#endif
+
 			return word[0].ToString().ToUpper() + word.Substring(1);
 		}
 
@@ -138,10 +138,10 @@ namespace SharpBag.Strings
 		/// </summary>
 		public static string Format(this string s, params object[] args)
 		{
-#if DOTNET4
+
 			Contract.Requires(s != null);
 			Contract.Requires(args != null);
-#endif
+
 			return String.Format(s, args);
 		}
 
@@ -154,12 +154,12 @@ namespace SharpBag.Strings
 		/// <returns>A string that is equivalent to the current string except that all instances of oldValue are repeatedly replaced with newValue until the new string no longer contains oldValue.</returns>
 		public static string ReplaceAll(this string s, string oldValue, string newValue)
 		{
-#if DOTNET4
+
 			Contract.Requires(s != null);
 			Contract.Requires(oldValue != null);
 			Contract.Requires(newValue != null);
 			Contract.Requires(!newValue.Contains(oldValue));
-#endif
+
 			string tS = s;
 			while (tS.Contains(oldValue)) tS = tS.Replace(oldValue, newValue);
 			return tS;
@@ -195,11 +195,11 @@ namespace SharpBag.Strings
 		/// <returns>Whether the current instance is less than, equal to or greater than the specified string.</returns>
 		public static int CompareTo(this string s, string b, char[] c, bool caseSensitive = false)
 		{
-#if DOTNET4
+
 			Contract.Requires(s != null);
 			Contract.Requires(b != null);
 			Contract.Requires(c != null);
-#endif
+
 			string a = s;
 			if (!caseSensitive)
 			{
@@ -233,9 +233,9 @@ namespace SharpBag.Strings
 		/// <returns>Whether the current instance is less than, equal to or greater than the specified char.</returns>
 		public static int CompareTo(this char a, char b, char[] c)
 		{
-#if DOTNET4
+
 			Contract.Requires(c != null);
-#endif
+
 			if (a == b) return 0;
 
 			if (!c.Contains(a) || !c.Contains(b)) return ((int)a).CompareTo(b);
@@ -295,10 +295,10 @@ namespace SharpBag.Strings
 		/// <returns>Whether the current instance equals the specified string, if case is ignored.</returns>
 		public static bool EqualsIgnoreCase(this string a, string b)
 		{
-#if DOTNET4
+
 			Contract.Requires(a != null);
 			Contract.Requires(b != null);
-#endif
+
 			return String.Equals(a, b, StringComparison.OrdinalIgnoreCase);
 		}
 
@@ -310,10 +310,10 @@ namespace SharpBag.Strings
 		/// <returns>Whether the current instance starts with the specified string, if case is ignored.</returns>
 		public static bool StartsWithIgnoreCase(this string a, string b)
 		{
-#if DOTNET4
+
 			Contract.Requires(a != null);
 			Contract.Requires(b != null);
-#endif
+
 			return a.StartsWith(b, StringComparison.OrdinalIgnoreCase);
 		}
 
@@ -325,10 +325,10 @@ namespace SharpBag.Strings
 		/// <returns>Whether the current instance ends with the specified string, if case is ignored.</returns>
 		public static bool EndsWithIgnoreCase(this string a, string b)
 		{
-#if DOTNET4
+
 			Contract.Requires(a != null);
 			Contract.Requires(b != null);
-#endif
+
 			return a.EndsWith(b, StringComparison.OrdinalIgnoreCase);
 		}
 
@@ -340,10 +340,10 @@ namespace SharpBag.Strings
 		/// <returns>Whether the current instance contains the specified string, if case is ignored.</returns>
 		public static bool ContainsIgnoreCase(this string a, string b)
 		{
-#if DOTNET4
+
 			Contract.Requires(a != null);
 			Contract.Requires(b != null);
-#endif
+
 			return a.ToUpper().Contains(b.ToUpper());
 		}
 
@@ -354,9 +354,9 @@ namespace SharpBag.Strings
 		/// <returns>The current instance in an upper-lower name variant.</returns>
 		public static string ToUpperLowerNameVariant(this string value)
 		{
-#if DOTNET4
+
 			Contract.Requires(value != null);
-#endif
+
 			char[] valuearray = value.ToLower().ToCharArray();
 			bool nextupper = true;
 
@@ -393,10 +393,10 @@ namespace SharpBag.Strings
 		/// <exception cref="ArgumentException">Occurs when stringToEncrypt or key is null or empty.</exception>
 		public static string Encrypt(this string stringToEncrypt, string key)
 		{
-#if DOTNET4
+
 			Contract.Requires(!String.IsNullOrEmpty(stringToEncrypt));
 			Contract.Requires(!String.IsNullOrEmpty(key));
-#endif
+
 			using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(new CspParameters { KeyContainerName = key }) { PersistKeyInCsp = true })
 			{
 				return BitConverter.ToString(rsa.Encrypt(Encoding.UTF8.GetBytes(stringToEncrypt), true));
@@ -412,10 +412,10 @@ namespace SharpBag.Strings
 		/// <exception cref="ArgumentException">Occurs when stringToDecrypt or key is null or empty.</exception>
 		public static string Decrypt(this string stringToDecrypt, string key)
 		{
-#if DOTNET4
+
 			Contract.Requires(!String.IsNullOrEmpty(stringToDecrypt));
 			Contract.Requires(!String.IsNullOrEmpty(key));
-#endif
+
 			using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(new CspParameters { KeyContainerName = key }) { PersistKeyInCsp = true })
 			{
 				return Encoding.UTF8.GetString(rsa.Decrypt(Array.ConvertAll(stringToDecrypt.Split('-'), (s => Convert.ToByte(Byte.Parse(s, NumberStyles.HexNumber)))), true));
@@ -430,10 +430,10 @@ namespace SharpBag.Strings
 		/// <returns>The repeated string.</returns>
 		public static string Times(this int n, string s)
 		{
-#if DOTNET4
+
 			Contract.Requires(n >= 0);
 			Contract.Requires(s != null);
-#endif
+
 			StringBuilder sb = new StringBuilder(s.Length * n);
 			for (int i = 0; i < n; i++) sb.Append(s);
 			return sb.ToString();
@@ -448,11 +448,11 @@ namespace SharpBag.Strings
 		/// <returns>The repeated string.</returns>
 		public static string Times(this int n, string s, string separator)
 		{
-#if DOTNET4
+
 			Contract.Requires(n >= 0);
 			Contract.Requires(s != null);
 			Contract.Requires(separator != null);
-#endif
+
 			StringBuilder sb = new StringBuilder((s.Length * n) + ((n - 1) * separator.Length));
 			for (int i = 0; i < n; i++)
 			{
@@ -472,16 +472,16 @@ namespace SharpBag.Strings
 		/// <returns>The new string.</returns>
 		public static string SetCharAt(this string s, int i, char c)
 		{
-#if DOTNET4
+
 			Contract.Requires(s != null);
 			Contract.Requires(i >= 0 && i < s.Length);
-#endif
+
 			char[] charArray = s.ToCharArray();
 			charArray[i] = c;
 			return new String(charArray);
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// Returns a string representation of a Complex number.
@@ -505,6 +505,6 @@ namespace SharpBag.Strings
 			}
 		}
 
-#endif
+
 	}
 }

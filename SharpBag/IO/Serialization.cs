@@ -1,10 +1,10 @@
 ﻿using System;
 
-#if DOTNET4
+
 
 using System.Diagnostics.Contracts;
 
-#endif
+
 
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -25,9 +25,9 @@ namespace SharpBag.IO
 		/// <param name="fileName">The file to serialize to.</param>
 		public static void Serialize<T>(T obj, string fileName)
 		{
-#if DOTNET4
+
 			Contract.Requires(!String.IsNullOrEmpty(fileName));
-#endif
+
 			using (FileStream fs = new FileStream(fileName, FileMode.Create))
 			{
 				BinaryFormatter bf = new BinaryFormatter();
@@ -43,9 +43,9 @@ namespace SharpBag.IO
 		/// <returns>The object.</returns>
 		public static T Deserialize<T>(string fileName)
 		{
-#if DOTNET4
+
 			Contract.Requires(!String.IsNullOrEmpty(fileName));
-#endif
+
 			using (FileStream fs = new FileStream(fileName, FileMode.Open))
 			{
 				BinaryFormatter bf = new BinaryFormatter();
@@ -61,9 +61,9 @@ namespace SharpBag.IO
 		/// <param name="fileName">The file to serialize to.</param>
 		public static void XmlSerialize<T>(T obj, string fileName)
 		{
-#if DOTNET4
+
 			Contract.Requires(!String.IsNullOrEmpty(fileName));
-#endif
+
 			using (FileStream fs = new FileStream(fileName, FileMode.Create))
 			{
 				XmlSerializer xs = new XmlSerializer(typeof(T));
@@ -79,10 +79,10 @@ namespace SharpBag.IO
 		/// <returns>The object.</returns>
 		public static T XmlDeserialize<T>(string fileName)
 		{
-#if DOTNET4
+
 			Contract.Requires(!String.IsNullOrEmpty(fileName));
 			Contract.Requires(File.Exists(fileName));
-#endif
+
 			using (FileStream fs = new FileStream(fileName, FileMode.Open))
 			{
 				XmlSerializer xs = new XmlSerializer(typeof(T));

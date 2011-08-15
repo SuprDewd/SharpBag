@@ -1,11 +1,11 @@
 ﻿using System.Data.Common;
 using System.Data.SqlClient;
 
-#if DOTNET4
+
 
 using System.Diagnostics.Contracts;
 
-#endif
+
 
 using System.Text;
 
@@ -26,12 +26,12 @@ namespace SharpBag.Database
 		public MicrosoftSqlDatabase(string server, string schema, string username, string password)
 			: base(server, schema, username, password)
 		{
-#if DOTNET4
+
 			Contract.Requires(server != null);
 			Contract.Requires(schema != null);
 			Contract.Requires(username != null);
 			Contract.Requires(password != null);
-#endif
+
 		}
 
 		/// <summary>

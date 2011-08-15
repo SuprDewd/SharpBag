@@ -9476,11 +9476,12 @@
             <summary>
             A ternary search tree.
             </summary>
-            <typeparam name="T">The type of items in the tree.</typeparam>
+            <typeparam name="T">The type of keys in the tree.</typeparam>
+            <typeparam name="T">The type of values in the tree.</typeparam>
         </member>
         <member name="M:SharpBag.Collections.TernarySearchTree`2.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="!:TernarySearchTree&lt;T&gt;"/> class.
+            Initializes a new instance of the TernarySearchTree class.
             </summary>
         </member>
         <member name="M:SharpBag.Collections.TernarySearchTree`2.Add(`0[],`1)">
@@ -9525,7 +9526,7 @@
         </member>
         <member name="M:SharpBag.Collections.TernaryStringSearchTree`1.#ctor(System.Boolean)">
             <summary>
-            Initializes a new instance of the <see cref="!:TernaryStringSearchTree"/> class.
+            Initializes a new instance of the TernaryStringSearchTree class.
             </summary>
             <param name="caseSensitive">Whether the search tree is case sensitive.</param>
         </member>

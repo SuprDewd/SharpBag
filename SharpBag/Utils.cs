@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 
-#if DOTNET4
+
 
 using System.Diagnostics.Contracts;
 using System.Collections;
 
-#endif
+
 
 namespace SharpBag
 {
@@ -25,9 +25,9 @@ namespace SharpBag
 		/// <returns>The execution time in milliseconds.</returns>
 		public static TimeSpan ExecutionTime(Action a, bool handleGc = true)
 		{
-#if DOTNET4
+
 			Contract.Requires(a != null);
-#endif
+
 			if (handleGc)
 			{
 				GC.Collect();
@@ -51,9 +51,9 @@ namespace SharpBag
 		/// <returns>The IEnumerable.</returns>
 		public static IEnumerable<T> CreateIEnumerable<T>(params T[] objects)
 		{
-#if DOTNET4
+
 			Contract.Requires(objects != null);
-#endif
+
 			return objects;
 		}
 

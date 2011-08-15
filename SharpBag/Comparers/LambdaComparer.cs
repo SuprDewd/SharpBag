@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-#if DOTNET4
+
 
 using System.Diagnostics.Contracts;
 
-#endif
+
 
 namespace SharpBag
 {
@@ -26,9 +26,9 @@ namespace SharpBag
 		/// <param name="hash">The hash function.</param>
 		public LambdaComparer(Func<T, T, bool> compare, Func<T, int> hash = null)
 		{
-#if DOTNET4
+
 			Contract.Requires(compare != null);
-#endif
+
 			this.Comparer = compare;
 			this.Hasher = hash;
 		}

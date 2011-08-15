@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Text;
 
-#if DOTNET4
+
 
 using System.Diagnostics.Contracts;
 
-#endif
+
 
 namespace SharpBag.Math
 {
@@ -24,9 +24,9 @@ namespace SharpBag.Math
 		/// <remarks>Bases must be in the range 2 to 36.</remarks>
 		public static string ToBase(string number, int startBase, int targetBase)
 		{
-#if DOTNET4
+
 			Contract.Requires(!String.IsNullOrEmpty(number));
-#endif
+
 			return FromBase10(ToBase10(number, startBase), targetBase);
 		}
 
@@ -39,10 +39,10 @@ namespace SharpBag.Math
 		/// <remarks>Bases must be in the range 2 to 36.</remarks>
 		public static int ToBase10(string number, int startBase)
 		{
-#if DOTNET4
+
 			Contract.Requires(!String.IsNullOrEmpty(number));
 			Contract.Requires(startBase >= 2 && startBase <= 36);
-#endif
+
 			if (startBase == 10) return Convert.ToInt32(number);
 
 			char[] chrs = number.ToCharArray();

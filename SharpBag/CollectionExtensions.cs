@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 
-#if DOTNET4
+
 
 using System.Diagnostics.Contracts;
 using System.Collections;
 using SharpBag.Collections;
 
-#endif
+
 
 namespace SharpBag
 {
@@ -26,10 +26,10 @@ namespace SharpBag
 		/// <returns>The subsets.</returns>
 		public static IEnumerable<T[]> Subsets<T>(this T[] array, int min = 1)
 		{
-#if DOTNET4
+
 			Contract.Requires(array != null);
 			Contract.Requires(min >= 0);
-#endif
+
 			for (int i = 0; i <= array.Length - min; i++)
 			{
 				for (int j = min - 1; j < array.Length - i; j++)
@@ -49,11 +49,11 @@ namespace SharpBag
 		/// <returns>The subsets.</returns>
 		public static IEnumerable<T[]> Subsets<T>(this T[] array, int min, int max)
 		{
-#if DOTNET4
+
 			Contract.Requires(array != null);
 			Contract.Requires(min >= 0);
 			Contract.Requires(max >= min);
-#endif
+
 			for (int i = 0; i <= array.Length - min; i++)
 			{
 				for (int j = min - 1; j < array.Length - i && j < max; j++)
@@ -74,10 +74,10 @@ namespace SharpBag
 		/// <returns>The line.</returns>
 		public static IEnumerable<T> Line<T>(this T[,] g, int x, int y, int xDelta, int yDelta)
 		{
-#if DOTNET4
+
 			Contract.Requires(g != null);
 			Contract.Requires(!(xDelta == 0 && yDelta == 0));
-#endif
+
 			int xl = g.GetLength(0), yl = g.GetLength(1);
 			while (x >= 0 && y >= 0 && x < xl && y < yl)
 			{
@@ -99,10 +99,10 @@ namespace SharpBag
 		/// <returns>The line.</returns>
 		public static IEnumerable<TOut> Line<TIn, TOut>(this TIn[,] g, int x, int y, int xDelta, int yDelta, Func<TIn, int, int, TOut> selector)
 		{
-#if DOTNET4
+
 			Contract.Requires(g != null);
 			Contract.Requires(!(xDelta == 0 && yDelta == 0));
-#endif
+
 			int xl = g.GetLength(0), yl = g.GetLength(1);
 			while (x >= 0 && y >= 0 && x < xl && y < yl)
 			{
@@ -121,10 +121,10 @@ namespace SharpBag
 		/// <returns>The shuffled collection.</returns>
 		public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source, Random rand = null)
 		{
-#if DOTNET4
+
 			Contract.Requires(source != null);
 			Contract.Ensures(Contract.Result<IEnumerable<T>>() != null);
-#endif
+
 			rand = rand ?? new Random();
 
 			T[] array = source.ToArray();
@@ -153,12 +153,12 @@ namespace SharpBag
 		/// <returns>Every n-th item of the collection.</returns>
 		public static IEnumerable<T> TakeEvery<T>(this IEnumerable<T> enumeration, int step, int start = 0)
 		{
-#if DOTNET4
+
 			Contract.Requires(enumeration != null);
 			Contract.Requires(start >= 0 && start < enumeration.Count());
 			Contract.Requires(step > 0);
 			Contract.Ensures(Contract.Result<IEnumerable<T>>() != null);
-#endif
+
 			int first = 0;
 			int count = 0;
 
@@ -195,9 +195,9 @@ namespace SharpBag
 		/// <returns>A random item from  the current instance.</returns>
 		public static T Random<T>(this IEnumerable<T> collection)
 		{
-#if DOTNET4
+
 			Contract.Requires(collection != null);
-#endif
+
 			return collection.Random(new Random());
 		}
 
@@ -210,10 +210,10 @@ namespace SharpBag
 		/// <returns>A random item from  the current instance.</returns>
 		public static T Random<T>(this IEnumerable<T> collection, Random rand)
 		{
-#if DOTNET4
+
 			Contract.Requires(collection != null);
 			Contract.Requires(rand != null);
-#endif
+
 			T[] array = collection.ToArray();
 			return array.Length == 0 ? default(T) : array[rand.Next(0, array.Length)];
 		}
@@ -231,7 +231,7 @@ namespace SharpBag
 		/// <returns>The subarray.</returns>
 		public static T[,] Subarray<T>(this T[,] a, int x0, int y0, int x1, int y1)
 		{
-#if DOTNET4
+
 			Contract.Requires(a != null);
 			Contract.Requires(x0 <= x1);
 			Contract.Requires(y0 <= y1);
@@ -244,7 +244,7 @@ namespace SharpBag
 			Contract.Requires(y0 < a.GetLength(1));
 			Contract.Requires(y1 < a.GetLength(1));
 			Contract.Ensures(Contract.Result<T[,]>() != null);
-#endif
+
 			T[,] sub = new T[(x1 - x0) + 1, (y1 - y0) + 1];
 
 			for (int x = 0; x < sub.GetLength(0); x++)
@@ -266,14 +266,14 @@ namespace SharpBag
 		/// <returns>An enumerable.</returns>
 		public static IEnumerable<T> AsEnumerable<T>(this IEnumerator<T> e)
 		{
-#if DOTNET4
+
 			Contract.Requires(e != null);
 			Contract.Ensures(Contract.Result<IEnumerable<T>>() != null);
-#endif
+
 			while (e.MoveNext()) yield return e.Current;
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// Converts the current instance into an enumerable.
@@ -288,7 +288,7 @@ namespace SharpBag
 			while (e.MoveNext()) yield return e.Current;
 		}
 
-#endif
+
 
 		/// <summary>
 		/// Gets a subarray of an array.
@@ -300,13 +300,13 @@ namespace SharpBag
 		/// <returns>A subarray of the array.</returns>
 		public static IEnumerable<T> Range<T>(this IEnumerable<T> c, int start, int end)
 		{
-#if DOTNET4
+
 			Contract.Requires(c != null);
 			Contract.Requires(start <= end);
 			Contract.Requires(start >= 0 && start < c.Count());
 			Contract.Requires(end >= 0 && end < c.Count());
 			Contract.Ensures(Contract.Result<IEnumerable<T>>() != null);
-#endif
+
 			using (IEnumerator<T> e = c.GetEnumerator())
 			{
 				for (int i = 0; i <= end; i++)
@@ -325,9 +325,9 @@ namespace SharpBag
 		/// <remarks>Yet Another Language Geek - http://blogs.msdn.com/b/wesdyer/archive/2007/02/23/linq-to-ascii-art.aspx </remarks>
 		public static void Execute<T>(this IEnumerable<T> collection)
 		{
-#if DOTNET4
+
 			Contract.Requires(collection != null);
-#endif
+
 			foreach (T item in collection) { }
 		}
 
@@ -341,10 +341,10 @@ namespace SharpBag
 		/// <returns>An enumerable of all the items in the current instance.</returns>
 		public static IEnumerable<T> AsEnumerable<T>(this T[,] multiDArray)
 		{
-#if DOTNET4
+
 			Contract.Requires(multiDArray != null);
 			Contract.Ensures(Contract.Result<IEnumerable<T>>() != null);
-#endif
+
 			for (int i1 = 0; i1 < multiDArray.GetLength(0); i1++)
 				for (int i2 = 0; i2 < multiDArray.GetLength(1); i2++)
 					yield return multiDArray[i1, i2];
@@ -358,10 +358,10 @@ namespace SharpBag
 		/// <returns>An enumerable of all the items in the current instance.</returns>
 		public static IEnumerable<T> AsEnumerable<T>(this T[, ,] multiDArray)
 		{
-#if DOTNET4
+
 			Contract.Requires(multiDArray != null);
 			Contract.Ensures(Contract.Result<IEnumerable<T>>() != null);
-#endif
+
 			for (int i1 = 0; i1 < multiDArray.GetLength(0); i1++)
 				for (int i2 = 0; i2 < multiDArray.GetLength(1); i2++)
 					for (int i3 = 0; i3 < multiDArray.GetLength(2); i3++)
@@ -376,9 +376,9 @@ namespace SharpBag
 		/// <returns>A multidimensional array.</returns>
 		public static T[,] ToMultidimensional<T>(this T[][] jagged)
 		{
-#if DOTNET4
+
 			Contract.Requires(jagged != null);
-#endif
+
 			int xlen = jagged.Length;
 			if (xlen == 0) return new T[0, 0];
 			int ylen = jagged[0].Length;
@@ -405,10 +405,10 @@ namespace SharpBag
 		/// <returns>The new array.</returns>
 		public static TOut[,] Select<TIn, TOut>(this TIn[,] mArr, Func<TIn, TOut> func)
 		{
-#if DOTNET4
+
 			Contract.Requires(mArr != null);
 			Contract.Requires(func != null);
-#endif
+
 			int xLen = mArr.GetLength(0), yLen = mArr.GetLength(1);
 			TOut[,] mArrOut = new TOut[xLen, yLen];
 
@@ -432,10 +432,10 @@ namespace SharpBag
 		/// <returns>The multidimensional array.</returns>
 		public static T[,] AsMultidimensional<T>(this IEnumerable<T> collection, int cols)
 		{
-#if DOTNET4
+
 			Contract.Requires(cols > 0);
 			Contract.Requires(collection.Count() % cols == 0);
-#endif
+
 			T[] arr = collection.ToArray();
 			int count = arr.Length,
 				rows = count / cols,
@@ -468,10 +468,10 @@ namespace SharpBag
 		/// <returns>The combined array.</returns>
 		public static TOut[,] Zip<TIn, TOut>(this TIn[,] arrFirst, TIn[,] arrSecond, Func<TIn, TIn, TOut> func)
 		{
-#if DOTNET4
+
 			Contract.Requires(arrFirst.GetLength(0) == arrSecond.GetLength(0));
 			Contract.Requires(arrFirst.GetLength(1) == arrSecond.GetLength(1));
-#endif
+
 			int xLen = arrFirst.GetLength(0), yLen = arrFirst.GetLength(1);
 			TOut[,] resArr = new TOut[xLen, yLen];
 
@@ -532,9 +532,9 @@ namespace SharpBag
 		/// <returns>Whether the array contains the specified object.</returns>
 		public static bool ArrayContains(this Array a, object o)
 		{
-#if DOTNET4
+
 			Contract.Requires(a != null);
-#endif
+
 			return a.Cast<object>().Any(item => item == o);
 		}
 
@@ -546,9 +546,9 @@ namespace SharpBag
 		/// <returns>The current instance with extended info.</returns>
 		public static IEnumerable<EnumerableEntry.WithInfo<T>> WithInfo<T>(this IEnumerable<T> collection)
 		{
-#if DOTNET4
+
 			Contract.Requires(collection != null);
-#endif
+
 			bool first = true, last = false;
 			T previous = default(T), next = default(T);
 			int index = 0;
@@ -577,9 +577,9 @@ namespace SharpBag
 		/// <returns>The current instance without extended info.</returns>
 		public static IEnumerable<T> WithoutInfo<T>(this IEnumerable<EnumerableEntry.WithInfo<T>> collection)
 		{
-#if DOTNET4
+
 			Contract.Requires(collection != null);
-#endif
+
 			return collection.Select(i => i.Value);
 		}
 
@@ -591,9 +591,9 @@ namespace SharpBag
 		/// <returns>The current instance with updated info.</returns>
 		public static IEnumerable<EnumerableEntry.WithInfo<T>> UpdateInfo<T>(this IEnumerable<EnumerableEntry.WithInfo<T>> collection)
 		{
-#if DOTNET4
+
 			Contract.Requires(collection != null);
-#endif
+
 			return collection.WithoutInfo().WithInfo();
 		}
 
@@ -605,9 +605,9 @@ namespace SharpBag
 		/// <returns>The current instance with indices.</returns>
 		public static IEnumerable<EnumerableEntry.WithIndex<T>> WithIndex<T>(this IEnumerable<T> collection)
 		{
-#if DOTNET4
+
 			Contract.Requires(collection != null);
-#endif
+
 			int index = 0;
 
 			foreach (T value in collection)
@@ -624,9 +624,9 @@ namespace SharpBag
 		/// <returns>The current instance without indices.</returns>
 		public static IEnumerable<T> WithoutIndex<T>(this IEnumerable<EnumerableEntry.WithIndex<T>> collection)
 		{
-#if DOTNET4
+
 			Contract.Requires(collection != null);
-#endif
+
 			return collection.Select(i => i.Value);
 		}
 
@@ -638,9 +638,9 @@ namespace SharpBag
 		/// <returns>The current instance with updated indices.</returns>
 		public static IEnumerable<EnumerableEntry.WithIndex<T>> UpdateIndex<T>(this IEnumerable<EnumerableEntry.WithIndex<T>> collection)
 		{
-#if DOTNET4
+
 			Contract.Requires(collection != null);
-#endif
+
 			return collection.WithoutIndex().WithIndex();
 		}
 
@@ -652,9 +652,9 @@ namespace SharpBag
 		/// <returns>The new Stack.</returns>
 		public static Stack<T> ToStack<T>(this IEnumerable<T> items)
 		{
-#if DOTNET4
+
 			Contract.Requires(items != null);
-#endif
+
 			return items.Aggregate(new Stack<T>(), (stack, item) =>
 			{
 				stack.Push(item);
@@ -670,9 +670,9 @@ namespace SharpBag
 		/// <returns>The new Queue.</returns>
 		public static Queue<T> ToQueue<T>(this IEnumerable<T> items)
 		{
-#if DOTNET4
+
 			Contract.Requires(items != null);
-#endif
+
 			return items.Aggregate(new Queue<T>(), (stack, item) =>
 			{
 				stack.Enqueue(item);
@@ -690,10 +690,10 @@ namespace SharpBag
 		/// <returns>The item where the selector returns the maximum value.</returns>
 		public static T MaxItem<T, TCompare>(this IEnumerable<T> sequence, Func<T, TCompare> selector) where TCompare : IComparable<TCompare>
 		{
-#if DOTNET4
+
 			Contract.Requires(sequence != null);
 			Contract.Requires(selector != null);
-#endif
+
 			using (IEnumerator<T> enumerator = sequence.GetEnumerator())
 			{
 				enumerator.MoveNext();
@@ -726,10 +726,10 @@ namespace SharpBag
 		/// <returns>The item where the selector returns the minimum value.</returns>
 		public static T MinItem<T, TCompare>(this IEnumerable<T> sequence, Func<T, TCompare> selector) where TCompare : IComparable<TCompare>
 		{
-#if DOTNET4
+
 			Contract.Requires(sequence != null);
 			Contract.Requires(selector != null);
-#endif
+
 			using (IEnumerator<T> enumerator = sequence.GetEnumerator())
 			{
 				enumerator.MoveNext();
@@ -761,9 +761,9 @@ namespace SharpBag
 		/// <returns>The items in the current instance in a cycle.</returns>
 		public static IEnumerable<T> Cycle<T>(this IEnumerable<T> collection, bool cache = true)
 		{
-#if DOTNET4
+
 			Contract.Requires(collection != null);
-#endif
+
 			List<T> c = cache ? new List<T>() : null;
 
 			foreach (T item in collection)
@@ -788,10 +788,10 @@ namespace SharpBag
 		/// <returns>The current instance split into groups.</returns>
 		public static IEnumerable<IEnumerable<T>> GroupsOf<T>(this IEnumerable<T> collection, int size)
 		{
-#if DOTNET4
+
 			Contract.Requires(collection != null);
 			Contract.Requires(size > 0);
-#endif
+
 			T[] buffer = new T[size];
 			using (IEnumerator<T> enumerator = collection.GetEnumerator())
 			{
@@ -819,10 +819,10 @@ namespace SharpBag
 		/// <returns>The grouped collection.</returns>
 		public static IEnumerable<IEnumerable<T>> GroupNeighbours<T>(this IEnumerable<T> collection, Func<IEnumerable<T>, T, bool> predicate)
 		{
-#if DOTNET4
+
 			Contract.Requires(collection != null);
 			Contract.Requires(predicate != null);
-#endif
+
 			using (var e = collection.GetEnumerator())
 			{
 				if (!e.MoveNext()) yield break;

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 using S = System;
 
-#if DOTNET4
+
 
 using System.Numerics;
 using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
 
-#endif
+
 
 namespace SharpBag.Math
 {
@@ -88,7 +88,7 @@ namespace SharpBag.Math
 			return (a / Gcd(a, b)) * b;
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// Finds the greatest common divisor (gcd) of the specified integers.
@@ -124,7 +124,7 @@ namespace SharpBag.Math
 			return (a / Gcd(a, b)) * b;
 		}
 
-#endif
+
 
 		#endregion Gcd & Lcm
 
@@ -184,7 +184,7 @@ namespace SharpBag.Math
 			return true;
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// Checks whether a number is a prime number or not.
@@ -214,7 +214,7 @@ namespace SharpBag.Math
 			return true;
 		}
 
-#endif
+
 
 		#endregion IsPrime
 
@@ -346,7 +346,7 @@ namespace SharpBag.Math
 
 		#region http://alicebobandmallory.com/articles/2010/01/14/prime-factorization-in-parallel
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// Performs an Atkin sieve to find primes, in parallel.
@@ -396,7 +396,7 @@ namespace SharpBag.Math
 				if (isPrime[n]) yield return n;
 		}
 
-#endif
+
 
 		#endregion http://alicebobandmallory.com/articles/2010/01/14/prime-factorization-in-parallel
 
@@ -448,7 +448,7 @@ namespace SharpBag.Math
 			return i;
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// Returns the Collatz count.
@@ -472,7 +472,7 @@ namespace SharpBag.Math
 			return i;
 		}
 
-#endif
+
 
 		#endregion CollatzCount
 

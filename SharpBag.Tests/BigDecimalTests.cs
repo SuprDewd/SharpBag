@@ -8,7 +8,7 @@ using SharpBag.Math;
 
 namespace SharpBag.Tests
 {
-#if DOTNET4
+
 
 	[TestClass]
 	public class BigDecimalTests
@@ -218,5 +218,5 @@ namespace SharpBag.Tests
 		}
 	}
 
-#endif
+
 }

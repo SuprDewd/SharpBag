@@ -1,4 +1,4 @@
-﻿#if DOTNET4
+﻿
 
 using System.Collections.Generic;
 using System.Globalization;
@@ -865,4 +865,4 @@ namespace SharpBag.Math.ForBigInteger
 	}
 }
 
-#endif
+

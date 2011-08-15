@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-#if DOTNET4
+
 
 using System.Diagnostics.Contracts;
 
-#endif
+
 
 namespace SharpBag.Math.ForDouble
 {
@@ -275,9 +275,9 @@ namespace SharpBag.Math.ForDouble
 		/// <returns>The i-th derivative of the polynomial.</returns>
 		public Polynomial Derivative(int i)
 		{
-#if DOTNET4
+
 			Contract.Requires(i >= 0);
-#endif
+
 			Polynomial derivative = this;
 			for (int j = 0; j < i; j++)
 			{

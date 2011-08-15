@@ -1,4 +1,4 @@
-﻿#if DOTNET4
+﻿
 
 using System;
 using System.Collections.Generic;
@@ -274,9 +274,9 @@ namespace SharpBag.Math.ForComplex
 		/// <returns>The i-th derivative of the polynomial.</returns>
 		public Polynomial Derivative(int i)
 		{
-#if DOTNET4
+
 			Contract.Requires(i >= 0);
-#endif
+
 			Polynomial derivative = this;
 			for (int j = 0; j < i; j++)
 			{
@@ -385,4 +385,4 @@ namespace SharpBag.Math.ForComplex
 	}
 }
 
-#endif
+

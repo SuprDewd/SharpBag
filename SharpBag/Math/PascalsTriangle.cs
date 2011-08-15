@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 
-#if DOTNET4
+
 
 using System.Numerics;
 
-#endif
+
 
 namespace SharpBag.Math
 {
@@ -26,7 +26,7 @@ namespace SharpBag.Math
 			return current;
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// Gets an entry at the specified row and column.
@@ -41,7 +41,7 @@ namespace SharpBag.Math
 			return current;
 		}
 
-#endif
+
 
 		#region Rows
 
@@ -87,7 +87,7 @@ namespace SharpBag.Math
 			}
 		}
 
-#if DOTNET4
+
 
 		/// <summary>
 		/// Calculates the rows of Pascal's triangle.
@@ -110,7 +110,7 @@ namespace SharpBag.Math
 			}
 		}
 
-#endif
+
 
 		#endregion Rows
 	}

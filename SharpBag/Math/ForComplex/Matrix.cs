@@ -1,4 +1,4 @@
-﻿#if DOTNET4
+﻿
 
 using System;
 using System.Collections.Generic;
@@ -836,4 +836,4 @@ namespace SharpBag.Math.ForComplex
 	}
 }
 
-#endif
+
