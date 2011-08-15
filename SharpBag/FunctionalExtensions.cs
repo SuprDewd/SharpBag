@@ -11,42 +11,6 @@ namespace SharpBag
     /// </summary>
     public static class FunctionalExtensions
     {
-        /// <summary>
-        /// Performs an action on each element of the enumerable.
-        /// </summary>
-        /// <typeparam name="T">The type of the elements.</typeparam>
-        /// <param name="source">The current instance.</param>
-        /// <param name="action">The action to perform on each element.</param>
-        /// <returns>The current instance.</returns>
-        /// <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
-        public static IEnumerable<T> Iter<T>(this IEnumerable<T> source, Action<T> action)
-        {
-            Contract.Requires(source != null);
-            Contract.Requires(action != null);
-            Contract.Ensures(Contract.Result<IEnumerable<T>>() != null);
-
-            foreach (T elem in source)
-            {
-                action(elem);
-                yield return elem;
-            }
-        }
-
-        /// <summary>
-        /// Performs an action on each element of the enumerable.
-        /// </summary>
-        /// <typeparam name="T">The type of the elements.</typeparam>
-        /// <param name="source">The current instance.</param>
-        /// <param name="action">The action to perform on each element.</param>
-        /// <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
-        public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
-        {
-            Contract.Requires(source != null);
-            Contract.Requires(action != null);
-
-            foreach (T elem in source) action(elem);
-        }
-
         #region To overloads
 
         /// <summary>

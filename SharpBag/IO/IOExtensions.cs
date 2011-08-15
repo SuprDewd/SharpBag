@@ -23,7 +23,10 @@ namespace SharpBag.IO
             Contract.Requires(lines != null);
             Contract.Requires(writer != null);
 
-            lines.ForEach(line => writer.WriteLine(line.ToString()));
+            foreach (var line in lines)
+            {
+                writer.WriteLine(line.ToString());
+            }
         }
 
         /// <summary>

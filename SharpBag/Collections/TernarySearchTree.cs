@@ -11,7 +11,7 @@ namespace SharpBag.Collections
     /// A ternary search tree.
     /// </summary>
     /// <typeparam name="T">The type of keys in the tree.</typeparam>
-    /// <typeparam name="T">The type of values in the tree.</typeparam>
+    /// <typeparam name="V">The type of values in the tree.</typeparam>
     public class TernarySearchTree<T, V> : IEnumerable<KeyValuePair<T[], V>> where T : IComparable<T>
     {
         private class Node

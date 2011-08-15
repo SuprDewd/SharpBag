@@ -140,7 +140,11 @@ namespace SharpBag.Misc
         private void ListProblems()
         {
             int maxTitle = this.Problems.Max(p => p.Title.Length);
-            this.Problems.ForEach(p => Console.WriteLine(p.ToString(maxTitle)));
+
+            foreach (var p in this.Problems)
+            {
+                Console.WriteLine(p.ToString(maxTitle));
+            }
         }
 
         private void WriteHeader(string header)

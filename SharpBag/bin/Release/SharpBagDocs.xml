@@ -6807,25 +6807,6 @@
             Functional methods.
             </summary>
         </member>
-        <member name="M:SharpBag.FunctionalExtensions.Iter``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
-            <summary>
-            Performs an action on each element of the enumerable.
-            </summary>
-            <typeparam name="T">The type of the elements.</typeparam>
-            <param name="source">The current instance.</param>
-            <param name="action">The action to perform on each element.</param>
-            <returns>The current instance.</returns>
-            <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
-        </member>
-        <member name="M:SharpBag.FunctionalExtensions.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
-            <summary>
-            Performs an action on each element of the enumerable.
-            </summary>
-            <typeparam name="T">The type of the elements.</typeparam>
-            <param name="source">The current instance.</param>
-            <param name="action">The action to perform on each element.</param>
-            <remarks>Igor Ostrovsky - http://igoro.com/archive/extended-linq-additional-operators-for-linq-to-objects/</remarks>
-        </member>
         <member name="M:SharpBag.FunctionalExtensions.To(System.Int32,System.Int32,System.Int32)">
             <summary>
             Generates numbers that range from the value of the current instance to the value of end.
@@ -9477,7 +9458,7 @@
             A ternary search tree.
             </summary>
             <typeparam name="T">The type of keys in the tree.</typeparam>
-            <typeparam name="T">The type of values in the tree.</typeparam>
+            <typeparam name="V">The type of values in the tree.</typeparam>
         </member>
         <member name="M:SharpBag.Collections.TernarySearchTree`2.#ctor">
             <summary>

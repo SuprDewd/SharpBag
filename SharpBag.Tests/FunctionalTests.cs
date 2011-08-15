@@ -73,39 +73,6 @@ namespace SharpBag.Tests
         }
 
         [TestMethod]
-        public void Iter()
-        {
-            int[] i = new[] { 10, 4, 16, 1 };
-            List<int> i2 = new List<int>();
-
-            i.Iter(j => i2.Add(j));
-            Assert.AreEqual(0, i2.Count());
-
-            i.Iter(j => i2.Add(j)).ToArray();
-            Assert.AreEqual(i.Length, i2.Count());
-
-            for (int k = 0; k < 4; k++)
-            {
-                Assert.AreEqual(i[k], i2[k]);
-            }
-        }
-
-        [TestMethod]
-        public void ForEach()
-        {
-            int[] i = new[] { 5, 8, 2, 4 };
-            List<int> i2 = new List<int>();
-
-            i.ForEach(j => i2.Add(j));
-            Assert.AreEqual(i.Length, i2.Count());
-
-            for (int k = 0; k < 4; k++)
-            {
-                Assert.AreEqual(i[k], i2[k]);
-            }
-        }
-
-        [TestMethod]
         public void To()
         {
             int[] t1 = 1.To(3).ToArray();
