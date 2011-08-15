@@ -9,261 +9,261 @@ using SharpBag.Networking.Services;
 
 namespace SharpBag.Networking
 {
-	/// <summary>
-	/// A network client.
-	/// </summary>
-	public class NetworkClient : NetworkClientServiceHandler
-	{
-		/// <summary>
-		/// Settings for a network client.
-		/// </summary>
-		public class ClientSettings
-		{
-			private INetworkSerializer _Serializer = new DefaultNetworkSerializer();
+    /// <summary>
+    /// A network client.
+    /// </summary>
+    public class NetworkClient : NetworkClientServiceHandler
+    {
+        /// <summary>
+        /// Settings for a network client.
+        /// </summary>
+        public class ClientSettings
+        {
+            private INetworkSerializer _Serializer = new DefaultNetworkSerializer();
 
-			/// <summary>
-			/// Gets or sets the serializer.
-			/// </summary>
-			/// <value>
-			/// The serializer.
-			/// </value>
-			public INetworkSerializer Serializer { get { return _Serializer; } set { _Serializer = value; } }
-		}
+            /// <summary>
+            /// Gets or sets the serializer.
+            /// </summary>
+            /// <value>
+            /// The serializer.
+            /// </value>
+            public INetworkSerializer Serializer { get { return _Serializer; } set { _Serializer = value; } }
+        }
 
-		/// <summary>
-		/// Occurs when the client connects.
-		/// </summary>
-		public event Action<NetworkClient> OnConnect;
+        /// <summary>
+        /// Occurs when the client connects.
+        /// </summary>
+        public event Action<NetworkClient> OnConnect;
 
-		/// <summary>
-		/// Occurs when the client disconnects.
-		/// </summary>
-		public event Action<NetworkClient> OnDisconnect;
+        /// <summary>
+        /// Occurs when the client disconnects.
+        /// </summary>
+        public event Action<NetworkClient> OnDisconnect;
 
-		internal object ConnectionLock = new object();
+        internal object ConnectionLock = new object();
 
-		/// <summary>
-		/// Gets the underlying connection.
-		/// </summary>
-		public TcpNetworkConnection Connection { get; private set; }
+        /// <summary>
+        /// Gets the underlying connection.
+        /// </summary>
+        public TcpNetworkConnection Connection { get; private set; }
 
-		private volatile bool _IsConnected;
+        private volatile bool _IsConnected;
 
-		/// <summary>
-		/// Gets a value indicating whether this instance is connected.
-		/// </summary>
-		/// <value>
-		/// Whether this instance is connected.
-		/// </value>
-		public bool IsConnected { get { return this._IsConnected; } }
+        /// <summary>
+        /// Gets a value indicating whether this instance is connected.
+        /// </summary>
+        /// <value>
+        /// Whether this instance is connected.
+        /// </value>
+        public bool IsConnected { get { return this._IsConnected; } }
 
-		/// <summary>
-		/// Gets the ID of the client.
-		/// </summary>
-		public int ID { get { return this.Connection.ID; } }
+        /// <summary>
+        /// Gets the ID of the client.
+        /// </summary>
+        public int ID { get { return this.Connection.ID; } }
 
-		/// <summary>
-		/// Gets or sets the client settings.
-		/// </summary>
-		/// <value>
-		/// The client settings.
-		/// </value>
-		public ClientSettings Settings { get; set; }
+        /// <summary>
+        /// Gets or sets the client settings.
+        /// </summary>
+        /// <value>
+        /// The client settings.
+        /// </value>
+        public ClientSettings Settings { get; set; }
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="NetworkClient"/> class.
-		/// </summary>
-		public NetworkClient(ClientSettings settings = null)
-		{
-			this.Settings = settings ?? new ClientSettings();
-		}
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NetworkClient"/> class.
+        /// </summary>
+        public NetworkClient(ClientSettings settings = null)
+        {
+            this.Settings = settings ?? new ClientSettings();
+        }
 
-		/// <summary>
-		/// Connects the client to the specified remote end point.
-		/// </summary>
-		/// <param name="remoteEndPoint">The remote end point.</param>
-		public void Connect(EndPoint remoteEndPoint)
-		{
-			lock (this.ConnectionLock)
-			{
-				if (!this._IsConnected)
-				{
-					Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-					socket.Connect(remoteEndPoint);
-					this.Connect(socket);
-				}
-				else throw new InvalidOperationException("Client was already connected");
-			}
-		}
+        /// <summary>
+        /// Connects the client to the specified remote end point.
+        /// </summary>
+        /// <param name="remoteEndPoint">The remote end point.</param>
+        public void Connect(EndPoint remoteEndPoint)
+        {
+            lock (this.ConnectionLock)
+            {
+                if (!this._IsConnected)
+                {
+                    Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                    socket.Connect(remoteEndPoint);
+                    this.Connect(socket);
+                }
+                else throw new InvalidOperationException("Client was already connected");
+            }
+        }
 
-		/// <summary>
-		/// Connects the client to the specified address and port.
-		/// </summary>
-		/// <param name="address">The address.</param>
-		/// <param name="port">The port.</param>
-		public void Connect(IPAddress address, int port)
-		{
-			lock (this.ConnectionLock)
-			{
-				if (!this._IsConnected)
-				{
-					Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-					socket.Connect(address, port);
-					this.Connect(socket);
-				}
-				else throw new InvalidOperationException("Client was already connected");
-			}
-		}
+        /// <summary>
+        /// Connects the client to the specified address and port.
+        /// </summary>
+        /// <param name="address">The address.</param>
+        /// <param name="port">The port.</param>
+        public void Connect(IPAddress address, int port)
+        {
+            lock (this.ConnectionLock)
+            {
+                if (!this._IsConnected)
+                {
+                    Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                    socket.Connect(address, port);
+                    this.Connect(socket);
+                }
+                else throw new InvalidOperationException("Client was already connected");
+            }
+        }
 
-		/// <summary>
-		/// Connects the client to the specified host and port.
-		/// </summary>
-		/// <param name="host">The host.</param>
-		/// <param name="port">The port.</param>
-		public void Connect(string host, int port)
-		{
-			lock (this.ConnectionLock)
-			{
-				if (!this._IsConnected)
-				{
-					Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-					socket.Connect(host, port);
-					this.Connect(socket);
-				}
-				else throw new InvalidOperationException("Client was already connected");
-			}
-		}
+        /// <summary>
+        /// Connects the client to the specified host and port.
+        /// </summary>
+        /// <param name="host">The host.</param>
+        /// <param name="port">The port.</param>
+        public void Connect(string host, int port)
+        {
+            lock (this.ConnectionLock)
+            {
+                if (!this._IsConnected)
+                {
+                    Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                    socket.Connect(host, port);
+                    this.Connect(socket);
+                }
+                else throw new InvalidOperationException("Client was already connected");
+            }
+        }
 
-		private void Connect(Socket socket)
-		{
-			byte[] rawid = new byte[4];
-			SocketError e;
-			socket.Receive(rawid, 0, 4, SocketFlags.None, out e);
+        private void Connect(Socket socket)
+        {
+            byte[] rawid = new byte[4];
+            SocketError e;
+            socket.Receive(rawid, 0, 4, SocketFlags.None, out e);
 
-			if (e == SocketError.Success)
-			{
-				int id = BitConverter.ToInt32(rawid, 0);
-				if (id == 0) throw new Exception("Server denied connection");
-				else
-				{
-					this.Connection = new TcpNetworkConnection(id, socket, ref this.ConnectionLock);
-					this.Connection.OnDisconnect += new Action<TcpNetworkConnection>(ConnectionDisconnected);
-					this.Connection.OnPacketReceived += new Action<TcpNetworkConnection, byte[]>(PacketReceived);
-					this.Connection.Connect();
-					this._IsConnected = true;
-					if (this.OnConnect != null) this.OnConnect(this);
-					base.StartAllServices(this);
-				}
-			}
-			else
-			{
-				throw new Exception("Could not receive connection ID");
-			}
-		}
+            if (e == SocketError.Success)
+            {
+                int id = BitConverter.ToInt32(rawid, 0);
+                if (id == 0) throw new Exception("Server denied connection");
+                else
+                {
+                    this.Connection = new TcpNetworkConnection(id, socket, ref this.ConnectionLock);
+                    this.Connection.OnDisconnect += new Action<TcpNetworkConnection>(ConnectionDisconnected);
+                    this.Connection.OnPacketReceived += new Action<TcpNetworkConnection, byte[]>(PacketReceived);
+                    this.Connection.Connect();
+                    this._IsConnected = true;
+                    if (this.OnConnect != null) this.OnConnect(this);
+                    base.StartAllServices(this);
+                }
+            }
+            else
+            {
+                throw new Exception("Could not receive connection ID");
+            }
+        }
 
-		private void PacketReceived(TcpNetworkConnection conn, byte[] packet)
-		{
-			lock (this.ConnectionLock)
-			{
-				if (this._IsConnected)
-				{
-					this.DeliverPacket(this.Settings.Serializer.Deserialize(packet));
-				}
-			}
-		}
+        private void PacketReceived(TcpNetworkConnection conn, byte[] packet)
+        {
+            lock (this.ConnectionLock)
+            {
+                if (this._IsConnected)
+                {
+                    this.DeliverPacket(this.Settings.Serializer.Deserialize(packet));
+                }
+            }
+        }
 
-		private void ConnectionDisconnected(TcpNetworkConnection conn)
-		{
-			lock (this.ConnectionLock)
-			{
-				if (this._IsConnected)
-				{
-					this.Disconnect();
-				}
-			}
-		}
+        private void ConnectionDisconnected(TcpNetworkConnection conn)
+        {
+            lock (this.ConnectionLock)
+            {
+                if (this._IsConnected)
+                {
+                    this.Disconnect();
+                }
+            }
+        }
 
-		/// <summary>
-		/// Disconnects this instance.
-		/// </summary>
-		public void Disconnect()
-		{
-			lock (this.ConnectionLock)
-			{
-				if (this._IsConnected)
-				{
-					if (this.Connection.IsConnected)
-					{
-						this.Connection.Disconnect();
-					}
-					else
-					{
-						this._IsConnected = false;
-						if (this.OnDisconnect != null) this.OnDisconnect(this);
-						base.StopAllServices(this);
-					}
-				}
-				else throw new InvalidOperationException("Client was already disconnected");
-			}
-		}
+        /// <summary>
+        /// Disconnects this instance.
+        /// </summary>
+        public void Disconnect()
+        {
+            lock (this.ConnectionLock)
+            {
+                if (this._IsConnected)
+                {
+                    if (this.Connection.IsConnected)
+                    {
+                        this.Connection.Disconnect();
+                    }
+                    else
+                    {
+                        this._IsConnected = false;
+                        if (this.OnDisconnect != null) this.OnDisconnect(this);
+                        base.StopAllServices(this);
+                    }
+                }
+                else throw new InvalidOperationException("Client was already disconnected");
+            }
+        }
 
-		/// <summary>
-		/// Sends the specified packet.
-		/// </summary>
-		/// <param name="packet">The packet.</param>
-		public void Send(NetworkPacket packet)
-		{
-			lock (this.ConnectionLock)
-			{
-				if (this._IsConnected)
-				{
-					packet.Sender = this.Connection.ID;
-					this.Connection.Send(this.Settings.Serializer.Serialize(packet));
-				}
-				else throw new InvalidOperationException("Client must be connected");
-			}
-		}
+        /// <summary>
+        /// Sends the specified packet.
+        /// </summary>
+        /// <param name="packet">The packet.</param>
+        public void Send(NetworkPacket packet)
+        {
+            lock (this.ConnectionLock)
+            {
+                if (this._IsConnected)
+                {
+                    packet.Sender = this.Connection.ID;
+                    this.Connection.Send(this.Settings.Serializer.Serialize(packet));
+                }
+                else throw new InvalidOperationException("Client must be connected");
+            }
+        }
 
-		#region Service handler
+        #region Service handler
 
-		/// <summary>
-		/// Gets the service with the specified id.
-		/// </summary>
-		/// <param name="id">The id.</param>
-		/// <returns>The service with the specified id.</returns>
-		public override INetworkClientService GetService(int id)
-		{
-			lock (this.ConnectionLock)
-			{
-				return base.GetService(id);
-			}
-		}
+        /// <summary>
+        /// Gets the service with the specified id.
+        /// </summary>
+        /// <param name="id">The id.</param>
+        /// <returns>The service with the specified id.</returns>
+        public override INetworkClientService GetService(int id)
+        {
+            lock (this.ConnectionLock)
+            {
+                return base.GetService(id);
+            }
+        }
 
-		/// <summary>
-		/// Registers the service.
-		/// </summary>
-		/// <param name="id">The id of the service.</param>
-		/// <param name="service">The service.</param>
-		public override void RegisterService(int id, INetworkClientService service)
-		{
-			lock (this.ConnectionLock)
-			{
-				base.RegisterService(id, service);
-			}
-		}
+        /// <summary>
+        /// Registers the service.
+        /// </summary>
+        /// <param name="id">The id of the service.</param>
+        /// <param name="service">The service.</param>
+        public override void RegisterService(int id, INetworkClientService service)
+        {
+            lock (this.ConnectionLock)
+            {
+                base.RegisterService(id, service);
+            }
+        }
 
-		/// <summary>
-		/// Unregisters the service with the specified id.
-		/// </summary>
-		/// <param name="id">The id.</param>
-		public override void UnregisterService(int id)
-		{
-			lock (this.ConnectionLock)
-			{
-				base.UnregisterService(id);
-			}
-		}
+        /// <summary>
+        /// Unregisters the service with the specified id.
+        /// </summary>
+        /// <param name="id">The id.</param>
+        public override void UnregisterService(int id)
+        {
+            lock (this.ConnectionLock)
+            {
+                base.UnregisterService(id);
+            }
+        }
 
-		#endregion Service handler
-	}
+        #endregion Service handler
+    }
 }
