@@ -457,6 +457,19 @@ namespace SharpBag
             }
         }
 
+        /// <summary>
+        /// Unfolds the current instance using the unfolder.
+        /// </summary>
+        /// <typeparam name="T">The type of the current instance.</typeparam>
+        /// <param name="item">The current instance.</param>
+        /// <param name="unfolder">The unfolder.</param>
+        /// <returns>The unfolded elements.</returns>
+        public static IEnumerable<T> Unfold<T>(this T item, Func<T, T> unfolder)
+        {
+            yield return item;
+            while (true) yield return item = unfolder(item);
+        }
+
         #endregion Unfold overloads
 
         /// <summary>
@@ -469,53 +482,6 @@ namespace SharpBag
         public static Matcher<TIn, TOut> Match<TIn, TOut>(this TIn value)
         {
             return new Matcher<TIn, TOut>(value);
-        }
-
-        /// <summary>
-        /// Lazily aggregate the current instance.
-        /// </summary>
-        /// <typeparam name="T">The type of items in the current instance.</typeparam>
-        /// <typeparam name="TAccumulate">The result of the aggregation.</typeparam>
-        /// <param name="sequence">The current instance.</param>
-        /// <param name="seed">The seed.</param>
-        /// <param name="aggregator">The aggregator.</param>
-        /// <returns>The aggregates.</returns>
-        public static IEnumerable<TAccumulate> LazilyAggregate<T, TAccumulate>(this IEnumerable<T> sequence, TAccumulate seed, Func<TAccumulate, T, TAccumulate> aggregator)
-        {
-            Contract.Requires(sequence != null);
-            Contract.Requires(aggregator != null);
-
-            yield return seed;
-            foreach (T item in sequence) yield return seed = aggregator(seed, item);
-        }
-
-        /// <summary>
-        /// Lazily aggregate the current instance.
-        /// </summary>
-        /// <typeparam name="T">The type of items in the current instance.</typeparam>
-        /// <typeparam name="TAccumulate">The result of the aggregation.</typeparam>
-        /// <param name="sequence">The current instance.</param>
-        /// <param name="aggregator">The aggregator.</param>
-        /// <returns>The aggregates.</returns>
-        public static IEnumerable<TAccumulate> LazilyAggregate<T, TAccumulate>(this IEnumerable<T> sequence, Func<TAccumulate, T, TAccumulate> aggregator)
-        {
-            Contract.Requires(sequence != null);
-            Contract.Requires(aggregator != null);
-
-            return sequence.LazilyAggregate(default(TAccumulate), aggregator);
-        }
-
-        /// <summary>
-        /// Unfolds the current instance using the unfolder.
-        /// </summary>
-        /// <typeparam name="T">The type of the current instance.</typeparam>
-        /// <param name="item">The current instance.</param>
-        /// <param name="unfolder">The unfolder.</param>
-        /// <returns>The unfolded elements.</returns>
-        public static IEnumerable<T> Unfold<T>(this T item, Func<T, T> unfolder)
-        {
-            yield return item;
-            while (true) yield return item = unfolder(item);
         }
     }
 }

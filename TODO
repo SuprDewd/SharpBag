@@ -6,8 +6,6 @@
 	- IsPowerOfTwo, NextPowerOfTwo, IsSquare, NextSquare...
 	- Better DivisorSum (use primes).
 	- Better perfect number sequence. (2^(p - 1) * (2^p - 1))
-	- ModPow for int / long.
-	- Add more unit tests.
 	- Integer partitions.
 	- Add more unit tests.
 
@@ -17,4 +15,3 @@
 	- Look for better Miller-Rabin primality test.
 	- Cycle detection.
 	- Add arithmetic overflow checks.
-	- Better Contract mechanism, must work for .Net 4 / .Net 3.5.
