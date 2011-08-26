@@ -483,5 +483,19 @@ namespace SharpBag
         {
             return new Matcher<TIn, TOut>(value);
         }
+
+        /// <summary>
+        /// Performs a function composition on the specified functions.
+        /// </summary>
+        /// <typeparam name="T">The type of the input.</typeparam>
+        /// <typeparam name="TTemp">The type of the temporary results.</typeparam>
+        /// <typeparam name="TResult">The type of the result.</typeparam>
+        /// <param name="f">The f function.</param>
+        /// <param name="g">The g function.</param>
+        /// <returns></returns>
+        public static Func<T, TResult> Compose<T, TTemp, TResult>(this Func<TTemp, TResult> f, Func<T, TTemp> g)
+        {
+            return x => f(g(x));
+        }
     }
 }
