@@ -12,6 +12,5 @@
 
  MAYBE:
  
-	- Look for better Miller-Rabin primality test.
 	- Cycle detection.
 	- Add arithmetic overflow checks.

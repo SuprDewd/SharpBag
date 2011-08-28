@@ -1042,50 +1042,193 @@ namespace SharpBag.Math
 
         #region IsProbablePrime
 
-        #region http://www.docjar.com/html/api/java/math/Primality.java.html
+        #region Kristian Edlund - http://www.mathblog.dk/2011/project-euler-58-primes-diagonals-spiral/
 
         /// <summary>
-        /// Whether the current instance is probably prime.
+        /// Determines whether the specified number is probably prime.
         /// </summary>
-        /// <param name="n">The current instance.</param>
-        /// <param name="t">The accuracy of the test, higher is more accurate.</param>
-        /// <param name="rnd">A random number generator.</param>
-        /// <returns>Whether the current instance is probably prime.</returns>
-        public static bool IsProbablePrime(this BigInteger n, int t, Random rnd = null)
+        /// <param name="n">The specifed number.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified number is probably prime; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsProbablePrime(this int n)
         {
-            Contract.Requires(t >= 0);
+            Contract.Requires(n >= 0);
+            if (n < 1373653) return n.IsProbablePrime(new int[] { 2, 3 });
+            else if (n < 9080191) return n.IsProbablePrime(new int[] { 31, 73 });
+            else return n.IsProbablePrime(new int[] { 2, 7, 61 });
+        }
 
+        /// <summary>
+        /// Determines whether the specified number is probably prime.
+        /// </summary>
+        /// <param name="n">The specifed number.</param>
+        /// <param name="possibleWitnesses">Possible witnesses of the numbers non-primeness.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified number is probably prime; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsProbablePrime(this int n, int[] possibleWitnesses)
+        {
+            Contract.Requires(n >= 0);
             if (n <= 1) return false;
             if (n == 2) return true;
-            if (n.IsEven) return false;
-            if (n <= BagMath.LargestSmallPrime) return Array.BinarySearch<int>(BagMath.SmallPrimes, (int)n) >= 0;
+            if (n % 2 == 0) return false;
+            if (n < 9) return true;
 
-            if (t >= BagMath.SmallPrimes.Length) t = BagMath.SmallPrimes.Length - 1;
-            BigInteger x, y, nMinusOne = n - 1, q;
-            int k = (int)BigInteger.Log(n & -n, 2);
-            q = nMinusOne >> k;
-            if (rnd == null) rnd = new Random();
-
-            for (int i = 0; i < t; i++)
+            for (int i = 0; i < possibleWitnesses.Length; i++)
             {
-                x = BagMath.SmallPrimes[i];
-                y = BigInteger.ModPow(x, q, n);
-                if (y == 1 || y == nMinusOne) continue;
+                int t = 0, a = possibleWitnesses[i], u = n - 1;
 
-                for (int j = 0; j < k; j++)
+                while ((u & 1) == 0)
                 {
-                    if (y == nMinusOne) continue;
-                    y = BigInteger.ModPow(y, 2, n);
-                    if (y == 1) return false;
+                    t++;
+                    u >>= 1;
                 }
 
-                if (y != nMinusOne) return false;
+                long xi1 = a.ModPow(u, n), xi2;
+                for (int j = 0; j < t; j++)
+                {
+                    xi2 = xi1 * xi1 % n;
+                    if ((xi2 == 1) && (xi1 != 1) && (xi1 != (n - 1))) return false;
+                    xi1 = xi2;
+                }
+
+                if (xi1 != 1) return false;
             }
 
             return true;
         }
 
-        #endregion http://www.docjar.com/html/api/java/math/Primality.java.html
+        /// <summary>
+        /// Determines whether the specified number is probably prime.
+        /// </summary>
+        /// <param name="n">The specifed number.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified number is probably prime; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsProbablePrime(this long n)
+        {
+            Contract.Requires(n >= 0);
+            if (n < 1373653) return n.IsProbablePrime(new int[] { 2, 3 });
+            if (n < 9080191) return n.IsProbablePrime(new int[] { 31, 73 });
+            if (n < 4759123141) return n.IsProbablePrime(new int[] { 2, 7, 61 });
+            if (n < 2152302898747) return n.IsProbablePrime(new int[] { 2, 3, 5, 7, 11 });
+            if (n < 3474749660383) return n.IsProbablePrime(new int[] { 2, 3, 5, 7, 11, 13 });
+            if (n < 341550071728321) return n.IsProbablePrime(new int[] { 2, 3, 5, 7, 11, 13, 17 });
+
+            throw new ArgumentOutOfRangeException("No predefined witnesses for n >= 341.550.071.728.321");
+        }
+
+        /// <summary>
+        /// Determines whether the specified number is probably prime.
+        /// </summary>
+        /// <param name="n">The specifed number.</param>
+        /// <param name="possibleWitnesses">Possible witnesses of the numbers non-primeness.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified number is probably prime; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsProbablePrime(this long n, int[] possibleWitnesses)
+        {
+            Contract.Requires(n >= 0);
+            if (n <= 1) return false;
+            if (n == 2) return true;
+            if (n % 2 == 0) return false;
+            if (n < 9) return true;
+
+            for (int i = 0; i < possibleWitnesses.Length; i++)
+            {
+                int t = 0;
+                long u = n - 1, a = possibleWitnesses[i];
+
+                while ((u & 1) == 0)
+                {
+                    t++;
+                    u >>= 1;
+                }
+
+                long xi1 = a.ModPow(u, n), xi2;
+                for (int j = 0; j < t; j++)
+                {
+                    xi2 = xi1 * xi1 % n;
+                    if ((xi2 == 1) && (xi1 != 1) && (xi1 != (n - 1))) return false;
+                    xi1 = xi2;
+                }
+
+                if (xi1 != 1) return false;
+            }
+
+            return true;
+        }
+
+        private static readonly BigInteger LimitA = 1373653;
+        private static readonly BigInteger LimitB = 9080191;
+        private static readonly BigInteger LimitC = BigInteger.Parse("4759123141");
+        private static readonly BigInteger LimitD = BigInteger.Parse("2152302898747");
+        private static readonly BigInteger LimitE = BigInteger.Parse("3474749660383");
+        private static readonly BigInteger LimitF = BigInteger.Parse("341550071728321");
+
+        /// <summary>
+        /// Determines whether the specified number is probably prime.
+        /// </summary>
+        /// <param name="n">The specifed number.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified number is probably prime; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsProbablePrime(this BigInteger n)
+        {
+            Contract.Requires(n >= 0);
+            if (n < LimitA) return n.IsProbablePrime(new int[] { 2, 3 });
+            if (n < LimitB) return n.IsProbablePrime(new int[] { 31, 73 });
+            if (n < LimitC) return n.IsProbablePrime(new int[] { 2, 7, 61 });
+            if (n < LimitD) return n.IsProbablePrime(new int[] { 2, 3, 5, 7, 11 });
+            if (n < LimitE) return n.IsProbablePrime(new int[] { 2, 3, 5, 7, 11, 13 });
+            if (n < LimitF) return n.IsProbablePrime(new int[] { 2, 3, 5, 7, 11, 13, 17 });
+
+            throw new ArgumentOutOfRangeException("No predefined witnesses for n >= 341.550.071.728.321");
+        }
+
+        /// <summary>
+        /// Determines whether the specified number is probably prime.
+        /// </summary>
+        /// <param name="n">The specifed number.</param>
+        /// <param name="possibleWitnesses">Possible witnesses of the numbers non-primeness.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified number is probably prime; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsProbablePrime(this BigInteger n, int[] possibleWitnesses)
+        {
+            Contract.Requires(n >= 0);
+            if (n <= 1) return false;
+            if (n == 2) return true;
+            if (n % 2 == 0) return false;
+            if (n < 9) return true;
+
+            for (int i = 0; i < possibleWitnesses.Length; i++)
+            {
+                int t = 0, a = possibleWitnesses[i];
+                BigInteger u = n - 1;
+
+                while ((u & 1) == 0)
+                {
+                    t++;
+                    u >>= 1;
+                }
+
+                BigInteger xi1 = BigInteger.ModPow(a, u, n), xi2;
+                for (int j = 0; j < t; j++)
+                {
+                    xi2 = xi1 * xi1 % n;
+                    if ((xi2 == 1) && (xi1 != 1) && (xi1 != (n - 1))) return false;
+                    xi1 = xi2;
+                }
+
+                if (xi1 != 1) return false;
+            }
+
+            return true;
+        }
+
+        #endregion Kristian Edlund - http://www.mathblog.dk/2011/project-euler-58-primes-diagonals-spiral/
 
         #endregion IsProbablePrime
 
@@ -1166,5 +1309,71 @@ namespace SharpBag.Math
         }
 
         #endregion Sqrt
+
+        #region ModPow
+
+        #region Kristian Edlund - http://www.mathblog.dk/2011/project-euler-58-primes-diagonals-spiral/
+
+        /// <summary>
+        /// Modular exponentation.
+        /// </summary>
+        /// <param name="b">The base.</param>
+        /// <param name="e">The exponent.</param>
+        /// <param name="m">The modulo.</param>
+        /// <returns>The base raised to the exponent with the specified modulo.</returns>
+        public static int ModPow(this int b, int e, int m)
+        {
+            Contract.Requires(e >= 0);
+            Contract.Requires(m > 0);
+            long d = 1;
+            int k = 0, te = e;
+
+            while (te > 0)
+            {
+                k++;
+                te >>= 1;
+            }
+
+            for (int i = k - 1; i >= 0; i--)
+            {
+                d = d * d % m;
+                if (((e >> i) & 1) > 0) d = d * b % m;
+            }
+
+            return (int)d;
+        }
+
+        /// <summary>
+        /// Modular exponentation.
+        /// </summary>
+        /// <param name="b">The base.</param>
+        /// <param name="e">The exponent.</param>
+        /// <param name="m">The modulo.</param>
+        /// <returns>The base raised to the exponent with the specified modulo.</returns>
+        public static long ModPow(this long b, long e, long m)
+        {
+            Contract.Requires(e >= 0);
+            Contract.Requires(m > 0);
+            long d = 1, te = e;
+            int k = 0;
+
+            while (te > 0)
+            {
+                k++;
+                te >>= 1;
+            }
+
+            for (int i = k - 1; i >= 0; i--)
+            {
+                d = d * d % m;
+                if (((e >> i) & 1) > 0) d = d * b % m;
+            }
+
+            return d;
+        }
+
+        #endregion Kristian Edlund - http://www.mathblog.dk/2011/project-euler-58-primes-diagonals-spiral/
+
+        #endregion ModPow
     }
 }
