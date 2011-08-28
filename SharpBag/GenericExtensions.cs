@@ -229,5 +229,43 @@ namespace SharpBag
         {
             return func(variable);
         }
+
+        #region ExecutionTime
+
+        /// <summary>
+        /// Calculates the execution time of the specified action.
+        /// </summary>
+        /// <param name="a">The action.</param>
+        /// <param name="handleGc">Whether to handle the garbage collector. If true, the GC will be forced to clean up before taking the time.</param>
+        /// <returns>The execution time in milliseconds.</returns>
+        public static TimeSpan ExecutionTime(this Action a, bool handleGc = true)
+        {
+            return Utils.ExecutionTime(a, handleGc);
+        }
+
+        /// <summary>
+        /// Calculates the execution time of the specified function.
+        /// </summary>
+        /// <param name="f">The function.</param>
+        /// <param name="handleGc">Whether to handle the garbage collector. If true, the GC will be forced to clean up before taking the time.</param>
+        /// <returns>The execution time in milliseconds, and the result of the function.</returns>
+        public static Tuple<TimeSpan, T> ExecutionTime<T>(this Func<T> f, bool handleGc = true)
+        {
+            T result = default(T);
+            return Tuple.Create(Utils.ExecutionTime(() => result = f(), handleGc), result);
+        }
+
+        /// <summary>
+        /// Calculates the execution time of the specified query.
+        /// </summary>
+        /// <param name="collection">The query.</param>
+        /// <param name="handleGc">Whether to handle the garbage collector. If true, the GC will be forced to clean up before taking the time.</param>
+        /// <returns>The execution time in milliseconds.</returns>
+        public static TimeSpan ExecutionTime<T>(this IEnumerable<T> collection, bool handleGc = true)
+        {
+            return Utils.ExecutionTime(() => collection.Execute(), handleGc);
+        }
+
+        #endregion ExecutionTime
     }
 }
