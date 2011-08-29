@@ -139,7 +139,19 @@ namespace SharpBag
         /// <returns>A console helper.</returns>
         public static ConsoleHelper Write<T>(this T o)
         {
-            return ConsoleHelper.Create().Write<T>(o);
+            return ConsoleHelper.GetInstance().Write<T>(o);
+        }
+
+        /// <summary>
+        /// Writes the current instance to the console.
+        /// </summary>
+        /// <param name="o">The specified object.</param>
+        /// <param name="format">The format string.</param>
+        /// <param name="objects">The objects.</param>
+        /// <returns>A console helper.</returns>
+        public static ConsoleHelper Write<T>(this T o, string format, params object[] objects)
+        {
+            return ConsoleHelper.GetInstance().Write(format, new object[] { o }.Concat(objects).ToArray());
         }
 
         /// <summary>
@@ -149,7 +161,19 @@ namespace SharpBag
         /// <returns>A console helper.</returns>
         public static ConsoleHelper WriteLine<T>(this T o)
         {
-            return ConsoleHelper.Create().WriteLine<T>(o);
+            return ConsoleHelper.GetInstance().WriteLine<T>(o);
+        }
+
+        /// <summary>
+        /// Writes the current instance to the console, and then puts the cursor on a new line.
+        /// </summary>
+        /// <param name="o">The specified object.</param>
+        /// <param name="format">The format string.</param>
+        /// <param name="objects">The objects.</param>
+        /// <returns>A console helper.</returns>
+        public static ConsoleHelper WriteLine<T>(this T o, string format, params object[] objects)
+        {
+            return ConsoleHelper.GetInstance().WriteLine(format, new object[] { o }.Concat(objects).ToArray());
         }
 
         /// <summary>

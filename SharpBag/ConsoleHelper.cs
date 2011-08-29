@@ -15,7 +15,7 @@ namespace SharpBag
         /// Returns an instance of the console helper.
         /// </summary>
         /// <returns>An instance of the console helper.</returns>
-        public static ConsoleHelper Create()
+        public static ConsoleHelper GetInstance()
         {
             if (Instance == null) Instance = new ConsoleHelper();
             return Instance;
