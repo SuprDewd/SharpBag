@@ -3,7 +3,7 @@
 
 	- Serialization.
 	- Unit tests for Geometry classes.
-	- IsPowerOfTwo, NextPowerOfTwo, IsSquare, NextSquare...
+	- Base converting for BigIntegers.
 	- Better DivisorSum (use primes).
 	- Better perfect number sequence. (2^(p - 1) * (2^p - 1))
 	- Integer partitions.
