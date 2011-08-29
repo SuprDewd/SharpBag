@@ -134,10 +134,15 @@ namespace SharpBag.Math
             if (n < 4) return true;
             if (n % 2 == 0) return false;
             if (n < 9) return true;
-            if (n % 3 == 0) return false;
 
-            uint r = (uint)System.Math.Sqrt(n);
-            uint f = 5;
+            int r = (int)System.Math.Sqrt(n), lastPrime = 0;
+            for (int i = 1; i < BagMath.SmallPrimes.Length; i++)
+            {
+                if (BagMath.SmallPrimes[i] > r) return true;
+                if (n % (lastPrime = BagMath.SmallPrimes[i]) == 0) return false;
+            }
+
+            int f = ((lastPrime - 5) / 6) * 6 + 5;
             while (f <= r)
             {
                 if (n % f == 0) return false;
@@ -161,10 +166,16 @@ namespace SharpBag.Math
             if (n < 4) return true;
             if (n % 2 == 0) return false;
             if (n < 9) return true;
-            if (n % 3 == 0) return false;
 
-            uint r = (uint)S.Math.Sqrt(n);
-            uint f = 5;
+            uint r = (uint)System.Math.Sqrt(n);
+            uint lastPrime = 0;
+            for (int i = 1; i < BagMath.SmallPrimes.Length; i++)
+            {
+                if (BagMath.SmallPrimes[i] > r) return true;
+                if (n % (lastPrime = (uint)BagMath.SmallPrimes[i]) == 0) return false;
+            }
+
+            uint f = ((lastPrime - 5) / 6) * 6 + 5;
             while (f <= r)
             {
                 if (n % f == 0) return false;
@@ -188,11 +199,16 @@ namespace SharpBag.Math
             if (n < 4) return true;
             if (n % 2 == 0) return false;
             if (n < 9) return true;
-            if (n % 3 == 0) return false;
 
-            BigInteger r = n.Sqrt(),
-                       f = 5;
+            BigInteger r = n.Sqrt();
+            uint lastPrime = 0;
+            for (int i = 1; i < BagMath.SmallPrimes.Length; i++)
+            {
+                if (BagMath.SmallPrimes[i] > r) return true;
+                if (n % (lastPrime = (uint)BagMath.SmallPrimes[i]) == 0) return false;
+            }
 
+            BigInteger f = ((lastPrime - 5) / 6) * 6 + 5;
             while (f <= r)
             {
                 if (n % f == 0) return false;
