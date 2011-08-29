@@ -206,9 +206,14 @@ namespace SharpBag.Math
         {
             get
             {
-                return from i in 1.ToInfinity()
-                       where i.DivisorSum() - i == i
-                       select i;
+                foreach (int prime in Sequences.Primes)
+                {
+                    int a = (int)System.Math.Pow(2, prime) - 1;
+                    if (a.IsPrime())
+                    {
+                        yield return (int)System.Math.Pow(2, prime - 1) * a;
+                    }
+                }
             }
         }
 
@@ -219,9 +224,14 @@ namespace SharpBag.Math
         {
             get
             {
-                return from i in 1L.ToInfinity()
-                       where i.DivisorSum() - i == i
-                       select i;
+                foreach (long prime in Sequences.Primes64)
+                {
+                    long a = (long)System.Math.Pow(2, prime) - 1;
+                    if (a.IsPrime())
+                    {
+                        yield return (long)System.Math.Pow(2, prime - 1) * a;
+                    }
+                }
             }
         }
 
@@ -232,9 +242,45 @@ namespace SharpBag.Math
         {
             get
             {
-                return from i in BigInteger.One.ToInfinity()
-                       where i.DivisorSum() - i == i
-                       select i;
+                foreach (int prime in Sequences.Primes)
+                {
+                    BigInteger a = BigInteger.Pow(2, prime) - 1;
+                    if (a.IsPrime())
+                    {
+                        yield return BigInteger.Pow(2, prime - 1) * a;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// An endless source of perfect numbers.
+        /// </summary>
+        public static IEnumerable<BigInteger> PerfectNumbersProbableBig()
+        {
+            foreach (int prime in Sequences.Primes)
+            {
+                BigInteger a = BigInteger.Pow(2, prime) - 1;
+                if (a.IsProbablePrime())
+                {
+                    yield return BigInteger.Pow(2, prime - 1) * a;
+                }
+            }
+        }
+
+        /// <summary>
+        /// An endless source of perfect numbers.
+        /// </summary>
+        /// <param name="witnesses">The witnesses for the primality test.</param>
+        public static IEnumerable<BigInteger> PerfectNumbersProbableBig(int[] witnesses)
+        {
+            foreach (int prime in Sequences.Primes)
+            {
+                BigInteger a = BigInteger.Pow(2, prime) - 1;
+                if (a.IsProbablePrime(witnesses))
+                {
+                    yield return BigInteger.Pow(2, prime - 1) * a;
+                }
             }
         }
 
