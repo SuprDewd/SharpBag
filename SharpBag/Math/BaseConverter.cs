@@ -19,6 +19,8 @@ namespace SharpBag.Math
         /// <remarks>Bases must be in the range 2 to 36.</remarks>
         public static string ToBase(string number, int startBase, int targetBase)
         {
+            Contract.Requires(startBase >= 2 && startBase <= 36);
+            Contract.Requires(targetBase >= 2 && targetBase <= 36);
             Contract.Requires(!String.IsNullOrEmpty(number));
             return FromBase10(ToBase10(number, startBase), targetBase);
         }
@@ -32,8 +34,8 @@ namespace SharpBag.Math
         /// <remarks>Bases must be in the range 2 to 36.</remarks>
         public static int ToBase10(string number, int startBase)
         {
-            Contract.Requires(!String.IsNullOrEmpty(number));
             Contract.Requires(startBase >= 2 && startBase <= 36);
+            Contract.Requires(!String.IsNullOrEmpty(number));
             if (startBase == 10) return Convert.ToInt32(number);
 
             char[] chrs = number.ToCharArray();
