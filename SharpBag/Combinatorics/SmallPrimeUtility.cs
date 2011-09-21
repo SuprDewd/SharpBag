@@ -3,6 +3,7 @@ using System.Collections;
 // Copyright 2008 Adrian Akison
 // Distributed under license terms of CPOL http://www.codeproject.com/info/cpol10.aspx
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 
 namespace SharpBag.Combinatorics
@@ -53,6 +54,7 @@ namespace SharpBag.Combinatorics
         /// <returns>Product, expressed as list of prime factors.</returns>
         public static List<int> MultiplyPrimeFactors(IEnumerable<int> lhs, IEnumerable<int> rhs)
         {
+            Contract.Requires(lhs != null && rhs != null);
             List<int> product = lhs.ToList();
             product.AddRange(rhs);
             product.Sort();

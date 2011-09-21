@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 
@@ -89,6 +90,7 @@ namespace SharpBag.Collections
         /// <param name="capacity">The initial capacity.</param>
         public PriorityQueue(int capacity)
         {
+            Contract.Requires(capacity > 0);
             this.InternalHeap = new MaxHeap<Node>(capacity);
         }
 

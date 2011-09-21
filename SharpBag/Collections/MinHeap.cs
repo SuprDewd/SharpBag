@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 
@@ -20,7 +21,7 @@ namespace SharpBag.Collections
         /// The constructor.
         /// </summary>
         /// <param name="capacity">The capacity.</param>
-        public MinHeap(int capacity) : base(capacity) { }
+        public MinHeap(int capacity) : base(capacity) { Contract.Requires(capacity > 0); }
 
         /// <summary>
         /// The constructor.

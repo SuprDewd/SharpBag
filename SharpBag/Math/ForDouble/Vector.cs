@@ -98,7 +98,11 @@ namespace SharpBag.Math.ForDouble
         /// <returns>
         /// The result of the operator.
         /// </returns>
-        public static Vector operator +(Vector left, Vector right) { return Vector.Add(left, right); }
+        public static Vector operator +(Vector left, Vector right)
+        {
+            Contract.Requires(left.Dimension == right.Dimension);
+            return Vector.Add(left, right);
+        }
 
         /// <summary>
         /// Implements the operator -.
@@ -108,7 +112,11 @@ namespace SharpBag.Math.ForDouble
         /// <returns>
         /// The result of the operator.
         /// </returns>
-        public static Vector operator -(Vector left, Vector right) { return Vector.Subtract(left, right); }
+        public static Vector operator -(Vector left, Vector right)
+        {
+            Contract.Requires(left.Dimension == right.Dimension);
+            return Vector.Subtract(left, right);
+        }
 
         /// <summary>
         /// Implements the operator -.

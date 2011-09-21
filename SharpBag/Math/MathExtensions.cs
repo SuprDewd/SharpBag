@@ -698,6 +698,7 @@ namespace SharpBag.Math
         /// <returns>The reversed current instance.</returns>
         public static long Reverse(this int i)
         {
+            Contract.Requires(i != Int32.MinValue);
             return Convert.ToInt64(System.Math.Abs(i).ToString().Reverse());
         }
 
@@ -727,6 +728,7 @@ namespace SharpBag.Math
         /// <returns>The reversed current instance.</returns>
         public static BigInteger Reverse(this long i)
         {
+            Contract.Requires(i != Int64.MinValue);
             return BigInteger.Parse(System.Math.Abs(i).ToString().Reverse());
         }
 
