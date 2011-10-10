@@ -227,12 +227,13 @@ namespace SharpBag.Math
             {
                 if (!PrimeBits[i])
                 {
-                    yield return 2 * i + 1;
-
-                    for (int j = i * 2 * (i + 1); j <= sieveBound; j += 2 * i + 1)
-                    {
-                        PrimeBits[j] = true;
-                    }
+                    int current = 2 * i + 1;
+	            yield return current;
+	
+	            for (int j = i * 2 * (i + 1); j <= sieveBound; j += current)
+	            {
+	            	PrimeBits[j] = true;
+	            }
                 }
             }
 
@@ -263,11 +264,12 @@ namespace SharpBag.Math
             {
                 if (!PrimeBits[i])
                 {
-                    yield return 2 * i + 1;
-
-                    for (ulong j = i * 2 * (i + 1); j <= sieveBound; j += 2 * i + 1)
-                    {
-                        PrimeBits[j] = true;
+                    ulong current = 2 * i + 1;
+	            yield return current;
+	
+	            for (int j = i * 2 * (i + 1); j <= sieveBound; j += current)
+	            {
+	            	PrimeBits[j] = true;
                     }
                 }
             }
@@ -302,15 +304,18 @@ namespace SharpBag.Math
             for (ulong x = 1; x <= sqrt; x++)
                 for (ulong y = 1; y <= sqrt; y++)
                 {
-                    var n = 4 * x * x + y * y;
+                    var xsq = x * x;
+                    var	ysq = y * y;
+                    var	n = 4 * xsq + ysq;
+                    
                     if (n <= max && (n % 12 == 1 || n % 12 == 5))
                         isPrime[n] ^= true;
 
-                    n = 3 * x * x + y * y;
+                    n = 3 * xsq + ysq;
                     if (n <= max && n % 12 == 7)
                         isPrime[n] ^= true;
 
-                    n = 3 * x * x - y * y;
+                    n = 3 * xsq - ysq;
                     if (x > y && n <= max && n % 12 == 11)
                         isPrime[n] ^= true;
                 }
