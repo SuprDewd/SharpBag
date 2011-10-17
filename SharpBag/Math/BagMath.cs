@@ -134,15 +134,10 @@ namespace SharpBag.Math
             if (n < 4) return true;
             if (n % 2 == 0) return false;
             if (n < 9) return true;
+            if (n % 3 == 0) return false;
 
-            int r = (int)System.Math.Sqrt(n), lastPrime = 0;
-            for (int i = 1; i < BagMath.SmallPrimes.Length; i++)
-            {
-                if (BagMath.SmallPrimes[i] > r) return true;
-                if (n % (lastPrime = BagMath.SmallPrimes[i]) == 0) return false;
-            }
-
-            int f = ((lastPrime - 5) / 6) * 6 + 5;
+            uint r = (uint)System.Math.Sqrt(n);
+            uint f = 5;
             while (f <= r)
             {
                 if (n % f == 0) return false;
@@ -166,16 +161,10 @@ namespace SharpBag.Math
             if (n < 4) return true;
             if (n % 2 == 0) return false;
             if (n < 9) return true;
+            if (n % 3 == 0) return false;
 
-            uint r = (uint)System.Math.Sqrt(n);
-            uint lastPrime = 0;
-            for (int i = 1; i < BagMath.SmallPrimes.Length; i++)
-            {
-                if (BagMath.SmallPrimes[i] > r) return true;
-                if (n % (lastPrime = (uint)BagMath.SmallPrimes[i]) == 0) return false;
-            }
-
-            uint f = ((lastPrime - 5) / 6) * 6 + 5;
+            uint r = (uint)S.Math.Sqrt(n);
+            uint f = 5;
             while (f <= r)
             {
                 if (n % f == 0) return false;
@@ -199,16 +188,11 @@ namespace SharpBag.Math
             if (n < 4) return true;
             if (n % 2 == 0) return false;
             if (n < 9) return true;
+            if (n % 3 == 0) return false;
 
-            BigInteger r = n.Sqrt();
-            uint lastPrime = 0;
-            for (int i = 1; i < BagMath.SmallPrimes.Length; i++)
-            {
-                if (BagMath.SmallPrimes[i] > r) return true;
-                if (n % (lastPrime = (uint)BagMath.SmallPrimes[i]) == 0) return false;
-            }
+            BigInteger r = n.Sqrt(),
+                       f = 5;
 
-            BigInteger f = ((lastPrime - 5) / 6) * 6 + 5;
             while (f <= r)
             {
                 if (n % f == 0) return false;
@@ -243,9 +227,10 @@ namespace SharpBag.Math
             {
                 if (!PrimeBits[i])
                 {
-                    yield return 2 * i + 1;
+                    int current = 2 * i + 1;
+                    yield return current;
 
-                    for (int j = i * 2 * (i + 1); j <= sieveBound; j += 2 * i + 1)
+                    for (int j = i * 2 * (i + 1); j <= sieveBound; j += current)
                     {
                         PrimeBits[j] = true;
                     }
@@ -279,9 +264,10 @@ namespace SharpBag.Math
             {
                 if (!PrimeBits[i])
                 {
-                    yield return 2 * i + 1;
+                    ulong current = 2 * i + 1;
+                    yield return current;
 
-                    for (ulong j = i * 2 * (i + 1); j <= sieveBound; j += 2 * i + 1)
+                    for (ulong j = current; j <= sieveBound; j += current)
                     {
                         PrimeBits[j] = true;
                     }
@@ -318,15 +304,18 @@ namespace SharpBag.Math
             for (ulong x = 1; x <= sqrt; x++)
                 for (ulong y = 1; y <= sqrt; y++)
                 {
-                    var n = 4 * x * x + y * y;
+                    var xsq = x * x;
+                    var ysq = y * y;
+                    var n = 4 * xsq + ysq;
+
                     if (n <= max && (n % 12 == 1 || n % 12 == 5))
                         isPrime[n] ^= true;
 
-                    n = 3 * x * x + y * y;
+                    n = 3 * xsq + ysq;
                     if (n <= max && n % 12 == 7)
                         isPrime[n] ^= true;
 
-                    n = 3 * x * x - y * y;
+                    n = 3 * xsq - ysq;
                     if (x > y && n <= max && n % 12 == 11)
                         isPrime[n] ^= true;
                 }
