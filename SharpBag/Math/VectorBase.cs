@@ -38,7 +38,7 @@ namespace SharpBag.Math
         public abstract V Reverse { get; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="VectorBase&lt;T, V&gt;"/> class.
+        /// Initializes a new instance of the VectorBase class.
         /// </summary>
         /// <param name="dimension">The dimension.</param>
         public VectorBase(int dimension)
@@ -48,7 +48,7 @@ namespace SharpBag.Math
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="VectorBase&lt;T, V&gt;"/> class.
+        /// Initializes a new instance of the VectorBase class.
         /// </summary>
         /// <param name="dimension">The dimension.</param>
         /// <param name="def">The default value.</param>
@@ -62,7 +62,7 @@ namespace SharpBag.Math
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="VectorBase&lt;T, V&gt;"/> class.
+        /// Initializes a new instance of the VectorBase class.
         /// </summary>
         /// <param name="elements">The elements.</param>
         public VectorBase(T[] elements)

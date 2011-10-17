@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace SharpBag
 {
+#if !MONO
+    using System.Windows.Controls;
+
     /// <summary>
     /// A simple grid.
     /// </summary>
@@ -66,4 +68,5 @@ namespace SharpBag
             foreach (GridLength length in GridLengths(grid.Columns)) grid.ColumnDefinitions.Add(new ColumnDefinition { Width = length });
         }
     }
+#endif
 }

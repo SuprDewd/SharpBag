@@ -349,7 +349,7 @@ namespace SharpBag
         /// <summary>
         /// Modulo the values.
         /// </summary>
-        public static Func<TResult, TValue, TResult> Modulo { get { return divide; } }
+        public static Func<TResult, TValue, TResult> Modulo { get { return modulo; } }
     }
 
     /// <summary>

@@ -153,7 +153,6 @@ namespace SharpBag.Math.Geometry
         /// </returns>
         public ContainmentType Containment(IPolygon polygon)
         {
-            SimplePolygon cur = this;
             bool ex = false;
 
             foreach (Point p in this.Points)

@@ -439,7 +439,6 @@ namespace SharpBag.Math
                  pos = !(leftPos ^ rightPos);
 
             BigInteger remainder,
-                       lastRemainder = 0, digit,
                        mantissa = BigInteger.DivRem(leftPos ? this.Mantissa : -this.Mantissa, rightPos ? right.Mantissa : -right.Mantissa, out remainder);
 
             while (remainder > 0 && iterations < precision)
@@ -447,8 +446,7 @@ namespace SharpBag.Math
                 exponent--;
                 mantissa *= 10;
                 remainder *= 10;
-                mantissa += digit = BigInteger.DivRem(remainder, rightPos ? right.Mantissa : -right.Mantissa, out remainder);
-                lastRemainder = remainder;
+                mantissa += BigInteger.DivRem(remainder, rightPos ? right.Mantissa : -right.Mantissa, out remainder);
                 if (mantissa != 0) iterations++;
             }
 

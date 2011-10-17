@@ -189,7 +189,7 @@ namespace SharpBag.Math
         public bool IsStrictlyTriangular { get { return this.IsStrictlyLowerTriangular || this.IsStrictlyUpperTriangular; } }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MatrixBase&lt;T, M&gt;"/> class.
+        /// Initializes a new instance of the MatrixBase class.
         /// </summary>
         /// <param name="rows">The number of rows.</param>
         /// <param name="columns">The number of columns.</param>
@@ -202,7 +202,7 @@ namespace SharpBag.Math
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MatrixBase&lt;T, M&gt;"/> class.
+        /// Initializes a new instance of the MatrixBase class.
         /// </summary>
         /// <param name="rows">The number of rows.</param>
         /// <param name="columns">The number of columns.</param>
@@ -220,7 +220,7 @@ namespace SharpBag.Math
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MatrixBase&lt;T, M&gt;"/> class.
+        /// Initializes a new instance of the MatrixBase class.
         /// </summary>
         /// <param name="elements">The elements.</param>
         public MatrixBase(T[,] elements)

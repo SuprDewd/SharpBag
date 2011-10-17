@@ -926,11 +926,11 @@ namespace SharpBag.Math
         {
             Contract.Requires(n >= 0);
 
-            int digits = 0, count = 0, tmp;
+            int digits = 0, count = 0;
 
             for (; n > 0; n /= 10, ++count)
             {
-                if ((tmp = digits) == (digits |= 1 << (n - ((n / 10) * 10) - 1))) return false;
+                if (digits == (digits |= 1 << (n - ((n / 10) * 10) - 1))) return false;
             }
 
             return digits == (1 << count) - 1;
@@ -945,11 +945,11 @@ namespace SharpBag.Math
         {
             Contract.Requires(n >= 0);
 
-            int digits = 0, count = 0, tmp;
+            int digits = 0, count = 0;
 
             for (; n > 0; n /= 10, ++count)
             {
-                if ((tmp = digits) == (digits |= 1 << (int)(n - ((n / 10) * 10) - 1))) return false;
+                if (digits == (digits |= 1 << (int)(n - ((n / 10) * 10) - 1))) return false;
             }
 
             return digits == (1L << count) - 1;
@@ -963,11 +963,11 @@ namespace SharpBag.Math
         public static bool IsPandigital(this BigInteger n)
         {
             Contract.Requires(n >= 0);
-            int digits = 0, count = 0, tmp;
+            int digits = 0, count = 0;
 
             for (; n > 0; n /= 10, ++count)
             {
-                if ((tmp = digits) == (digits |= 1 << (int)(n - ((n / 10) * 10) - 1))) return false;
+                if (digits == (digits |= 1 << (int)(n - ((n / 10) * 10) - 1))) return false;
             }
 
             return digits == (1L << count) - 1;
@@ -1111,12 +1111,12 @@ namespace SharpBag.Math
         public static bool IsProbablePrime(this long n)
         {
             Contract.Requires(n >= 0);
-            if (n < 1373653) return n.IsProbablePrime(new int[] { 2, 3 });
-            if (n < 9080191) return n.IsProbablePrime(new int[] { 31, 73 });
-            if (n < 4759123141) return n.IsProbablePrime(new int[] { 2, 7, 61 });
-            if (n < 2152302898747) return n.IsProbablePrime(new int[] { 2, 3, 5, 7, 11 });
-            if (n < 3474749660383) return n.IsProbablePrime(new int[] { 2, 3, 5, 7, 11, 13 });
-            if (n < 341550071728321) return n.IsProbablePrime(new int[] { 2, 3, 5, 7, 11, 13, 17 });
+            if (n < 1373653L) return n.IsProbablePrime(new int[] { 2, 3 });
+            if (n < 9080191L) return n.IsProbablePrime(new int[] { 31, 73 });
+            if (n < 4759123141L) return n.IsProbablePrime(new int[] { 2, 7, 61 });
+            if (n < 2152302898747L) return n.IsProbablePrime(new int[] { 2, 3, 5, 7, 11 });
+            if (n < 3474749660383L) return n.IsProbablePrime(new int[] { 2, 3, 5, 7, 11, 13 });
+            if (n < 341550071728321L) return n.IsProbablePrime(new int[] { 2, 3, 5, 7, 11, 13, 17 });
 
             throw new ArgumentOutOfRangeException("No predefined witnesses for n >= 341.550.071.728.321");
         }
@@ -1164,10 +1164,10 @@ namespace SharpBag.Math
 
         private static readonly BigInteger LimitA = 1373653;
         private static readonly BigInteger LimitB = 9080191;
-        private static readonly BigInteger LimitC = BigInteger.Parse("4759123141");
-        private static readonly BigInteger LimitD = BigInteger.Parse("2152302898747");
-        private static readonly BigInteger LimitE = BigInteger.Parse("3474749660383");
-        private static readonly BigInteger LimitF = BigInteger.Parse("341550071728321");
+        private static readonly BigInteger LimitC = 4759123141L;
+        private static readonly BigInteger LimitD = 2152302898747L;
+        private static readonly BigInteger LimitE = 3474749660383L;
+        private static readonly BigInteger LimitF = 341550071728321L;
 
         /// <summary>
         /// Determines whether the specified number is probably prime.
