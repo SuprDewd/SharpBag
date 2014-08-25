@@ -800,20 +800,6 @@ namespace SharpBag.Math
         /// <returns>True if Left != Right</returns>
         public static bool operator !=(BigDecimal left, BigDecimal right) { return !left.Equals(right); }
 
-        private bool Equals(BigDecimal other, bool normalize)
-        {
-            BigDecimal.Align(ref this, ref other);
-            bool eq = this.WithoutExtraPrecision().Mantissa.Equals(other.WithoutExtraPrecision().Mantissa);
-
-            if (normalize)
-            {
-                this.Normalize();
-                other.Normalize();
-            }
-
-            return eq;
-        }
-
         /// <summary>
         /// IEquatable.Equals()
         /// </summary>
@@ -821,7 +807,11 @@ namespace SharpBag.Math
         /// <returns>Wheter this is equal to the other BigDecimal.</returns>
         public bool Equals(BigDecimal other)
         {
-            return this.Equals(other, true);
+            BigDecimal left = this.WithoutExtraPrecision(),
+                       right = other.WithoutExtraPrecision();
+
+            BigDecimal.Align(ref left, ref right);
+            return left.Mantissa.Equals(right.Mantissa);
         }
 
         /// <summary>
@@ -843,7 +833,6 @@ namespace SharpBag.Math
         {
             BigDecimal left = this.WithoutExtraPrecision(),
                        right = other.WithoutExtraPrecision();
-
             BigDecimal.Align(ref left, ref right);
             return left.Mantissa.CompareTo(right.Mantissa);
         }
